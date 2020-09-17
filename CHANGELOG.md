@@ -9,6 +9,14 @@ GooseMod follows semantic versioning, somewhat. However there are 4 release stag
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
 
 
+## Pre-alpha v0.2.1
+
+  - ### Misc. Changes
+
+    - Removed `test` module as it served no use
+    - Removed `Test` setting entry
+
+
 ## Pre-alpha v0.2.0
 
   - ### Features

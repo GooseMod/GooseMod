@@ -1,8 +1,8 @@
 window.GooseMod = {};
 
 (async function() {
-  this.version = 'v0.2.0';
-  this.versionIteration = 22;
+  this.version = 'v0.2.1';
+  this.versionIteration = 24;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -307,19 +307,6 @@ window.GooseMod = {};
 
   this.settings.createSeparator();
   this.settings.createHeading('GooseMod');
-
-  this.settings.createItem('Test', [
-    {
-      type: 'header',
-      text: 'Heading test'
-    },
-    {
-      type: 'toggle',
-      text: 'Test toggle',
-      onToggle: (c) => { alert(c); },
-      isToggled: () => true
-    }
-  ]);
 
   for (let p in this.modules) {
     if (this.modules.hasOwnProperty(p) && this.modules[p].onLoadingFinished !== undefined) {
