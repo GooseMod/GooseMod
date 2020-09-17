@@ -2,7 +2,7 @@
 
 ### **GooseMod is currently in pre-alpha, only recommended for power users and testers only**
 
-GooseMod is an untethered, unmodifying addition / modification to Discord, injected via DevTools Console. It uses a module system to divide up components so users can individually select what they want.
+GooseMod is an untethered (temporary, only lasts until Discord closure), unmodifying (doesn't modify the client's files or code directly) modification / addition to the Discord client. It is "installed" (activated) via pasting JS into the DevTools console.
 
 [You can join GooseMod's Discord here](https://discord.gg/neMncS2)
 
