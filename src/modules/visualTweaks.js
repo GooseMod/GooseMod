@@ -1,4 +1,4 @@
-let version = '1.1.0';
+let version = '1.2.0';
 
 let obj = {
   onImport: async function() {
@@ -18,6 +18,7 @@ let obj = {
     --background-tertiary: #222;
 
     --channeltextarea-background: #111;
+    --background-message-hover: rgba(255,255,255,0.025);
     }`, sheet.cssRules.length);
 
     sheet.insertRule(`html > body.theme-darkest {
