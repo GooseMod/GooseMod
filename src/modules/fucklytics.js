@@ -1,3 +1,5 @@
+let version = '1.0.1';
+
 let enabled = true;
 
 let blocking = {
@@ -8,7 +10,6 @@ let blocking = {
 let obj = {
   onImport: async function() {
     let gooseModScope = this;
-
 
     this.logger.debug('fucklytics', 'Overriding XMLHTTPRequest with a proxy function');
 
@@ -43,6 +44,8 @@ let obj = {
 
   onLoadingFinished: async function() {
     this.settings.createItem('Fucklytics', [
+      `(v${version})`,
+
       {
         type: 'toggle',
         text: 'Fucklytics Enabled',

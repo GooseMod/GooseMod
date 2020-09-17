@@ -1,8 +1,8 @@
 window.GooseMod = {};
 
 (async function() {
-  this.version = 'v0.2.1';
-  this.versionIteration = 24;
+  this.version = '0.3.0';
+  this.versionIteration = 31;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -17,7 +17,7 @@ window.GooseMod = {};
     }
   };
 
-  console.log(`%cGooseMod%c %c${this.version} %c${this.versionIteration}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', 'color: lightgreen', 'color: salmon');
+  console.log(`%cGooseMod%c v%c${this.version}%c-%c${this.versionIteration}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', 'color: lightgreen', 'color: none', 'color: salmon');
 
   this.modules = {};
 
@@ -141,7 +141,7 @@ window.GooseMod = {};
       let parentEl = document.createElement('div');
 
       let headerEl = document.createElement('h2');
-      headerEl.textContent = panelName;
+      headerEl.textContent = `${panelName} ${content[0]}`;
 
       headerEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'h2-2gWE-o', 'title-3sZWYQ', 'defaultColor-1_ajX0', 'defaultMarginh2-2LTaUL');
 
@@ -153,7 +153,7 @@ window.GooseMod = {};
       parentEl.appendChild(contentEl);
       
       let i = 0;
-      for (let e of content) {
+      for (let e of content.slice(1)) {
         let el;
 
         switch (e.type) {
@@ -211,7 +211,7 @@ window.GooseMod = {};
             let dividerEl = document.createElement('div');
 
             dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
-            dividerEl.style.marginTop = '50px';
+            dividerEl.style.marginTop = '45px';
 
             el.appendChild(dividerEl);
         }
@@ -280,15 +280,22 @@ window.GooseMod = {};
   };
 
   settingsButtonEl.addEventListener('click', async () => {
-    await sleep(100);
+    await sleep(10);
 
     settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
 
     settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
+
+    let versionEl = document.createElement('div');
+    versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
+
+    versionEl.textContent = `GooseMod ${this.version}-${this.versionIteration}`;
+
+    settingsSidebarEl.lastChild.appendChild(versionEl);
   
     settingsMainEl = settingsLayerEl.querySelector('main');
 
-    settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
+    //settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
 
     settingsClasses = {};
 

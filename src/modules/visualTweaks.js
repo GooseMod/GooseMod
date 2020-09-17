@@ -1,3 +1,5 @@
+let version = '1.0.1';
+
 let obj = {
   onImport: async function() {
     this.logger.debug('visualTweaks', 'Enabling Visual Tweaks');
@@ -78,14 +80,16 @@ let obj = {
         this.disableTweak(tweakName);
       }
     };
-    
-    for (let t in this.tweaks) {
-      if (this.tweaks[t] === true) this.enableTweak(t);
-    }
   },
   
   onLoadingFinished: async function() {
+    for (let t in this.tweaks) {
+      if (this.tweaks[t] === true) this.enableTweak(t);
+    }
+
     this.settings.createItem('Visual Tweaks', [
+      `(v${version})`,
+
       {
         type: 'header',
         text: 'Themes'

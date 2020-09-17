@@ -2,11 +2,36 @@
 
 ## Version Structuring
 
-GooseMod follows semantic versioning, somewhat. However there are 4 release stages:
- - **Pre-alpha** (current) - Highly unstable, not user friendly at all, unrecommended
- - **Alpha** - Quite unstable, somewhat user friendly, still mostly unrecommended
+GooseMod follows semantic versioning, somewhat. However there are 4 release stages representing how usable it is:
+ - ~~**Pre-alpha** - Highly unstable, not user friendly at all, unrecommended~~
+ - **Alpha** (current) - Quite unstable, a bit user friendly, still mostly unrecommended
  - **Beta** - Mostly stable, user friendly, mostly recommended
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
+
+
+## Alpha v0.3.0 (Bump from Pre-alpha to Alpha!)
+
+  - ### Features
+
+    - #### Injector
+      - Now injects version in to info in settings sidebar
+      - Made subtitle for settings header in settings pages settable
+
+    - #### Module: Visual Tweaks (v1.0.1)
+      - Added version to settings header
+
+    - #### Module: Fucklytics (v1.0.1)
+      - Added version to settings header
+
+  - ### Tweaks
+
+    - #### Injector
+      - Tweaked version logging in console
+
+  - ### Fixes
+
+    - #### Module: Visual Tweaks (v1.0.1)
+      - Fixed help button not being hidden when first imported even when enabled
 
 
 ## Pre-alpha v0.2.1
