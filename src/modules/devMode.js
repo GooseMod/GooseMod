@@ -23,7 +23,11 @@ let obj = {
     this.logger.debug('devMode', 'Enabling Developer Mode');
 
     newDev();
-  },
+	},
+	
+	remove: async function() {
+
+	},
 
   logRegionColor: 'darkgreen'
 };

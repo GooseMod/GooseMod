@@ -1,4 +1,4 @@
-let version = '1.0.1';
+let version = '1.1.0';
 
 let obj = {
   onImport: async function() {
@@ -118,6 +118,12 @@ let obj = {
         isToggled: () => this.tweaks['removeHelpButton']
       }
     ]);
+  },
+
+  remove: async function() {
+    for (let t in this.tweaks) {
+      if (this.tweaks[t] === true) this.disableTweak(t);
+    }
   },
   
   logRegionColor: 'darkred'

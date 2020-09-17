@@ -1,4 +1,4 @@
-let version = '1.0.1';
+let version = '1.1.0';
 
 let enabled = true;
 
@@ -7,13 +7,13 @@ let blocking = {
   'sentry': true
 };
 
+let _XMLHttpRequest = XMLHttpRequest;
+
 let obj = {
   onImport: async function() {
     let gooseModScope = this;
 
     this.logger.debug('fucklytics', 'Overriding XMLHTTPRequest with a proxy function');
-
-    let _XMLHttpRequest = XMLHttpRequest;
 
     window.XMLHttpRequest = function() {
       var xhr = new _XMLHttpRequest();
@@ -71,6 +71,12 @@ let obj = {
         isToggled: () => blocking['sentry']
       }
     ]);
+  },
+
+  remove: async function() {
+    enabled = false;
+
+    window.XMLHttpRequest = _XMLHttpRequest;
   },
 
   logRegionColor: 'darkblue'

@@ -1,8 +1,6 @@
-window.GooseMod = {};
-
 (async function() {
-  this.version = '0.3.0';
-  this.versionIteration = 31;
+  this.version = '0.4.0';
+  this.versionIteration = 33;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -218,10 +216,6 @@ window.GooseMod = {};
 
         contentEl.appendChild(el);
 
-        if (e.type === 'toggle') {
-          
-        }
-
         i++;
       }
 
@@ -236,6 +230,14 @@ window.GooseMod = {};
       el.innerText = panelName;
 
       el.onclick = () => {
+        if (panelName === 'Uninstall') {
+          this.remove();
+
+          document.querySelector('div[aria-label="Close"]').click(); // Close settings via clicking the close settings button
+
+          return;
+        }
+
         setTimeout(() => {
           settingsMainEl.firstChild.innerHTML = '';
           settingsMainEl.firstChild.appendChild(parentEl);
@@ -253,6 +255,8 @@ window.GooseMod = {};
       };
 
       settingsSidebarEl.addEventListener('click', () => {
+        if (this.removed === true) return;
+
         el.classList.remove(settingsClasses['selected']);
       });
 
@@ -280,6 +284,8 @@ window.GooseMod = {};
   };
 
   settingsButtonEl.addEventListener('click', async () => {
+    if (this.removed) return;
+
     await sleep(10);
 
     settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
@@ -322,4 +328,16 @@ window.GooseMod = {};
       this.logger.debug(`import.module.runOnLoadingFinishedHandler.${p}`, 'Ran onLoadingFinished()');
     }
   }
-}).bind(window.GooseMod)();
+
+  this.settings.createItem('Uninstall', ['']);
+
+  this.remove = () => {
+    this.removed = true;
+
+    for (let p in this.modules) {
+      if (this.modules.hasOwnProperty(p) && this.modules[p].remove !== undefined) {
+        this.modules[p].remove();
+      }
+    }
+  };
+}).bind({})();

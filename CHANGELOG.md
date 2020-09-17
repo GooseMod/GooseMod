@@ -9,6 +9,22 @@ GooseMod follows semantic versioning, somewhat. However there are 4 release stag
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
 
 
+## Alpha v0.4.0
+
+  - ### Features
+
+    - #### Injector
+      - Modules now have remove handler
+      - No longer uses global window variable, much more hidden now
+      - Added uninstall option to end of settings which uninstalls / removes GooseMod without reloading / refresh (leaves some small amounts of code but no visual or noticable changes remain, small traces can be removed by refreshing / reloading)
+
+    - #### Module: Visual Tweaks (v1.1.0)
+      - Now disables all tweaks on remove handler
+
+    - #### Module: Fucklytics (v1.1.0)
+      - Reverts proxy function remove handler
+
+
 ## Alpha v0.3.0 (Bump from Pre-alpha to Alpha!)
 
   - ### Features
