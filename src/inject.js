@@ -1,7 +1,8 @@
 window.GooseMod = {};
 
 (async function() {
-  this.baseDir = '/home/duck/projects/GooseMod/base';
+  this.version = 'v0.2.0';
+  this.versionIteration = 22;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -12,9 +13,11 @@ window.GooseMod = {};
 
     debug: (region, ...args) => {
       let parentRegion = region.split('.')[0];
-      console.log(`%cGooseMod%c %c${region}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', `border: 1px solid white; padding: 2px; background-color: ${this.logger.regionColors[parentRegion] || this.modules[parentRegion].logRegionColor || 'rgb(0, 0, 0)'}; color: white`, ...(args));
+      console.log(`%cGooseMod%c %c${region}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', `border: 1px solid white; padding: 2px; background-color: ${this.logger.regionColors[parentRegion] || (this.modules[parentRegion] && this.modules[parentRegion].logRegionColor) || 'rgb(0, 0, 0)'}; color: white`, ...(args));
     }
   };
+
+  console.log(`%cGooseMod%c %c${this.version} %c${this.versionIteration}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', 'color: lightgreen', 'color: salmon');
 
   this.modules = {};
 
@@ -149,12 +152,18 @@ window.GooseMod = {};
 
       parentEl.appendChild(contentEl);
       
+      let i = 0;
       for (let e of content) {
         let el;
 
         switch (e.type) {
           case 'header':
             el = document.createElement('h2');
+
+            if (i !== 0) {
+              el.classList.add('marginTop20-3TxNs6'); 
+            }
+
             el.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'h5-18_1nd', 'title-3sZWYQ', 'marginBottom8-AtZOdT');
 
             el.textContent = e.text;
@@ -162,6 +171,8 @@ window.GooseMod = {};
 
           case 'toggle':
             el = document.createElement('div');
+            
+            el.classList.add('marginBottom20-32qID7');
 
             let txtEl = document.createElement('span');
             txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
@@ -196,9 +207,22 @@ window.GooseMod = {};
 
             el.appendChild(txtEl);
             el.appendChild(toggleEl);
+
+            let dividerEl = document.createElement('div');
+
+            dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+            dividerEl.style.marginTop = '50px';
+
+            el.appendChild(dividerEl);
         }
 
         contentEl.appendChild(el);
+
+        if (e.type === 'toggle') {
+          
+        }
+
+        i++;
       }
 
       let el = document.createElement('div');
@@ -213,8 +237,6 @@ window.GooseMod = {};
 
       el.onclick = () => {
         setTimeout(() => {
-          console.log(settingsMainEl);
-
           settingsMainEl.firstChild.innerHTML = '';
           settingsMainEl.firstChild.appendChild(parentEl);
 
