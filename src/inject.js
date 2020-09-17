@@ -1,6 +1,6 @@
 (async function() {
-  this.version = '0.4.2';
-  this.versionIteration = 39;
+  this.version = '0.4.3';
+  this.versionIteration = 44;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -79,26 +79,7 @@
 
   await this.importModules(await this.getModuleFiles());
 
-  // Do settings UI stuff
-  /*let settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
-
-  let settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
-  
-  let settingsMainEl = settingsLayerEl.querySelector('main > div');
-
-  let settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
-
-  let settingsClasses = {};
-
-  for (let e of settingsSidebarEl.children) {
-    for (let c of e.classList) {
-      let name = c.split('-')[0];
-
-      if (settingsClasses[name] === undefined) {
-        settingsClasses[name] = c;
-      }
-    }
-  }*/
+  // Settings UI stuff
 
   let settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
 

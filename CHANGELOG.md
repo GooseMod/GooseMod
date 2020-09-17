@@ -9,6 +9,14 @@ GooseMod follows semantic versioning, somewhat. However there are 4 release stag
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
 
 
+## Alpha v0.4.3
+
+  - ### Features
+
+    - ### Module: Visual Tweaks (v1.3.0)
+      - Properly color friends container section
+
+
 ## Alpha v0.4.2
 
   - ### Features

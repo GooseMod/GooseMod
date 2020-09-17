@@ -1,4 +1,4 @@
-let version = '1.2.0';
+let version = '1.3.0';
 
 let obj = {
   onImport: async function() {
@@ -19,6 +19,9 @@ let obj = {
 
     --channeltextarea-background: #111;
     --background-message-hover: rgba(255,255,255,0.025);
+
+    --background-accent: #222;
+    --background-floating: #111;
     }`, sheet.cssRules.length);
 
     sheet.insertRule(`html > body.theme-darkest {
@@ -28,7 +31,14 @@ let obj = {
     --background-tertiary: #000;
 
     --channeltextarea-background: #111;
+
+    --background-accent: #111;
+    --background-floating: #050505;
     }`, sheet.cssRules.length);
+
+    sheet.insertRule(`body.theme-darker .container-1D34oG {
+      background-color: var(--background-primary);
+      }`, sheet.cssRules.length);
 
     
     let tweakFunctions = {
