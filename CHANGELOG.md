@@ -9,6 +9,14 @@ GooseMod follows semantic versioning, somewhat. However there are 4 release stag
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
 
 
+## Alpha v0.4.1
+
+  - ### Features
+
+    - #### Injector
+      - Added confirmation to Uninstall from settings
+
+
 ## Alpha v0.4.0
 
   - ### Features

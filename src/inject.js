@@ -1,6 +1,6 @@
 (async function() {
-  this.version = '0.4.0';
-  this.versionIteration = 33;
+  this.version = '0.4.1';
+  this.versionIteration = 36;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -230,7 +230,7 @@
       el.innerText = panelName;
 
       el.onclick = () => {
-        if (panelName === 'Uninstall') {
+        if (panelName === 'Uninstall' && confirm('Uninstall GooseMod?')) {
           this.remove();
 
           document.querySelector('div[aria-label="Close"]').click(); // Close settings via clicking the close settings button
@@ -329,7 +329,7 @@
     }
   }
 
-  this.settings.createItem('Uninstall', ['']);
+  this.settings.createItem('Uninstall', ['Cancelled']);
 
   this.remove = () => {
     this.removed = true;
