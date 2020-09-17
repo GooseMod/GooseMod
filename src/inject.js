@@ -1,6 +1,6 @@
 (async function() {
-  this.version = '0.4.3';
-  this.versionIteration = 44;
+  this.version = '0.4.4';
+  this.versionIteration = 47;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 

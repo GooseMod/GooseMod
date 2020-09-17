@@ -1,4 +1,4 @@
-let version = '1.3.0';
+let version = '1.4.0';
 
 let obj = {
   onImport: async function() {
@@ -11,6 +11,8 @@ let obj = {
     };
 
     let sheet = window.document.styleSheets[0];
+
+    // Darker Theme / Mode
     sheet.insertRule(`body.theme-darker {
     --background-primary: #000;
     --background-secondary: #111;
@@ -24,6 +26,7 @@ let obj = {
     --background-floating: #111;
     }`, sheet.cssRules.length);
 
+    // Darkest Theme / Mode
     sheet.insertRule(`html > body.theme-darkest {
     --background-primary: #000;
     --background-secondary: #000;
@@ -36,9 +39,18 @@ let obj = {
     --background-floating: #050505;
     }`, sheet.cssRules.length);
 
+    // Friends menu main container - fix hard coded colors
     sheet.insertRule(`body.theme-darker .container-1D34oG {
       background-color: var(--background-primary);
-      }`, sheet.cssRules.length);
+    }`, sheet.cssRules.length);
+
+    // Autocomplete slash and mention menu - fix hard coded colors
+    sheet.insertRule(`body.theme-darker .autocomplete-1vrmpx {
+      background-color: var(--background-floating);
+    }`, sheet.cssRules.length);
+    sheet.insertRule(`body.theme-darker .selectorSelected-1_M1WV {
+      background-color: var(--background-accent);
+    }`, sheet.cssRules.length);
 
     
     let tweakFunctions = {
