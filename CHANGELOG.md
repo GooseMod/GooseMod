@@ -12,7 +12,7 @@
     - #### Module: Twitch Emotes (v1.0.0)
       - Added module
 
-    - #### Module: Message Scrambler (v1.0.0)
+    - #### Module: Message Scrambler by Fjorge (v1.0.0)
       - Added module
 
     - #### Module: Visual Tweaks (v2.0.1)
