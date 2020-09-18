@@ -1,6 +1,5 @@
 (async function () {
-  this.version = '0.5.0';
-  this.versionIteration = 110;
+  this.version = '0.6.0';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -9,13 +8,17 @@
       'import': 'rgb(100, 0, 0)'
     },
 
+    log: [],
+
     debug: (region, ...args) => {
       let parentRegion = region.split('.')[0];
       console.log(`%cGooseMod%c %c${region}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', `border: 1px solid white; padding: 2px; background-color: ${this.logger.regionColors[parentRegion] || (this.modules[parentRegion] && this.modules[parentRegion].logRegionColor) || 'rgb(0, 0, 0)'}; color: white`, ...(args));
+      //log.push(`${region}: ${args.join(' ')}`);
     }
   };
 
-  console.log(`%cGooseMod%c v%c${this.version}%c-%c${this.versionIteration}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', 'color: lightgreen', 'color: none', 'color: salmon');
+  this.logger.debug('import.version.goosemod', `${this.version}-${this.versionIteration}`);
+  this.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
 
   // Settings UI stuff
 
@@ -154,13 +157,13 @@
 
   let settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
 
-  let settingsLayerEl, settingsSidebarEl, settingsMainEl, settingsClasses;
+  let settingsLayerEl, settingsSidebarEl, settingsSidebarGooseModContainer, settingsMainEl, settingsClasses;
 
   this.settings = {
     items: [],
 
-    createItem: (panelName, content) => {
-      this.settings.items.push(['item', panelName, content]);
+    createItem: (panelName, content, clickHandler, danger = false) => {
+      this.settings.items.push(['item', panelName, content, clickHandler, danger]);
     },
 
     createHeading: (headingName) => {
@@ -175,7 +178,7 @@
       for (let i of this.settings.items) {
         switch (i[0]) {
           case 'item':
-            this.settings._createItem(i[1], i[2]);
+            this.settings._createItem(i[1], i[2], i[3], i[4]);
             break;
           case 'heading':
             this.settings._createHeading(i[1]);
@@ -187,7 +190,7 @@
       }
     },
 
-    _createItem: (panelName, content) => {
+    _createItem: (panelName, content, clickHandler, danger = false) => {
       let parentEl = document.createElement('div');
 
       let headerEl = document.createElement('h2');
@@ -295,18 +298,26 @@
       el.classList.add(settingsClasses['item']);
       el.classList.add(settingsClasses['themed']);
 
+      if (danger) {
+        el.style.color = 'rgb(240, 71, 71)';
+
+        el.onmouseenter = () => {
+          el.style.backgroundColor = 'rgba(240, 71, 71, 0.1)';
+        };
+
+        el.onmouseleave = () => {
+          el.style.backgroundColor = 'unset';
+        };
+      }
+
       el.setAttribute('tabindex', '0');
       el.setAttribute('role', 'button');
 
       el.innerText = panelName;
 
       el.onclick = async () => {
-        if (panelName === 'Uninstall') {
-          if (await this.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
-            this.settings.close();
-
-            this.remove();
-          }
+        if (clickHandler !== undefined) {
+          clickHandler();
 
           return; 
         }
@@ -329,7 +340,7 @@
         el.classList.remove(settingsClasses['selected']);
       });
 
-      settingsSidebarEl.appendChild(el);
+      settingsSidebarGooseModContainer.appendChild(el);
     },
 
     _createHeading: (headingName) => {
@@ -341,14 +352,14 @@
 
       el.innerText = headingName;
 
-      settingsSidebarEl.appendChild(el);
+      settingsSidebarGooseModContainer.appendChild(el);
     },
 
     _createSeparator: () => {
       let el = document.createElement('div');
       el.className = settingsClasses['separator'];
 
-      settingsSidebarEl.appendChild(el);
+      settingsSidebarGooseModContainer.appendChild(el);
     },
 
     close: () => {
@@ -369,17 +380,6 @@
 
     settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
-    let versionEl = document.createElement('div');
-    versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
-
-    versionEl.textContent = `GooseMod ${this.version}-${this.versionIteration}`;
-
-    settingsSidebarEl.lastChild.appendChild(versionEl);
-
-    settingsMainEl = settingsLayerEl.querySelector('main');
-
-    //settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
-
     settingsClasses = {};
 
     for (let e of settingsSidebarEl.children) {
@@ -392,17 +392,32 @@
       }
     }
 
+    settingsSidebarGooseModContainer = document.createElement('div');
+    settingsSidebarEl.insertBefore(settingsSidebarGooseModContainer, settingsSidebarEl.childNodes[settingsSidebarEl.childElementCount - 4]);//settingsSidebarEl.querySelector(`.${settingsClasses.item}:not(${settingsClasses.themed}) ~ ${settingsClasses.item}:not(${settingsClasses.themed})`));
+
+    let el = document.createElement('div');
+    el.className = settingsClasses['separator'];
+
+    settingsSidebarEl.insertBefore(el, settingsSidebarGooseModContainer.nextSibling); //.insertBefore(settingsSidebarGooseModContainer, settingsSidebarEl.childNodes[settingsSidebarEl.childElementCount - 4]);//settingsSidebarEl.querySelector(`.${settingsClasses.item}:not(${settingsClasses.themed}) ~ ${settingsClasses.item}:not(${settingsClasses.themed})`));
+
+    
+    let versionEl = document.createElement('div');
+    versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
+
+    versionEl.textContent = `GooseMod ${this.version}`;
+
+    settingsSidebarEl.lastChild.appendChild(versionEl);
+
+    settingsMainEl = settingsLayerEl.querySelector('main');
+
     this.settings.createFromItems();
   });
-
-  this.settings.createSeparator();
-  this.settings.createHeading('GooseMod');
 
   this.modules = {};
 
   const ab2str = (buf) => { // ArrayBuffer (UTF-8) -> String
     return String.fromCharCode.apply(null, new Uint8Array(buf));
-  }
+  };
 
   this.importModules = async (files) => {
     this.logger.debug('import', 'Looping through files');
@@ -496,6 +511,8 @@
     return files;
   };
 
+  this.settings.createHeading('GooseMod');
+
   this.settings.createItem('Manage Modules', ['',
     {
       type: 'button',
@@ -521,7 +538,23 @@
     }
   ]);
 
-  this.settings.createItem('Uninstall', [""]);
+  this.settings.createItem('Uninstall', [""], async () => {
+    if (await this.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
+      this.settings.close();
+
+      this.remove();
+    }
+  }, true);
+
+  this.settings.createItem('Reinstall', [''], async () => {
+    if (await this.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
+      this.settings.close();
+
+      this.remove();
+
+      eval(ab2str((await DiscordNative.fileManager.openFiles())[0].data));
+    }
+  }, true);
 
   this.settings.createSeparator();
 

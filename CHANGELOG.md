@@ -1,12 +1,23 @@
 # GooseMod Changelog
 
-## Version Structuring
+## Beta v0.6.0
 
-GooseMod follows semantic versioning, somewhat. However there are 4 release stages representing how usable it is:
- - ~~**Pre-alpha** - Highly unstable, not user friendly at all, unrecommended~~
- - ~~**Alpha** - Quite unstable, a bit user friendly, still mostly unrecommended~~
- - **Beta** (current) - Mostly stable, user friendly, mostly recommended
- - **Release** - Completely stable and recommended, etc. (probably unreachable)
+  - ### Features
+
+    - #### Injector
+      - Uninstall option is now colored red like "Log Out" option
+      - GooseMod options are now inserted before "Log Out" option
+      - Added Reinstall option
+
+    - #### Quick Injector
+      - Added quick injector
+
+  - ### Tweaks
+
+    - #### Injector
+      - No longer use custom logging for logging version on run
+      - Removed version iteration as it was mostly unused
+      - Added Discord version channel and desktop version to startup import logging
 
 
 ## Beta v0.5.0
