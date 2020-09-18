@@ -1,4 +1,4 @@
-let version = '1.0.0';
+let version = '1.0.1';
 
 let interval;
 
@@ -15,7 +15,7 @@ function scrambleMessages() {
 		let messages = document.getElementsByClassName("messageContent-2qWWxC");
 
 		for (let message of messages) {
-			message.textContent = message.textContent.split('').map(() => alphabet[getRandomInt(0, alphabet.length)]).join('');
+			message.textContent = [...message.textContent].map(() => alphabet[getRandomInt(0, alphabet.length)]).join('');
 		}
 	}, 500);
 }
@@ -41,7 +41,7 @@ let obj = {
 
 	author: 'Fjorge',
 
-	version: '0.6.9'
+	version: version
 };
 
 obj
