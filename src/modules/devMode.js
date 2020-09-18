@@ -1,3 +1,5 @@
+let version = '1.0.0';
+
 function byProperties(props, filter = m => m) {
 	return module => {
 		const component = filter(module);
@@ -29,7 +31,10 @@ let obj = {
 
 	},
 
-  logRegionColor: 'darkgreen'
+	logRegionColor: 'darkgreen',
+	
+	name: 'Dev Mode',
+  version
 };
 
 obj

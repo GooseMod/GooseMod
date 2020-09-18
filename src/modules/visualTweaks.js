@@ -1,4 +1,4 @@
-let version = '1.4.0';
+let version = '2.0.0';
 
 let obj = {
   onImport: async function() {
@@ -7,7 +7,7 @@ let obj = {
     this.tweaks = {
       'removeHelpButton': true,
       'darkerMode': true,
-      'darkestMode': false
+      'darkestMode': true
     };
 
     let sheet = window.document.styleSheets[0];
@@ -29,14 +29,14 @@ let obj = {
     // Darkest Theme / Mode
     sheet.insertRule(`html > body.theme-darkest {
     --background-primary: #000;
-    --background-secondary: #000;
+    --background-secondary: #050505;
     --background-secondary-alt: #000;
-    --background-tertiary: #000;
+    --background-tertiary: #080808;
 
-    --channeltextarea-background: #111;
+    --channeltextarea-background: #080808;
 
     --background-accent: #111;
-    --background-floating: #050505;
+    --background-floating: #080808;
     }`, sheet.cssRules.length);
 
     // Friends menu main container - fix hard coded colors
@@ -50,6 +50,24 @@ let obj = {
     }`, sheet.cssRules.length);
     sheet.insertRule(`body.theme-darker .selectorSelected-1_M1WV {
       background-color: var(--background-accent);
+    }`, sheet.cssRules.length);
+
+    // Profile popup - fix hard coded colors
+    sheet.insertRule(`body.theme-darker .body-3iLsc4, body.theme-darker .footer-1fjuF6 {
+      background-color: var(--background-floating);
+    }`, sheet.cssRules.length);
+
+    // Server Boost layer / page - fix hard coded colors
+    sheet.insertRule(`body.theme-darker .perksModal-fSYqOq {
+      background-color: var(--background-primary);
+    }`, sheet.cssRules.length);
+
+    sheet.insertRule(`body.theme-darker .tierBody-16Chc9 {
+      background-color: var(--background-floating);
+    }`, sheet.cssRules.length);
+
+    sheet.insertRule(`body.theme-darker .perk-2WeBWW {
+      background-color: var(--background-floating);
     }`, sheet.cssRules.length);
 
     
@@ -147,9 +165,15 @@ let obj = {
     for (let t in this.tweaks) {
       if (this.tweaks[t] === true) this.disableTweak(t);
     }
+
+    let settingItem = this.settings.items.find((x) => x[1] === 'Visual Tweaks');
+    this.settings.items.splice(this.settings.items.indexOf(settingItem), 1);
   },
   
-  logRegionColor: 'darkred'
+  logRegionColor: 'darkred',
+
+  name: 'Visual Tweaks',
+  version
 };
 
 obj

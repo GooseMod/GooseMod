@@ -4,9 +4,33 @@
 
 GooseMod follows semantic versioning, somewhat. However there are 4 release stages representing how usable it is:
  - ~~**Pre-alpha** - Highly unstable, not user friendly at all, unrecommended~~
- - **Alpha** (current) - Quite unstable, a bit user friendly, still mostly unrecommended
- - **Beta** - Mostly stable, user friendly, mostly recommended
+ - ~~**Alpha** - Quite unstable, a bit user friendly, still mostly unrecommended~~
+ - **Beta** (current) - Mostly stable, user friendly, mostly recommended
  - **Release** - Completely stable and recommended, etc. (probably unreachable)
+
+
+## Beta v0.5.0
+
+  - ### Features
+
+    - #### Injector
+      - Uninstall confirmation uses Discord's confirmation box instead of Electron's (thanks Upsidedown!)
+      - Cancelling uninstall no longer shows empty "Uninstall Cancelled" page
+      - Added Manage Modules to easily import and remove modules
+      - Moved modules into own settings category
+    
+    - #### Module: Visual Tweaks (v2.0.0)
+      - Profile popup background is now colored correctly according to theme
+      - Server boost page is now colored correctly according to theme
+      - Tweaked some backgrounds for darkest mode
+      - Added version and name to export
+      - Darkest mode is now default
+
+    - #### Module: Fucklytics (v1.1.1)
+      - Added version and name to export
+
+    - #### Module: Dev Mode (v1.0.0)
+      - Added version and name to export
 
 
 ## Alpha v0.4.4

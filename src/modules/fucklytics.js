@@ -1,4 +1,4 @@
-let version = '1.1.0';
+let version = '1.1.1';
 
 let enabled = true;
 
@@ -77,9 +77,15 @@ let obj = {
     enabled = false;
 
     window.XMLHttpRequest = _XMLHttpRequest;
+
+    let settingItem = this.settings.items.find((x) => x[1] === 'Fucklytics');
+    this.settings.items.splice(this.settings.items.indexOf(settingItem), 1);
   },
 
-  logRegionColor: 'darkblue'
+  logRegionColor: 'darkblue',
+
+  name: 'Fucklytics',
+  version
 };
 
 obj
