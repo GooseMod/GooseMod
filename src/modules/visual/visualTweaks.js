@@ -1,4 +1,4 @@
-let version = '2.0.0';
+let version = '2.0.1';
 
 let obj = {
   onImport: async function() {
@@ -138,12 +138,14 @@ let obj = {
       {
         type: 'toggle',
         text: 'Darker Mode',
+        subtext: 'A more darker mode',
         onToggle: (c) => { this.setTweak('darkerMode', c); },
         isToggled: () => this.tweaks['darkerMode']
       },
       {
         type: 'toggle',
         text: 'Darkest Mode',
+        subtext: 'Pure dark',
         onToggle: (c) => { this.setTweak('darkestMode', c); },
         isToggled: () => this.tweaks['darkestMode']
       },
@@ -155,6 +157,7 @@ let obj = {
       {
         type: 'toggle',
         text: 'Hide Help Button',
+        subtext: 'Hides the help button in the top right corner',
         onToggle: (c) => { this.setTweak('removeHelpButton', c); },
         isToggled: () => this.tweaks['removeHelpButton']
       }
@@ -173,6 +176,10 @@ let obj = {
   logRegionColor: 'darkred',
 
   name: 'Visual Tweaks',
+  description: 'A variety of visual tweaks, including themes and small changes',
+
+  author: 'Ducko',
+
   version
 };
 

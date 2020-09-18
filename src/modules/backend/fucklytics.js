@@ -1,4 +1,4 @@
-let version = '1.1.1';
+let version = '1.1.2';
 
 let enabled = true;
 
@@ -61,12 +61,14 @@ let obj = {
       {
         type: 'toggle',
         text: 'Science (Discord API)',
+        subtext: 'Discord\'s own analytics, most used',
         onToggle: (c) => { blocking['science'] = c; },
         isToggled: () => blocking['science']
       },
       {
         type: 'toggle',
         text: 'Sentry.io',
+        subtext: 'Used to track console / JS errors',
         onToggle: (c) => { blocking['sentry'] = c; },
         isToggled: () => blocking['sentry']
       }
@@ -85,6 +87,10 @@ let obj = {
   logRegionColor: 'darkblue',
 
   name: 'Fucklytics',
+  description: 'Blocks analytics',
+
+  author: 'Ducko',
+
   version
 };
 

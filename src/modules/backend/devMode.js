@@ -1,4 +1,4 @@
-let version = '1.0.0';
+let version = '1.0.1';
 
 function byProperties(props, filter = m => m) {
 	return module => {
@@ -34,6 +34,10 @@ let obj = {
 	logRegionColor: 'darkgreen',
 	
 	name: 'Dev Mode',
+	description: 'Enables developer mode (experiments, etc.)',
+
+	author: 'Ducko',
+
   version
 };
 

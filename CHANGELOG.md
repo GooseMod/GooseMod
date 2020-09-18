@@ -1,5 +1,41 @@
 # GooseMod Changelog
 
+## Beta v0.8.0
+
+  - ### Features
+
+    - #### Injector
+      - Added module descriptions to module manager
+      - Added subtext option for toggles and danger button setting components
+      - Remade module headers for module manager, now including author
+
+    - #### Module: Twitch Emotes (v1.0.0)
+      - Added module
+
+    - #### Module: Message Scrambler (v1.0.0)
+      - Added module
+
+    - #### Module: Visual Tweaks (v2.0.1)
+      - Added description and author
+      - Added subtext to some options
+
+    - #### Module: Fucklytics (v1.1.2)
+      - Added description and author
+      - Added subtext to some options
+
+    - #### Module: Dev Mode (v1.0.1)
+      - Added description and author
+  
+  - ### Backend / Structural Changes
+
+    - Modules now in "category" folders
+
+  - ### Fixes
+
+    - #### Injector
+      - Fixed that modules without setting would fail to be removed
+
+
 ## Beta v0.7.0
 
   - ### Features

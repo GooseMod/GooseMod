@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '0.7.0';
+  this.version = '0.8.0';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -232,7 +232,7 @@
 
             txtEl.style.float = 'left';
 
-            txtEl.textContent = e.text;
+            txtEl.innerHTML = e.text;
 
             let checked = e.isToggled();
 
@@ -261,10 +261,22 @@
             el.appendChild(txtEl);
             el.appendChild(toggleEl);
 
+            if (e.subtext) {
+              let subtextEl = document.createElement('div');
+
+              subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+              subtextEl.textContent = e.subtext;
+
+              subtextEl.style.clear = 'both';
+
+              el.appendChild(subtextEl);
+            }
+
             let dividerEl = document.createElement('div');
 
             dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
-            dividerEl.style.marginTop = '45px';
+            dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
 
             el.appendChild(dividerEl);
 
@@ -280,7 +292,7 @@
 
             txtEl2.style.float = 'left';
 
-            txtEl2.textContent = e.text;
+            txtEl2.innerHTML = e.text;
 
             let buttonEl = document.createElement('div');
             buttonEl.classList.add('button-38aScr', 'lookOutlined-3sRXeN', 'colorRed-1TFJan', 'sizeSmall-2cSMqn', 'grow-q77ONN');
@@ -304,10 +316,22 @@
             el.appendChild(txtEl2);
             el.appendChild(buttonEl);
 
+            if (e.subtext) {
+              let subtextEl = document.createElement('div');
+
+              subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+              subtextEl.textContent = e.subtext;
+
+              subtextEl.style.clear = 'both';
+
+              el.appendChild(subtextEl);
+            }
+
             let dividerEl2 = document.createElement('div');
 
             dividerEl2.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
-            dividerEl2.style.marginTop = '45px';
+            dividerEl2.style.marginTop = e.subtext ? '20px' : '45px';
 
             el.appendChild(dividerEl2);
 
@@ -442,7 +466,6 @@
     el.className = settingsClasses['separator'];
 
     settingsSidebarEl.insertBefore(el, settingsSidebarGooseModContainer.nextSibling); //.insertBefore(settingsSidebarGooseModContainer, settingsSidebarEl.childNodes[settingsSidebarEl.childElementCount - 4]);//settingsSidebarEl.querySelector(`.${settingsClasses.item}:not(${settingsClasses.themed}) ~ ${settingsClasses.item}:not(${settingsClasses.themed})`));
-
     
     let versionEl = document.createElement('div');
     versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
@@ -494,13 +517,16 @@
 
       let toggleObj = {
         type: 'text-and-danger-button',
-        text: `${this.modules[field].name} (${this.modules[field].version})`,
+        text: `${this.modules[field].name} <span class="description-3_Ncsb">by</span> ${this.modules[field].author} <span class="description-3_Ncsb">(v${this.modules[field].version})</span>`,
         buttonText: 'Remove',
+        subtext: this.modules[field].description,
         onclick: (el) => {
           this.modules[field].remove();
           settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
 
-          [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name).remove();
+          let settingEl = [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name);
+          
+          if (settingEl !== undefined) settingEl.remove();
 
           el.remove();
 
