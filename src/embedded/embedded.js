@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '0.9.1';
+  this.version = '0.9.2';
   this.embedded = true;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
