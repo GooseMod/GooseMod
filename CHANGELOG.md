@@ -1,5 +1,27 @@
 # GooseMod Changelog
 
+## Beta v0.8.1
+
+  - ### Features
+
+    - #### Injector
+      - Automatically opens settings on the manage modules page when injected
+
+    - #### Module: RainbowCord (v1.0.0)
+      - Added module
+
+    - #### Module: Role Colored Messages (v1.0.0)
+      - Added module
+
+    - #### Module: Egg Scrambler (v1.0.0)
+      - Added module
+    
+  - ### Fixes
+
+    - #### Module: Message Scrambler (v1.0.1)
+      - Fixed some potential symbol conversion errors
+
+
 ## Beta v0.8.0
 
   - ### Features

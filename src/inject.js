@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '0.8.0';
+  this.version = '0.8.1';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -430,7 +430,11 @@
     },
 
     close: () => {
-      document.querySelector('div[aria-label="Close"]').click(); // Close settings via clicking the close settings button
+      let closeEl = document.querySelector('div[aria-label="Close"]');
+      
+      if (closeEl === null) return false;
+      
+      closeEl.click(); // Close settings via clicking the close settings button
     },
 
     open: () => {
@@ -648,4 +652,14 @@
       }
     }
   };
+
+  this.settings.close();
+
+  await sleep(20);
+
+  this.settings.open();
+
+  await sleep(20);
+
+  [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Manage Modules').click();
 }).bind({})();
