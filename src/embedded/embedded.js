@@ -1,6 +1,6 @@
 (async function () {
-  this.version = '0.8.1';
-  this.embedded = false;
+  this.version = '0.9.0';
+  this.embedded = true;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -641,7 +641,482 @@
 
   if (this.embedded === true) {
     await this.importModules([
-      //<TEMPLATE_REPLACE>
+      {
+    filename: 'fucklytics.js',
+    data: `let version = '1.1.2';
+
+let enabled = true;
+
+let blocking = {
+  'science': true,
+  'sentry': true
+};
+
+let _XMLHttpRequest = XMLHttpRequest;
+
+let obj = {
+  onImport: async function() {
+    let gooseModScope = this;
+
+    this.logger.debug('fucklytics', 'Overriding XMLHTTPRequest with a proxy function');
+
+    window.XMLHttpRequest = function() {
+      var xhr = new _XMLHttpRequest();
+  
+      var _open = xhr.open;
+      xhr.open = function() {
+          //console.log(this, arguments, arguments[1], arguments[1].includes('science'));
+          if (enabled) {
+            if (blocking['science'] === true && arguments[1].includes('/v8/science')) {
+              gooseModScope.logger.debug('fucklytics', 'Blocked analytics request (science)');
+
+              return false;
+            }
+
+            if (blocking['sentry'] === true && arguments[1].includes('https://sentry.io')) {
+              gooseModScope.logger.debug('fucklytics', 'Blocked analytics request (sentry)');
+
+              return false;
+            }
+          }
+
+          return _open.apply(this, arguments);
+      }
+  
+      return xhr;
+    }
+  },
+
+  onLoadingFinished: async function() {
+    this.settings.createItem('Fucklytics', [
+      \`(v\${version})\`,
+
+      {
+        type: 'toggle',
+        text: 'Fucklytics Enabled',
+        onToggle: (c) => { enabled = c; },
+        isToggled: () => enabled
+      },
+
+      {
+        type: 'header',
+        text: 'Types to Block'
+      },
+
+      {
+        type: 'toggle',
+        text: 'Science (Discord API)',
+        subtext: 'Discord\\'s own analytics, most used',
+        onToggle: (c) => { blocking['science'] = c; },
+        isToggled: () => blocking['science']
+      },
+      {
+        type: 'toggle',
+        text: 'Sentry.io',
+        subtext: 'Used to track console / JS errors',
+        onToggle: (c) => { blocking['sentry'] = c; },
+        isToggled: () => blocking['sentry']
+      }
+    ]);
+  },
+
+  remove: async function() {
+    enabled = false;
+
+    window.XMLHttpRequest = _XMLHttpRequest;
+
+    let settingItem = this.settings.items.find((x) => x[1] === 'Fucklytics');
+    this.settings.items.splice(this.settings.items.indexOf(settingItem), 1);
+  },
+
+  logRegionColor: 'darkblue',
+
+  name: 'Fucklytics',
+  description: 'Blocks analytics',
+
+  author: 'Ducko',
+
+  version
+};
+
+obj`
+  },{
+    filename: 'devMode.js',
+    data: `let version = '1.0.1';
+
+function byProperties(props, filter = m => m) {
+	return module => {
+		const component = filter(module);
+		if (!component) return false;
+		return props.every(property => component[property] !== undefined);
+	};
+}
+
+function newDev() {
+	const filter = byProperties(["isDeveloper"]);
+	const modules = webpackJsonp.push([[], {a: (m, e, t) => m.exports = t.c},[ ['a'] ]]);
+	for (const index in modules) {
+		const {exports} = modules[index];
+		if (!exports) continue;
+		if (exports.__esModule && exports.default && filter(exports.default))  {
+			Object.defineProperty(exports.default, 'isDeveloper', { configurable: true, writable: true, value: 1 });
+		}
+	}
+}
+
+let obj = {
+  onImport: async function() {
+    this.logger.debug('devMode', 'Enabling Developer Mode');
+
+    newDev();
+	},
+	
+	remove: async function() {
+
+	},
+
+	logRegionColor: 'darkgreen',
+	
+	name: 'Dev Mode',
+	description: 'Enables developer mode (experiments, etc.)',
+
+	author: 'Ducko',
+
+  version
+};
+
+obj`
+  },{
+    filename: 'visualTweaks.js',
+    data: `let version = '2.0.1';
+
+let obj = {
+  onImport: async function() {
+    this.logger.debug('visualTweaks', 'Enabling Visual Tweaks');
+    
+    this.tweaks = {
+      'removeHelpButton': true,
+      'darkerMode': true,
+      'darkestMode': true
+    };
+
+    let sheet = window.document.styleSheets[0];
+
+    // Darker Theme / Mode
+    sheet.insertRule(\`body.theme-darker {
+    --background-primary: #000;
+    --background-secondary: #111;
+    --background-secondary-alt: #000;
+    --background-tertiary: #222;
+
+    --channeltextarea-background: #111;
+    --background-message-hover: rgba(255,255,255,0.025);
+
+    --background-accent: #222;
+    --background-floating: #111;
+    }\`, sheet.cssRules.length);
+
+    // Darkest Theme / Mode
+    sheet.insertRule(\`html > body.theme-darkest {
+    --background-primary: #000;
+    --background-secondary: #050505;
+    --background-secondary-alt: #000;
+    --background-tertiary: #080808;
+
+    --channeltextarea-background: #080808;
+
+    --background-accent: #111;
+    --background-floating: #080808;
+    }\`, sheet.cssRules.length);
+
+    // Friends menu main container - fix hard coded colors
+    sheet.insertRule(\`body.theme-darker .container-1D34oG {
+      background-color: var(--background-primary);
+    }\`, sheet.cssRules.length);
+
+    // Autocomplete slash and mention menu - fix hard coded colors
+    sheet.insertRule(\`body.theme-darker .autocomplete-1vrmpx {
+      background-color: var(--background-floating);
+    }\`, sheet.cssRules.length);
+    sheet.insertRule(\`body.theme-darker .selectorSelected-1_M1WV {
+      background-color: var(--background-accent);
+    }\`, sheet.cssRules.length);
+
+    // Profile popup - fix hard coded colors
+    sheet.insertRule(\`body.theme-darker .body-3iLsc4, body.theme-darker .footer-1fjuF6 {
+      background-color: var(--background-floating);
+    }\`, sheet.cssRules.length);
+
+    // Server Boost layer / page - fix hard coded colors
+    sheet.insertRule(\`body.theme-darker .perksModal-fSYqOq {
+      background-color: var(--background-primary);
+    }\`, sheet.cssRules.length);
+
+    sheet.insertRule(\`body.theme-darker .tierBody-16Chc9 {
+      background-color: var(--background-floating);
+    }\`, sheet.cssRules.length);
+
+    sheet.insertRule(\`body.theme-darker .perk-2WeBWW {
+      background-color: var(--background-floating);
+    }\`, sheet.cssRules.length);
+
+    
+    let tweakFunctions = {
+      'removeHelpButton': {
+        enable: () => {
+          document.querySelector('a[href="https://support.discord.com"] > div[role="button"]').parentElement.style.display = 'none';
+        },
+        
+        disable: () => {
+          document.querySelector('a[href="https://support.discord.com"] > div[role="button"]').parentElement.style.display = 'flex';
+        }
+      },
+
+      'darkerMode': {
+        enable: () => {
+          document.body.classList.add('theme-darker');
+        },
+
+        disable: () => {
+          document.body.classList.remove('theme-darker');
+        }
+      },
+      'darkestMode': {
+        enable: () => {
+          document.body.classList.add('theme-darkest');
+        },
+
+        disable: () => {
+          document.body.classList.remove('theme-darkest');
+        }
+      }
+    };
+    
+    this.enableTweak = (tweakName) => {
+      tweakFunctions[tweakName].enable();
+
+      this.tweaks[tweakName] = true;
+    };
+    
+    this.disableTweak = (tweakName) => {
+      tweakFunctions[tweakName].disable();
+
+      this.tweaks[tweakName] = false;
+    };
+    
+    this.setTweak = (tweakName, value) => {
+      if (value === true) {
+        this.enableTweak(tweakName);
+      } else {
+        this.disableTweak(tweakName);
+      }
+    };
+  },
+  
+  onLoadingFinished: async function() {
+    for (let t in this.tweaks) {
+      if (this.tweaks[t] === true) this.enableTweak(t);
+    }
+
+    this.settings.createItem('Visual Tweaks', [
+      \`(v\${version})\`,
+
+      {
+        type: 'header',
+        text: 'Themes'
+      },
+      {
+        type: 'toggle',
+        text: 'Darker Mode',
+        subtext: 'A more darker mode',
+        onToggle: (c) => { this.setTweak('darkerMode', c); },
+        isToggled: () => this.tweaks['darkerMode']
+      },
+      {
+        type: 'toggle',
+        text: 'Darkest Mode',
+        subtext: 'Pure dark',
+        onToggle: (c) => { this.setTweak('darkestMode', c); },
+        isToggled: () => this.tweaks['darkestMode']
+      },
+
+      {
+        type: 'header',
+        text: 'Individual Minor Tweaks'
+      },
+      {
+        type: 'toggle',
+        text: 'Hide Help Button',
+        subtext: 'Hides the help button in the top right corner',
+        onToggle: (c) => { this.setTweak('removeHelpButton', c); },
+        isToggled: () => this.tweaks['removeHelpButton']
+      }
+    ]);
+  },
+
+  remove: async function() {
+    for (let t in this.tweaks) {
+      if (this.tweaks[t] === true) this.disableTweak(t);
+    }
+
+    let settingItem = this.settings.items.find((x) => x[1] === 'Visual Tweaks');
+    this.settings.items.splice(this.settings.items.indexOf(settingItem), 1);
+  },
+  
+  logRegionColor: 'darkred',
+
+  name: 'Visual Tweaks',
+  description: 'A variety of visual tweaks, including themes and small changes',
+
+  author: 'Ducko',
+
+  version
+};
+
+obj`
+  },{
+    filename: 'twitchEmotes.js',
+    data: `let version = '1.0.0';
+
+let emotes = {"4Head":"354","ANELE":"3792","ArgieB8":"51838","ArsonNoSexy":"50","AsianGlow":"74","AthenaPMS":"32035","BabyRage":"22639","BatChest":"1905","BCouch":"83536","BCWarrior":"30","BibleThump":"86","BigBrother":"1904","BionicBunion":"24","BlargNaut":"38","bleedPurple":"62835","BloodTrail":"69","BORT":"243","BrainSlug":"881","BrokeBack":"4057","BuddhaBar":"27602","ChefFrank":"90129","cmonBruh":"84608","CoolCat":"58127","CorgiDerp":"49106","CougarHunt":"21","DAESuppy":"973","DansGame":"33","DatSheffy":"170","DBstyle":"73","deExcite":"46249","deIlluminati":"46248","DendiFace":"58135","DogFace":"1903","DOOMGuy":"54089","duDudu":"62834","EagleEye":"20","EleGiggle":"4339","FailFish":"360","FPSMarksman":"42","FrankerZ":"65","FreakinStinkin":"39","FUNgineer":"244","FunRun":"48","FuzzyOtterOO":"168","GingerPower":"32","GrammarKing":"3632","HassaanChop":"20225","HassanChop":"68","HeyGuys":"30259","HotPokket":"357","HumbleLife":"46881","ItsBoshyTime":"169","Jebaited":"90","JKanStyle":"15","JonCarnage":"26","KAPOW":"9803","Kappa":"25","KappaClaus":"74510","KappaPride":"55338","KappaRoss":"70433","KappaWealth":"81997","Keepo":"1902","KevinTurtle":"40","Kippa":"1901","Kreygasm":"41","Mau5":"30134","mcaT":"35063","MikeHogu":"81636","MingLee":"68856","MrDestructoid":"28","MVGame":"29","NinjaTroll":"45","NomNom":"90075","NoNoSpot":"44","NotATK":"34875","NotLikeThis":"58765","OhMyDog":"81103","OMGScoots":"91","OneHand":"66","OpieOP":"356","OptimizePrime":"16","OSfrog":"81248","OSkomodo":"81273","OSsloth":"81249","panicBasket":"22998","PanicVis":"3668","PartyTime":"76171","PazPazowitz":"19","PeoplesChamp":"3412","PermaSmug":"27509","PeteZaroll":"81243","PeteZarollTie":"81244","PicoMause":"27","PipeHype":"4240","PJSalt":"36","PMSTwin":"92","PogChamp":"88","Poooound":"358","PraiseIt":"38586","PRChase":"28328","PunchTrees":"47","PuppeyFace":"58136","RaccAttack":"27679","RalpherZ":"1900","RedCoat":"22","ResidentSleeper":"245","riPepperonis":"62833","RitzMitz":"4338","RuleFive":"361","SeemsGood":"64138","ShadyLulu":"52492","ShazBotstix":"87","ShibeZ":"27903","SmoocherZ":"89945","SMOrc":"52","SMSkull":"51","SoBayed":"1906","SoonerLater":"355","SriHead":"14706","SSSsss":"46","StinkyCheese":"90076","StoneLightning":"17","StrawBeary":"37","SuperVinlin":"31","SwiftRage":"34","TF2John":"1899","TheRinger":"18","TheTarFu":"70","TheThing":"7427","ThunBeast":"1898","TinyFace":"67","TooSpicy":"359","TriHard":"171","TTours":"38436","twitchRaid":"62836","UleetBackup":"49","UncleNox":"3666","UnSane":"71","VaultBoy":"54090","VoHiYo":"81274","Volcania":"166","WholeWheat":"1896","WinWaker":"167","WTRuck":"1897","WutFace":"28087","YouWHY":"4337"};
+
+let interval;
+
+let obj = {
+  onImport: async function() {
+  },
+
+  onLoadingFinished: async function() {
+    interval = setInterval(() => {
+      let els = [...document.getElementsByClassName('messageContent-2qWWxC')];
+      for (let el of els) {
+        for (let e in emotes) {
+          if (!el.textContent.includes(e)) continue;
+
+          for (let n of el.childNodes) {
+            if (!n.textContent.includes(e)) continue;
+
+            const results = n.textContent.match(new RegExp(\`([\\\\s]|^)\${e}([\\\\s]|\$)\`));
+
+            if (!results) continue;
+            
+            const pre = n.textContent.substring(0, results.index + results[1].length);
+            const post = n.textContent.substring(results.index + results[0].length - results[2].length);
+
+            n.textContent = pre;
+
+            let emojiContainerEl = document.createElement('span');
+            emojiContainerEl.classList.add('emojiContainer-3X8SvE');
+
+            emojiContainerEl.setAttribute('role', 'button');
+            emojiContainerEl.setAttribute('tabindex', '0');
+
+            let imgEl = document.createElement('img');
+            imgEl.src = \`https://static-cdn.jtvnw.net/emoticons/v1/\${emotes[e]}/1.0\`;
+
+            imgEl.classList.add('emoji', 'jumboable');
+
+            imgEl.draggable = false;
+            imgEl.setAttribute('aria-label', e);
+
+            emojiContainerEl.appendChild(imgEl);
+
+            el.insertBefore(emojiContainerEl, n.nextSibling);
+
+            el.insertBefore(document.createTextNode(post), emojiContainerEl.nextSibling);
+          }
+        }
+      }
+    }, 100);
+  },
+
+  remove: async function() {
+    clearInterval(interval);
+    /*let settingItem = this.settings.items.find((x) => x[1] === 'BetterTTV Emotes');
+    this.settings.items.splice(this.settings.items.indexOf(settingItem), 1);*/
+  },
+
+  logRegionColor: 'green',
+
+  name: 'Twitch Emotes',
+  description: 'Converts text into images for Twitch global emotes',
+
+  author: 'Ducko',
+
+  version
+};
+
+obj`
+  },{
+    filename: 'roleColoredMessages.js',
+    data: `let version = '1.0.0';
+
+let interval;
+
+function rgb2hsl(r, g, b) {
+  r /= 255, g /= 255, b /= 255;
+  
+  let max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // achromatic
+  } else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+  }
+
+  return [h * 360, s * 100, l * 100];
+}
+
+let obj = {
+  onImport: async function() {
+  },
+
+  onLoadingFinished: async function() {
+    interval = setInterval(() => {
+      let els = [...document.getElementsByClassName('contents-2mQqc9')];
+      for (let el of els) {
+        el.querySelector('.markup-2BOw-j').style.color = el.querySelector('.username-1A8OIy').style.color;
+
+        /*let rgb = el.querySelector('.username-1A8OIy').style.color.replace('rgb(', '').replace(')', '').split(', ').map((x) => parseFloat(x));
+
+        let [h, s, l] = rgb2hsl(rgb[0], rgb[1], rgb[2]);
+
+        el.querySelector('.markup-2BOw-j').style.color = \`hsl(\${h}, \${s + 10}%, \${l + 10}%)\`;*/
+      }
+    }, 100);
+  },
+
+  remove: async function() {
+    clearInterval(interval);
+
+    let els = [...document.getElementsByClassName('contents-2mQqc9')]; // Reset message text back to normal color
+      for (let el of els) {
+        el.querySelector('.markup-2BOw-j').style.color = ''; //el.querySelector('.username-1A8OIy').style.color;
+      }
+  },
+
+  logRegionColor: 'green',
+
+  name: 'Role Colored Messages',
+  description: 'Makes message text color the same as the sender\\'s role color',
+
+  author: 'Ducko',
+
+  version
+};
+
+obj`
+  },
     ]);
 
     for (let p in this.modules) {

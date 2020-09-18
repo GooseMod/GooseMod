@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## Beta v0.9.0
+
+  - ### Features
+
+    - #### Embedder
+      - Added embedded mode
+
+
 ## Beta v0.8.1
 
   - ### Features
