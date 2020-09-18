@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## Beta v0.9.1
+
+  - ### Features
+
+    - #### Injector
+      - Disable importing modules in embedded mode
+
+
 ## Beta v0.9.0
 
   - ### Features

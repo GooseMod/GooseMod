@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '0.8.1';
+  this.version = '0.9.1';
   this.embedded = false;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -583,6 +583,11 @@
   };
 
   this.importModulesFull = async () => {
+    if (this.embedded === true) {
+      alert('Not supported in embedded');
+      return [];
+    }
+
     let files = await this.getModuleFiles();
 
     await this.importModules(files);
