@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '0.6.0';
+  this.version = '0.7.0';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -270,6 +270,49 @@
 
             break;
 
+          case 'text-and-danger-button':
+            el = document.createElement('div');
+
+            el.classList.add('marginBottom20-32qID7');
+
+            let txtEl2 = document.createElement('span');
+            txtEl2.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+            txtEl2.style.float = 'left';
+
+            txtEl2.textContent = e.text;
+
+            let buttonEl = document.createElement('div');
+            buttonEl.classList.add('button-38aScr', 'lookOutlined-3sRXeN', 'colorRed-1TFJan', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+            buttonEl.onclick = () => {
+              e.onclick(el);
+            };
+
+            buttonEl.style.cursor = 'pointer';
+
+            buttonEl.style.float = 'right';
+
+            let contentsEl2 = document.createElement('div');
+
+            contentsEl2.classList.add('contents-18-Yxp');
+
+            contentsEl2.textContent = e.buttonText;
+
+            buttonEl.appendChild(contentsEl2);
+
+            el.appendChild(txtEl2);
+            el.appendChild(buttonEl);
+
+            let dividerEl2 = document.createElement('div');
+
+            dividerEl2.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+            dividerEl2.style.marginTop = '45px';
+
+            el.appendChild(dividerEl2);
+
+            break;
+
           case 'button':
             el = document.createElement('button');
 
@@ -450,19 +493,19 @@
       this.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
 
       let toggleObj = {
-        type: 'toggle',
+        type: 'text-and-danger-button',
         text: `${this.modules[field].name} (${this.modules[field].version})`,
-        onToggle: (c, el) => {
+        buttonText: 'Remove',
+        onclick: (el) => {
           this.modules[field].remove();
           settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
 
-          [...settingsSidebarEl.children].find((x) => x.textContent === this.modules[field].name).remove();
+          [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name).remove();
 
           el.remove();
 
           delete this.modules[field];
-        },
-        isToggled: () => true
+        }
       };
 
       settingItem[2].push(toggleObj);
@@ -560,7 +603,7 @@
 
   this.settings.createHeading('GooseMod Modules');
 
-  await this.importModulesFull();
+  //await this.importModulesFull();
 
   for (let p in this.modules) {
     if (this.modules.hasOwnProperty(p) && this.modules[p].onLoadingFinished !== undefined) {

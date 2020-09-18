@@ -1,5 +1,23 @@
 # GooseMod Changelog
 
+## Beta v0.7.0
+
+  - ### Features
+
+    - #### Injector
+      - No longer ask for modules on injection immediately
+      - Module manager now shows deletion button instead of toggle for removing modules
+
+    - #### Easy Injector
+      - Renamed Quick Injector to Easy Injector
+      - Reduced size
+
+  - ### Fixes
+
+    - #### Injector
+      - Fixed that removing a module would not remove the setting in the current settings layer (from v0.6.0)
+
+
 ## Beta v0.6.0
 
   - ### Features
