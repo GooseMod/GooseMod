@@ -1,6 +1,5 @@
 (async function () {
   this.version = '1.0.0';
-  this.embedded = false;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -771,8 +770,8 @@
   };
 
   this.importModulesFull = async () => {
-    if (this.embedded === true) {
-      alert('Not supported in embedded');
+    if (window.DiscordNative !== undefined)
+      alert('Not supported in browser');
       return [];
     }
 

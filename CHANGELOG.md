@@ -9,6 +9,7 @@
       - Added Module store
       - Added normal (brand) button and text setting option
       - Now reopens settings when doing some things instead of just closing
+      - Removed embedded
 
 
 ## Beta v0.9.2
