@@ -770,7 +770,7 @@
   };
 
   this.importModulesFull = async () => {
-    if (window.DiscordNative !== undefined)
+    if (window.DiscordNative !== undefined) {
       alert('Not supported in browser');
       return [];
     }
