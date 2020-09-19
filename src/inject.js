@@ -1,5 +1,7 @@
+window.GooseMod = {};
+
 (async function () {
-  this.version = '1.0.0';
+  this.version = '1.1.0';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -31,12 +33,43 @@
       window.addEventListener('message', async (e) => {
         const {url, type} = e.data;
 
-        const req = await fetch(\`https://cors-anywhere.herokuapp.com/\${url}\`, {
+        const proxyURL = \`https://cors-anywhere.herokuapp.com/\${url}\`;
+
+        if (type === 'img') {
+          let canvas = document.createElement('canvas');
+          let ctx = canvas.getContext('2d');
+
+          let img = new Image();
+          img.src = proxyURL;
+          img.crossOrigin = 'anonymous';
+
+          img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            ctx.drawImage(img, 0, 0);
+
+            e.source.postMessage(canvas.toDataURL("image/png"));
+          };
+
+          return;
+        }       
+        
+        const req = await fetch(proxyURL, {
           cache: 'no-store'
         });
 
         e.source.postMessage(type === 'json' ? await req.json() : (type === 'text' ? await req.text() : await req.blob()));
       }, false);`;
+
+      script.appendChild(document.createTextNode(code));
+
+      this.cspBypasser.frame.contentDocument.head.appendChild(script);
+    },
+
+    runCode: (code) => {
+      let script = document.createElement('script');
+      script.type = 'text/javascript';
 
       script.appendChild(document.createTextNode(code));
 
@@ -66,6 +99,16 @@
     blob: (url) => {
       return new Promise((res) => {
         this.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob'});
+
+        window.addEventListener('message', async (e) => {
+          res(e.data);
+        }, false);
+      });
+    },
+
+    image: (url) => {
+      return new Promise((res) => {
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'img'});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
@@ -622,7 +665,7 @@
     },
 
     close: () => {
-      let closeEl = document.querySelector('div[aria-label="Close"]');
+      let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]');
       
       if (closeEl === null) return false;
       

@@ -1,5 +1,26 @@
 # GooseMod Changelog
 
+## v1.1.0
+
+  - ### Features
+
+    - #### Injector
+      - Added image and blob support to CSPBypasser
+      - Now removes reinstall button on browser (unsupported)
+
+  - ### Fixes
+
+    - #### Injector
+      - Fixed bug on Windows where closing settings would close Discord
+      - Fixed crash
+      - Fixed CSPBypasser sometimes failing on some origins
+
+  - ### Other Changes
+
+    - Removed easy injector
+    - Moved modules to API repository
+
+
 ## Release v1.0.0
 
   - ### Features

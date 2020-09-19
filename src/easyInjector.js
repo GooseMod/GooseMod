@@ -1,1 +1,0 @@
-(async function () { eval(String.fromCharCode.apply(null, new Uint8Array((await DiscordNative.fileManager.openFiles())[0].data))); })();
