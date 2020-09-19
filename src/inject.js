@@ -8,11 +8,11 @@ window.GooseMod = {};
   const reopenSettings = async () => {
     this.settings.close();
 
-    await sleep(100);
+    await sleep(1000);
 
     this.settings.open();
 
-    await sleep(100);
+    await sleep(200);
 
     [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Module Store').click();
   };
