@@ -35,7 +35,7 @@
           cache: 'no-store'
         });
 
-        e.source.postMessage(type === 'json' ? await req.json() : await req.text());
+        e.source.postMessage(type === 'json' ? await req.json() : (type === 'text' ? await req.text() : await req.blob()));
       }, false);`;
 
       script.appendChild(document.createTextNode(code));
@@ -56,6 +56,16 @@
     text: (url) => {
       return new Promise((res) => {
         this.cspBypasser.frame.contentWindow.postMessage({url, type: 'text'});
+
+        window.addEventListener('message', async (e) => {
+          res(e.data);
+        }, false);
+      });
+    },
+
+    blob: (url) => {
+      return new Promise((res) => {
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob'});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
@@ -770,7 +780,7 @@
   };
 
   this.importModulesFull = async () => {
-    if (window.DiscordNative !== undefined) {
+    if (window.DiscordNative === undefined) {
       alert('Not supported in browser');
       return [];
     }
