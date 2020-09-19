@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v1.3.0
+
+  - ### Features
+    - Added default (auto-install on injection) modules
+    - Settings no longer have to be reopened when importing modules, removing them, etc.
+
+  - ### Fixes
+    - Fixed reimport button not turning back into import button not working
+
+
 ## v1.2.0
 
   - ### Features

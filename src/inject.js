@@ -1,7 +1,11 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.2.0';
+  this.version = '1.3.0';
+
+  this.isSettingsOpen = () => {
+    return document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]') !== null;
+  };
 
   this.closeSettings = () => {
     let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]');
@@ -13,6 +17,10 @@ window.GooseMod = {};
 
   this.openSettings = () => {
     settingsButtonEl.click();
+  };
+
+  this.openSettingItem = (name) => {
+    [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === name).click();
   };
 
   this.startLoadingScreen = async () => {
@@ -68,7 +76,7 @@ window.GooseMod = {};
 
     await sleep(200);
 
-    [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Module Store').click();
+    this.openSettingItem('Module Store');
   };
 
   this.cspBypasser = {
@@ -205,11 +213,11 @@ window.GooseMod = {};
       item.type = 'text-and-danger-button';
       item.buttonText = 'Reimport';
 
-      reopenSettings();
+      if (this.isSettingsOpen()) this.settings.createFromItems();
     },
 
     moduleRemoved: async (m) => {
-      let item = settingItem[2].find((x) => x.subtext === m.description);
+      let item = this.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.subtext === m.description);
 
       item.type = 'text-and-button';
       item.buttonText = 'Import';
@@ -245,10 +253,13 @@ window.GooseMod = {};
             text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
             buttonText: 'Import',
             subtext: m.description,
-            onclick: () => {
-              this.moduleStoreAPI.importModule(m.filename);
+            onclick: async (el) => {
+              el.textContent = 'Importing...';
 
-              this.closeSettings();
+              await this.moduleStoreAPI.importModule(m.filename);
+
+              this.settings.createFromItems();
+              this.openSettingItem('Module Store');
             }
           });
         }
@@ -435,6 +446,8 @@ window.GooseMod = {};
     },
 
     createFromItems: () => {
+      settingsSidebarGooseModContainer.innerHTML = '';
+
       for (let i of this.settings.items) {
         switch (i[0]) {
           case 'item':
@@ -613,7 +626,7 @@ window.GooseMod = {};
               buttonEl2.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
   
               buttonEl2.onclick = () => {
-                e.onclick(el);
+                e.onclick(buttonEl2);
               };
   
               buttonEl2.style.cursor = 'pointer';
@@ -833,17 +846,16 @@ window.GooseMod = {};
       onclick: (el) => {
         settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
 
-        let settingEl = [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name);
+        //el.remove();
 
-        if (settingEl !== undefined) settingEl.remove();
-
-        el.remove();
-
-        this.moduleStoreAPI.moduleRemoved(this.mdoules[field]);
+        this.moduleStoreAPI.moduleRemoved(this.modules[field]);
 
         this.modules[field].remove();
 
         delete this.modules[field];
+
+        this.settings.createFromItems();
+        this.openSettingItem('Manage Modules');
       }
     };
 
@@ -924,7 +936,8 @@ window.GooseMod = {};
           }
         }
 
-        this.closeSettings();
+        this.settings.createFromItems();
+
       },
     },
 
@@ -943,7 +956,7 @@ window.GooseMod = {};
 
         await this.moduleStoreAPI.updateStoreSetting();
 
-        reopenSettings();
+        this.openSettingItem('Module Store');
       },
     }
   ]);
@@ -988,7 +1001,13 @@ window.GooseMod = {};
 
   await this.moduleStoreAPI.updateStoreSetting();
 
-  this.updateLoadingScreen('Finished');
+  this.updateLoadingScreen('Importing default modules from Module Store...');
+
+  let defaultModules = ['fucklytics', 'visualTweaks'];
+
+  for (let m of defaultModules) {
+    await this.moduleStoreAPI.importModule(m);
+  }
 
   reopenSettings();
 }).bind({})();
