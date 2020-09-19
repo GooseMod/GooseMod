@@ -1,18 +1,18 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.1.1';
+  this.version = '1.1.2';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
   const reopenSettings = async () => {
     this.settings.close();
 
-    await sleep(50);
+    await sleep(100);
 
     this.settings.open();
 
-    await sleep(50);
+    await sleep(100);
 
     [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Module Store').click();
   };

@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## v1.1.2
+
+  - ### Fixes
+
+    - #### Injector
+      - Increased duration between settings reopen to fix sometimes overlapping settings
+
+
 ## v1.1.1
 
   - ### Fixes
