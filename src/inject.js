@@ -19,7 +19,7 @@
     frame: document.createElement('iframe'),
 
     init: async () => {
-      this.cspBypasser.frame.src = 'https://canary.discordapp.com/api/404';
+      this.cspBypasser.frame.src = `${location.origin}/api/404`;
       document.body.appendChild(this.cspBypasser.frame);
 
       await sleep(1000);
