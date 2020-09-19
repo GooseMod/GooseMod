@@ -7,7 +7,11 @@ let blocking = {
   'sentry': true
 };
 
-let _XMLHttpRequest = XMLHttpRequest;
+if (typeof window === 'undefined') { // JSON API generator evals
+  global.window = {XMLHttpRequest: {}};
+}
+
+let _XMLHttpRequest = window.XMLHttpRequest;
 
 let obj = {
   onImport: async function() {

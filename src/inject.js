@@ -1,8 +1,134 @@
 (async function () {
-  this.version = '0.9.2';
+  this.version = '1.0.0';
   this.embedded = false;
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  const reopenSettings = async () => {
+    this.settings.close();
+
+    await sleep(50);
+
+    this.settings.open();
+
+    await sleep(50);
+
+    [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Module Store').click();
+  };
+
+  this.cspBypasser = {
+    frame: document.createElement('iframe'),
+
+    init: async () => {
+      this.cspBypasser.frame.src = 'https://canary.discordapp.com/api/404';
+      document.body.appendChild(this.cspBypasser.frame);
+
+      await sleep(1000);
+
+      let script = document.createElement('script');
+      script.type = 'text/javascript';
+
+      let code = `
+      window.addEventListener('message', async (e) => {
+        const {url, type} = e.data;
+
+        const req = await fetch(\`https://cors-anywhere.herokuapp.com/\${url}\`, {
+          cache: 'no-store'
+        });
+
+        e.source.postMessage(type === 'json' ? await req.json() : await req.text());
+      }, false);`;
+
+      script.appendChild(document.createTextNode(code));
+
+      this.cspBypasser.frame.contentDocument.head.appendChild(script);
+    },
+
+    json: (url) => {
+      return new Promise((res) => {
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'json'});
+
+        window.addEventListener('message', async (e) => {
+          res(e.data);
+        }, false);
+      });
+    },
+
+    text: (url) => {
+      return new Promise((res) => {
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'text'});
+
+        window.addEventListener('message', async (e) => {
+          res(e.data);
+        }, false);
+      });
+    },
+  };
+
+  await this.cspBypasser.init();
+
+  this.moduleStoreAPI = {
+    modules: [],
+
+    apiBaseURL: 'https://gitdab.com/duck/GooseMod-JSONAPI/raw/branch/master/api',
+
+    updateModules: async () => {
+      this.moduleStoreAPI.modules = await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`);
+    },
+
+    importModule: async (moduleName) => {
+      const moduleInfo = this.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+
+      const jsCode = await this.cspBypasser.text(moduleInfo.codeURL);
+
+      await this.importModule({
+        filename: `${moduleInfo.filename}.js`,
+        data: jsCode
+      });
+
+      if (this.modules[moduleInfo.filename].onLoadingFinished !== undefined) {
+        await this.modules[moduleInfo.filename].onLoadingFinished();
+      }
+
+      let settingItem = this.settings.items.find((x) => x[1] === 'Module Store');
+
+      let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
+
+      item.type = 'text-and-danger-button';
+      item.buttonText = 'Reimport';
+
+      reopenSettings();
+    },
+
+    moduleRemoved: async (m) => {
+      let item = settingItem[2].find((x) => x.subtext === m.description);
+
+      item.type = 'text-and-button';
+      item.buttonText = 'Import';
+    },
+
+    updateStoreSetting: () => {
+      let item = this.settings.items.find((x) => x[1] === 'Module Store');
+
+      item[2] = item[2].slice(0, 3);
+
+      for (let m of this.moduleStoreAPI.modules) {
+        item[2].push({
+          type: 'text-and-button',
+          text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
+          buttonText: 'Import',
+          subtext: m.description,
+          onclick: () => {
+            this.moduleStoreAPI.importModule(m.filename);
+
+            this.settings.close();
+          }
+        });
+      }
+    }
+  };
+
+  await this.moduleStoreAPI.updateModules();
 
   this.logger = {
     regionColors: {
@@ -339,6 +465,61 @@
 
             break;
 
+            case 'text-and-button':
+              el = document.createElement('div');
+  
+              el.classList.add('marginBottom20-32qID7');
+  
+              let txtEl3 = document.createElement('span');
+              txtEl3.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+  
+              txtEl3.style.float = 'left';
+  
+              txtEl3.innerHTML = e.text;
+  
+              let buttonEl2 = document.createElement('div');
+              buttonEl2.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+  
+              buttonEl2.onclick = () => {
+                e.onclick(el);
+              };
+  
+              buttonEl2.style.cursor = 'pointer';
+  
+              buttonEl2.style.float = 'right';
+  
+              let contentsEl3 = document.createElement('div');
+  
+              contentsEl3.classList.add('contents-18-Yxp');
+  
+              contentsEl3.textContent = e.buttonText;
+  
+              buttonEl2.appendChild(contentsEl3);
+  
+              el.appendChild(txtEl3);
+              el.appendChild(buttonEl2);
+  
+              if (e.subtext) {
+                let subtextEl2 = document.createElement('div');
+  
+                subtextEl2.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+  
+                subtextEl2.textContent = e.subtext;
+  
+                subtextEl2.style.clear = 'both';
+  
+                el.appendChild(subtextEl2);
+              }
+  
+              let dividerEl3 = document.createElement('div');
+  
+              dividerEl3.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+              dividerEl3.style.marginTop = e.subtext ? '20px' : '45px';
+  
+              el.appendChild(dividerEl3);
+  
+              break;
+
           case 'button':
             el = document.createElement('button');
 
@@ -491,62 +672,69 @@
     return String.fromCharCode.apply(null, new Uint8Array(buf));
   };
 
+  this.importModule = async (f) => {
+    let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)
+
+    this.logger.debug('import', `Importing module: "${field}"`);
+      
+    let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
+
+    if (this.modules[field] !== undefined) {
+      this.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
+
+      await this.modules[field].remove();
+
+      settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${this.modules[field].name} (${this.modules[field].version})`)), 1);
+    }
+
+    if (typeof f.data === 'object') { // ArrayBuffer (UTF-8) -> String
+      f.data = ab2str(f.data);
+    }
+
+    this.modules[field] = eval(f.data); // Set this.modules.<module_name> to the return value of the module (an object containing handlers)
+
+    this.logger.debug(`import.load.module.${field}`, `Evaled module JS`);
+
+    this.bindHandlers(this.modules[field]); // Bind all handlers to module parent / returned object from module code
+
+    this.logger.debug(`import.load.module.${field}`, `Binded handlers`);
+
+    await this.modules[field].onImport(); // Run the module's onImport handler
+
+    this.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
+
+    let toggleObj = {
+      type: 'text-and-danger-button',
+      text: `${this.modules[field].name} <span class="description-3_Ncsb">by</span> ${this.modules[field].author} <span class="description-3_Ncsb">(v${this.modules[field].version})</span>`,
+      buttonText: 'Remove',
+      subtext: this.modules[field].description,
+      onclick: (el) => {
+        this.modules[field].remove();
+
+        settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
+
+        let settingEl = [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name);
+          
+        if (settingEl !== undefined) settingEl.remove();
+
+        el.remove();
+
+        delete this.modules[field];
+
+        this.moduleStoreAPI.moduleRemoved(this.mdoules[field]);
+      }
+    };
+
+    settingItem[2].push(toggleObj);
+
+    this.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
+  };
+
   this.importModules = async (files) => {
     this.logger.debug('import', 'Looping through files');
 
     for (let f of files) {
-      let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)
-
-      this.logger.debug('import', `Importing module: "${field}"`);
-      
-      let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
-
-      if (this.modules[field] !== undefined) {
-        this.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
-
-        await this.modules[field].remove();
-
-        settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${this.modules[field].name} (${this.modules[field].version})`)), 1);
-      }
-
-      if (typeof f.data === 'object') { // ArrayBuffer (UTF-8) -> String
-        f.data = ab2str(f.data);
-      }
-
-      this.modules[field] = eval(f.data); // Set this.modules.<module_name> to the return value of the module (an object containing handlers)
-
-      this.logger.debug(`import.load.module.${field}`, `Evaled module JS`);
-
-      this.bindHandlers(this.modules[field]); // Bind all handlers to module parent / returned object from module code
-
-      this.logger.debug(`import.load.module.${field}`, `Binded handlers`);
-
-      await this.modules[field].onImport(); // Run the module's onImport handler
-
-      this.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
-
-      let toggleObj = {
-        type: 'text-and-danger-button',
-        text: `${this.modules[field].name} <span class="description-3_Ncsb">by</span> ${this.modules[field].author} <span class="description-3_Ncsb">(v${this.modules[field].version})</span>`,
-        buttonText: 'Remove',
-        subtext: this.modules[field].description,
-        onclick: (el) => {
-          this.modules[field].remove();
-          settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
-
-          let settingEl = [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name);
-          
-          if (settingEl !== undefined) settingEl.remove();
-
-          el.remove();
-
-          delete this.modules[field];
-        }
-      };
-
-      settingItem[2].push(toggleObj);
-
-      this.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
+      this.importModule(f);
     }
 
     this.logger.debug('import', 'Imported all files');
@@ -600,7 +788,7 @@
   this.settings.createItem('Manage Modules', ['',
     {
       type: 'button',
-      text: 'Import Modules',
+      text: 'Import Local Modules',
       onclick: async () => {
         let files = await this.importModulesFull();
 
@@ -621,6 +809,27 @@
       text: 'Imported Modules'
     }
   ]);
+
+  this.settings.createItem('Module Store', ['',
+    {
+      type: 'button',
+      text: 'Update Index',
+      onclick: async () => {
+        await this.moduleStoreAPI.updateModules();
+
+        await this.moduleStoreAPI.updateStoreSetting();
+
+        reopenSettings();
+      },
+    },
+
+    {
+      type: 'header',
+      text: 'Available Modules'
+    }
+  ]);
+
+  this.settings.createSeparator();
 
   this.settings.createItem('Uninstall', [""], async () => {
     if (await this.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
@@ -644,20 +853,6 @@
 
   this.settings.createHeading('GooseMod Modules');
 
-  if (this.embedded === true) {
-    await this.importModules([
-      //<TEMPLATE_REPLACE>
-    ]);
-
-    for (let p in this.modules) {
-      if (this.modules.hasOwnProperty(p) && this.modules[p].onLoadingFinished !== undefined) {
-        await this.modules[p].onLoadingFinished();
-
-        this.logger.debug(`import.module.runOnLoadingFinishedHandler.${p}`, 'Ran onLoadingFinished()');
-      }
-    }
-  }
-
   this.remove = () => {
     this.removed = true;
 
@@ -668,13 +863,7 @@
     }
   };
 
-  this.settings.close();
+  await this.moduleStoreAPI.updateStoreSetting();
 
-  await sleep(20);
-
-  this.settings.open();
-
-  await sleep(20);
-
-  [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === 'Manage Modules').click();
+  reopenSettings();
 }).bind({})();

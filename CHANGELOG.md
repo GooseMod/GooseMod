@@ -1,5 +1,16 @@
 # GooseMod Changelog
 
+## Release v1.0.0
+
+  - ### Features
+
+    - #### Injector
+      - Added separator between other GooseMod options and reinstall and uninstall
+      - Added Module store
+      - Added normal (brand) button and text setting option
+      - Now reopens settings when doing some things instead of just closing
+
+
 ## Beta v0.9.2
 
   - ### Features
