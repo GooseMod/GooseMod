@@ -61,7 +61,7 @@ let obj = {
   logRegionColor: 'green',
 
   name: 'Twitch Emotes',
-  description: 'Converts text into images for Twitch global emotes',
+  description: 'Converts text into images for Twitch global emotes + BetterTTV emotes',
 
   author: 'Ducko',
 

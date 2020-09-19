@@ -838,15 +838,17 @@
     }
   }, true);
 
-  this.settings.createItem('Reinstall', [''], async () => {
-    if (await this.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
-      this.settings.close();
+  if (window.DiscordNative !== undefined) {
+    this.settings.createItem('Reinstall', [''], async () => {
+      if (await this.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
+        this.settings.close();
 
-      this.remove();
+        this.remove();
 
-      eval(ab2str((await DiscordNative.fileManager.openFiles())[0].data));
-    }
-  }, true);
+        eval(ab2str((await DiscordNative.fileManager.openFiles())[0].data));
+      }
+    }, true);
+  }
 
   this.settings.createSeparator();
 
