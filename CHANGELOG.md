@@ -1,5 +1,16 @@
 # GooseMod Changelog
 
+## v1.2.0
+
+  - ### Features
+
+    - #### Injector
+      - Module Store setting is now filtered into categories and sorted alphabetically
+      - CSP Bypasser now queries gateway instead of non-existant page to be more steathy
+      - Added Discord-like loading screen when injecting
+      - CSP Bypasser initialisation is now much (speeds up entire injection by ~2x) faster as it actually waits for the iframe to load instead of just waiting for 1 second (also will increase reliability)
+
+
 ## v1.1.2
 
   - ### Fixes

@@ -1,16 +1,70 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.1.2';
+  this.version = '1.2.0';
+
+  this.closeSettings = () => {
+    let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]');
+    
+    if (closeEl === null) return false;
+    
+    closeEl.click(); // Close settings via clicking the close settings button
+  };
+
+  this.openSettings = () => {
+    settingsButtonEl.click();
+  };
+
+  this.startLoadingScreen = async () => {
+    this.closeSettings();
+
+    let html = `<div id="gm-loading-container" class="container-16j22k fixClipping-3qAKRb" style="opacity: 1;"><div class="content-1-zrf2"> <video class="ready-36e6Vk" autoplay="" playsinline=""> <source src="/assets/0bdc0497eb3a19e66f2b1e3d5741634c.webm" type="video/webm"> <source src="/assets/ffac5bb3fb919ce8bf7137d79e9defc9.mp4" type="video/mp4"> <img alt="" src="/assets/5ccabf62108d5a8074ddd95af2211727.png"> </video><div class="text-3c9Zq1"><div class="tipTitle-GL9qAt">Injecting GooseMod</div><div class="tip-2cgoli" id="gm-loading-tip">Injecting</div><div class="body-2Vra9D contentBase-11jeVK"></div></div></div><div style="transform: translate3d(0,0%,0);" class="problems-3mgf6w"><div class="problemsText-1Yx-Kl">Like GooseMod? Let us know!</div><div> <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB twitterLink-3NsWMp links-3Ldd4A" href="https://twitter.com/Goose_Mod" rel="noreferrer noopener" target="_blank"> <svg class="icon-3N9Bhy" width="20" height="16" viewBox="0 0 20 16" aria-hidden="false"> <g fill="none" fill-rule="evenodd"> <path fill="currentColor" d="M1,14.1538462 L1.95,14.1538462 C3.73125,14.1538462 5.5125,13.5384615 6.81875,12.4307692 C5.15625,12.4307692 3.73125,11.2 3.1375,9.6 C3.375,9.6 3.6125,9.72307692 3.85,9.72307692 C4.20625,9.72307692 4.5625,9.72307692 4.91875,9.6 C3.1375,9.23076923 1.7125,7.63076923 1.7125,5.66153846 C2.1875,5.90769231 2.78125,6.15384615 3.49375,6.15384615 C2.425,5.41538462 1.83125,4.18461538 1.83125,2.70769231 C1.83125,1.96923077 2.06875,1.23076923 2.30625,0.615384615 C4.20625,3.07692308 7.05625,4.67692308 10.38125,4.8 C10.2625,4.67692308 10.2625,4.30769231 10.2625,4.06153846 C10.2625,1.84615385 12.04375,0 14.18125,0 C15.25,0 16.31875,0.492307692 17.03125,1.23076923 C17.8625,1.10769231 18.8125,0.738461538 19.525,0.246153846 C19.2875,1.23076923 18.575,1.96923077 17.8625,2.46153846 C18.575,2.46153846 19.2875,2.21538462 20,1.84615385 C19.525,2.70769231 18.8125,3.32307692 18.1,3.93846154 L18.1,4.43076923 C18.1,9.84615385 14.18125,16 6.9375,16 C4.68125,16 2.6625,15.3846154 1,14.1538462 Z"></path> <rect width="20" height="16"></rect> </g> </svg> Tweet Us </a> <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB statusLink-gFXhrL links-3Ldd4A" href="https://gitdab.com/duck/GooseMod" rel="noreferrer noopener" target="_blank"> <svg class="icon-3N9Bhy" aria-hidden="false" width="14" height="14" viewBox="0 0 14 14"> <path fill="currentColor" d="M6.99471698,9.67522659 C8.47108874,9.67522659 9.66792453,8.47748685 9.66792453,7 C9.66792453,5.52251315 8.47108874,4.32477341 6.99471698,4.32477341 C5.51834522,4.32477341 4.32150943,5.52251315 4.32150943,7 C4.32150943,8.47748685 5.51834522,9.67522659 6.99471698,9.67522659 Z M6.99471698,2.67522659 C8.18867925,2.67522659 9.26641509,3.16163142 10.0483019,3.94410876 L11.9396226,2.05135952 C10.6822642,0.782477341 8.92830189,0 6.99471698,0 C3.12754717,0 0,3.14048338 0,7 L2.67320755,7 C2.67320755,4.6102719 4.60679245,2.67522659 6.99471698,2.67522659 Z M11.3267925,7 C11.3267925,9.3897281 9.39320755,11.3247734 7.00528302,11.3247734 C5.81132075,11.3247734 4.73358491,10.8383686 3.94113208,10.0558912 L2.04981132,11.9486405 C3.31773585,13.2175227 5.06113208,14 6.99471698,14 C10.8618868,14 14,10.8595166 14,7 L11.3267925,7 Z"></path> </svg> GitDab Repository (Source Code) </a></div></div></div>`;
+
+    let el = document.createElement('div');
+
+    document.body.appendChild(el);
+
+    el.outerHTML = html;
+  };
+
+  this.updateLoadingScreen = async (tip) => {
+    let el = document.getElementById('gm-loading-tip');
+
+    if (el === null) return;
+
+    el.textContent = tip;
+  }
+
+  this.stopLoadingScreen = async () => {
+    let el = document.getElementById('gm-loading-container');
+
+    if (el === null) return false;
+
+    el.remove();
+  };
+
+  this.startLoadingScreen();
+
+  this.updateLoadingScreen('Starting...');
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+  const awaitIframe = (iframe) => {
+    return new Promise((res) => {
+      iframe.addEventListener("load", function() {
+        res();
+      });
+    })
+  }
+
   const reopenSettings = async () => {
-    this.settings.close();
+    if (!this.stopLoadingScreen()) {
+      this.closeSettings();
 
-    await sleep(1000);
+      await sleep(1000);
+    }
 
-    this.settings.open();
+    this.openSettings();
 
     await sleep(200);
 
@@ -21,10 +75,10 @@ window.GooseMod = {};
     frame: document.createElement('iframe'),
 
     init: async () => {
-      this.cspBypasser.frame.src = `${location.origin}/api/404`;
+      this.cspBypasser.frame.src = `${location.origin}/api/gateway`;
       document.body.appendChild(this.cspBypasser.frame);
 
-      await sleep(1000);
+      await awaitIframe(this.cspBypasser.frame);
 
       let script = document.createElement('script');
       script.type = 'text/javascript';
@@ -117,6 +171,8 @@ window.GooseMod = {};
     },
   };
 
+  this.updateLoadingScreen('Initialising CSP Bypasser...');
+
   await this.cspBypasser.init();
 
   this.moduleStoreAPI = {
@@ -125,7 +181,7 @@ window.GooseMod = {};
     apiBaseURL: 'https://gitdab.com/duck/GooseMod-JSONAPI/raw/branch/master/api',
 
     updateModules: async () => {
-      this.moduleStoreAPI.modules = await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`);
+      this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`)).sort((a, b) => a.name.localeCompare(b.name));
     },
 
     importModule: async (moduleName) => {
@@ -164,23 +220,47 @@ window.GooseMod = {};
 
       item[2] = item[2].slice(0, 3);
 
-      for (let m of this.moduleStoreAPI.modules) {
-        item[2].push({
-          type: 'text-and-button',
-          text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
-          buttonText: 'Import',
-          subtext: m.description,
-          onclick: () => {
-            this.moduleStoreAPI.importModule(m.filename);
+      let sortedCategories = this.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 
-            this.settings.close();
-          }
+      let arr = Object.entries(this.moduleStoreAPI.modules.reduce((cats, o) => {
+        if (!cats[o.category]) cats[o.category]=[];
+        cats[o.category].push(o);
+        return cats;
+      },{})).sort((a, b) => a[0].localeCompare(b[0])).map(o => o[1]);
+
+      let funIndex = sortedCategories.indexOf('fun');
+
+      sortedCategories.push(sortedCategories.splice(funIndex, 1)[0]);
+      arr.push(arr.splice(funIndex, 1)[0]);
+
+      for (let i = 0; i < arr.length; i++) {
+        item[2].push({
+          type: 'header',
+          text: sortedCategories[i]
         });
+
+        for (let m of arr[i]) {
+          item[2].push({
+            type: 'text-and-button',
+            text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
+            buttonText: 'Import',
+            subtext: m.description,
+            onclick: () => {
+              this.moduleStoreAPI.importModule(m.filename);
+
+              this.closeSettings();
+            }
+          });
+        }
       }
     }
   };
 
+  this.updateLoadingScreen('Getting modules from Module Store...');
+
   await this.moduleStoreAPI.updateModules();
+
+  this.updateLoadingScreen('Initialising UI functions...');
 
   this.logger = {
     regionColors: {
@@ -662,18 +742,6 @@ window.GooseMod = {};
       el.className = settingsClasses['separator'];
 
       settingsSidebarGooseModContainer.appendChild(el);
-    },
-
-    close: () => {
-      let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]');
-      
-      if (closeEl === null) return false;
-      
-      closeEl.click(); // Close settings via clicking the close settings button
-    },
-
-    open: () => {
-      settingsButtonEl.click();
     }
   };
 
@@ -717,6 +785,8 @@ window.GooseMod = {};
 
     this.settings.createFromItems();
   });
+
+  this.updateLoadingScreen('Initialising import functions...');
 
   this.modules = {};
 
@@ -835,6 +905,8 @@ window.GooseMod = {};
     return files;
   };
 
+  this.updateLoadingScreen('Creating settings options...');
+
   this.settings.createHeading('GooseMod');
 
   this.settings.createItem('Manage Modules', ['',
@@ -852,7 +924,7 @@ window.GooseMod = {};
           }
         }
 
-        this.settings.close();
+        this.closeSettings();
       },
     },
 
@@ -873,11 +945,6 @@ window.GooseMod = {};
 
         reopenSettings();
       },
-    },
-
-    {
-      type: 'header',
-      text: 'Available Modules'
     }
   ]);
 
@@ -885,7 +952,7 @@ window.GooseMod = {};
 
   this.settings.createItem('Uninstall', [""], async () => {
     if (await this.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
-      this.settings.close();
+      this.closeSettings();
 
       this.remove();
     }
@@ -894,7 +961,7 @@ window.GooseMod = {};
   if (window.DiscordNative !== undefined) {
     this.settings.createItem('Reinstall', [''], async () => {
       if (await this.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
-        this.settings.close();
+        this.closeSettings();
 
         this.remove();
 
@@ -917,7 +984,11 @@ window.GooseMod = {};
     }
   };
 
+  this.updateLoadingScreen('Updating Module Store setting page...');
+
   await this.moduleStoreAPI.updateStoreSetting();
+
+  this.updateLoadingScreen('Finished');
 
   reopenSettings();
 }).bind({})();
