@@ -1,7 +1,7 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.1.0';
+  this.version = '1.1.1';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -761,19 +761,19 @@ window.GooseMod = {};
       buttonText: 'Remove',
       subtext: this.modules[field].description,
       onclick: (el) => {
-        this.modules[field].remove();
-
         settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
 
         let settingEl = [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === this.modules[field].name);
-          
+
         if (settingEl !== undefined) settingEl.remove();
 
         el.remove();
 
-        delete this.modules[field];
-
         this.moduleStoreAPI.moduleRemoved(this.mdoules[field]);
+
+        this.modules[field].remove();
+
+        delete this.modules[field];
       }
     };
 

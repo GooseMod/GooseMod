@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## v1.1.1
+
+  - ### Fixes
+
+    - #### Injector
+      - Fix bug where module would be deleted before running module store deletion handler
+
+
 ## v1.1.0
 
   - ### Features
