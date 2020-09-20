@@ -1,4 +1,6 @@
 try {
+  const electron = require('electron');
+  electron.webFrame.top.context.eval(`
   (async function() {
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const awaitIframe = (iframe) => {
@@ -13,7 +15,7 @@ try {
       frame: document.createElement('iframe'),
       
       init: async () => {
-        this.cspBypasser.frame.src = `${location.origin}/api/gateway`;
+        this.cspBypasser.frame.src = \`\${location.origin}/api/gateway\`;
         document.body.appendChild(this.cspBypasser.frame);
         
         await awaitIframe(this.cspBypasser.frame);
@@ -21,11 +23,11 @@ try {
         let script = document.createElement('script');
         script.type = 'text/javascript';
         
-        let code = `
+        let code = \`
         window.addEventListener('message', async (e) => {
           const {url, type} = e.data;
           
-          const proxyURL = \`https://cors-anywhere.herokuapp.com/\${url}\`;
+          const proxyURL = \\\`https://cors-anywhere.herokuapp.com/\\\${url}\\\`;
           
           if (type === 'img') {
             let canvas = document.createElement('canvas');
@@ -52,7 +54,7 @@ try {
           });
           
           e.source.postMessage(type === 'json' ? await req.json() : (type === 'text' ? await req.text() : await req.blob()));
-        }, false);`;
+        }, false);\`;
         
         script.appendChild(document.createTextNode(code));
         
@@ -109,15 +111,14 @@ try {
       },
     };
     
-    
     await this.cspBypasser.init();
     
     while (true) {
       if (document.querySelector('button[aria-label="User Settings"]') !== null) break;
       
-      await sleep(100);
+      await sleep(50);
     }
     
     (async function(cspBypasser) { eval(await cspBypasser.text('https://gitdab.com/duck/GooseMod/raw/branch/master/src/inject.js')); }).bind(window)(this.cspBypasser);
-  }).bind({})();
+  }).bind({})();`);
 } catch (e) { console.error(e); }
