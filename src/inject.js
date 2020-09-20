@@ -1,7 +1,7 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.5.1';
+  this.version = '1.6.0';
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -1044,11 +1044,11 @@ window.GooseMod = {};
 
   await this.moduleStoreAPI.updateStoreSetting();
 
-  this.updateLoadingScreen('Importing default modules from Module Store...');
-
-  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages'];
+  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes'];
 
   for (let m of defaultModules) {
+    this.updateLoadingScreen(`Importing default modules from Module Store... (${m} - ${defaultModules.indexOf(m) + 1}/${defaultModules.length})`);
+
     await this.moduleStoreAPI.importModule(m);
   }
 

@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v1.6.0
+
+  - ### Features
+    - Added WYSIWYG Messages, Custom Sounds, Dev Mode and Twitch Emotes to default modules
+    - When importing default modules on injection / loading, show which one and the progress
+
+
 ## v1.5.1
 
   - ### Features
