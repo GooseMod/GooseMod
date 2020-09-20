@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v1.5.1
+
+  - ### Features
+    - Injection loading screen now fades to dark color at the start
+
+  - ### Fixes
+    - Fixed loading image / video of Discord logo not looping
+    - Fixed importing local module not fully updating settings properly
+
+
 ## v1.5.0
 
   - ### Features
