@@ -1046,7 +1046,7 @@ window.GooseMod = {};
 
   this.updateLoadingScreen('Importing default modules from Module Store...');
 
-  let defaultModules = ['fucklytics', 'visualTweaks'];
+  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages'];
 
   for (let m of defaultModules) {
     await this.moduleStoreAPI.importModule(m);
