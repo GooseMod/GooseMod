@@ -1,7 +1,22 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.4.0';
+  this.version = '1.5.0';
+
+  // Bypass to get Local Storage (Discord block / remove it) - Source / credit: https://stackoverflow.com/questions/52509440/discord-window-localstorage-is-undefined-how-to-get-access-to-the-localstorage
+  function getLocalStoragePropertyDescriptor() {
+    const iframe = document.createElement('iframe');
+    document.head.append(iframe);
+    const pd = Object.getOwnPropertyDescriptor(iframe.contentWindow, 'localStorage');
+    iframe.remove();
+    return pd;
+  }
+
+  try {
+    Object.defineProperty(window, 'localStorage', getLocalStoragePropertyDescriptor());
+  } catch (e) {
+    console.error(e);
+  }
 
   this.removeModuleUI = (field, where) => {
     let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
@@ -233,6 +248,8 @@ window.GooseMod = {};
 
     moduleRemoved: async (m) => {
       let item = this.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.subtext === m.description);
+      
+      if (item === undefined) return;
 
       item.type = 'text-and-button';
       item.buttonText = 'Import';

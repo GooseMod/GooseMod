@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## v1.5.0
+
+  - ### Features
+    - Added local storage support (will help make a lot of modules previously impossible possible)
+
+  - ### Fixes
+    - Fixed console error when removing a module not from module store
+
 ## v1.4.0
 
   - ### Features
