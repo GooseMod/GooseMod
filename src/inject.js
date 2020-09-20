@@ -1044,7 +1044,7 @@ window.GooseMod = {};
 
   await this.moduleStoreAPI.updateStoreSetting();
 
-  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes'];
+  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
 
   for (let m of defaultModules) {
     this.updateLoadingScreen(`Importing default modules from Module Store... (${m} - ${defaultModules.indexOf(m) + 1}/${defaultModules.length})`);
