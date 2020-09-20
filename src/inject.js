@@ -1,7 +1,22 @@
 window.GooseMod = {};
 
 (async function () {
-  this.version = '1.3.0';
+  this.version = '1.4.0';
+
+  this.removeModuleUI = (field, where) => {
+    let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
+
+    settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === this.modules[field].description)), 1);
+
+    this.moduleStoreAPI.moduleRemoved(this.modules[field]);
+
+    this.modules[field].remove();
+
+    delete this.modules[field];
+
+    this.settings.createFromItems();
+    this.openSettingItem(where);
+  };
 
   this.isSettingsOpen = () => {
     return document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]') !== null;
@@ -211,7 +226,7 @@ window.GooseMod = {};
       let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
       item.type = 'text-and-danger-button';
-      item.buttonText = 'Reimport';
+      item.buttonText = 'Remove';
 
       if (this.isSettingsOpen()) this.settings.createFromItems();
     },
@@ -226,7 +241,7 @@ window.GooseMod = {};
     updateStoreSetting: () => {
       let item = this.settings.items.find((x) => x[1] === 'Module Store');
 
-      item[2] = item[2].slice(0, 3);
+      item[2] = item[2].slice(0, 2);
 
       let sortedCategories = this.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 
@@ -249,11 +264,19 @@ window.GooseMod = {};
 
         for (let m of arr[i]) {
           item[2].push({
-            type: 'text-and-button',
+            type: this.modules[m.filename] ? 'text-and-danger-button' : 'text-and-button',
             text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
-            buttonText: 'Import',
+            buttonText: this.modules[m.filename] ? 'Remove' : 'Import',
             subtext: m.description,
             onclick: async (el) => {
+              if (this.modules[m.filename]) {
+                el.textContent = 'Removing...';
+
+                this.removeModuleUI(m.filename, 'Module Store');
+
+                return;
+              }
+
               el.textContent = 'Importing...';
 
               await this.moduleStoreAPI.importModule(m.filename);
@@ -571,7 +594,7 @@ window.GooseMod = {};
             buttonEl.classList.add('button-38aScr', 'lookOutlined-3sRXeN', 'colorRed-1TFJan', 'sizeSmall-2cSMqn', 'grow-q77ONN');
 
             buttonEl.onclick = () => {
-              e.onclick(el);
+              e.onclick(buttonEl);
             };
 
             buttonEl.style.cursor = 'pointer';
@@ -735,6 +758,8 @@ window.GooseMod = {};
         el.classList.remove(settingsClasses['selected']);
       });
 
+      if (panelName === 'Manage Modules' && window.DiscordNative === undefined) return;
+
       settingsSidebarGooseModContainer.appendChild(el);
     },
 
@@ -844,18 +869,9 @@ window.GooseMod = {};
       buttonText: 'Remove',
       subtext: this.modules[field].description,
       onclick: (el) => {
-        settingItem[2].splice(settingItem[2].indexOf(toggleObj), 1);
+        el.textContent = 'Removing...';
 
-        //el.remove();
-
-        this.moduleStoreAPI.moduleRemoved(this.modules[field]);
-
-        this.modules[field].remove();
-
-        delete this.modules[field];
-
-        this.settings.createFromItems();
-        this.openSettingItem('Manage Modules');
+        this.removeModuleUI(field, 'Manage Modules');
       }
     };
 
@@ -956,6 +972,8 @@ window.GooseMod = {};
 
         await this.moduleStoreAPI.updateStoreSetting();
 
+        this.settings.createFromItems();
+
         this.openSettingItem('Module Store');
       },
     }
@@ -972,7 +990,7 @@ window.GooseMod = {};
   }, true);
 
   if (window.DiscordNative !== undefined) {
-    this.settings.createItem('Reinstall', [''], async () => {
+    this.settings.createItem('Local Reinstall', [''], async () => {
       if (await this.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
         this.closeSettings();
 

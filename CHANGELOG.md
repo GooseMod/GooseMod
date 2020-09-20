@@ -1,5 +1,17 @@
 # GooseMod Changelog
 
+## v1.4.0
+
+  - ### Features
+    - Module store now has remove buttons instead of reimport
+    - Renamed reinstall to local reinstall
+    - No longer show module manager in browser as it serves no purpose there
+    - Hide manage modules in browser as the only purpose it has now is to import local modules
+
+  - ### Fixes
+    - Fixed some bugs when updating the module store index
+
+
 ## v1.3.0
 
   - ### Features
