@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## v1.7.0
+
+  - ### Features
+    - In injecting loading screen, improve importing default modules step by using newlines and full proper names
+    - Better support for GooseMod Tethered
+    - Added support for accessing webpack modules
+
+
 ## v1.6.0
 
   - ### Features
@@ -24,6 +32,7 @@
 
   - ### Fixes
     - Fixed console error when removing a module not from module store
+
 
 ## v1.4.0
 

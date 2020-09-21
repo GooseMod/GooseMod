@@ -1,7 +1,11 @@
-window.GooseMod = {};
-
 (async function () {
-  this.version = '1.6.0';
+  this.version = '1.7.0';
+  
+  if (window.gmTethered) {
+    this.tetheredVersion = window.gmTethered.slice();
+
+    delete window.gmTethered;
+  }
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -19,6 +23,51 @@ window.GooseMod = {};
   } catch (e) {
     console.error(e);
   }
+
+  this.webpackModules = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/modules/webpackModules.js
+    req: undefined,
+
+    init: () => {
+      this.webpackModules.req = window.webpackJsonp.push([[], {__extra_id__: (module, exports, req) => module.exports = req}, [["__extra_id__"]]]);
+
+      delete this.webpackModules.req.m.__extra_id__;
+      delete this.webpackModules.req.c.__extra_id__;
+    },
+    
+    find: (filter) => {
+      for (const i in this.webpackModules.req.c) {
+        if (this.webpackModules.req.c.hasOwnProperty(i)) {
+            const m = this.webpackModules.req.c[i].exports;
+            if (m && m.__esModule && m.default && filter(m.default)) return m.default;
+            if (m && filter(m))	return m;
+        }
+      }
+
+      // console.warn("Cannot find loaded module in cache");
+      return null;
+    },
+
+    findAll: (filter) => {
+      const modules = [];
+      for (const i in this.webpackModules.req.c) {
+          if (this.webpackModules.req.c.hasOwnProperty(i)) {
+              const m = this.webpackModules.req.c[i].exports;
+              if (m && m.__esModule && m.default && filter(m.default)) modules.push(m.default);
+              else if (m && filter(m)) modules.push(m);
+          }
+      }
+      return modules;
+    },
+
+    findByProps: (...propNames) => this.webpackModules.find(module => propNames.every(prop => module[prop] !== undefined)),
+    findByPropsAll: (...propNames) => this.webpackModules.findAll(module => propNames.every(prop => module[prop] !== undefined)),
+
+    findByPrototypes: (...protoNames) => this.webpackModules.find(module => module.prototype && protoNames.every(protoProp => module.prototype[protoProp] !== undefined)),
+
+    findByDisplayName: (displayName) => this.webpackModules.find(module => module.displayName === displayName),
+  };
+
+  this.webpackModules.init();
 
   this.removeModuleUI = (field, where) => {
     let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
@@ -80,8 +129,8 @@ window.GooseMod = {};
 
     if (el === null) return;
 
-    el.textContent = tip;
-  }
+    el.innerHTML = tip;
+  };
 
   this.stopLoadingScreen = async () => {
     let el = document.getElementById('gm-loading-container');
@@ -101,7 +150,7 @@ window.GooseMod = {};
         res();
       });
     })
-  }
+  };
 
   const reopenSettings = async () => {
     if (!this.stopLoadingScreen()) {
@@ -844,6 +893,13 @@ window.GooseMod = {};
 
     settingsSidebarEl.lastChild.appendChild(versionEl);
 
+    let versionElTethered = document.createElement('div');
+    versionElTethered.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
+
+    versionElTethered.textContent = `GooseMod Tethered ${this.tetheredVersion || 'N/A'}`;
+
+    settingsSidebarEl.lastChild.appendChild(versionElTethered);
+
     settingsMainEl = settingsLayerEl.querySelector('main');
 
     this.settings.createFromItems();
@@ -1047,7 +1103,7 @@ window.GooseMod = {};
   let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
 
   for (let m of defaultModules) {
-    this.updateLoadingScreen(`Importing default modules from Module Store... (${m} - ${defaultModules.indexOf(m) + 1}/${defaultModules.length})`);
+    this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${defaultModules.indexOf(m) + 1}/${defaultModules.length}`);
 
     await this.moduleStoreAPI.importModule(m);
   }
