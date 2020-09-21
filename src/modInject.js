@@ -2,6 +2,14 @@ try {
   const electron = require('electron');
   electron.webFrame.top.context.eval(`
   (async function() {
+    window.gmTethered = '2.1.0';
+
+    let el = document.getElementsByClassName('fixClipping-3qAKRb')[0];
+    el.style.backgroundColor = '#050505';
+
+    let el2 = document.getElementsByClassName('tip-2cgoli')[0];
+    el2.innerHTML += \`<br><br>GooseMod Tethered v\${window.gmTethered}\`;
+
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const awaitIframe = (iframe) => {
       return new Promise((res) => {
@@ -119,6 +127,6 @@ try {
       await sleep(50);
     }
     
-    (async function(cspBypasser) { eval(await cspBypasser.text('https://gitdab.com/duck/GooseMod/raw/branch/master/src/inject.js')); }).bind(window)(this.cspBypasser);
+    (async function(cspBypasser) { eval(await cspBypasser.text('https://gitdab.com/duck/GooseMod/raw/branch/master/src/inject.js')); })(this.cspBypasser);
   }).bind({})();`);
 } catch (e) { console.error(e); }
