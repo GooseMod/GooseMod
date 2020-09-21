@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '1.7.0';
+  this.version = '1.8.0';
   
   if (window.gmTethered) {
     this.tetheredVersion = window.gmTethered.slice();
@@ -333,7 +333,7 @@
       for (let i = 0; i < arr.length; i++) {
         item[2].push({
           type: 'header',
-          text: sortedCategories[i]
+          text: sortedCategories[i].replace(/\-/g, ' ')
         });
 
         for (let m of arr[i]) {
@@ -651,6 +651,41 @@
             el.appendChild(dividerEl);
 
             break;
+
+            case 'text':
+              el = document.createElement('div');
+  
+              el.classList.add('marginBottom20-32qID7');
+  
+              let textEl = document.createElement('span');
+              textEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+  
+              textEl.style.float = 'left';
+  
+              textEl.innerHTML = e.text;
+  
+              el.appendChild(textEl);
+  
+              if (e.subtext) {
+                let subtextEl = document.createElement('div');
+  
+                subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+  
+                subtextEl.innerHTML = e.subtext;
+  
+                subtextEl.style.clear = 'both';
+  
+                el.appendChild(subtextEl);
+              }
+  
+              let dividerEl_ = document.createElement('div');
+  
+              dividerEl_.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+              dividerEl_.style.marginTop = e.subtext ? '20px' : '45px';
+  
+              el.appendChild(dividerEl_);
+  
+              break;
 
           case 'text-and-danger-button':
             el = document.createElement('div');

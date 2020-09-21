@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v1.8.0
+
+  - ### Features
+    - Added text element to settings API
+    - Convert dashes to spaces in categories with Module Store settings UI
+
+
 ## v1.7.0
 
   - ### Features
