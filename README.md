@@ -8,6 +8,6 @@ It works in both the desktop app and in the browser / web app.
 
 ---
 
-## [Install Guide](https://gitdab.com/duck/GooseMod/wiki/Install-Guide)
+## [Install Guide](https://github.com/GooseMod/Injector/wiki/Install-Guide)
 
-## [FAQ](https://gitdab.com/duck/GooseMod/wiki/FAQ)
+## [FAQ](https://github.com/GooseMod/Injector/wiki/FAQ)
