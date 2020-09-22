@@ -1,10 +1,10 @@
 (async function () {
-  this.version = '1.8.0';
+  this.version = '1.8.1';
   
-  if (window.gmTethered) {
-    this.tetheredVersion = window.gmTethered.slice();
+  if (window.gmUntethered) {
+    this.untetheredVersion = window.gmUntethered.slice();
 
-    delete window.gmTethered;
+    delete window.gmUntethered;
   }
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -928,12 +928,12 @@
 
     settingsSidebarEl.lastChild.appendChild(versionEl);
 
-    let versionElTethered = document.createElement('div');
-    versionElTethered.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
+    let versionElUntethered = document.createElement('div');
+    versionElUntethered.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 
-    versionElTethered.textContent = `GooseMod Tethered ${this.tetheredVersion || 'N/A'}`;
+    versionElUntethered.textContent = `GooseMod Untethered ${this.untetheredVersion || 'N/A'}`;
 
-    settingsSidebarEl.lastChild.appendChild(versionElTethered);
+    settingsSidebarEl.lastChild.appendChild(versionElUntethered);
 
     settingsMainEl = settingsLayerEl.querySelector('main');
 

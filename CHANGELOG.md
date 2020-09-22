@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v1.8.1
+
+  - ### Tweaks
+    - Tethered version -> Untethered version
+
+
 ## v1.8.0
 
   - ### Features

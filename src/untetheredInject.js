@@ -1,14 +1,17 @@
 try {
-  const electron = require('electron');
-  electron.webFrame.top.context.eval(`
+  if (typeof require === 'undefined') { // Web
+    require = () => undefined;
+  }
+
+  (require('electron')?.webFrame?.top?.context || window).eval(`
   (async function() {
-    window.gmTethered = '2.1.0';
+    window.gmUntethered = '2.2.0';
 
     let el = document.getElementsByClassName('fixClipping-3qAKRb')[0];
-    el.style.backgroundColor = '#050505';
+    if (el !== undefined) el.style.backgroundColor = '#050505';
 
     let el2 = document.getElementsByClassName('tip-2cgoli')[0];
-    el2.innerHTML += \`<br><br>GooseMod Tethered v\${window.gmTethered}\`;
+    if (el2 !== undefined) el2.innerHTML += \`<br><br>GooseMod Tethered v\${window.gmUntethered}\`;
 
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const awaitIframe = (iframe) => {
@@ -120,6 +123,10 @@ try {
     };
     
     await this.cspBypasser.init();
+
+    const code = this.cspBypasser.text('https://gitdab.com/duck/GooseMod/raw/branch/master/src/inject.js');
+
+    if (el2 !== undefined) el2.innerHTML += \`<br>Ready\`;
     
     while (true) {
       if (document.querySelector('button[aria-label="User Settings"]') !== null) break;
@@ -127,6 +134,6 @@ try {
       await sleep(50);
     }
     
-    (async function(cspBypasser) { eval(await cspBypasser.text('https://gitdab.com/duck/GooseMod/raw/branch/master/src/inject.js')); })(this.cspBypasser);
+    (async function(cspBypasser, code) { eval(code); })(this.cspBypasser, await code);
   }).bind({})();`);
 } catch (e) { console.error(e); }
