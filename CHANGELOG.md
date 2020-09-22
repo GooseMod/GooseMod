@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v1.10.0
+
+  - ### Features
+    - Added toast API for modules to use
+    - May or may not have added easter eggs
+
+
 ## v1.9.1
 
   - ### Tweaks
