@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v1.9.1
+
+  - ### Tweaks
+    - Updated loading screen to show and link to new GitHub stuff
+
+
 ## v1.9.0
 
   - ### Tweaks
