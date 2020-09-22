@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v1.9.0
+
+  - ### Tweaks
+    - Updated module store URLs to GitHub
+
+
 ## v1.8.1
 
   - ### Tweaks

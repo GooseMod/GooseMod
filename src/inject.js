@@ -1,5 +1,18 @@
 (async function () {
-  this.version = '1.8.1';
+  this.version = '1.9.0';
+
+  this.modules = {};
+
+  this.logger = {
+    regionColors: {
+      'import': 'rgb(100, 0, 0)'
+    },
+
+    debug: (region, ...args) => {
+      let parentRegion = region.split('.')[0];
+      console.log(`%cGooseMod%c %c${region}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', `border: 1px solid white; padding: 2px; background-color: ${this.logger.regionColors[parentRegion] || (this.modules[parentRegion] && this.modules[parentRegion].logRegionColor) || 'rgb(0, 0, 0)'}; color: white`, ...(args));
+    }
+  };
   
   if (window.gmUntethered) {
     this.untetheredVersion = window.gmUntethered.slice();
@@ -273,7 +286,7 @@
   this.moduleStoreAPI = {
     modules: [],
 
-    apiBaseURL: 'https://gitdab.com/duck/GooseMod-JSONAPI/raw/branch/master/api',
+    apiBaseURL: 'https://raw.githubusercontent.com/GooseMod/Modules/master/api',
 
     updateModules: async () => {
       this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`)).sort((a, b) => a.name.localeCompare(b.name));
@@ -369,20 +382,6 @@
   await this.moduleStoreAPI.updateModules();
 
   this.updateLoadingScreen('Initialising UI functions...');
-
-  this.logger = {
-    regionColors: {
-      'import': 'rgb(100, 0, 0)'
-    },
-
-    log: [],
-
-    debug: (region, ...args) => {
-      let parentRegion = region.split('.')[0];
-      console.log(`%cGooseMod%c %c${region}`, 'border: 1px solid white; padding: 2px; background-color: black; color: white', 'background-color: none', `border: 1px solid white; padding: 2px; background-color: ${this.logger.regionColors[parentRegion] || (this.modules[parentRegion] && this.modules[parentRegion].logRegionColor) || 'rgb(0, 0, 0)'}; color: white`, ...(args));
-      //log.push(`${region}: ${args.join(' ')}`);
-    }
-  };
 
   this.logger.debug('import.version.goosemod', `${this.version}-${this.versionIteration}`);
 
@@ -941,8 +940,6 @@
   });
 
   this.updateLoadingScreen('Initialising import functions...');
-
-  this.modules = {};
 
   const ab2str = (buf) => { // ArrayBuffer (UTF-8) -> String
     return String.fromCharCode.apply(null, new Uint8Array(buf));
