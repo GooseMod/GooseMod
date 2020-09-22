@@ -1,17 +1,17 @@
 try {
   if (typeof require === 'undefined') { // Web
-    require = () => undefined;
+    require = () => ({ webFrame: { top: { context: undefined } } });
   }
 
-  (require('electron')?.webFrame?.top?.context || window).eval(`
+  (require('electron').webFrame.top.context || window).eval(`
   (async function() {
-    window.gmUntethered = '2.2.0';
+    window.gmUntethered = '2.2.1';
 
     let el = document.getElementsByClassName('fixClipping-3qAKRb')[0];
     if (el !== undefined) el.style.backgroundColor = '#050505';
 
     let el2 = document.getElementsByClassName('tip-2cgoli')[0];
-    if (el2 !== undefined) el2.innerHTML += \`<br><br>GooseMod Tethered v\${window.gmUntethered}\`;
+    if (el2 !== undefined) el2.innerHTML += \`<br><br>GooseMod Untethered v\${window.gmUntethered}\`;
 
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const awaitIframe = (iframe) => {
