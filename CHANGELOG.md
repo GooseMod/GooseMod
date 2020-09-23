@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v1.11.1
+
+  - ### Fixes
+    - Fixed CORS bypasser image method not using CORS proxy variable
+
+
 ## v1.11.0
 
   - ### Features

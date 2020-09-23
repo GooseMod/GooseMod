@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '1.11.0';
+  this.version = '1.11.1';
 
   this.modules = {};
 
@@ -472,9 +472,9 @@
       });
     },
 
-    image: (url) => {
+    image: (url, useCORSProxy = true) => {
       return new Promise((res) => {
-        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'img'});
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'img', useCORSProxy});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
