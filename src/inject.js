@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '1.10.0';
+  this.version = '1.10.1';
 
   this.modules = {};
 
@@ -490,7 +490,7 @@
   this.moduleStoreAPI = {
     modules: [],
 
-    apiBaseURL: 'https://raw.githubusercontent.com/GooseMod/Modules/master/api',
+    apiBaseURL: 'https://goosemod-api.netlify.app',
 
     updateModules: async () => {
       this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`)).sort((a, b) => a.name.localeCompare(b.name));

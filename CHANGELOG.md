@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v1.10.1
+
+  - ### Tweaks
+    - Use new API
+
+
 ## v1.10.0
 
   - ### Features
