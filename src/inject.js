@@ -1,5 +1,5 @@
 (async function () {
-  this.version = '1.10.1';
+  this.version = '1.11.0';
 
   this.modules = {};
 
@@ -397,9 +397,9 @@
 
       let code = `
       window.addEventListener('message', async (e) => {
-        const {url, type} = e.data;
+        const {url, type, useCORSProxy} = e.data;
 
-        const proxyURL = \`https://cors-anywhere.herokuapp.com/\${url}\`;
+        const proxyURL = useCORSProxy ? \`https://cors-anywhere.herokuapp.com/\${url}\` : url;
 
         if (type === 'img') {
           let canvas = document.createElement('canvas');
@@ -442,9 +442,9 @@
       this.cspBypasser.frame.contentDocument.head.appendChild(script);
     },
 
-    json: (url) => {
+    json: (url, useCORSProxy = true) => {
       return new Promise((res) => {
-        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'json'});
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'json', useCORSProxy});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
@@ -452,9 +452,9 @@
       });
     },
 
-    text: (url) => {
+    text: (url, useCORSProxy = true) => {
       return new Promise((res) => {
-        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'text'});
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'text', useCORSProxy});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
@@ -462,9 +462,9 @@
       });
     },
 
-    blob: (url) => {
+    blob: (url, useCORSProxy = true) => {
       return new Promise((res) => {
-        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob'});
+        this.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob', useCORSProxy});
 
         window.addEventListener('message', async (e) => {
           res(e.data);
@@ -493,13 +493,13 @@
     apiBaseURL: 'https://goosemod-api.netlify.app',
 
     updateModules: async () => {
-      this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`)).sort((a, b) => a.name.localeCompare(b.name));
+      this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`, false)).sort((a, b) => a.name.localeCompare(b.name));
     },
 
     importModule: async (moduleName) => {
       const moduleInfo = this.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
 
-      const jsCode = await this.cspBypasser.text(moduleInfo.codeURL);
+      const jsCode = await this.cspBypasser.text(moduleInfo.codeURL, false);
 
       await this.importModule({
         filename: `${moduleInfo.filename}.js`,

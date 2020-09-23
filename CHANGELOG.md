@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v1.11.0
+
+  - ### Features
+    - Allow not using CORS proxy with CSP bypasser methods
+    - No longer use CORS proxy with Module Store requests
+
+
 ## v1.10.1
 
   - ### Tweaks
