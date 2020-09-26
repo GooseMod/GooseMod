@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v2.0.1
+
+  - ### Fixes
+    - Fixed bug with toasts not displaying properly sometimes
+
+
 ## v2.0.0
 
   - ### Features

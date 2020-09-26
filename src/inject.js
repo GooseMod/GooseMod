@@ -11,7 +11,7 @@ window.goosemod = {};
     this.injectorHash = hash;
   });
 
-  this.version = '2.0.0';
+  this.version = '2.0.1';
 
   this.modules = {};
   this.disabledModules = {};
@@ -210,7 +210,7 @@ window.goosemod = {};
 
       const left = container ? container.getBoundingClientRect().left : 310;
       const right = memberlist ? memberlist.getBoundingClientRect().left : 0;
-      const width = right ? right - container.getBoundingClientRect().left : Utils.screenWidth - left - 240;
+      const width = right ? right - container.getBoundingClientRect().left : window.innerWidth - left - 240;
       const bottom = form ? form.offsetHeight : 80;
 
       const toastWrapper = document.createElement('div');
