@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v2.0.0
+
+  - ### Features
+    - Added version hash
+    - Added enabling and disabling of modules
+    - Added saving settings of modules
+    - Only install previously installed modules (mostly for tethered)
+    - No longer remove untethered version from being accessible on injection
+
+
 ## v1.11.1
 
   - ### Fixes

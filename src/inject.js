@@ -1,7 +1,20 @@
+window.goosemod = {};
+
 (async function () {
-  this.version = '1.11.1';
+  const sha512 = (str) => {
+    return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(str)).then(buf => {
+      return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
+    });
+  };
+
+  sha512(arguments.callee.toString()).then((hash) => {
+    this.injectorHash = hash;
+  });
+
+  this.version = '2.0.0';
 
   this.modules = {};
+  this.disabledModules = {};
 
   this.logger = {
     regionColors: {
@@ -17,7 +30,7 @@
   if (window.gmUntethered) {
     this.untetheredVersion = window.gmUntethered.slice();
 
-    delete window.gmUntethered;
+    // delete window.gmUntethered;
   }
 
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -297,6 +310,8 @@
 
     delete this.modules[field];
 
+    this.clearModuleSetting(field);
+
     this.settings.createFromItems();
     this.openSettingItem(where);
   };
@@ -514,7 +529,7 @@
 
       let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
-      item.type = 'text-and-danger-button';
+      item.type = 'toggle-text-danger-button';
       item.buttonText = 'Remove';
 
       if (this.isSettingsOpen()) this.settings.createFromItems();
@@ -555,7 +570,7 @@
 
         for (let m of arr[i]) {
           item[2].push({
-            type: this.modules[m.filename] ? 'text-and-danger-button' : 'text-and-button',
+            type: this.modules[m.filename] ? 'toggle-text-danger-button' : 'text-and-button',
             text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
             buttonText: this.modules[m.filename] ? 'Remove' : 'Import',
             subtext: m.description,
@@ -574,6 +589,48 @@
 
               this.settings.createFromItems();
               this.openSettingItem('Module Store');
+            },
+            isToggled: () => this.modules[m.filename] !== undefined,
+            onToggle: async (checked) => {
+              if (checked) {
+                this.modules[m.filename] = Object.assign({}, this.disabledModules[m.filename]);
+                delete this.disabledModules[m.filename];
+
+                //this.modules[]
+                //this.removeModuleUI(m.filename, 'Module Store');
+
+                //delete this.modules[m.filename].disabled;
+
+                await this.modules[m.filename].onImport();
+
+                await this.modules[m.filename].onLoadingFinished();
+
+                this.loadSavedModuleSetting(m.filename);
+              } else {
+                //this.modules[m.filename].disabled = true;
+
+                //this.modules[m.filename].remove();
+
+                this.disabledModules[m.filename] = Object.assign({}, this.modules[m.filename]);
+
+                //this.removeModuleUI(m.filename, 'Module Store');
+
+                //let settingItem = this.settings.items.find((x) => x[1] === 'Manage Modules');
+
+                //settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === this.modules[field].description)), 1);
+
+                //this.moduleStoreAPI.moduleRemoved(this.modules[field]);
+
+                this.modules[m.filename].remove();
+
+                delete this.modules[m.filename];
+
+                this.settings.createFromItems();
+                this.openSettingItem('Module Store');
+              }
+
+              this.settings.createFromItems();
+              this.openSettingItem('Module Store');
             }
           });
         }
@@ -587,7 +644,7 @@
 
   this.updateLoadingScreen('Initialising UI functions...');
 
-  this.logger.debug('import.version.goosemod', `${this.version}-${this.versionIteration}`);
+  this.logger.debug('import.version.goosemod', `${this.version} (${this.injectorHash})`);
 
   if (window.DiscordNative !== undefined) this.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
 
@@ -1016,6 +1073,172 @@
             el.onclick = e.onclick;
 
             break;
+
+          case 'toggle-text-button': {
+            el = document.createElement('div');
+  
+            el.classList.add('marginBottom20-32qID7');
+
+            let checked = e.isToggled();
+
+            let checkedClass = 'valueChecked-m-4IJZ';
+            let uncheckedClass = 'valueUnchecked-2lU_20';
+
+            let toggleEl = document.createElement('div');
+            toggleEl.classList.add('flexChild-faoVW3', 'switchEnabled-V2WDBB', 'switch-3wwwcV', checked ? checkedClass : uncheckedClass, 'value-2hFrkk', 'sizeDefault-2YlOZr', 'size-3rFEHg', 'themeDefault-24hCdX');
+
+            toggleEl.onclick = () => {
+              checked = !checked;
+
+              if (checked) {
+                toggleEl.classList.add(checkedClass);
+                toggleEl.classList.remove(uncheckedClass);
+              } else {
+                toggleEl.classList.remove(checkedClass);
+                toggleEl.classList.add(uncheckedClass);
+              }
+
+              e.onToggle(checked, el);
+            };
+
+            toggleEl.style.float = 'left';
+            toggleEl.style.marginRight = '8px';
+
+            el.appendChild(toggleEl);
+
+            let txtEl = document.createElement('span');
+            txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+            txtEl.style.float = 'left';
+
+            txtEl.innerHTML = e.text;
+
+            let buttonEl = document.createElement('div');
+            buttonEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+            buttonEl.onclick = () => {
+              e.onclick(buttonEl);
+            };
+
+            buttonEl.style.cursor = 'pointer';
+
+            buttonEl.style.float = 'right';
+
+            let contentsEl = document.createElement('div');
+
+            contentsEl.classList.add('contents-18-Yxp');
+
+            contentsEl.textContent = e.buttonText;
+
+            buttonEl.appendChild(contentsEl);
+
+            el.appendChild(txtEl);
+            el.appendChild(buttonEl);
+
+            if (e.subtext) {
+              let subtextEl = document.createElement('div');
+
+              subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+              subtextEl.textContent = e.subtext;
+
+              subtextEl.style.clear = 'both';
+
+              el.appendChild(subtextEl);
+            }
+
+            let dividerEl = document.createElement('div');
+
+            dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+            dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+            el.appendChild(dividerEl);
+
+            break;
+          }
+
+          case 'toggle-text-danger-button': {
+            el = document.createElement('div');
+  
+            el.classList.add('marginBottom20-32qID7');
+
+            let checked = e.isToggled();
+
+            let checkedClass = 'valueChecked-m-4IJZ';
+            let uncheckedClass = 'valueUnchecked-2lU_20';
+
+            let toggleEl = document.createElement('div');
+            toggleEl.classList.add('flexChild-faoVW3', 'switchEnabled-V2WDBB', 'switch-3wwwcV', checked ? checkedClass : uncheckedClass, 'value-2hFrkk', 'sizeDefault-2YlOZr', 'size-3rFEHg', 'themeDefault-24hCdX');
+
+            toggleEl.onclick = () => {
+              checked = !checked;
+
+              if (checked) {
+                toggleEl.classList.add(checkedClass);
+                toggleEl.classList.remove(uncheckedClass);
+              } else {
+                toggleEl.classList.remove(checkedClass);
+                toggleEl.classList.add(uncheckedClass);
+              }
+
+              e.onToggle(checked, el);
+            };
+
+            toggleEl.style.float = 'left';
+            toggleEl.style.marginRight = '8px';
+
+            el.appendChild(toggleEl);
+
+            let txtEl = document.createElement('span');
+            txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+            txtEl.style.float = 'left';
+
+            txtEl.innerHTML = e.text;
+
+            let buttonEl = document.createElement('div');
+            buttonEl.classList.add('button-38aScr', 'lookOutlined-3sRXeN', 'colorRed-1TFJan', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+            buttonEl.onclick = () => {
+              e.onclick(buttonEl);
+            };
+
+            buttonEl.style.cursor = 'pointer';
+
+            buttonEl.style.float = 'right';
+
+            let contentsEl = document.createElement('div');
+
+            contentsEl.classList.add('contents-18-Yxp');
+
+            contentsEl.textContent = e.buttonText;
+
+            buttonEl.appendChild(contentsEl);
+
+            el.appendChild(txtEl);
+            el.appendChild(buttonEl);
+
+            if (e.subtext) {
+              let subtextEl = document.createElement('div');
+
+              subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+              subtextEl.textContent = e.subtext;
+
+              subtextEl.style.clear = 'both';
+
+              el.appendChild(subtextEl);
+            }
+
+            let dividerEl = document.createElement('div');
+
+            dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+            dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+            el.appendChild(dividerEl);
+
+            break;
+          }
         }
 
         contentEl.appendChild(el);
@@ -1127,7 +1350,7 @@
     let versionEl = document.createElement('div');
     versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 
-    versionEl.textContent = `GooseMod ${this.version}`;
+    versionEl.textContent = `GooseMod ${this.version} (${this.injectorHash.substring(0, 7)})`;
 
     settingsSidebarEl.lastChild.appendChild(versionEl);
 
@@ -1324,6 +1547,9 @@
 
   this.remove = () => {
     clearInterval(this.messageEasterEggs.interval);
+    clearInterval(this.saveInterval);
+
+    this.clearSettings();
 
     this.removed = true;
 
@@ -1334,17 +1560,84 @@
     }
   };
 
+  this.saveModuleSettings = async () => {
+    //this.logger.debug('settings', 'Saving module settings...');
+
+    let settings = JSON.parse(localStorage.getItem('goosemodModules')) || {};
+
+    for (let p in this.modules) {
+      if (this.modules.hasOwnProperty(p)) {
+        settings[p] = await (this.modules[p].getSettings || (async () => []))();
+      }
+    }
+
+    if (JSON.stringify(JSON.parse(localStorage.getItem('goosemodModules'))) !== JSON.stringify(settings)) {
+      localStorage.setItem('goosemodModules', JSON.stringify(settings));
+
+      this.showToast('Settings saved');
+    }
+
+    //console.log(settings);
+  };
+
+  this.clearModuleSetting = (moduleName) => {
+    let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+
+    delete settings[moduleName];
+
+    localStorage.setItem('goosemodModules', JSON.stringify(settings));
+  };
+
+  this.clearSettings = () => {
+    localStorage.removeItem('goosemodModules');
+  };
+
+  this.loadSavedModuleSetting = async (moduleName) => {
+    let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+
+    await (this.modules[moduleName].loadSettings || (async () => []))(settings[moduleName]);
+  };
+
+  this.loadSavedModuleSettings = async () => {
+    //this.logger.debug('settings', 'Loading module settings...');
+
+    let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+
+    console.log(settings);
+
+    if (!settings) return;
+
+    for (let p in this.modules) {
+      if (this.modules.hasOwnProperty(p) && settings.hasOwnProperty(p)) {
+        console.log(p, this.modules[p].loadSettings, settings[p]);
+        await (this.modules[p].loadSettings || (async () => []))(settings[p]);
+      }
+    }
+
+    return settings;
+  };
+
   this.updateLoadingScreen('Updating Module Store setting page...');
 
-  await this.moduleStoreAPI.updateStoreSetting();
+  this.moduleStoreAPI.updateStoreSetting();
 
-  let defaultModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
+  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
+  let toInstallIsDefault = false;
 
-  for (let m of defaultModules) {
-    this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${defaultModules.indexOf(m) + 1}/${defaultModules.length}`);
+  if (toInstallModules.length === 0) {
+    toInstallIsDefault = true;
+    toInstallModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
+  }
+
+  for (let m of toInstallModules) {
+    this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
 
     await this.moduleStoreAPI.importModule(m);
   }
 
+  await this.loadSavedModuleSettings();
+
   reopenSettings();
-}).bind({})();
+
+  this.saveInterval = setInterval(this.saveModuleSettings, 3000);
+}).bind(window.goosemod)();
