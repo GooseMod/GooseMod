@@ -11,7 +11,7 @@ window.goosemod = {};
     this.injectorHash = hash;
   });
 
-  this.version = '2.0.1';
+  this.version = '2.1.0';
 
   this.modules = {};
   this.disabledModules = {};
@@ -402,10 +402,10 @@ window.goosemod = {};
     frame: document.createElement('iframe'),
 
     init: async () => {
-      this.cspBypasser.frame.src = `${location.origin}/api/gateway`;
+      this.cspBypasser.frame.src = 'discord:';
       document.body.appendChild(this.cspBypasser.frame);
 
-      await awaitIframe(this.cspBypasser.frame);
+      //await awaitIframe(this.cspBypasser.frame);
 
       let script = document.createElement('script');
       script.type = 'text/javascript';

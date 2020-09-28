@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v2.1.0
+
+  - ### Tweaks
+    - New CSP Bypass URL
+
+
 ## v2.0.1
 
   - ### Fixes
