@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v2.1.1
+
+  - ### Fixes
+    - Fixed local (not from module store) modules being saved breaking next install
+
+
 ## v2.1.0
 
   - ### Tweaks

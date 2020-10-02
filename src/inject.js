@@ -11,7 +11,7 @@ window.goosemod = {};
     this.injectorHash = hash;
   });
 
-  this.version = '2.1.0';
+  this.version = '2.1.1';
 
   this.modules = {};
   this.disabledModules = {};
@@ -1628,6 +1628,8 @@ window.goosemod = {};
     toInstallIsDefault = true;
     toInstallModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
+
+  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
 
   for (let m of toInstallModules) {
     this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
