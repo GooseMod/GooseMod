@@ -1626,7 +1626,7 @@ window.goosemod = {};
 
   if (toInstallModules.length === 0) {
     toInstallIsDefault = true;
-    toInstallModules = ['fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
+    toInstallModules = ['hardcodedColorFixer', 'darkestTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
 
   toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
