@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v2.2.1
+
+  - ### Fixes
+    - Fixed loading toast remaining on screen after injection if not new user
+
+
 ## v2.2.0
 
   - ### Features

@@ -9,7 +9,7 @@
     this.injectorHash = hash;
   });
 
-  this.version = '2.2.0';
+  this.version = '2.2.1';
 
   this.modules = {};
   this.disabledModules = {};
@@ -409,11 +409,9 @@
   };
 
   const reopenSettings = async () => {
-    if (!this.stopLoadingScreen()) {
-      this.closeSettings();
+    this.closeSettings();
 
-      await sleep(1000);
-    }
+    await sleep(1000);
 
     this.openSettings();
 
@@ -1661,8 +1659,16 @@
 
   await this.loadSavedModuleSettings();
 
+  this.stopLoadingScreen();
+
   // Only open settings if new user
-  if (!localStorage.getItem('goosemodModules')) reopenSettings();
+  if (!localStorage.getItem('goosemodModules')) {
+    this.openSettings();
+
+    await sleep(200);
+
+    this.openSettingItem('Module Store');
+  }
 
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
 }).bind({})();
