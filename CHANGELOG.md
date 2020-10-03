@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v2.2.2
+
+  - ### Fixes
+    - Fixed some issues when injecting whilst settings are open
+
+
 ## v2.2.1
 
   - ### Fixes

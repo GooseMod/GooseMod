@@ -9,7 +9,7 @@
     this.injectorHash = hash;
   });
 
-  this.version = '2.2.1';
+  this.version = '2.2.2';
 
   this.modules = {};
   this.disabledModules = {};
@@ -554,7 +554,7 @@
       item.type = 'toggle-text-danger-button';
       item.buttonText = 'Remove';
 
-      if (this.isSettingsOpen()) this.settings.createFromItems();
+      if (this.isSettingsOpen() && !this.initialImport) this.settings.createFromItems();
     },
 
     moduleRemoved: async (m) => {
@@ -1636,6 +1636,8 @@
 
   this.moduleStoreAPI.updateStoreSetting();
 
+  this.initialImport = true;
+
   let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
   let toInstallIsDefault = false;
 
@@ -1655,19 +1657,25 @@
     await this.moduleStoreAPI.importModule(m);
   }
 
+  delete this.initialImport;
+
   this.updateLoadingScreen(`Loading saved module settings...`);
 
   await this.loadSavedModuleSettings();
 
   this.stopLoadingScreen();
 
-  // Only open settings if new user
-  if (!localStorage.getItem('goosemodModules')) {
-    this.openSettings();
+  if (this.isSettingsOpen()) { // If settings are open, reopen to inject new GooseMod options
+    reopenSettings();
+  } else {
+    // Only open settings (when not already open) if new user
+    if (!localStorage.getItem('goosemodModules')) {
+      this.openSettings();
 
-    await sleep(200);
+      await sleep(200);
 
-    this.openSettingItem('Module Store');
+      this.openSettingItem('Module Store');
+    }
   }
 
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
