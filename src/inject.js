@@ -232,7 +232,7 @@
     if (type) toastElem.classList.add('toast-' + type);
     if (type && icon) toastElem.classList.add('icon');
 
-    toastElem.innerHTML = text;
+    toastElem.textContent = text;
 
     document.querySelector('.gm-toasts').appendChild(toastElem);
 
