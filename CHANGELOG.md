@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v2.3.0
+
+  - ### Features
+    - Put theme and hardcoded color fixer to start of to install modules on injection always
+    - Made Dracula Theme new default theme (used to be Darkest)
+
+
 ## v2.2.2
 
   - ### Fixes

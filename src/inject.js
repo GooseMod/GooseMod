@@ -9,7 +9,7 @@
     this.injectorHash = hash;
   });
 
-  this.version = '2.2.2';
+  this.version = '2.3.0';
 
   this.modules = {};
   this.disabledModules = {};
@@ -1643,10 +1643,22 @@
 
   if (toInstallModules.length === 0) {
     toInstallIsDefault = true;
-    toInstallModules = ['hardcodedColorFixer', 'darkestTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
+    toInstallModules = ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
 
   toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
+
+  let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
+
+  if (themeModule) {
+    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(themeModule), 1)[0]);
+  }
+
+  let hardcodedColorFixerModule = toInstallModules.find((x) => x === 'hardcodedColorFixer');
+
+  if (hardcodedColorFixerModule) {
+    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
+  }
 
   this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
 
