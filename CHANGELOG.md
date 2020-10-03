@@ -1,5 +1,20 @@
 # GooseMod Changelog
 
+## v2.2.0
+
+  - ### Features
+    - New loading process - instead of Discord-like whole screen loading screen, now uses toasts to be less intrusive
+    - Only open settings on injection if first time using GooseMod (no settings saved)
+    - Better settings injection starting process - fixes bug where settings would sometimes not be injected, also makes it less slow to inject
+
+  - ### Tweaks
+    - Text inside toasts are now centered (for multi-line)
+    - Return toast element and close function from creating toast function
+
+  - ### Fixes
+    - Don't use window object for base scope
+
+
 ## v2.1.1
 
   - ### Fixes

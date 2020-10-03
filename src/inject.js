@@ -1,5 +1,3 @@
-window.goosemod = {};
-
 (async function () {
   const sha512 = (str) => {
     return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(str)).then(buf => {
@@ -11,7 +9,7 @@ window.goosemod = {};
     this.injectorHash = hash;
   });
 
-  this.version = '2.1.1';
+  this.version = '2.2.0';
 
   this.modules = {};
   this.disabledModules = {};
@@ -135,6 +133,8 @@ window.goosemod = {};
     margin-top: 10px;
     pointer-events: none;
     user-select: none;
+
+    text-align: center;
   }
   
   @keyframes gm-toast-down {
@@ -232,17 +232,21 @@ window.goosemod = {};
     if (type) toastElem.classList.add('toast-' + type);
     if (type && icon) toastElem.classList.add('icon');
 
-    toastElem.textContent = text;
+    toastElem.innerHTML = text;
 
     document.querySelector('.gm-toasts').appendChild(toastElem);
 
-    setTimeout(() => {
-        toastElem.classList.add('closing');
-        setTimeout(() => {
-            toastElem.remove();
-            if (!document.querySelectorAll('.gm-toasts .gm-toast').length) document.querySelector('.gm-toasts').remove();
-        }, 300);
-    }, timeout);
+    let closeFn = () => {
+      toastElem.classList.add('closing');
+      setTimeout(() => {
+          toastElem.remove();
+          if (!document.querySelectorAll('.gm-toasts .gm-toast').length) document.querySelector('.gm-toasts').remove();
+      }, 300);
+    };
+
+    setTimeout(closeFn, timeout);
+
+    return { toastElem, closeFn };
   };
 
   this.messageEasterEggs = {
@@ -336,8 +340,12 @@ window.goosemod = {};
     [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === name).click();
   };
 
+  this.loadingToast = undefined;
+
   this.startLoadingScreen = async () => {
-    this.closeSettings();
+    this.loadingToast = this.showToast('Injecting GooseMod: Starting...', { timeout: 99999 });
+
+    /*this.closeSettings();
 
     let html = `<div id="gm-loading-container" class="container-16j22k fixClipping-3qAKRb" style="opacity: 1;"><div class="content-1-zrf2"> <video class="ready-36e6Vk" autoplay="" playsinline="" loop=""> <source src="/assets/0bdc0497eb3a19e66f2b1e3d5741634c.webm" type="video/webm"> <source src="/assets/ffac5bb3fb919ce8bf7137d79e9defc9.mp4" type="video/mp4"> <img alt="" src="/assets/5ccabf62108d5a8074ddd95af2211727.png"> </video><div class="text-3c9Zq1"><div class="tipTitle-GL9qAt">Injecting GooseMod</div><div class="tip-2cgoli" id="gm-loading-tip">Injecting</div><div class="body-2Vra9D contentBase-11jeVK"></div></div></div><div style="transform: translate3d(0,0%,0);" class="problems-3mgf6w"><div class="problemsText-1Yx-Kl">Like GooseMod? Let us know!</div><div> <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB twitterLink-3NsWMp links-3Ldd4A" href="https://twitter.com/Goose_Mod" rel="noreferrer noopener" target="_blank"> <svg class="icon-3N9Bhy" width="20" height="16" viewBox="0 0 20 16" aria-hidden="false"> <g fill="none" fill-rule="evenodd"> <path fill="currentColor" d="M1,14.1538462 L1.95,14.1538462 C3.73125,14.1538462 5.5125,13.5384615 6.81875,12.4307692 C5.15625,12.4307692 3.73125,11.2 3.1375,9.6 C3.375,9.6 3.6125,9.72307692 3.85,9.72307692 C4.20625,9.72307692 4.5625,9.72307692 4.91875,9.6 C3.1375,9.23076923 1.7125,7.63076923 1.7125,5.66153846 C2.1875,5.90769231 2.78125,6.15384615 3.49375,6.15384615 C2.425,5.41538462 1.83125,4.18461538 1.83125,2.70769231 C1.83125,1.96923077 2.06875,1.23076923 2.30625,0.615384615 C4.20625,3.07692308 7.05625,4.67692308 10.38125,4.8 C10.2625,4.67692308 10.2625,4.30769231 10.2625,4.06153846 C10.2625,1.84615385 12.04375,0 14.18125,0 C15.25,0 16.31875,0.492307692 17.03125,1.23076923 C17.8625,1.10769231 18.8125,0.738461538 19.525,0.246153846 C19.2875,1.23076923 18.575,1.96923077 17.8625,2.46153846 C18.575,2.46153846 19.2875,2.21538462 20,1.84615385 C19.525,2.70769231 18.8125,3.32307692 18.1,3.93846154 L18.1,4.43076923 C18.1,9.84615385 14.18125,16 6.9375,16 C4.68125,16 2.6625,15.3846154 1,14.1538462 Z"></path> <rect width="20" height="16"></rect> </g> </svg> Tweet Us </a> <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB statusLink-gFXhrL links-3Ldd4A" href="https://github.com/GooseMod" rel="noreferrer noopener" target="_blank"> <svg class="icon-3N9Bhy" aria-hidden="false" width="14" height="14" viewBox="0 0 14 14"> <path fill="currentColor" d="M6.99471698,9.67522659 C8.47108874,9.67522659 9.66792453,8.47748685 9.66792453,7 C9.66792453,5.52251315 8.47108874,4.32477341 6.99471698,4.32477341 C5.51834522,4.32477341 4.32150943,5.52251315 4.32150943,7 C4.32150943,8.47748685 5.51834522,9.67522659 6.99471698,9.67522659 Z M6.99471698,2.67522659 C8.18867925,2.67522659 9.26641509,3.16163142 10.0483019,3.94410876 L11.9396226,2.05135952 C10.6822642,0.782477341 8.92830189,0 6.99471698,0 C3.12754717,0 0,3.14048338 0,7 L2.67320755,7 C2.67320755,4.6102719 4.60679245,2.67522659 6.99471698,2.67522659 Z M11.3267925,7 C11.3267925,9.3897281 9.39320755,11.3247734 7.00528302,11.3247734 C5.81132075,11.3247734 4.73358491,10.8383686 3.94113208,10.0558912 L2.04981132,11.9486405 C3.31773585,13.2175227 5.06113208,14 6.99471698,14 C10.8618868,14 14,10.8595166 14,7 L11.3267925,7 Z"></path> </svg> GitHub Repositories </a></div></div></div>`;
 
@@ -353,23 +361,39 @@ window.goosemod = {};
 
     await sleep(10);
 
-    el2.style.backgroundColor = '#050505';
+    el2.style.backgroundColor = '#050505';*/
   };
 
   this.updateLoadingScreen = async (tip) => {
-    let el = document.getElementById('gm-loading-tip');
+    /*let el = document.getElementById('gm-loading-tip');
 
     if (el === null) return;
 
-    el.innerHTML = tip;
+    el.innerHTML = tip;*/
+
+    this.loadingToast.toastElem.innerHTML = `Injecting GooseMod: ${tip}`;
+
+    //this.showToast(`Injecting GooseMod: ${tip}`, {timeout: 1000});
   };
 
   this.stopLoadingScreen = async () => {
-    let el = document.getElementById('gm-loading-container');
+    /*let el = document.getElementById('gm-loading-container');
 
     if (el === null) return false;
 
-    el.remove();
+    el.remove();*/
+
+    //this.showToast('GooseMod has injected successfullyVisit Discord settings to import / remove modules, change settings, etc.');
+
+    //await sleep(100);
+
+    this.loadingToast.toastElem.innerHTML = `GooseMod has injected successfully`;
+
+    this.loadingToast.closeFn();
+
+    // await sleep(310);
+
+    // this.showToast('Visit settings to import / remove modules and tweak settings');
   };
 
   this.startLoadingScreen();
@@ -638,11 +662,9 @@ window.goosemod = {};
     }
   };
 
-  this.updateLoadingScreen('Getting modules from Module Store...');
+  this.updateLoadingScreen('Getting module index from Module Store...');
 
   await this.moduleStoreAPI.updateModules();
-
-  this.updateLoadingScreen('Initialising UI functions...');
 
   this.logger.debug('import.version.goosemod', `${this.version} (${this.injectorHash})`);
 
@@ -1321,9 +1343,12 @@ window.goosemod = {};
   settingsButtonEl.addEventListener('click', async () => {
     if (this.removed) return;
 
-    await sleep(10);
+    settingsLayerEl = undefined;
 
-    settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
+    while (!settingsLayerEl) {
+      await sleep(2);
+      settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
+    }
 
     settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
@@ -1365,8 +1390,6 @@ window.goosemod = {};
 
     this.settings.createFromItems();
   });
-
-  this.updateLoadingScreen('Initialising import functions...');
 
   const ab2str = (buf) => { // ArrayBuffer (UTF-8) -> String
     return String.fromCharCode.apply(null, new Uint8Array(buf));
@@ -1472,8 +1495,6 @@ window.goosemod = {};
 
     return files;
   };
-
-  this.updateLoadingScreen('Creating settings options...');
 
   this.settings.createHeading('GooseMod');
 
@@ -1603,8 +1624,6 @@ window.goosemod = {};
 
     let settings = JSON.parse(localStorage.getItem('goosemodModules'));
 
-    console.log(settings);
-
     if (!settings) return;
 
     for (let p in this.modules) {
@@ -1616,8 +1635,6 @@ window.goosemod = {};
 
     return settings;
   };
-
-  this.updateLoadingScreen('Updating Module Store setting page...');
 
   this.moduleStoreAPI.updateStoreSetting();
 
@@ -1631,15 +1648,21 @@ window.goosemod = {};
 
   toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
 
+  this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
+
   for (let m of toInstallModules) {
-    this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
+    this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`)
+    //this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
 
     await this.moduleStoreAPI.importModule(m);
   }
 
+  this.updateLoadingScreen(`Loading saved module settings...`);
+
   await this.loadSavedModuleSettings();
 
-  reopenSettings();
+  // Only open settings if new user
+  if (!localStorage.getItem('goosemodModules')) reopenSettings();
 
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
-}).bind(window.goosemod)();
+}).bind({})();
