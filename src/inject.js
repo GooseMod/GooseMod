@@ -9,7 +9,7 @@
     this.injectorHash = hash;
   });
 
-  this.version = '2.3.0';
+  this.version = '2.4.0';
 
   this.modules = {};
   this.disabledModules = {};
@@ -337,7 +337,12 @@
   };
 
   this.openSettingItem = (name) => {
-    [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === name).click();
+    try {
+      [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === name).click();
+      return true;
+    } catch (e) {
+      return false;
+    }
   };
 
   this.loadingToast = undefined;
@@ -529,6 +534,34 @@
 
     apiBaseURL: 'https://goosemod-api.netlify.app',
 
+    jsCache: {
+      getCache: () => JSON.parse(localStorage.getItem('goosemodJSCache') || '{}'),
+      purgeCache: () => localStorage.removeItem('goosemodJSCache'),
+
+      updateCache: (moduleName, version, js) => {
+        let cache = this.moduleStoreAPI.jsCache.getCache();
+
+        cache[moduleName] = {version, js};
+
+        localStorage.setItem('goosemodJSCache', JSON.stringify(cache));
+      },
+
+      getJSForModule: async (moduleName) => {
+        const moduleInfo = this.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+        const cache = this.moduleStoreAPI.jsCache.getCache();
+
+        if (cache[moduleName] && moduleInfo.version === cache[moduleName].version) {
+          return cache[moduleName].js;
+        } else {
+          const js = await this.cspBypasser.text(moduleInfo.codeURL, false);
+
+          this.moduleStoreAPI.jsCache.updateCache(moduleName, moduleInfo.version, js);
+
+          return js;
+        }
+      }
+    },
+
     updateModules: async () => {
       this.moduleStoreAPI.modules = (await this.cspBypasser.json(`${this.moduleStoreAPI.apiBaseURL}/modules.json`, false)).sort((a, b) => a.name.localeCompare(b.name));
     },
@@ -536,15 +569,15 @@
     importModule: async (moduleName) => {
       const moduleInfo = this.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
 
-      const jsCode = await this.cspBypasser.text(moduleInfo.codeURL, false);
+      const jsCode = await this.moduleStoreAPI.jsCache.getJSForModule(moduleName);
 
       await this.importModule({
         filename: `${moduleInfo.filename}.js`,
         data: jsCode
       });
 
-      if (this.modules[moduleInfo.filename].onLoadingFinished !== undefined) {
-        await this.modules[moduleInfo.filename].onLoadingFinished();
+      if (this.modules[moduleName].onLoadingFinished !== undefined) {
+        await this.modules[moduleName].onLoadingFinished();
       }
 
       let settingItem = this.settings.items.find((x) => x[1] === 'Module Store');
@@ -804,6 +837,13 @@
   };
 
   let settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
+
+  while (!settingsButtonEl) {
+    this.showToast('Failed to get settings button, retrying');
+    settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
+
+    await sleep(1000);
+  }
 
   let settingsLayerEl, settingsSidebarEl, settingsSidebarGooseModContainer, settingsMainEl, settingsClasses;
 
@@ -1338,17 +1378,27 @@
     }
   };
 
-  settingsButtonEl.addEventListener('click', async () => {
+  let tryingToInject = false;
+
+  this.injectInSettings = async () => {
     if (this.removed) return;
+
+    if (tryingToInject) return;
+
+    tryingToInject = true;
 
     settingsLayerEl = undefined;
 
     while (!settingsLayerEl) {
-      await sleep(2);
       settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
+      await sleep(2);
     }
 
     settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
+
+    if (settingsSidebarEl.classList.contains('goosemod-settings-injected')) return;
+
+    settingsSidebarEl.classList.add('goosemod-settings-injected');
 
     settingsClasses = {};
 
@@ -1387,7 +1437,22 @@
     settingsMainEl = settingsLayerEl.querySelector('main');
 
     this.settings.createFromItems();
-  });
+
+    tryingToInject = false;
+  };
+
+  this._settingsButtonEl = settingsButtonEl;
+
+  settingsButtonEl.addEventListener('click', this.injectInSettings);
+
+  this.checkSettingsOpenInterval = setInterval(async () => {
+    if (tryingToInject) return;
+
+    let el = document.querySelector('div[aria-label="USER_SETTINGS"]');
+    if (el && !el.querySelector('nav > div').classList.contains('goosemod-settings-injected')) {
+      await this.injectInSettings();
+    }
+  }, 100);
 
   const ab2str = (buf) => { // ArrayBuffer (UTF-8) -> String
     return String.fromCharCode.apply(null, new Uint8Array(buf));
@@ -1567,8 +1632,10 @@
   this.remove = () => {
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);
+    clearInterval(this.injectInSettings);
 
     this.clearSettings();
+    this.moduleStoreAPI.jsCache.purgeCache();
 
     this.removed = true;
 

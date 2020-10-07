@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v2.4.0
+
+  - ### Features
+    - Added new settings injector backup system to fix settings injection when settings button click event fails
+    - Added module JS cache - installed modules have their JS code installed and that cache is used if there are no updates for the module, reducing network requests and latency
+
+
 ## v2.3.0
 
   - ### Features
