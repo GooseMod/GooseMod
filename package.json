@@ -1,0 +1,26 @@
+{
+  "name": "injector",
+  "version": "3.0.0",
+  "description": "GooseMod injector",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GooseMod/Injector.git"
+  },
+  "keywords": [
+    "goosemod",
+    "discord"
+  ],
+  "author": "GooseMod",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/GooseMod/Injector/issues"
+  },
+  "homepage": "https://github.com/GooseMod/Injector#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
