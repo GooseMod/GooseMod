@@ -21,7 +21,7 @@ export const importModule = async (f) => {
     f.data = ab2str(f.data);
   }
 
-  globalThis.modules[field] = eval(f.data.replace(/\bthis\./g, 'globalThis.')); // Set globalThis.modules.<module_name> to the return value of the module (an object containing handlers)
+  globalThis.modules[field] = eval(f.data); // Set globalThis.modules.<module_name> to the return value of the module (an object containing handlers)
 
   globalThis.logger.debug(`import.load.module.${field}`, `Evaled module JS`);
 

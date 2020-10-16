@@ -1,5 +1,20 @@
 # GooseMod Changelog
 
+## v3.0.1
+
+  - ### Tweaks
+    - Removed migration code replacing for modules to fix issues
+    - Removed old unneeded logging on startup
+    - New way of getting injector version hash
+    - Add version toast on injection
+
+
+## v3.0.0
+
+  - ### Backend
+    - Rewritten to use multiple JS files with Parcel
+
+
 ## v2.4.0
 
   - ### Features

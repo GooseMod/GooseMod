@@ -3,21 +3,13 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 globalThis.modules = {};
 globalThis.disabledModules = {};
 
-console.log('pass 1');
-
 import * as Logger from './util/logger';
 globalThis.logger = Logger;
 
-import * as Hash from './util/hash';
+globalThis.version = '3.0.1';
+globalThis.versionHash = '<hash>';
 
-globalThis.version = '3.0.0';
-
-Hash.sha512('foobar').then((hash) => {
-  globalThis.injectorHash = hash;
-  globalThis.logger.debug('import.version.goosemod', `${globalThis.version} (${globalThis.injectorHash})`);
-});
-
-console.log('pass 2');
+globalThis.logger.debug('import.version.goosemod', `${globalThis.version} (${globalThis.versionHash})`);
 
 if (window.DiscordNative !== undefined) globalThis.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
 
@@ -27,18 +19,16 @@ if (window.gmUntethered) {
   // delete window.gmUntethered;
 }
 
-console.log('pass 3');
-
 import WebpackModules from './util/discord/webpackModules';
 globalThis.webpackModules = WebpackModules;
 
 import fixLocalStorage from './util/discord/fixLocalStorage';
 fixLocalStorage();
 
-console.log('pass 4');
-
 import showToast from './ui/toast';
 globalThis.showToast = showToast;
+
+globalThis.showToast(`GooseMod v${globalThis.version} (${globalThis.versionHash.substring(0, 7)})`, {timeout: 1000});
 
 import easterEggs from './ui/easterEggs';
 globalThis.messageEasterEggs = easterEggs;
@@ -54,8 +44,6 @@ Object.assign(globalThis, {
   stopLoadingScreen,
   updateLoadingScreen
 });
-
-console.log('pass 5');
 
 import { removeModuleUI, isSettingsOpen, closeSettings, openSettings, openSettingItem, reopenSettings, injectInSettings, checkSettingsOpenInterval } from './ui/settings';
 Object.assign(globalThis, {

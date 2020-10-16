@@ -665,7 +665,7 @@ export const injectInSettings = async () => {
   let versionEl = document.createElement('div');
   versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 
-  versionEl.textContent = `GooseMod ${globalThis.version} (${globalThis.injectorHash.substring(0, 7)})`;
+  versionEl.textContent = `GooseMod ${globalThis.version} (${globalThis.versionHash.substring(0, 7)})`;
 
   settingsSidebarEl.lastChild.appendChild(versionEl);
 
