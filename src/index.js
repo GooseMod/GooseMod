@@ -59,6 +59,10 @@ const importsToAssign = {
 };
 
 const init = async function () {
+  if (globalThis.remove) {
+    globalThis.remove();
+  }
+
   /*for (let p in toAssign) {
     if (toAssign.hasOwnProperty(p)) {
       
@@ -74,7 +78,7 @@ const init = async function () {
   globalThis.modules = {};
   globalThis.disabledModules = {};
 
-  globalThis.version = '3.1.0';
+  globalThis.version = '3.2.0';
   globalThis.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
 
   globalThis.logger.debug('import.version.goosemod', `${globalThis.version} (${globalThis.versionHash})`);

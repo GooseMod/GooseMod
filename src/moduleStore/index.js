@@ -37,8 +37,9 @@ export default {
 
     let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
-    item.type = 'toggle-text-danger-button';
+    item.buttonType = 'danger';
     item.buttonText = 'Remove';
+    item.showToggle = true;
 
     if (globalThis.isSettingsOpen() && !globalThis.initialImport) globalThis.settings.createFromItems();
   },
@@ -48,14 +49,15 @@ export default {
     
     if (item === undefined) return;
 
-    item.type = 'text-and-button';
+    item.buttonType = 'brand';
     item.buttonText = 'Import';
+    item.showToggle = false;
   },
 
   updateStoreSetting: () => {
     let item = globalThis.settings.items.find((x) => x[1] === 'Module Store');
 
-    item[2] = item[2].slice(0, 2);
+    item[2] = item[2].slice(0, 3);
 
     let sortedCategories = globalThis.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 
@@ -71,17 +73,23 @@ export default {
     arr.push(arr.splice(funIndex, 1)[0]);
 
     for (let i = 0; i < arr.length; i++) {
-      item[2].push({
+      /*item[2].push({
         type: 'header',
         text: sortedCategories[i].replace(/\-/g, ' ')
-      });
+      });*/
 
       for (let m of arr[i]) {
         item[2].push({
-          type: globalThis.modules[m.filename] ? 'toggle-text-danger-button' : 'text-and-button',
-          text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author} <span class="description-3_Ncsb">(v${m.version})</span>`,
-          buttonText: globalThis.modules[m.filename] ? 'Remove' : 'Import',
+          type: 'card',
+
+          buttonType: globalThis.modules[m.filename] ? 'danger' : 'brand',
+          showToggle: globalThis.modules[m.filename],
+
+          text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
           subtext: m.description,
+          subtext2: `v${m.version}`,
+
+          buttonText: globalThis.modules[m.filename] ? 'Remove' : 'Import',
           onclick: async (el) => {
             if (globalThis.modules[m.filename]) {
               el.textContent = 'Removing...';

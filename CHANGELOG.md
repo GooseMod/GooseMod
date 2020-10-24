@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v3.2.0
+
+  - ### Features
+    - Revamped Module Store UI to use cards, and now has a search bar
+
+
 ## v3.1.0
 
   - ### Features

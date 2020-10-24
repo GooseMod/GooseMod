@@ -122,6 +122,17 @@ const settings = {
 
     parentEl.appendChild(contentEl);
 
+    let specialContainerEl;
+
+    if (panelName === 'Module Store') {
+      specialContainerEl = document.createElement('div');
+
+      specialContainerEl.style.display = 'flex';
+      specialContainerEl.style.flexDirection = 'row';
+      specialContainerEl.style.flexWrap = 'wrap';
+    }
+
+
     let i = 0;
     for (let e of content.slice(1)) {
       let el;
@@ -353,6 +364,10 @@ const settings = {
 
           el.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
 
+          if (e.width) {
+            el.style.width = `${e.width}px`;
+          }
+
           let contentsEl = document.createElement('div');
 
           contentsEl.classList.add('contents-18-Yxp');
@@ -540,11 +555,208 @@ const settings = {
 
           break;
         }
+
+        case 'card': {
+          el = document.createElement('div');
+
+          el.style.backgroundColor = 'var(--background-secondary)';
+
+          el.style.borderRadius = '8px';
+
+          el.style.padding = '12px';
+          el.style.margin = '10px';
+
+          el.style.width = '310px';
+          el.style.height = '170px';
+
+          el.style.position = 'relative';
+
+          let checked = e.isToggled();
+
+          let toggleEl = document.createElement('div');
+          toggleEl.classList.add('control-2BBjec');
+          
+          let offHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(114, 118, 125);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: -3px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(114, 118, 125, 1)" d="M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z"></path><path fill="rgba(114, 118, 125, 1)" d="M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
+          let onHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(67, 181, 129);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: 12px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(67, 181, 129, 1)" d="M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z"></path><path fill="rgba(67, 181, 129, 1)" d="M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
+
+          toggleEl.innerHTML = checked ? onHTML : offHTML;
+
+          let fn = () => {
+            checked = !checked;
+
+            if (checked) {
+              toggleEl.innerHTML = onHTML;
+            } else {
+              toggleEl.innerHTML = offHTML;
+            }
+
+            e.onToggle(checked, el);
+          };
+
+          toggleEl.onclick = fn;
+
+          toggleEl.style.float = 'left';
+          toggleEl.style.marginRight = '8px';
+
+          if (e.showToggle) el.appendChild(toggleEl);
+
+          let txtEl = document.createElement('span');
+          
+          if (!e.showToggle) {
+            txtEl.style.cursor = 'auto';
+          } else {
+            txtEl.onclick = fn;
+          }
+
+          txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+          txtEl.innerHTML = e.text;
+
+          let buttonEl = document.createElement('div');
+          buttonEl.classList.add('button-38aScr', e.buttonType === 'danger' ? 'lookOutlined-3sRXeN' : 'lookFilled-1Gx00P', e.buttonType === 'danger' ? 'colorRed-1TFJan' : 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+          buttonEl.onclick = () => {
+            e.onclick(buttonEl);
+          };
+
+          buttonEl.style.cursor = 'pointer';
+
+          buttonEl.style.width = '90px';
+
+          let contentsEl = document.createElement('div');
+
+          contentsEl.classList.add('contents-18-Yxp');
+
+          contentsEl.textContent = e.buttonText;
+
+          buttonEl.appendChild(contentsEl);
+
+          el.appendChild(txtEl);
+
+          if (e.subtext) {
+            let subtextEl = document.createElement('div');
+
+            subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+            subtextEl.textContent = e.subtext;
+
+            subtextEl.style.clear = 'both';
+
+            el.appendChild(subtextEl);
+          }
+
+          let bottomContainerEl = document.createElement('div');
+
+          bottomContainerEl.style.position = 'absolute';
+          bottomContainerEl.style.bottom = '12px';
+          bottomContainerEl.style.width = 'calc(100% - 32px)';
+
+          bottomContainerEl.appendChild(buttonEl);
+
+          if (e.subtext2) {
+            let subtext2El = document.createElement('div');
+
+            subtext2El.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+            subtext2El.textContent = e.subtext2;
+
+            subtext2El.style.position = 'absolute';
+            subtext2El.style.right = '-8px';
+            subtext2El.style.top = '10px';
+
+            bottomContainerEl.appendChild(subtext2El);
+          }
+
+          el.appendChild(bottomContainerEl);
+
+          /*let dividerEl = document.createElement('div');
+
+          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+          dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+          el.appendChild(dividerEl);*/
+
+          break;
+        }
+
+        case 'search': {
+          el = document.createElement('div');
+          el.classList.add('search-2oPWTC');
+
+          el.innerHTML = `<div class="searchBar-3dMhjb" role="combobox" aria-label="Search" aria-owns="search-results" aria-expanded="false"><div class="DraftEditor-root"><div class="public-DraftEditorPlaceholder-root"><div class="public-DraftEditorPlaceholder-inner" id="placeholder-8kh0r" style="white-space: pre-wrap;">Search</div></div><div class="DraftEditor-editorContainer"><div aria-describedby="placeholder-8kh0r" class="notranslate public-DraftEditor-content" contenteditable="true" role="textbox" spellcheck="false" style="outline: none; user-select: text; white-space: pre-wrap; overflow-wrap: break-word;"><div data-contents="true"><div class="" data-block="true" data-editor="8kh0r" data-offset-key="4l6d8-0-0"><div data-offset-key="4l6d8-0-0" class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span data-offset-key="4l6d8-0-0"><br data-text="true"></span></div></div></div></div></div></div><div class="icon-38sknP iconLayout-1WxHy4 small-1lPjda" tabindex="-1" aria-hidden="true" aria-label="Clear search" role="button"><div class="iconContainer-O4O2CN"><svg class="icon-3cZ1F_ visible-3V0mGj" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.707 20.293L16.314 14.9C17.403 13.504 18 11.799 18 10C18 7.863 17.167 5.854 15.656 4.344C14.146 2.832 12.137 2 10 2C7.863 2 5.854 2.832 4.344 4.344C2.833 5.854 2 7.863 2 10C2 12.137 2.833 14.146 4.344 15.656C5.854 17.168 7.863 18 10 18C11.799 18 13.504 17.404 14.9 16.314L20.293 21.706L21.707 20.293ZM10 16C8.397 16 6.891 15.376 5.758 14.243C4.624 13.11 4 11.603 4 10C4 8.398 4.624 6.891 5.758 5.758C6.891 4.624 8.397 4 10 4C11.603 4 13.109 4.624 14.242 5.758C15.376 6.891 16 8.398 16 10C16 11.603 15.376 13.11 14.242 14.243C13.109 15.376 11.603 16 10 16Z"></path></svg><svg class="icon-3cZ1F_" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg></div></div></div>`;
+
+          let searchbar = el.children[0];
+
+          searchbar.style.width = 'auto';
+          searchbar.style.height = '32px';
+
+          if (e.storeSpecific) {
+            el.style.marginLeft = '20px';
+
+            el.style.width = '50%'; // Force next element (a card) to go to next line
+            el.style.flexGrow = '1'; // Actually grow to fit the whole line
+          }
+
+          let root = el.querySelector('.DraftEditor-root');
+
+          root.style.height = '34px';
+          root.style.lineHeight = '28px';
+
+          let icons = [...el.getElementsByClassName('icon-3cZ1F_')];
+
+          let iconsContainers = [el.querySelector('.icon-38sknP'), el.querySelector('.iconContainer-O4O2CN'), ...icons];
+
+          iconsContainers[0].style.marginTop = '7px';
+          iconsContainers[0].style.marginRight = '4px';
+
+          for (let x of iconsContainers) {
+            x.style.width = '20px';
+            x.style.height = '20px';
+          }
+
+          el.querySelector('.DraftEditor-editorContainer').style.height = '34px';
+
+          let placeholder = el.querySelector('#placeholder-8kh0r');
+
+          let edible = el.querySelector('[contenteditable=true]');
+
+          let inputContainer = edible.children[0].children[0];
+
+          edible.oninput = () => {
+            const input = edible.innerText.replace('\n', '');
+            const isEmpty = input.length < 1;
+
+            icons[0].style.opacity = isEmpty ? '1' : '0';
+
+            icons[1].style.opacity = isEmpty ? '0' : '1';
+            icons[1].style.cursor = isEmpty ? 'auto' : 'pointer';
+
+            placeholder.style.display = isEmpty ? 'block' : 'none';
+
+            e.onchange(input, contentEl);
+          };
+
+          icons[1].onclick = () => {
+            inputContainer.innerHTML = '';
+
+            edible.oninput();
+          };
+
+          break;
+        }
       }
 
-      contentEl.appendChild(el);
+      if (specialContainerEl) { // && i > 1
+        specialContainerEl.appendChild(el);
+      } else {
+        contentEl.appendChild(el);
+      }
 
       i++;
+    }
+
+    if (specialContainerEl) {
+      contentEl.appendChild(specialContainerEl);
     }
 
     let el = document.createElement('div');
@@ -734,6 +946,27 @@ globalThis.settings.createItem('Module Store', ['',
 
       globalThis.openSettingItem('Module Store');
     },
+    width: 120
+  },
+  {
+    type: 'search',
+    onchange: async (inp, parentEl) => {
+      const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
+
+      const cards = [...parentEl.children[0].children].filter((x) => !x.className);
+
+      for (let c of cards) {
+        const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
+        const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
+
+        const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
+
+        console.log(name, description, matches);
+
+        c.style.display = matches ? 'block' : 'none';
+      }
+    },
+    storeSpecific: true
   }
 ]);
 
