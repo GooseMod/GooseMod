@@ -138,6 +138,44 @@ const settings = {
       let el;
 
       switch (e.type) {
+        case 'divider': {
+          el = document.createElement('div');
+
+          el.style.width = '100%';
+
+          let dividerEl = document.createElement('div');
+          dividerEl.style.marginTop = '25px';
+
+          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+
+          el.appendChild(dividerEl);
+
+          if (e.text) {
+            let textEl = document.createElement('div');
+            textEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+            textEl.style.position = 'relative';
+            textEl.style.top = '-14px';
+            textEl.style.left = 'calc(50% - 7.5%)';
+            textEl.style.width = '15%';
+
+            textEl.style.textAlign = 'center';
+            textEl.style.fontSize = '14px';
+
+            textEl.style.backgroundColor = 'var(--background-tertiary)';
+            textEl.style.padding = '2px';
+            textEl.style.borderRadius = '8px';
+
+            e.text(contentEl).then((x) => {
+              textEl.innerText = x;
+            });
+
+            el.appendChild(textEl);
+          }
+
+          break;
+        }
+
         case 'header':
           el = document.createElement('h2');
 
@@ -720,6 +758,12 @@ const settings = {
 
           let edible = el.querySelector('[contenteditable=true]');
 
+          edible.addEventListener('keydown', (evt) => {
+            if (evt.key === 'Enter') {
+              evt.preventDefault();
+            }
+          });
+
           let inputContainer = edible.children[0].children[0];
 
           edible.oninput = () => {
@@ -950,10 +994,10 @@ globalThis.settings.createItem('Module Store', ['',
   },
   {
     type: 'search',
-    onchange: async (inp, parentEl) => {
+    onchange: (inp, parentEl) => {
       const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
 
-      const cards = [...parentEl.children[0].children].filter((x) => !x.className);
+      const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1]);
 
       for (let c of cards) {
         const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
@@ -961,12 +1005,28 @@ globalThis.settings.createItem('Module Store', ['',
 
         const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-        console.log(name, description, matches);
-
         c.style.display = matches ? 'block' : 'none';
       }
+
+      const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
+
+      parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
+
+      //globalThis.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.type === 'divider').text(parentEl);
     },
     storeSpecific: true
+  },
+  {
+    type: 'divider',
+    text: (parentEl) => {
+      return new Promise(async (res) => {
+        await sleep(10);
+
+        const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
+
+        return res(`${cards.length} modules`);
+      });
+    }
   }
 ]);
 

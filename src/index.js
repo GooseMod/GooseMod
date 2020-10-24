@@ -78,7 +78,7 @@ const init = async function () {
   globalThis.modules = {};
   globalThis.disabledModules = {};
 
-  globalThis.version = '3.2.0';
+  globalThis.version = '3.2.1';
   globalThis.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
 
   globalThis.logger.debug('import.version.goosemod', `${globalThis.version} (${globalThis.versionHash})`);

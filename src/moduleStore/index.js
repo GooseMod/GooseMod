@@ -57,7 +57,7 @@ export default {
   updateStoreSetting: () => {
     let item = globalThis.settings.items.find((x) => x[1] === 'Module Store');
 
-    item[2] = item[2].slice(0, 3);
+    item[2] = item[2].slice(0, 4);
 
     let sortedCategories = globalThis.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 

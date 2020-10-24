@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v3.2.1
+
+  - ### Features
+    - Added separator to Module Store UI
+
+  - ### Fixes
+    - Fixed being able to input newlines in Module Store UI search box
+
+
 ## v3.2.0
 
   - ### Features
