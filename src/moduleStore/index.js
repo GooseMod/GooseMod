@@ -1,3 +1,5 @@
+import { sha512 } from '../util/hash';
+
 export default {
   modules: [],
 
@@ -13,6 +15,14 @@ export default {
     const moduleInfo = globalThis.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
 
     const jsCode = await globalThis.moduleStoreAPI.jsCache.getJSForModule(moduleName);
+
+    const calculatedHash = await sha512(jsCode);
+    if (calculatedHash !== moduleInfo.hash) {
+      globalThis.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 1000});
+
+      console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
+      return;
+    }
 
     await globalThis.importModule({
       filename: `${moduleInfo.filename}.js`,

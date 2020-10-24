@@ -1,5 +1,19 @@
 # GooseMod Changelog
 
+## v3.1.0
+
+  - ### Features
+    - Added hash checking to Module Store for each module
+
+  - ### Fixes
+    - Fixed local module importing being broken
+    - Fixed reinjecting after being removed in the past not working and still thinking it had been removed
+
+  - ### Backend
+    - Sleep and ab2str specific util JS files / imports as they are used through out (more than once)
+    - Cleaned up some code when initially loading
+
+
 ## v3.0.1
 
   - ### Tweaks

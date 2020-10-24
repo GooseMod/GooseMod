@@ -1,6 +1,4 @@
-const ab2str = (buf) => { // ArrayBuffer (UTF-8) -> String
-  return String.fromCharCode.apply(null, new Uint8Array(buf));
-};
+import ab2str from './util/ab2str';
 
 export const importModule = async (f) => {
   let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)

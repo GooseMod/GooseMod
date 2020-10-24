@@ -1,4 +1,5 @@
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+import sleep from '../util/sleep';
+import ab2str from '../util/ab2str';
 
 export const removeModuleUI = (field, where) => {
   let settingItem = globalThis.settings.items.find((x) => x[1] === 'Manage Modules');
