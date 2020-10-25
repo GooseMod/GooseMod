@@ -66,7 +66,7 @@ export default {
   updateStoreSetting: () => {
     let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
 
-    item[2] = item[2].slice(0, 4);
+    item[2] = item[2].slice(0, 5);
 
     let sortedCategories = goosemodScope.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 
@@ -90,6 +90,8 @@ export default {
       for (let m of arr[i]) {
         item[2].push({
           type: 'card',
+          
+          class: m.category,
 
           buttonType: goosemodScope.modules[m.filename] ? 'danger' : 'brand',
           showToggle: goosemodScope.modules[m.filename],

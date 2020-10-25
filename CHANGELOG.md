@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v4.1.0
+
+  - ### Features
+    - Added sidebar to Module Store UI
+
+
 ## v4.0.0
 
   - ### Tweaks

@@ -129,7 +129,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
     parentEl.appendChild(contentEl);
 
-    let specialContainerEl;
+    let specialContainerEl, cardContainerEl;
 
     if (panelName === 'Module Store') {
       specialContainerEl = document.createElement('div');
@@ -137,8 +137,21 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
       specialContainerEl.style.display = 'flex';
       specialContainerEl.style.flexDirection = 'row';
       specialContainerEl.style.flexWrap = 'wrap';
-    }
 
+      cardContainerEl = document.createElement('div');
+
+      cardContainerEl.style.display = 'grid';
+      cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 330px)';
+      cardContainerEl.style.width = 'calc(100% - 280px)';
+      cardContainerEl.style.justifyContent = 'center';
+
+      /*cardContainerEl.style.columnGap = '10px';
+      cardContainerEl.style.rowGap = '10px';*/
+
+      document.querySelector('.sidebarRegion-VFTUkN').style.transition = '0.5s max-width';
+  
+      document.querySelector('.contentColumnDefault-1VQkGM').style.transition = '0.5s max-width';
+    }
 
     let i = 0;
     for (let e of content.slice(1)) {
@@ -604,6 +617,8 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
         case 'card': {
           el = document.createElement('div');
 
+          if (e.class) el.classList.add(e.class);
+
           el.style.backgroundColor = 'var(--background-secondary)';
 
           el.style.borderRadius = '8px';
@@ -795,10 +810,78 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
           break;
         }
+
+        case 'sidebar': {
+          el = document.createElement('div');
+
+          el.style.backgroundColor = 'var(--background-secondary)';
+
+          el.style.borderRadius = '8px';
+
+          el.style.padding = '14px';
+
+          el.style.marginTop = '4px';
+          el.style.marginLeft = '4px';
+
+          el.style.width = '270px';
+          el.style.height = 'fit-content';
+
+          el.style.position = 'relative';
+
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+
+          e.children(contentEl).then((children) => {
+            for (let c of children) {
+              console.log(c);
+              let mainEl = document.createElement('div');
+
+              mainEl.classList.add('flex-1xMQg5', 'flex-1O1GKY', 'horizontal-1ae9ci', 'horizontal-2EEEnY', 'flex-1O1GKY', 'directionRow-3v3tfG', 'justifyBetween-2tTqYu', 'alignCenter-1dQNNs', 'noWrap-3jynv6', 'item-3eFBNF');
+              mainEl.style.flex = '1 1 auto';
+
+              const selectedClass = 'selected-2DeaDa';
+
+              const unselectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai" style="width: 24px; height: 24px; flex: 1 1 auto;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="transparent" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
+              const selectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" checked="" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai checked-3_4uQ9" style="width: 24px; height: 24px; border-color: rgb(67, 181, 129); flex: 1 1 auto; background-color: rgb(67, 181, 129);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
+
+              const selected = c.selected();
+
+              mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
+              if (selected) {
+                mainEl.classList.add(selectedClass);
+              }
+
+              mainEl.onclick = () => {
+                selected = !selected;
+
+                if (selected) {
+                  mainEl.classList.add(selectedClass);
+                } else {
+                  mainEl.classList.remove(selectedClass);
+                }
+
+                mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
+
+                c.onselected(selected, contentEl);
+              };
+
+              el.appendChild(mainEl);
+            }
+          });
+
+          /*let dividerEl = document.createElement('div');
+
+          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+          dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+          el.appendChild(dividerEl);*/
+
+          break;
+        }
       }
 
       if (specialContainerEl) { // && i > 1
-        specialContainerEl.appendChild(el);
+        (e.type === 'card' ? cardContainerEl : specialContainerEl).appendChild(el);
       } else {
         contentEl.appendChild(el);
       }
@@ -807,6 +890,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
     }
 
     if (specialContainerEl) {
+      specialContainerEl.insertBefore(cardContainerEl, specialContainerEl.children[specialContainerEl.children.length - 1]);
       contentEl.appendChild(specialContainerEl);
     }
 
@@ -839,6 +923,13 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
         return; 
       }
 
+      if (panelName === 'Module Store') {
+        setTimeout(() => {
+          document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
+          document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '100%';
+        }, 10);
+      }
+
       setTimeout(() => {
         settingsMainEl.firstChild.innerHTML = '';
         settingsMainEl.firstChild.appendChild(parentEl);
@@ -853,6 +944,11 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
     settingsSidebarEl.addEventListener('click', () => {
       if (goosemodScope.removed === true) return;
+
+      if (panelName === 'Module Store') {
+        document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
+        document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
+      }
 
       el.classList.remove(settingsClasses['selected']);
     });
@@ -983,6 +1079,33 @@ export const makeGooseModSettings = () => {
     }
   ]);
 
+  const updateModuleStoreUI = (parentEl, cards) => {
+    const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
+
+    const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
+
+    let selectors = {};
+
+    const selectedClass = 'selected-2DeaDa';
+
+    for (let s of [...parentEl.children[0].children[4].children]) {
+      selectors[s.children[0].children[0].children[2].innerText.toLowerCase()] = s.classList.contains(selectedClass);
+    }
+
+    for (let c of cards) {
+      const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
+      const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
+
+      const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
+
+      c.style.display = matches && selectors[c.className] ? 'block' : 'none';
+    }
+
+    const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
+
+    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
+  };
+
   goosemodScope.settings.createItem('Module Store', ['',
     {
       type: 'button',
@@ -1001,24 +1124,9 @@ export const makeGooseModSettings = () => {
     {
       type: 'search',
       onchange: (inp, parentEl) => {
-        const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
+        const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
-        const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        for (let c of cards) {
-          const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
-          const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
-
-          const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
-
-          c.style.display = matches ? 'block' : 'none';
-        }
-
-        const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
-
-        parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
-
-        //goosemodScope.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.type === 'divider').text(parentEl);
+        updateModuleStoreUI(parentEl, cards);
       },
       storeSpecific: true
     },
@@ -1028,9 +1136,28 @@ export const makeGooseModSettings = () => {
         return new Promise(async (res) => {
           await sleep(10);
 
-          const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
+          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
 
           return res(`${cards.length} modules`);
+        });
+      }
+    },
+    {
+      type: 'sidebar',
+      children: (parentEl) => {
+        return new Promise(async (res) => {
+          await sleep(10);
+
+          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+          return res([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + 1), new Map()).entries()].map((x) => ({
+            text: x[0] === 'ui' ? 'UI' : x[0][0].toUpperCase() + x[0].substring(1),
+            subText: x[1],
+            selected: () => true,
+            onselected: () => {
+              updateModuleStoreUI(parentEl, cards);
+            }
+          })));
         });
       }
     }
