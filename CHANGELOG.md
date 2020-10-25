@@ -1,5 +1,16 @@
 # GooseMod Changelog
 
+## v4.0.0
+
+  - ### Tweaks
+    - Hid local reinstall option (and divider) as it is mostly useless / never used
+
+  - ### Backend
+    - Rewrote to not use global / window object - fixes many potential bugs and is more secure
+    - Moved some misc. settings options into goosemod.settings instead of bloating the parent scope
+    - Module functions are no longer binded to goosemod scope, instead it is avaliable as an object in the module eval
+
+
 ## v3.2.1
 
   - ### Features

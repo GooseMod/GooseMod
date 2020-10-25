@@ -1,7 +1,13 @@
 let loadingToast = undefined;
 
+let goosemodScope = {};
+
+export const setThisScope = (scope) => {
+  goosemodScope = scope;
+};
+
 export const startLoadingScreen = () => {
-  loadingToast = globalThis.showToast('Injecting GooseMod: Starting...', { timeout: 99999 });
+  loadingToast = goosemodScope.showToast('Injecting GooseMod: Starting...', { timeout: 99999 });
 };
 
 export const updateLoadingScreen = (tip) => {

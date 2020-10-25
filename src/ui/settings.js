@@ -1,21 +1,28 @@
 import sleep from '../util/sleep';
-import ab2str from '../util/ab2str';
+// import ab2str from '../util/ab2str';
+
+let goosemodScope = {};
+
+export const setThisScope = (scope) => {
+  goosemodScope = scope;
+};
+
 
 export const removeModuleUI = (field, where) => {
-  let settingItem = globalThis.settings.items.find((x) => x[1] === 'Manage Modules');
+  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Manage Modules');
 
-  settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === globalThis.modules[field].description)), 1);
+  settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === goosemodScope.modules[field].description)), 1);
 
-  globalThis.moduleStoreAPI.moduleRemoved(globalThis.modules[field]);
+  goosemodScope.moduleStoreAPI.moduleRemoved(goosemodScope.modules[field]);
 
-  globalThis.modules[field].remove();
+  goosemodScope.modules[field].remove();
 
-  delete globalThis.modules[field];
+  delete goosemodScope.modules[field];
 
-  globalThis.clearModuleSetting(field);
+  goosemodScope.clearModuleSetting(field);
 
-  globalThis.settings.createFromItems();
-  globalThis.openSettingItem(where);
+  goosemodScope.settings.createFromItems();
+  goosemodScope.settings.openSettingItem(where);
 };
 
 export const isSettingsOpen = () => {
@@ -44,15 +51,15 @@ export const openSettingItem = (name) => {
 };
 
 export const reopenSettings = async () => {
-  globalThis.closeSettings();
+  goosemodScope.settings.closeSettings();
 
   await sleep(1000);
 
-  globalThis.openSettings();
+  goosemodScope.settings.openSettings();
 
   await sleep(200);
 
-  globalThis.openSettingItem('Module Store');
+  goosemodScope.settings.openSettingItem('Module Store');
 };
 
 // Settings UI stuff
@@ -63,7 +70,7 @@ let settingsButtonEl;
   settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
 
   while (!settingsButtonEl) {
-    globalThis.showToast('Failed to get settings button, retrying');
+    goosemodScope.showToast('Failed to get settings button, retrying');
     settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
 
     await sleep(1000);
@@ -74,40 +81,40 @@ let settingsButtonEl;
 
 let settingsLayerEl, settingsSidebarEl, settingsSidebarGooseModContainer, settingsMainEl, settingsClasses;
 
-const settings = {
-  items: [],
+//const settings = {
+export let items = [];
 
-  createItem: (panelName, content, clickHandler, danger = false) => {
-    globalThis.settings.items.push(['item', panelName, content, clickHandler, danger]);
-  },
+export const createItem = (panelName, content, clickHandler, danger = false) => {
+  goosemodScope.settings.items.push(['item', panelName, content, clickHandler, danger]);
+};
 
-  createHeading: (headingName) => {
-    globalThis.settings.items.push(['heading', headingName]);
-  },
+export const createHeading = (headingName) => {
+  goosemodScope.settings.items.push(['heading', headingName]);
+};
 
-  createSeparator: () => {
-    globalThis.settings.items.push(['separator']);
-  },
+export const createSeparator = () => {
+  goosemodScope.settings.items.push(['separator']);
+};
 
-  createFromItems: () => {
-    settingsSidebarGooseModContainer.innerHTML = '';
+export const createFromItems = () => {
+  settingsSidebarGooseModContainer.innerHTML = '';
 
-    for (let i of globalThis.settings.items) {
-      switch (i[0]) {
-        case 'item':
-          globalThis.settings._createItem(i[1], i[2], i[3], i[4]);
-          break;
-        case 'heading':
-          globalThis.settings._createHeading(i[1]);
-          break;
-        case 'separator':
-          globalThis.settings._createSeparator();
-          break;
-      }
+  for (let i of goosemodScope.settings.items) {
+    switch (i[0]) {
+      case 'item':
+        goosemodScope.settings._createItem(i[1], i[2], i[3], i[4]);
+        break;
+      case 'heading':
+        goosemodScope.settings._createHeading(i[1]);
+        break;
+      case 'separator':
+        goosemodScope.settings._createSeparator();
+        break;
     }
-  },
+  }
+};
 
-  _createItem: (panelName, content, clickHandler, danger = false) => {
+export const _createItem = (panelName, content, clickHandler, danger = false) => {
     let parentEl = document.createElement('div');
 
     let headerEl = document.createElement('h2');
@@ -845,7 +852,7 @@ const settings = {
     };
 
     settingsSidebarEl.addEventListener('click', () => {
-      if (globalThis.removed === true) return;
+      if (goosemodScope.removed === true) return;
 
       el.classList.remove(settingsClasses['selected']);
     });
@@ -853,34 +860,32 @@ const settings = {
     if (panelName === 'Manage Modules' && window.DiscordNative === undefined) return;
 
     settingsSidebarGooseModContainer.appendChild(el);
-  },
-
-  _createHeading: (headingName) => {
-    let el = document.createElement('div');
-    el.className = settingsClasses['header'];
-
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('role', 'button');
-
-    el.innerText = headingName;
-
-    settingsSidebarGooseModContainer.appendChild(el);
-  },
-
-  _createSeparator: () => {
-    let el = document.createElement('div');
-    el.className = settingsClasses['separator'];
-
-    settingsSidebarGooseModContainer.appendChild(el);
-  }
 };
 
-globalThis.settings = settings;
+export const _createHeading = (headingName) => {
+  let el = document.createElement('div');
+  el.className = settingsClasses['header'];
+
+  el.setAttribute('tabindex', '0');
+  el.setAttribute('role', 'button');
+
+  el.innerText = headingName;
+
+  settingsSidebarGooseModContainer.appendChild(el);
+};
+
+export const _createSeparator = () => {
+  let el = document.createElement('div');
+  el.className = settingsClasses['separator'];
+
+  settingsSidebarGooseModContainer.appendChild(el);
+};
+//};
 
 let tryingToInject = false;
 
 export const injectInSettings = async () => {
-  if (globalThis.removed) return;
+  if (goosemodScope.removed) return;
 
   if (tryingToInject) return;
 
@@ -922,20 +927,20 @@ export const injectInSettings = async () => {
   let versionEl = document.createElement('div');
   versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 
-  versionEl.textContent = `GooseMod ${globalThis.version} (${globalThis.versionHash.substring(0, 7)})`;
+  versionEl.textContent = `GooseMod ${goosemodScope.version} (${goosemodScope.versionHash.substring(0, 7)})`;
 
   settingsSidebarEl.lastChild.appendChild(versionEl);
 
   let versionElUntethered = document.createElement('div');
   versionElUntethered.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 
-  versionElUntethered.textContent = `GooseMod Untethered ${globalThis.untetheredVersion || 'N/A'}`;
+  versionElUntethered.textContent = `GooseMod Untethered ${goosemodScope.untetheredVersion || 'N/A'}`;
 
   settingsSidebarEl.lastChild.appendChild(versionElUntethered);
 
   settingsMainEl = settingsLayerEl.querySelector('main');
 
-  globalThis.settings.createFromItems();
+  goosemodScope.settings.createFromItems();
 
   tryingToInject = false;
 };
@@ -945,113 +950,113 @@ export const checkSettingsOpenInterval = setInterval(async () => {
 
   let el = document.querySelector('div[aria-label="USER_SETTINGS"]');
   if (el && !el.querySelector('nav > div').classList.contains('goosemod-settings-injected')) {
-    await globalThis.injectInSettings();
+    await goosemodScope.settings.injectInSettings();
   }
 }, 100);
 
-globalThis.settings.createHeading('GooseMod');
+export const makeGooseModSettings = () => {
+  goosemodScope.settings.createHeading('GooseMod');
 
-globalThis.settings.createItem('Manage Modules', ['',
-  {
-    type: 'button',
-    text: 'Import Local Modules',
-    onclick: async () => {
-      let files = await globalThis.importModulesFull();
+  goosemodScope.settings.createItem('Manage Modules', ['',
+    {
+      type: 'button',
+      text: 'Import Local Modules',
+      onclick: async () => {
+        let files = await goosemodScope.importModulesFull();
 
-      for (let f of files) {
-        let n = f.filename.split('.').slice(0, -1).join('.');
+        for (let f of files) {
+          let n = f.filename.split('.').slice(0, -1).join('.');
 
-        if (globalThis.modules[n].onLoadingFinished !== undefined) {
-          await globalThis.modules[n].onLoadingFinished();
+          if (goosemodScope.modules[n].onLoadingFinished !== undefined) {
+            await goosemodScope.modules[n].onLoadingFinished();
+          }
         }
-      }
 
-      globalThis.settings.createFromItems();
-      globalThis.openSettingItem('Manage Modules');
+        goosemodScope.settings.createFromItems();
+        goosemodScope.settings.openSettingItem('Manage Modules');
+      },
     },
-  },
 
-  {
-    type: 'header',
-    text: 'Imported Modules'
-  }
-]);
-
-globalThis.settings.createItem('Module Store', ['',
-  {
-    type: 'button',
-    text: 'Update Index',
-    onclick: async () => {
-      await globalThis.moduleStoreAPI.updateModules();
-
-      await globalThis.moduleStoreAPI.updateStoreSetting();
-
-      globalThis.settings.createFromItems();
-
-      globalThis.openSettingItem('Module Store');
-    },
-    width: 120
-  },
-  {
-    type: 'search',
-    onchange: (inp, parentEl) => {
-      const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
-
-      const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1]);
-
-      for (let c of cards) {
-        const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
-        const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
-
-        const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
-
-        c.style.display = matches ? 'block' : 'none';
-      }
-
-      const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
-
-      parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
-
-      //globalThis.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.type === 'divider').text(parentEl);
-    },
-    storeSpecific: true
-  },
-  {
-    type: 'divider',
-    text: (parentEl) => {
-      return new Promise(async (res) => {
-        await sleep(10);
-
-        const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
-
-        return res(`${cards.length} modules`);
-      });
+    {
+      type: 'header',
+      text: 'Imported Modules'
     }
-  }
-]);
+  ]);
 
-globalThis.settings.createSeparator();
+  goosemodScope.settings.createItem('Module Store', ['',
+    {
+      type: 'button',
+      text: 'Update Index',
+      onclick: async () => {
+        await goosemodScope.moduleStoreAPI.updateModules();
 
-globalThis.settings.createItem('Uninstall', [""], async () => {
-  if (await globalThis.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
-    globalThis.closeSettings();
+        await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-    globalThis.remove();
-  }
-}, true);
+        goosemodScope.settings.createFromItems();
 
-if (window.DiscordNative !== undefined) {
-  globalThis.settings.createItem('Local Reinstall', [''], async () => {
-    if (await globalThis.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
-      globalThis.closeSettings();
+        goosemodScope.settings.openSettingItem('Module Store');
+      },
+      width: 120
+    },
+    {
+      type: 'search',
+      onchange: (inp, parentEl) => {
+        const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
 
-      globalThis.remove();
+        const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1]);
 
-      eval(ab2str((await DiscordNative.fileManager.openFiles())[0].data));
+        for (let c of cards) {
+          const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
+          const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
+
+          const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
+
+          c.style.display = matches ? 'block' : 'none';
+        }
+
+        const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
+
+        parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
+
+        //goosemodScope.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.type === 'divider').text(parentEl);
+      },
+      storeSpecific: true
+    },
+    {
+      type: 'divider',
+      text: (parentEl) => {
+        return new Promise(async (res) => {
+          await sleep(10);
+
+          const cards = [...parentEl.children[0].children].filter((x) => !x.className && x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
+
+          return res(`${cards.length} modules`);
+        });
+      }
+    }
+  ]);
+
+  goosemodScope.settings.createItem('Uninstall', [""], async () => {
+    if (await goosemodScope.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
+      goosemodScope.settings.closeSettings();
+
+      goosemodScope.remove();
     }
   }, true);
-}
 
-globalThis.settings.createSeparator();
+  /*if (window.DiscordNative !== undefined) {
+    goosemodScope.settings.createItem('Local Reinstall', [''], async () => {
+      if (await goosemodScope.confirmDialog('Reinstall', 'Reinstall GooseMod', 'Are you sure you want to reinstall GooseMod? This will uninstall GooseMod, then ask you for the inject.js file, then run it to reinstall.')) {
+        goosemodScope.settings.closeSettings();
 
-globalThis.settings.createHeading('GooseMod Modules');
+        goosemodScope.remove();
+
+        eval(ab2str((await DiscordNative.fileManager.openFiles())[0].data));
+      }
+    }, true);
+  }*/
+
+  goosemodScope.settings.createSeparator();
+
+  goosemodScope.settings.createHeading('GooseMod Modules');
+};

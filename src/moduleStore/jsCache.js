@@ -1,8 +1,14 @@
+let goosemodScope = {};
+
+export const setThisScope = (scope) => {
+  goosemodScope = scope;
+};
+
 export const getCache = () => JSON.parse(localStorage.getItem('goosemodJSCache') || '{}');
 export const purgeCache = () => localStorage.removeItem('goosemodJSCache');
 
 export const updateCache = (moduleName, version, js) => {
-  let cache = globalThis.moduleStoreAPI.jsCache.getCache();
+  let cache = goosemodScope.moduleStoreAPI.jsCache.getCache();
 
   cache[moduleName] = {version, js};
 
@@ -10,15 +16,15 @@ export const updateCache = (moduleName, version, js) => {
 };
 
 export const getJSForModule = async (moduleName) => {
-  const moduleInfo = globalThis.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
-  const cache = globalThis.moduleStoreAPI.jsCache.getCache();
+  const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+  const cache = goosemodScope.moduleStoreAPI.jsCache.getCache();
 
   if (cache[moduleName] && moduleInfo.version === cache[moduleName].version) {
     return cache[moduleName].js;
   } else {
-    const js = await globalThis.cspBypasser.text(moduleInfo.codeURL, false);
+    const js = await goosemodScope.cspBypasser.text(moduleInfo.codeURL, false);
 
-    globalThis.moduleStoreAPI.jsCache.updateCache(moduleName, moduleInfo.version, js);
+    goosemodScope.moduleStoreAPI.jsCache.updateCache(moduleName, moduleInfo.version, js);
 
     return js;
   }

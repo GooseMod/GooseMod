@@ -10,24 +10,36 @@ import cspBypasser from './util/discord/cspBypasser';
 import showToast from './ui/toast';
 import confirmDialog from './ui/modals/confirm';
 
-import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen } from './ui/loading';
+import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScope as setThisScope1 } from './ui/loading';
 
-import { removeModuleUI, isSettingsOpen, closeSettings, openSettings, openSettingItem, reopenSettings, injectInSettings, checkSettingsOpenInterval } from './ui/settings';
+import * as Settings from './ui/settings';
+
+// import { removeModuleUI, isSettingsOpen, closeSettings, openSettings, openSettingItem, reopenSettings, injectInSettings, checkSettingsOpenInterval, makeGooseModSettings, setThisScope as setThisScope2 } from './ui/settings';
 
 import easterEggs from './ui/easterEggs';
 
-import { importModule, importModules, bindHandlers, getModuleFiles, importModulesFull } from './moduleManager';
-import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleSetting, loadSavedModuleSettings } from './moduleSettingsStore';
+import { importModule, importModules, bindHandlers, getModuleFiles, importModulesFull, setThisScope as setThisScope3 } from './moduleManager';
+import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleSetting, loadSavedModuleSettings, setThisScope as setThisScope4 } from './moduleSettingsStore';
 
 import moduleStoreAPI from './moduleStore';
 
+const scopeSetterFncs = [
+  setThisScope1,
+  Settings.setThisScope, // setThisScope2,
+  setThisScope3,
+  setThisScope4,
+
+  moduleStoreAPI.setThisScope,
+  cspBypasser.setThisScope,
+  easterEggs.setThisScope
+];
 
 const importsToAssign = {
   startLoadingScreen,
   stopLoadingScreen,
   updateLoadingScreen,
 
-  removeModuleUI,
+  settings: Settings, /* removeModuleUI,
   isSettingsOpen,
   closeSettings,
   openSettings,
@@ -35,6 +47,7 @@ const importsToAssign = {
   reopenSettings,
   injectInSettings,
   checkSettingsOpenInterval,
+  makeGooseModSettings, */
 
   importModule,
   importModules,
@@ -59,9 +72,19 @@ const importsToAssign = {
 };
 
 const init = async function () {
-  if (globalThis.remove) {
-    globalThis.remove();
-  }
+  Object.assign(this, importsToAssign);
+
+  fixLocalStorage();
+
+  let a = 1;
+  for (let x of scopeSetterFncs) {
+    console.log(a, x);
+    x(this);
+
+    a++;
+  };
+
+  this.cspBypasser.init();
 
   /*for (let p in toAssign) {
     if (toAssign.hasOwnProperty(p)) {
@@ -69,49 +92,47 @@ const init = async function () {
     }
   }*/
 
-  Object.assign(globalThis, importsToAssign);
+  this.settings.makeGooseModSettings();
 
-  // globalThis.logger = Logger;
+  // this.logger = Logger;
 
-  globalThis.removed = false;
+  this.removed = false;
 
-  globalThis.modules = {};
-  globalThis.disabledModules = {};
+  this.modules = {};
+  this.disabledModules = {};
 
-  globalThis.version = '3.2.1';
-  globalThis.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
+  this.version = '4.0.0';
+  this.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
 
-  globalThis.logger.debug('import.version.goosemod', `${globalThis.version} (${globalThis.versionHash})`);
+  this.logger.debug('import.version.goosemod', `${this.version} (${this.versionHash})`);
 
-  if (window.DiscordNative !== undefined) globalThis.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
+  if (window.DiscordNative !== undefined) this.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
   
   if (window.gmUntethered) {
-    globalThis.untetheredVersion = window.gmUntethered.slice();
+    this.untetheredVersion = window.gmUntethered.slice();
     
     // delete window.gmUntethered;
   }
   
-  // globalThis.webpackModules = WebpackModules;
+  // this.webpackModules = WebpackModules;
   
-  fixLocalStorage();
+  // this.showToast = showToast;
   
-  // globalThis.showToast = showToast;
+  this.showToast(`GooseMod v${this.version} (${this.versionHash.substring(0, 7)})`, {timeout: 1000});
   
-  globalThis.showToast(`GooseMod v${globalThis.version} (${globalThis.versionHash.substring(0, 7)})`, {timeout: 1000});
+  // this.messageEasterEggs = easterEggs;
   
-  // globalThis.messageEasterEggs = easterEggs;
+  // this.confirmDialog = confirmDialog;
   
-  // globalThis.confirmDialog = confirmDialog;
+  this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
-  globalThis.messageEasterEggs.interval = setInterval(globalThis.messageEasterEggs.check, 1000);
-  
-  /* Object.assign(globalThis, {
+  /* Object.assign(this, {
     startLoadingScreen,
     stopLoadingScreen,
     updateLoadingScreen
   });
   
-  Object.assign(globalThis, {
+  Object.assign(this, {
     removeModuleUI,
     isSettingsOpen,
     closeSettings,
@@ -122,11 +143,9 @@ const init = async function () {
     checkSettingsOpenInterval
   });
   
-  globalThis.cspBypasser = cspBypasser; */
+  this.cspBypasser = cspBypasser; */
   
-  globalThis.cspBypasser.init();
-  
-  /* Object.assign(globalThis, {
+  /* Object.assign(this, {
     importModule,
     importModules,
     bindHandlers,
@@ -134,7 +153,7 @@ const init = async function () {
     importModulesFull
   });
   
-  Object.assign(globalThis, {
+  Object.assign(this, {
     saveModuleSettings,
     clearModuleSetting,
     clearSettings,
@@ -142,36 +161,36 @@ const init = async function () {
     loadSavedModuleSettings
   });
   
-  globalThis.moduleStoreAPI = moduleStoreAPI; */
+  this.moduleStoreAPI = moduleStoreAPI; */
   
-  globalThis.saveInterval = setInterval(globalThis.saveModuleSettings, 3000);
+  this.saveInterval = setInterval(this.saveModuleSettings, 3000);
   
-  globalThis.remove = () => {
-    clearInterval(globalThis.messageEasterEggs.interval);
-    clearInterval(globalThis.saveInterval);
-    clearInterval(globalThis.injectInSettings);
+  this.remove = () => {
+    clearInterval(this.messageEasterEggs.interval);
+    clearInterval(this.saveInterval);
+    clearInterval(this.checkSettingsOpenInterval);
     
-    globalThis.clearSettings();
-    globalThis.moduleStoreAPI.jsCache.purgeCache();
+    this.clearSettings();
+    this.moduleStoreAPI.jsCache.purgeCache();
     
-    globalThis.removed = true;
+    this.removed = true;
     
-    for (let p in globalThis.modules) {
-      if (globalThis.modules.hasOwnProperty(p) && globalThis.modules[p].remove !== undefined) {
-        globalThis.modules[p].remove();
+    for (let p in this.modules) {
+      if (this.modules.hasOwnProperty(p) && this.modules[p].remove !== undefined) {
+        this.modules[p].remove();
       }
     }
   };
   
-  globalThis.startLoadingScreen();
+  this.startLoadingScreen();
   
-  globalThis.updateLoadingScreen('Getting module index from Module Store...');
+  this.updateLoadingScreen('Getting module index from Module Store...');
   
-  await globalThis.moduleStoreAPI.updateModules();
+  await this.moduleStoreAPI.updateModules();
   
-  globalThis.moduleStoreAPI.updateStoreSetting();
+  this.moduleStoreAPI.updateStoreSetting();
   
-  globalThis.initialImport = true;
+  this.initialImport = true;
   
   let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
   let toInstallIsDefault = false;
@@ -181,7 +200,7 @@ const init = async function () {
     toInstallModules = ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
   
-  toInstallModules = toInstallModules.filter((m) => globalThis.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
+  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
   
   let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
   
@@ -195,35 +214,37 @@ const init = async function () {
     toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
   }
   
-  globalThis.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
+  this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
   
   for (let m of toInstallModules) {
-    globalThis.updateLoadingScreen(`${globalThis.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`)
-    //globalThis.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${globalThis.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
+    this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`)
+    //this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
     
-    await globalThis.moduleStoreAPI.importModule(m);
+    await this.moduleStoreAPI.importModule(m);
   }
   
-  delete globalThis.initialImport;
+  delete this.initialImport;
   
-  globalThis.updateLoadingScreen(`Loading saved module settings...`);
+  this.updateLoadingScreen(`Loading saved module settings...`);
   
-  await globalThis.loadSavedModuleSettings();
+  await this.loadSavedModuleSettings();
   
-  globalThis.stopLoadingScreen();
+  this.stopLoadingScreen();
   
-  if (globalThis.isSettingsOpen()) { // If settings are open, reopen to inject new GooseMod options
-    globalThis.reopenSettings();
+  if (this.settings.isSettingsOpen()) { // If settings are open, reopen to inject new GooseMod options
+    this.settings.reopenSettings();
   } else {
     // Only open settings (when not already open) if new user
     if (!localStorage.getItem('goosemodModules')) {
-      globalThis.openSettings();
+      this.settings.openSettings();
       
       await sleep(200);
       
-      globalThis.openSettingItem('Module Store');
+      this.openSettingItem('Module Store');
     }
   }
+
+  console.log(this);
 };
 
-init();
+init.bind({})();

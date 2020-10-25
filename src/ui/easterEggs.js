@@ -1,4 +1,10 @@
+let goosemodScope = {};
+
 export default {
+  setThisScope: (scope) => {
+    goosemodScope = scope;
+  },
+
   eggs: [
     {
       text: 'Goose Emoji',
@@ -33,14 +39,14 @@ export default {
 
     if (!el) return;
 
-    for (let e of globalThis.messageEasterEggs.eggs) {
+    for (let e of goosemodScope.messageEasterEggs.eggs) {
       if (el.textContent === e.text) {
         if (e.cooldown) {
           e.cooldown -= 1;
           continue;
         }
 
-        globalThis.showToast(e.message);
+        goosemodScope.showToast(e.message);
 
         e.cooldown = (e.cooldown || 6) - 1;
       }

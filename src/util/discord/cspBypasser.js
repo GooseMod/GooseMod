@@ -1,11 +1,17 @@
+let goosemodScope = {};
+
 export default {
+  setThisScope: (scope) => {
+    goosemodScope = scope;
+  },
+
   frame: document.createElement('iframe'),
 
   init: async () => {
-    globalThis.cspBypasser.frame.src = 'discord:';
-    document.body.appendChild(globalThis.cspBypasser.frame);
+    goosemodScope.cspBypasser.frame.src = 'discord:';
+    document.body.appendChild(goosemodScope.cspBypasser.frame);
 
-    //await awaitIframe(globalThis.cspBypasser.frame);
+    //await awaitIframe(goosemodScope.cspBypasser.frame);
 
     let script = document.createElement('script');
     script.type = 'text/javascript';
@@ -47,7 +53,7 @@ export default {
 
     script.appendChild(document.createTextNode(code));
 
-    globalThis.cspBypasser.frame.contentDocument.head.appendChild(script);
+    goosemodScope.cspBypasser.frame.contentDocument.head.appendChild(script);
   },
 
   runCode: (code) => {
@@ -56,12 +62,12 @@ export default {
 
     script.appendChild(document.createTextNode(code));
 
-    globalThis.cspBypasser.frame.contentDocument.head.appendChild(script);
+    goosemodScope.cspBypasser.frame.contentDocument.head.appendChild(script);
   },
 
   json: (url, useCORSProxy = true) => {
     return new Promise((res) => {
-      globalThis.cspBypasser.frame.contentWindow.postMessage({url, type: 'json', useCORSProxy});
+      goosemodScope.cspBypasser.frame.contentWindow.postMessage({url, type: 'json', useCORSProxy});
 
       window.addEventListener('message', async (e) => {
         if (e.data.verify !== url) return;
@@ -73,7 +79,7 @@ export default {
 
   text: (url, useCORSProxy = true) => {
     return new Promise((res) => {
-      globalThis.cspBypasser.frame.contentWindow.postMessage({url, type: 'text', useCORSProxy});
+      goosemodScope.cspBypasser.frame.contentWindow.postMessage({url, type: 'text', useCORSProxy});
 
       window.addEventListener('message', async (e) => {
         if (e.data.verify !== url) return;
@@ -85,7 +91,7 @@ export default {
 
   blob: (url, useCORSProxy = true) => {
     return new Promise((res) => {
-      globalThis.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob', useCORSProxy});
+      goosemodScope.cspBypasser.frame.contentWindow.postMessage({url, type: 'blob', useCORSProxy});
 
       window.addEventListener('message', async (e) => {
         if (e.data.verify !== url) return;
@@ -97,7 +103,7 @@ export default {
 
   image: (url, useCORSProxy = true) => {
     return new Promise((res) => {
-      globalThis.cspBypasser.frame.contentWindow.postMessage({url, type: 'img', useCORSProxy});
+      goosemodScope.cspBypasser.frame.contentWindow.postMessage({url, type: 'img', useCORSProxy});
 
       window.addEventListener('message', async (e) => {
         if (e.data.verify !== url) return;

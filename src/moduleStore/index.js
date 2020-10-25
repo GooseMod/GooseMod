@@ -1,39 +1,48 @@
 import { sha512 } from '../util/hash';
 
+const JSCache = require('./jsCache');
+
+let goosemodScope = {};
+
 export default {
+  setThisScope: (scope) => {
+    goosemodScope = scope;
+    JSCache.setThisScope(scope);
+  },
+
   modules: [],
 
   apiBaseURL: 'https://goosemod-api.netlify.app',
 
-  jsCache: require('./jsCache'),
+  jsCache: JSCache,
 
   updateModules: async () => {
-    globalThis.moduleStoreAPI.modules = (await globalThis.cspBypasser.json(`${globalThis.moduleStoreAPI.apiBaseURL}/modules.json`, false)).sort((a, b) => a.name.localeCompare(b.name));
+    goosemodScope.moduleStoreAPI.modules = (await goosemodScope.cspBypasser.json(`${goosemodScope.moduleStoreAPI.apiBaseURL}/modules.json`, false)).sort((a, b) => a.name.localeCompare(b.name));
   },
 
   importModule: async (moduleName) => {
-    const moduleInfo = globalThis.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+    const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
 
-    const jsCode = await globalThis.moduleStoreAPI.jsCache.getJSForModule(moduleName);
+    const jsCode = await goosemodScope.moduleStoreAPI.jsCache.getJSForModule(moduleName);
 
     const calculatedHash = await sha512(jsCode);
     if (calculatedHash !== moduleInfo.hash) {
-      globalThis.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 1000});
+      goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 2000});
 
       console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
       return;
     }
 
-    await globalThis.importModule({
+    await goosemodScope.importModule({
       filename: `${moduleInfo.filename}.js`,
       data: jsCode
     });
 
-    if (globalThis.modules[moduleName].onLoadingFinished !== undefined) {
-      await globalThis.modules[moduleName].onLoadingFinished();
+    if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
+      await goosemodScope.modules[moduleName].onLoadingFinished();
     }
 
-    let settingItem = globalThis.settings.items.find((x) => x[1] === 'Module Store');
+    let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
 
     let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
@@ -41,11 +50,11 @@ export default {
     item.buttonText = 'Remove';
     item.showToggle = true;
 
-    if (globalThis.isSettingsOpen() && !globalThis.initialImport) globalThis.settings.createFromItems();
+    if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
   },
 
   moduleRemoved: async (m) => {
-    let item = globalThis.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.subtext === m.description);
+    let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.subtext === m.description);
     
     if (item === undefined) return;
 
@@ -55,13 +64,13 @@ export default {
   },
 
   updateStoreSetting: () => {
-    let item = globalThis.settings.items.find((x) => x[1] === 'Module Store');
+    let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
 
     item[2] = item[2].slice(0, 4);
 
-    let sortedCategories = globalThis.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
+    let sortedCategories = goosemodScope.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
 
-    let arr = Object.entries(globalThis.moduleStoreAPI.modules.reduce((cats, o) => {
+    let arr = Object.entries(goosemodScope.moduleStoreAPI.modules.reduce((cats, o) => {
       if (!cats[o.category]) cats[o.category]=[];
       cats[o.category].push(o);
       return cats;
@@ -82,54 +91,54 @@ export default {
         item[2].push({
           type: 'card',
 
-          buttonType: globalThis.modules[m.filename] ? 'danger' : 'brand',
-          showToggle: globalThis.modules[m.filename],
+          buttonType: goosemodScope.modules[m.filename] ? 'danger' : 'brand',
+          showToggle: goosemodScope.modules[m.filename],
 
           text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
           subtext: m.description,
           subtext2: `v${m.version}`,
 
-          buttonText: globalThis.modules[m.filename] ? 'Remove' : 'Import',
+          buttonText: goosemodScope.modules[m.filename] ? 'Remove' : 'Import',
           onclick: async (el) => {
-            if (globalThis.modules[m.filename]) {
+            if (goosemodScope.modules[m.filename]) {
               el.textContent = 'Removing...';
 
-              globalThis.removeModuleUI(m.filename, 'Module Store');
+              goosemodScope.settings.removeModuleUI(m.filename, 'Module Store');
 
               return;
             }
 
             el.textContent = 'Importing...';
 
-            await globalThis.moduleStoreAPI.importModule(m.filename);
+            await goosemodScope.moduleStoreAPI.importModule(m.filename);
 
-            globalThis.settings.createFromItems();
-            globalThis.openSettingItem('Module Store');
+            goosemodScope.settings.createFromItems();
+            goosemodScope.settings.openSettingItem('Module Store');
           },
-          isToggled: () => globalThis.modules[m.filename] !== undefined,
+          isToggled: () => goosemodScope.modules[m.filename] !== undefined,
           onToggle: async (checked) => {
             if (checked) {
-              globalThis.modules[m.filename] = Object.assign({}, globalThis.disabledModules[m.filename]);
-              delete globalThis.disabledModules[m.filename];
+              goosemodScope.modules[m.filename] = Object.assign({}, goosemodScope.disabledModules[m.filename]);
+              delete goosemodScope.disabledModules[m.filename];
 
-              await globalThis.modules[m.filename].onImport();
+              await goosemodScope.modules[m.filename].onImport();
 
-              await globalThis.modules[m.filename].onLoadingFinished();
+              await goosemodScope.modules[m.filename].onLoadingFinished();
 
-              globalThis.loadSavedModuleSetting(m.filename);
+              goosemodScope.loadSavedModuleSetting(m.filename);
             } else {
-              globalThis.disabledModules[m.filename] = Object.assign({}, globalThis.modules[m.filename]);
+              goosemodScope.disabledModules[m.filename] = Object.assign({}, goosemodScope.modules[m.filename]);
 
-              globalThis.modules[m.filename].remove();
+              goosemodScope.modules[m.filename].remove();
 
-              delete globalThis.modules[m.filename];
+              delete goosemodScope.modules[m.filename];
 
-              globalThis.settings.createFromItems();
-              globalThis.openSettingItem('Module Store');
+              goosemodScope.settings.createFromItems();
+              goosemodScope.settings.openSettingItem('Module Store');
             }
 
-            globalThis.settings.createFromItems();
-            globalThis.openSettingItem('Module Store');
+            goosemodScope.settings.createFromItems();
+            goosemodScope.settings.openSettingItem('Module Store');
           }
         });
       }
