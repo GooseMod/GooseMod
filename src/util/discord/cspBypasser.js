@@ -5,13 +5,11 @@ export default {
     goosemodScope = scope;
   },
 
-  frame: document.createElement('iframe'),
+  frame: document.createElement('object'),
 
   init: async () => {
-    goosemodScope.cspBypasser.frame.src = 'discord:';
+    goosemodScope.cspBypasser.frame.data = location.origin;
     document.body.appendChild(goosemodScope.cspBypasser.frame);
-
-    //await awaitIframe(goosemodScope.cspBypasser.frame);
 
     let script = document.createElement('script');
     script.type = 'text/javascript';

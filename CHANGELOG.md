@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v4.2.0
+
+  - ### Features
+    - Added color picker to Settings UI API
+    - New CSP bypasser which uses standard URI
+
+
 ## v4.1.0
 
   - ### Features

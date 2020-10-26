@@ -84,7 +84,7 @@ const init = async function () {
     a++;
   };
 
-  this.cspBypasser.init();
+  await this.cspBypasser.init();
 
   /*for (let p in toAssign) {
     if (toAssign.hasOwnProperty(p)) {
@@ -101,7 +101,7 @@ const init = async function () {
   this.modules = {};
   this.disabledModules = {};
 
-  this.version = '4.1.0';
+  this.version = '4.2.0';
   this.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
 
   this.logger.debug('import.version.goosemod', `${this.version} (${this.versionHash})`);
@@ -243,8 +243,6 @@ const init = async function () {
       this.openSettingItem('Module Store');
     }
   }
-
-  console.log(this);
 };
 
 init.bind({})();

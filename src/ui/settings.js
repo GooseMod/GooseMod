@@ -417,6 +417,62 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
             break;
 
+          case 'text-and-color': {
+            el = document.createElement('div');
+
+            el.classList.add('marginBottom20-32qID7');
+
+            let txtEl = document.createElement('span');
+            txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+            txtEl.style.float = 'left';
+
+            txtEl.innerHTML = e.text;
+
+            let colorEl = document.createElement('input');
+            colorEl.type = 'color';
+
+            colorEl.style.width = '50px';
+            colorEl.style.height = '30px';
+
+            colorEl.style.display = 'block';
+
+            colorEl.classList.add('colorPickerSwatch-5GX3Ve', 'custom-2SJn4n', 'noColor-1pdBDm');
+
+            colorEl.oninput = () => {
+              e.oninput(colorEl.value);
+              //e.onclick(buttonEl2);
+            };
+
+            colorEl.style.cursor = 'pointer';
+
+            colorEl.style.float = 'right';
+
+            el.appendChild(txtEl);
+            el.appendChild(colorEl);
+
+            if (e.subtext) {
+              let subtextEl = document.createElement('div');
+
+              subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+              subtextEl.textContent = e.subtext;
+
+              subtextEl.style.clear = 'both';
+
+              el.appendChild(subtextEl);
+            }
+
+            let dividerEl = document.createElement('div');
+
+            dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+            dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+            el.appendChild(dividerEl);
+
+            break;
+        }
+
         case 'button':
           el = document.createElement('button');
 
