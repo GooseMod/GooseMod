@@ -101,7 +101,7 @@ const init = async function () {
   this.modules = {};
   this.disabledModules = {};
 
-  this.version = '4.2.0';
+  this.version = '4.2.1';
   this.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
 
   this.logger.debug('import.version.goosemod', `${this.version} (${this.versionHash})`);

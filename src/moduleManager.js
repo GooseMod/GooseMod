@@ -79,15 +79,21 @@ export const getModuleFiles = async () => { // Ask for module files (one by one 
 
   let allFiles = [];
 
-  while (true) {
-    let files = await DiscordNative.fileManager.openFiles(); // Ask for file (singular)
+  //while (true) {
+    let files = await DiscordNative.fileManager.openFiles({
+      filters: [
+        {name: 'JS Files', extensions: ['js']},
+        {name: 'All Files', extensions: ['*']}
+      ],
+      properties: ['openFile']
+    }); // Ask for file (singular)
 
     if (files.length === 0) { // If no file, stop asking for files
-      break;
+      //break;
     }
 
     allFiles.push(files[0]); // Add file to files array
-  }
+  //}
 
   goosemodScope.logger.debug('import.fileask', 'Finished asking for files');
 

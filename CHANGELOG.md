@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v4.2.1
+
+  - ### Fixes
+    - Fixed local module importing and only ask for one file
+    - Fix large (>~1MB) modules failing to load
+
+
 ## v4.2.0
 
   - ### Features
