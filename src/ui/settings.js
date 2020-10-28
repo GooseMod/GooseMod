@@ -1069,13 +1069,15 @@ export const injectInSettings = async () => {
   }
 
   settingsSidebarGooseModContainer = document.createElement('div');
+  settingsSidebarGooseModContainer.className = 'goosemod-settings-sidebar';
+
   settingsSidebarEl.insertBefore(settingsSidebarGooseModContainer, settingsSidebarEl.childNodes[settingsSidebarEl.childElementCount - 4]);//settingsSidebarEl.querySelector(`.${settingsClasses.item}:not(${settingsClasses.themed}) ~ ${settingsClasses.item}:not(${settingsClasses.themed})`));
 
   let el = document.createElement('div');
   el.className = settingsClasses['separator'];
 
   settingsSidebarEl.insertBefore(el, settingsSidebarGooseModContainer.nextSibling); //.insertBefore(settingsSidebarGooseModContainer, settingsSidebarEl.childNodes[settingsSidebarEl.childElementCount - 4]);//settingsSidebarEl.querySelector(`.${settingsClasses.item}:not(${settingsClasses.themed}) ~ ${settingsClasses.item}:not(${settingsClasses.themed})`));
-  
+
   let versionEl = document.createElement('div');
   versionEl.classList.add('colorMuted-HdFt4q', 'size12-3cLvbJ');
 

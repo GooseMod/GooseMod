@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v4.2.2
+
+  - ### Tweaks
+    - Added class to injected GooseMod settings to allow easier styling of them
+
+
 ## v4.2.1
 
   - ### Fixes
