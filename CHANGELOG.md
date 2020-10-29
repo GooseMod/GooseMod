@@ -1,10 +1,11 @@
 # GooseMod Changelog
 
-## v4.3.0 [2020-10-29] UNRELEASED
+## v4.3.0 [2020-10-29]
 
  - ### Features
-   - Rewrote CSP Bypasser
-   - Added UserScript support in CSP Bypasser
+   - Added GooseMod changelog, it appears whenever GooseMod updates with the latest info from Injector repo's CHANGELOG.md
+   - Rewrote CSP Bypasser, it now uses the object's fetch function directly 
+   - Added UserScript support in CSP Bypasser, thanks to [AAGaming](https://github.com/AAGaming00) for creating a UserScript for web
 
 
 ## v4.2.2

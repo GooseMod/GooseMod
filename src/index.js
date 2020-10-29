@@ -10,6 +10,9 @@ import cspBypasser from './util/discord/cspBypasser';
 import showToast from './ui/toast';
 import confirmDialog from './ui/modals/confirm';
 
+import * as Changelog from './ui/modals/changelog';
+import * as GoosemodChangelog from './ui/goosemodChangelog';
+
 import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScope as setThisScope1 } from './ui/loading';
 
 import * as Settings from './ui/settings';
@@ -31,7 +34,10 @@ const scopeSetterFncs = [
 
   moduleStoreAPI.setThisScope,
   cspBypasser.setThisScope,
-  easterEggs.setThisScope
+  easterEggs.setThisScope,
+
+  Changelog.setThisScope,
+  GoosemodChangelog.setThisScope
 ];
 
 const importsToAssign = {
@@ -68,7 +74,10 @@ const importsToAssign = {
   cspBypasser,
   showToast,
   confirmDialog,
-  moduleStoreAPI
+  moduleStoreAPI,
+
+  changelog: Changelog,
+  goosemodChangelog: GoosemodChangelog
 };
 
 const init = async function () {
@@ -101,8 +110,15 @@ const init = async function () {
   this.modules = {};
   this.disabledModules = {};
 
-  this.version = '4.2.2';
-  this.versionHash = '<hash>'; // hash of built final js file is inserted here via build script
+  this.lastVersion = localStorage.getItem('goosemodLastVersion');
+  this.version = '4.3.0';
+  this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
+
+  if (this.lastVersion !== this.version) {
+    this.goosemodChangelog.show();
+  }
+
+  localStorage.setItem('goosemodLastVersion', this.version);
 
   this.logger.debug('import.version.goosemod', `${this.version} (${this.versionHash})`);
 
@@ -170,6 +186,8 @@ const init = async function () {
     clearInterval(this.saveInterval);
     clearInterval(this.checkSettingsOpenInterval);
     
+    localStorage.removeItem('goosemodLastVersion');
+
     this.clearSettings();
     this.moduleStoreAPI.jsCache.purgeCache();
     
@@ -245,4 +263,5 @@ const init = async function () {
   }
 };
 
-init.bind({})();
+window.goosemod = {};
+init.bind(window.goosemod)();

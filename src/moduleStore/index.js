@@ -17,7 +17,7 @@ export default {
   jsCache: JSCache,
 
   updateModules: async () => {
-    goosemodScope.moduleStoreAPI.modules = (await goosemodScope.cspBypasser.json(`${goosemodScope.moduleStoreAPI.apiBaseURL}/modules.json`, false)).sort((a, b) => a.name.localeCompare(b.name));
+    goosemodScope.moduleStoreAPI.modules = (await goosemodScope.cspBypasser.json(`${goosemodScope.moduleStoreAPI.apiBaseURL}/modules.json?_=${Date.now()}`, false)).sort((a, b) => a.name.localeCompare(b.name));
   },
 
   importModule: async (moduleName) => {
