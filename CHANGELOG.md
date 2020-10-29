@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v4.3.0 [2020-10-29] UNRELEASED
+
+ - ### Features
+   - Rewrote CSP Bypasser
+   - Added UserScript support in CSP Bypasser
+
+
 ## v4.2.2
 
   - ### Tweaks
