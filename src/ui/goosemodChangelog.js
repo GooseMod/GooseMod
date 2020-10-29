@@ -22,7 +22,7 @@ export const show = async () => {
 
   goosemodScope.changelog.showChangelog();
 
-  await sleep(100);
+  await sleep(300);
 
   document.querySelector('.modal-3O0aXp .title-3sZWYQ').textContent = `GooseMod ${version}`; // Set changelog modal title
 
