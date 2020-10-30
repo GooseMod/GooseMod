@@ -3,7 +3,7 @@
 ## v4.4.1 [2020-10-30]
 
   - ### Tweaks
-    - Stop using version specific / special changelog images
+    - Stopped using version specific / special changelog images
 
   - ### Fixes
     - Fixed changelog sometimes being glitchy, could sometimes occur when some Discord experiments / special changelog types override the changelog
