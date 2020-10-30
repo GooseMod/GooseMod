@@ -889,7 +889,6 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
           e.children(contentEl).then((children) => {
             for (let c of children) {
-              console.log(c);
               let mainEl = document.createElement('div');
 
               mainEl.classList.add('flex-1xMQg5', 'flex-1O1GKY', 'horizontal-1ae9ci', 'horizontal-2EEEnY', 'flex-1O1GKY', 'directionRow-3v3tfG', 'justifyBetween-2tTqYu', 'alignCenter-1dQNNs', 'noWrap-3jynv6', 'item-3eFBNF');
@@ -925,12 +924,11 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
             }
           });
 
-          /*let dividerEl = document.createElement('div');
+          break;
+        }
 
-          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
-          dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
-
-          el.appendChild(dividerEl);*/
+        case 'custom': {
+          el = e.element;
 
           break;
         }

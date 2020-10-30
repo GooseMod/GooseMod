@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v4.4.0 [2020-10-30]
+
+  - ### Features
+    - Added custom component to settings UI API
+  
+  - ### Tweaks
+    - Reduced old logging in sidebar settings generation
+
+
 ## v4.3.0 [2020-10-29]
 
  - ### Features
