@@ -1,10 +1,19 @@
 # GooseMod Changelog
 
+## v4.4.1 [2020-10-30]
+
+  - ### Tweaks
+    - Stop using version specific / special changelog images
+
+  - ### Fixes
+    - Fixed changelog sometimes being glitchy, could sometimes occur when some Discord experiments / special changelog types override the changelog
+
+
 ## v4.4.0 [2020-10-30]
 
   - ### Features
     - Added custom component to settings UI API
-  
+
   - ### Tweaks
     - Reduced old logging in sidebar settings generation
 
