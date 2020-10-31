@@ -3,7 +3,7 @@
 ## v4.5.0 [2020-10-31]
 
   - ### Features
-    - Added complete new dialog / wizard for setup / first time injection. Now asks what "pack" (set of modules) you want to install as well as what theme you want to install. Pre-existing users won't be affected.
+    - Added complete new dialog / wizard for setup / first time injection, now asks what "pack" (set of modules) you want to install as well as what theme you want to install. Pre-existing users won't be affected.
 
 
 ## v4.4.1 [2020-10-30]
