@@ -13,6 +13,8 @@ import confirmDialog from './ui/modals/confirm';
 import * as Changelog from './ui/modals/changelog';
 import * as GoosemodChangelog from './ui/goosemodChangelog';
 
+import * as PackModal from './ui/packModal';
+
 import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScope as setThisScope1 } from './ui/loading';
 
 import * as Settings from './ui/settings';
@@ -37,7 +39,9 @@ const scopeSetterFncs = [
   easterEggs.setThisScope,
 
   Changelog.setThisScope,
-  GoosemodChangelog.setThisScope
+  GoosemodChangelog.setThisScope,
+
+  PackModal.setThisScope
 ];
 
 const importsToAssign = {
@@ -77,7 +81,9 @@ const importsToAssign = {
   moduleStoreAPI,
 
   changelog: Changelog,
-  goosemodChangelog: GoosemodChangelog
+  goosemodChangelog: GoosemodChangelog,
+
+  packModal: PackModal
 };
 
 const init = async function () {
@@ -111,10 +117,10 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '4.4.1';
+  this.version = '4.5.0';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
-  if (this.lastVersion !== this.version) {
+  if (this.lastVersion && this.lastVersion !== this.version) {
     this.goosemodChangelog.show();
   }
 
@@ -215,7 +221,7 @@ const init = async function () {
   
   if (toInstallModules.length === 0) {
     toInstallIsDefault = true;
-    toInstallModules = ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
+    // toInstallModules = await this.packModal.ask(); // ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
   
   toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
@@ -231,14 +237,17 @@ const init = async function () {
   if (hardcodedColorFixerModule) {
     toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
   }
+
+  if (toInstallIsDefault) {
+    await this.packModal.ask();
+  } else {
+    this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
   
-  this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
-  
-  for (let m of toInstallModules) {
-    this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`)
-    //this.updateLoadingScreen(`Importing default modules from Module Store...<br><br>${this.moduleStoreAPI.modules.find((x) => x.filename === m).name}<br>${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}<br>${toInstallIsDefault ? '(Default)' : '(Last Installed)'}`);
+    for (let m of toInstallModules) {
+      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
     
-    await this.moduleStoreAPI.importModule(m);
+      await this.moduleStoreAPI.importModule(m);
+    }
   }
   
   delete this.initialImport;
