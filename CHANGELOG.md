@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v4.6.0 [2020-11-01]
+
+  - ### Tweaks
+    - No longer uses janky CSP bypass, instead now relies on it being disabled when GooseMod is injected
+    - Cleaned up some code, removed some now unneeded logging and some unnecessary old comments
+
+
 ## v4.5.0 [2020-10-31]
 
   - ### Features

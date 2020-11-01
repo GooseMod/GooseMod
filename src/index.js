@@ -5,8 +5,6 @@ import * as Logger from './util/logger';
 import WebpackModules from './util/discord/webpackModules';
 import fixLocalStorage from './util/discord/fixLocalStorage';
 
-import cspBypasser from './util/discord/cspBypasser';
-
 import showToast from './ui/toast';
 import confirmDialog from './ui/modals/confirm';
 
@@ -19,8 +17,6 @@ import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScop
 
 import * as Settings from './ui/settings';
 
-// import { removeModuleUI, isSettingsOpen, closeSettings, openSettings, openSettingItem, reopenSettings, injectInSettings, checkSettingsOpenInterval, makeGooseModSettings, setThisScope as setThisScope2 } from './ui/settings';
-
 import easterEggs from './ui/easterEggs';
 
 import { importModule, importModules, bindHandlers, getModuleFiles, importModulesFull, setThisScope as setThisScope3 } from './moduleManager';
@@ -30,12 +26,11 @@ import moduleStoreAPI from './moduleStore';
 
 const scopeSetterFncs = [
   setThisScope1,
-  Settings.setThisScope, // setThisScope2,
+  Settings.setThisScope,
   setThisScope3,
   setThisScope4,
 
   moduleStoreAPI.setThisScope,
-  cspBypasser.setThisScope,
   easterEggs.setThisScope,
 
   Changelog.setThisScope,
@@ -49,15 +44,7 @@ const importsToAssign = {
   stopLoadingScreen,
   updateLoadingScreen,
 
-  settings: Settings, /* removeModuleUI,
-  isSettingsOpen,
-  closeSettings,
-  openSettings,
-  openSettingItem,
-  reopenSettings,
-  injectInSettings,
-  checkSettingsOpenInterval,
-  makeGooseModSettings, */
+  settings: Settings,
 
   importModule,
   importModules,
@@ -75,7 +62,6 @@ const importsToAssign = {
   messageEasterEggs: easterEggs,
   logger: Logger,
 
-  cspBypasser,
   showToast,
   confirmDialog,
   moduleStoreAPI,
@@ -93,23 +79,12 @@ const init = async function () {
 
   let a = 1;
   for (let x of scopeSetterFncs) {
-    console.log(a, x);
     x(this);
 
     a++;
   };
 
-  await this.cspBypasser.init();
-
-  /*for (let p in toAssign) {
-    if (toAssign.hasOwnProperty(p)) {
-      
-    }
-  }*/
-
   this.settings.makeGooseModSettings();
-
-  // this.logger = Logger;
 
   this.removed = false;
 
@@ -117,7 +92,7 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '4.5.0';
+  this.version = '4.6.0';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
   if (this.lastVersion && this.lastVersion !== this.version) {
@@ -136,54 +111,9 @@ const init = async function () {
     // delete window.gmUntethered;
   }
   
-  // this.webpackModules = WebpackModules;
-  
-  // this.showToast = showToast;
-  
   this.showToast(`GooseMod v${this.version} (${this.versionHash.substring(0, 7)})`, {timeout: 1000});
   
-  // this.messageEasterEggs = easterEggs;
-  
-  // this.confirmDialog = confirmDialog;
-  
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
-  
-  /* Object.assign(this, {
-    startLoadingScreen,
-    stopLoadingScreen,
-    updateLoadingScreen
-  });
-  
-  Object.assign(this, {
-    removeModuleUI,
-    isSettingsOpen,
-    closeSettings,
-    openSettings,
-    openSettingItem,
-    reopenSettings,
-    injectInSettings,
-    checkSettingsOpenInterval
-  });
-  
-  this.cspBypasser = cspBypasser; */
-  
-  /* Object.assign(this, {
-    importModule,
-    importModules,
-    bindHandlers,
-    getModuleFiles,
-    importModulesFull
-  });
-  
-  Object.assign(this, {
-    saveModuleSettings,
-    clearModuleSetting,
-    clearSettings,
-    loadSavedModuleSetting,
-    loadSavedModuleSettings
-  });
-  
-  this.moduleStoreAPI = moduleStoreAPI; */
   
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
   

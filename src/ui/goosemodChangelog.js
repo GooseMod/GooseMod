@@ -32,7 +32,7 @@ export const show = async () => {
 };
 
 export const generate = async () => {
-  const changelog = await goosemodScope.cspBypasser.json(changelogURL, false);
+  const changelog = await (await fetch(changelogURL)).json();
 
   version = changelog.version;
 
