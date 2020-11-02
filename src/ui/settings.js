@@ -142,7 +142,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
       cardContainerEl.style.display = 'grid';
       cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 330px)';
-      cardContainerEl.style.width = 'calc(100% - 280px)';
+      cardContainerEl.style.width = 'calc(100% - 250px)';
       cardContainerEl.style.justifyContent = 'center';
 
       /*cardContainerEl.style.columnGap = '10px';
@@ -799,7 +799,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
           el = document.createElement('div');
           el.classList.add('search-2oPWTC');
 
-          el.innerHTML = `<div class="searchBar-3dMhjb" role="combobox" aria-label="Search" aria-owns="search-results" aria-expanded="false"><div class="DraftEditor-root"><div class="public-DraftEditorPlaceholder-root"><div class="public-DraftEditorPlaceholder-inner" id="placeholder-8kh0r" style="white-space: pre-wrap;">Search</div></div><div class="DraftEditor-editorContainer"><div aria-describedby="placeholder-8kh0r" class="notranslate public-DraftEditor-content" contenteditable="true" role="textbox" spellcheck="false" style="outline: none; user-select: text; white-space: pre-wrap; overflow-wrap: break-word;"><div data-contents="true"><div class="" data-block="true" data-editor="8kh0r" data-offset-key="4l6d8-0-0"><div data-offset-key="4l6d8-0-0" class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span data-offset-key="4l6d8-0-0"><br data-text="true"></span></div></div></div></div></div></div><div class="icon-38sknP iconLayout-1WxHy4 small-1lPjda" tabindex="-1" aria-hidden="true" aria-label="Clear search" role="button"><div class="iconContainer-O4O2CN"><svg class="icon-3cZ1F_ visible-3V0mGj" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.707 20.293L16.314 14.9C17.403 13.504 18 11.799 18 10C18 7.863 17.167 5.854 15.656 4.344C14.146 2.832 12.137 2 10 2C7.863 2 5.854 2.832 4.344 4.344C2.833 5.854 2 7.863 2 10C2 12.137 2.833 14.146 4.344 15.656C5.854 17.168 7.863 18 10 18C11.799 18 13.504 17.404 14.9 16.314L20.293 21.706L21.707 20.293ZM10 16C8.397 16 6.891 15.376 5.758 14.243C4.624 13.11 4 11.603 4 10C4 8.398 4.624 6.891 5.758 5.758C6.891 4.624 8.397 4 10 4C11.603 4 13.109 4.624 14.242 5.758C15.376 6.891 16 8.398 16 10C16 11.603 15.376 13.11 14.242 14.243C13.109 15.376 11.603 16 10 16Z"></path></svg><svg class="icon-3cZ1F_" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg></div></div></div>`;
+          el.innerHTML = `<div class="searchBar-3dMhjb" role="combobox" aria-label="Search" aria-owns="search-results" aria-expanded="false"><div class="DraftEditor-root"><div class="public-DraftEditorPlaceholder-root"><div class="public-DraftEditorPlaceholder-inner" id="placeholder-8kh0r" style="white-space: pre-wrap;">Search</div></div><div class="DraftEditor-editorContainer"><div aria-describedby="placeholder-8kh0r" class="notranslate public-DraftEditor-content" contenteditable="true" role="textbox" spellcheck="false" style="outline: none; user-select: text; white-space: pre-wrap; overflow-wrap: break-word;"><div data-contents="true"><div class="" data-block="true" data-editor="8kh0r" data-offset-key="4l6d8-0-0"><div data-offset-key="4l6d8-0-0" class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span data-offset-key="4l6d8-0-0">${e.text || ''}<br data-text="true"></span></div></div></div></div></div></div><div class="icon-38sknP iconLayout-1WxHy4 small-1lPjda" tabindex="-1" aria-hidden="true" aria-label="Clear search" role="button"><div class="iconContainer-O4O2CN"><svg class="icon-3cZ1F_ visible-3V0mGj" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.707 20.293L16.314 14.9C17.403 13.504 18 11.799 18 10C18 7.863 17.167 5.854 15.656 4.344C14.146 2.832 12.137 2 10 2C7.863 2 5.854 2.832 4.344 4.344C2.833 5.854 2 7.863 2 10C2 12.137 2.833 14.146 4.344 15.656C5.854 17.168 7.863 18 10 18C11.799 18 13.504 17.404 14.9 16.314L20.293 21.706L21.707 20.293ZM10 16C8.397 16 6.891 15.376 5.758 14.243C4.624 13.11 4 11.603 4 10C4 8.398 4.624 6.891 5.758 5.758C6.891 4.624 8.397 4 10 4C11.603 4 13.109 4.624 14.242 5.758C15.376 6.891 16 8.398 16 10C16 11.603 15.376 13.11 14.242 14.243C13.109 15.376 11.603 16 10 16Z"></path></svg><svg class="icon-3cZ1F_" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg></div></div></div>`;
 
           let searchbar = el.children[0];
 
@@ -856,7 +856,12 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
             placeholder.style.display = isEmpty ? 'block' : 'none';
 
             e.onchange(input, contentEl);
+            e.text = input;
           };
+
+          if (e.text) {
+            setTimeout(() => { edible.oninput(); }, 10);
+          }
 
           icons[1].onclick = () => {
             inputContainer.innerHTML = '';
@@ -879,7 +884,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
           el.style.marginTop = '4px';
           el.style.marginLeft = '4px';
 
-          el.style.width = '270px';
+          el.style.width = '240px';
           el.style.height = 'fit-content';
 
           el.style.position = 'relative';
@@ -899,7 +904,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
               const unselectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai" style="width: 24px; height: 24px; flex: 1 1 auto;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="transparent" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
               const selectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" checked="" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai checked-3_4uQ9" style="width: 24px; height: 24px; border-color: rgb(67, 181, 129); flex: 1 1 auto; background-color: rgb(67, 181, 129);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
 
-              const selected = c.selected();
+              let selected = c.selected();
 
               mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
               if (selected) {
@@ -919,6 +924,8 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
                 c.onselected(selected, contentEl);
               };
+
+              setTimeout(() => { c.onselected(selected, contentEl); }, 10);
 
               el.appendChild(mainEl);
             }
@@ -1162,6 +1169,8 @@ export const makeGooseModSettings = () => {
     parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
   };
 
+  let sidebarSelectedIndex = {};
+
   goosemodScope.settings.createItem('Module Store', ['',
     {
       type: 'button',
@@ -1209,8 +1218,18 @@ export const makeGooseModSettings = () => {
           return res([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + 1), new Map()).entries()].map((x) => ({
             text: x[0] === 'ui' ? 'UI' : x[0][0].toUpperCase() + x[0].substring(1),
             subText: x[1],
-            selected: () => true,
-            onselected: () => {
+            selected: () => {
+              let ind = sidebarSelectedIndex[x[0]];
+
+              if (ind !== undefined) return ind;
+
+              return true;
+            },
+            onselected: (sel) => {
+              sidebarSelectedIndex[x[0]] = sel;
+
+              console.log('on_selected', x[0], sel, sidebarSelectedIndex);
+
               updateModuleStoreUI(parentEl, cards);
             }
           })));

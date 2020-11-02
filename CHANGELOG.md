@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v4.7.0 [2020-11-02]
+
+  - ### Features
+    - Module Store UI improvements, now keeps search bar and sidebar filtering after importing or removing modules via buttons
+
+  - ### Tweaks
+    - Shrunk Module Store UI's sidebar slightly to allow more cards
+
+
 ## v4.6.0 [2020-11-01]
 
   - ### Tweaks
