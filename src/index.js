@@ -92,18 +92,19 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '4.8.0';
+  this.version = '4.8.1';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
-  const latestInjectVersionInfo = await (await fetch('https://goosemod-api.netlify.app/injectVersion.json')).json();
+  fetch('https://goosemod-api.netlify.app/injectVersion.json').then((x) => x.json().then((latestInjectVersionInfo) => {
+    if (latestInjectVersionInfo.version !== this.version) {
+      this.showToast('Warning: Version number does not match latest public release', {timeout: 3000});
+    }
 
-  if (latestInjectVersionInfo.version !== this.version) {
-    this.showToast('Warning: Version number does not match latest public release', {timeout: 3000});
-  }
+    if (latestInjectVersionInfo.hash !== this.versionHash) {
+      this.showToast('Warning: Version hash does not match latest public release', {timeout: 3000});
+    }
+  }));
 
-  if (latestInjectVersionInfo.hash !== this.versionHash) {
-    this.showToast('Warning: Version hash does not match latest public release', {timeout: 3000});
-  }
 
   if (this.lastVersion && this.lastVersion !== this.version) {
     this.goosemodChangelog.show();

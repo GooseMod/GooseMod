@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v4.8.1 [2020-11-02]
+
+  - ### Features
+    - Made new version checking asynchronous so it does not result in delay when initialising
+
+
 ## v4.8.0 [2020-11-02]
 
   - ### Features
