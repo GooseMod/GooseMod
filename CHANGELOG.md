@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v4.8.0 [2020-11-02]
+
+  - ### Features
+    - Added hash checksum and version checking on initation for security / verification
+
+
 ## v4.7.0 [2020-11-02]
 
   - ### Features
