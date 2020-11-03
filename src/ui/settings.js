@@ -9,7 +9,7 @@ export const setThisScope = (scope) => {
 
 
 export const removeModuleUI = (field, where) => {
-  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Manage Modules');
+  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Local Modules');
 
   settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === goosemodScope.modules[field].description)), 1);
 
@@ -1014,7 +1014,7 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
       el.classList.remove(settingsClasses['selected']);
     });
 
-    if (panelName === 'Manage Modules' && window.DiscordNative === undefined) return;
+    if (panelName === 'Local Modules' && window.DiscordNative === undefined) return;
 
     settingsSidebarGooseModContainer.appendChild(el);
 };
@@ -1116,10 +1116,10 @@ export const checkSettingsOpenInterval = setInterval(async () => {
 export const makeGooseModSettings = () => {
   goosemodScope.settings.createHeading('GooseMod');
 
-  goosemodScope.settings.createItem('Manage Modules', ['',
+  goosemodScope.settings.createItem('Local Modules', ['',
     {
       type: 'button',
-      text: 'Import Local Modules',
+      text: 'Import Local Module',
       onclick: async () => {
         let files = await goosemodScope.importModulesFull();
 
@@ -1132,13 +1132,13 @@ export const makeGooseModSettings = () => {
         }
 
         goosemodScope.settings.createFromItems();
-        goosemodScope.settings.openSettingItem('Manage Modules');
+        goosemodScope.settings.openSettingItem('Local Modules');
       },
     },
 
     {
       type: 'header',
-      text: 'Imported Modules'
+      text: 'Imported Local Modules'
     }
   ]);
 

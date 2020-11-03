@@ -6,19 +6,19 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const importModule = async (f) => {
+export const importModule = async (f, isLocal = false) => {
   let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)
 
   goosemodScope.logger.debug('import', `Importing module: "${field}"`);
-    
-  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Manage Modules');
+
+  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Local Modules');
 
   if (goosemodScope.modules[field] !== undefined) {
     goosemodScope.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
 
     await goosemodScope.modules[field].remove();
 
-    settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${goosemodScope.modules[field].name} (${goosemodScope.modules[field].version})`)), 1);
+    if (isLocal) settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${goosemodScope.modules[field].name} (${goosemodScope.modules[field].version})`)), 1);
   }
 
   if (typeof f.data === 'object') { // ArrayBuffer (UTF-8) -> String
@@ -45,20 +45,20 @@ export const importModule = async (f) => {
     onclick: (el) => {
       el.textContent = 'Removing...';
 
-      goosemodScope.settings.removeModuleUI(field, 'Manage Modules');
+      goosemodScope.settings.removeModuleUI(field, 'Local Modules');
     }
   };
 
-  settingItem[2].push(toggleObj);
+  if (isLocal) settingItem[2].push(toggleObj);
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
 };
 
-export const importModules = async (files) => {
+export const importModules = async (files, isLocal) => {
   goosemodScope.logger.debug('import', 'Looping through files');
 
   for (let f of files) {
-    goosemodScope.importModule(f);
+    goosemodScope.importModule(f, isLocal);
   }
 
   goosemodScope.logger.debug('import', 'Imported all files');
@@ -108,7 +108,7 @@ export const importModulesFull = async () => {
 
   let files = await goosemodScope.getModuleFiles();
 
-  await goosemodScope.importModules(files);
+  await goosemodScope.importModules(files, true);
 
   return files;
 };
