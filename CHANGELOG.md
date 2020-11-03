@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v4.9.0 [2020-11-03]
+
+  - ### Features
+    - Changed Manage Modules setting into "Local Modules" - only shows and allows management of local modules (imported local files) to avoid confusion / duplication
+
+
 ## v4.8.1 [2020-11-02]
 
   - ### Features
