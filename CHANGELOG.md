@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v4.10.0 [2020-11-05]
+
+  - ### Features
+    - Added author and imported sections to Module Store sidebar
+
+  - ### Fixes
+    - Fixed GooseMod changelog being cached
+    - Fixed Module Store's card container rows being too high and resulting in strange gaps (sometimes when filtering)
+
+
 ## v4.9.0 [2020-11-03]
 
   - ### Features

@@ -141,7 +141,10 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
       cardContainerEl = document.createElement('div');
 
       cardContainerEl.style.display = 'grid';
+
       cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 330px)';
+      cardContainerEl.style.gridTemplateRows = 'repeat(auto-fill, 190px)';
+
       cardContainerEl.style.width = 'calc(100% - 250px)';
       cardContainerEl.style.justifyContent = 'center';
 
@@ -894,40 +897,84 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
           e.children(contentEl).then((children) => {
             for (let c of children) {
-              let mainEl = document.createElement('div');
+              switch (c.type) {
+                case 'selector': {
+                  let mainEl = document.createElement('div');
 
-              mainEl.classList.add('flex-1xMQg5', 'flex-1O1GKY', 'horizontal-1ae9ci', 'horizontal-2EEEnY', 'flex-1O1GKY', 'directionRow-3v3tfG', 'justifyBetween-2tTqYu', 'alignCenter-1dQNNs', 'noWrap-3jynv6', 'item-3eFBNF');
-              mainEl.style.flex = '1 1 auto';
+                  mainEl.classList.add('flex-1xMQg5', 'flex-1O1GKY', 'horizontal-1ae9ci', 'horizontal-2EEEnY', 'flex-1O1GKY', 'directionRow-3v3tfG', 'justifyBetween-2tTqYu', 'alignCenter-1dQNNs', 'noWrap-3jynv6', 'item-3eFBNF');
+                  mainEl.style.flex = '1 1 auto';
 
-              const selectedClass = 'selected-2DeaDa';
+                  const selectedClass = 'selected-2DeaDa';
 
-              const unselectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai" style="width: 24px; height: 24px; flex: 1 1 auto;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="transparent" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
-              const selectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" checked="" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai checked-3_4uQ9" style="width: 24px; height: 24px; border-color: rgb(67, 181, 129); flex: 1 1 auto; background-color: rgb(67, 181, 129);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
+                  const unselectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai" style="width: 24px; height: 24px; flex: 1 1 auto;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="transparent" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
+                  const selectedHTML = `<div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 label-1ZuVT-" style="flex: 0 1 auto;"><label class="checkboxWrapper-SkhIWG alignCenter-MrlN6q flexChild-faoVW3"><input class="inputReadonly-rYU97L input-3ITkQf" type="checkbox" checked="" style="width: 24px; height: 24px;"><div class="checkbox-1ix_J3 flexCenter-3_1bcw flex-1O1GKY justifyCenter-3D2jYp alignCenter-1dQNNs round-2jCFai checked-3_4uQ9" style="width: 24px; height: 24px; border-color: rgb(67, 181, 129); flex: 1 1 auto; background-color: rgb(67, 181, 129);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg></div><div class="label-cywgfr labelClickable-11AuB8 labelForward-1wfipV" style="line-height: 24px;"><div class="labelText-2kBs7x">${c.text}</div></div></label></div><div class="flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY flex-1O1GKY directionRow-3v3tfG justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6" style="flex: 0 1 auto;"><div class="colorStandard-2KCXvj size14-e6ZScH description-3_Ncsb formText-3fs7AJ marginReset-2pBy6s marginReset-236NPn modeDefault-3a2Ph1" style="flex: 1 1 auto;">${c.subText}</div></div>`;
 
-              let selected = c.selected();
+                  let selected = c.selected();
 
-              mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
-              if (selected) {
-                mainEl.classList.add(selectedClass);
-              }
+                  mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
+                  if (selected) {
+                    mainEl.classList.add(selectedClass);
+                  }
 
-              mainEl.onclick = () => {
-                selected = !selected;
+                  mainEl.onclick = () => {
+                    selected = !selected;
 
-                if (selected) {
-                  mainEl.classList.add(selectedClass);
-                } else {
-                  mainEl.classList.remove(selectedClass);
+                    if (selected) {
+                      mainEl.classList.add(selectedClass);
+                    } else {
+                      mainEl.classList.remove(selectedClass);
+                    }
+
+                    mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
+
+                    c.onselected(selected, contentEl);
+                  };
+
+                  setTimeout(() => { c.onselected(selected, contentEl); }, 10);
+
+                  el.appendChild(mainEl);
+
+                  break;
                 }
 
-                mainEl.innerHTML = selected ? selectedHTML : unselectedHTML;
+                case 'divider': {
+                  let containerEl = document.createElement('div');
 
-                c.onselected(selected, contentEl);
-              };
+                  containerEl.style.width = '100%';
 
-              setTimeout(() => { c.onselected(selected, contentEl); }, 10);
+                  let dividerEl = document.createElement('div');
+                  dividerEl.style.marginTop = '25px';
 
-              el.appendChild(mainEl);
+                  dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+
+                  containerEl.appendChild(dividerEl);
+
+                  if (c.text) {
+                    let textEl = document.createElement('div');
+                    textEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+                    textEl.style.position = 'relative';
+                    textEl.style.top = '-14px';
+                    textEl.style.left = '25%';
+                    textEl.style.width = '50%';
+
+                    textEl.style.textAlign = 'center';
+                    textEl.style.fontSize = '14px';
+
+                    textEl.style.backgroundColor = 'var(--background-tertiary)';
+                    textEl.style.padding = '2px';
+                    textEl.style.borderRadius = '8px';
+
+                    textEl.innerText = c.text;
+
+                    containerEl.appendChild(textEl);
+                  }
+
+                  el.appendChild(containerEl);
+
+                  break;
+                }
+              }
             }
           });
 
@@ -1152,16 +1199,25 @@ export const makeGooseModSettings = () => {
     const selectedClass = 'selected-2DeaDa';
 
     for (let s of [...parentEl.children[0].children[4].children]) {
+      if (!s.classList.contains('flex-1xMQg5')) continue;
+
       selectors[s.children[0].children[0].children[2].innerText.toLowerCase()] = s.classList.contains(selectedClass);
     }
+    
+    console.log(selectors);
 
     for (let c of cards) {
-      const name = c.getElementsByClassName('title-31JmR4')[0].childNodes[0].wholeText;
+      const title = c.getElementsByClassName('title-31JmR4')[0];
+      const author = title.childNodes[2].wholeText.trim().toLowerCase();
+      const name = title.childNodes[0].wholeText;
+
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      c.style.display = matches && selectors[c.className] ? 'block' : 'none';
+      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
+
+      c.style.display = matches && selectors[c.className] && selectors[author] && selectors[importedSelector] ? 'block' : 'none';
     }
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
@@ -1215,9 +1271,28 @@ export const makeGooseModSettings = () => {
 
           const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
-          return res([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + 1), new Map()).entries()].map((x) => ({
+          let final = [...cards.reduce((acc, e) => {
+            let x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
+            return acc.set(x, (acc.get(x) || 0) + 1);
+          }, new Map()).entries()].sort((a, b) => b[1] - a[1]);
+
+          final.push(['Categories', 0, 'divider']);
+          
+          final = final.concat([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + 1), new Map()).entries()].sort((a, b) => b[1] - a[1]));
+
+          final.push(['Authors', 0, 'divider']);
+
+          final = final.concat([...cards.reduce((acc, e) => {
+            let x = e.getElementsByClassName('title-31JmR4')[0].childNodes[2].textContent.trim();
+            return acc.set(x, (acc.get(x) || 0) + 1);
+          }, new Map()).entries()].sort((a, b) => b[1] - a[1]));
+
+          console.log(final);
+
+          return res(final.map((x) => ({
             text: x[0] === 'ui' ? 'UI' : x[0][0].toUpperCase() + x[0].substring(1),
             subText: x[1],
+            type: x[2] || 'selector',
             selected: () => {
               let ind = sidebarSelectedIndex[x[0]];
 
@@ -1227,8 +1302,6 @@ export const makeGooseModSettings = () => {
             },
             onselected: (sel) => {
               sidebarSelectedIndex[x[0]] = sel;
-
-              console.log('on_selected', x[0], sel, sidebarSelectedIndex);
 
               updateModuleStoreUI(parentEl, cards);
             }
