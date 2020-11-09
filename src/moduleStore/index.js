@@ -51,7 +51,7 @@ export default {
     item.buttonText = 'Remove';
     item.showToggle = true;
 
-    if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
+    // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
   },
 
   moduleRemoved: async (m) => {
@@ -115,7 +115,6 @@ export default {
 
             await goosemodScope.moduleStoreAPI.importModule(m.filename);
 
-            goosemodScope.settings.createFromItems();
             goosemodScope.settings.openSettingItem('Module Store');
           },
           isToggled: () => goosemodScope.modules[m.filename] !== undefined,
@@ -135,12 +134,8 @@ export default {
               goosemodScope.modules[m.filename].remove();
 
               delete goosemodScope.modules[m.filename];
-
-              goosemodScope.settings.createFromItems();
-              goosemodScope.settings.openSettingItem('Module Store');
             }
 
-            goosemodScope.settings.createFromItems();
             goosemodScope.settings.openSettingItem('Module Store');
           }
         });

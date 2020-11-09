@@ -6,6 +6,8 @@ const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/mod
 
     delete obj.req.m.__extra_id__;
     delete obj.req.c.__extra_id__;
+
+    obj.generateCommons();
   },
   
   find: (filter) => {
@@ -39,6 +41,12 @@ const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/mod
   findByPrototypes: (...protoNames) => obj.find(module => module.prototype && protoNames.every(protoProp => module.prototype[protoProp] !== undefined)),
 
   findByDisplayName: (displayName) => obj.find(module => module.displayName === displayName),
+
+  generateCommons: () => {
+    obj.common.React = obj.findByProps('createElement');
+  },
+
+  common: {}
 };
 
 obj.init();

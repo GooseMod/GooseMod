@@ -1,5 +1,4 @@
 import sleep from '../util/sleep';
-// import ab2str from '../util/ab2str';
 
 let goosemodScope = {};
 
@@ -21,7 +20,8 @@ export const removeModuleUI = (field, where) => {
 
   goosemodScope.clearModuleSetting(field);
 
-  goosemodScope.settings.createFromItems();
+  // goosemodScope.settings.createFromItems();
+
   goosemodScope.settings.openSettingItem(where);
 };
 
@@ -38,12 +38,16 @@ export const closeSettings = () => {
 };
 
 export const openSettings = () => {
-  settingsButtonEl.click();
+  document.querySelector('button[aria-label="User Settings"]').click();
 };
 
 export const openSettingItem = (name) => {
   try {
-    [...settingsSidebarGooseModContainer.children].find((x) => x.textContent === name).click();
+    const children = [...settingsSidebarEl.children];
+
+    children[1].click(); // To refresh / regenerate
+    children.find((x) => x.textContent === name).click();
+
     return true;
   } catch (e) {
     return false;
@@ -64,7 +68,7 @@ export const reopenSettings = async () => {
 
 // Settings UI stuff
 
-let settingsButtonEl;
+/*let settingsButtonEl;
 
 (async function() {
   settingsButtonEl = document.querySelector('button[aria-label="User Settings"]');
@@ -77,9 +81,9 @@ let settingsButtonEl;
   }
 
   settingsButtonEl.addEventListener('click', injectInSettings);
-})();
+})();*/
 
-let settingsLayerEl, settingsSidebarEl, settingsSidebarGooseModContainer, settingsMainEl, settingsClasses;
+let settingsLayerEl, settingsSidebarEl;
 
 //const settings = {
 export let items = [];
@@ -96,7 +100,7 @@ export const createSeparator = () => {
   goosemodScope.settings.items.push(['separator']);
 };
 
-export const createFromItems = () => {
+/*export const createFromItems = () => {
   settingsSidebarGooseModContainer.innerHTML = '';
 
   for (let i of goosemodScope.settings.items) {
@@ -112,9 +116,9 @@ export const createFromItems = () => {
         break;
     }
   }
-};
+};*/
 
-export const _createItem = (panelName, content, clickHandler, danger = false) => {
+export const _createItem = (panelName, content) => {
     let parentEl = document.createElement('div');
 
     let headerEl = document.createElement('h2');
@@ -1002,7 +1006,9 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
       contentEl.appendChild(specialContainerEl);
     }
 
-    let el = document.createElement('div');
+    return parentEl;
+
+    /*let el = document.createElement('div');
 
     el.classList.add(settingsClasses['item']);
     el.classList.add(settingsClasses['themed']);
@@ -1063,10 +1069,10 @@ export const _createItem = (panelName, content, clickHandler, danger = false) =>
 
     if (panelName === 'Local Modules' && window.DiscordNative === undefined) return;
 
-    settingsSidebarGooseModContainer.appendChild(el);
+    settingsSidebarGooseModContainer.appendChild(el);*/
 };
 
-export const _createHeading = (headingName) => {
+/*export const _createHeading = (headingName) => {
   let el = document.createElement('div');
   el.className = settingsClasses['header'];
 
@@ -1083,10 +1089,10 @@ export const _createSeparator = () => {
   el.className = settingsClasses['separator'];
 
   settingsSidebarGooseModContainer.appendChild(el);
-};
+};*/
 //};
 
-let tryingToInject = false;
+/*let tryingToInject = false;
 
 export const injectInSettings = async () => {
   if (goosemodScope.removed) return;
@@ -1158,9 +1164,128 @@ export const checkSettingsOpenInterval = setInterval(async () => {
   if (el && !el.querySelector('nav > div').classList.contains('goosemod-settings-injected')) {
     await goosemodScope.settings.injectInSettings();
   }
-}, 100);
+}, 100);*/
 
 export const makeGooseModSettings = () => {
+  const SettingsView = goosemodScope.webpackModules.findByDisplayName('SettingsView');
+  const { React } = goosemodScope.webpackModules.common;
+
+  goosemodScope.patcher.inject('gm-settings', SettingsView.prototype, 'getPredicateSections', (_, sections) => {
+    // console.log(sections);
+
+    const dividers = sections.filter(c => c.section === 'DIVIDER');
+
+    //if (changelog) {
+      sections.splice(
+        sections.indexOf(dividers[dividers.length - 2]) + 1, 0,
+
+        ...goosemodScope.settings.items.map((i) => {
+          switch (i[0]) {
+            case 'item':
+              let obj = {
+                section: i[1],
+                label: i[1],
+                predicate: () => { alert(1); },
+                element: function() {
+                  if (typeof i[3] === 'function') {
+                    document.getElementsByClassName('selected-3s45Ha')[0].click();
+
+                    i[3]();
+
+                    return React.createElement('div');
+                  }
+
+
+                  settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
+                  settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
+
+                  if (i[1] === 'Module Store') { // Settings expansion for Module Store panel
+                    setTimeout(() => {
+                      document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
+                      document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '100%';
+                    }, 10);
+
+                    settingsSidebarEl.addEventListener('click', (e) => {
+                      if (e.clientX === 0) return; // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
+
+                      document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
+                      document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
+                    });
+                  }
+                  
+                  let contentEl = goosemodScope.settings._createItem(i[1], i[2]);
+
+                  const ref = React.useRef(null);
+
+                  React.useEffect(() => { ref.current.appendChild(contentEl); }, []);
+
+                  return React.createElement('div', {
+                    ref
+                  });
+                  //return React.createElement(VanillaElement, { vanillaChild: contentEl });
+                }
+              };
+              if (i[4]) obj.color = '#f04747';
+              return obj;
+              //goosemodScope.settings._createItem(i[1], i[2], i[3], i[4]);
+
+            case 'heading':
+              return {
+                section: 'HEADER',
+                label: i[1]
+              };
+
+            case 'separator':
+              return {
+                section: 'DIVIDER'
+              };
+          }
+        }),
+
+        {
+          section: 'DIVIDER'
+        }
+      );
+    //}
+
+    const versionInfo = sections[sections.length - 1];
+    const versionInfoEl = versionInfo.element();
+
+    let goosemodVersionInfo = React.cloneElement(versionInfoEl);
+
+    goosemodVersionInfo.props.children = [];
+
+    let goosemodVersion = React.cloneElement(versionInfoEl.props.children[0]);
+
+    goosemodVersion.props.children[0] = 'GooseMod';
+    goosemodVersion.props.children[2] = goosemodScope.version;
+
+    goosemodVersion.props.children[4].props.children[1] = goosemodScope.versionHash.substring(0, 7);
+
+    goosemodVersionInfo.props.children.push(goosemodVersion);
+
+    let untetheredVersion = React.cloneElement(versionInfoEl.props.children[1] || versionInfoEl.props.children[2]);
+
+    untetheredVersion.props.children[0] = 'GooseMod Untethered ';
+    untetheredVersion.props.children[1] = goosemodScope.untetheredVersion || 'N/A';
+
+    goosemodVersionInfo.props.children.push(untetheredVersion);
+
+    sections.push(
+      {
+        section: 'DIVIDER'
+      },
+      {
+        section: 'CUSTOM',
+        element: () => goosemodVersionInfo
+      }
+    );
+
+    console.log('gm', sections);
+
+    return sections;
+  });
+
   goosemodScope.settings.createHeading('GooseMod');
 
   goosemodScope.settings.createItem('Local Modules', ['',
@@ -1178,7 +1303,6 @@ export const makeGooseModSettings = () => {
           }
         }
 
-        goosemodScope.settings.createFromItems();
         goosemodScope.settings.openSettingItem('Local Modules');
       },
     },
@@ -1203,8 +1327,6 @@ export const makeGooseModSettings = () => {
 
       selectors[s.children[0].children[0].children[2].innerText.toLowerCase()] = s.classList.contains(selectedClass);
     }
-    
-    console.log(selectors);
 
     for (let c of cards) {
       const title = c.getElementsByClassName('title-31JmR4')[0];
@@ -1235,8 +1357,6 @@ export const makeGooseModSettings = () => {
         await goosemodScope.moduleStoreAPI.updateModules();
 
         await goosemodScope.moduleStoreAPI.updateStoreSetting();
-
-        goosemodScope.settings.createFromItems();
 
         goosemodScope.settings.openSettingItem('Module Store');
       },

@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## v5.0.0 [2020-11-09]
+
+  - ### Features
+    - Native / React settings sidebar injection instead of DOM, resulting in no lag caused by GooseMod when opening settings and them being there with no delay
+    - Added native patcher library / API (based on Powercord <3)
+    - Added native context menu injection library / API, this now allows modules to easily add their own entries to context menus with only a couple lines oF JS instead of needing to reinvent the wheel everytime
+    - Moved version info into separate version info section, there is now a divider after Discord's version info and then GooseMod's own
+
+  - ### Tweaks
+    - Slightly optimized Module Store settings UI generation
+    - Module Store no longer readjusts settings UI width again when importing or removing a module
+
+
 ## v4.10.0 [2020-11-05]
 
   - ### Features

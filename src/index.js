@@ -5,6 +5,9 @@ import * as Logger from './util/logger';
 import WebpackModules from './util/discord/webpackModules';
 import fixLocalStorage from './util/discord/fixLocalStorage';
 
+import * as Patcher from './util/patcher';
+import * as ReactUtils from './util/react';
+
 import showToast from './ui/toast';
 import confirmDialog from './ui/modals/confirm';
 
@@ -36,7 +39,8 @@ const scopeSetterFncs = [
   Changelog.setThisScope,
   GoosemodChangelog.setThisScope,
 
-  PackModal.setThisScope
+  PackModal.setThisScope,
+  Patcher.setThisScope
 ];
 
 const importsToAssign = {
@@ -69,7 +73,10 @@ const importsToAssign = {
   changelog: Changelog,
   goosemodChangelog: GoosemodChangelog,
 
-  packModal: PackModal
+  packModal: PackModal,
+
+  patcher: Patcher,
+  reactUtils: ReactUtils
 };
 
 const init = async function () {
@@ -92,7 +99,7 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '4.10.0';
+  this.version = '5.0.0';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
   fetch('https://goosemod-api.netlify.app/injectVersion.json').then((x) => x.json().then((latestInjectVersionInfo) => {
@@ -129,9 +136,10 @@ const init = async function () {
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
   
   this.remove = () => {
+    this.patcher.uninject('gm-settings');
+
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);
-    clearInterval(this.checkSettingsOpenInterval);
     
     localStorage.removeItem('goosemodLastVersion');
 
@@ -142,7 +150,9 @@ const init = async function () {
     
     for (let p in this.modules) {
       if (this.modules.hasOwnProperty(p) && this.modules[p].remove !== undefined) {
-        this.modules[p].remove();
+        try {
+          this.modules[p].remove();
+        } catch (e) { }
       }
     }
   };
