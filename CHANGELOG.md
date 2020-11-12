@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v5.0.1 [2020-11-12]
+
+  - ### Tweaks
+    - Removed some extra debug logging
+
+  - ### Fixes
+    - Fixed GooseMod settings being injected in all sidebars instead of just settings
+
+
 ## v5.0.0 [2020-11-09]
 
   - ### Features

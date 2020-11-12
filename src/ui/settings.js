@@ -1171,7 +1171,9 @@ export const makeGooseModSettings = () => {
   const { React } = goosemodScope.webpackModules.common;
 
   goosemodScope.patcher.inject('gm-settings', SettingsView.prototype, 'getPredicateSections', (_, sections) => {
-    // console.log(sections);
+    console.log(sections);
+
+    if (!sections.find(c => c.section === 'changelog')) return sections;
 
     const dividers = sections.filter(c => c.section === 'DIVIDER');
 
@@ -1280,8 +1282,6 @@ export const makeGooseModSettings = () => {
         element: () => goosemodVersionInfo
       }
     );
-
-    console.log('gm', sections);
 
     return sections;
   });
