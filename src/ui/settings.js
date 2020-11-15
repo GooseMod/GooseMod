@@ -725,11 +725,11 @@ export const _createItem = (panelName, content) => {
 
           let txtEl = document.createElement('span');
           
-          if (!e.showToggle) {
+          //if (!e.showToggle) {
             txtEl.style.cursor = 'auto';
-          } else {
+          /*} else {
             txtEl.onclick = fn;
-          }
+          }*/
 
           txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
 
@@ -1328,8 +1328,10 @@ export const makeGooseModSettings = () => {
 
     for (let c of cards) {
       const title = c.getElementsByClassName('title-31JmR4')[0];
-      const author = title.childNodes[2].wholeText.trim().toLowerCase();
+      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.toLowerCase());
       const name = title.childNodes[0].wholeText;
+
+      // console.log(authors, selectors);
 
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
 
@@ -1337,7 +1339,7 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
-      c.style.display = matches && selectors[c.className] && selectors[author] && selectors[importedSelector] ? 'block' : 'none';
+      c.style.display = matches && selectors[c.className] && authors.every((x) => selectors[x]) && selectors[importedSelector] ? 'block' : 'none';
     }
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
@@ -1390,7 +1392,7 @@ export const makeGooseModSettings = () => {
           const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
           let final = [...cards.reduce((acc, e) => {
-            let x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
+            const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
             return acc.set(x, (acc.get(x) || 0) + 1);
           }, new Map()).entries()].sort((a, b) => b[1] - a[1]);
 
@@ -1401,8 +1403,12 @@ export const makeGooseModSettings = () => {
           final.push(['Authors', 0, 'divider']);
 
           final = final.concat([...cards.reduce((acc, e) => {
-            let x = e.getElementsByClassName('title-31JmR4')[0].childNodes[2].textContent.trim();
-            return acc.set(x, (acc.get(x) || 0) + 1);
+            for (let el of e.getElementsByClassName('author')) {
+              const x = el.textContent;
+              acc.set(x, (acc.get(x) || 0) + 1);
+            }
+
+            return acc;
           }, new Map()).entries()].sort((a, b) => b[1] - a[1]));
 
           console.log(final);

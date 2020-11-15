@@ -1,5 +1,17 @@
 # GooseMod Changelog
 
+## v5.1.0 [2020-11-15]
+
+  - ### Features
+    - Clicking on (some) authors now opens their profile in Module Store
+
+  - ### Tweaks
+    - Clicking title / main text on card no longer toggles switch in Module Store
+
+  - ### Fixes
+    - Fixed toggling modules in Module Store with switch would try and call the module's loading finished event handler even if it did not exist
+
+
 ## v5.0.1 [2020-11-12]
 
   - ### Tweaks

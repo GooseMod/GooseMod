@@ -64,6 +64,21 @@ export default {
     item.showToggle = false;
   },
 
+  parseAuthors: (str) => {
+    let authors = str.split(', ');
+    authors = authors.map((x) => {
+      let idMatch = x.match(/(.*) \(([0-9]{18})\)/);
+
+      console.log(x, idMatch);
+
+      if (idMatch === null) return `<span class="author">${x}</span>`;
+
+      return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${idMatch[2]}') } catch (e) { }">${idMatch[1]}</span>`; // todo
+    });
+
+    return authors.join(', ');
+  },
+
   updateStoreSetting: () => {
     let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
 
@@ -97,7 +112,7 @@ export default {
           buttonType: goosemodScope.modules[m.filename] ? 'danger' : 'brand',
           showToggle: goosemodScope.modules[m.filename],
 
-          text: `${m.name} <span class="description-3_Ncsb">by</span> ${m.author}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
+          text: `${m.name} <span class="description-3_Ncsb">by</span> ${goosemodScope.moduleStoreAPI.parseAuthors(m.author)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
           subtext: m.description,
           subtext2: `v${m.version}`,
 
@@ -125,7 +140,9 @@ export default {
 
               await goosemodScope.modules[m.filename].onImport();
 
-              await goosemodScope.modules[m.filename].onLoadingFinished();
+              if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
+                await goosemodScope.modules[m.filename].onLoadingFinished();
+              }
 
               goosemodScope.loadSavedModuleSetting(m.filename);
             } else {
