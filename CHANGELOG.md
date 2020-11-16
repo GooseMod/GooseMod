@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v5.1.1 [2020-11-16]
+
+  - ### Fixes
+    - Fixed extra info not being sent to handlers properly for context menu patcher
+    - Removed extra unneeded logging in context menu patcher
+
+
 ## v5.1.0 [2020-11-15]
 
   - ### Features

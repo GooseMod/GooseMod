@@ -52,38 +52,30 @@ export const add = (type, itemProps) => {
 
   const origAction = itemProps.action;
 
-  itemProps.action = function() {
-    return origAction(arguments, getExtraInfo(type));
-  };
-
   inject(getInjectId(id), Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
     if (navId !== wantedNavId) {
       return args;
     }
 
-    console.log('inj');
-    
+    const extraInfo = getExtraInfo(type);
+
+    itemProps.action = function() {
+      return origAction(arguments, extraInfo);
+    };
+
     const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === itemProps.id);
     if (alreadyHasItem) return args;
 
     const item = React.createElement(Menu.MenuItem, itemProps);
 
-    console.log(item);
-
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
-
-    console.log(goosemodGroup);
 
     if (!goosemodGroup) {
       goosemodGroup = React.createElement(Menu.MenuGroup, { goosemod: true }, item);
 
-      console.log('a', goosemodGroup);
-
       children.push([ React.createElement(Menu.MenuSeparator), goosemodGroup ]);
     } else {
-      console.log('b', goosemodGroup);
-
       if (!Array.isArray(goosemodGroup.props.children)) {
         goosemodGroup.props.children = [ goosemodGroup.props.children ];
       }
