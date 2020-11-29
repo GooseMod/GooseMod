@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v5.1.2 [2020-11-29]
+
+  - ### Fixes
+    - Fixed getting localStorage / loading erroring out when using (B)BD
+
+
 ## v5.1.1 [2020-11-16]
 
   - ### Fixes

@@ -1,13 +1,15 @@
 // Bypass to get Local Storage (Discord block / remove it) - Source / credit: https://stackoverflow.com/questions/52509440/discord-window-localstorage-is-undefined-how-to-get-access-to-the-localstorage
 function getLocalStoragePropertyDescriptor() {
-  const iframe = document.createElement('iframe');
-  document.head.append(iframe);
+  const frame = document.createElement('frame');
+  frame.src = 'about:blank';
 
-  const pd = Object.getOwnPropertyDescriptor(iframe.contentWindow, 'localStorage');
+  document.body.appendChild(frame);
 
-  iframe.remove();
+  let r = Object.getOwnPropertyDescriptor(frame.contentWindow, 'localStorage');
 
-  return pd;
+  frame.remove();
+
+  return r;
 }
 
 export default () => {
