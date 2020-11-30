@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v5.2.0 [2020-11-30]
+
+  - ### Fixes
+    - Updated Module Store's Sidebar selection UI to use Discord's new radio buttons
+
+
 ## v5.1.2 [2020-11-29]
 
   - ### Fixes
