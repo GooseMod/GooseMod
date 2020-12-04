@@ -24,7 +24,8 @@ export default {
     },
     {
       text: 'Honk',
-      message: 'Honk'
+      message: 'Honk',
+      audio: 'https://cdn.discordapp.com/attachments/756146058924392542/784196129679343656/honk.mp3'
     },
     {
       text: 'GooseMod',
@@ -47,6 +48,16 @@ export default {
         }
 
         goosemodScope.showToast(e.message);
+        
+        if (e.audio) {
+          const a = new Audio(e.audio);
+          
+          a.play();
+          
+          a.onended = () => {
+            a.remove();
+          };
+        }
 
         e.cooldown = (e.cooldown || 6) - 1;
       }
