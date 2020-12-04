@@ -25,7 +25,7 @@ export default {
     {
       text: 'Honk',
       message: 'Honk',
-      audio: 'https://cdn.discordapp.com/attachments/756146058924392542/784196129679343656/honk.mp3'
+      audio: 'https://cryptofyre.xyz/cdn/honk.mp3'
     },
     {
       text: 'GooseMod',
