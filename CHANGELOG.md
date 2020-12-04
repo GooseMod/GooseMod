@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v5.4.0 [2020-12-04]
+
+  - ### Features
+    - [GitHub PR #11 by Fjorge](https://github.com/GooseMod/Injector/pull/11): Only exclude modules with all (not some) authors unselected in Module Store Sidebar
+    - [GitHub PR #12 by Fjorge](https://github.com/GooseMod/Injector/pull/12): Add Changelog button to GooseMod settings
+
+  - ### Tweaks
+    - Removed uninstall setting option
+
+
 ## v5.3.1 [2020-12-04]
 
   - ### Fixes

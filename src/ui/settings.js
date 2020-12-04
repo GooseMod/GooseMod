@@ -1,5 +1,5 @@
 import sleep from '../util/sleep';
-import * as GoosemodChangelog from './ui/goosemodChangelog';
+import * as GoosemodChangelog from './goosemodChangelog';
 
 let goosemodScope = {};
 
@@ -1432,17 +1432,17 @@ export const makeGooseModSettings = () => {
     }
   ]);
 
-  goosemodScope.settings.createItem('Changelog', [""], async () => {
+  goosemodScope.settings.createItem('Change Log', [""], async () => {
     GoosemodChangelog.show();
   });
   
-  goosemodScope.settings.createItem('Uninstall', [""], async () => {
+  /* goosemodScope.settings.createItem('Uninstall', [""], async () => {
     if (await goosemodScope.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
       goosemodScope.settings.closeSettings();
 
       goosemodScope.remove();
     }
-  }, true);
+  }, true); */
 
   /*if (window.DiscordNative !== undefined) {
     goosemodScope.settings.createItem('Local Reinstall', [''], async () => {
