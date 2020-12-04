@@ -65,10 +65,12 @@ export default {
   },
 
   parseAuthors: (a) => {
+    let authors = [];
+
     if (typeof a === "string") {
-      var authors = a.split(', ');
+      authors = a.split(', ');
     } else if (Array.isArray(a)) {
-      var authors = a;
+      authors = a;
     };
     
     authors = authors.map((x) => {
