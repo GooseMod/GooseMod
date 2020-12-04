@@ -24,7 +24,8 @@ export default {
     },
     {
       text: 'Honk',
-      message: 'Honk'
+      message: 'Honk',
+      audio: './audio/honk.mp3'
     },
     {
       text: 'GooseMod',
