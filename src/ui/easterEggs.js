@@ -50,7 +50,13 @@ export default {
         goosemodScope.showToast(e.message);
         
         if (e.audio) {
-          new Audio(e.audio).play();
+          const a = new Audio(e.audio);
+          
+          a.play();
+          
+          a.onended = () => {
+            a.remove();
+          };
         }
 
         e.cooldown = (e.cooldown || 6) - 1;
