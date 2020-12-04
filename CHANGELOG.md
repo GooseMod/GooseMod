@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v5.3.1 [2020-12-04]
+
+  - ### Fixes
+    - Fixed easter egg's audio not playing correctly
+
+
 ## v5.3.0 [2020-12-04]
 
   - ### Features

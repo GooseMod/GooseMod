@@ -50,10 +50,13 @@ export default {
         goosemodScope.showToast(e.message);
         
         if (e.audio) {
-          const a = new Audio(e.audio);
-          
-          a.play();
-          
+          const a = new Audio();
+          a.src = e.audio;
+
+          a.oncanplaythrough = () => {
+            a.play();
+          };
+
           a.onended = () => {
             a.remove();
           };
