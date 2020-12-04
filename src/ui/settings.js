@@ -1,4 +1,5 @@
 import sleep from '../util/sleep';
+import * as GoosemodChangelog from './ui/goosemodChangelog';
 
 let goosemodScope = {};
 
@@ -1431,6 +1432,10 @@ export const makeGooseModSettings = () => {
     }
   ]);
 
+  goosemodScope.settings.createItem('Changelog', [""], async () => {
+    GoosemodChangelog.show();
+  });
+  
   goosemodScope.settings.createItem('Uninstall', [""], async () => {
     if (await goosemodScope.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
       goosemodScope.settings.closeSettings();
