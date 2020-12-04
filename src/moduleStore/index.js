@@ -64,8 +64,15 @@ export default {
     item.showToggle = false;
   },
 
-  parseAuthors: (str) => {
-    let authors = str.split(', ');
+  parseAuthors: (a) => {
+    let authors = [];
+
+    if (typeof a === "string") {
+      authors = a.split(', ');
+    } else if (Array.isArray(a)) {
+      authors = a;
+    };
+    
     authors = authors.map((x) => {
       let idMatch = x.match(/(.*) \(([0-9]{18})\)/);
 
