@@ -1335,7 +1335,7 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
-      c.style.display = matches && selectors[c.className] && authors.every((x) => selectors[x]) && selectors[importedSelector] ? 'block' : 'none';
+      c.style.display = matches && selectors[c.className] && authors.some((x) => selectors[x]) && selectors[importedSelector] ? 'block' : 'none';
     }
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
