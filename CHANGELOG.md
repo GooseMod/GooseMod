@@ -1,5 +1,12 @@
 # GooseMod Changelog
 
+## v5.3.0 [2020-12-04]
+
+  - ### Features
+    - [GitHub PR #6 by Fjorge](https://github.com/GooseMod/Injector/pull/6): Add audio property to easter eggs
+    - [GitHub PR #8 by Fjorge](https://github.com/GooseMod/Injector/pull/8): Let modules have author as an array
+
+
 ## v5.2.0 [2020-11-30]
 
   - ### Fixes
