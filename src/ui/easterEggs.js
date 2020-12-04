@@ -48,6 +48,10 @@ export default {
         }
 
         goosemodScope.showToast(e.message);
+        
+        if (e.audio) {
+          new Audio(e.audio).play();
+        }
 
         e.cooldown = (e.cooldown || 6) - 1;
       }
