@@ -22,36 +22,41 @@ export default {
   },
 
   importModule: async (moduleName) => {
-    const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+    try {
+      const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
 
-    const jsCode = await goosemodScope.moduleStoreAPI.jsCache.getJSForModule(moduleName);
+      const jsCode = await goosemodScope.moduleStoreAPI.jsCache.getJSForModule(moduleName);
 
-    const calculatedHash = await sha512(jsCode);
-    if (calculatedHash !== moduleInfo.hash) {
-      goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 2000});
+      const calculatedHash = await sha512(jsCode);
+      if (calculatedHash !== moduleInfo.hash) {
+        goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 2000, type: 'danger'});
 
-      console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
-      return;
+        console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
+        return;
+      }
+
+      await goosemodScope.importModule({
+        filename: `${moduleInfo.filename}.js`,
+        data: jsCode
+      });
+
+      if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
+        await goosemodScope.modules[moduleName].onLoadingFinished();
+      }
+
+      let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
+
+      let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
+
+      item.buttonType = 'danger';
+      item.buttonText = 'Remove';
+      item.showToggle = true;
+
+      // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
+    } catch (e) {
+      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error' });
+      console.error(e);
     }
-
-    await goosemodScope.importModule({
-      filename: `${moduleInfo.filename}.js`,
-      data: jsCode
-    });
-
-    if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
-      await goosemodScope.modules[moduleName].onLoadingFinished();
-    }
-
-    let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
-
-    let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
-
-    item.buttonType = 'danger';
-    item.buttonText = 'Remove';
-    item.showToggle = true;
-
-    // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
   },
 
   moduleRemoved: async (m) => {

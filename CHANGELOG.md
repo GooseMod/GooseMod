@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v5.5.0 [2020-12-06]
+
+  - ### Features
+    - Display error when a module fails to import instead of causing an error and halting GooseMod loading
+
+
 ## v5.4.0 [2020-12-04]
 
   - ### Features
