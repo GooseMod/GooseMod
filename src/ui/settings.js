@@ -87,7 +87,7 @@ export const reopenSettings = async () => {
 let settingsLayerEl, settingsSidebarEl;
 
 //const settings = {
-export let itehttps://discord.com/channels/756146058320674998/784823381652013056ms = [];
+export let items = [];
 
 export const createItem = (panelName, content, clickHandler, danger = false) => {
   goosemodScope.settings.items.push(['item', panelName, content, clickHandler, danger]);
