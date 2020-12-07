@@ -93,6 +93,10 @@ export const createItem = (panelName, content, clickHandler, danger = false) => 
   goosemodScope.settings.items.push(['item', panelName, content, clickHandler, danger]);
 };
 
+export const removeItem = (setting) => {
+  goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === setting)), 1);
+};
+
 export const createHeading = (headingName) => {
   goosemodScope.settings.items.push(['heading', headingName]);
 };
