@@ -87,10 +87,14 @@ export const reopenSettings = async () => {
 let settingsLayerEl, settingsSidebarEl;
 
 //const settings = {
-export let items = [];
+export let itehttps://discord.com/channels/756146058320674998/784823381652013056ms = [];
 
 export const createItem = (panelName, content, clickHandler, danger = false) => {
   goosemodScope.settings.items.push(['item', panelName, content, clickHandler, danger]);
+};
+
+export const removeItem = (setting) => {
+		goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === setting)), 1);
 };
 
 export const createHeading = (headingName) => {
