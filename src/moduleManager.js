@@ -37,19 +37,25 @@ export const importModule = async (f, isLocal = false) => {
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
 
-  let toggleObj = {
-    type: 'text-and-danger-button',
-    text: `${goosemodScope.modules[field].name} <span class="description-3_Ncsb">by</span> ${goosemodScope.modules[field].author} <span class="description-3_Ncsb">(v${goosemodScope.modules[field].version})</span>`,
-    buttonText: 'Remove',
-    subtext: goosemodScope.modules[field].description,
-    onclick: (el) => {
-      el.textContent = 'Removing...';
+  if (isLocal) {
+    const toggleObj = {
+      type: 'text-and-danger-button',
+      text: `${goosemodScope.modules[field].name} <span class="description-3_Ncsb">by</span> ${goosemodScope.modules[field].author} <span class="description-3_Ncsb">(v${goosemodScope.modules[field].version})</span>`,
+      buttonText: 'Remove',
+      subtext: goosemodScope.modules[field].description,
+      onclick: (el) => {
+        el.textContent = 'Removing...';
+  
+        goosemodScope.settings.removeModuleUI(field, 'Local Modules');
 
-      goosemodScope.settings.removeModuleUI(field, 'Local Modules');
-    }
-  };
+        goosemodScope.showToast(`Module (${goosemodScope.modules[field].name}) removed`, { type: 'success' });
+      }
+    };
 
-  if (isLocal) settingItem[2].push(toggleObj);
+    settingItem[2].push(toggleObj);
+
+    goosemodScope.showToast(`Module (${goosemodScope.modules[field].name}) imported`, { type: 'success' });
+  }
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
 };
