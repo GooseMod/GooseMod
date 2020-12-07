@@ -10,6 +10,7 @@ export const importModule = async (f, isLocal = false) => {
   let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)
 
   goosemodScope.logger.debug('import', `Importing module: "${field}"`);
+  goosemodScope.showToast(`Importing module: "${field}"`);
 
   let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Local Modules');
 
@@ -46,6 +47,8 @@ export const importModule = async (f, isLocal = false) => {
       el.textContent = 'Removing...';
 
       goosemodScope.settings.removeModuleUI(field, 'Local Modules');
+
+      goosemodScope.showToast("Module successfully removed", { type: "success" });
     }
   };
 
@@ -62,6 +65,7 @@ export const importModules = async (files, isLocal) => {
   }
 
   goosemodScope.logger.debug('import', 'Imported all files');
+  goosemodScope.showToast("Module(s) successfully imported", { type: "success" });
 };
 
 export const bindHandlers = (handlers) => {
@@ -102,7 +106,7 @@ export const getModuleFiles = async () => { // Ask for module files (one by one 
 
 export const importModulesFull = async () => {
   if (window.DiscordNative === undefined) {
-    alert('Not supported in browser');
+    goosemodScope.showToast("Not supported in current browser", { type: "error" });
     return [];
   }
 
