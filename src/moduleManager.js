@@ -44,11 +44,13 @@ export const importModule = async (f, isLocal = false) => {
       buttonText: 'Remove',
       subtext: goosemodScope.modules[field].description,
       onclick: (el) => {
+        const cachedName = goosemodScope.modules[field].name.slice();
+
         el.textContent = 'Removing...';
   
         goosemodScope.settings.removeModuleUI(field, 'Local Modules');
 
-        goosemodScope.showToast(`Module (${goosemodScope.modules[field].name}) removed`, { type: 'success' });
+        goosemodScope.showToast(`Module (${cachedName}) removed`, { type: 'success' });
       }
     };
 
