@@ -3,6 +3,7 @@
 ## v5.6.0 [2020-12-07]
 
   - ### Features
+    - [GitHub PR #15 by Fjorge](https://github.com/GooseMod/Injector/pull/15): Add standard removeItem function to Settings API
     - Added import and remove confirmation toasts with local modules
 
 
