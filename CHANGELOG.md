@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v5.6.0 [2020-12-07]
+
+  - ### Features
+    - Added import and remove confirmation toasts with local modules
+
+
 ## v5.5.0 [2020-12-06]
 
   - ### Features
