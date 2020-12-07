@@ -106,7 +106,7 @@ export const getModuleFiles = async () => { // Ask for module files (one by one 
 
 export const importModulesFull = async () => {
   if (window.DiscordNative === undefined) {
-    goosemodScope.showToast("Not supported in current browser", { type: "error" });
+    goosemodScope.showToast("Not supported in browser", { type: "error" });
     return [];
   }
 
