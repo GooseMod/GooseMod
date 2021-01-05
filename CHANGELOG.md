@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## [DEV] v5.7.0 [2021-01-05]
+## v5.7.0 [2021-01-05]
 
   - ### Features
     - New injecting UI (as shown in changelog header)
