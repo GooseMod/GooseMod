@@ -45,7 +45,7 @@ export const resetChangelog = () => {
   mod.experiment_names = originalChangelog.experiment_names
 }
 
-export const setChangelog = ({body, image, date}) => {
+export const setChangelog = ({body, image, date, video}) => {
   let mod = goosemodScope.webpackModules.findByProps('changeLog');
 
   if (body) {
@@ -54,6 +54,14 @@ export const setChangelog = ({body, image, date}) => {
 
   if (image) {
     mod.changeLog.image = image;
+  } else {
+    delete mod.changeLog.image;
+  }
+
+  if (video) {
+    mod.changeLog.video = video;
+  } else {
+    delete mod.changeLog.video;
   }
 
   if (date) {
@@ -62,7 +70,6 @@ export const setChangelog = ({body, image, date}) => {
 
   mod.changeLog.template = 'standard';
 
-  delete mod.video;
   delete mod.changeLog.experiment_bucket;
   delete mod.changeLog.experiment_names;
 };
