@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## [DEV] v5.7.0 [2021-01-05]
+
+  - ### Features
+    - New injecting UI (as shown in changelog header)
+    - Added support for videos in changelog modal
+
+  - ### Tweaks
+    - Updated changelog image to new injecting UI
+
+  - ### Fixes
+    - Fixed changelog modal being broken by videos in official changelog
+
+
 ## v5.6.0 [2020-12-07]
 
   - ### Features
