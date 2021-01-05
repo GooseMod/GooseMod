@@ -12,6 +12,7 @@ export const setThisScope = (scope) => {
   originalChangelog = {
     body: orig.body,
     image: orig.image,
+    video: orig.video,
     date: orig.date,
 
     template: orig.template,
@@ -35,6 +36,7 @@ export const resetChangelog = () => {
   
   mod.changeLog.body = originalChangelog.body;
   mod.changeLog.image = originalChangelog.image;
+  mod.changeLog.video = originalChangelog.video;
   mod.changeLog.date = originalChangelog.date;
 
   mod.changeLog.template = originalChangelog.template;
@@ -60,6 +62,7 @@ export const setChangelog = ({body, image, date}) => {
 
   mod.changeLog.template = 'standard';
 
+  delete mod.video;
   delete mod.changeLog.experiment_bucket;
   delete mod.changeLog.experiment_names;
 };
