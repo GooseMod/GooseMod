@@ -17,6 +17,7 @@ export const startLoadingScreen = () => {
   loadingEl.style.zIndex = '10';
 
   loadingEl.style.backgroundColor = 'var(--background-floating)';
+  loadingEl.style.opacity = '0.9';
   loadingEl.style.borderRadius = '8px';
   loadingEl.style.padding = '16px';
   loadingEl.style.boxShadow = 'var(--elevation-high)';
