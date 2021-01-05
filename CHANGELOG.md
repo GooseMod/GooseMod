@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## [DEV] v5.8.0 [2021-01-0X]
+
+  - ### Features
+    - Use hash instead of version for JS caching of Module Store modules
+
+
 ## v5.7.0 [2021-01-05]
 
   - ### Features
