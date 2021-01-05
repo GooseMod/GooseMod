@@ -99,7 +99,7 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '5.6.0';
+  this.version = '5.7.0';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
   fetch('https://goosemod-api.netlify.app/injectVersion.json').then((x) => x.json().then((latestInjectVersionInfo) => {
@@ -128,9 +128,7 @@ const init = async function () {
     
     // delete window.gmUntethered;
   }
-  
-  this.showToast(`GooseMod v${this.version} (${this.versionHash.substring(0, 7)})`, {timeout: 1000});
-  
+
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
