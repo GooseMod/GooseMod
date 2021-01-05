@@ -1,6 +1,6 @@
 import sleep from '../util/sleep';
 
-const image = 'https://media.discordapp.net/attachments/756146058924392545/796067606913220648/unknown.png';
+const image = 'https://media.discordapp.net/attachments/756146058924392545/796076701880156240/unknown.png?width=176&height=107';
 const changelogURL = `https://goosemod-api.netlify.app/latestChangelogRelease.json?_=${Date.now()}`;
 
 let version, generated;
