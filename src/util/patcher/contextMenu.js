@@ -50,6 +50,8 @@ export const add = (type, itemProps) => {
     itemProps.id = id;
   }
 
+  const isCheckbox = itemProps.checked !== undefined;
+
   const origAction = itemProps.action;
 
   inject(getInjectId(id), Menu, 'default', (args) => {
@@ -61,14 +63,23 @@ export const add = (type, itemProps) => {
     const extraInfo = getExtraInfo(type);
 
     itemProps.action = function() {
+      if (isCheckbox) {
+        itemProps.checked = !itemProps.checked;
+        item.props.checked = itemProps.checked; // Update the actual current item's props too
+
+        getOwnerInstance(document.getElementById(`${wantedNavId}-${itemProps.id}`)).props.onMouseEnter(); // And make it re-render
+
+        return origAction(arguments, extraInfo, itemProps.checked);
+      }
+
       return origAction(arguments, extraInfo);
     };
 
     const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === itemProps.id);
     if (alreadyHasItem) return args;
 
-    const item = React.createElement(Menu.MenuItem, itemProps);
-
+    const item = React.createElement(isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem, itemProps);
+  
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
 
     if (!goosemodGroup) {
