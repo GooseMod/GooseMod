@@ -1321,18 +1321,31 @@ export const makeGooseModSettings = () => {
 
     let selectors = {};
 
-    for (let s of [...parentEl.children[0].children[4].children]) {
-      if (!s.classList.contains('item-26Dhrx')) continue;
+    let noneSelected = true;
+    let noneSelectedArray = [];
 
-      selectors[s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase()] = s.getAttribute('aria-checked') === 'true'; //s.classList.contains(selectedClass);
+    for (let s of [...parentEl.children[0].children[4].children]) {
+      if (!s.classList.contains('item-26Dhrx')) {
+        noneSelectedArray.push(noneSelected);
+        noneSelected = true;
+
+        continue;
+      }
+
+      const selected = s.getAttribute('aria-checked') === 'true';
+      if (selected) {
+        noneSelected = false;
+      }
+
+      selectors[s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase()] = selected; //s.classList.contains(selectedClass);
     }
+
+    noneSelectedArray.push(noneSelected);
 
     for (let c of cards) {
       const title = c.getElementsByClassName('title-31JmR4')[0];
       const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.toLowerCase());
       const name = title.childNodes[0].wholeText;
-
-      // console.log(authors, selectors);
 
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
 
@@ -1340,7 +1353,7 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
-      c.style.display = matches && selectors[c.className] && authors.some((x) => selectors[x]) && selectors[importedSelector] ? 'block' : 'none';
+      c.style.display = matches && ((selectors[c.className] || noneSelectedArray[1]) && (authors.some((x) => selectors[x]) || noneSelectedArray[2]) && (selectors[importedSelector] || noneSelectedArray[0])) ? 'block' : 'none';
     }
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
@@ -1423,7 +1436,7 @@ export const makeGooseModSettings = () => {
 
               if (ind !== undefined) return ind;
 
-              return true;
+              return false;
             },
             onselected: (sel) => {
               sidebarSelectedIndex[x[0]] = sel;
