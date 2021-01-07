@@ -1320,7 +1320,8 @@ export const makeGooseModSettings = () => {
     const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
 
     let selectors = {};
-
+    let counts = {};
+  
     let noneSelected = true;
     let noneSelectedArray = [];
 
@@ -1337,7 +1338,13 @@ export const makeGooseModSettings = () => {
         noneSelected = false;
       }
 
-      selectors[s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase()] = selected; //s.classList.contains(selectedClass);
+      const key = s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase();
+      counts[key] = {
+        el: s,
+        count: 0
+      };
+
+      selectors[key] = selected; //s.classList.contains(selectedClass);
     }
 
     noneSelectedArray.push(noneSelected);
@@ -1353,12 +1360,26 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
-      c.style.display = matches && ((selectors[c.className] || noneSelectedArray[1]) && (authors.some((x) => selectors[x]) || noneSelectedArray[2]) && (selectors[importedSelector] || noneSelectedArray[0])) ? 'block' : 'none';
+      c.style.display = matches && (
+        (selectors[c.className] || noneSelectedArray[1]) &&
+        (authors.some((x) => selectors[x]) || noneSelectedArray[2]) &&
+        (selectors[importedSelector] || noneSelectedArray[0]))
+        ? 'block' : 'none';
+
+      if (c.style.display !== 'none') {
+        counts[c.className].count++;
+        authors.forEach((x) => counts[x].count++);
+        counts[importedSelector].count++;
+      }
     }
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
 
     parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
+
+    for (let k in counts) {
+      counts[k].el.children[0].children[1].children[0].children[0].children[1].textContent = counts[k].count;
+    }
   };
 
   let sidebarSelectedIndex = {};
@@ -1403,7 +1424,7 @@ export const makeGooseModSettings = () => {
         return new Promise(async (res) => {
           await sleep(10);
 
-          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
 
           let final = [...cards.reduce((acc, e) => {
             const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
