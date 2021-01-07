@@ -3,12 +3,12 @@
 ## [DEV] v5.8.0 [2021-01-0X]
 
   - ### Features
-    - Use hash instead of version for JS caching of Module Store modules
     - Sidebar selectors in Module Store UI are now all off by default and allow selection of each category for mixing
     - Numbers in the Module Store UI sidebar selectors now change as they are chosen and only count visible cards
+    - Use hash instead of version for JS caching of Module Store modules
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
-    - Added new modules to common Webpack modules:
-      - ReactDOM
+    - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Add initial value method for color settings
+    - Added new ReactDOM to common Webpack modules
 
 
 ## v5.7.0 [2021-01-05]
