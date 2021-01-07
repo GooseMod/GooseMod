@@ -4,6 +4,7 @@
 
   - ### Features
     - Use hash instead of version for JS caching of Module Store modules
+    - Make sidebar selectors in Module Store UI all off by default and allow selection of each category for mixing
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
     - Added new modules to common Webpack modules:
       - ReactDOM
