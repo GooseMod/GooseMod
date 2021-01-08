@@ -27,6 +27,8 @@ import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleS
 
 import moduleStoreAPI from './moduleStore';
 
+import triggerSafeMode from './safeMode';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -162,6 +164,13 @@ const init = async function () {
   await this.moduleStoreAPI.updateModules();
   
   this.moduleStoreAPI.updateStoreSetting();
+
+  if (window.gmSafeMode && !(await triggerSafeMode())) {
+    this.stopLoadingScreen();
+    this.showToast();
+
+    return;
+  }
   
   this.initialImport = true;
   
