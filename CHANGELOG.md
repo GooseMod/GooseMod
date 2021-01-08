@@ -10,7 +10,7 @@
   - ### API Additions
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
     - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Add initial value method for color settings
-    - Added new ReactDOM to common Webpack modules
+    - Added ReactDOM to common Webpack modules
 
 
 ## v5.7.0 [2021-01-05]
