@@ -6,11 +6,16 @@
     - Sidebar selectors in Module Store UI are now all off by default and allow selection of each category for mixing
     - Numbers in the Module Store UI sidebar selectors now change as they are chosen and only count visible cards
     - Use hash instead of version for JS caching of Module Store modules
+    - Added Safe Mode
 
   - ### API Additions
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
-    - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Add initial value method for color settings
+    - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
+
+  - ### Build Improvements
+    - Added further comments for better explanation
+    - Now removes auto-added comment line with incorrect source map link
 
 
 ## v5.7.0 [2021-01-05]
