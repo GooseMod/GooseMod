@@ -98,6 +98,8 @@ export const patch = (type, itemProps) => {
   }, true);
 };
 
+
+// DEPRECATED: Compatibility functions for modules from older (<5.8.0) GooseMod versions
 const uninjectors = {};
 
 export const add = (type, itemProps) => {
