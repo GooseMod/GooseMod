@@ -7,7 +7,7 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const add = (tooltipText, svgSrc, clickHandler) => {
+export const patch = (tooltipText, svgSrc, clickHandler) => {
   const { React } = goosemodScope.webpackModules.common;
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const { icon: iconClass } = goosemodScope.webpackModules.findByProps('icon', 'isHeader');
