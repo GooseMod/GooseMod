@@ -103,7 +103,7 @@ export const patch = (type, itemProps) => {
 const uninjectors = {};
 
 export const add = (type, itemProps) => {
-  uninjectors[getInjectId(id)] = patch(type, itemProps);
+  uninjectors[getInjectId(itemProps.id || labelToId(itemProps.label))] = patch(type, itemProps);
 };
 
 export const remove = (label) => {
