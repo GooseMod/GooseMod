@@ -1,4 +1,4 @@
-export { inject, uninject, isInjected } from './base';
+export { patch, inject, uninject } from './base';
 
 import * as _contextMenu from './contextMenu';
 
