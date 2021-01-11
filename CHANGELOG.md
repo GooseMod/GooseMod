@@ -9,6 +9,7 @@
     - Added Safe Mode
 
   - ### API Improvements
+    - Completely new, from scratch Patcher base API, with an added compatibility layer for current / old modules
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
     - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
