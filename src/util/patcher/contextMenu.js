@@ -1,4 +1,4 @@
-import { patch } from './base';
+import * as PatcherBase from './base';
 import { getOwnerInstance, findInReactTree } from '../react';
 
 let goosemodScope = {};
@@ -54,7 +54,7 @@ export const patch = (type, itemProps) => {
 
   const origAction = itemProps.action;
 
-  return patch(Menu, 'default', (args) => {
+  return PatcherBase.patch(Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
     if (navId !== wantedNavId) {
       return args;

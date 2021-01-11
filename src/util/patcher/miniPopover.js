@@ -1,4 +1,4 @@
-import { patch } from './base';
+import * as PatcherBase from './base';
 import { findInReactTree } from '../react';
 
 let goosemodScope = {};
@@ -14,7 +14,7 @@ export const patch = (tooltipText, svgSrc, clickHandler) => {
   
   const MiniPopover = goosemodScope.webpackModules.find((m) => m.default && m.default.displayName === 'MiniPopover')
   
-  return patch(MiniPopover, 'default', (args, res) => {
+  return PatcherBase.patch(MiniPopover, 'default', (args, res) => {
     const props = findInReactTree(res, (r) => r && r.message);
     if (!props) return res;
 
