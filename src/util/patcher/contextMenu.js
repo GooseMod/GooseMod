@@ -1,4 +1,4 @@
-import { inject, uninject } from './base';
+import { patch } from './base';
 import { getOwnerInstance, findInReactTree } from '../react';
 
 let goosemodScope = {};
@@ -39,7 +39,7 @@ export const getExtraInfo = (type) => {
   } catch (e) { return undefined; }
 };
 
-export const add = (type, itemProps) => {
+export const patch = (type, itemProps) => {
   const { React } = goosemodScope.webpackModules.common;
   const Menu = goosemodScope.webpackModules.findByProps('MenuItem');
 
@@ -54,7 +54,7 @@ export const add = (type, itemProps) => {
 
   const origAction = itemProps.action;
 
-  inject(getInjectId(id), Menu, 'default', (args) => {
+  return patch(Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
     if (navId !== wantedNavId) {
       return args;
@@ -98,4 +98,18 @@ export const add = (type, itemProps) => {
   }, true);
 };
 
-export const remove = (label) => uninject(getInjectId(labelToId(label)));
+const uninjectors = {};
+
+export const add = (type, itemProps) => {
+  uninjectors[getInjectId(id)] = patch(type, itemProps);
+};
+
+export const remove = (label) => {
+  const id = getInjectId(labelToId(label));
+
+  if (!uninjectors[id]) return false;
+
+  uninjectors[id]();
+
+  return true;
+};
