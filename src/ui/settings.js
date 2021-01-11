@@ -1425,23 +1425,23 @@ export const makeGooseModSettings = () => {
         return new Promise(async (res) => {
           await sleep(10);
 
-          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
+          const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
           let final = [...cards.reduce((acc, e) => {
             const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
-            return acc.set(x, (acc.get(x) || 0) + 1);
+            return acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
           }, new Map()).entries()].sort((a, b) => b[1] - a[1]);
 
           final.push(['Categories', 0, 'divider']);
           
-          final = final.concat([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + 1), new Map()).entries()].sort((a, b) => b[1] - a[1]));
+          final = final.concat([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + (e.style.display !== 'none' ? 1 : 0)), new Map()).entries()].sort((a, b) => b[1] - a[1]));
 
           final.push(['Authors', 0, 'divider']);
 
           final = final.concat([...cards.reduce((acc, e) => {
             for (let el of e.getElementsByClassName('author')) {
               const x = el.textContent;
-              acc.set(x, (acc.get(x) || 0) + 1);
+              acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
             }
 
             return acc;
