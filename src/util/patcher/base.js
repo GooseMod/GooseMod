@@ -56,7 +56,12 @@ export const patch = (parent, functionName, handler, before = false) => {
   const id = parent._goosemodPatcherId;
 
   if (!modIndex[id][functionName]) {
+    const originalFunctionClone = Object.assign({}, parent)[functionName];
+
     parent[functionName] = generateNewFunction(parent[functionName], id, functionName);
+
+    Object.assign(parent[functionName], originalFunctionClone);
+    parent[functionName].toString = originalFunctionClone.toString;
 
     modIndex[id][functionName] = {
       before: [],
