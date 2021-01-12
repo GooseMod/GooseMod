@@ -30,8 +30,8 @@ export const patch = (tooltipText, imgSrc, clickHandler) => {
           onClick: () => {
             clickHandler(props);
           },
-          onMouseEnter: onMouseEnter,
-          onMouseLeave: onMouseLeave
+          onMouseEnter,
+          onMouseLeave
         },
           React.createElement("img", {
             src: imgSrc,
