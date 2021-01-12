@@ -7,14 +7,14 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const patch = (tooltipText, svgSrc, clickHandler) => {
+export const patch = (tooltipText, imgSrc, clickHandler) => {
   const { React } = goosemodScope.webpackModules.common;
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const { icon: iconClass } = goosemodScope.webpackModules.findByProps('icon', 'isHeader');
   
   const MiniPopover = goosemodScope.webpackModules.find((m) => m.default && m.default.displayName === 'MiniPopover')
   
-  return PatcherBase.patch(MiniPopover, 'default', (args, res) => {
+  return PatcherBase.patch(MiniPopover, 'default', (_args, res) => {
     const props = findInReactTree(res, (r) => r && r.message);
     if (!props) return res;
 
@@ -34,7 +34,7 @@ export const patch = (tooltipText, svgSrc, clickHandler) => {
           onMouseLeave: onMouseLeave
         },
           React.createElement("img", {
-            src: svgSrc,
+            src: imgSrc,
             width: "24px",
             height: "24px",
             className: iconClass
