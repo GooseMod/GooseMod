@@ -39,20 +39,37 @@ export const getExtraInfo = (type) => {
   } catch (e) { return undefined; }
 };
 
+const generateElement = (itemProps, subItems, wantedNavId, type, { Menu, React }) => {
+  const extraInfo = getExtraInfo(type);
+  const origAction = itemProps.action;
+  const isCheckbox = itemProps.checked !== undefined;
+
+  itemProps.id = itemProps.id || labelToId(itemProps.label);
+
+  itemProps.action = function() {
+    if (isCheckbox) {
+      itemProps.checked = !itemProps.checked;
+      item.props.checked = itemProps.checked; // Update the actual current item's props too
+
+      getOwnerInstance(document.getElementById(`${wantedNavId}-${itemProps.id}`)).props.onMouseEnter(); // And make it re-render
+
+      return origAction(arguments, extraInfo, itemProps.checked);
+    }
+
+    return origAction(arguments, extraInfo);
+  };
+
+  const component = isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem;
+  const item = subItems !== undefined ? React.createElement(component, itemProps, ...subItems.map((x) => generateElement(x, x.sub, wantedNavId, type, { Menu, React }))) : React.createElement(component, itemProps);
+
+  return item;
+};
+
 export const patch = (type, itemProps) => {
   const { React } = goosemodScope.webpackModules.common;
   const Menu = goosemodScope.webpackModules.findByProps('MenuItem');
 
   const wantedNavId = patchTypeToNavId(type);
-  const id = itemProps.id || labelToId(itemProps.label);
-
-  if (!itemProps.id) {
-    itemProps.id = id;
-  }
-
-  const isCheckbox = itemProps.checked !== undefined;
-
-  const origAction = itemProps.action;
 
   return PatcherBase.patch(Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
@@ -60,25 +77,10 @@ export const patch = (type, itemProps) => {
       return args;
     }
 
-    const extraInfo = getExtraInfo(type);
-
-    itemProps.action = function() {
-      if (isCheckbox) {
-        itemProps.checked = !itemProps.checked;
-        item.props.checked = itemProps.checked; // Update the actual current item's props too
-
-        getOwnerInstance(document.getElementById(`${wantedNavId}-${itemProps.id}`)).props.onMouseEnter(); // And make it re-render
-
-        return origAction(arguments, extraInfo, itemProps.checked);
-      }
-
-      return origAction(arguments, extraInfo);
-    };
-
-    const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === itemProps.id);
+    const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === (itemProps.id || labelToId(itemProps.label)));
     if (alreadyHasItem) return args;
 
-    const item = React.createElement(isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem, itemProps);
+    const item = generateElement(itemProps, itemProps.sub, wantedNavId, type, { Menu, React });
   
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
 
