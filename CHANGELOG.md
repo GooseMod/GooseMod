@@ -9,8 +9,10 @@
     - Added Safe Mode
 
   - ### API Improvements
+    - Added sub-menu support in Patcher context menu API
+    - Added new Patcher ChannelTextArea buttons API, making it now easy for module developers to add buttons to the ChannelTextArea (the buttons to the right of where you type messages)
     - Completely new from scratch Patcher base API, with an added compatibility layer for current / old modules
-    - Added new Patcher MiniPopover API, it is now very easy for module developers to add buttons to MiniPopovers - the buttons which appear to the right when you hover over a message
+    - Added new Patcher MiniPopover API, making it now easy for module developers to add buttons to MiniPopovers (the buttons which appear to the right when you hover over a message)
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
     - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
