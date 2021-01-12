@@ -1,21 +1,27 @@
 # GooseMod Changelog
 
-## [DEV] v6.0.0 [2021-01-1X]
+## v6.0.0-dev [2021-01-15]
 
-  - ### Features
+  - ### UI Improvements
     - Sidebar selectors in Module Store UI are now all off by default and allow selection of each category for mixing
     - Numbers in the Module Store UI sidebar selectors now change as they are chosen and only count visible cards
-    - Use hash instead of version for JS caching of Module Store modules
+
+  - ### New Features
     - Added Safe Mode
 
-  - ### API Improvements
+  - ### Patcher API Additions
+    - Completely new from scratch Patcher base API, with an added compatibility layer for current / old modules
     - Added sub-menu support in Patcher context menu API
     - Added new Patcher ChannelTextArea buttons API, making it now easy for module developers to add buttons to the ChannelTextArea (the buttons to the right of where you type messages)
-    - Completely new from scratch Patcher base API, with an added compatibility layer for current / old modules
     - Added new Patcher MiniPopover API, making it now easy for module developers to add buttons to MiniPopovers (the buttons which appear to the right when you hover over a message)
+
+  - ### General API Additions
     - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
     - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
+
+  - ### Backend Improvements
+    - Use hash instead of version for JS caching of Module Store modules
 
   - ### Build Improvements
     - Added further comments for better explanation
