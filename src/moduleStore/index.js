@@ -152,7 +152,7 @@ export default {
 
               await goosemodScope.modules[m.filename].onImport();
 
-              if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
+              if (goosemodScope.modules[m.filename].onLoadingFinished !== undefined) {
                 await goosemodScope.modules[m.filename].onLoadingFinished();
               }
 
