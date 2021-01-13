@@ -20,6 +20,9 @@
     - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
 
+  - ### Fixes
+    - Fixed re-enabling modules in the Module Store being broken
+
   - ### Backend Improvements
     - Use hash instead of version for JS caching of Module Store modules
 
