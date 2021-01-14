@@ -20,8 +20,6 @@ export const saveModuleSettings = async () => {
 
     goosemodScope.showToast('Settings saved');
   }
-
-  //console.log(settings);
 };
 
 export const clearModuleSetting = (moduleName) => {

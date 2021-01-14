@@ -1447,8 +1447,6 @@ export const makeGooseModSettings = () => {
             return acc;
           }, new Map()).entries()].sort((a, b) => b[1] - a[1]));
 
-          console.log(final);
-
           return res(final.map((x) => ({
             text: x[0] === 'ui' ? 'UI' : x[0][0].toUpperCase() + x[0].substring(1),
             subText: x[1],

@@ -276,8 +276,6 @@ export const ask = () => {
 
     goosemodScope.startLoadingScreen();
 
-    console.log(theme);
-
     if (theme) {
       await installModules([theme]);
     }

@@ -81,8 +81,6 @@ export default {
     authors = authors.map((x) => {
       let idMatch = x.match(/(.*) \(([0-9]{18})\)/);
 
-      console.log(x, idMatch);
-
       if (idMatch === null) return `<span class="author">${x}</span>`;
 
       return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${idMatch[2]}') } catch (e) { }">${idMatch[1]}</span>`; // todo
