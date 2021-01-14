@@ -22,6 +22,7 @@
 
   - ### Fixes
     - Fixed re-enabling modules in the Module Store being broken
+    - Removed old debug logging to console
 
   - ### Backend Improvements
     - Use hash instead of version for JS caching of Module Store modules
