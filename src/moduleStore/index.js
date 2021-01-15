@@ -12,7 +12,7 @@ export default {
 
   modules: [],
 
-  apiBaseURL: 'https://goosemod-api.netlify.app',
+  apiBaseURL: 'https://api.goosemod.com',
 
   jsCache: JSCache,
 
