@@ -1342,7 +1342,8 @@ export const makeGooseModSettings = () => {
       const key = s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase();
       counts[key] = {
         el: s,
-        count: 0
+        count: 0,
+        total: 0
       };
 
       selectors[key] = selected; //s.classList.contains(selectedClass);
@@ -1379,7 +1380,7 @@ export const makeGooseModSettings = () => {
     parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
 
     for (let k in counts) {
-      counts[k].el.children[0].children[1].children[0].children[0].children[1].textContent = counts[k].count;
+      counts[k].el.children[0].children[1].children[0].children[0].children[1].textContent = `${counts[k].count} (${counts[k].total})`;
     }
   };
 
