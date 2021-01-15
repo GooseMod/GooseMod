@@ -5,6 +5,8 @@
   - ### UI Improvements
     - Sidebar selectors in Module Store UI are now all off by default and allow selection of each category for mixing
     - Numbers in the Module Store UI sidebar selectors now change as they are chosen and only count visible cards
+    - Commas spliting authors in Module Store cards are now grayed out as well
+    - Authors in Module Store cards as just IDs are now replaced visually with Username#Discriminator (plus user modal on click)
 
   - ### New Features
     - Added Safe Mode
