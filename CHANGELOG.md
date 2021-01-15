@@ -24,8 +24,9 @@
     - Fixed re-enabling modules in the Module Store being broken
     - Removed old debug logging to console
 
-  - ### Backend Improvements
+  - ### Internal Improvements
     - Use hash instead of version for JS caching of Module Store modules
+    - Use Module Store API's base internally rather than repeating same base, specifically updated changelog and version + hash checking
 
   - ### Build Improvements
     - Added further comments for better explanation
