@@ -124,9 +124,9 @@ export default (buttonText, title, description) => {
     confirmELDimBackgroundDiv.remove();
   };
 
-  document.querySelector('div[aria-label="Close"]').onclick = () => {
+  /*document.querySelector('div[aria-label="Close"]').onclick = () => {
     confirmELLayer.remove();
     confirmELDimBackgroundDiv.remove();
-  };
+  };*/
   });
 }
