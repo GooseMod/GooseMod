@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v6.0.0-dev [2021-01-15]
+## v6.0.0 [2021-01-15]
 
   - ### UI Improvements
     - Sidebar selectors in Module Store UI are now all off by default and allow selection of each category for mixing
