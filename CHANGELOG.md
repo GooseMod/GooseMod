@@ -25,6 +25,7 @@
   - ### Fixes
     - Fixed re-enabling modules in the Module Store being broken
     - Removed old debug logging to console
+    - Fixed error on confirm modal when not in settings
 
   - ### Internal Improvements
     - New async modules importer on injection, up to 8x faster import times for some users who use a lot of modules
