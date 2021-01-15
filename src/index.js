@@ -82,6 +82,10 @@ const importsToAssign = {
 };
 
 const init = async function () {
+  while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
+    await sleep(50);
+  }
+
   Object.assign(this, importsToAssign);
 
   fixLocalStorage();
@@ -160,7 +164,7 @@ const init = async function () {
   this.startLoadingScreen();
   
   this.updateLoadingScreen('Getting module index from Module Store...');
-  
+
   await this.moduleStoreAPI.updateModules();
   
   this.moduleStoreAPI.updateStoreSetting();
@@ -200,12 +204,17 @@ const init = async function () {
     await this.packModal.ask();
   } else {
     this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
-  
+
+    const importPromises = [];
+
     for (let m of toInstallModules) {
       this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
 
-      await this.moduleStoreAPI.importModule(m);
+      // await this.moduleStoreAPI.importModule(m);
+      importPromises.push(this.moduleStoreAPI.importModule(m));
     }
+
+    await Promise.all(importPromises);
   }
   
   delete this.initialImport;
