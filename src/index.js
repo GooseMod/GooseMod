@@ -105,7 +105,7 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '6.0.0-dev-rc-6';
+  this.version = '6.0.0-dev-rc-7';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
   fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
