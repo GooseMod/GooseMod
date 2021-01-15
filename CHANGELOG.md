@@ -27,6 +27,8 @@
     - Removed old debug logging to console
 
   - ### Internal Improvements
+    - New async modules importer on injection, up to 8x faster import times for some users who use a lot of modules
+    - Always wait for Discord to load at the start of injection, don't always rely on Untethered
     - Use hash instead of version for JS caching of Module Store modules
     - Use Module Store API's base internally rather than repeating same base, specifically updated changelog and version + hash checking
     - Use GooseMod domain instead of direct Netlify URL base for Module Store API's base
