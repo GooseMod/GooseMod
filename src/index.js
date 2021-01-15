@@ -104,7 +104,7 @@ const init = async function () {
   this.version = '6.0.0-dev-rc-4';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
-  fetch('https://goosemod-api.netlify.app/injectVersion.json').then((x) => x.json().then((latestInjectVersionInfo) => {
+  fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
     if (latestInjectVersionInfo.version !== this.version) {
       this.showToast('Warning: Version number does not match latest public release', {timeout: 3000});
     }

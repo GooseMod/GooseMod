@@ -1,7 +1,7 @@
 import sleep from '../util/sleep';
 
 const image = 'https://media.discordapp.net/attachments/756146058924392545/798633291251056670/unknown.png';
-const changelogURL = `https://goosemod-api.netlify.app/latestChangelogRelease.json?_=${Date.now()}`;
+let changelogURL;
 
 let version, generated;
 
@@ -9,6 +9,7 @@ let goosemodScope = {};
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
+  changelogURL = `${goosemodScope.moduleStoreAPI.apiBaseURL}/latestChangelogRelease.json?_=${Date.now()}`;
 };
 
 export const show = async () => {
