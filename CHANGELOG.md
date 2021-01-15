@@ -27,6 +27,7 @@
   - ### Internal Improvements
     - Use hash instead of version for JS caching of Module Store modules
     - Use Module Store API's base internally rather than repeating same base, specifically updated changelog and version + hash checking
+    - Use GooseMod domain instead of direct Netlify URL base for Module Store API's base
 
   - ### Build Improvements
     - Added further comments for better explanation
