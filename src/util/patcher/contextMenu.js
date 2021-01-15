@@ -31,7 +31,7 @@ export const getExtraInfo = (type) => {
         return getOwnerInstance(document.getElementById('message'))._reactInternalFiber.child.memoizedProps.children.props.children.props;
     
       case 'user':
-        return getOwnerInstance(document.querySelector('#user-context'))._reactInternalFiber.return.memoizedProps;
+        return getOwnerInstance(document.getElementById('user-context'))._reactInternalFiber.return.memoizedProps;
 
       default:
         return undefined;
@@ -39,9 +39,7 @@ export const getExtraInfo = (type) => {
   } catch (e) { return undefined; }
 };
 
-const generateElement = (itemProps, subItems, wantedNavId, type, { Menu, React }) => {
-  const extraInfo = getExtraInfo(type);
-  const origAction = itemProps.action;
+const generateElement = (itemProps, subItems, wantedNavId, type, extraInfo, { Menu, React }) => {
   const isCheckbox = itemProps.checked !== undefined;
 
   itemProps.id = itemProps.id || labelToId(itemProps.label);
@@ -53,10 +51,10 @@ const generateElement = (itemProps, subItems, wantedNavId, type, { Menu, React }
 
       getOwnerInstance(document.getElementById(`${wantedNavId}-${itemProps.id}`)).props.onMouseEnter(); // And make it re-render
 
-      return origAction(arguments, extraInfo, itemProps.checked);
+      return itemProps.originalAction(arguments, extraInfo, itemProps.checked);
     }
 
-    return origAction(arguments, extraInfo);
+    return itemProps.originalAction(arguments, extraInfo);
   };
 
   const component = isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem;
@@ -71,6 +69,8 @@ export const patch = (type, itemProps) => {
 
   const wantedNavId = patchTypeToNavId(type);
 
+  itemProps.originalAction = itemProps.action;
+
   return PatcherBase.patch(Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
     if (navId !== wantedNavId) {
@@ -80,7 +80,7 @@ export const patch = (type, itemProps) => {
     const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === (itemProps.id || labelToId(itemProps.label)));
     if (alreadyHasItem) return args;
 
-    const item = generateElement(itemProps, itemProps.sub, wantedNavId, type, { Menu, React });
+    const item = generateElement(itemProps, itemProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(type)), { Menu, React });
   
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
 
