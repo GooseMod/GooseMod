@@ -40,12 +40,16 @@ export const patch = (tooltipText, imgSrc, clickHandler) => {
             onMouseEnter,
             onMouseLeave
           },
-            React.createElement("img", {
-              src: imgSrc,
-              width: "24px",
-              height: "24px",
-              className: `${buttonTextAreaClasses.button} ${buttonClasses.contents} ${buttonWrapperClasses.button}`
-            })
+            imgSrc == typeof String
+              ? React.createElement("img", {
+                  src: imgSrc,
+                  width: "24px",
+                  height: "24px",
+                  className: `${buttonTextAreaClasses.button} ${buttonClasses.contents} ${buttonWrapperClasses.button}`,
+                })
+              : imgSrc() == typeof HTMLElement
+              ? imgSrc()
+              : null
           )
         )
       )
