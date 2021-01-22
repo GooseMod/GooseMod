@@ -78,7 +78,7 @@ export default {
       authors = a;
     };
     
-    authors = authors.map((x) => {
+    return (await Promise.all(authors.map(async (x) => {
       if (x.match(/^[0-9]{18}$/)) { // "<id>"
         const result = await goosemodScope.webpackModules.findByPropsAll('getUser', 'fetchCurrentUser').getUser(x);
         return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}<span class="description-3_Ncsb">#${result.discriminator}</span></span>`; // todo
@@ -88,12 +88,10 @@ export default {
       if (idMatch === null) return `<span class="author">${x}</span>`; // "<name>"
 
       return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${idMatch[2]}') } catch (e) { }">${idMatch[1]}</span>`; // todo
-    });
-
-    return authors.join('<span class="description-3_Ncsb">,</span> ');
+    }))).join('<span class="description-3_Ncsb">,</span> ');
   },
 
-  updateStoreSetting: () => {
+  updateStoreSetting: async () => {
     let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
 
     item[2] = item[2].slice(0, 5);
@@ -126,7 +124,7 @@ export default {
           buttonType: goosemodScope.modules[m.filename] ? 'danger' : 'brand',
           showToggle: goosemodScope.modules[m.filename],
 
-          text: `${m.name} <span class="description-3_Ncsb">by</span> ${goosemodScope.moduleStoreAPI.parseAuthors(m.author)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
+          text: `${m.name} <span class="description-3_Ncsb">by</span> ${await goosemodScope.moduleStoreAPI.parseAuthors(m.author)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
           subtext: m.description,
           subtext2: `v${m.version}`,
 
