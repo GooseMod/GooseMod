@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v6.0.1 [2021-01-22]
+
+  - ### Fixes
+    - Fixed sometimes failing to parse authors for some modules using ID(s) as author
+
+
 ## v6.0.0 [2021-01-15]
 
   - ### UI Improvements
