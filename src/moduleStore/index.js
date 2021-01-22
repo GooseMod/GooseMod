@@ -69,7 +69,7 @@ export default {
     item.showToggle = false;
   },
 
-  parseAuthors: (a) => {
+  parseAuthors: async (a) => {
     let authors = [];
 
     if (typeof a === "string") {
@@ -80,7 +80,7 @@ export default {
     
     authors = authors.map((x) => {
       if (x.match(/^[0-9]{18}$/)) { // "<id>"
-        const result = goosemodScope.webpackModules.findByProps('getUser').getUser(x);
+        const result = await goosemodScope.webpackModules.findByPropsAll('getUser', 'fetchCurrentUser').getUser(x);
         return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}<span class="description-3_Ncsb">#${result.discriminator}</span></span>`; // todo
       }
 

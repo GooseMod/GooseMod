@@ -167,7 +167,7 @@ const init = async function () {
 
   await this.moduleStoreAPI.updateModules();
   
-  this.moduleStoreAPI.updateStoreSetting();
+  await this.moduleStoreAPI.updateStoreSetting();
 
   if (window.gmSafeMode && !(await triggerSafeMode())) {
     this.stopLoadingScreen();
