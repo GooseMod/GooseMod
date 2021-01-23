@@ -16,7 +16,7 @@ export const importModule = async (f, isLocal = false) => {
   if (goosemodScope.modules[field] !== undefined) {
     goosemodScope.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
 
-    await goosemodScope.modules[field].remove();
+    await goosemodScope.modules[field].onRemove();
 
     if (isLocal) settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${goosemodScope.modules[field].name} (${goosemodScope.modules[field].version})`)), 1);
   }

@@ -160,7 +160,7 @@ export default {
             } else {
               goosemodScope.disabledModules[m.filename] = Object.assign({}, goosemodScope.modules[m.filename]);
 
-              goosemodScope.modules[m.filename].remove();
+              goosemodScope.modules[m.filename].onRemove();
 
               delete goosemodScope.modules[m.filename];
             }

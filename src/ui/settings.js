@@ -15,7 +15,7 @@ export const removeModuleUI = (field, where) => {
 
   goosemodScope.moduleStoreAPI.moduleRemoved(goosemodScope.modules[field]);
 
-  goosemodScope.modules[field].remove();
+  goosemodScope.modules[field].onRemove();
 
   delete goosemodScope.modules[field];
 
