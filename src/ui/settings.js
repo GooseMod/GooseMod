@@ -686,7 +686,9 @@ export const _createItem = (panelName, content) => {
         case 'card': {
           el = document.createElement('div');
 
-          if (e.class) el.classList.add(e.class);
+          if (e.tags) e.tags.forEach((x) => el.classList.add(x.replace(/ /g, '|')));
+
+          //if (e.class) el.classList.add(e.class);
 
           el.style.backgroundColor = 'var(--background-secondary)';
 
@@ -1290,7 +1292,7 @@ export const makeGooseModSettings = () => {
 
   goosemodScope.settings.createHeading('GooseMod');
 
-  goosemodScope.settings.createItem('Local Modules', ['',
+  /* goosemodScope.settings.createItem('Local Modules', ['',
     {
       type: 'button',
       text: 'Import Local Module',
@@ -1313,7 +1315,7 @@ export const makeGooseModSettings = () => {
       type: 'header',
       text: 'Imported Local Modules'
     }
-  ]);
+  ]); */
 
   const updateModuleStoreUI = (parentEl, cards) => {
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
@@ -1352,7 +1354,7 @@ export const makeGooseModSettings = () => {
 
     for (let c of cards) {
       const title = c.getElementsByClassName('title-31JmR4')[0];
-      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.toLowerCase());
+      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0].toLowerCase());
       const name = title.childNodes[0].wholeText;
 
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
@@ -1361,14 +1363,16 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
+      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' '));
+
       c.style.display = matches && (
-        (selectors[c.className] || noneSelectedArray[1]) &&
+        (tags.every((t) => selectors[t]) || noneSelectedArray[1]) &&
         (authors.some((x) => selectors[x]) || noneSelectedArray[2]) &&
         (selectors[importedSelector] || noneSelectedArray[0]))
         ? 'block' : 'none';
 
       if (c.style.display !== 'none') {
-        counts[c.className].count++;
+        tags.forEach((t) => counts[t].count++);
         authors.forEach((x) => counts[x].count++);
         counts[importedSelector].count++;
       }
@@ -1430,17 +1434,22 @@ export const makeGooseModSettings = () => {
           let final = [...cards.reduce((acc, e) => {
             const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
             return acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
-          }, new Map()).entries()].sort((a, b) => b[1] - a[1]);
+          }, new Map([
+            ['Imported', 0],
+            ['Not Imported', 0]
+          ])).entries()].sort((a, b) => b[1] - a[1]);
 
-          final.push(['Categories', 0, 'divider']);
+          final.push(['Tags', 0, 'divider']);
           
-          final = final.concat([...cards.reduce((acc, e) => acc.set(e.className, (acc.get(e.className) || 0) + (e.style.display !== 'none' ? 1 : 0)), new Map()).entries()].sort((a, b) => b[1] - a[1]));
+          final = final.concat([...([].concat.apply([], cards.map((x) => (
+            [...x.classList].map((y) => [y.replace(/\|/g, ' '), x.style.display !== 'none'])
+          )))).reduce((acc, e) => acc.set(e[0], (acc.get(e[0]) || 0) + (e[1] ? 1 : 0)), new Map()).entries()].sort((a, b) => b[1] - a[1]));
 
           final.push(['Authors', 0, 'divider']);
 
           final = final.concat([...cards.reduce((acc, e) => {
             for (let el of e.getElementsByClassName('author')) {
-              const x = el.textContent;
+              const x = el.textContent.split('#')[0];
               acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
             }
 

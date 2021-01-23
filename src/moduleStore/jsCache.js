@@ -16,13 +16,13 @@ export const updateCache = (moduleName, hash, js) => {
 };
 
 export const getJSForModule = async (moduleName) => {
-  const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+  const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === moduleName);
   const cache = goosemodScope.moduleStoreAPI.jsCache.getCache();
 
   if (cache[moduleName] && moduleInfo.hash === cache[moduleName].hash) {
     return cache[moduleName].js;
   } else {
-    const js = await (await fetch(`${moduleInfo.codeURL}?_=${Date.now()}`)).text();
+    const js = await (await fetch(`${goosemodScope.moduleStoreAPI.storeApiBaseURL}/module/${moduleName}.js?_=${Date.now()}`)).text();
 
     goosemodScope.moduleStoreAPI.jsCache.updateCache(moduleName, moduleInfo.hash, js);
 

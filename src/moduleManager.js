@@ -7,7 +7,7 @@ export const setThisScope = (scope) => {
 };
 
 export const importModule = async (f, isLocal = false) => {
-  let field = f.filename.split('.').slice(0, -1).join('.'); // Get name of module via filename (taking away the file extension)
+  let field = f.name;
 
   goosemodScope.logger.debug('import', `Importing module: "${field}"`);
 
@@ -25,7 +25,7 @@ export const importModule = async (f, isLocal = false) => {
     f.data = ab2str(f.data);
   }
 
-  goosemodScope.modules[field] = eval(f.data); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
+  goosemodScope.modules[field] = Object.assign(eval(f.data), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Evaled module JS`);
 
@@ -40,7 +40,7 @@ export const importModule = async (f, isLocal = false) => {
   if (isLocal) {
     const toggleObj = {
       type: 'text-and-danger-button',
-      text: `${goosemodScope.modules[field].name} <span class="description-3_Ncsb">by</span> ${goosemodScope.modules[field].author} <span class="description-3_Ncsb">(v${goosemodScope.modules[field].version})</span>`,
+      text: `${goosemodScope.modules[field].name} <span class="description-3_Ncsb">by</span> ${goosemodScope.modules[field].authors} <span class="description-3_Ncsb">(v${goosemodScope.modules[field].version})</span>`,
       buttonText: 'Remove',
       subtext: goosemodScope.modules[field].description,
       onclick: (el) => {

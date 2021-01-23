@@ -13,17 +13,18 @@ export default {
   modules: [],
 
   apiBaseURL: 'https://api.goosemod.com',
+  storeApiBaseURL: 'https://store.goosemod.com',
 
   jsCache: JSCache,
 
   updateModules: async () => {
-    goosemodScope.moduleStoreAPI.modules = (await (await fetch(`${goosemodScope.moduleStoreAPI.apiBaseURL}/modules.json?_=${Date.now()}`)).json())
+    goosemodScope.moduleStoreAPI.modules = (await (await fetch(`${goosemodScope.moduleStoreAPI.storeApiBaseURL}/modules.json?_=${Date.now()}`)).json())
       .sort((a, b) => a.name.localeCompare(b.name));
   },
 
   importModule: async (moduleName) => {
     try {
-      const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === moduleName);
+      const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === moduleName);
 
       const jsCode = await goosemodScope.moduleStoreAPI.jsCache.getJSForModule(moduleName);
 
@@ -36,8 +37,9 @@ export default {
       }
 
       await goosemodScope.importModule({
-        filename: `${moduleInfo.filename}.js`,
-        data: jsCode
+        name: moduleName,
+        data: jsCode,
+        metadata: moduleInfo
       });
 
       if (goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
@@ -96,79 +98,59 @@ export default {
 
     item[2] = item[2].slice(0, 5);
 
-    let sortedCategories = goosemodScope.moduleStoreAPI.modules.reduce((cats, o) => cats.includes(o.category) ? cats : cats.concat(o.category), []).sort((a, b) => a.localeCompare(b));
+    for (const m of goosemodScope.moduleStoreAPI.modules.sort((a, b) => a.name.localeCompare(b.name))) {
+      item[2].push({
+        type: 'card',
+        
+        tags: m.tags,
 
-    let arr = Object.entries(goosemodScope.moduleStoreAPI.modules.reduce((cats, o) => {
-      if (!cats[o.category]) cats[o.category]=[];
-      cats[o.category].push(o);
-      return cats;
-    },{})).sort((a, b) => a[0].localeCompare(b[0])).map(o => o[1]);
+        buttonType: goosemodScope.modules[m.name] ? 'danger' : 'brand',
+        showToggle: goosemodScope.modules[m.name],
 
-    let funIndex = sortedCategories.indexOf('fun');
+        text: `${m.name} <span class="description-3_Ncsb">by</span> ${await goosemodScope.moduleStoreAPI.parseAuthors(m.authors)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
+        subtext: m.description,
+        subtext2: `v${m.version}`,
 
-    sortedCategories.push(sortedCategories.splice(funIndex, 1)[0]);
-    arr.push(arr.splice(funIndex, 1)[0]);
+        buttonText: goosemodScope.modules[m.name] ? 'Remove' : 'Import',
+        onclick: async (el) => {
+          if (goosemodScope.modules[m.name]) {
+            el.textContent = 'Removing...';
 
-    for (let i = 0; i < arr.length; i++) {
-      /*item[2].push({
-        type: 'header',
-        text: sortedCategories[i].replace(/\-/g, ' ')
-      });*/
+            goosemodScope.settings.removeModuleUI(m.name, 'Module Store');
 
-      for (let m of arr[i]) {
-        item[2].push({
-          type: 'card',
-          
-          class: m.category,
-
-          buttonType: goosemodScope.modules[m.filename] ? 'danger' : 'brand',
-          showToggle: goosemodScope.modules[m.filename],
-
-          text: `${m.name} <span class="description-3_Ncsb">by</span> ${await goosemodScope.moduleStoreAPI.parseAuthors(m.author)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
-          subtext: m.description,
-          subtext2: `v${m.version}`,
-
-          buttonText: goosemodScope.modules[m.filename] ? 'Remove' : 'Import',
-          onclick: async (el) => {
-            if (goosemodScope.modules[m.filename]) {
-              el.textContent = 'Removing...';
-
-              goosemodScope.settings.removeModuleUI(m.filename, 'Module Store');
-
-              return;
-            }
-
-            el.textContent = 'Importing...';
-
-            await goosemodScope.moduleStoreAPI.importModule(m.filename);
-
-            goosemodScope.settings.openSettingItem('Module Store');
-          },
-          isToggled: () => goosemodScope.modules[m.filename] !== undefined,
-          onToggle: async (checked) => {
-            if (checked) {
-              goosemodScope.modules[m.filename] = Object.assign({}, goosemodScope.disabledModules[m.filename]);
-              delete goosemodScope.disabledModules[m.filename];
-
-              await goosemodScope.modules[m.filename].goosemodHandlers.onImport();
-
-              if (goosemodScope.modules[m.filename].goosemodHandlers.onLoadingFinished !== undefined) {
-                await goosemodScope.modules[m.filename].goosemodHandlers.onLoadingFinished();
-              }
-
-              goosemodScope.loadSavedModuleSetting(m.filename);
-            } else {
-              goosemodScope.disabledModules[m.filename] = Object.assign({}, goosemodScope.modules[m.filename]);
-
-              goosemodScope.modules[m.filename].goosemodHandlers.onRemove();
-
-              delete goosemodScope.modules[m.filename];
-            }
-
-            goosemodScope.settings.openSettingItem('Module Store');
+            return;
           }
-        });
-      }
+
+          el.textContent = 'Importing...';
+
+          await goosemodScope.moduleStoreAPI.importModule(m.name);
+
+          goosemodScope.settings.openSettingItem('Module Store');
+        },
+        isToggled: () => goosemodScope.modules[m.name] !== undefined,
+        onToggle: async (checked) => {
+          if (checked) {
+            goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
+            delete goosemodScope.disabledModules[m.name];
+
+            await goosemodScope.modules[m.name].goosemodHandlers.onImport();
+
+            if (goosemodScope.modules[m.name].goosemodHandlers.onLoadingFinished !== undefined) {
+              await goosemodScope.modules[m.name].goosemodHandlers.onLoadingFinished();
+            }
+
+            goosemodScope.loadSavedModuleSetting(m.name);
+          } else {
+            goosemodScope.disabledModules[m.name] = Object.assign({}, goosemodScope.modules[m.name]);
+
+            goosemodScope.modules[m.name].goosemodHandlers.onRemove();
+
+            delete goosemodScope.modules[m.name];
+          }
+
+          goosemodScope.settings.openSettingItem('Module Store');
+        }
+      });
     }
   }
 }

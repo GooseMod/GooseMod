@@ -6,7 +6,7 @@ export const setThisScope = (scope) => {
 
 let themes = [
   {
-    name: 'draculaTheme',
+    name: 'Dracula Theme',
     css: `html > body {
       --background-primary: #181920;
       --background-secondary: #1C1D25;
@@ -31,7 +31,7 @@ let themes = [
     }`
   },
   {
-    name: 'darkestTheme',
+    name: 'Darkest Theme',
     css: `html > body {
       --background-primary: #000;
       --background-secondary: #050505;
@@ -46,7 +46,7 @@ let themes = [
     }`
   },
   {
-    name: 'solarizedDarkTheme',
+    name: 'Solarized Dark Theme',
     css: `html > body {
       --background-primary: #002b36;
       --background-secondary: #073642;
@@ -71,7 +71,7 @@ let themes = [
     }`
   },
   {
-    name: 'slateTheme',
+    name: 'Slate Theme',
     css: ''
   }
 ];
@@ -205,7 +205,7 @@ const selectionModal = (title, options) => {
 
 const installModules = async (modules) => {
   for (let m of modules) {
-    goosemodScope.updateLoadingScreen(`${goosemodScope.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${modules.indexOf(m) + 1}/${modules.length}`);
+    goosemodScope.updateLoadingScreen(`${goosemodScope.moduleStoreAPI.modules.find((x) => x.name === m).name} - ${modules.indexOf(m) + 1}/${modules.length}`);
 
     await goosemodScope.moduleStoreAPI.importModule(m);
   }
@@ -222,7 +222,7 @@ export const ask = () => {
     await installModules(packModules);
 
     let themesOptions = themes.map((x) => {
-      let mod = goosemodScope.moduleStoreAPI.modules.find((y) => y.filename === x.name);
+      let mod = goosemodScope.moduleStoreAPI.modules.find((y) => y.name === x.name);
 
       let el;
 

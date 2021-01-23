@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v7.0.0-dev [2021-0X-XX]
+
+  - ### Features
+    - New Module Store API
+
+  - ### UI Improvements
+    - Stopped authors with discriminators being separated with just author name
+
+
 ## v6.0.1 [2021-01-22]
 
   - ### Fixes

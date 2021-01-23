@@ -105,7 +105,7 @@ const init = async function () {
   this.disabledModules = {};
 
   this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '6.0.1';
+  this.version = '7.0.0-dev';
   this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
 
   fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
@@ -186,7 +186,7 @@ const init = async function () {
     // toInstallModules = await this.packModal.ask(); // ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
   
-  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.filename === m) !== undefined);
+  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) !== undefined);
   
   let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
   
@@ -208,7 +208,7 @@ const init = async function () {
     const importPromises = [];
 
     for (let m of toInstallModules) {
-      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.filename === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
+      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.name === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
 
       // await this.moduleStoreAPI.importModule(m);
       importPromises.push(this.moduleStoreAPI.importModule(m));
