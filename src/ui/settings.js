@@ -15,7 +15,7 @@ export const removeModuleUI = (field, where) => {
 
   goosemodScope.moduleStoreAPI.moduleRemoved(goosemodScope.modules[field]);
 
-  goosemodScope.modules[field].onRemove();
+  goosemodScope.modules[field].goosemodHandlers.onRemove();
 
   delete goosemodScope.modules[field];
 
@@ -1300,8 +1300,8 @@ export const makeGooseModSettings = () => {
         for (let f of files) {
           let n = f.filename.split('.').slice(0, -1).join('.');
 
-          if (goosemodScope.modules[n].onLoadingFinished !== undefined) {
-            await goosemodScope.modules[n].onLoadingFinished();
+          if (goosemodScope.modules[n].goosemodHandlers.onLoadingFinished !== undefined) {
+            await goosemodScope.modules[n].goosemodHandlers.onLoadingFinished();
           }
         }
 

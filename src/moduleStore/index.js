@@ -40,8 +40,8 @@ export default {
         data: jsCode
       });
 
-      if (goosemodScope.modules[moduleName].onLoadingFinished !== undefined) {
-        await goosemodScope.modules[moduleName].onLoadingFinished();
+      if (goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
+        await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
       let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
@@ -150,17 +150,17 @@ export default {
               goosemodScope.modules[m.filename] = Object.assign({}, goosemodScope.disabledModules[m.filename]);
               delete goosemodScope.disabledModules[m.filename];
 
-              await goosemodScope.modules[m.filename].onImport();
+              await goosemodScope.modules[m.filename].goosemodHandlers.onImport();
 
-              if (goosemodScope.modules[m.filename].onLoadingFinished !== undefined) {
-                await goosemodScope.modules[m.filename].onLoadingFinished();
+              if (goosemodScope.modules[m.filename].goosemodHandlers.onLoadingFinished !== undefined) {
+                await goosemodScope.modules[m.filename].goosemodHandlers.onLoadingFinished();
               }
 
               goosemodScope.loadSavedModuleSetting(m.filename);
             } else {
               goosemodScope.disabledModules[m.filename] = Object.assign({}, goosemodScope.modules[m.filename]);
 
-              goosemodScope.modules[m.filename].onRemove();
+              goosemodScope.modules[m.filename].goosemodHandlers.onRemove();
 
               delete goosemodScope.modules[m.filename];
             }

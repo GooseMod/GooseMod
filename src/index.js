@@ -153,9 +153,9 @@ const init = async function () {
     this.removed = true;
     
     for (let p in this.modules) {
-      if (this.modules.hasOwnProperty(p) && this.modules[p].onRemove !== undefined) {
+      if (this.modules.hasOwnProperty(p) && this.modules[p].goosemodHandlers.onRemove !== undefined) {
         try {
-          this.modules[p].onRemove();
+          this.modules[p].goosemodHandlers.onRemove();
         } catch (e) { }
       }
     }

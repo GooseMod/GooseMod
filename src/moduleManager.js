@@ -16,7 +16,7 @@ export const importModule = async (f, isLocal = false) => {
   if (goosemodScope.modules[field] !== undefined) {
     goosemodScope.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
 
-    await goosemodScope.modules[field].onRemove();
+    await goosemodScope.modules[field].goosemodHandlers.onRemove();
 
     if (isLocal) settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.text === `${goosemodScope.modules[field].name} (${goosemodScope.modules[field].version})`)), 1);
   }
@@ -33,7 +33,7 @@ export const importModule = async (f, isLocal = false) => {
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Binded handlers`);
 
-  await goosemodScope.modules[field].onImport(); // Run the module's onImport handler
+  await goosemodScope.modules[field].goosemodHandlers.onImport(); // Run the module's onImport handler
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
 

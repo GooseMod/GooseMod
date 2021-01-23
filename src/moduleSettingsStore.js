@@ -11,7 +11,7 @@ export const saveModuleSettings = async () => {
 
   for (let p in goosemodScope.modules) {
     if (goosemodScope.modules.hasOwnProperty(p)) {
-      settings[p] = await (goosemodScope.modules[p].getSettings || (async () => []))();
+      settings[p] = await (goosemodScope.modules[p].goosemodHandlers.getSettings || (async () => []))();
     }
   }
 
@@ -37,7 +37,7 @@ export const clearSettings = () => {
 export const loadSavedModuleSetting = async (moduleName) => {
   let settings = JSON.parse(localStorage.getItem('goosemodModules'));
 
-  await (goosemodScope.modules[moduleName].loadSettings || (async () => []))(settings[moduleName]);
+  await (goosemodScope.modules[moduleName].goosemodHandlers.loadSettings || (async () => []))(settings[moduleName]);
 };
 
 export const loadSavedModuleSettings = async () => {
@@ -49,7 +49,7 @@ export const loadSavedModuleSettings = async () => {
 
   for (let p in goosemodScope.modules) {
     if (goosemodScope.modules.hasOwnProperty(p) && settings.hasOwnProperty(p)) {
-      await (goosemodScope.modules[p].loadSettings || (async () => []))(settings[p]);
+      await (goosemodScope.modules[p].goosemodHandlers.loadSettings || (async () => []))(settings[p]);
     }
   }
 
