@@ -1421,7 +1421,7 @@ export const makeGooseModSettings = () => {
       const tags = [...c.classList].map((t) => t.replace(/\|/g, ' '));
 
       c.style.display = matches && (
-        (tags.every((t) => selectors[t]) || noneSelectedArray[1]) &&
+        (tags.some((t) => selectors[t]) || noneSelectedArray[1]) &&
         (authors.some((x) => selectors[x]) || noneSelectedArray[2]) &&
         (selectors[importedSelector] || noneSelectedArray[0]))
         ? 'block' : 'none';
