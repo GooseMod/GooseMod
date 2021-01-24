@@ -9,6 +9,10 @@
     - Stopped authors with discriminators being separated with just author name
     - Added newline support to loading toast
 
+  - ### Fixes
+    - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings
+
+
 ## v6.0.1 [2021-01-22]
 
   - ### Fixes

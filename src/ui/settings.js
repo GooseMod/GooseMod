@@ -1307,7 +1307,9 @@ export const makeGooseModSettings = () => {
       );
     //}
 
-    const versionInfo = sections[sections.length - 1];
+    const customSections = sections.filter((x) => x.section === 'CUSTOM' && x.element !== undefined);
+
+    const versionInfo = customSections[customSections.length - 1];
     const versionInfoEl = versionInfo.element();
 
     let goosemodVersionInfo = React.cloneElement(versionInfoEl);
