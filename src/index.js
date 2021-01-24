@@ -183,9 +183,33 @@ const init = async function () {
   
   if (toInstallModules.length === 0) {
     toInstallIsDefault = true;
-    // toInstallModules = await this.packModal.ask(); // ['hardcodedColorFixer', 'draculaTheme', 'fucklytics', 'visualTweaks', 'wysiwygMessages', 'customSounds', 'devMode', 'twitchEmotes', 'noMessageDeletion'];
   }
   
+  const needToMigrateFromV6 = toInstallModules.some((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) === undefined);
+
+  if (needToMigrateFromV6) {
+    this.updateLoadingScreen('Migrating stored module names to MS2...');
+
+    const oldModules = (await (await fetch(`${this.moduleStoreAPI.apiBaseURL}/modules.json?_=${Date.now()}`)).json());
+
+    console.log(oldModules);
+
+    toInstallModules = toInstallModules.map((m) => oldModules.find((x) => x.filename === m)?.name || m);
+
+    let moduleSettings = JSON.parse(localStorage.getItem('goosemodModules'));
+
+    for (const oldName in Object.keys(moduleSettings)) {
+      const newName = oldModules.find((x) => x.filename === oldName)?.name;
+      if (!newName) continue;
+
+      Object.defineProperty(moduleSettings, newName, Object.getOwnPropertyDescriptor(o, oldName));
+
+      delete moduleSettings[oldName];
+    }
+
+    localStorage.setItem('goosemodModules', JSON.stringify(moduleSettings));
+  }
+
   toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) !== undefined);
   
   let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
@@ -194,7 +218,7 @@ const init = async function () {
     toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(themeModule), 1)[0]);
   }
   
-  let hardcodedColorFixerModule = toInstallModules.find((x) => x === 'hardcodedColorFixer');
+  let hardcodedColorFixerModule = toInstallModules.find((x) => x === 'Hardcoded Color Fixer');
   
   if (hardcodedColorFixerModule) {
     toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
@@ -203,12 +227,12 @@ const init = async function () {
   if (toInstallIsDefault) {
     await this.packModal.ask();
   } else {
-    this.updateLoadingScreen(`Importing default modules from Module Store... (${toInstallIsDefault ? '(Default)' : '(Last Installed)'})`);
+    this.updateLoadingScreen('Importing modules from Module Store...');
 
     const importPromises = [];
 
     for (let m of toInstallModules) {
-      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.name === m).name} - ${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
+      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.name === m).name}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
 
       // await this.moduleStoreAPI.importModule(m);
       importPromises.push(this.moduleStoreAPI.importModule(m));
