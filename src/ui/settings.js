@@ -451,7 +451,7 @@ export const _createItem = (panelName, content) => {
 
             colorEl.classList.add('colorPickerSwatch-5GX3Ve', 'custom-2SJn4n', 'noColor-1pdBDm');
 
-            colorEl.value = e.initialValue();
+            if (e.initialValue) colorEl.value = e.initialValue();
             colorEl.oninput = () => {
               e.oninput(colorEl.value);
               //e.onclick(buttonEl2);
