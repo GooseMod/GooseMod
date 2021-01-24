@@ -813,6 +813,7 @@ export const _createItem = (panelName, content) => {
             repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
 
             repoEl.href = e.github.repo;
+            repoEl.target = '_blank';
 
             repoEl.style.position = 'relative';
             repoEl.style.top = '4px';
