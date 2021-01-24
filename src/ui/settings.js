@@ -9,9 +9,9 @@ export const setThisScope = (scope) => {
 
 
 export const removeModuleUI = (field, where) => {
-  let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Local Modules');
+  // let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Local Modules');
 
-  settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === goosemodScope.modules[field].description)), 1);
+  // settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === goosemodScope.modules[field].description)), 1);
 
   goosemodScope.moduleStoreAPI.moduleRemoved(goosemodScope.modules[field]);
 
