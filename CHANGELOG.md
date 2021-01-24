@@ -7,7 +7,7 @@
 
   - ### UI Improvements
     - Stopped authors with discriminators being separated with just author name
-
+    - Added newline support to loading toast
 
 ## v6.0.1 [2021-01-22]
 
