@@ -1307,10 +1307,10 @@ export const makeGooseModSettings = () => {
       );
     //}
 
-    const customSections = sections.filter((x) => x.section === 'CUSTOM' && x.element !== undefined);
+    const versionInfoEl = sections.find((x) => x.section === 'CUSTOM' && x.element && (x.element()).props?.children[0]?.props?.children[4]?.props.className === 'versionHash-2gXjIB').element();
 
-    const versionInfo = customSections[customSections.length - 1];
-    const versionInfoEl = versionInfo.element();
+    // const versionInfo = customSections[customSections.length - 1];
+    // const versionInfoEl = versionInfo.element();
 
     let goosemodVersionInfo = React.cloneElement(versionInfoEl);
 
