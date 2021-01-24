@@ -53,6 +53,8 @@ export const startLoadingScreen = () => {
 
   descEl.textContent = `Starting up...`;
 
+  descEl.style.whiteSpace = 'pre-line';
+
   loadingEl.appendChild(titleEl);
   loadingEl.appendChild(versionEl);
   loadingEl.appendChild(descEl);
