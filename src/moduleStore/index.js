@@ -103,6 +103,7 @@ export default {
         type: 'card',
         
         tags: m.tags,
+        github: m.github,
 
         buttonType: goosemodScope.modules[m.name] ? 'danger' : 'brand',
         showToggle: goosemodScope.modules[m.name],
