@@ -9,6 +9,9 @@
     - Stopped authors with discriminators being separated with just author name
     - Added newline support to loading toast
 
+  - ### Patcher API Improvements
+    - Added error handling if patches cause an error (it now just skips the patch instead of likely crashing)
+
   - ### Fixes
     - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings
     - Fixed crashes for modules using color picker component in settings without initial value

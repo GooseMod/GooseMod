@@ -12,11 +12,15 @@ const beforePatches = (context, args, id, functionName) => {
   let newArgs;
 
   for (const patch of patches) {
-    newArgs = patch.call(context, args);
+    try {
+      newArgs = patch.call(context, args);
 
-    if (newArgs === false) return false;
+      if (newArgs === false) return false;
 
-    if (!Array.isArray(newArgs)) newArgs = args;
+      if (!Array.isArray(newArgs)) newArgs = args;
+    } catch (e) {
+      console.error(`Before patch (${id} - ${functionName}) failed, skipping`);
+    }
   }
 
   return newArgs;
@@ -28,7 +32,11 @@ const afterPatches = (context, newArgs, returnValue, id, functionName) => {
   let newReturnValue = returnValue;
 
   for (const patch of patches) {
-    newReturnValue = patch.call(context, newArgs, newReturnValue);
+    try { 
+      newReturnValue = patch.call(context, newArgs, newReturnValue);
+    } catch (e) {
+      console.error(`After patch (${id} - ${functionName}) failed, skipping`);
+    }
   }
   
   return newReturnValue;
