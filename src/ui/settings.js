@@ -27,11 +27,11 @@ export const removeModuleUI = (field, where) => {
 };
 
 export const isSettingsOpen = () => {
-  return document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]') !== null;
+  return document.querySelector('div[aria-label="USER_SETTINGS"] .closeButton-1tv5uR') !== null;
 };
 
 export const closeSettings = () => {
-  let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] div[aria-label="Close"]');
+  let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] .closeButton-1tv5uR');
   
   if (closeEl === null) return false;
   
@@ -39,7 +39,7 @@ export const closeSettings = () => {
 };
 
 export const openSettings = () => {
-  document.querySelector('button[aria-label="User Settings"]').click();
+  document.querySelector('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').click();
 };
 
 export const openSettingItem = (name) => {
