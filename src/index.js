@@ -198,11 +198,11 @@ const init = async function () {
 
     let moduleSettings = JSON.parse(localStorage.getItem('goosemodModules'));
 
-    for (const oldName in Object.keys(moduleSettings)) {
+    for (const oldName of Object.keys(moduleSettings)) {
       const newName = oldModules.find((x) => x.filename === oldName)?.name;
       if (!newName) continue;
 
-      Object.defineProperty(moduleSettings, newName, Object.getOwnPropertyDescriptor(o, oldName));
+      Object.defineProperty(moduleSettings, newName, Object.getOwnPropertyDescriptor(moduleSettings, oldName));
 
       delete moduleSettings[oldName];
     }
