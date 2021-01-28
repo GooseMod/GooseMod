@@ -13,9 +13,15 @@ export const removeModuleUI = (field, where) => {
 
   // settingItem[2].splice(settingItem[2].indexOf(settingItem[2].find((x) => x.subtext === goosemodScope.modules[field].description)), 1);
 
+  const isDisabled = goosemodScope.modules[field] === undefined; // If module is currently disabled
+  if (isDisabled) {
+    goosemodScope.modules[field] = Object.assign({}, goosemodScope.disabledModules[field]); // Move from disabledModules -> modules
+    delete goosemodScope.disabledModules[field];
+  }
+
   goosemodScope.moduleStoreAPI.moduleRemoved(goosemodScope.modules[field]);
 
-  goosemodScope.modules[field].goosemodHandlers.onRemove();
+  if (!isDisabled) goosemodScope.modules[field].goosemodHandlers.onRemove();
 
   delete goosemodScope.modules[field];
 

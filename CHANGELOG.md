@@ -18,6 +18,7 @@
   - ### Fixes
     - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings
     - Fixed crashes for modules using color picker component in settings without initial value
+    - Fixed removing a module when it is currently disabled not working
 
 
 ## v6.0.1 [2021-01-22]

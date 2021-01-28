@@ -114,7 +114,7 @@ export default {
 
         buttonText: goosemodScope.modules[m.name] ? 'Remove' : 'Import',
         onclick: async (el) => {
-          if (goosemodScope.modules[m.name]) {
+          if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = 'Removing...';
 
             goosemodScope.settings.removeModuleUI(m.name, 'Module Store');
@@ -129,7 +129,7 @@ export default {
           goosemodScope.settings.openSettingItem('Module Store');
         },
         isToggled: () => goosemodScope.modules[m.name] !== undefined,
-        onToggle: async (checked) => {
+        onToggle: async (checked, el) => {
           if (checked) {
             goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
             delete goosemodScope.disabledModules[m.name];
