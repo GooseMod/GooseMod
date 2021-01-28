@@ -12,8 +12,11 @@
   - ### Patcher API Improvements
     - Added error handling if patches cause an error (it now just skips the patch instead of likely crashing)
 
+  - ### DOM To React
+    - [GitHub Issue #26](https://github.com/GooseMod/Injector/issues/26): Changed goosemod.confirmDialog to use React instead of DOM
+
   - ### Internationalization
-    - Fixed failing to get settings button and settings close button when using non-English languages in Discord
+    - [GitHub Issue #19](https://github.com/GooseMod/Injector/issues/19): Fixed failing to get settings button and settings close button when using non-English languages in Discord
 
   - ### Fixes
     - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings

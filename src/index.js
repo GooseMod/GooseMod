@@ -9,7 +9,7 @@ import * as Patcher from './util/patcher';
 import * as ReactUtils from './util/react';
 
 import showToast from './ui/toast';
-import confirmDialog from './ui/modals/confirm';
+import * as confirmDialog from './ui/modals/confirm';
 
 import * as Changelog from './ui/modals/changelog';
 import * as GoosemodChangelog from './ui/goosemodChangelog';
@@ -42,7 +42,9 @@ const scopeSetterFncs = [
   GoosemodChangelog.setThisScope,
 
   PackModal.setThisScope,
-  Patcher.setThisScope
+  Patcher.setThisScope,
+
+  confirmDialog.setThisScope
 ];
 
 const importsToAssign = {
@@ -69,7 +71,7 @@ const importsToAssign = {
   logger: Logger,
 
   showToast,
-  confirmDialog,
+  confirmDialog: confirmDialog.show,
   moduleStoreAPI,
 
   changelog: Changelog,
