@@ -7,7 +7,7 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const patch = (tooltipText, imgSrc, clickHandler) => {
+export const patch = (tooltipText, imgSrc, clickHandler, { inUpload = false, inReadonlyChannels = false } = {}) => {
   const { React } = goosemodScope.webpackModules.common;
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const Button = goosemodScope.webpackModules.findByProps('Looks', 'DropdownSizes');
@@ -20,7 +20,9 @@ export const patch = (tooltipText, imgSrc, clickHandler) => {
 
   return PatcherBase.patch(ChannelTextAreaContainer.type, 'render', (_args, res) => {
     const props = findInReactTree(res, (r) => r && r.className && r.className.indexOf("buttons-") === 0);
-    if (!props) return res;
+    if (!props ||
+      (!inUpload && res.props.children.ref.current?.classList?.contains('channelTextAreaUpload-3t7EIx') === true) ||
+      (!inReadonlyChannels && res.props.children.ref.current?.classList?.contains('channelTextAreaDisabled-8rmlrp') === true)) return res;
 
     props.children.unshift(
       React.createElement('div', null,
