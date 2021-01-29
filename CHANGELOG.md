@@ -12,6 +12,7 @@
   - ### Patcher API Improvements
     - Added error handling if patches cause an error (it now just skips the patch instead of likely crashing)
     - [GitHub Issue #18](https://github.com/GooseMod/Injector/issues/18): ChannelTextAreaButtons: Added optional options to show button in upload modal and in readonly channels (now both not showing by default)
+    - [GitHub Issue #22](https://github.com/GooseMod/Injector/issues/22): ChannelTextAreaButtons and MiniPopover: Allow React elements as imgSrc instead of only image URLs
 
   - ### DOM To React
     - [GitHub Issue #26](https://github.com/GooseMod/Injector/issues/26): Changed goosemod.confirmDialog to use React instead of DOM

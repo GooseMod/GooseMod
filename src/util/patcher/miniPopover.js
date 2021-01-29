@@ -33,7 +33,7 @@ export const patch = (tooltipText, imgSrc, clickHandler) => {
           onMouseEnter,
           onMouseLeave
         },
-          React.createElement("img", {
+          typeof imgSrc !== 'string' ? imgSrc : React.createElement("img", {
             src: imgSrc,
             width: "24px",
             height: "24px",
