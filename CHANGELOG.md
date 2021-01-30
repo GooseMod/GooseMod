@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v7.0.0 [2021-01-29]
+## v7.0.0-dev [2021-02-0X]
 
   - ### Features
     - New Module Store API
