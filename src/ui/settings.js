@@ -732,10 +732,10 @@ export const _createItem = (panelName, content) => {
 
           toggleEl.onclick = fn;
 
-          toggleEl.style.float = 'left';
-          toggleEl.style.marginRight = '8px';
+          toggleEl.style.marginTop = '4px';
 
-          if (e.showToggle) el.appendChild(toggleEl);
+          toggleEl.style.position = 'absolute';
+          toggleEl.style.right = '-10px';
 
           let txtEl = document.createElement('span');
           
@@ -747,7 +747,14 @@ export const _createItem = (panelName, content) => {
 
           txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
 
+          txtEl.style.overflow = 'hidden';
+          txtEl.style.display = '-webkit-box';
+          txtEl.style.webkitLineClamp = '1';
+          txtEl.style.webkitBoxOrient = 'vertical';
+
           txtEl.innerHTML = e.text;
+
+          txtEl.style.width = '85%';
 
           let buttonEl = document.createElement('div');
           buttonEl.classList.add('button-38aScr', e.buttonType === 'danger' ? 'lookOutlined-3sRXeN' : 'lookFilled-1Gx00P', e.buttonType === 'danger' ? 'colorRed-1TFJan' : 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
@@ -777,6 +784,240 @@ export const _createItem = (panelName, content) => {
 
             subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
 
+            subtextEl.style.width = '85%';
+            subtextEl.style.marginTop = '5px';
+
+            subtextEl.style.overflow = 'hidden';
+            subtextEl.style.display = '-webkit-box';
+            subtextEl.style.webkitLineClamp = '3';
+            subtextEl.style.webkitBoxOrient = 'vertical';
+
+            subtextEl.onclick = () => {
+              const { React } = goosemodScope.webpackModules.common;
+
+              const moduleName = txtEl.childNodes[0].textContent;
+
+              const authorsEl = txtEl.cloneNode(true);
+              authorsEl.childNodes[0].remove();
+              authorsEl.children[0].textContent = authorsEl.children[0].textContent[0].toUpperCase() + authorsEl.children[0].textContent.substring(1);
+
+              const betterDescEl = subtextEl.cloneNode(true);
+              betterDescEl.className = 'titleDefault-a8-ZSr title-31JmR4';
+              betterDescEl.style.pointer = 'auto';
+              betterDescEl.style.width = '';
+              betterDescEl.style.webkitLineClamp = '5';
+
+              betterDescEl.style.marginBottom = '10px';
+
+              const extraInfoEl = bottomRightContainerEl.cloneNode(true);
+              extraInfoEl.style.marginLeft = '';
+              extraInfoEl.style.flexDirection = 'row';
+
+              extraInfoEl.style.position = '';
+              extraInfoEl.style.top = '';
+              extraInfoEl.style.right = '';
+
+              extraInfoEl.style.marginBottom = '60px';
+              extraInfoEl.style.marginTop = '-5px';
+
+              [...extraInfoEl.children].forEach((x) => { x.style.marginRight = '20px' });
+
+              extraInfoEl.children[0].style.display = 'flex';
+              extraInfoEl.children[0].style.alignItems = 'flex-end';
+
+              extraInfoEl.children[0].style.position = '';
+              extraInfoEl.children[0].style.top = '';
+
+              extraInfoEl.children[1].style.marginBottom = '10px';
+
+              extraInfoEl.children[2].style.marginTop = '4px';
+
+              const imagesEl = document.createElement('div');
+
+              if (e.images && e.images.length > 0) {
+                // imagesEl.style.overflow = 'hidden';
+
+                extraInfoEl.style.marginBottom = '25px';
+
+                const controlLeftEl = document.createElement('a');
+                controlLeftEl.textContent = '❮';
+
+                const controlRightEl = document.createElement('a');
+                controlRightEl.textContent = '❯';
+
+                for (const c of [controlLeftEl, controlRightEl]) {
+                  c.style.color = 'white';
+                  c.style.fontWeight = 'bold';
+                  c.style.fontSize = '20px';
+                  c.style.borderRadius = '0 3px 3px 0';
+                  c.style.userSelect = 'none';
+                  c.style.padding = '14px';
+                  c.style.cursor = 'pointer';
+                  c.style.position = 'absolute';
+                  c.style.width = 'auto';
+
+                  c.style.backgroundColor = 'rgba(0, 0, 0, .3)';
+
+                  c.style.top = '50%';
+                  c.style.transform = 'translateY(-50%)';
+                }
+                
+                controlLeftEl.style.left = '0';
+
+                controlRightEl.style.right = '0';
+                controlRightEl.style.borderRadius = '3px 0 0 3px';
+
+                /*const updateShown = () => {
+                  imgEls.forEach((x) => { x.style.display = 'none'; });
+
+                  imgEls[currentImage].style.display = 'block';
+                };*/
+
+                let currentImage = 0;
+
+                controlLeftEl.onclick = () => { // https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp
+                  const oldCurrent = currentImage;
+                  imgEls[oldCurrent].style.marginLeft = '120%';
+
+                  imgEls[oldCurrent].style.position = 'absolute';
+                  imgEls[oldCurrent].style.top = '0';
+                  imgEls[oldCurrent].style.left = '0';
+
+                  currentImage--;
+
+                  if (currentImage < 0) currentImage = e.images.length - 1;
+
+                  imgEls[currentImage].style.transition = '';
+                  imgEls[currentImage].style.marginLeft = '-120%';
+                  
+                  setTimeout(() => {
+                    imgEls[currentImage].style.transition = 'all 1s';
+                    imgEls[currentImage].style.marginLeft = '';
+                  }, 10);
+
+                  imgEls[currentImage].style.display = 'block';
+
+                  imgEls[currentImage].style.position = '';
+                };
+
+                controlRightEl.onclick = () => {
+                  const oldCurrent = currentImage;
+                  imgEls[oldCurrent].style.marginLeft = '-120%';
+                  // setTimeout(() => { imgEls[oldCurrent].style.display = 'none'; }, 1000);
+
+                  imgEls[oldCurrent].style.position = 'absolute';
+                  imgEls[oldCurrent].style.top = '0';
+                  imgEls[oldCurrent].style.left = '0';
+
+                  currentImage++;
+
+                  if (currentImage >= e.images.length) currentImage = 0;
+
+                  imgEls[currentImage].style.transition = '';
+                  imgEls[currentImage].style.marginLeft = '120%';
+                  
+                  setTimeout(() => {
+                    imgEls[currentImage].style.transition = 'all 1s';
+                    imgEls[currentImage].style.marginLeft = '';
+                  }, 10);
+
+                  imgEls[currentImage].style.display = 'block';
+
+                  imgEls[currentImage].style.position = '';
+                };
+
+                const imgEls = [];
+
+                let imgInd = 0;
+                for (const url of e.images) {
+                  imagesEl.style.position = 'relative';
+
+                  const currentEl = document.createElement('img');
+                  currentEl.src = url;
+                
+                  currentEl.style.width = '100%';
+                  currentEl.style.height = '300px';
+                  currentEl.style.objectFit = 'contain';
+                  currentEl.style.backgroundColor = 'var(--background-secondary)';
+                  currentEl.style.boxShadow = 'var(--elevation-medium)';
+
+                  currentEl.style.borderRadius = '8px';
+
+                  currentEl.style.transition = 'all 1s';
+
+                  // currentEl.style.display = 'inline-block';
+
+                  if (imgInd !== currentImage) currentEl.style.display = 'none';
+
+                  imgEls.push(currentEl);
+
+                  imagesEl.appendChild(currentEl);
+
+                  imgInd++;
+                }
+
+                imagesEl.appendChild(controlLeftEl);
+                imagesEl.appendChild(controlRightEl);
+
+                imagesEl.style.marginBottom = '80px';
+              }
+
+              const ModalStuff = goosemodScope.webpackModules.findByProps('ModalRoot');
+              const FormStuff = goosemodScope.webpackModules.findByProps('FormTitle');
+
+              class RawDOMContainer extends React.Component {
+                constructor(props) {
+                  super(props);
+                }
+
+                render() {
+                  return React.createElement("div", {
+                    ref: (ref) => ref?.appendChild(this.props.dom)
+                  });
+                }
+              }
+
+              goosemodScope.webpackModules.findByProps("openModal").openModal((e) => {
+                return React.createElement(ModalStuff.ModalRoot, {
+                    transitionState: e.transitionState
+                  }, 
+                  React.createElement(ModalStuff.ModalHeader, {},
+                    React.createElement(FormStuff.FormTitle, { tag: 'h4'},
+                      moduleName,
+                      React.createElement(RawDOMContainer, {
+                        dom: authorsEl
+                      })
+                    ),
+                    React.createElement('FlexChild', {
+                        basis: 'auto',
+                        grow: 0,
+                        shrink: 1,
+                        wrap: false
+                      },
+                      React.createElement(ModalStuff.ModalCloseButton, {
+                        onClick: e.onClose
+                        })
+                    )
+                  ),
+          
+                  React.createElement(ModalStuff.ModalContent, {},
+                    React.createElement(RawDOMContainer, {
+                      dom: betterDescEl
+                    }),
+                    React.createElement(RawDOMContainer, {
+                      dom: extraInfoEl
+                    }),
+                    React.createElement(RawDOMContainer, {
+                      dom: imagesEl
+                    }),
+                    React.createElement(RawDOMContainer, {
+                      dom: bottomContainerEl.cloneNode(true)
+                    })
+                  )
+                );
+              });
+            };
+
             subtextEl.textContent = e.subtext;
 
             subtextEl.style.clear = 'both';
@@ -795,23 +1036,23 @@ export const _createItem = (panelName, content) => {
 
           bottomContainerEl.appendChild(buttonEl);
 
+          if (e.showToggle) bottomContainerEl.appendChild(toggleEl);
+
           let bottomRightContainerEl = document.createElement('div');
 
           bottomRightContainerEl.style.display = 'flex';
+          bottomRightContainerEl.style.alignItems = 'center';
+          bottomRightContainerEl.style.flexDirection = 'column';
+
           bottomRightContainerEl.style.order = '2';
           bottomRightContainerEl.style.marginLeft = 'auto';
 
-          bottomContainerEl.appendChild(bottomRightContainerEl);
+          bottomRightContainerEl.style.position = 'absolute';
+          bottomRightContainerEl.style.top = '12px';
+          bottomRightContainerEl.style.right = '12px';
 
-          if (e.subtext2) {
-            let subtext2El = document.createElement('div');
-
-            subtext2El.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
-
-            subtext2El.textContent = e.subtext2;
-
-            bottomRightContainerEl.appendChild(subtext2El);
-          }
+          // bottomContainerEl.appendChild(bottomRightContainerEl);
+          el.appendChild(bottomRightContainerEl);
 
           if (e.github) {
             const repoEl = document.createElement('a');
@@ -823,7 +1064,6 @@ export const _createItem = (panelName, content) => {
 
             repoEl.style.position = 'relative';
             repoEl.style.top = '4px';
-            repoEl.style.marginLeft = '20px';
 
             repoEl.style.cursor = 'pointer';
 
@@ -852,10 +1092,20 @@ export const _createItem = (panelName, content) => {
             starsEl.appendChild(starsAmountEl);
             starsEl.appendChild(starsIconEl);
 
-            starsEl.style.marginLeft = '25px';
-
-            bottomRightContainerEl.appendChild(starsEl);
             bottomRightContainerEl.appendChild(repoEl);
+            bottomRightContainerEl.appendChild(starsEl);
+          }
+
+          if (e.subtext2) {
+            let subtext2El = document.createElement('div');
+  
+            subtext2El.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+  
+            subtext2El.textContent = e.subtext2;
+
+            subtext2El.style.marginTop = '20px';
+  
+            bottomRightContainerEl.appendChild(subtext2El);
           }
 
           el.appendChild(bottomContainerEl);

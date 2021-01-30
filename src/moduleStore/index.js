@@ -104,6 +104,7 @@ export default {
         
         tags: m.tags,
         github: m.github,
+        images: m.images,
 
         buttonType: goosemodScope.modules[m.name] ? 'danger' : 'brand',
         showToggle: goosemodScope.modules[m.name],
