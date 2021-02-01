@@ -36,6 +36,24 @@ export default {
         return;
       }
 
+      if (moduleInfo.dependencies && moduleInfo.dependencies.length > 0) {
+        const mainWord = moduleInfo.dependencies.length === 1 ? 'dependency' : 'dependencies';
+
+        const toContinue = await goosemod.confirmDialog('Continue',
+        `${moduleName} has ${moduleInfo.dependencies.length === 1 ? 'a ' : ''}${mainWord}`,
+        `**${moduleName}** has **${moduleInfo.dependencies.length}** ${mainWord}:
+${moduleInfo.dependencies.map((x) => ` - **${x}**\n`)}
+To continue importing this module the dependencies need to be imported.`,
+        undefined,
+        'brand');
+
+        if (!toContinue) return;
+
+        for (const d of moduleInfo.dependencies) {
+          await goosemodScope.moduleStoreAPI.importModule(d);
+        }
+      }
+
       await goosemodScope.importModule({
         name: moduleName,
         data: jsCode,
