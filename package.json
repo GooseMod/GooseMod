@@ -20,7 +20,7 @@
     "url": "https://github.com/GooseMod/Injector/issues"
   },
   "homepage": "https://github.com/GooseMod/Injector#readme",
-  "dependencies": {
+  "devDependencies": {
     "parcel-bundler": "^1.12.4"
   }
 }
