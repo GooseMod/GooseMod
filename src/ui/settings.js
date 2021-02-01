@@ -807,6 +807,9 @@ export const _createItem = (panelName, content) => {
               betterDescEl.style.width = '';
               betterDescEl.style.webkitLineClamp = '5';
 
+              betterDescEl.style.cursor = 'default';
+              betterDescEl.onclick = undefined;
+
               betterDescEl.style.marginBottom = '10px';
 
               const extraInfoEl = bottomRightContainerEl.cloneNode(true);
@@ -817,7 +820,7 @@ export const _createItem = (panelName, content) => {
               extraInfoEl.style.top = '';
               extraInfoEl.style.right = '';
 
-              extraInfoEl.style.marginBottom = '60px';
+              extraInfoEl.style.marginBottom = '16px';
               extraInfoEl.style.marginTop = '-5px';
 
               [...extraInfoEl.children].forEach((x) => { x.style.marginRight = '20px' });
@@ -959,7 +962,7 @@ export const _createItem = (panelName, content) => {
                 imagesEl.appendChild(controlLeftEl);
                 imagesEl.appendChild(controlRightEl);
 
-                imagesEl.style.marginBottom = '80px';
+                imagesEl.style.marginBottom = '16px';
               }
 
               const ModalStuff = goosemodScope.webpackModules.findByProps('ModalRoot');
@@ -1009,9 +1012,6 @@ export const _createItem = (panelName, content) => {
                     }),
                     React.createElement(RawDOMContainer, {
                       dom: imagesEl
-                    }),
-                    React.createElement(RawDOMContainer, {
-                      dom: bottomContainerEl.cloneNode(true)
                     })
                   )
                 );
