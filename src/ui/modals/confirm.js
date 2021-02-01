@@ -4,12 +4,14 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const show = (buttonText, title, description) => {
+export const show = (buttonText, title, description, cancelText = undefined, confirmButtonColor = undefined) => {
   return new Promise((res) => {
     const { React } = goosemodScope.webpackModules.common;
     const { findByDisplayName, findByProps } = goosemodScope.webpackModules;
     
     const Text = findByDisplayName("Text");
+    const Markdown = findByDisplayName('Markdown');
+    const ButtonColors = findByProps('button', 'colorRed');
     
     (0, findByProps("openModal").openModal)((e) => {
       if (e.transitionState === 3) res(false); // If clicked off
@@ -18,7 +20,8 @@ export const show = (buttonText, title, description) => {
         {
           header: title,
           confirmText: buttonText,
-          cancelText: findByProps("Messages").Messages.CANCEL,
+          cancelText: cancelText || findByProps("Messages").Messages.CANCEL,
+          confirmButtonColor: ButtonColors[`color${confirmButtonColor ? (confirmButtonColor[0].toUpperCase() + confirmButtonColor.substring(1).toLowerCase()) : 'Red'}`],
           onClose: () => { // General close (?)
             res(false);
           },
@@ -32,12 +35,11 @@ export const show = (buttonText, title, description) => {
           },
           transitionState: e.transitionState,
         },
-        React.createElement(Text,
+        ...description.split('\n').map((x) => React.createElement(Markdown,
           {
             size: Text.Sizes.SIZE_16
           },
-          description
-        )
+          x))
       );
     });
   });
