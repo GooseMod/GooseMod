@@ -80,25 +80,19 @@ let packs = [
   {
     text: 'Minimal',
     subtext: 'A basic installation with no visual changes; only analytics blocking and fixes',
-    modules: ['hardcodedColorFixer', 'fucklytics']
+    modules: ['Hardcoded Color Fixer', 'Fucklytics']
   },
   {
     text: 'Recommended',
     subtext: 'The recommended starting experience: a few visual improvements and customisation options',
-    modules: ['visualTweaks', 'usernameInAuthor', 'customSounds', 'noMessageDeletion', 'nicknamePanel'],
+    modules: ['Visual Tweaks', 'Username In Author', 'Custom Sounds', 'Better Message Deletion', 'Nickname Panel'],
     base: 'Minimal'
   },
   {
     text: 'Complete',
     subtext: 'A large amount of the avaliable modules which overhauls the UI and adds extra features',
-    modules: ['wysiwygMessages', 'twitchEmotes', 'radialStatus', 'simpleStatusIcons', 'userPopoutCreationDate', 'clearRecentGames', 'gameActivityButton', 'macros', 'roleColoredMessages'],
+    modules: ['WYSIWYG Messages', 'Twitch Emotes', 'RadialStatus', 'Simple Status Icons', 'User Popout Creation Date', 'Clear Recent Games', 'Game Activity Button', 'Macros', 'Role Colored Messages'],
     base: 'Recommended'
-  },
-  {
-    text: 'Development',
-    subtext: 'Complete with additional modules for development',
-    modules: ['devMode', 'customCss'],
-    base: 'Complete'
   }
 ];
 
