@@ -1522,7 +1522,8 @@ export const makeGooseModSettings = () => {
                     }, 10);
 
                     settingsSidebarEl.addEventListener('click', (e) => {
-                      if (e.clientX === 0) return; // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
+                      if (e.clientX === 0 // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
+                        || e.target.textContent === 'Module Store') return;  // Clicking on Module Store when already in it should not break resizing
 
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
