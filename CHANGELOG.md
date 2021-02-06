@@ -2,12 +2,14 @@
 
 ## v7.0.0 [2021-02-06]
 
-  - ### Features
-    - New Module Store API
-
   - ### UI Improvements
-    - Stopped authors with discriminators being separated with just author name
-    - Added newline support to loading toast
+    - Module Store: Stopped authors with discriminators being separated with just author name
+    - Loading Toast: Added newline support
+    - Module Store: Added module popouts when clicking the description of cards
+    - Module Store: Moved disabling and enabling toggle in cards to bottom right
+    - Module Store: Moved version to top right container
+    - Module Store: Cut off description and title if longer than certain amounts of lines
+    - Module Store: Added GitHub metadata to top right container
 
   - ### Patcher API Improvements
     - Added error handling if patches cause an error (it now just skips the patch instead of likely crashing)
@@ -19,6 +21,9 @@
 
   - ### Internationalization
     - [GitHub Issue #19](https://github.com/GooseMod/Injector/issues/19): Fixed failing to get settings button and settings close button when using non-English languages in Discord
+
+  - ### Backend Improvements
+    - Using new Module Store API
 
   - ### Fixes
     - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings
