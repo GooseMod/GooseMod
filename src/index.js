@@ -234,7 +234,7 @@ const init = async function () {
     const importPromises = [];
 
     for (let m of toInstallModules) {
-      this.updateLoadingScreen(`${this.moduleStoreAPI.modules.find((x) => x.name === m).name}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
+      this.updateLoadingScreen(`${m}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
 
       // await this.moduleStoreAPI.importModule(m);
       importPromises.push(this.moduleStoreAPI.importModule(m));
