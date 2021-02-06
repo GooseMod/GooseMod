@@ -51,9 +51,10 @@ export const startLoadingScreen = () => {
 
   descEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
 
-  descEl.textContent = `Starting up...`;
-
+  descEl.style.textAlign = 'center';
   descEl.style.whiteSpace = 'pre-line';
+
+  descEl.textContent = `Starting up...`;
 
   loadingEl.appendChild(titleEl);
   loadingEl.appendChild(versionEl);
