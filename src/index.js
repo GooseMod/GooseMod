@@ -142,7 +142,7 @@ const init = async function () {
   this.saveInterval = setInterval(this.saveModuleSettings, 3000);
   
   this.remove = () => {
-    this.patcher.uninject('gm-settings');
+    this.settingsUninject();
 
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);

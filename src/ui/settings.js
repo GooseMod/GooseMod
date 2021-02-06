@@ -1486,7 +1486,7 @@ export const makeGooseModSettings = () => {
   const SettingsView = goosemodScope.webpackModules.findByDisplayName('SettingsView');
   const { React } = goosemodScope.webpackModules.common;
 
-  goosemodScope.patcher.inject('gm-settings', SettingsView.prototype, 'getPredicateSections', (_, sections) => {
+  goosemodScope.settingsUninject = goosemodScope.patcher.patch(SettingsView.prototype, 'getPredicateSections', (_, sections) => {
     if (!sections.find(c => c.section === 'changelog')) return sections;
 
     const dividers = sections.filter(c => c.section === 'DIVIDER');

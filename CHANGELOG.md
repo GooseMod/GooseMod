@@ -24,6 +24,7 @@
 
   - ### Backend Improvements
     - Using new Module Store API
+    - Use new Patcher API for Settings injection
 
   - ### Fixes
     - Made custom version info in settings more precise and should no longer crash if also using Powercord's BDCompat when opening settings
