@@ -8,12 +8,12 @@
     - Module Store: Added module popouts when clicking the description of cards
     - Module Store: Moved disabling and enabling toggle in cards to bottom right
     - Module Store: Moved version to top right container
-    - Module Store: Cut off description and title if longer than certain amounts of lines
+    - Module Store: Added cutting off description and title if they are longer than certain amounts of lines
     - Module Store: Added GitHub metadata to top right container
 
   - ### Patcher API Improvements
-    - Added error handling if patches cause an error (it now just skips the patch instead of likely crashing)
-    - [GitHub Issue #18](https://github.com/GooseMod/Injector/issues/18): ChannelTextAreaButtons: Added optional options to show button in upload modal and in readonly channels (now both not showing by default)
+    - Added error handling if patches cause an error, it now just skips the patch instead of likely crashing
+    - [GitHub Issue #18](https://github.com/GooseMod/Injector/issues/18): ChannelTextAreaButtons: Added optional options to show button in upload modal and in readonly channel, now both not showing by default
     - [GitHub Issue #22](https://github.com/GooseMod/Injector/issues/22): ChannelTextAreaButtons and MiniPopover: Allow React elements as imgSrc instead of only image URLs
 
   - ### DOM To React
@@ -23,7 +23,7 @@
     - [GitHub Issue #19](https://github.com/GooseMod/Injector/issues/19): Fixed failing to get settings button and settings close button when using non-English languages in Discord
 
   - ### Backend Improvements
-    - Using new Module Store API
+    - Use new Module Store API
     - Use new Patcher API for Settings injection
 
   - ### Fixes
