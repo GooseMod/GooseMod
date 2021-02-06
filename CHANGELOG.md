@@ -3,8 +3,8 @@
 ## v7.0.0 [2021-02-06]
 
   - ### UI Improvements
-    - Module Store: Stopped authors with discriminators being separated with just author name
     - Loading Toast: Added newline support
+    - Module Store: Stopped authors with discriminators being separated with just author name
     - Module Store: Added module popouts when clicking the description of cards
     - Module Store: Moved disabling and enabling toggle in cards to bottom right
     - Module Store: Moved version to top right container
