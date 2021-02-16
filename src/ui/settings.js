@@ -1023,7 +1023,7 @@ export const _createItem = (panelName, content) => {
             subtextEl.style.clear = 'both';
 
             el.appendChild(subtextEl);
-          }
+          };
 
           let bottomContainerEl = document.createElement('div');
 
@@ -1705,13 +1705,165 @@ export const makeGooseModSettings = () => {
   goosemodScope.settings.createItem('Module Store', ['',
     {
       type: 'button',
-      text: 'Update Index',
+      text: 'Repos',
       onclick: async () => {
-        await goosemodScope.moduleStoreAPI.updateModules();
+        // await goosemodScope.moduleStoreAPI.updateModules();
 
-        await goosemodScope.moduleStoreAPI.updateStoreSetting();
+        // await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-        goosemodScope.settings.openSettingItem('Module Store');
+        // goosemodScope.settings.openSettingItem('Module Store');
+
+        const { React } = goosemodScope.webpackModules.common;
+        const SwitchItem = goosemodScope.webpackModules.findByDisplayName('SwitchItem');
+
+        class SwitchItemContainer extends React.Component {
+          constructor(props) {
+            const originalHandler = props.onChange;
+            props.onChange = (e) => {
+              originalHandler(e);
+
+              this.props.value = e;
+              this.forceUpdate();
+            };
+
+            super(props);
+          }
+
+          render() {
+            //this.props._onRender(this);
+            return React.createElement('div', {},
+              React.createElement(Button, {
+                style: {
+                  width: '92px',
+                  
+                  position: 'absolute',
+                  right: '10px',
+                  marginTop: '32px'
+                },
+
+                color: ButtonClasses['colorRed'],
+                size: ButtonClasses['sizeSmall'],
+
+                onClick: this.props.buttonOnClick
+              }, 'Remove'),
+
+              React.createElement(SwitchItem, {
+                ...this.props
+              })
+            );
+          }
+        }
+
+        const repoEls = [];
+
+        const updateAfterChange = async () => {
+          await goosemodScope.moduleStoreAPI.updateModules();
+
+          await goosemodScope.moduleStoreAPI.updateStoreSetting();
+
+          goosemodScope.settings.openSettingItem('Module Store');
+        };
+
+        for (const repo of goosemodScope.moduleStoreAPI.repos) {
+          const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
+
+          const el = React.createElement(SwitchItemContainer, {
+            note: repo.meta.description,
+            value: repo.enabled,
+
+            onChange: (e) => {
+              repoUrl.enabled = e;
+
+              updateAfterChange();
+            },
+
+            buttonOnClick: () => {
+              goosemodScope.moduleStoreAPI.repoURLs.splice(goosemodScope.moduleStoreAPI.repoURLs.indexOf(repoUrl), 1);
+
+              updateAfterChange();
+            }
+          }, repo.meta.name);
+
+          repoEls.push(el);
+        }
+
+        const { Button } = goosemodScope.webpackModules.findByProps('Button');
+        const ButtonClasses = goosemodScope.webpackModules.findByProps('button', 'colorRed');
+
+        const ModalStuff = goosemodScope.webpackModules.findByProps('ModalRoot');
+        const FormStuff = goosemodScope.webpackModules.findByProps('FormTitle');
+
+        const { openModal } = goosemodScope.webpackModules.findByProps("openModal");
+
+        const Flex = goosemodScope.webpackModules.findByDisplayName('Flex');
+        const TextInput = goosemodScope.webpackModules.findByDisplayName('TextInput');
+
+        const currentNewRepoInput = '';
+
+        openModal((e) => {
+          return React.createElement(ModalStuff.ModalRoot, {
+              transitionState: e.transitionState,
+              size: 'medium'
+            },
+            React.createElement(ModalStuff.ModalHeader, {},
+              React.createElement(FormStuff.FormTitle, { tag: 'h4' },
+                'Repos'
+              ),
+              React.createElement('FlexChild', {
+                  basis: 'auto',
+                  grow: 0,
+                  shrink: 1,
+                  wrap: false
+                },
+                React.createElement(ModalStuff.ModalCloseButton, {
+                  onClick: e.onClose
+                })
+              )
+            ),
+    
+            React.createElement(ModalStuff.ModalContent, {},
+              ...repoEls,
+              React.createElement(Flex, {
+                  style: {
+                    marginBottom: '16px'
+                  },
+
+                  basis: 'auto',
+                  grow: 1,
+                  shrink: 1
+                },
+
+                React.createElement(TextInput, {
+                  className: 'codeRedemptionInput-3JOJea',
+                  placeholder: 'https://example.com/modules.json',
+                  onChange: (e) => {
+                    currentNewRepoInput = e;
+                  },
+                }),
+
+                React.createElement(Button, {
+                  style: {
+                    width: '112px'
+                  },
+                  // color: ButtonClasses['colorBrand']
+                  size: ButtonClasses['sizeMedium'],
+                  onclick: () => {
+                    if (currentNewRepoInput.length === 0 || !currentNewRepoInput.includes('http')) {
+                      return;
+                    }
+
+                    goosemodScope.moduleStoreAPI.repoURLs.push({
+                      url: currentNewRepoInput,
+                      enabled: true
+                    });
+
+                    updateAfterChange();
+                  }
+                }, 'Add Repo')
+              )
+            )
+          );
+        });
       },
       width: 120
     },
