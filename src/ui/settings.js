@@ -1676,7 +1676,7 @@ export const makeGooseModSettings = () => {
 
       const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
 
-      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' '));
+      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
       c.style.display = matches && (
         (tags.some((t) => selectors[t]) || noneSelectedArray[1]) &&
