@@ -2,14 +2,16 @@
 
 ## v7.0.0 [2021-02-06]
 
-  - ### UI Improvements
+  - ### UI Improvements - General
     - Loading Toast: Added newline support
-    - Module Store: Stopped authors with discriminators being separated with just author name
-    - Module Store: Added module popouts when clicking the description of cards
-    - Module Store: Moved disabling and enabling toggle in cards to bottom right
-    - Module Store: Moved version to top right container
-    - Module Store: Added cutting off description and title if they are longer than certain amounts of lines
-    - Module Store: Added GitHub metadata to top right container
+  
+  - ### UI Improvements - Module Store
+    - Stopped authors with discriminators being separated with just author name
+    - Added module popouts when clicking the description of cards
+    - Moved disabling and enabling toggle in cards to bottom right
+    - Moved version to top right container
+    - Added cutting off description and title if they are longer than certain amounts of lines
+    - Added GitHub metadata to top right container
 
   - ### Patcher API Improvements
     - Added error handling if patches cause an error, it now just skips the patch instead of likely crashing
