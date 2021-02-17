@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v7.1.0-dev [2021-02-XX]
+
+  - ### Fixes
+    - Fixed not all lowercase tags causing errors
+
+
 ## v7.0.0 [2021-02-06]
 
   - ### UI Improvements - General
