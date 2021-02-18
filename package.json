@@ -4,7 +4,8 @@
   "description": "GooseMod injector",
   "main": "index.js",
   "scripts": {
-    "build": "bash ./build.sh"
+    "build": "bash ./build.sh",
+    "dev": "parcel src/index.js"
   },
   "repository": {
     "type": "git",
