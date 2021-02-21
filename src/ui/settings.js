@@ -1738,7 +1738,7 @@ export const makeGooseModSettings = () => {
                   
                   position: 'absolute',
                   right: '10px',
-                  marginTop: '32px'
+                  marginTop: '33px'
                 },
 
                 color: ButtonClasses['colorRed'],
@@ -1798,7 +1798,7 @@ export const makeGooseModSettings = () => {
         const Flex = goosemodScope.webpackModules.findByDisplayName('Flex');
         const TextInput = goosemodScope.webpackModules.findByDisplayName('TextInput');
 
-        const currentNewRepoInput = '';
+        let currentNewRepoInput = '';
 
         openModal((e) => {
           return React.createElement(ModalStuff.ModalRoot, {
