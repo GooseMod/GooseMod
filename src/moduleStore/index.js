@@ -68,7 +68,7 @@ export default {
 
       goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules).sort((a, b) => a.name.localeCompare(b.name));
       goosemodScope.moduleStoreAPI.repos.push({
-        url: repo,
+        url: repo.url,
         meta: resp.meta,
         enabled: repo.enabled
       });
