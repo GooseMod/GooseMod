@@ -1847,7 +1847,7 @@ export const makeGooseModSettings = () => {
                   },
                   // color: ButtonClasses['colorBrand']
                   size: ButtonClasses['sizeMedium'],
-                  onclick: () => {
+                  onClick: () => {
                     if (currentNewRepoInput.length === 0 || !currentNewRepoInput.includes('http')) {
                       return;
                     }
