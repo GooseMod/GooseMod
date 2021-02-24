@@ -66,9 +66,14 @@ export default {
 
       const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
 
-      goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules).sort((a, b) => a.name.localeCompare(b.name));
+      goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules.map((x) => {
+        x.repo = repo.url;
+        return x;
+      })).sort((a, b) => a.name.localeCompare(b.name));
+
       goosemodScope.moduleStoreAPI.repos.push({
         url: repo.url,
+
         meta: resp.meta,
         enabled: repo.enabled
       });

@@ -22,7 +22,9 @@ export const getJSForModule = async (moduleName) => {
   if (cache[moduleName] && moduleInfo.hash === cache[moduleName].hash) {
     return cache[moduleName].js;
   } else {
-    const js = await (await fetch(`${goosemodScope.moduleStoreAPI.storeApiBaseURL}/module/${moduleName}.js?_=${Date.now()}`)).text();
+    const baseUrl = moduleInfo.repo.split('/').slice(0, -1).join('/');
+
+    const js = await (await fetch(`${baseUrl}/module/${moduleName}.js?_=${Date.now()}`)).text();
 
     goosemodScope.moduleStoreAPI.jsCache.updateCache(moduleName, moduleInfo.hash, js);
 
