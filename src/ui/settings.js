@@ -1764,10 +1764,15 @@ export const makeGooseModSettings = () => {
           goosemodScope.settings.openSettingItem('Module Store');
         };
 
+        let repoInd = 0;
         for (const repo of goosemodScope.moduleStoreAPI.repos) {
           const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
 
-          const el = React.createElement(SwitchItemContainer, {
+          repoEls.push(React.createElement(SwitchItemContainer, {
+            style: {
+              marginTop: repoInd === 0 ? '16px' : ''
+            },
+
             note: repo.meta.description,
             value: repo.enabled,
 
@@ -1782,9 +1787,9 @@ export const makeGooseModSettings = () => {
 
               updateAfterChange();
             }
-          }, repo.meta.name);
+          }, repo.meta.name));
 
-          repoEls.push(el);
+          repoInd++;
         }
 
         const { Button } = goosemodScope.webpackModules.findByProps('Button');
