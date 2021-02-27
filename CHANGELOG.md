@@ -2,8 +2,16 @@
 
 ## v7.1.0-dev [2021-02-XX]
 
+  - ### Features
+    - Module Store individual repos
+    - [GitHub Issue #2](https://github.com/GooseMod/Injector/issues/2): Remembering disabled modules
+
   - ### Fixes
     - Fixed not all lowercase tags causing errors
+
+  - ### Backend Improvements
+    - Rewrote and simplified module manager
+    - Moved module settings store exported functions to a seperate object rather than all in the main object
 
 
 ## v7.0.0 [2021-02-06]
