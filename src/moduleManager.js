@@ -30,11 +30,7 @@ export const importModule = async (f, disabled = false) => {
   if (disabled) return;
 
 
-  goosemodScope.logger.debug(`import.load.module.${field}`, `Binded handlers`);
-
   await goosemodScope.modules[field].goosemodHandlers.onImport(); // Run the module's onImport handler
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
-
-  goosemodScope.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
 };
