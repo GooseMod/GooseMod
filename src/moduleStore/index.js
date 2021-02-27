@@ -81,6 +81,10 @@ export default {
       ind++;
     }));
 
+    const pureRepoUrls = goosemodScope.moduleStoreAPI.repoURLs.map((x) => x.url);
+
+    goosemodScope.moduleStoreAPI.repos = goosemodScope.moduleStoreAPI.repos.sort((a, b) => pureRepoUrls.indexOf(a.url) - pureRepoUrls.indexOf(b.url));
+
     /*goosemodScope.moduleStoreAPI.modules = (await (await fetch(`${goosemodScope.moduleStoreAPI.storeApiBaseURL}/modules.json?_=${Date.now()}`)).json())
       .sort((a, b) => a.name.localeCompare(b.name));*/
   },
