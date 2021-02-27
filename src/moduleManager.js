@@ -29,7 +29,6 @@ export const importModule = async (f, disabled = false) => {
 
   if (disabled) return;
 
-  // goosemodScope.bindHandlers(goosemodScope.modules[field]); // Bind all handlers to module parent / returned object from module code
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Binded handlers`);
 
@@ -39,13 +38,3 @@ export const importModule = async (f, disabled = false) => {
 
   goosemodScope.logger.debug(`import.load.module.${field}`, `Added to Modules setting page`);
 };
-
-/* export const bindHandlers = (handlers) => {
-  for (let p in handlers) {
-    if (handlers.hasOwnProperty(p) && typeof handlers[p] === 'function') {
-      handlers[p] = handlers[p].bind(goosemodScope);
-    }
-  }
-
-  return handlers;
-}; */
