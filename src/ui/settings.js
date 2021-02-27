@@ -25,7 +25,7 @@ export const removeModuleUI = (field, where) => {
 
   delete goosemodScope.modules[field];
 
-  goosemodScope.clearModuleSetting(field);
+  goosemodScope.moduleSettingsStore.clearModuleSetting(field);
 
   // goosemodScope.settings.createFromItems();
 
@@ -1604,31 +1604,6 @@ export const makeGooseModSettings = () => {
   });
 
   goosemodScope.settings.createHeading('GooseMod');
-
-  /* goosemodScope.settings.createItem('Local Modules', ['',
-    {
-      type: 'button',
-      text: 'Import Local Module',
-      onclick: async () => {
-        let files = await goosemodScope.importModulesFull();
-
-        for (let f of files) {
-          let n = f.filename.split('.').slice(0, -1).join('.');
-
-          if (goosemodScope.modules[n].goosemodHandlers.onLoadingFinished !== undefined) {
-            await goosemodScope.modules[n].goosemodHandlers.onLoadingFinished();
-          }
-        }
-
-        goosemodScope.settings.openSettingItem('Local Modules');
-      },
-    },
-
-    {
-      type: 'header',
-      text: 'Imported Local Modules'
-    }
-  ]); */
 
   const updateModuleStoreUI = (parentEl, cards) => {
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');

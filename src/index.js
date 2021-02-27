@@ -22,8 +22,9 @@ import * as Settings from './ui/settings';
 
 import easterEggs from './ui/easterEggs';
 
-import { importModule, importModules, bindHandlers, getModuleFiles, importModulesFull, setThisScope as setThisScope3 } from './moduleManager';
-import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleSetting, loadSavedModuleSettings, setThisScope as setThisScope4 } from './moduleSettingsStore';
+import { importModule, setThisScope as setThisScope3 } from './moduleManager';
+// import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleSetting, loadSavedModuleSettings, setThisScope as setThisScope4 } from './moduleSettingsStore';
+import * as ModuleSettingsStore from './moduleSettingsStore';
 
 import moduleStoreAPI from './moduleStore';
 
@@ -33,7 +34,6 @@ const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
   setThisScope3,
-  setThisScope4,
 
   moduleStoreAPI.setThisScope,
   easterEggs.setThisScope,
@@ -43,6 +43,8 @@ const scopeSetterFncs = [
 
   PackModal.setThisScope,
   Patcher.setThisScope,
+
+  ModuleSettingsStore.setThisScope,
 
   confirmDialog.setThisScope
 ];
@@ -55,16 +57,8 @@ const importsToAssign = {
   settings: Settings,
 
   importModule,
-  importModules,
-  bindHandlers,
-  getModuleFiles,
-  importModulesFull,
 
-  saveModuleSettings,
-  clearModuleSetting,
-  clearSettings,
-  loadSavedModuleSetting,
-  loadSavedModuleSettings,
+  moduleSettingsStore: ModuleSettingsStore,
 
   webpackModules: WebpackModules,
   messageEasterEggs: easterEggs,
@@ -140,7 +134,7 @@ const init = async function () {
 
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
-  this.saveInterval = setInterval(this.saveModuleSettings, 3000);
+  this.saveInterval = setInterval(this.moduleSettingsStore.saveModuleSettings, 3000);
   
   this.remove = () => {
     this.settingsUninject();
@@ -150,7 +144,7 @@ const init = async function () {
     
     localStorage.removeItem('goosemodLastVersion');
 
-    this.clearSettings();
+    this.moduleSettingsStore.clearSettings();
     this.moduleStoreAPI.jsCache.purgeCache();
     
     this.removed = true;
@@ -236,7 +230,7 @@ const init = async function () {
       this.updateLoadingScreen(`${m}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
 
       // await this.moduleStoreAPI.importModule(m);
-      importPromises.push(this.moduleStoreAPI.importModule(m));
+      importPromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)));
     }
 
     await Promise.all(importPromises);
@@ -246,7 +240,7 @@ const init = async function () {
   
   this.updateLoadingScreen(`Loading saved module settings...`);
   
-  await this.loadSavedModuleSettings();
+  await this.moduleSettingsStore.loadSavedModuleSettings();
   
   this.stopLoadingScreen();
   

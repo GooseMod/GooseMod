@@ -21,7 +21,7 @@ export default {
   repoURLs: undefined,
 
   initRepoURLs: () => {
-    goosemodScope.moduleStoreAPI.repoURLs = localStorage.getItem('goosemodRepos') || [
+    goosemodScope.moduleStoreAPI.repoURLs = JSON.parse(localStorage.getItem('goosemodRepos')) || [
       {
         url: `https://store.goosemod.com/goosemod.json`,
         enabled: true
@@ -74,7 +74,7 @@ export default {
     localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repoURLs));
   },
 
-  importModule: async (moduleName) => {
+  importModule: async (moduleName, disabled = false) => {
     try {
       const moduleInfo = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === moduleName);
 
@@ -92,9 +92,9 @@ export default {
         name: moduleName,
         data: jsCode,
         metadata: moduleInfo
-      });
+      }, disabled);
 
-      if (goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
+      if (!disabled && goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
         await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
@@ -211,13 +211,17 @@ To continue importing this module the dependencies need to be imported.`,
               await goosemodScope.modules[m.name].goosemodHandlers.onLoadingFinished();
             }
 
-            goosemodScope.loadSavedModuleSetting(m.name);
+            await goosemodScope.moduleSettingsStore.loadSavedModuleSetting(m.name);
+
+            goosemodScope.moduleSettingsStore.enableModule(m.name);
           } else {
             goosemodScope.disabledModules[m.name] = Object.assign({}, goosemodScope.modules[m.name]);
 
-            goosemodScope.modules[m.name].goosemodHandlers.onRemove();
+            await goosemodScope.modules[m.name].goosemodHandlers.onRemove();
 
             delete goosemodScope.modules[m.name];
+
+            goosemodScope.moduleSettingsStore.disableModule(m.name);
           }
 
           goosemodScope.settings.openSettingItem('Module Store');

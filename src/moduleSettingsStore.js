@@ -4,6 +4,28 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
+
+export const disableModule = (name) => {
+  let settings = JSON.parse(localStorage.getItem('goosemodDisabled')) || {};
+
+  settings[name] = true;
+
+  localStorage.setItem('goosemodDisabled', JSON.stringify(settings));
+};
+
+export const enableModule = (name) => {
+  let settings = JSON.parse(localStorage.getItem('goosemodDisabled')) || {};
+
+  delete settings[name];
+
+  localStorage.setItem('goosemodDisabled', JSON.stringify(settings));
+};
+
+export const checkDisabled = (name) => {
+  return Object.keys(JSON.parse(localStorage.getItem('goosemodDisabled')) || {}).includes(name);
+};
+
+
 export const saveModuleSettings = async () => {
   //goosemodScope.logger.debug('settings', 'Saving module settings...');
 
