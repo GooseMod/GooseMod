@@ -100,6 +100,7 @@ const init = async function () {
   };
 
   this.settings.makeGooseModSettings();
+  this.moduleStoreAPI.initRepoURLs();
 
   this.removed = false;
 

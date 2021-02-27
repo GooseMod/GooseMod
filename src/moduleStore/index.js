@@ -18,45 +18,30 @@ export default {
 
   jsCache: JSCache,
 
-  repoURLs: [
-    {
-      url: `https://store.goosemod.com/goosemod.json`,
-      enabled: true
-    },
-    {
-      url: `https://store.goosemod.com/ms2porter.json`,
-      enabled: true
-    },
-    {
-      url: `https://store.goosemod.com/bdthemes.json`,
-      enabled: true
-    }
-  ],
+  repoURLs: undefined,
+
+  initRepoURLs: () => {
+    goosemodScope.moduleStoreAPI.repoURLs = localStorage.getItem('goosemodRepos') || [
+      {
+        url: `https://store.goosemod.com/goosemod.json`,
+        enabled: true
+      },
+      {
+        url: `https://store.goosemod.com/ms2porter.json`,
+        enabled: true
+      },
+      {
+        url: `https://store.goosemod.com/bdthemes.json`,
+        enabled: true
+      }
+    ];
+  },
 
   updateModules: async (shouldHandleLoadingText = false) => {
     goosemodScope.moduleStoreAPI.modules = [];
     goosemodScope.moduleStoreAPI.repos = [];
 
     let ind = 0;
-    /*for (const repo of goosemodScope.moduleStoreAPI.repoURLs) {
-      if (!repo.enabled) continue;
-
-      if (shouldHandleLoadingText) {
-        goosemodScope.updateLoadingScreen(`Getting modules...\n(${ind + 1}/${goosemodScope.moduleStoreAPI.repoURLs.length} - ${repo.url})`);
-      }
-
-      const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
-
-      goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules).sort((a, b) => a.name.localeCompare(b.name));
-      goosemodScope.moduleStoreAPI.repos.push({
-        url: repo,
-        meta: resp.meta,
-        enabled: repo.enabled
-      });
-
-      ind++;
-    }*/
-
     await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
       if (!repo.enabled) return;
 
@@ -85,8 +70,8 @@ export default {
 
     goosemodScope.moduleStoreAPI.repos = goosemodScope.moduleStoreAPI.repos.sort((a, b) => pureRepoUrls.indexOf(a.url) - pureRepoUrls.indexOf(b.url));
 
-    /*goosemodScope.moduleStoreAPI.modules = (await (await fetch(`${goosemodScope.moduleStoreAPI.storeApiBaseURL}/modules.json?_=${Date.now()}`)).json())
-      .sort((a, b) => a.name.localeCompare(b.name));*/
+
+    localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repoURLs));
   },
 
   importModule: async (moduleName) => {
