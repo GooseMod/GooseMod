@@ -1828,10 +1828,6 @@ export const makeGooseModSettings = () => {
                   // color: ButtonClasses['colorBrand']
                   size: ButtonClasses['sizeMedium'],
                   onClick: async () => {
-                    if (currentNewRepoInput.length === 0 || !currentNewRepoInput.includes('http')) {
-                      return;
-                    }
-
                     let failed = false;
                     try {
                       const resp = await (await fetch(currentNewRepoInput)).json();
