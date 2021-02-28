@@ -1842,10 +1842,18 @@ export const makeGooseModSettings = () => {
                     }
 
                     if (failed) {
-                      goosemodScope.showToast(`Invalid Repo`, { type: 'error' });
+                      goosemodScope.showToast(`Invalid Repo`, { type: 'error', timeout: 5000 });
 
                       return;
                     }
+
+                    const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.
+
+                    If you do not trust the owner of this repo do not use it as it could compromise your Discord install.
+                    
+                    Please confirm adding this repo by pressing OK.`);
+
+                    if (!confirmExternal) return;
 
 
                     goosemodScope.moduleStoreAPI.repoURLs.push({
