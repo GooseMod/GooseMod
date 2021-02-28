@@ -3,7 +3,7 @@
 ## v7.1.0-dev [2021-02-XX]
 
   - ### Features
-    - Module Store individual repos
+    - Module Store individual repos, you can now add external repos for modules which aren't in the official Module Store plus now the Module Store is split up into 3 separate repos
     - [GitHub Issue #2](https://github.com/GooseMod/GooseMod/issues/2): Remembering disabled modules
 
   - ### Fixes
