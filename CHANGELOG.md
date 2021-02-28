@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v7.1.0-dev [2021-02-XX]
+## v7.1.0 [2021-02-28]
 
   - ### Features
     - Module Store individual repos, you can now add external repos for modules which aren't in the official Module Store plus now the Module Store is split up into 3 separate repos
