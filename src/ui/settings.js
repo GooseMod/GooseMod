@@ -1729,8 +1729,7 @@ export const makeGooseModSettings = () => {
           }
         }
 
-        const repoEls = [];
-
+        let modalCloseHandler = undefined;
         const updateAfterChange = async () => {
           await goosemodScope.moduleStoreAPI.updateModules();
 
@@ -1739,33 +1738,13 @@ export const makeGooseModSettings = () => {
           goosemodScope.settings.openSettingItem('Module Store');
         };
 
-        let repoInd = 0;
-        for (const repo of goosemodScope.moduleStoreAPI.repos) {
-          const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
+        const restartModal = async () => {
+          modalCloseHandler();
 
-          repoEls.push(React.createElement(SwitchItemContainer, {
-            style: {
-              marginTop: repoInd === 0 ? '16px' : ''
-            },
+          await updateAfterChange();
 
-            note: repo.meta.description,
-            value: repo.enabled,
-
-            onChange: (e) => {
-              repoUrl.enabled = e;
-
-              updateAfterChange();
-            },
-
-            buttonOnClick: () => {
-              goosemodScope.moduleStoreAPI.repoURLs.splice(goosemodScope.moduleStoreAPI.repoURLs.indexOf(repoUrl), 1);
-
-              updateAfterChange();
-            }
-          }, repo.meta.name));
-
-          repoInd++;
-        }
+          openReposModal();
+        };
 
         const { Button } = goosemodScope.webpackModules.findByProps('Button');
         const ButtonClasses = goosemodScope.webpackModules.findByProps('button', 'colorRed');
@@ -1778,91 +1757,127 @@ export const makeGooseModSettings = () => {
         const Flex = goosemodScope.webpackModules.findByDisplayName('Flex');
         const TextInput = goosemodScope.webpackModules.findByDisplayName('TextInput');
 
-        let currentNewRepoInput = '';
+        const openReposModal = () => {
+          const repoEls = [];
+          let repoInd = 0;
 
-        openModal((e) => {
-          return React.createElement(ModalStuff.ModalRoot, {
-              transitionState: e.transitionState,
-              size: 'medium'
-            },
-            React.createElement(ModalStuff.ModalHeader, {},
-              React.createElement(FormStuff.FormTitle, { tag: 'h4' },
-                'Repos'
+          for (const repo of goosemodScope.moduleStoreAPI.repos) {
+            const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
+
+            repoEls.push(React.createElement(SwitchItemContainer, {
+              style: {
+                marginTop: repoInd === 0 ? '16px' : ''
+              },
+
+              note: repo.meta.description,
+              value: repo.enabled,
+
+              onChange: (e) => {
+                repoUrl.enabled = e;
+
+                updateAfterChange();
+              },
+
+              buttonOnClick: async () => {
+                goosemodScope.moduleStoreAPI.repoURLs.splice(goosemodScope.moduleStoreAPI.repoURLs.indexOf(repoUrl), 1);
+
+                restartModal();
+              }
+            }, repo.meta.name));
+
+            repoInd++;
+          }
+
+          let currentNewRepoInput = '';
+
+          openModal((e) => {
+            modalCloseHandler = e.onClose;
+
+            return React.createElement(ModalStuff.ModalRoot, {
+                transitionState: e.transitionState,
+                size: 'medium'
+              },
+              React.createElement(ModalStuff.ModalHeader, {},
+                React.createElement(FormStuff.FormTitle, { tag: 'h4' },
+                  'Repos'
+                ),
+                React.createElement('FlexChild', {
+                    basis: 'auto',
+                    grow: 0,
+                    shrink: 1,
+                    wrap: false
+                  },
+                  React.createElement(ModalStuff.ModalCloseButton, {
+                    onClick: e.onClose
+                  })
+                )
               ),
-              React.createElement('FlexChild', {
-                  basis: 'auto',
-                  grow: 0,
-                  shrink: 1,
-                  wrap: false
-                },
-                React.createElement(ModalStuff.ModalCloseButton, {
-                  onClick: e.onClose
-                })
-              )
-            ),
     
-            React.createElement(ModalStuff.ModalContent, {},
-              ...repoEls,
-              React.createElement(Flex, {
-                  style: {
-                    marginBottom: '16px'
+              React.createElement(ModalStuff.ModalContent, {},
+                ...repoEls,
+                React.createElement(Flex, {
+                    style: {
+                      marginBottom: '16px'
+                    },
+
+                    basis: 'auto',
+                    grow: 1,
+                    shrink: 1
                   },
 
-                  basis: 'auto',
-                  grow: 1,
-                  shrink: 1
-                },
+                  React.createElement(TextInput, {
+                    className: 'codeRedemptionInput-3JOJea',
+                    placeholder: 'https://example.com/modules.json',
+                    onChange: (e) => {
+                      currentNewRepoInput = e;
+                    },
+                  }),
 
-                React.createElement(TextInput, {
-                  className: 'codeRedemptionInput-3JOJea',
-                  placeholder: 'https://example.com/modules.json',
-                  onChange: (e) => {
-                    currentNewRepoInput = e;
-                  },
-                }),
+                  React.createElement(Button, {
+                    style: {
+                      width: '112px'
+                    },
+                    // color: ButtonClasses['colorBrand']
+                    size: ButtonClasses['sizeMedium'],
+                    onClick: async () => {
+                      let failed = false;
+                      try {
+                        const resp = await (await fetch(currentNewRepoInput)).json();
 
-                React.createElement(Button, {
-                  style: {
-                    width: '112px'
-                  },
-                  // color: ButtonClasses['colorBrand']
-                  size: ButtonClasses['sizeMedium'],
-                  onClick: async () => {
-                    let failed = false;
-                    try {
-                      const resp = await (await fetch(currentNewRepoInput)).json();
+                        failed = resp.meta?.name === undefined;
+                      } catch (e) {
+                        failed = true;
+                      }
 
-                      failed = resp.meta?.name === undefined;
-                    } catch (e) {
-                      failed = true;
+                      if (failed) {
+                        goosemodScope.showToast(`Invalid Repo`, { type: 'error', timeout: 5000 });
+
+                        return;
+                      }
+
+                      const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.`);
+                      if (!confirmExternal) {
+                        goosemodScope.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000 });
+
+                        return;
+                      }
+
+
+                      goosemodScope.moduleStoreAPI.repoURLs.push({
+                        url: currentNewRepoInput,
+                        enabled: true
+                      });
+
+                      restartModal();
                     }
-
-                    if (failed) {
-                      goosemodScope.showToast(`Invalid Repo`, { type: 'error', timeout: 5000 });
-
-                      return;
-                    }
-
-                    const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.`);
-                    if (!confirmExternal) {
-                      goosemodScope.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000 });
-
-                      return;
-                    }
-
-
-                    goosemodScope.moduleStoreAPI.repoURLs.push({
-                      url: currentNewRepoInput,
-                      enabled: true
-                    });
-
-                    updateAfterChange();
-                  }
-                }, 'Add Repo')
+                  }, 'Add Repo')
+                )
               )
-            )
-          );
-        });
+            );
+          });
+        };
+
+        openReposModal();
       },
       width: 120
     },
