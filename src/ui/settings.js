@@ -1827,10 +1827,26 @@ export const makeGooseModSettings = () => {
                   },
                   // color: ButtonClasses['colorBrand']
                   size: ButtonClasses['sizeMedium'],
-                  onClick: () => {
+                  onClick: async () => {
                     if (currentNewRepoInput.length === 0 || !currentNewRepoInput.includes('http')) {
                       return;
                     }
+
+                    let failed = false;
+                    try {
+                      const resp = await (await fetch(currentNewRepoInput)).json();
+
+                      failed = resp.meta?.name === undefined;
+                    } catch (e) {
+                      failed = true;
+                    }
+
+                    if (failed) {
+                      goosemodScope.showToast(`Invalid Repo`, { type: 'error' });
+
+                      return;
+                    }
+
 
                     goosemodScope.moduleStoreAPI.repoURLs.push({
                       url: currentNewRepoInput,
