@@ -1847,13 +1847,12 @@ export const makeGooseModSettings = () => {
                       return;
                     }
 
-                    const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.
+                    const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.`);
+                    if (!confirmExternal) {
+                      goosemodScope.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000 });
 
-                    If you do not trust the owner of this repo do not use it as it could compromise your Discord install.
-                    
-                    Please confirm adding this repo by pressing OK.`);
-
-                    if (!confirmExternal) return;
+                      return;
+                    }
 
 
                     goosemodScope.moduleStoreAPI.repoURLs.push({
