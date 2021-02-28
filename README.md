@@ -6,6 +6,6 @@ GooseMod is a new, store-driven Discord mod.
 
 ---
 
-## [Install Guide](https://github.com/GooseMod/Injector/wiki/Install-Guide)
+## [Install Guide](https://github.com/GooseMod/GooseMod/wiki/Install-Guide)
 
-## [FAQ](https://github.com/GooseMod/Injector/wiki/FAQ)
+## [FAQ](https://github.com/GooseMod/GooseMod/wiki/FAQ)

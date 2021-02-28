@@ -4,7 +4,7 @@
 
   - ### Features
     - Module Store individual repos
-    - [GitHub Issue #2](https://github.com/GooseMod/Injector/issues/2): Remembering disabled modules
+    - [GitHub Issue #2](https://github.com/GooseMod/GooseMod/issues/2): Remembering disabled modules
 
   - ### Fixes
     - Fixed not all lowercase tags causing errors
@@ -29,14 +29,14 @@
 
   - ### Patcher API Improvements
     - Added error handling if patches cause an error, it now just skips the patch instead of likely crashing
-    - [GitHub Issue #18](https://github.com/GooseMod/Injector/issues/18): ChannelTextAreaButtons: Added optional options to show button in upload modal and in readonly channel, now both not showing by default
-    - [GitHub Issue #22](https://github.com/GooseMod/Injector/issues/22): ChannelTextAreaButtons and MiniPopover: Allow React elements as imgSrc instead of only image URLs
+    - [GitHub Issue #18](https://github.com/GooseMod/GooseMod/issues/18): ChannelTextAreaButtons: Added optional options to show button in upload modal and in readonly channel, now both not showing by default
+    - [GitHub Issue #22](https://github.com/GooseMod/GooseMod/issues/22): ChannelTextAreaButtons and MiniPopover: Allow React elements as imgSrc instead of only image URLs
 
   - ### DOM To React
-    - [GitHub Issue #26](https://github.com/GooseMod/Injector/issues/26): Changed goosemod.confirmDialog to use React instead of DOM
+    - [GitHub Issue #26](https://github.com/GooseMod/GooseMod/issues/26): Changed goosemod.confirmDialog to use React instead of DOM
 
   - ### Internationalization
-    - [GitHub Issue #19](https://github.com/GooseMod/Injector/issues/19): Fixed failing to get settings button and settings close button when using non-English languages in Discord
+    - [GitHub Issue #19](https://github.com/GooseMod/GooseMod/issues/19): Fixed failing to get settings button and settings close button when using non-English languages in Discord
 
   - ### Backend Improvements
     - Use new Module Store API
@@ -73,8 +73,8 @@
     - Added new Patcher MiniPopover API, making it now easy for module developers to add buttons to MiniPopovers (the buttons which appear to the right when you hover over a message)
 
   - ### General API Additions
-    - [GitHub Issue #13](https://github.com/GooseMod/Injector/issues/13): Added support for checkboxes in context menu patcher API
-    - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/Injector/pull/17): Added initial value method for color settings
+    - [GitHub Issue #13](https://github.com/GooseMod/GooseMod/issues/13): Added support for checkboxes in context menu patcher API
+    - [GitHub PR #17 by SrKomodo](https://github.com/GooseMod/GooseMod/pull/17): Added initial value method for color settings
     - Added ReactDOM to common Webpack modules
 
   - ### Fixes
@@ -110,7 +110,7 @@
 ## v5.6.0 [2020-12-07]
 
   - ### Features
-    - [GitHub PR #15 by Fjorge](https://github.com/GooseMod/Injector/pull/15): Add standard removeItem function to Settings API
+    - [GitHub PR #15 by Fjorge](https://github.com/GooseMod/GooseMod/pull/15): Add standard removeItem function to Settings API
     - Added import and remove confirmation toasts with local modules
 
 
@@ -123,8 +123,8 @@
 ## v5.4.0 [2020-12-04]
 
   - ### Features
-    - [GitHub PR #11 by Fjorge](https://github.com/GooseMod/Injector/pull/11): Only exclude modules with all (not some) authors unselected in Module Store Sidebar
-    - [GitHub PR #12 by Fjorge](https://github.com/GooseMod/Injector/pull/12): Add Changelog button to GooseMod settings
+    - [GitHub PR #11 by Fjorge](https://github.com/GooseMod/GooseMod/pull/11): Only exclude modules with all (not some) authors unselected in Module Store Sidebar
+    - [GitHub PR #12 by Fjorge](https://github.com/GooseMod/GooseMod/pull/12): Add Changelog button to GooseMod settings
 
   - ### Tweaks
     - Removed uninstall setting option
@@ -139,8 +139,8 @@
 ## v5.3.0 [2020-12-04]
 
   - ### Features
-    - [GitHub PR #6 by Fjorge](https://github.com/GooseMod/Injector/pull/6): Add audio property to easter eggs
-    - [GitHub PR #8 by Fjorge](https://github.com/GooseMod/Injector/pull/8): Let modules have author as an array
+    - [GitHub PR #6 by Fjorge](https://github.com/GooseMod/GooseMod/pull/6): Add audio property to easter eggs
+    - [GitHub PR #8 by Fjorge](https://github.com/GooseMod/GooseMod/pull/8): Let modules have author as an array
 
 
 ## v5.2.0 [2020-11-30]
