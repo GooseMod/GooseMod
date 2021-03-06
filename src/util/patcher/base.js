@@ -68,7 +68,7 @@ export const patch = (parent, functionName, handler, before = false) => {
 
     parent[functionName] = Object.assign(generateNewFunction(parent[functionName], id, functionName), originalFunctionClone);
 
-    parent[functionName].toString = () => originalFunctionClone.toString();
+    parent[functionName].toString = () => originalFunctionClone.toString(); // You cannot just set directly a.toString = b.toString like we used to because strange internal JS prototype things, so make a new function just to run original function
 
     modIndex[id][functionName] = {
       before: [],
