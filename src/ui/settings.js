@@ -146,7 +146,7 @@ export const _createItem = (panelName, content) => {
 
     let specialContainerEl, cardContainerEl;
 
-    if (panelName === 'Module Store') {
+    if (panelName === 'Plugins' || panelName === 'Themes') {
       specialContainerEl = document.createElement('div');
 
       specialContainerEl.style.display = 'flex';
@@ -1515,7 +1515,7 @@ export const makeGooseModSettings = () => {
                   settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
                   settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
-                  if (i[1] === 'Module Store') { // Settings expansion for Module Store panel
+                  if (i[1] === 'Plugins' || i[1] === 'Themes') { // Settings expansion for Module Store panel
                     setTimeout(() => {
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '100%';
@@ -1523,7 +1523,7 @@ export const makeGooseModSettings = () => {
 
                     settingsSidebarEl.addEventListener('click', (e) => {
                       if (e.clientX === 0 // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
-                        || e.target.textContent === 'Module Store') return;  // Clicking on Module Store when already in it should not break resizing
+                        || e.target.textContent === 'Plugins' || e.target.textContent === 'Themes') return;  // Clicking on Module Store when already in it should not break resizing
 
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
@@ -1677,7 +1677,7 @@ export const makeGooseModSettings = () => {
 
   let sidebarSelectedIndex = {};
 
-  goosemodScope.settings.createItem('Module Store', ['',
+  ['Plugins', 'Themes'].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'button',
       text: 'Repos',
@@ -1955,7 +1955,7 @@ export const makeGooseModSettings = () => {
         });
       }
     }
-  ]);
+  ]));
 
   goosemodScope.settings.createItem('Change Log', [""], async () => {
     GoosemodChangelog.show();

@@ -20,6 +20,14 @@ export default {
 
   repoURLs: undefined,
 
+  getSettingItemName: (moduleInfo) => {
+    let item = 'Plugins';
+
+    if (moduleInfo.tags.includes('theme') || moduleInfo.tags.includes('themes')) item = 'Themes';
+
+    return item;
+  },
+
   initRepoURLs: () => {
     goosemodScope.moduleStoreAPI.repoURLs = JSON.parse(localStorage.getItem('goosemodRepos')) || [
       {
@@ -98,7 +106,7 @@ export default {
         await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
-      let settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
+      let settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
 
       let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
@@ -114,7 +122,7 @@ export default {
   },
 
   moduleRemoved: async (m) => {
-    let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store')[2].find((x) => x.subtext === m.description);
+    let item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(m))[2].find((x) => x.subtext === m.description);
     
     if (item === undefined) return;
 
@@ -146,11 +154,16 @@ export default {
   },
 
   updateStoreSetting: async () => {
-    let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
+    //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
+    const allItems = goosemodScope.settings.items.filter((x) => x[1] === 'Plugins' || x[1] === 'Themes');
 
-    item[2] = item[2].slice(0, 5);
+    allItems.forEach((x) => x[2].slice(0, 5));
+    //item[2] = item[2].slice(0, 5);
 
-    for (const m of goosemodScope.moduleStoreAPI.modules.sort((a, b) => a.name.localeCompare(b.name))) {
+    for (const m of goosemodScope.moduleStoreAPI.modules) {
+      const itemName = goosemodScope.moduleStoreAPI.getSettingItemName(m);
+      const item = allItems.find((x) => x[1] === itemName);
+
       item[2].push({
         type: 'card',
         
@@ -170,7 +183,7 @@ export default {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = 'Removing...';
 
-            goosemodScope.settings.removeModuleUI(m.name, 'Module Store');
+            goosemodScope.settings.removeModuleUI(m.name, itemName);
 
             return;
           }
@@ -197,7 +210,7 @@ To continue importing this module the dependencies need to be imported.`,
 
           await goosemodScope.moduleStoreAPI.importModule(m.name);
 
-          goosemodScope.settings.openSettingItem('Module Store');
+          goosemodScope.settings.openSettingItem(itemName);
         },
         isToggled: () => goosemodScope.modules[m.name] !== undefined,
         onToggle: async (checked, el) => {
@@ -224,7 +237,7 @@ To continue importing this module the dependencies need to be imported.`,
             goosemodScope.moduleSettingsStore.disableModule(m.name);
           }
 
-          goosemodScope.settings.openSettingItem('Module Store');
+          goosemodScope.settings.openSettingItem(itemName);
         }
       });
     }
