@@ -66,10 +66,10 @@ export const patch = (parent, functionName, handler, before = false) => {
   if (!modIndex[id][functionName]) {
     const originalFunctionClone = Object.assign({}, parent)[functionName];
 
-    parent[functionName] = generateNewFunction(parent[functionName], id, functionName);
+    parent[functionName] = Object.assign(generateNewFunction(parent[functionName], id, functionName), originalFunctionClone);
 
-    Object.assign(parent[functionName], originalFunctionClone);
-    parent[functionName].toString = originalFunctionClone.toString;
+    // Object.assign(parent[functionName], originalFunctionClone);
+    // parent[functionName].toString = originalFunctionClone.toString;
 
     modIndex[id][functionName] = {
       before: [],
