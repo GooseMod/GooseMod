@@ -23,7 +23,7 @@ export default {
   getSettingItemName: (moduleInfo) => {
     let item = 'Plugins';
 
-    if (moduleInfo.tags.includes('theme') || moduleInfo.tags.includes('themes')) item = 'Themes';
+    if (moduleInfo.tags.includes('theme')) item = 'Themes';
 
     return item;
   },
