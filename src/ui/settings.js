@@ -1997,7 +1997,7 @@ const addToContextMenu = () => {
       action: async () => {
         goosemodScope.settings.openSettings();
 
-        await sleep(100);
+        await sleep(10);
 
         [...(document.getElementsByClassName('side-8zPYf6')[0]).children].find((x) => x.textContent === name).click();
       }
