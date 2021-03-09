@@ -137,7 +137,7 @@ const init = async function () {
   this.saveInterval = setInterval(this.moduleSettingsStore.saveModuleSettings, 3000);
   
   this.remove = () => {
-    this.settingsUninject();
+    this.settingsUninjects.forEach((x) => x());
 
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);

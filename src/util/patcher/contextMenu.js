@@ -39,10 +39,19 @@ export const getExtraInfo = (type) => {
   } catch (e) { return undefined; }
 };
 
-const generateElement = (itemProps, subItems, wantedNavId, type, extraInfo, { Menu, React }) => {
+const generateElement = (itemProps, _subItems, wantedNavId, type, extraInfo, { Menu, React }) => {
   const isCheckbox = itemProps.checked !== undefined;
 
   itemProps.id = itemProps.id || labelToId(itemProps.label);
+
+  let subItems = _subItems;
+  if (typeof subItems === 'function') subItems = subItems();
+
+  if (subItems) subItems = subItems.map((x) => {
+    if (!x.originalAction) x.originalAction = x.action;
+
+    return x;
+  });
 
   itemProps.action = function() {
     if (isCheckbox) {
@@ -58,7 +67,7 @@ const generateElement = (itemProps, subItems, wantedNavId, type, extraInfo, { Me
   };
 
   const component = isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem;
-  const item = subItems !== undefined ? React.createElement(component, itemProps, ...subItems.map((x) => generateElement(x, x.sub, wantedNavId, type, { Menu, React }))) : React.createElement(component, itemProps);
+  const item = subItems !== undefined ? React.createElement(component, itemProps, ...subItems.map((x) => generateElement(x, x.sub, wantedNavId, type, extraInfo, { Menu, React }))) : React.createElement(component, itemProps);
 
   return item;
 };
@@ -80,7 +89,9 @@ export const patch = (type, itemProps) => {
     const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === (itemProps.id || labelToId(itemProps.label)));
     if (alreadyHasItem) return args;
 
-    const item = generateElement(itemProps, itemProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(type)), { Menu, React });
+    const clonedProps = Object.assign({}, itemProps);
+
+    const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(type)), { Menu, React });
   
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
 

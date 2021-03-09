@@ -19,7 +19,7 @@ const beforePatches = (context, args, id, functionName) => {
 
       if (!Array.isArray(newArgs)) newArgs = args;
     } catch (e) {
-      console.error(`Before patch (${id} - ${functionName}) failed, skipping`);
+      console.error(`Before patch (${id} - ${functionName}) failed, skipping`, e);
     }
   }
 
@@ -35,7 +35,7 @@ const afterPatches = (context, newArgs, returnValue, id, functionName) => {
     try { 
       newReturnValue = patch.call(context, newArgs, newReturnValue);
     } catch (e) {
-      console.error(`After patch (${id} - ${functionName}) failed, skipping`);
+      console.error(`After patch (${id} - ${functionName}) failed, skipping`, e);
     }
   }
   

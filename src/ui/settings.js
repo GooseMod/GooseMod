@@ -1486,7 +1486,9 @@ export const makeGooseModSettings = () => {
   const SettingsView = goosemodScope.webpackModules.findByDisplayName('SettingsView');
   const { React } = goosemodScope.webpackModules.common;
 
-  goosemodScope.settingsUninject = goosemodScope.patcher.patch(SettingsView.prototype, 'getPredicateSections', (_, sections) => {
+  goosemodScope.settingsUninjects = [];
+
+  goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(SettingsView.prototype, 'getPredicateSections', (_, sections) => {
     if (!sections.find(c => c.section === 'changelog')) return sections;
 
     const dividers = sections.filter(c => c.section === 'DIVIDER');
@@ -1601,7 +1603,7 @@ export const makeGooseModSettings = () => {
     );
 
     return sections;
-  });
+  }));
 
   goosemodScope.settings.createHeading('GooseMod');
 
@@ -1984,4 +1986,39 @@ export const makeGooseModSettings = () => {
   goosemodScope.settings.createSeparator();
 
   goosemodScope.settings.createHeading('GooseMod Modules');
+
+  addToContextMenu();
+};
+
+const addToContextMenu = () => {
+  const basicSettingItem = (name) => {
+    return {
+      label: name,
+      action: async () => {
+        goosemodScope.settings.openSettings();
+
+        await sleep(100);
+
+        [...(document.getElementsByClassName('side-8zPYf6')[0]).children].find((x) => x.textContent === name).click();
+      }
+    };
+  };
+
+  goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
+    label: 'GooseMod',
+    sub: [
+      basicSettingItem('Plugins'),
+      basicSettingItem('Themes'),
+      basicSettingItem('Change Log')
+    ]
+  }));
+
+  goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
+    label: 'GooseMod Modules',
+    sub: () => {
+      const moduleItems = goosemodScope.settings.items.slice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === 'GooseMod Modules')) + 1);
+
+      return moduleItems.map((x) => basicSettingItem(x[1]));
+    }
+  }));
 };
