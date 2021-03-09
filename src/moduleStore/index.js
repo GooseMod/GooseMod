@@ -41,6 +41,10 @@ export default {
       {
         url: `https://store.goosemod.com/bdthemes.json`,
         enabled: true
+      },
+      {
+        url: `https://store.goosemod.com/pcthemes.json`,
+        enabled: true
       }
     ];
   },
