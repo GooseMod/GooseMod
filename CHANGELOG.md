@@ -4,9 +4,15 @@
 
   - ### Features
     - Moved Module Store settings into separate "Themes" and "Plugins" items
+    - Added GooseMod settings to setting context menu (right clicking the settings cog button)
 
-  - ### Fixes
+  - ### Patcher API Improvements
+    - Added dynamic sub menu support
+    - Added error output when patches fail
+
+  - ### Patcher API Fixes
     - Fixed Patcher Base not overriding toString properly
+    - Fixed Patcher Context Menu sub menus causing errors
 
 
 ## v7.1.0 [2021-02-28]
