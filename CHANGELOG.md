@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v7.2.0-dev [2021-03-0X]
+## v7.2.0 [2021-03-19]
 
   - ### Features
     - Moved Module Store settings into separate "Themes" and "Plugins" items
