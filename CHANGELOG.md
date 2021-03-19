@@ -14,6 +14,9 @@
     - Fixed Patcher Base not overriding toString properly
     - Fixed Patcher Context Menu sub menus causing errors
 
+  - ### Tweaks
+    - Made warning toasts for mismatching hash + version show as actual "danger" types rather than normal
+
 
 ## v7.1.0 [2021-02-28]
 

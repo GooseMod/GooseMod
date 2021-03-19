@@ -107,11 +107,11 @@ const init = async function () {
 
   fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
     if (latestInjectVersionInfo.version !== this.version) {
-      this.showToast('Warning: Version number does not match latest public release', {timeout: 3000});
+      this.showToast('Warning: Version number does not match latest public release', { timeout: 3000, type: 'danger' });
     }
 
     if (latestInjectVersionInfo.hash !== this.versionHash) {
-      this.showToast('Warning: Version hash does not match latest public release', {timeout: 3000});
+      this.showToast('Warning: Version hash does not match latest public release', { timeout: 3000, type: 'danger' });
     }
   }));
 
