@@ -128,6 +128,8 @@ const init = async function () {
       localStorage.setItem('goosemodRepos', JSON.stringify(current));
 
       this.moduleStoreAPI.initRepoURLs();
+
+      this.showToast(`Added new PC Themes Repo (v7.2.0 update)`);
     }
 
     this.goosemodChangelog.show();
