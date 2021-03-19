@@ -117,6 +117,19 @@ const init = async function () {
 
 
   if (this.lastVersion && this.lastVersion !== this.version) {
+    if (this.version === '7.2.0' && localStorage.getItem('goosemodRepos')) { // Adding new PC themes repo
+      const current = JSON.parse(localStorage.getItem('goosemodRepos'));
+
+      if (!current.find((x) => x.url === `https://store.goosemod.com/pcthemes.json`)) current.push({
+        url: `https://store.goosemod.com/pcthemes.json`,
+        enabled: true
+      });
+
+      localStorage.setItem('goosemodRepos', JSON.stringify(current));
+
+      this.moduleStoreAPI.initRepoURLs();
+    }
+
     this.goosemodChangelog.show();
   }
 
