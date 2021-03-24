@@ -13,7 +13,7 @@ export const send = (content, author = 'GooseMod') => {
   // Get Webpack Modules
   const { createBotMessage } = goosemodScope.webpackModules.findByProps('createBotMessage');
   const { getChannelId } = goosemodScope.webpackModules.findByProps('getChannelId');
-  const { recieveMessage } = goosemodScope.webpackModules.findByProps('receiveMessage', 'sendBotMessage');
+  const { receiveMessage } = goosemodScope.webpackModules.findByProps('receiveMessage', 'sendBotMessage');
 
   const msg = createBotMessage(getChannelId(), content);
 
@@ -25,5 +25,5 @@ export const send = (content, author = 'GooseMod') => {
   msg.author.avatar = 'GooseMod'; // Allow custom avatar URLs in future? (via dynamic BOT_AVATARS adding)
   msg.author.username = author;
 
-  recieveMessage(getChannelId(), msg);
+  receiveMessage(getChannelId(), msg);
 };
