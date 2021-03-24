@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v7.3.0 [2021-03-2X]
+## v7.3.0-dev [2021-03-2X]
 
   - ### Patcher API Additions
     - Added commands API, allows easy custom commands
