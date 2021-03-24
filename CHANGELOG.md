@@ -4,10 +4,12 @@
 
   - ### Patcher API Additions
     - Added commands API, allows easy custom commands
+    - Added internalMessage API, allows easy sending of internal (Clyde-like) messages
 
   - ### Backend Improvements
     - New logging console output
     - Show toast when getting a repo fails instead of locking up injection
+    - Fixed some usage of window scope instead of local internally
 
 
 ## v7.2.0 [2021-03-19]
