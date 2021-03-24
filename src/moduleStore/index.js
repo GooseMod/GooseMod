@@ -55,27 +55,31 @@ export default {
 
     let ind = 0;
     await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
-      if (shouldHandleLoadingText) {
-        goosemodScope.updateLoadingScreen(`Getting modules...\n(${ind + 1}/${goosemodScope.moduleStoreAPI.repoURLs.length} - ${repo.url})`);
+      try {
+        if (shouldHandleLoadingText) {
+          goosemodScope.updateLoadingScreen(`Getting modules...\n(${ind + 1}/${goosemodScope.moduleStoreAPI.repoURLs.length} - ${repo.url})`);
+        }
+
+        const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
+
+        if (repo.enabled) {
+          goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules.map((x) => {
+            x.repo = repo.url;
+            return x;
+          })).sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        goosemodScope.moduleStoreAPI.repos.push({
+          url: repo.url,
+
+          meta: resp.meta,
+          enabled: repo.enabled
+        });
+
+        ind++;
+      } catch (e) { // Failed fetching repo - do not error out and cause loading lockup
+        goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error' }); // Show error toast to user so they know
       }
-
-      const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
-
-      if (repo.enabled) {
-        goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules.map((x) => {
-          x.repo = repo.url;
-          return x;
-        })).sort((a, b) => a.name.localeCompare(b.name));
-      }
-
-      goosemodScope.moduleStoreAPI.repos.push({
-        url: repo.url,
-
-        meta: resp.meta,
-        enabled: repo.enabled
-      });
-
-      ind++;
     }));
 
     const pureRepoUrls = goosemodScope.moduleStoreAPI.repoURLs.map((x) => x.url);
