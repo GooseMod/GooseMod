@@ -7,6 +7,7 @@
 
   - ### Backend Improvements
     - New logging console output
+    - Show toast when getting a repo fails instead of locking up injection
 
 
 ## v7.2.0 [2021-03-19]
