@@ -1,6 +1,6 @@
 export default async () => {
   const result = await new Promise((res) => 
-    goosemod.webpackModules.findByPropsAll('show')[0].show({
+    goosemodScope.webpackModules.findByPropsAll('show')[0].show({
       title: 'GooseMod Safe Mode Confirmation',
       
       body: 'Are you sure you want to enter Safe Mode? (Pressing H on startup results in this message)',

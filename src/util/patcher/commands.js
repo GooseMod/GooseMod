@@ -5,7 +5,7 @@ export const setThisScope = (scope) => {
 };
 
 
-const getModule = () => goosemod.webpackModules.findByProps('BUILT_IN_COMMANDS', 'BUILT_IN_SECTIONS');
+const getModule = () => goosemodScope.webpackModules.findByProps('BUILT_IN_COMMANDS', 'BUILT_IN_SECTIONS');
 
 const applicationId = '760559484342501406'; // User ID
 
