@@ -4,7 +4,7 @@
 
   - ### Patcher API Additions
     - Added commands API, allows easy custom commands
-    - Added internalMessage API, allows easy sending of internal (Clyde-like) messages
+    - Added internal message API, allows easy sending of internal (Clyde-like) messages
 
   - ### Backend Improvements
     - New logging console output
