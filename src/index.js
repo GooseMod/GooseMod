@@ -104,8 +104,11 @@ const init = async function () {
   this.versioning = {
     version: 'v7.3.0-dev',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
+
     lastUsedVersion: localStorage.getItem('goosemodLastVersion')
   };
+
+  this.versioning.isDeveloperBuild = this.versioning.hash === '<hash>';
 
   fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
     if (latestInjectVersionInfo.version !== this.versioning.version) {
