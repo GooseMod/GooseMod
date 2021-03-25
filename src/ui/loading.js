@@ -43,7 +43,7 @@ export const startLoadingScreen = () => {
 
   versionEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
 
-  versionEl.textContent = `v${goosemodScope.version} (${goosemodScope.versionHash.substring(0, 7)})`;
+  versionEl.textContent = `v${goosemodScope.versioning.version} (${goosemodScope.versioning.hash.substring(0, 7)})`;
 
   versionEl.style.marginBottom = '20px';
 

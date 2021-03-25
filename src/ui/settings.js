@@ -1422,9 +1422,9 @@ export const makeGooseModSettings = () => {
     let goosemodVersion = React.cloneElement(versionInfoEl.props.children[0]);
 
     goosemodVersion.props.children[0] = 'GooseMod';
-    goosemodVersion.props.children[2] = goosemodScope.version;
+    goosemodVersion.props.children[2] = goosemodScope.versioning.version;
 
-    goosemodVersion.props.children[4].props.children[1] = goosemodScope.versionHash.substring(0, 7);
+    goosemodVersion.props.children[4].props.children[1] = goosemodScope.versioning.hash.substring(0, 7);
 
     goosemodVersionInfo.props.children.push(goosemodVersion);
 

@@ -101,23 +101,25 @@ const init = async function () {
   this.modules = {};
   this.disabledModules = {};
 
-  this.lastVersion = localStorage.getItem('goosemodLastVersion');
-  this.version = '7.3.0-dev';
-  this.versionHash = '<hash>'; // Hash of built final js file is inserted here via build script
+  this.versioning = {
+    version: 'v7.3.0-dev',
+    hash: '<hash>', // Hash of built final js file is inserted here via build script
+    lastUsedVersion: localStorage.getItem('goosemodLastVersion')
+  };
 
   fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
-    if (latestInjectVersionInfo.version !== this.version) {
+    if (latestInjectVersionInfo.version !== this.versioning.version) {
       this.showToast('Warning: Version number does not match latest public release', { timeout: 3000, type: 'danger' });
     }
 
-    if (latestInjectVersionInfo.hash !== this.versionHash) {
+    if (latestInjectVersionInfo.hash !== this.versioning.hash) {
       this.showToast('Warning: Version hash does not match latest public release', { timeout: 3000, type: 'danger' });
     }
   }));
 
 
-  if (this.lastVersion && this.lastVersion !== this.version) {
-    if (this.version === '7.2.0' && localStorage.getItem('goosemodRepos')) { // Adding new PC themes repo
+  if (this.lastVersion && this.lastVersion !== this.versioning.version) {
+    if (this.versioning.version === '7.2.0' && localStorage.getItem('goosemodRepos')) { // Adding new PC themes repo
       const current = JSON.parse(localStorage.getItem('goosemodRepos'));
 
       if (!current.find((x) => x.url === `https://store.goosemod.com/pcthemes.json`)) current.push({
@@ -135,9 +137,9 @@ const init = async function () {
     this.goosemodChangelog.show();
   }
 
-  localStorage.setItem('goosemodLastVersion', this.version);
+  localStorage.setItem('goosemodLastVersion', this.versioning.version);
 
-  this.logger.debug('import.version.goosemod', `${this.version} (${this.versionHash})`);
+  this.logger.debug('import.version.goosemod', `${this.versioning.version} (${this.versioning.hash})`);
 
   if (window.DiscordNative !== undefined) this.logger.debug('import.version.discord', `${DiscordNative.app.getReleaseChannel()} ${DiscordNative.app.getVersion()}`);
   
