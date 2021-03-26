@@ -12,6 +12,8 @@ export const setThisScope = (scope) => {
   getDiscordLang = getLocaleInfo;
 
   goosemodScope.i18nCheckNewLangInterval = setInterval(checkForNewLang, 1000);
+
+  checkForNewLang();
 };
 
 let lastLangCode;
@@ -22,7 +24,7 @@ const checkForNewLang = async () => {
   if (code === lastLangCode) return; // Lang not changed
   lastLangCode = code;
 
-  strings = await geti18nData();
+  goosemodStrings = await geti18nData();
 
   const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
 
