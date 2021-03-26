@@ -189,7 +189,7 @@ export default {
         buttonText: goosemodScope.modules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async (el) => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
-            el.textContent = 'Removing...';
+            el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
 
             goosemodScope.settings.removeModuleUI(m.name, itemName);
 
