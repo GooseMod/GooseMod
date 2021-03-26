@@ -1565,7 +1565,7 @@ export const makeGooseModSettings = () => {
                 size: ButtonClasses['sizeSmall'],
 
                 onClick: this.props.buttonOnClick
-              }, 'Remove'),
+              }, goosemodScope.i18n.discordStrings.REMOVE),
 
               React.createElement(SwitchItem, {
                 ...this.props

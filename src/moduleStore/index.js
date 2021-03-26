@@ -119,7 +119,7 @@ export default {
       let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
       item.buttonType = 'danger';
-      item.buttonText = 'Remove';
+      item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
       item.showToggle = true;
 
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
@@ -186,7 +186,7 @@ export default {
         subtext: m.description,
         subtext2: `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] ? 'Remove' : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
+        buttonText: goosemodScope.modules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async (el) => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = 'Removing...';
