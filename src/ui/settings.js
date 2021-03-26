@@ -1525,7 +1525,7 @@ export const makeGooseModSettings = () => {
   [goosemodScope.i18n.strings.itemNames.plugins, goosemodScope.i18n.strings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'button',
-      text: 'Repos',
+      text: goosemodScope.i18n.strings.moduleStore.repos.repos,
       onclick: async () => {
         // await goosemodScope.moduleStoreAPI.updateModules();
 
@@ -1644,7 +1644,7 @@ export const makeGooseModSettings = () => {
               },
               React.createElement(ModalStuff.ModalHeader, {},
                 React.createElement(FormStuff.FormTitle, { tag: 'h4' },
-                  'Repos'
+                  goosemodScope.i18n.strings.moduleStore.repos.repos
                 ),
                 React.createElement('FlexChild', {
                     basis: 'auto',
