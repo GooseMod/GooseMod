@@ -1756,10 +1756,10 @@ export const makeGooseModSettings = () => {
           const cards = [...parentEl.children[0].children[3].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
           let final = [...cards.reduce((acc, e) => {
-            const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
+            const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : 'Not Imported';
             return acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
           }, new Map([
-            ['Imported', 0],
+            [goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported, 0],
             ['Not Imported', 0]
           ])).entries()].sort((a, b) => b[1] - a[1]);
 
