@@ -1763,7 +1763,7 @@ export const makeGooseModSettings = () => {
             ['Not Imported', 0]
           ])).entries()].sort((a, b) => b[1] - a[1]);
 
-          final.push(['Tags', 0, 'divider']);
+          final.push([goosemodScope.i18n.goosemodStrings.moduleStore.selectors.tags, 0, 'divider']);
           
           final = final.concat([...([].concat.apply([], cards.map((x) => (
             [...x.classList].map((y) => [y.replace(/\|/g, ' '), x.style.display !== 'none'])
