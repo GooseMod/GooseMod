@@ -2,7 +2,8 @@ let goosemodScope = {};
 
 let getDiscordLang;
 
-export let strings; // goosemod.i18n.strings
+export let goosemodStrings; // goosemod.i18n.strings
+export let discordStrings;
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
@@ -22,6 +23,10 @@ const checkForNewLang = async () => {
   lastLangCode = code;
 
   strings = await geti18nData();
+
+  const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
+
+  discordStrings = messages;
 };
 
 const geti18nData = async (lang = getDiscordLang()) => {

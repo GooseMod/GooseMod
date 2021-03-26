@@ -146,7 +146,7 @@ export const _createItem = (panelName, content) => {
 
     let specialContainerEl, cardContainerEl;
 
-    if (panelName === goosemodScope.i18n.strings.settings.itemNames.plugins || panelName === goosemodScope.i18n.strings.settings.itemNames.themes) {
+    if (panelName === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || panelName === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) {
       specialContainerEl = document.createElement('div');
 
       specialContainerEl.style.display = 'flex';
@@ -1360,7 +1360,7 @@ export const makeGooseModSettings = () => {
                   settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
                   settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
-                  if (i[1] === goosemodScope.i18n.strings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.strings.settings.itemNames.themes) { // Settings expansion for Module Store panel
+                  if (i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) { // Settings expansion for Module Store panel
                     setTimeout(() => {
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '100%';
@@ -1368,7 +1368,7 @@ export const makeGooseModSettings = () => {
 
                     settingsSidebarEl.addEventListener('click', (e) => {
                       if (e.clientX === 0 // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
-                        || e.target.textContent === goosemodScope.i18n.strings.settings.itemNames.plugins || e.target.textContent === goosemodScope.i18n.strings.settings.itemNames.themes) return;  // Clicking on Module Store when already in it should not break resizing
+                        || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) return;  // Clicking on Module Store when already in it should not break resizing
 
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
@@ -1522,10 +1522,10 @@ export const makeGooseModSettings = () => {
 
   let sidebarSelectedIndex = {};
 
-  [goosemodScope.i18n.strings.settings.itemNames.plugins, goosemodScope.i18n.strings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
+  [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'button',
-      text: goosemodScope.i18n.strings.moduleStore.repos.repos,
+      text: goosemodScope.i18n.goosemodStrings.moduleStore.repos.repos,
       onclick: async () => {
         // await goosemodScope.moduleStoreAPI.updateModules();
 
@@ -1644,7 +1644,7 @@ export const makeGooseModSettings = () => {
               },
               React.createElement(ModalStuff.ModalHeader, {},
                 React.createElement(FormStuff.FormTitle, { tag: 'h4' },
-                  goosemodScope.i18n.strings.moduleStore.repos.repos
+                  goosemodScope.i18n.goosemodStrings.moduleStore.repos.repos
                 ),
                 React.createElement('FlexChild', {
                     basis: 'auto',
@@ -1828,7 +1828,7 @@ export const makeGooseModSettings = () => {
 
   goosemodScope.settings.createSeparator();
 
-  goosemodScope.settings.createHeading(goosemodScope.i18n.strings.settings.itemNames.goosemodModules);
+  goosemodScope.settings.createHeading(goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules);
 
   addToContextMenu();
 };
@@ -1850,16 +1850,16 @@ const addToContextMenu = () => {
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
     label: 'GooseMod',
     sub: [
-      basicSettingItem(goosemodScope.i18n.strings.settings.itemNames.plugins),
-      basicSettingItem(goosemodScope.i18n.strings.settings.itemNames.themes),
+      basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
+      basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.themes),
       basicSettingItem('Change Log')
     ]
   }));
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
-    label: goosemodScope.i18n.strings.settings.itemNames.goosemodModules,
+    label: goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules,
     sub: () => {
-      const moduleItems = goosemodScope.settings.items.slice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.strings.settings.itemNames.goosemodModules)) + 1);
+      const moduleItems = goosemodScope.settings.items.slice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules)) + 1);
 
       return moduleItems.map((x) => basicSettingItem(x[1]));
     }

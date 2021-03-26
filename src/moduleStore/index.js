@@ -21,9 +21,9 @@ export default {
   repoURLs: undefined,
 
   getSettingItemName: (moduleInfo) => {
-    let item = goosemodScope.i18n.strings.settings.itemNames.plugins;
+    let item = goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins;
 
-    if (moduleInfo.tags.includes('theme')) item = goosemodScope.i18n.strings.settings.itemNames.themes;
+    if (moduleInfo.tags.includes('theme')) item = goosemodScope.i18n.goosemodStrings.settings.itemNames.themes;
 
     return item;
   },
@@ -135,7 +135,7 @@ export default {
     if (item === undefined) return;
 
     item.buttonType = 'brand';
-    item.buttonText = goosemodScope.i18n.strings.moduleStore.card.button.import;
+    item.buttonText = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
     item.showToggle = false;
   },
 
@@ -163,7 +163,7 @@ export default {
 
   updateStoreSetting: async () => {
     //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
-    const allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.strings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.strings.settings.itemNames.themes);
+    const allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
 
     allItems.forEach((x) => x[2].slice(0, 5));
     //item[2] = item[2].slice(0, 5);
@@ -186,7 +186,7 @@ export default {
         subtext: m.description,
         subtext2: `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] ? 'Remove' : goosemodScope.i18n.strings.moduleStore.card.button.import,
+        buttonText: goosemodScope.modules[m.name] ? 'Remove' : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async (el) => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = 'Removing...';
@@ -196,7 +196,7 @@ export default {
             return;
           }
 
-          el.textContent = goosemodScope.i18n.strings.moduleStore.card.button.importing;
+          el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.importing;
 
           if (m.dependencies && m.dependencies.length > 0) { // If it's the initial (on import) import that means it has been imported before
             const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';
