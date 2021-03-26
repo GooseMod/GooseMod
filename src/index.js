@@ -30,6 +30,8 @@ import moduleStoreAPI from './moduleStore';
 
 import triggerSafeMode from './safeMode';
 
+import * as i18n from './i18n';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -46,7 +48,9 @@ const scopeSetterFncs = [
 
   ModuleSettingsStore.setThisScope,
 
-  confirmDialog.setThisScope
+  confirmDialog.setThisScope,
+
+  i18n.setThisScope
 ];
 
 const importsToAssign = {
@@ -74,7 +78,9 @@ const importsToAssign = {
   packModal: PackModal,
 
   patcher: Patcher,
-  reactUtils: ReactUtils
+  reactUtils: ReactUtils,
+
+  i18n
 };
 
 const init = async function () {
@@ -161,6 +167,7 @@ const init = async function () {
 
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);
+    clearInterval(this.i18nCheckNewLangInterval);
     
     localStorage.removeItem('goosemodLastVersion');
 
