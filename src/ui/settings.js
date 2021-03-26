@@ -1715,7 +1715,7 @@ export const makeGooseModSettings = () => {
 
                       restartModal();
                     }
-                  }, 'Add Repo')
+                  }, goosemodScope.i18n.discordStrings.ADD)
                 )
               )
             );
