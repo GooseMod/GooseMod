@@ -196,7 +196,7 @@ export default {
             return;
           }
 
-          el.textContent = 'Importing...';
+          el.textContent = goosemodScope.i18n.strings.moduleStore.card.button.importing;
 
           if (m.dependencies && m.dependencies.length > 0) { // If it's the initial (on import) import that means it has been imported before
             const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';
