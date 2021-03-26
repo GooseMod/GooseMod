@@ -99,6 +99,15 @@ const init = async function () {
     a++;
   };
 
+  // Wait for i18n to load
+  await new Promise(async (res) => {
+    while (!this.i18n.goosemodStrings || !this.i18n.discordStrings) {
+      await sleep(100);
+    }
+
+    res();
+  });
+
   this.settings.makeGooseModSettings();
   this.moduleStoreAPI.initRepoURLs();
 
