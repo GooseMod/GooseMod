@@ -23,7 +23,7 @@ export default {
   getSettingItemName: (moduleInfo) => {
     let item = goosemodScope.i18n.strings.itemNames.plugins;
 
-    if (moduleInfo.tags.includes('theme')) item = 'Themes';
+    if (moduleInfo.tags.includes('theme')) item = goosemodScope.i18n.strings.itemNames.themes;
 
     return item;
   },
@@ -163,7 +163,7 @@ export default {
 
   updateStoreSetting: async () => {
     //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
-    const allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.strings.itemNames.plugins || x[1] === 'Themes');
+    const allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.strings.itemNames.plugins || x[1] === goosemodScope.i18n.strings.itemNames.themes);
 
     allItems.forEach((x) => x[2].slice(0, 5));
     //item[2] = item[2].slice(0, 5);
