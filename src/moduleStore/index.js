@@ -135,7 +135,7 @@ export default {
     if (item === undefined) return;
 
     item.buttonType = 'brand';
-    item.buttonText = 'Import';
+    item.buttonText = goosemodScope.i18n.strings.moduleStore.card.button.import;
     item.showToggle = false;
   },
 
@@ -186,7 +186,7 @@ export default {
         subtext: m.description,
         subtext2: `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] ? 'Remove' : 'Import',
+        buttonText: goosemodScope.modules[m.name] ? 'Remove' : goosemodScope.i18n.strings.moduleStore.card.button.import,
         onclick: async (el) => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = 'Removing...';
