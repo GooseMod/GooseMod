@@ -1828,7 +1828,7 @@ export const makeGooseModSettings = () => {
 
   goosemodScope.settings.createSeparator();
 
-  goosemodScope.settings.createHeading('GooseMod Modules');
+  goosemodScope.settings.createHeading(goosemodScope.i18n.strings.settings.itemNames.goosemodModules);
 
   addToContextMenu();
 };
@@ -1857,9 +1857,9 @@ const addToContextMenu = () => {
   }));
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
-    label: 'GooseMod Modules',
+    label: goosemodScope.i18n.strings.settings.itemNames.goosemodModules,
     sub: () => {
-      const moduleItems = goosemodScope.settings.items.slice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === 'GooseMod Modules')) + 1);
+      const moduleItems = goosemodScope.settings.items.slice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.strings.settings.itemNames.goosemodModules)) + 1);
 
       return moduleItems.map((x) => basicSettingItem(x[1]));
     }
