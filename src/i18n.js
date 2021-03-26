@@ -37,8 +37,10 @@ const geti18nData = async (lang = getDiscordLang()) => {
   let json; // Undefined by default
 
   try {
-    json = await (await fetch(`https://raw.githubusercontent.com/GooseMod/i18n/main/langs/${code}.json`)).json();
-  } catch (e) { } // Likely no translation for language so ignore
+    json = await (await fetch(`https://raw.githubusercontent.com/GooseMod/i18n/main/langs/${lang}.json`)).json();
+  } catch (e) { // Likely no translation for language so ignore mostly, log for debugging
+    console.log('Failed to get GooseMod i18n data', e);
+  } 
 
   return json;
 };
