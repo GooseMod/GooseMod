@@ -1769,7 +1769,7 @@ export const makeGooseModSettings = () => {
             [...x.classList].map((y) => [y.replace(/\|/g, ' '), x.style.display !== 'none'])
           )))).reduce((acc, e) => acc.set(e[0], (acc.get(e[0]) || 0) + (e[1] ? 1 : 0)), new Map()).entries()].sort((a, b) => b[1] - a[1]));
 
-          final.push(['Authors', 0, 'divider']);
+          final.push([goosemodScope.i18n.goosemodStrings.moduleStore.selectors.authors, 0, 'divider']);
 
           final = final.concat([...cards.reduce((acc, e) => {
             for (let el of e.getElementsByClassName('author')) {
