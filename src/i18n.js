@@ -2,7 +2,7 @@ let goosemodScope = {};
 
 let getDiscordLang;
 
-export let i18n;
+export let strings; // goosemod.i18n.strings
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
@@ -21,7 +21,7 @@ const checkForNewLang = async () => {
   if (code === lastLangCode) return; // Lang not changed
   lastLangCode = code;
 
-  i18n = await geti18nData();
+  strings = await geti18nData();
 };
 
 const geti18nData = async (lang = getDiscordLang()) => {
