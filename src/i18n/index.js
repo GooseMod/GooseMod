@@ -1,4 +1,5 @@
 import * as Cache from './cache';
+export const cache = Cache;
 
 let goosemodScope = {};
 
