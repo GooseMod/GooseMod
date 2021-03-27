@@ -1,3 +1,5 @@
+import * as Cache from './cache';
+
 let goosemodScope = {};
 
 let getDiscordLang;
@@ -6,6 +8,8 @@ export let goosemodStrings; // goosemod.i18n.strings
 export let discordStrings;
 
 export const setThisScope = (scope) => {
+  Cache.setThisScope(scope);
+
   goosemodScope = scope;
 
   const { getLocaleInfo } = goosemod.webpackModules.findByProps('chosenLocale', 'languages');
@@ -31,7 +35,7 @@ const checkForNewLang = async () => {
   discordStrings = messages;
 };
 
-const geti18nData = async (lang = getDiscordLang()) => {
+export const geti18nData = async (lang = getDiscordLang()) => {
   if (lang.code) lang = lang.code; // If wrapped in an object
 
   let json; // Undefined by default
