@@ -99,6 +99,10 @@ const init = async function () {
     a++;
   };
 
+  this.startLoadingScreen();
+
+  this.updateLoadingScreen('Getting i18n data...');
+
   // Wait for i18n to load
   await new Promise(async (res) => {
     while (!this.i18n.goosemodStrings || !this.i18n.discordStrings) {
@@ -107,6 +111,8 @@ const init = async function () {
 
     res();
   });
+
+  this.updateLoadingScreen('Initialising internals...');
 
   this.settings.makeGooseModSettings();
   this.moduleStoreAPI.initRepoURLs();
@@ -193,8 +199,6 @@ const init = async function () {
       }
     }
   };
-  
-  this.startLoadingScreen();
 
   await this.moduleStoreAPI.updateModules(true);
   
