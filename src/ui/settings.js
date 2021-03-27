@@ -1802,7 +1802,7 @@ export const makeGooseModSettings = () => {
     }
   ]));
 
-  goosemodScope.settings.createItem('Change Log', [""], async () => {
+  goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
     GoosemodChangelog.show();
   });
   
@@ -1852,7 +1852,7 @@ const addToContextMenu = () => {
     sub: [
       basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
       basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.themes),
-      basicSettingItem('Change Log')
+      basicSettingItem(goosemodScope.i18n.discordStrings.CHANGE_LOG)
     ]
   }));
 
