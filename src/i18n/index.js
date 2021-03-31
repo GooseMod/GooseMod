@@ -29,7 +29,9 @@ const checkForNewLang = async () => {
   if (code === lastLangCode) return; // Lang not changed
   lastLangCode = code;
 
-  goosemodStrings = await geti18nData();
+  goosemodScope.showToast(`New lang detected`);
+
+  goosemodStrings = await Cache.geti18nData();
 
   const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
 

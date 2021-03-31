@@ -1,4 +1,5 @@
 import { sha512 } from '../util/hash';
+import sleep from '../util/sleep';
 
 const JSCache = require('./jsCache');
 
@@ -88,6 +89,7 @@ export default {
 
 
     localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repoURLs));
+    localStorage.setItem('goosemodCachedModules', JSON.stringify(goosemodScope.moduleStoreAPI.modules));
   },
 
   importModule: async (moduleName, disabled = false) => {
@@ -114,13 +116,22 @@ export default {
         await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
-      let settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
+      let settingItem, item;
 
-      let item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
+      (new Promise(async (res) => {
+        settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
+        if (settingItem) item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
 
-      item.buttonType = 'danger';
-      item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
-      item.showToggle = true;
+        while (!goosemodScope.i18n.goosemodStrings || !goosemodScope.i18n.discordStrings || !settingItem || !item) {
+          await sleep(50);
+        }
+    
+        res();
+      })).then(() => {
+        item.buttonType = 'danger';
+        item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
+        item.showToggle = true;
+      });
 
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
     } catch (e) {

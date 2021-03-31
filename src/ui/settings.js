@@ -64,13 +64,11 @@ export const openSettingItem = (name) => {
 export const reopenSettings = async () => {
   goosemodScope.settings.closeSettings();
 
-  await sleep(1000);
+  await sleep(500);
 
   goosemodScope.settings.openSettings();
 
-  await sleep(200);
-
-  goosemodScope.settings.openSettingItem('Module Store');
+  await sleep(100);
 };
 
 // Settings UI stuff
@@ -1448,7 +1446,129 @@ export const makeGooseModSettings = () => {
     return sections;
   }));
 
+  let oldItems = goosemodScope.settings.items;
+  goosemodScope.settings.items = [];
+
   goosemodScope.settings.createHeading('GooseMod');
+
+  const gmSettings = JSON.parse(localStorage.getItem('goosemodGMSettings')) || {
+    changelog: true,
+    separators: true,
+
+    devchannel: false
+  };
+
+  const changeSetting = async (key, value) => {
+    switch (key) {
+      case 'changelog': {
+        if (value) {
+          goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
+            GoosemodChangelog.show();
+          });
+        } else {
+          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), 1);
+        }
+
+        await goosemodScope.settings.reopenSettings();
+        goosemodScope.settings.openSettingItem('Settings');
+
+        break;
+      }
+
+      case 'devchannel': {
+        if (value) {
+          localStorage.setItem('goosemodUntetheredBranch', 'dev');
+        } else {
+          localStorage.removeItem('goosemodUntetheredBranch');
+        }
+
+        break;
+      }
+
+      case 'separators': {
+        if (value) {
+          goosemod.settings.items.splice(2, 0, ['separator']);
+          if (gmSettings.changelog) goosemod.settings.items.splice(4, 0, ['separator']);
+        } else {
+          let main = true;
+
+          goosemodScope.settings.items = goosemodScope.settings.items.filter((x, i) => {
+            if (goosemodScope.settings.items[i + 1] && goosemodScope.settings.items[i + 1][1] && goosemodScope.settings.items[i + 1][1] === 'GooseMod Modules') main = false;
+
+            return !(x[0] === 'separator' && main);
+          });
+        }
+
+        await goosemodScope.settings.reopenSettings();
+        goosemodScope.settings.openSettingItem('Settings');
+
+        break;
+      }
+    }
+
+    gmSettings[key] = value;
+
+    localStorage.setItem('goosemodGMSettings', JSON.stringify(gmSettings));
+  };
+
+  goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.SETTINGS, ['',
+    {
+      type: 'header',
+      text: 'Settings'
+    },
+
+    {
+      type: 'toggle',
+
+      text: 'GooseMod Change Log',
+      subtext: 'Show GooseMod "Change Log" setting',
+
+      onToggle: (c) => changeSetting('changelog', c),
+      isToggled: () => gmSettings['changelog']
+    },
+
+    {
+      type: 'toggle',
+
+      text: 'Main Separators',
+      subtext: 'Show separators between main GooseMod settings',
+
+      onToggle: (c) => changeSetting('separators', c),
+      isToggled: () => gmSettings['separators']
+    },
+
+    {
+      type: 'header',
+      text: 'Internals'
+    },
+
+    {
+      type: 'toggle',
+
+      text: '🧪 Development Channel',
+      subtext: 'Use experimental development GooseMod builds',
+
+      onToggle: (c) => changeSetting('devchannel', c),
+      isToggled: () => gmSettings['devchannel']
+    },
+
+    {
+      type: 'text-and-danger-button',
+      
+      text: 'Reset GooseMod',
+      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
+      buttonText: 'Reset',
+
+      onClick: async () => {
+        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules. It will be like a new install.')) {
+          goosemodScope.remove();
+          window.location.reload();
+        }
+      }
+    }
+  ]);
+
+  if (gmSettings.separators) goosemodScope.settings.createSeparator();
 
   const updateModuleStoreUI = (parentEl, cards) => {
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
@@ -1802,9 +1922,13 @@ export const makeGooseModSettings = () => {
     }
   ]));
 
-  goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
-    GoosemodChangelog.show();
-  });
+  if (gmSettings.changelog) {
+    if (gmSettings.separators) goosemodScope.settings.createSeparator();
+
+    goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
+      GoosemodChangelog.show();
+    });
+  }
   
   /* goosemodScope.settings.createItem('Uninstall', [""], async () => {
     if (await goosemodScope.confirmDialog('Uninstall', 'Uninstall GooseMod', 'Are you sure you want to uninstall GooseMod? This is a quick uninstall, it may leave some code behind but there should be no remaining noticable changes.')) {
@@ -1830,6 +1954,10 @@ export const makeGooseModSettings = () => {
 
   goosemodScope.settings.createHeading(goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules);
 
+  console.log(goosemodScope.settings.items, oldItems);
+
+  goosemodScope.settings.items = goosemodScope.settings.items.concat(oldItems);
+
   addToContextMenu();
 };
 
@@ -1850,6 +1978,7 @@ const addToContextMenu = () => {
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.contextMenu.patch('user-settings-cog', {
     label: 'GooseMod',
     sub: [
+      basicSettingItem(goosemodScope.i18n.discordStrings.SETTINGS),
       basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
       basicSettingItem(goosemodScope.i18n.goosemodStrings.settings.itemNames.themes),
       basicSettingItem(goosemodScope.i18n.discordStrings.CHANGE_LOG)

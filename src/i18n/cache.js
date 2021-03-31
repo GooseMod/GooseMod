@@ -18,7 +18,7 @@ export const updateCache = (lang, hash, goosemodStrings) => {
   localStorage.setItem('goosemodi18nCache', JSON.stringify(cache));
 };
 
-export const getJSForModule = async (lang) => {
+export const geti18nData = async (lang) => {
   const cache = getCache();
 
   if (cache[lang]) { // && moduleInfo.hash === cache[lang].hash) {
@@ -27,8 +27,8 @@ export const getJSForModule = async (lang) => {
     const goosemodStrings = await goosemodScope.i18n.geti18nData(lang);
     const newHash = await sha512(JSON.stringify(goosemodStrings));
 
-    updateCache(moduleName, newHash, js);
+    updateCache(lang, newHash, goosemodStrings);
 
-    return js;
+    return goosemodStrings;
   }
 };

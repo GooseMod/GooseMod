@@ -14,7 +14,7 @@ export const startLoadingScreen = () => {
   loadingEl.style.left = '50%';
   loadingEl.style.top = '60px';
 
-  loadingEl.style.zIndex = '10';
+  loadingEl.style.zIndex = '9999';
 
   loadingEl.style.backgroundColor = 'var(--background-floating)';
   loadingEl.style.opacity = '0.9';

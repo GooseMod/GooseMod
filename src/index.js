@@ -85,7 +85,7 @@ const importsToAssign = {
 
 const init = async function () {
   while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
-    await sleep(50);
+    await sleep(10);
   }
 
   Object.assign(this, importsToAssign);
@@ -100,66 +100,13 @@ const init = async function () {
   };
 
   this.versioning = {
-    version: '7.3.0-dev',
+    version: '8.0.0-dev',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: localStorage.getItem('goosemodLastVersion')
   };
 
   this.versioning.isDeveloperBuild = this.versioning.hash === '<hash>';
-
-  this.startLoadingScreen();
-
-  this.updateLoadingScreen('Getting i18n data...');
-
-  // Wait for i18n to load
-  await new Promise(async (res) => {
-    while (!this.i18n.goosemodStrings || !this.i18n.discordStrings) {
-      await sleep(100);
-    }
-
-    res();
-  });
-
-  this.updateLoadingScreen('Initialising internals...');
-
-  this.settings.makeGooseModSettings();
-  this.moduleStoreAPI.initRepoURLs();
-
-  this.removed = false;
-
-  this.modules = {};
-  this.disabledModules = {};
-
-  fetch(`${this.moduleStoreAPI.apiBaseURL}/injectVersion.json`).then((x) => x.json().then((latestInjectVersionInfo) => {
-    if (latestInjectVersionInfo.version !== this.versioning.version) {
-      this.showToast('Warning: Version number does not match latest public release', { timeout: 3000, type: 'danger' });
-    }
-
-    if (latestInjectVersionInfo.hash !== this.versioning.hash) {
-      this.showToast('Warning: Version hash does not match latest public release', { timeout: 3000, type: 'danger' });
-    }
-  }));
-
-
-  if (this.lastVersion && this.lastVersion !== this.versioning.version) {
-    if (this.versioning.version === '7.2.0' && localStorage.getItem('goosemodRepos')) { // Adding new PC themes repo
-      const current = JSON.parse(localStorage.getItem('goosemodRepos'));
-
-      if (!current.find((x) => x.url === `https://store.goosemod.com/pcthemes.json`)) current.push({
-        url: `https://store.goosemod.com/pcthemes.json`,
-        enabled: true
-      });
-
-      localStorage.setItem('goosemodRepos', JSON.stringify(current));
-
-      this.moduleStoreAPI.initRepoURLs();
-
-      this.showToast(`Added new PC Themes Repo (v7.2.0 update)`);
-    }
-
-    this.goosemodChangelog.show();
-  }
 
   localStorage.setItem('goosemodLastVersion', this.versioning.version);
 
@@ -169,9 +116,81 @@ const init = async function () {
   
   if (window.gmUntethered) {
     this.untetheredVersion = window.gmUntethered.slice();
-    
-    // delete window.gmUntethered;
   }
+
+  this.startLoadingScreen();
+
+  this.updateLoadingScreen('Initialising internals...');
+  // this.updateLoadingScreen('Getting i18n data...');
+
+  // Wait for i18n to load
+  (new Promise(async (res) => {
+    while (!this.i18n.goosemodStrings || !this.i18n.discordStrings) {
+      await sleep(10);
+    }
+
+    res();
+  })).then(() => {
+    this.moduleStoreAPI.updateStoreSetting();
+    this.settings.makeGooseModSettings();
+  });
+
+  this.moduleStoreAPI.initRepoURLs();
+
+  this.removed = false;
+
+  this.modules = {};
+  this.disabledModules = {};
+
+  this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
+
+  this.initialImport = true;
+  
+  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
+  let toInstallIsDefault = false;
+  
+  if (toInstallModules.length === 0) {
+    toInstallIsDefault = true;
+  }
+
+  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) !== undefined);
+  
+  let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
+  
+  if (themeModule) {
+    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(themeModule), 1)[0]);
+  }
+  
+  let hardcodedColorFixerModule = toInstallModules.find((x) => x === 'Hardcoded Color Fixer');
+  
+  if (hardcodedColorFixerModule) {
+    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
+  }
+
+  console.log(toInstallModules);
+
+  if (toInstallIsDefault) {
+    await this.packModal.ask();
+  } else {
+    this.updateLoadingScreen('Importing modules from Module Store...');
+
+    const importPromises = [];
+
+    for (let m of toInstallModules) {
+      this.updateLoadingScreen(`${m}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
+
+      // await this.moduleStoreAPI.importModule(m);
+      importPromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)));
+    }
+
+    await Promise.all(importPromises);
+  }
+  
+  delete this.initialImport;
+  
+  this.updateLoadingScreen(`Loading saved module settings...`);
+  
+  await this.moduleSettingsStore.loadSavedModuleSettings();
 
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
@@ -185,6 +204,10 @@ const init = async function () {
     clearInterval(this.i18nCheckNewLangInterval);
     
     localStorage.removeItem('goosemodLastVersion');
+    localStorage.removeItem('goosemodGMSettings');
+
+    localStorage.removeItem('goosemodRepos');
+    localStorage.remoevItem('goosemodCachedModules');
 
     this.moduleSettingsStore.clearSettings();
     this.moduleStoreAPI.jsCache.purgeCache();
@@ -210,77 +233,6 @@ const init = async function () {
 
     return;
   }
-  
-  this.initialImport = true;
-  
-  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
-  let toInstallIsDefault = false;
-  
-  if (toInstallModules.length === 0) {
-    toInstallIsDefault = true;
-  }
-  
-  const needToMigrateFromV6 = toInstallModules.some((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) === undefined);
-
-  if (needToMigrateFromV6) {
-    this.updateLoadingScreen('Migrating stored module names to MS2...');
-
-    const oldModules = (await (await fetch(`${this.moduleStoreAPI.apiBaseURL}/modules.json?_=${Date.now()}`)).json());
-
-    console.log(oldModules);
-
-    toInstallModules = toInstallModules.map((m) => oldModules.find((x) => x.filename === m)?.name || m);
-
-    let moduleSettings = JSON.parse(localStorage.getItem('goosemodModules'));
-
-    for (const oldName of Object.keys(moduleSettings)) {
-      const newName = oldModules.find((x) => x.filename === oldName)?.name;
-      if (!newName) continue;
-
-      Object.defineProperty(moduleSettings, newName, Object.getOwnPropertyDescriptor(moduleSettings, oldName));
-
-      delete moduleSettings[oldName];
-    }
-
-    localStorage.setItem('goosemodModules', JSON.stringify(moduleSettings));
-  }
-
-  toInstallModules = toInstallModules.filter((m) => this.moduleStoreAPI.modules.find((x) => x.name === m) !== undefined);
-  
-  let themeModule = toInstallModules.find((x) => x.toLowerCase().includes('theme'));
-  
-  if (themeModule) {
-    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(themeModule), 1)[0]);
-  }
-  
-  let hardcodedColorFixerModule = toInstallModules.find((x) => x === 'Hardcoded Color Fixer');
-  
-  if (hardcodedColorFixerModule) {
-    toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
-  }
-
-  if (toInstallIsDefault) {
-    await this.packModal.ask();
-  } else {
-    this.updateLoadingScreen('Importing modules from Module Store...');
-
-    const importPromises = [];
-
-    for (let m of toInstallModules) {
-      this.updateLoadingScreen(`${m}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
-
-      // await this.moduleStoreAPI.importModule(m);
-      importPromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)));
-    }
-
-    await Promise.all(importPromises);
-  }
-  
-  delete this.initialImport;
-  
-  this.updateLoadingScreen(`Loading saved module settings...`);
-  
-  await this.moduleSettingsStore.loadSavedModuleSettings();
   
   this.stopLoadingScreen();
   
