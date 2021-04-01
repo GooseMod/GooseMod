@@ -5,12 +5,14 @@ import * as _miniPopover from './miniPopover';
 import * as _channelTextAreaButtons from './channelTextAreaButtons';
 import * as _commands from './commands';
 import * as _internalMessage from './internalMessage';
+import * as _notices from './notices';
 
 export const contextMenu = _contextMenu;
 export const miniPopover = _miniPopover;
 export const channelTextAreaButtons = _channelTextAreaButtons;
 export const commands = _commands;
 export const internalMessage = _internalMessage.send;
+export const notices = _notices;
 
 export const setThisScope = (scope) => {
   _contextMenu.setThisScope(scope);
@@ -18,4 +20,5 @@ export const setThisScope = (scope) => {
   _channelTextAreaButtons.setThisScope(scope);
   _commands.setThisScope(scope);
   _internalMessage.setThisScope(scope);
+  _notices.setThisScope(scope);
 };
