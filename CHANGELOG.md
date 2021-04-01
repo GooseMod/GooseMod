@@ -5,6 +5,7 @@
   - ### Patcher API Additions
     - Added commands API, allows easy custom commands
     - Added internal message API, allows easy sending of internal (Clyde-like) messages
+    - Added notices API, allows easy sending of notices (banners at the top with text and button)
 
   - ### i18n
     - Added partial i18n support
