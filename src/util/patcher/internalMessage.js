@@ -15,7 +15,13 @@ export const send = (content, author = 'GooseMod') => {
   const { getChannelId } = goosemodScope.webpackModules.findByProps('getChannelId');
   const { receiveMessage } = goosemodScope.webpackModules.findByProps('receiveMessage', 'sendBotMessage');
 
-  const msg = createBotMessage(getChannelId(), content);
+  const msg = createBotMessage(getChannelId(), '');
+
+  if (typeof content === 'string') {
+    msg.content = content;
+  } else {
+    msg.embeds.push(content);
+  }
 
   msg.state = 'SENT'; // Set Clyde-like props
   msg.author.id = '1';
