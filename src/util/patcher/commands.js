@@ -24,7 +24,8 @@ export const add = (name, description, execute, options = []) => {
 
   mod.BUILT_IN_COMMANDS.push({
     applicationId,
-  
+    type: 1,
+
     description,
     name,
     execute,
