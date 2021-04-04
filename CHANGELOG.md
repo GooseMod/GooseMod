@@ -7,6 +7,8 @@
     - Added internal message API, allows easy sending of internal (Clyde-like) messages
     - Added notices API, allows easy sending of notices (banners at the top with text and button)
 
+  - ### Webpack API Additions
+    - 
   - ### i18n
     - Added partial i18n support
 
@@ -15,6 +17,8 @@
     - Made injection init much more async / desynced from other components
     - Show toast when getting a repo fails instead of locking up injection
     - Fixed some usage of window scope instead of local internally
+    - Added new common Webpack modules:
+      - FluxDispatcher
 
   - ### Backend Removements
     - Removed v6 to v7 migration fix
