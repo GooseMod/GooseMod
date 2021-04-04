@@ -174,9 +174,14 @@ export default {
 
   updateStoreSetting: async () => {
     //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
-    const allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
+    let allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
 
-    allItems.forEach((x) => x[2].slice(0, 5));
+    allItems = allItems.map((x) => {
+      x[2] = x[2].slice(0, 5);
+      return x;
+    });
+
+    // allItems.forEach((x) => x[2].slice(0, 5));
     //item[2] = item[2].slice(0, 5);
 
     for (const m of goosemodScope.moduleStoreAPI.modules) {
