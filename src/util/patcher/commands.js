@@ -4,22 +4,21 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-
 const getModule = () => goosemodScope.webpackModules.findByProps('BUILT_IN_COMMANDS', 'BUILT_IN_SECTIONS');
 
-const applicationId = '760559484342501406'; // User ID
+const applicationId = '827187782140428288';
 
 
 export const add = (name, description, execute, options = []) => {
   const mod = getModule();
 
-  if (!mod.BUILT_IN_SECTIONS.find((x) => x.name === 'GooseMod')) { // If no GooseMod section
+  if (!mod.BUILT_IN_SECTIONS.find((x) => x.name === 'GooseMod')) { // If no GooseMod section, create it
     mod.BUILT_IN_SECTIONS.push({
       id: applicationId,
-      icon: '5125aff2f446ad7c45cf2dfd6abf92ed', // Avatar file name for User ID
+      icon: '7f274cc3c1216505238ce047ce6e35e9', // Avatar file name for application
 
       name: 'GooseMod',
-      type: 2
+      type: 1
     });
   }
 
