@@ -30,7 +30,7 @@ export const add = (name, description, execute, options = []) => {
     execute,
     options,
 
-    id: '-99' // This may need to be unique, but unknown
+    id: `-${Math.random().toString().split('.')[1].substring(0, 5)}` // Randomly generate ID
   });
 };
 
