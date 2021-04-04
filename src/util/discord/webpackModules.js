@@ -45,6 +45,8 @@ const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/mod
   generateCommons: () => {
     obj.common.React = obj.findByProps('createElement');
     obj.common.ReactDOM = obj.findByProps('render', 'hydrate');
+
+    obj.common.FluxDispatcher = obj.findByProps('_waitQueue', '_orderedActionHandlers');
   },
 
   common: {}
