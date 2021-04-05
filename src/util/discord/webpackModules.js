@@ -47,6 +47,8 @@ const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/mod
     obj.common.ReactDOM = obj.findByProps('render', 'hydrate');
 
     obj.common.FluxDispatcher = obj.findByProps('_waitQueue', '_orderedActionHandlers');
+    
+    obj.common.i18n = obj.findByProps('Messages', '_requestedLocale');
   },
 
   common: {}
