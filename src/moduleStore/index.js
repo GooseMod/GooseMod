@@ -58,7 +58,7 @@ export default {
     await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
       try {
         if (shouldHandleLoadingText) {
-          goosemodScope.updateLoadingScreen(`Getting modules...\n(${ind + 1}/${goosemodScope.moduleStoreAPI.repoURLs.length} - ${repo.url})`);
+          goosemodScope.updateLoadingScreen(`Getting modules...\n(${repo.url})`);
         }
 
         const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
