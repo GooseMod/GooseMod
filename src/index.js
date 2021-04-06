@@ -177,7 +177,7 @@ const init = async function () {
     const importPromises = [];
 
     for (let m of toInstallModules) {
-      this.updateLoadingScreen(`${m}\n${toInstallModules.indexOf(m) + 1}/${toInstallModules.length}`);
+      this.updateLoadingScreen(`Importing modules from Module Store...\n${m}`);
 
       // await this.moduleStoreAPI.importModule(m);
       importPromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)));
@@ -227,7 +227,26 @@ const init = async function () {
   
   await this.moduleStoreAPI.updateStoreSetting();
 
-  if (window.gmSafeMode && !(await triggerSafeMode())) {
+  const updatePromises = [];
+
+  for (const m in this.modules) {
+    const msHash = this.moduleStoreAPI.modules.find((x) => x.name === m)?.hash;
+
+    const cacheHash = this.moduleStoreAPI.jsCache.getCache()[m]?.hash;
+
+    if (msHash === undefined || cacheHash === undefined || msHash === cacheHash) continue;
+
+    // New update for it, cached JS != repo JS hashes
+    this.updateLoadingScreen(`Updating modules...\n${m}`);
+
+    updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(() => {
+      this.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
+    }));
+  }
+
+  await Promise.all(updatePromises);
+
+  if (window.gmSafeMode && !(await triggerSafeMode())) { // TODO: where in injection process?
     this.stopLoadingScreen();
     this.showToast();
 
