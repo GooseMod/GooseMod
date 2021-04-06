@@ -37,7 +37,7 @@ export const startLoadingScreen = () => {
   titleEl.style.boxShadow = 'none';
   titleEl.style.webkitBoxShadow = 'none';
 
-  titleEl.textContent = `Injecting GooseMod`;
+  titleEl.textContent = `Loading GooseMod`;
 
   const versionEl = document.createElement('div');
 
