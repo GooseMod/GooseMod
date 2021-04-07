@@ -116,6 +116,8 @@ export default {
         await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
+      await this.moduleSettingsStore.loadSavedModuleSetting(m);
+
       let settingItem, item;
 
       (new Promise(async (res) => {
