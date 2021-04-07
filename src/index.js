@@ -144,8 +144,6 @@ const init = async function () {
 
   this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
 
-  this.initialImport = true;
-  
   let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
   let toInstallIsDefault = false;
   
@@ -167,8 +165,6 @@ const init = async function () {
     toInstallModules.unshift(toInstallModules.splice(toInstallModules.indexOf(hardcodedColorFixerModule), 1)[0]);
   }
 
-  console.log(toInstallModules);
-
   if (toInstallIsDefault) {
     await this.packModal.ask();
   } else {
@@ -185,12 +181,6 @@ const init = async function () {
 
     await Promise.all(importPromises);
   }
-  
-  delete this.initialImport;
-  
-  this.updateLoadingScreen(`Loading saved module settings...`);
-  
-  await this.moduleSettingsStore.loadSavedModuleSettings();
 
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
@@ -239,7 +229,7 @@ const init = async function () {
     // New update for it, cached JS != repo JS hashes
     this.updateLoadingScreen(`Updating modules...\n${m}`);
 
-    updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(() => {
+    updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(async () => {
       this.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
     }));
   }
