@@ -116,7 +116,7 @@ export default {
         await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
       }
 
-      await this.moduleSettingsStore.loadSavedModuleSetting(m);
+      await goosemodScope.moduleSettingsStore.loadSavedModuleSetting(moduleName);
 
       let settingItem, item;
 
