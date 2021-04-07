@@ -39,12 +39,18 @@ export default {
         url: `https://store.goosemod.com/ms2porter.json`,
         enabled: true
       },
+
       {
         url: `https://store.goosemod.com/bdthemes.json`,
         enabled: true
       },
       {
         url: `https://store.goosemod.com/pcthemes.json`,
+        enabled: true
+      },
+
+      {
+        url: `https://store.goosemod.com/pcplugins.json`,
         enabled: true
       }
     ];
