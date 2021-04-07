@@ -7,8 +7,6 @@
     - Added internal message API, allows easy sending of internal (Clyde-like) messages
     - Added notices API, allows easy sending of notices (banners at the top with text and button)
 
-  - ### Webpack API Additions
-    - 
   - ### i18n
     - Added partial i18n support
 
@@ -17,13 +15,17 @@
     - Made injection init much more async / desynced from other components
     - Show toast when getting a repo fails instead of locking up injection
     - Fixed some usage of window scope instead of local internally
-    - Added new common Webpack modules:
-      - FluxDispatcher
+    - Load settings on Module Store import instead of bulk loading after all imports
 
   - ### Backend Removements
     - Removed v6 to v7 migration fix
     - Removed adding PC theme repo when updating to v7.2.0 for the first time
     - Removed checking if hash and version matches latest online record
+
+  - ### Webpack API Additions
+    - Added new common modules:
+      - FluxDispatcher
+      - i18n
 
   - ### Fixes
     - Fixed stored repo urls not being removed on goosemod.remove
