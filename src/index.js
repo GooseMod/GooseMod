@@ -163,6 +163,10 @@ const init = async function () {
 
   this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
 
+  if (!localStorage.getItem('goosemodCachedModules')) { // If not cached, fetch latest repos
+    await this.moduleStoreAPI.updateModules(true);
+  }
+
   let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
   let toInstallIsDefault = false;
   
