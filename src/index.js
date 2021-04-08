@@ -216,15 +216,7 @@ const init = async function () {
     clearInterval(this.saveInterval);
     clearInterval(this.i18nCheckNewLangInterval);
     
-    localStorage.removeItem('goosemodLastVersion');
-    localStorage.removeItem('goosemodGMSettings');
-
-    localStorage.removeItem('goosemodRepos');
-    localStorage.removeItem('goosemodCachedModules');
-
-    this.moduleSettingsStore.clearSettings();
-    this.moduleStoreAPI.jsCache.purgeCache();
-    this.i18n.cache.purgeCache()
+    Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => localStorage.removeItem(x));
     
     this.removed = true;
     
