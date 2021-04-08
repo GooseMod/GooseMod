@@ -127,10 +127,12 @@ export default {
       let settingItem, item;
 
       (new Promise(async (res) => {
-        settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
-        if (settingItem) item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
-
         while (!goosemodScope.i18n.goosemodStrings || !goosemodScope.i18n.discordStrings || !settingItem || !item) {
+          try {
+            settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
+            if (settingItem) item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
+          } catch (e) { }
+
           await sleep(50);
         }
     
