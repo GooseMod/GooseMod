@@ -29,6 +29,31 @@ export default {
     return item;
   },
 
+  hotupdate: async (shouldHandleLoadingText = false) => { // Update repos, hotreload any updated modules (compare hashes to check if updated)
+    await this.moduleStoreAPI.updateModules(shouldHandleLoadingText);
+  
+    await this.moduleStoreAPI.updateStoreSetting();
+
+    const updatePromises = [];
+
+    for (const m in this.modules) {
+      const msHash = this.moduleStoreAPI.modules.find((x) => x.name === m)?.hash;
+
+      const cacheHash = this.moduleStoreAPI.jsCache.getCache()[m]?.hash;
+
+      if (msHash === undefined || cacheHash === undefined || msHash === cacheHash) continue;
+
+      // New update for it, cached JS != repo JS hashes
+      if (shouldHandleLoadingText) this.updateLoadingScreen(`Updating modules...\n${m}`);
+
+      updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(async () => {
+        this.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
+      }));
+    }
+
+    await Promise.all(updatePromises);
+  },
+
   initRepoURLs: () => {
     goosemodScope.moduleStoreAPI.repoURLs = JSON.parse(localStorage.getItem('goosemodRepos')) || [
       {

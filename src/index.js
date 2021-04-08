@@ -215,6 +215,7 @@ const init = async function () {
     clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);
     clearInterval(this.i18nCheckNewLangInterval);
+    clearInterval(this.hotupdateInterval);
     
     Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => localStorage.removeItem(x));
     
@@ -229,28 +230,8 @@ const init = async function () {
     }
   };
 
-  await this.moduleStoreAPI.updateModules(true);
-  
-  await this.moduleStoreAPI.updateStoreSetting();
-
-  const updatePromises = [];
-
-  for (const m in this.modules) {
-    const msHash = this.moduleStoreAPI.modules.find((x) => x.name === m)?.hash;
-
-    const cacheHash = this.moduleStoreAPI.jsCache.getCache()[m]?.hash;
-
-    if (msHash === undefined || cacheHash === undefined || msHash === cacheHash) continue;
-
-    // New update for it, cached JS != repo JS hashes
-    this.updateLoadingScreen(`Updating modules...\n${m}`);
-
-    updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(async () => {
-      this.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
-    }));
-  }
-
-  await Promise.all(updatePromises);
+  this.moduleStoreAPI.hotupdate(true);
+  this.hotupdateInterval = setInterval(this.moduleStoreAPI.hotupdate, 1000 * 60 * 60); // Hotupdate every hour
 
   if (window.gmSafeMode && !(await triggerSafeMode())) { // TODO: where in injection process?
     this.stopLoadingScreen();
