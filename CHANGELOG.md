@@ -16,6 +16,7 @@
     - Show toast when getting a repo fails instead of locking up injection
     - Fixed some usage of window scope instead of local internally
     - Load settings on Module Store import instead of bulk loading after all imports
+    - Remade how settings are placed in SettingsView
 
   - ### Backend Removements
     - Removed v6 to v7 migration fix
