@@ -17,6 +17,8 @@
     - Fixed some usage of window scope instead of local internally
     - Load settings on Module Store import instead of bulk loading after all imports
     - Remade how settings are placed in SettingsView
+    - Dynamic local storage removal on goosemod.delete
+    - Check for module (plugin and theme) updates every hour and hotupdate
 
   - ### Backend Removements
     - Removed v6 to v7 migration fix
