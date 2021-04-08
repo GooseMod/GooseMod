@@ -216,7 +216,7 @@ const init = async function () {
     localStorage.removeItem('goosemodGMSettings');
 
     localStorage.removeItem('goosemodRepos');
-    localStorage.remoevItem('goosemodCachedModules');
+    localStorage.removeItem('goosemodCachedModules');
 
     this.moduleSettingsStore.clearSettings();
     this.moduleStoreAPI.jsCache.purgeCache();
