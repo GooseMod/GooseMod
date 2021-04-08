@@ -224,6 +224,7 @@ const init = async function () {
 
     this.moduleSettingsStore.clearSettings();
     this.moduleStoreAPI.jsCache.purgeCache();
+    this.i18n.cache.purgeCache()
     
     this.removed = true;
     
