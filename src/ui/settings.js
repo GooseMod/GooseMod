@@ -1330,13 +1330,16 @@ export const makeGooseModSettings = () => {
   goosemodScope.settingsUninjects = [];
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(SettingsView.prototype, 'getPredicateSections', (_, sections) => {
-    if (!sections.find(c => c.section === 'changelog')) return sections;
+    // if (!sections.find(c => c.section === 'changelog')) return sections;
 
-    const dividers = sections.filter(c => c.section === 'DIVIDER');
+    // const dividers = sections.filter(c => c.section === 'DIVIDER');
+
+    const logout = sections.find((c) => c.section === 'logout');
+    if (!logout) return sections;
 
     //if (changelog) {
       sections.splice(
-        sections.indexOf(dividers[dividers.length - 2]) + 1, 0,
+        sections.indexOf(logout) /* dividers[dividers.length - 2]) + 1 */, 0,
 
         ...goosemodScope.settings.items.map((i) => {
           switch (i[0]) {
