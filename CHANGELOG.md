@@ -19,6 +19,8 @@
     - Remade how settings are placed in SettingsView
     - Dynamic local storage removal on goosemod.delete
     - Check for module (plugin and theme) updates every hour and hotupdate
+    - Added main GooseMod settings
+    - Added settings footer promoting ways to support GooseMod
 
   - ### Backend Removements
     - Removed v6 to v7 migration fix
