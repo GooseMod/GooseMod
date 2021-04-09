@@ -30,24 +30,24 @@ export default {
   },
 
   hotupdate: async (shouldHandleLoadingText = false) => { // Update repos, hotreload any updated modules (compare hashes to check if updated)
-    await this.moduleStoreAPI.updateModules(shouldHandleLoadingText);
+    await goosemodScope.moduleStoreAPI.updateModules(shouldHandleLoadingText);
   
-    await this.moduleStoreAPI.updateStoreSetting();
+    await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
     const updatePromises = [];
 
-    for (const m in this.modules) {
-      const msHash = this.moduleStoreAPI.modules.find((x) => x.name === m)?.hash;
+    for (const m in goosemodScope.modules) {
+      const msHash = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === m)?.hash;
 
-      const cacheHash = this.moduleStoreAPI.jsCache.getCache()[m]?.hash;
+      const cacheHash = goosemodScope.moduleStoreAPI.jsCache.getCache()[m]?.hash;
 
       if (msHash === undefined || cacheHash === undefined || msHash === cacheHash) continue;
 
       // New update for it, cached JS != repo JS hashes
-      if (shouldHandleLoadingText) this.updateLoadingScreen(`Updating modules...\n${m}`);
+      if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...\n${m}`);
 
-      updatePromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)).then(async () => {
-        this.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
+      updatePromises.push(goosemodScope.moduleStoreAPI.importModule(m, goosemodScope.moduleSettingsStore.checkDisabled(m)).then(async () => {
+        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
       }));
     }
 
