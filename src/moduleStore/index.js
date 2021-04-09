@@ -212,7 +212,7 @@ export default {
     let allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
 
     allItems = allItems.map((x) => {
-      x[2] = x[2].slice(0, 5);
+      x[2] = x[2].slice(0, 6);
       return x;
     });
 
