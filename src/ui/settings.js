@@ -53,7 +53,8 @@ export const openSettingItem = (name) => {
     const children = [...settingsSidebarEl.children];
 
     children[1].click(); // To refresh / regenerate
-    children.find((x) => x.textContent === name).click();
+
+    setTimeout(() => children.find((x) => x.textContent === name).click(), 5);
 
     return true;
   } catch (e) {

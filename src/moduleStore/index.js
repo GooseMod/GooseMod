@@ -175,7 +175,7 @@ export default {
     }
   },
 
-  moduleRemoved: async (m) => {
+  moduleRemoved: (m) => {
     let item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(m))[2].find((x) => x.subtext === m.description);
     
     if (item === undefined) return;
