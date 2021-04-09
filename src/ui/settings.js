@@ -1627,7 +1627,7 @@ export const makeGooseModSettings = () => {
       subtext: 'Use experimental development GooseMod builds',
 
       onToggle: (c) => changeSetting('devchannel', c),
-      isToggled: () => gmSettings['devchannel']
+      isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
     },
 
     {
