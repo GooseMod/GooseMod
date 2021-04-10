@@ -31,16 +31,14 @@ const checkForNewLang = async () => {
 
   goosemodScope.showToast(`New lang detected`);
 
-  goosemodStrings = await Cache.geti18nData();
+  goosemodStrings = await Cache.geti18nData(getDiscordLang().code);
 
   const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
 
   discordStrings = messages;
 };
 
-export const geti18nData = async (lang = getDiscordLang()) => {
-  if (lang.code) lang = lang.code; // If wrapped in an object
-
+export const geti18nData = async (lang = (getDiscordLang().code)) => {
   let json; // Undefined by default
 
   try {
