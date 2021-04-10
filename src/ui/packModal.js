@@ -151,14 +151,14 @@ export const ask = () => {
     await installModules(packModules);
 
     let themesOptions = themes.map((x) => {
-      let mod = goosemodScope.moduleStoreAPI.modules.find((y) => y.name === x.name);
+      let mod = goosemodScope.moduleStoreAPI.modules.find((y) => y.name === x);
 
       // let imported;
 
       return {
         text: mod.name.replace(' Theme', ''),
         subtext: mod.description,
-        actual: x.name,
+        actual: x,
         onmouseenter: async function(container) {
           //if (!x.css) return;
 
