@@ -29,7 +29,7 @@ export const removeModuleUI = (field, where) => {
 
   // goosemodScope.settings.createFromItems();
 
-  goosemodScope.settings.openSettingItem(where);
+  if (where) goosemodScope.settings.openSettingItem(where);
 };
 
 export const isSettingsOpen = () => {

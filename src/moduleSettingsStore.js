@@ -47,6 +47,8 @@ export const saveModuleSettings = async () => {
 export const clearModuleSetting = (moduleName) => {
   let settings = JSON.parse(localStorage.getItem('goosemodModules'));
 
+  if (!settings || !settings[moduleName]) return;
+
   delete settings[moduleName];
 
   localStorage.setItem('goosemodModules', JSON.stringify(settings));
@@ -59,10 +61,12 @@ export const clearSettings = () => {
 export const loadSavedModuleSetting = async (moduleName) => {
   let settings = JSON.parse(localStorage.getItem('goosemodModules'));
 
+  if (!settings || !settings[moduleName]) return;
+
   await (goosemodScope.modules[moduleName].goosemodHandlers.loadSettings || (async () => []))(settings[moduleName]);
 };
 
-export const loadSavedModuleSettings = async () => {
+/* export const loadSavedModuleSettings = async () => {
   //goosemodScope.logger.debug('settings', 'Loading module settings...');
 
   let settings = JSON.parse(localStorage.getItem('goosemodModules'));
@@ -76,4 +80,4 @@ export const loadSavedModuleSettings = async () => {
   }
 
   return settings;
-};
+}; */

@@ -5,75 +5,10 @@ export const setThisScope = (scope) => {
 };
 
 let themes = [
-  {
-    name: 'Dracula Theme',
-    css: `html > body {
-      --background-primary: #181920;
-      --background-secondary: #1C1D25;
-      --background-secondary-alt: #16171D;
-      --background-tertiary: #1F2029;
-
-      --channeltextarea-background: #1F2029;
-      --background-message-hover: rgba(4, 4, 5, 0.07);
-
-      --background-accent: #22232E;
-      --background-floating: #1F2029;
-
-      --scrollbar-thin-thumb: #9B78CC;
-      --scrollbar-auto-thumb: #9B78CC;
-      --scrollbar-auto-scrollbar-color-thumb: #9B78CC;
-
-      --scrollbar-auto-track: #16171D;
-      --scrollbar-auto-scrollbar-color-track: #16171D;
-
-      --brand-color: #9B78CC;
-      --brand-color-hover: #896BB5;
-    }`
-  },
-  {
-    name: 'Darkest Theme',
-    css: `html > body {
-      --background-primary: #000;
-      --background-secondary: #050505;
-      --background-secondary-alt: #000;
-      --background-tertiary: #080808;
-
-      --channeltextarea-background: #080808;
-      --background-message-hover: rgba(255,255,255,0.025);
-
-      --background-accent: #111;
-      --background-floating: #080808;
-    }`
-  },
-  {
-    name: 'Solarized Dark Theme',
-    css: `html > body {
-      --background-primary: #002b36;
-      --background-secondary: #073642;
-      --background-secondary-alt: #00232C;
-      --background-tertiary: #1E4853;
-
-      --channeltextarea-background: #1E4853;
-      --background-message-hover: rgba(255,255,255,0.025);
-
-      --background-accent: #657b83;
-      --background-floating: #1E4853;
-
-      --scrollbar-thin-thumb: #b58900;
-      --scrollbar-auto-thumb: #b58900;
-      --scrollbar-auto-scrollbar-color-thumb: #b58900;
-
-      --scrollbar-auto-track: #00232C;
-      --scrollbar-auto-scrollbar-color-track: #00232C;
-
-      --brand-color: #b58900;
-      --brand-color-hover: #947000;
-    }`
-  },
-  {
-    name: 'Slate Theme',
-    css: ''
-  }
+  'Dracula Theme',
+  'Darkest Theme',
+  'Solarized Dark Theme',
+  //'Slate'
 ];
 
 let packs = [
@@ -218,36 +153,31 @@ export const ask = () => {
     let themesOptions = themes.map((x) => {
       let mod = goosemodScope.moduleStoreAPI.modules.find((y) => y.name === x.name);
 
-      let el;
+      // let imported;
 
       return {
         text: mod.name.replace(' Theme', ''),
         subtext: mod.description,
         actual: x.name,
-        onmouseenter: function(container) {
-          if (!x.css) return;
+        onmouseenter: async function(container) {
+          //if (!x.css) return;
 
           container.style.transition = 'opacity 1s';
           container.style.opacity = '0.2';
 
-          let backdropEl = document.getElementsByClassName('backdropWithLayer-3_uhz4')[0];
+          let backdropEl = document.getElementsByClassName('backdrop-1wrmKB')[0];
           backdropEl.style.transition = 'opacity 1s';
           backdropEl.style.opacity = '0';
 
-          el = document.createElement('style');
-          el.className = 'gm-setup-theme';
-
-          document.head.appendChild(el);
-
-          el.appendChild(document.createTextNode(x.css));
+          await goosemodScope.moduleStoreAPI.importModule(mod.name);
         },
         onmouseleave: function(container) {
-          if (!x.css) return;
-
           container.style.opacity = '1';
-          document.getElementsByClassName('backdropWithLayer-3_uhz4')[0].style.opacity = '0.85';
+          document.getElementsByClassName('backdrop-1wrmKB')[0].style.opacity = '0.85';
 
-          if (el) el.remove();
+          if (!goosemodScope.modules[mod.name]) return;
+
+          goosemodScope.settings.removeModuleUI(mod.name);
         }
       };
     });
