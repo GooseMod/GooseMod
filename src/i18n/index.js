@@ -13,7 +13,7 @@ export const setThisScope = (scope) => {
 
   goosemodScope = scope;
 
-  const { getLocaleInfo } = goosemod.webpackModules.findByProps('chosenLocale', 'languages');
+  const { getLocaleInfo } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
   getDiscordLang = getLocaleInfo;
 
   goosemodScope.i18nCheckNewLangInterval = setInterval(checkForNewLang, 1000);
@@ -45,9 +45,13 @@ export const geti18nData = async (lang = getDiscordLang()) => {
 
   try {
     json = await (await fetch(`https://raw.githubusercontent.com/GooseMod/i18n/main/langs/${lang}.json`)).json();
-  } catch (e) { // Likely no translation for language so ignore mostly, log for debugging
-    console.log('Failed to get GooseMod i18n data', e);
-  } 
+  } catch (e) { // Likely no translation for language so fallback to en-US
+    lang = `en-US`;
+
+    console.log(`Failed to get GooseMod i18n data, falling back to ${lang}`, e);
+
+    json = await (await fetch(`https://raw.githubusercontent.com/GooseMod/i18n/main/langs/${lang}.json`)).json();
+  }
 
   return json;
 };
