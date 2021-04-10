@@ -1,39 +1,43 @@
 # GooseMod Changelog
 
-## v8.0.0-dev [2021-04-XX]
-
-  - ### Patcher API Additions
-    - Added commands API, allows easy custom commands
-    - Added internal message API, allows easy sending of internal (Clyde-like) messages
-    - Added notices API, allows easy sending of notices (banners at the top with text and button)
+## v8.0.0 [2021-04-10]
 
   - ### i18n
     - Added partial i18n support
 
-  - ### Backend Improvements
-    - New logging console output
-    - Made injection init much more async / desynced from other components
-    - Show toast when getting a repo fails instead of locking up injection
-    - Fixed some usage of window scope instead of local internally
-    - Load settings on Module Store import instead of bulk loading after all imports
-    - Remade how settings are placed in SettingsView
-    - Dynamic local storage removal on goosemod.delete
-    - Check for module (plugin and theme) updates every hour and hotupdate
+  - ### Settings
     - Added main GooseMod settings
     - Added settings footer promoting ways to support GooseMod
+    - Remade how settings are placed in SettingsView
 
-  - ### Backend Removements
-    - Removed v6 to v7 migration fix
-    - Removed adding PC theme repo when updating to v7.2.0 for the first time
-    - Removed checking if hash and version matches latest online record
+  - ### Module Store
+    - Show toast when getting a repo fails instead of freezing injection
+    - Load settings on Module Store import instead of bulk loading after all imports
+    - Check for module (plugin and theme) updates every hour and hotupdate
 
-  - ### Webpack API Additions
+  - ### Performance
+    - Made injection init much more async / desynced from other components
+
+  - ### Patcher API
+    - Added commands API, allows easy custom commands
+    - Added internal message API, allows easy sending of internal (Clyde-like) messages
+    - Added notices API, allows easy sending of notices (banners at the top with text and button)
+
+  - ### Webpack API
     - Added new common modules:
       - FluxDispatcher
       - i18n
 
+  - ### Tweaks
+    - New logging console output
+    - Dynamic local storage removal on goosemod.delete
+    - Removed v6 to v7 migration fix
+    - Removed adding PC theme repo when updating to v7.2.0 for the first time
+    - Removed checking if hash and version matches latest online record
+
   - ### Fixes
     - Fixed stored repo urls not being removed on goosemod.remove
+    - Fixed some usage of window scope instead of local internally
 
 
 ## v7.2.0 [2021-03-19]
