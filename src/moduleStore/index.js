@@ -143,30 +143,23 @@ export default {
         metadata: moduleInfo
       }, disabled);
 
-      if (!disabled && goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
-        await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
+      if (!disabled) {
+        if (goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished !== undefined) {
+          await goosemodScope.modules[moduleName].goosemodHandlers.onLoadingFinished();
+        }
+
+        await goosemodScope.moduleSettingsStore.loadSavedModuleSetting(moduleName);
       }
 
-      await goosemodScope.moduleSettingsStore.loadSavedModuleSetting(moduleName);
+      try {
+        const item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo))[2].find((x) => x.subtext === moduleInfo.description);
 
-      let settingItem, item;
-
-      (new Promise(async (res) => {
-        while (!goosemodScope.i18n.goosemodStrings || !goosemodScope.i18n.discordStrings || !settingItem || !item) {
-          try {
-            settingItem = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo));
-            if (settingItem) item = settingItem[2].find((x) => x.subtext === moduleInfo.description);
-          } catch (e) { }
-
-          await sleep(50);
-        }
-    
-        res();
-      })).then(() => {
         item.buttonType = 'danger';
         item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
         item.showToggle = true;
-      });
+      } catch (e) {
+        goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
+      }
 
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
     } catch (e) {
@@ -230,14 +223,14 @@ export default {
         github: m.github,
         images: m.images,
 
-        buttonType: goosemodScope.modules[m.name] ? 'danger' : 'brand',
-        showToggle: goosemodScope.modules[m.name],
+        buttonType: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? 'danger' : 'brand',
+        showToggle: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name],
 
         text: `${m.name} <span class="description-3_Ncsb">by</span> ${await goosemodScope.moduleStoreAPI.parseAuthors(m.authors)}`, // ` <span class="description-3_Ncsb">(v${m.version})</span>`,
         subtext: m.description,
         subtext2: `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
+        buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async (el) => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
