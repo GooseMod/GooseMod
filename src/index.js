@@ -251,7 +251,7 @@ const init = async function () {
       
       await sleep(200);
       
-      this.openSettingItem('Module Store');
+      this.settings.openSettingItem('Module Store');
     }
   }
 };
