@@ -1539,11 +1539,19 @@ export const makeGooseModSettings = () => {
     switch (key) {
       case 'changelog': {
         if (value) {
-          goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
-            GoosemodChangelog.show();
-          });
+          const items = [
+            ['item', goosemodScope.i18n.discordStrings.CHANGE_LOG, [''], async () => {
+              GoosemodChangelog.show();
+            }, false]
+          ];
+
+          if (gmSettings.separators) items.unshift(['separator']);
+
+          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Themes')) + 1, 0,
+            ...items
+          );
         } else {
-          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), 1);
+          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), gmSettings.separators ? 2 : 1);
         }
 
         await goosemodScope.settings.reopenSettings();
