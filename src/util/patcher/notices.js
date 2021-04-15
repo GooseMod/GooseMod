@@ -20,15 +20,12 @@ export const setThisScope = async (scope) => {
   
   const baseOwnerInstance = getOwnerInstance(document.getElementsByClassName(BaseClasses.base)[0]);
 
-  console.log(document.getElementsByClassName(BaseClasses.base)[0], baseOwnerInstance);
-
   const { React } = goosemodScope.webpackModules.common;
 
   class NoticeContainer extends React.PureComponent {
     constructor (props) {
       super(props);
-  
-      console.log('aaa', this);
+
 
       this._updateCall = () => this.forceUpdate();
     }
@@ -46,15 +43,10 @@ export const setThisScope = async (scope) => {
   }
 
   PatcherBase.patch(baseOwnerInstance.props.children, 'type', (_args, ret) => {
-    console.log(ret.props.children[1].props.children);
-
-    // if (notices.length > 0) ret.props.children[1].props.children.unshift(notices.shift().react);
     ret.props.children[1].props.children.unshift(React.createElement(NoticeContainer));
 
     return ret;
   });
-
-  console.log('aaa', baseOwnerInstance)
 
   baseOwnerInstance.forceUpdate();
 };
