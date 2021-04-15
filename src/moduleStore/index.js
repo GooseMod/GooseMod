@@ -1,14 +1,16 @@
 import { sha512 } from '../util/hash';
-import sleep from '../util/sleep';
 
-const JSCache = require('./jsCache');
+import JSCache from './jsCache';
+import IDCache from './idCache';
 
 let goosemodScope = {};
 
 export default {
   setThisScope: (scope) => {
     goosemodScope = scope;
+
     JSCache.setThisScope(scope);
+    IDCache.setThisScope(scope);
   },
 
   modules: [],
@@ -18,6 +20,7 @@ export default {
   storeApiBaseURL: 'https://store.goosemod.com',
 
   jsCache: JSCache,
+  idCache: IDCache,
 
   repoURLs: undefined,
 
@@ -189,7 +192,7 @@ export default {
     
     return (await Promise.all(authors.map(async (x) => {
       if (x.match(/^[0-9]{17,18}$/)) { // "<id>"
-        const result = await goosemodScope.webpackModules.findByProps('getUser', 'fetchCurrentUser').getUser(x);
+        const result = await IDCache.getDataForID(x);
         return `<span class="author" style="cursor: pointer;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}<span class="description-3_Ncsb">#${result.discriminator}</span></span>`; // todo
       }
 
