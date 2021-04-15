@@ -1,7 +1,7 @@
 import { sha512 } from '../util/hash';
 
-import JSCache from './jsCache';
-import IDCache from './idCache';
+import * as JSCache from './jsCache';
+import * as IDCache from './idCache';
 
 let goosemodScope = {};
 

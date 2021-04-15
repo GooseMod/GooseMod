@@ -15,8 +15,7 @@ export const updateCache = (id, data) => {
   let cache = getCache();
 
   cache[id] = {
-    data,
-    time: performance.now()
+    data
   };
 
   localStorage.setItem('goosemodIDCache', JSON.stringify(cache));
