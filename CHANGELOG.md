@@ -9,6 +9,7 @@
     - Fixed Module Store not working with 17 long user ids
     - Fixed failing to inject when using a language without GooseMod translation
     - Fixed first time wizard not working and causing errors
+    - Fixed "Reset GooseMod" not working, also tweaked it's confirmation dialog description to clarify further and simplify
 
   - ### Tweaks
     - Removed excess logging in the notices Patcher API
