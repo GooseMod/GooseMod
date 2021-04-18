@@ -23,5 +23,6 @@
   "homepage": "https://github.com/GooseMod/GooseMod#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
-  }
+  },
+  "type": "module"
 }
