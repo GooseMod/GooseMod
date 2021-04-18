@@ -1645,8 +1645,8 @@ export const makeGooseModSettings = () => {
       subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
       buttonText: 'Reset',
 
-      onClick: async () => {
-        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules. It will be like a new install.')) {
+      onclick: async () => {
+        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
           goosemodScope.remove();
           window.location.reload();
         }
