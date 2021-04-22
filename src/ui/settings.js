@@ -1,6 +1,10 @@
 import sleep from '../util/sleep';
 import * as GoosemodChangelog from './goosemodChangelog';
 
+import * as GMSettings from '../gmSettings';
+export const gmSettings = GMSettings;
+
+
 let goosemodScope = {};
 
 export const setThisScope = (scope) => {
@@ -1528,13 +1532,6 @@ export const makeGooseModSettings = () => {
 
   goosemodScope.settings.createHeading('GooseMod');
 
-  const gmSettings = JSON.parse(localStorage.getItem('goosemodGMSettings')) || {
-    changelog: true,
-    separators: true,
-
-    devchannel: false
-  };
-
   const changeSetting = async (key, value) => {
     switch (key) {
       case 'changelog': {
@@ -1545,13 +1542,13 @@ export const makeGooseModSettings = () => {
             }, false]
           ];
 
-          if (gmSettings.separators) items.unshift(['separator']);
+          if (gmSettings.get().separators) items.unshift(['separator']);
 
           goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Themes')) + 1, 0,
             ...items
           );
         } else {
-          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), gmSettings.separators ? 2 : 1);
+          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), gmSettings.get().separators ? 2 : 1);
         }
 
         await goosemodScope.settings.reopenSettings();
@@ -1573,7 +1570,7 @@ export const makeGooseModSettings = () => {
       case 'separators': {
         if (value) {
           goosemod.settings.items.splice(2, 0, ['separator']);
-          if (gmSettings.changelog) goosemod.settings.items.splice(4, 0, ['separator']);
+          if (gmSettings.get().changelog) goosemod.settings.items.splice(4, 0, ['separator']);
         } else {
           let main = true;
 
@@ -1591,9 +1588,7 @@ export const makeGooseModSettings = () => {
       }
     }
 
-    gmSettings[key] = value;
-
-    localStorage.setItem('goosemodGMSettings', JSON.stringify(gmSettings));
+    gmSettings.set(key, value);
   };
 
   goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.SETTINGS, ['',
@@ -1609,7 +1604,7 @@ export const makeGooseModSettings = () => {
       subtext: 'Show GooseMod "Change Log" setting',
 
       onToggle: (c) => changeSetting('changelog', c),
-      isToggled: () => gmSettings['changelog']
+      isToggled: () => gmSettings.get().changelog
     },
 
     {
@@ -1619,12 +1614,12 @@ export const makeGooseModSettings = () => {
       subtext: 'Show separators between main GooseMod settings',
 
       onToggle: (c) => changeSetting('separators', c),
-      isToggled: () => gmSettings['separators']
+      isToggled: () => gmSettings.get().separators
     },
 
     {
       type: 'header',
-      text: 'Internals'
+      text: 'Internals - Bootloader'
     },
 
     {
@@ -1636,6 +1631,11 @@ export const makeGooseModSettings = () => {
 
       onToggle: (c) => changeSetting('devchannel', c),
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'header',
+      text: 'Utilities'
     },
 
     {
@@ -1656,7 +1656,7 @@ export const makeGooseModSettings = () => {
     { type: 'gm-footer' }
   ]);
 
-  if (gmSettings.separators) goosemodScope.settings.createSeparator();
+  if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
 
   const updateModuleStoreUI = (parentEl, cards) => {
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
@@ -2014,8 +2014,8 @@ export const makeGooseModSettings = () => {
     { type: 'gm-footer' }
   ]));
 
-  if (gmSettings.changelog) {
-    if (gmSettings.separators) goosemodScope.settings.createSeparator();
+  if (gmSettings.get().changelog) {
+    if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
 
     goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
       GoosemodChangelog.show();
