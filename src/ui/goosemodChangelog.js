@@ -1,7 +1,6 @@
 import sleep from '../util/sleep';
 
 const image = 'https://media.discordapp.net/attachments/756146058924392542/771374562184658944/2018-11-14-11-36-30-1200x800.png';
-let changelogURL;
 
 let version, generated;
 
@@ -9,7 +8,6 @@ let goosemodScope = {};
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
-  changelogURL = `${goosemodScope.moduleStoreAPI.apiBaseURL}/latestChangelogRelease.json?_=${Date.now()}`;
 };
 
 export const show = async () => {
@@ -33,7 +31,7 @@ export const show = async () => {
 };
 
 export const generate = async () => {
-  const changelog = await (await fetch(changelogURL)).json();
+  const changelog = JSON.parse("<changelog>");
 
   version = changelog.version;
 
