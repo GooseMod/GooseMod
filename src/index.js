@@ -32,6 +32,8 @@ import triggerSafeMode from './safeMode';
 
 import * as i18n from './i18n';
 
+import * as CSSCache from './cssCache';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -50,7 +52,8 @@ const scopeSetterFncs = [
 
   confirmDialog.setThisScope,
 
-  i18n.setThisScope
+  i18n.setThisScope,
+  CSSCache.setThisScope
 ];
 
 const importsToAssign = {
@@ -80,15 +83,19 @@ const importsToAssign = {
   patcher: Patcher,
   reactUtils: ReactUtils,
 
-  i18n
+  i18n,
+
+  cssCache: CSSCache
 };
 
 const init = async function () {
+  Object.assign(this, importsToAssign);
+
+  this.cssCache.load();
+
   while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
     await sleep(10);
   }
-
-  Object.assign(this, importsToAssign);
 
   fixLocalStorage();
 
@@ -97,7 +104,7 @@ const init = async function () {
     x(this);
 
     a++;
-  };
+  }
 
   this.versioning = {
     version: '8.1.0',
@@ -205,9 +212,14 @@ const init = async function () {
     await Promise.all(importPromises);
   }
 
+  this.cssCache.removeStyle();
+
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
   
-  this.saveInterval = setInterval(this.moduleSettingsStore.saveModuleSettings, 3000);
+  this.saveInterval = setInterval(() => {
+    this.cssCache.save();
+    this.moduleSettingsStore.saveModuleSettings();
+  }, 3000);
   
   this.remove = () => {
     this.settingsUninjects.forEach((x) => x());
