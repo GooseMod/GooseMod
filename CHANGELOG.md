@@ -10,6 +10,9 @@
     - Made separate "Utilities" section
     - Added "Purge Caches" button
 
+  - ### Tweaks
+    - Removed adding PC Plugins repo when updating to v8.0.0 for the first time
+
 
 ## v8.1.0 [2021-04-18]
 

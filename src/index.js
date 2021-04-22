@@ -126,21 +126,6 @@ const init = async function () {
   }
 
   if (this.lastVersion && this.lastVersion !== this.version) {
-    if (this.version === '8.0.0' && localStorage.getItem('goosemodRepos')) { // Adding new PC themes repo
-      const current = JSON.parse(localStorage.getItem('goosemodRepos'));
-
-      if (!current.find((x) => x.url === `https://store.goosemod.com/pcplugins.json`)) current.push({
-        url: `https://store.goosemod.com/pcplugins.json`,
-        enabled: true
-      });
-
-      localStorage.setItem('goosemodRepos', JSON.stringify(current));
-
-      this.moduleStoreAPI.initRepoURLs();
-
-      this.showToast(`Added new PC Plugins Repo (v8.0.0 update)`);
-    }
-
     this.goosemodChangelog.show(); // Show changelog if last GooseMod version is different than this version
   }
 
