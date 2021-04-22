@@ -91,13 +91,13 @@ const importsToAssign = {
 const init = async function () {
   Object.assign(this, importsToAssign);
 
+  fixLocalStorage();
+
   this.cssCache.load();
 
   while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
     await sleep(10);
   }
-
-  fixLocalStorage();
 
   let a = 1;
   for (let x of scopeSetterFncs) {

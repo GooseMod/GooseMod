@@ -15,7 +15,7 @@ export const save = () => {
     css = css.split('\n').map((y) => y.trim()).join(' ');
 
     [...document.body.classList].forEach((x) => { // A lot of (old) GM css relies on body classes for settings, so replace all body.<existing_class> to body
-      css = css.replaceAll(`body.${x}`, `body`)
+      css = css.replace(new RegExp(`body.${x}`, 'g'), `body`)
     });
 
     return css;
