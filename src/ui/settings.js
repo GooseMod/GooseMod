@@ -1653,6 +1653,20 @@ export const makeGooseModSettings = () => {
       }
     },
 
+    {
+      type: 'text-and-danger-button',
+
+      text: 'Purge Caches',
+      subtext: 'Purges (completely removes) most caches GooseMod uses',
+      buttonText: 'Purge',
+
+      onclick: async () => {
+        // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
+
+        Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
+      }
+    },
+
     { type: 'gm-footer' }
   ]);
 
