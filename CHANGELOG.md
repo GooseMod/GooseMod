@@ -5,6 +5,10 @@
   - ### Features
     - CSS Cache, GooseMod now caches Modules' CSS so most styling will appear as soon as GooseMod begins to inject. This works by detecting CSS which is currently injected and then caching it in local storage during client use, which is then loaded quickly at the start of GooseMod injection
 
+  - ### Main Settings
+    - Made separate "Utilities" section
+    - Added "Purge Caches" button
+
 
 ## v8.1.0 [2021-04-18]
 
