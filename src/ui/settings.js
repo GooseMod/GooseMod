@@ -1956,7 +1956,7 @@ export const makeGooseModSettings = () => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
+      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
 
       const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -2022,12 +2022,12 @@ export const makeGooseModSettings = () => {
     {
       type: 'dropdown',
 
-      label: 'Imported',
+      label: goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
 
       options: [
         'All',
-        'Imported',
-        'Not Imported'
+        goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
+        goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported
       ],
 
       onchange: (val, parentEl) => {
