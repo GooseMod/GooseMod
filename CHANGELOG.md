@@ -1,5 +1,22 @@
 # GooseMod Changelog
 
+## v8.3.0-dev [2021-04-29]
+
+  - ### Main Settings
+    - Renamed "Internals - Bootloader" section to just "Bootloader"
+
+  - ### Module Store
+    - Module Store UI redesign:
+      - Move Repos button to main settings
+      - Removed sidebar
+      - Added sort by dropdown to header
+      - Added imported filter dropdown to header
+      - Changed separator texts from general "modules" to specific "themes" or "plugins"
+
+  - ### Planned (not implemented currently)
+    - Auto hotupdate setting to disable / enable
+
+
 ## v8.2.0 [2021-04-22]
 
   - ### Features
