@@ -4,6 +4,7 @@
 
   - ### Main Settings
     - Renamed "Internals - Bootloader" section to just "Bootloader"
+    - Added option to disable auto updating
 
   - ### Module Store
     - Module Store UI redesign:
@@ -12,9 +13,6 @@
       - Added sort by dropdown to header
       - Added imported filter dropdown to header
       - Changed separator texts from general "modules" to specific "themes" or "plugins"
-
-  - ### Planned (not implemented currently)
-    - Auto hotupdate setting to disable / enable
 
 
 ## v8.2.0 [2021-04-22]
