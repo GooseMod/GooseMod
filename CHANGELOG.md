@@ -7,12 +7,7 @@
     - Added option to disable auto updating
 
   - ### Module Store
-    - Module Store UI redesign:
-      - Move Repos button to main settings
-      - Removed sidebar
-      - Added sort by dropdown to header
-      - Added imported filter dropdown to header
-      - Changed separator texts from general "modules" to specific "themes" or "plugins"
+    - Module Store UI redesign, changes: moved repos button to main settings, replace sidebar with dropdown menus (sort by, imported filter), changed separator texts from general "modules" to specific types ("themes" or "plugins")
 
 
 ## v8.2.0 [2021-04-22]
