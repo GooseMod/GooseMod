@@ -6,8 +6,10 @@
     - Renamed "Internals - Bootloader" section to just "Bootloader"
     - Added option to disable auto updating
 
-  - ### Module Store
-    - Module Store UI redesign, changes: moved repos button to main settings, replace sidebar with dropdown menus (sort by, imported filter), changed separator texts from general "modules" to specific types ("themes" or "plugins")
+  - ### Module Store Redesign
+    - Moved repos button to main settings
+    - Replaced sidebar with dropdown menus (sort by, imported filter)
+    - Changed separator texts from general "modules" to specific types ("themes" or "plugins")
 
 
 ## v8.2.0 [2021-04-22]
