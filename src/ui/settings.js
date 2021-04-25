@@ -163,7 +163,7 @@ export const _createItem = (panelName, content) => {
       cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 330px)';
       cardContainerEl.style.gridTemplateRows = 'repeat(auto-fill, 190px)';
 
-      cardContainerEl.style.width = 'calc(100% - 250px)';
+      cardContainerEl.style.width = '100%';
       cardContainerEl.style.justifyContent = 'center';
 
       /*cardContainerEl.style.columnGap = '10px';
@@ -642,7 +642,7 @@ export const _createItem = (panelName, content) => {
 
           txtEl.onclick = fn;
 
-          txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+          
 
           txtEl.style.float = 'left';
 
@@ -1382,6 +1382,48 @@ You can help the development of GooseMod by spreading the word and financial sup
 
           break;
         }
+
+        case 'dropdown': {
+          el = document.createElement('div');
+
+          el.style.marginLeft = '12px';
+          el.style.lineHeight = '32px';
+
+          const labelEl = document.createElement('label');
+
+          labelEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+          labelEl.style.display = 'inline';
+          labelEl.style.marginRight = '8px';
+
+          labelEl.textContent = e.label;
+
+          el.appendChild(labelEl);
+
+          const dropEl = document.createElement('select');
+
+          e.options.forEach((x) => {
+            const optionEl = document.createElement('option');
+
+            optionEl.value = x;
+            optionEl.textContent = x;
+
+            dropEl.appendChild(optionEl);
+          });
+
+          dropEl.onchange = () => {
+            e.onchange(dropEl.value, contentEl);
+          };
+
+          dropEl.style.background = 'var(--background-secondary)';
+          dropEl.style.color = 'var(--header-primary)';
+          dropEl.style.border = 'none';
+          dropEl.style.padding = '8px';
+
+          el.appendChild(dropEl);
+
+          break;
+        }
       }
 
       if (specialContainerEl) { // && i > 1
@@ -1619,135 +1661,17 @@ export const makeGooseModSettings = () => {
 
     {
       type: 'header',
-      text: 'Internals - Bootloader'
+      text: 'Module Store'
     },
 
     {
-      type: 'toggle',
+      type: 'text-and-button',
 
-      /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
-      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z" fill="#626262"/></svg> <span style="vertical-align: top;">Development Channel</span>',
-      subtext: 'Use experimental development GooseMod builds',
+      text: 'Modify Repos',
+      subtext: 'Remove and add repos which GooseMod uses to fetch modules from',
 
-      onToggle: (c) => changeSetting('devchannel', c),
-      isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
-    },
+      buttonText: goosemodScope.i18n.goosemodStrings.moduleStore.repos.repos,
 
-    {
-      type: 'header',
-      text: 'Utilities'
-    },
-
-    {
-      type: 'text-and-danger-button',
-      
-      text: 'Reset GooseMod',
-      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
-      buttonText: 'Reset',
-
-      onclick: async () => {
-        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
-          goosemodScope.remove();
-          window.location.reload();
-        }
-      }
-    },
-
-    {
-      type: 'text-and-danger-button',
-
-      text: 'Purge Caches',
-      subtext: 'Purges (completely removes) most caches GooseMod uses',
-      buttonText: 'Purge',
-
-      onclick: async () => {
-        // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
-
-        Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
-      }
-    },
-
-    { type: 'gm-footer' }
-  ]);
-
-  if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
-
-  const updateModuleStoreUI = (parentEl, cards) => {
-    const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
-
-    const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
-
-    let selectors = {};
-    let counts = {};
-  
-    let noneSelected = true;
-    let noneSelectedArray = [];
-
-    for (let s of [...parentEl.children[0].children[3].children]) {
-      if (!s.classList.contains('item-26Dhrx')) {
-        noneSelectedArray.push(noneSelected);
-        noneSelected = true;
-
-        continue;
-      }
-
-      const selected = s.getAttribute('aria-checked') === 'true';
-      if (selected) {
-        noneSelected = false;
-      }
-
-      const key = s.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase();
-      counts[key] = {
-        el: s,
-        count: 0
-      };
-
-      selectors[key] = selected; //s.classList.contains(selectedClass);
-    }
-
-    noneSelectedArray.push(noneSelected);
-
-    for (let c of cards) {
-      const title = c.getElementsByClassName('title-31JmR4')[0];
-      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0].toLowerCase());
-      const name = title.childNodes[0].wholeText;
-
-      const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
-
-      const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
-
-      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'imported' : 'not imported';
-
-      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
-
-      c.style.display = matches && (
-        (tags.some((t) => selectors[t]) || noneSelectedArray[1]) &&
-        (authors.some((x) => selectors[x]) || noneSelectedArray[2]) &&
-        (selectors[importedSelector] || noneSelectedArray[0]))
-        ? 'block' : 'none';
-
-      if (c.style.display !== 'none') {
-        tags.forEach((t) => counts[t].count++);
-        authors.forEach((x) => counts[x].count++);
-        counts[importedSelector].count++;
-      }
-    }
-
-    const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
-
-    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} module${visibleModules !== 1 ? 's' : ''}`;
-
-    for (let k in counts) {
-      counts[k].el.children[0].children[1].children[0].children[0].children[1].textContent = counts[k].count;
-    }
-  };
-
-  let sidebarSelectedIndex = {};
-
-  [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
-    {
-      type: 'button',
-      text: goosemodScope.i18n.goosemodStrings.moduleStore.repos.repos,
       onclick: async () => {
         // await goosemodScope.moduleStoreAPI.updateModules();
 
@@ -1802,7 +1726,7 @@ export const makeGooseModSettings = () => {
 
           await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-          goosemodScope.settings.openSettingItem('Module Store');
+          goosemodScope.settings.openSettingItem('Settings');
         };
 
         const restartModal = async () => {
@@ -1945,9 +1869,118 @@ export const makeGooseModSettings = () => {
         };
 
         openReposModal();
-      },
-      width: 120
+      }
     },
+
+    {
+      type: 'header',
+      text: 'Bootloader'
+    },
+
+    {
+      type: 'toggle',
+
+      /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
+      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z" fill="#626262"/></svg> <span style="vertical-align: top;">Development Channel</span>',
+      subtext: 'Use experimental development GooseMod builds',
+
+      onToggle: (c) => changeSetting('devchannel', c),
+      isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'header',
+      text: 'Utilities'
+    },
+
+    {
+      type: 'text-and-danger-button',
+      
+      text: 'Reset GooseMod',
+      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
+      buttonText: 'Reset',
+
+      onclick: async () => {
+        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
+          goosemodScope.remove();
+          window.location.reload();
+        }
+      }
+    },
+
+    {
+      type: 'text-and-danger-button',
+
+      text: 'Purge Caches',
+      subtext: 'Purges (completely removes) most caches GooseMod uses',
+      buttonText: 'Purge',
+
+      onclick: async () => {
+        // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
+
+        Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
+      }
+    },
+
+    { type: 'gm-footer' }
+  ]);
+
+  if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
+
+  let sortedVal = 'A-Z';
+  let importedVal = 'All';
+
+  const updateModuleStoreUI = (parentEl, cards) => {
+    const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
+
+    const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
+
+    for (let c of cards) {
+      const title = c.getElementsByClassName('title-31JmR4')[0];
+      if (!title) continue; // Not card
+
+      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0].toLowerCase());
+      const name = title.childNodes[0].wholeText;
+
+      const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
+
+      const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
+
+      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? 'Imported' : 'Not Imported';
+
+      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
+
+      switch (sortedVal) {
+        case 'A-Z': { // Already pre-sorted to A-Z
+          c.style.order = '0';
+
+          break;
+        }
+
+        case 'Last updated': {
+          break;
+        }
+
+        case 'Stars': {
+          c.style.order = '-' + c.children[2].children[1].children[0].textContent;
+
+          break;
+        }
+      }
+
+      console.log(name, importedSelector, importedVal);
+
+      c.style.display = matches
+        && (importedVal === 'All' || importedVal === importedSelector)
+        ? 'block' : 'none';
+    }
+
+    const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
+
+    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} ${parentEl.parentElement.children[0].textContent.trim().toLowerCase()}`;
+  };
+
+  [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
       onchange: (inp, parentEl) => {
@@ -1958,6 +1991,44 @@ export const makeGooseModSettings = () => {
       storeSpecific: true
     },
     {
+      type: 'dropdown',
+
+      label: 'Sort by',
+
+      options: [
+        'A-Z',
+        'Stars',
+        'Last Updated'
+      ],
+
+      onchange: (val, parentEl) => {
+        sortedVal = val;
+
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        updateModuleStoreUI(parentEl, cards);
+      }
+    },
+    {
+      type: 'dropdown',
+
+      label: 'Imported',
+
+      options: [
+        'All',
+        'Imported',
+        'Not Imported'
+      ],
+
+      onchange: (val, parentEl) => {
+        importedVal = val;
+
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        updateModuleStoreUI(parentEl, cards);
+      }
+    },
+    {
       type: 'divider',
       text: (parentEl) => {
         return new Promise(async (res) => {
@@ -1965,62 +2036,7 @@ export const makeGooseModSettings = () => {
 
           const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
 
-          return res(`${cards.length} modules`);
-        });
-      }
-    },
-    {
-      type: 'sidebar',
-      children: (parentEl) => {
-        return new Promise(async (res) => {
-          await sleep(10);
-
-          console.log(parentEl);
-
-          const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-          let final = [...cards.reduce((acc, e) => {
-            const x = e.getElementsByClassName('control-2BBjec')[0] !== undefined ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
-            return acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
-          }, new Map([
-            [goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported, 0],
-            [goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported, 0]
-          ])).entries()].sort((a, b) => b[1] - a[1]);
-
-          final.push([goosemodScope.i18n.goosemodStrings.moduleStore.selectors.tags, 0, 'divider']);
-          
-          final = final.concat([...([].concat.apply([], cards.map((x) => (
-            [...x.classList].map((y) => [y.replace(/\|/g, ' '), x.style.display !== 'none'])
-          )))).reduce((acc, e) => acc.set(e[0], (acc.get(e[0]) || 0) + (e[1] ? 1 : 0)), new Map()).entries()].sort((a, b) => b[1] - a[1]));
-
-          final.push([goosemodScope.i18n.goosemodStrings.moduleStore.selectors.authors, 0, 'divider']);
-
-          final = final.concat([...cards.reduce((acc, e) => {
-            for (let el of e.getElementsByClassName('author')) {
-              const x = el.textContent.split('#')[0];
-              acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
-            }
-
-            return acc;
-          }, new Map()).entries()].sort((a, b) => b[1] - a[1]));
-
-          return res(final.map((x) => ({
-            text: x[0] === 'ui' ? 'UI' : x[0][0].toUpperCase() + x[0].substring(1),
-            subText: x[1],
-            type: x[2] || 'selector',
-            selected: () => {
-              let ind = sidebarSelectedIndex[x[0]];
-
-              if (ind !== undefined) return ind;
-
-              return false;
-            },
-            onselected: (sel) => {
-              sidebarSelectedIndex[x[0]] = sel;
-
-              updateModuleStoreUI(parentEl, cards);
-            }
-          })));
+          return res(`${cards.length} ${parentEl.parentElement.children[0].textContent.trim().toLowerCase()}`);
         });
       }
     },
