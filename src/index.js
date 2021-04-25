@@ -228,7 +228,13 @@ const init = async function () {
   };
 
   this.moduleStoreAPI.hotupdate(true);
-  this.hotupdateInterval = setInterval(this.moduleStoreAPI.hotupdate, 1000 * 60 * 60); // Hotupdate every hour
+
+   // Hotupdate every hour
+  this.hotupdateInterval = setInterval(() => {
+    if (!this.settings.gmSettings.get().autoupdate) return; // Check main GM setting
+
+    this.moduleStoreAPI.hotupdate();
+  }, 1000 * 60 * 60);
 
   if (window.gmSafeMode && !(await triggerSafeMode())) { // TODO: where in injection process?
     this.stopLoadingScreen();

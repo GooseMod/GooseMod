@@ -1873,6 +1873,16 @@ export const makeGooseModSettings = () => {
     },
 
     {
+      type: 'toggle',
+
+      text: 'Auto update',
+      subtext: 'Automatically update repos and modules every hour',
+
+      onToggle: (c) => changeSetting('autoupdate', c),
+      isToggled: () => gmSettings.get().autoupdate
+    },
+
+    {
       type: 'header',
       text: 'Bootloader'
     },
