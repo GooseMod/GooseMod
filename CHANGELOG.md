@@ -8,7 +8,7 @@
 
   - ### Module Store Redesign
     - Moved repos button to main settings
-    - Replaced sidebar with dropdown menus (sort by, imported filter)
+    - Replaced sidebar with dropdown menus, sort by and imported filter
     - Changed separator texts from general "modules" to specific types ("themes" or "plugins")
 
 
