@@ -1,8 +1,8 @@
 # GooseMod
 
-GooseMod is a new, store-driven Discord mod.
+GooseMod is a new store-driven Discord mod.
 
-### [GooseMod Discord](https://discord.gg/neMncS2)
+## [GooseMod Discord](https://discord.gg/neMncS2)
 
 ---
 
