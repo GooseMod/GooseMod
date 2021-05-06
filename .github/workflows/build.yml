@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js v15.x
       uses: actions/setup-node@v2
       with:
-        node-version: 15.v
+        node-version: 15.x
 
     - name: Install NPM dependencies
       run: npm ci
