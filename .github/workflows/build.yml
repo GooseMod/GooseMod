@@ -3,24 +3,24 @@ name: Build GooseMod
 on:
   push:
     branches: [ master ]
+    paths:
+    - 'src/**'
+    - 'building/**'
+    - 'CHANGELOG.md'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js v15.x
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 15.x
 
     - name: Install NPM dependencies
       run: npm ci
@@ -32,10 +32,13 @@ jobs:
       run: git add dist
 
     - name: Commit build files
-      run: git commit -m "(CI Chore) Update build [skip ci]"
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "(CI Chore) Update build [skip ci]" || true
 
-    # - name: fetch from master
-    #  run: git fetch origin master
-
-    - name: Push build files
-      run: git push origin HEAD:master
+    - name: Push build commit
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
