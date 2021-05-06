@@ -3,6 +3,10 @@ name: Build GooseMod
 on:
   push:
     branches: [ master ]
+    paths:
+    - 'src/**'
+    - 'building/**'
+    - 'CHANGELOG.md'
 
 jobs:
   build:
