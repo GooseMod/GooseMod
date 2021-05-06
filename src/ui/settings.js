@@ -1875,7 +1875,7 @@ export const makeGooseModSettings = () => {
     {
       type: 'toggle',
 
-      text: 'Auto update',
+      text: 'Auto Update',
       subtext: 'Automatically update repos and modules every hour',
 
       onToggle: (c) => changeSetting('autoupdate', c),
