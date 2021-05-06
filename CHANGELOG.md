@@ -4,7 +4,8 @@
 
   - ### Main Settings
     - Renamed "Internals - Bootloader" section to just "Bootloader"
-    - Added option to disable auto updating
+    - Added option to disable Module Store auto updating
+    - Added option to force update Module Store repos and modules
 
   - ### Module Store Redesign
     - Moved repos button to main settings
