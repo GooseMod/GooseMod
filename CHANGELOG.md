@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.3.0-dev [2021-04-29]
+## v8.3.0-dev [2021-05-06]
 
   - ### Main Settings
     - Renamed "Internals - Bootloader" section to just "Bootloader"
@@ -10,6 +10,9 @@
     - Moved repos button to main settings
     - Replaced sidebar with dropdown menus, sort by and imported filter
     - Changed separator texts from general "modules" to specific types ("themes" or "plugins")
+
+  - ### Fixes
+    - Fixed ChannelTextAreaButtons Patcher API
 
 
 ## v8.2.0 [2021-04-22]
