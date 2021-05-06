@@ -1137,7 +1137,7 @@ export const _createItem = (panelName, content) => {
           if (e.storeSpecific) {
             el.style.marginLeft = '20px';
 
-            el.style.width = '50%'; // Force next element (a card) to go to next line
+            // el.style.width = '30%'; // Force next element (a card) to go to next line
             el.style.flexGrow = '1'; // Actually grow to fit the whole line
           }
 
@@ -1402,18 +1402,20 @@ You can help the development of GooseMod by spreading the word and financial sup
 
           const dropEl = document.createElement('select');
 
-          e.options.forEach((x) => {
+          e.options(contentEl).then((options) => options.forEach((x) => {
             const optionEl = document.createElement('option');
 
             optionEl.value = x;
             optionEl.textContent = x;
 
             dropEl.appendChild(optionEl);
-          });
+          }));
 
           dropEl.onchange = () => {
             e.onchange(dropEl.value, contentEl);
           };
+
+          dropEl.style.maxWidth = '120px';
 
           dropEl.style.background = 'var(--background-secondary)';
           dropEl.style.color = 'var(--header-primary)';
@@ -1956,6 +1958,7 @@ export const makeGooseModSettings = () => {
 
   let sortedVal = 'A-Z';
   let importedVal = 'All';
+  let authorVal = 'All';
 
   const updateModuleStoreUI = (parentEl, cards) => {
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
@@ -1966,7 +1969,7 @@ export const makeGooseModSettings = () => {
       const title = c.getElementsByClassName('title-31JmR4')[0];
       if (!title) continue; // Not card
 
-      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0].toLowerCase());
+      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0]);
       const name = title.childNodes[0].wholeText;
 
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
@@ -1995,10 +1998,9 @@ export const makeGooseModSettings = () => {
         }
       }
 
-      console.log(name, importedSelector, importedVal);
-
       c.style.display = matches
         && (importedVal === 'All' || importedVal === importedSelector)
+        && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
 
@@ -2017,12 +2019,13 @@ export const makeGooseModSettings = () => {
       },
       storeSpecific: true
     },
+
     {
       type: 'dropdown',
 
       label: 'Sort by',
 
-      options: [
+      options: async () => [
         'A-Z',
         'Stars',
         'Last Updated'
@@ -2036,12 +2039,48 @@ export const makeGooseModSettings = () => {
         updateModuleStoreUI(parentEl, cards);
       }
     },
+
+    {
+      type: 'dropdown',
+
+      label: 'Author',
+
+      options: async (parentEl) => {
+        await sleep(10);
+
+        console.log(parentEl)
+
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        const authors = [...cards.reduce((acc, e) => {
+          for (let el of e.getElementsByClassName('author')) {
+            const x = el.textContent.split('#')[0];
+            acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
+          }
+
+          return acc;
+        }, new Map()).entries()].sort((a, b) => b[1] - a[1]).map((x) => `${x[0]} (${x[1]})`);
+
+        authors.unshift('All');
+
+        return authors;
+      },
+
+      onchange: (val, parentEl) => {
+        authorVal = val;
+
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        updateModuleStoreUI(parentEl, cards);
+      }
+    },
+
     {
       type: 'dropdown',
 
       label: goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
 
-      options: [
+      options: async () => [
         'All',
         goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
         goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported
@@ -2055,6 +2094,7 @@ export const makeGooseModSettings = () => {
         updateModuleStoreUI(parentEl, cards);
       }
     },
+
     {
       type: 'divider',
       text: (parentEl) => {
