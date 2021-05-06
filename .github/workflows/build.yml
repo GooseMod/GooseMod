@@ -1,0 +1,41 @@
+name: Build GooseMod
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install NPM dependencies
+      run: npm ci
+      
+    - name: Build GooseMod
+      run: npm run build
+
+    - name: Stage build files
+      run: git add dist
+
+    - name: Commit build files
+      run: git commit -m "(CI Chore) Update build [skip ci]"
+
+    # - name: fetch from master
+    #  run: git fetch origin master
+
+    - name: Push build files
+      run: git push origin HEAD:master
