@@ -1873,6 +1873,23 @@ export const makeGooseModSettings = () => {
     },
 
     {
+      type: 'text-and-button',
+
+      text: 'Force Update',
+      subtext: 'Force update repos and modules',
+
+      buttonText: 'Update',
+
+      onclick: async () => {
+        goosemodScope.startLoadingScreen();
+
+        await goosemodScope.moduleStoreAPI.hotupdate(true);
+
+        goosemodScope.stopLoadingScreen();
+      }
+    },
+
+    {
       type: 'toggle',
 
       text: 'Auto Update',
