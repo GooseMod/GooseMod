@@ -21,8 +21,8 @@ export const patch = (tooltipText, imgSrc, clickHandler, { inUpload = false, inR
   return PatcherBase.patch(ChannelTextAreaContainer.type, 'render', (_args, res) => {
     const props = findInReactTree(res, (r) => r && r.className && r.className.indexOf("buttons-") === 0);
     if (!props ||
-      (!inUpload && res.props.children.ref.current?.classList?.contains('channelTextAreaUpload-3t7EIx') === true) ||
-      (!inReadonlyChannels && res.props.children.ref.current?.classList?.contains('channelTextAreaDisabled-8rmlrp') === true)) return res;
+      (!inUpload && res.props.children[0].ref.current?.classList?.contains('channelTextAreaUpload-3t7EIx') === true) ||
+      (!inReadonlyChannels && res.props.children[0].ref.current?.classList?.contains('channelTextAreaDisabled-8rmlrp') === true)) return res;
 
     props.children.unshift(
       React.createElement('div', null,
