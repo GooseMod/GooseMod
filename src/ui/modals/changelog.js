@@ -36,8 +36,6 @@ export const setChangelog = (givenObj) => {
     ...givenObj
   };
 
-  console.log(obj);
-
   for (const key of Object.keys(mod.changeLog)) {
     delete mod.changeLog[key];
   }
@@ -45,6 +43,4 @@ export const setChangelog = (givenObj) => {
   for (const key of Object.keys(obj)) {
     mod.changeLog[key] = obj[key];
   }
-
-  console.log(mod.changeLog);
 };
