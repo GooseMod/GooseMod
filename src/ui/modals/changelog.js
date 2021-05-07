@@ -9,17 +9,7 @@ export const setThisScope = (scope) => {
 
   const orig = goosemodScope.webpackModules.findByProps('changeLog').changeLog;
 
-  originalChangelog = {
-    body: orig.body,
-    image: orig.image,
-    video: orig.video,
-    date: orig.date,
-
-    template: orig.template,
-
-    experiment_bucket: orig.experiment_bucket,
-    experiment_names: orig.experiment_names
-  };
+  originalChangelog = Object.assign({}, orig);
 };
 
 
@@ -32,44 +22,29 @@ export const hideChangelog = () => {
 };
 
 export const resetChangelog = () => {
-  let mod = goosemodScope.webpackModules.findByProps('changeLog');
-  
-  mod.changeLog.body = originalChangelog.body;
-  mod.changeLog.image = originalChangelog.image;
-  mod.changeLog.video = originalChangelog.video;
-  mod.changeLog.date = originalChangelog.date;
+  setChangelog(originalChangelog);
+};
 
-  mod.changeLog.template = originalChangelog.template;
+export const setChangelog = (givenObj) => {
+  const mod = goosemodScope.webpackModules.findByProps('changeLog');
 
-  mod.experiment_bucket = originalChangelog.experiment_bucket,
-  mod.experiment_names = originalChangelog.experiment_names
-}
+  const obj = {
+    template: 'standard',
+    revision: 1,
+    locale: 'en-us',
 
-export const setChangelog = ({body, image, date, video}) => {
-  let mod = goosemodScope.webpackModules.findByProps('changeLog');
+    ...givenObj
+  };
 
-  if (body) {
-    mod.changeLog.body = body;
+  console.log(obj);
+
+  for (const key of Object.keys(mod.changeLog)) {
+    delete mod.changeLog[key];
   }
 
-  if (image) {
-    mod.changeLog.image = image;
-  } else {
-    delete mod.changeLog.image;
+  for (const key of Object.keys(obj)) {
+    mod.changeLog[key] = obj[key];
   }
 
-  if (video) {
-    mod.changeLog.video = video;
-  } else {
-    delete mod.changeLog.video;
-  }
-
-  if (date) {
-    mod.changeLog.date = date;
-  }
-
-  mod.changeLog.template = 'standard';
-
-  delete mod.changeLog.experiment_bucket;
-  delete mod.changeLog.experiment_names;
+  console.log(mod.changeLog);
 };
