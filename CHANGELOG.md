@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.3.0-dev [2021-05-06]
+## v8.3.0 [2021-05-07]
 
   - ### Main Settings
     - Renamed "Internals - Bootloader" section to just "Bootloader"
