@@ -12,6 +12,9 @@
     - Replaced sidebar with dropdown menus, sort by and imported filter
     - Changed separator texts from general "modules" to specific types ("themes" or "plugins")
 
+  - ### Internals
+    - Rewrote changelog API implementation
+
   - ### Fixes
     - Fixed ChannelTextAreaButtons Patcher API
 
