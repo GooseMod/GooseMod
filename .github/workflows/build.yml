@@ -1,4 +1,4 @@
-name: Build GooseMod
+name: Build And Release GooseMod Dev
 
 on:
   push:
@@ -28,17 +28,11 @@ jobs:
     - name: Build GooseMod
       run: npm run build
 
-    - name: Stage build files
-      run: git add dist
-
-    - name: Commit build files
-      run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "(CI Chore) Update build [skip ci]" || true
-
-    - name: Push build commit
-      uses: ad-m/github-push-action@master
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "dev"
+        prerelease: true
+        title: "GooseMod Dev"
+        files: |
+          dist/index.js
