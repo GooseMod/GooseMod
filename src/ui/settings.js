@@ -132,6 +132,8 @@ export const createSeparator = () => {
   }
 };*/
 
+const sessionStoreSelected = {};
+
 export const _createItem = (panelName, content) => {
     let parentEl = document.createElement('div');
 
@@ -1402,16 +1404,30 @@ You can help the development of GooseMod by spreading the word and financial sup
 
           const dropEl = document.createElement('select');
 
+          let selected = '';
+          
+          if (e.selected) {
+            selected = e.selected();
+          } else {
+            selected = sessionStoreSelected[e.label];
+          }
+
           e.options(contentEl).then((options) => options.forEach((x) => {
             const optionEl = document.createElement('option');
 
             optionEl.value = x;
             optionEl.textContent = x;
 
+            if (x === selected) {
+              optionEl.selected = true;
+            }
+
             dropEl.appendChild(optionEl);
           }));
 
           dropEl.onchange = () => {
+            sessionStoreSelected[e.label] = dropEl.value;
+
             e.onchange(dropEl.value, contentEl);
           };
 
@@ -1441,16 +1457,30 @@ You can help the development of GooseMod by spreading the word and financial sup
 
           const dropEl = document.createElement('select');
 
+          let selected = '';
+          
+          if (e.selected) {
+            selected = e.selected();
+          } else {
+            selected = sessionStoreSelected[e.label];
+          }
+
           e.options(contentEl).then((options) => options.forEach((x) => {
             const optionEl = document.createElement('option');
 
             optionEl.value = x;
             optionEl.textContent = x;
 
+            if (x === selected) {
+              optionEl.selected = true;
+            }
+
             dropEl.appendChild(optionEl);
           }));
 
           dropEl.onchange = () => {
+            sessionStoreSelected[e.label] = dropEl.value;
+
             e.onchange(dropEl.value, contentEl);
           };
 

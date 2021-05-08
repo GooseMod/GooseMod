@@ -7,6 +7,8 @@
 
   - ### Settings API
     - Added dropdown item for toggle-like but with dropdown like in Store UI
+    - Added selected function for dropdowns, to choose which to select
+    - Added sessionStoreSelected for dropdowns and dropdown items, for temporary storage of selected item
 
   - ### Store UI
     - Disabled Last Updated sort by dropdown option (for now)
