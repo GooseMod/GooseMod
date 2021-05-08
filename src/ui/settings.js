@@ -1383,7 +1383,7 @@ You can help the development of GooseMod by spreading the word and financial sup
           break;
         }
 
-        case 'dropdown': {
+        case 'dropdown-individual': {
           el = document.createElement('div');
 
           el.style.marginLeft = '12px';
@@ -1423,6 +1423,64 @@ You can help the development of GooseMod by spreading the word and financial sup
           dropEl.style.padding = '8px';
 
           el.appendChild(dropEl);
+
+          break;
+        }
+
+        case 'dropdown': {
+          el = document.createElement('div');
+
+          el.classList.add('marginBottom20-32qID7');
+
+          let txtEl = document.createElement('span');
+          txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+          txtEl.style.float = 'left';
+
+          txtEl.innerHTML = e.text;
+
+          const dropEl = document.createElement('select');
+
+          e.options(contentEl).then((options) => options.forEach((x) => {
+            const optionEl = document.createElement('option');
+
+            optionEl.value = x;
+            optionEl.textContent = x;
+
+            dropEl.appendChild(optionEl);
+          }));
+
+          dropEl.onchange = () => {
+            e.onchange(dropEl.value, contentEl);
+          };
+
+          dropEl.style.background = 'var(--background-secondary)';
+          dropEl.style.color = 'var(--header-primary)';
+          dropEl.style.border = 'none';
+          dropEl.style.padding = '8px';
+          dropEl.style.float = 'right';
+
+          el.appendChild(txtEl);
+          el.appendChild(dropEl);
+
+          if (e.subtext) {
+            let subtextEl = document.createElement('div');
+
+            subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+            subtextEl.textContent = e.subtext;
+
+            subtextEl.style.clear = 'both';
+
+            el.appendChild(subtextEl);
+          }
+
+          let dividerEl = document.createElement('div');
+
+          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+          dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+          el.appendChild(dividerEl);
 
           break;
         }
@@ -1910,11 +1968,46 @@ export const makeGooseModSettings = () => {
       type: 'toggle',
 
       /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
-      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z" fill="#626262"/></svg> <span style="vertical-align: top;">Development Channel</span>',
+      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z"/></svg> <span style="vertical-align: top;">Development Channel</span>',
       subtext: 'Use experimental development GooseMod builds',
 
       onToggle: (c) => changeSetting('devchannel', c),
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'header',
+      text: 'i18n'
+    },
+
+    {
+      type: 'dropdown',
+
+      /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
+      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M8.22 1.754a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047zM9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0zm-.25-5.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5z"/></svg> <span style="vertical-align: top;">Force internal i18n lang</span>',
+      subtext: 'Forces internal i18n lang to dropdown value temporarily',
+
+      onchange: (c) => {
+        goosemodScope.i18n.forceLang(c);
+      },
+
+      options: async () => [
+        'Unspecified',
+
+        'de',
+        'en-GB',
+        'en-US',
+        'es-ES',
+        'fr',
+        'hu',
+        'it',
+        'nl',
+        'pl',
+        'pt-BR',
+        'ru',
+        'tr',
+        'zh-CN'
+      ]
     },
 
     {
@@ -2021,7 +2114,7 @@ export const makeGooseModSettings = () => {
     },
 
     {
-      type: 'dropdown',
+      type: 'dropdown-individual',
 
       label: 'Sort by',
 
@@ -2041,7 +2134,7 @@ export const makeGooseModSettings = () => {
     },
 
     {
-      type: 'dropdown',
+      type: 'dropdown-individual',
 
       label: 'Author',
 
@@ -2076,7 +2169,7 @@ export const makeGooseModSettings = () => {
     },
 
     {
-      type: 'dropdown',
+      type: 'dropdown-individual',
 
       label: goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
 

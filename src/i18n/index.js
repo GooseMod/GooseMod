@@ -5,6 +5,8 @@ let goosemodScope = {};
 
 let getDiscordLang;
 
+export let forced = false;
+
 export let goosemodStrings; // goosemod.i18n.strings
 export let discordStrings;
 
@@ -24,19 +26,25 @@ export const setThisScope = (scope) => {
 let lastLangCode;
 
 const checkForNewLang = async () => {
+  if (forced) return; // If forced, ignore Discord lang
+
   const { code } = getDiscordLang();
 
   if (code === lastLangCode) return; // Lang not changed
   lastLangCode = code;
 
-  goosemodScope.showToast(`New lang detected`);
+  // goosemodScope.showToast(`New lang detected`);
 
-  goosemodStrings = await Cache.geti18nData(getDiscordLang().code);
+  updateExports(code);
+};
+
+export const updateExports = async (code) => {
+  goosemodStrings = await Cache.geti18nData(code);
 
   const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
 
   discordStrings = messages;
-};
+}
 
 export const geti18nData = async (lang = (getDiscordLang().code)) => {
   let json; // Undefined by default
@@ -52,4 +60,17 @@ export const geti18nData = async (lang = (getDiscordLang().code)) => {
   }
 
   return json;
+};
+
+export const forceLang = async (code) => {
+  if (code === 'Unspecified') {
+    forced = false;
+    await checkForNewLang();
+
+    return;
+  }
+
+  forced = true;
+
+  await updateExports(code);
 };

@@ -2,10 +2,16 @@
 
 ## v8.4.0-dev [2021-05-08]
 
+  - ### Main Settings
+    - Added option to force internal i18n lang
+
+  - ### Settings API
+    - Added dropdown item for toggle-like but with dropdown like in Store UI
+
   - ### Store UI
     - Disabled Last Updated sort by dropdown option (for now)
 
-  - ### Patcher
+  - ### Patcher API
     - Added HeaderBarButtons, lets you easily add buttons to the top right header, similar to ChannelTextAreaButtons
 
 
