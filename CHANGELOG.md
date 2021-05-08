@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v8.4.0-dev [2021-05-08]
+
+  - ### Patcher
+    - Added HeaderBarButtons, lets you easily add buttons to the top right header, similar to ChannelTextAreaButtons
+
+
 ## v8.3.0 [2021-05-07]
 
   - ### Main Settings
