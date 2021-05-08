@@ -3,7 +3,7 @@
 ## v8.4.0-dev [2021-05-08]
 
   - ### Main Settings
-    - Added option to force internal i18n lang
+    - Added option to force internal i18n GM lang
 
   - ### Settings API
     - Added dropdown item for toggle-like but with dropdown like in Store UI
