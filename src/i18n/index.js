@@ -31,7 +31,6 @@ const checkForNewLang = async () => {
   const { code } = getDiscordLang();
 
   if (code === lastLangCode) return; // Lang not changed
-  lastLangCode = code;
 
   // goosemodScope.showToast(`New lang detected`);
 
@@ -39,6 +38,8 @@ const checkForNewLang = async () => {
 };
 
 export const updateExports = async (code) => {
+  lastLangCode = code;
+
   goosemodStrings = await Cache.geti18nData(code);
 
   const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
