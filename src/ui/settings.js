@@ -2028,7 +2028,7 @@ export const makeGooseModSettings = () => {
       options: async () => [
         'A-Z',
         'Stars',
-        'Last Updated'
+        // 'Last Updated'
       ],
 
       onchange: (val, parentEl) => {
