@@ -10,11 +10,11 @@
     - Added selected function for dropdowns, to choose which to select
     - Added sessionStoreSelected for dropdowns and dropdown items, for temporary storage of selected item
 
-  - ### Store UI
-    - Disabled Last Updated sort by dropdown option (for now)
-
   - ### Patcher API
     - Added HeaderBarButtons, lets you easily add buttons to the top right header, similar to ChannelTextAreaButtons
+
+  - ### Store UI
+    - Disabled Last Updated sort by dropdown option (for now)
 
 
 ## v8.3.0 [2021-05-07]
