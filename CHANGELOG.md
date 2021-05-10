@@ -2,6 +2,9 @@
 
 ## v8.5.0 [2021-05-10]
 
+  - ### Main Settings
+    - Added "Force Theme Settings" option
+
   - ### Settings API
     - Added new text input item
 

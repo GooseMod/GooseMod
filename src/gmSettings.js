@@ -10,11 +10,13 @@ export const get = () => {
 
     devchannel: false,
 
-    autoupdate: true
+    autoupdate: true,
+
+    allThemeSettings: false
   };
 
-  if (cache.autoupdate === undefined) { // New setting defaults to true
-    cache.autoupdate = true;
+  if (cache.allThemeSettings === undefined) { // New setting defaults to true
+    cache.allThemeSettings = false;
   }
 
   return cache;
