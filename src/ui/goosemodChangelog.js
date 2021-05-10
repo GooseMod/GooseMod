@@ -23,7 +23,7 @@ export const show = async () => {
 
   await sleep(300);
 
-  document.querySelector('.modal-3O0aXp .title-3sZWYQ').textContent = `GooseMod ${version}`; // Set changelog modal title
+  document.querySelector('.wrapper-1sSZUt ,size20-17Iy80').textContent = `GooseMod ${version}`; // Set changelog modal title
 
   document.querySelector('.modal-3O0aXp .footer-2gL1pp').remove(); // Remove footer of modal with social media
 
