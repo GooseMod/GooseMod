@@ -5,6 +5,9 @@
   - ### Settings API
     - Added text input item
 
+  - ### Changelog
+    - GooseMod's changelog no longer appears incorrectly and properly resets it to Discord's regular changelog
+
 
 ## v8.4.0 [2021-05-08]
 
