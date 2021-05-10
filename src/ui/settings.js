@@ -1514,6 +1514,60 @@ You can help the development of GooseMod by spreading the word and financial sup
 
           break;
         }
+
+        case 'text-input': {
+          el = document.createElement('div');
+
+          el.classList.add('marginBottom20-32qID7');
+
+          let txtEl = document.createElement('span');
+          txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+          txtEl.style.float = 'left';
+
+          txtEl.innerHTML = e.text;
+
+          const inpEl = document.createElement('input');
+          inpEl.type = 'text';
+
+          if (e.initialValue) {
+            inpEl.value = e.initialValue();
+          }
+
+          inpEl.onchange = () => {
+            e.oninput(inpEl.value, contentEl);
+          };
+
+          inpEl.style.background = 'var(--background-secondary)';
+          inpEl.style.color = 'var(--header-primary)';
+          inpEl.style.border = 'none';
+          inpEl.style.padding = '8px';
+          inpEl.style.float = 'right';
+
+          el.appendChild(txtEl);
+          el.appendChild(inpEl);
+
+          if (e.subtext) {
+            let subtextEl = document.createElement('div');
+
+            subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+            subtextEl.textContent = e.subtext;
+
+            subtextEl.style.clear = 'both';
+
+            el.appendChild(subtextEl);
+          }
+
+          let dividerEl = document.createElement('div');
+
+          dividerEl.classList.add('divider-3573oO', 'dividerDefault-3rvLe-');
+          dividerEl.style.marginTop = e.subtext ? '20px' : '45px';
+
+          el.appendChild(dividerEl);
+
+          break;
+        }
       }
 
       if (specialContainerEl) { // && i > 1
