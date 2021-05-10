@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v8.5.0-dev [2021-05-10]
+
+  - ### Settings API
+    - Added text input item
+
+
 ## v8.4.0 [2021-05-08]
 
   - ### Main Settings
