@@ -1309,7 +1309,11 @@ export const _createItem = (panelName, content) => {
         }
 
         case 'custom': {
-          el = e.element;
+          if (typeof e.element === 'function') {
+            el = e.element();
+          } else {
+            el = e.element;
+          }
 
           break;
         }
