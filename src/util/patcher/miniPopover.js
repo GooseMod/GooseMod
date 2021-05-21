@@ -20,7 +20,7 @@ export const patch = (tooltipText, imgSrc, clickHandler) => {
 
     res.props.children.unshift(
       React.createElement(Tooltip, {
-        postion: "top",
+        position: "top",
         text: tooltipText
       }, ({
         onMouseLeave,
