@@ -3,7 +3,7 @@
 ## v8.6.0-dev [2021-05-2X]
 
   - ### Main Settings
-    - Added Force Theme Settings experimental option, forces all themes to show auto-generated settings
+    - Added "Force Theme Settings" experimental option, forces all themes to show auto-generated settings
 
   - ### Settings API
     - Allowed custom elements to be function called
@@ -14,9 +14,6 @@
 
 
 ## v8.5.0 [2021-05-10]
-
-  - ### Main Settings
-    - Added "Force Theme Settings" option
 
   - ### Settings API
     - Added new text input item
