@@ -12,6 +12,9 @@
     - Added UserBadges, lets you easily add custom badges to users
     - Fixed tooltips being semi-broken for ChannelTextAreaButtons and MiniPopover
 
+  - ### Tweaks
+    - Removed safe mode
+
 
 ## v8.5.0 [2021-05-10]
 
