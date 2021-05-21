@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## v8.6.0 [2021-05-2X]
+
+  - ### Main Settings
+    - Added Force Theme Settings experimental option, forces all themes to show auto-generated settings
+
+  - ### Settings API
+    - Allowed custom elements to be function called
+
+  - ### Patcher API
+    - Added UserBadges, lets you easily add custom badges to users
+    - Fixed tooltips being semi-broken for ChannelTextAreaButtons and MiniPopover
+
+
 ## v8.5.0 [2021-05-10]
 
   - ### Main Settings
