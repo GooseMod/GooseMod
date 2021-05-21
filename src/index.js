@@ -28,8 +28,6 @@ import * as ModuleSettingsStore from './moduleSettingsStore';
 
 import moduleStoreAPI from './moduleStore';
 
-import triggerSafeMode from './safeMode';
-
 import * as i18n from './i18n';
 
 import * as CSSCache from './cssCache';
@@ -235,13 +233,6 @@ const init = async function () {
 
     this.moduleStoreAPI.hotupdate();
   }, 1000 * 60 * 60);
-
-  if (window.gmSafeMode && !(await triggerSafeMode())) { // TODO: where in injection process?
-    this.stopLoadingScreen();
-    this.showToast();
-
-    return;
-  }
   
   this.stopLoadingScreen();
   
