@@ -2,8 +2,13 @@
 
 ## v8.6.0-dev [2021-05-22]
 
+  - ### Features
+    - Added GooseMod Badges, built-in custom badges for GooseMod contributors - Sponsors (people who have donated money), Developers (people actively developing GooseMod itself) and Translators (people who have translated GooseMod to other languages)
+
   - ### Main Settings
     - Added "Force Theme Settings" experimental option, forces all themes to show auto-generated settings
+    - Added "GooseMod Badges" option, toggles GooseMod Badges (see features)
+    - Better default settings implementation
 
   - ### Settings API
     - Allowed custom elements to be function called
