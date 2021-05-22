@@ -1776,6 +1776,12 @@ export const makeGooseModSettings = () => {
 
         break;
       }
+
+      case 'gmBadges': {
+        goosemodScope.gmBadges[value ? 'addBadges' : 'removeBadges']();
+
+        break;
+      }
     }
 
     gmSettings.set(key, value);
@@ -2072,6 +2078,21 @@ export const makeGooseModSettings = () => {
 
       onToggle: (c) => changeSetting('devchannel', c),
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'header',
+      text: 'Appearance'
+    },
+
+    {
+      type: 'toggle',
+
+      text: 'GooseMod Badges',
+      subtext: 'Shows GooseMod\'s badges',
+
+      onToggle: (c) => changeSetting('gmBadges', c),
+      isToggled: () => gmSettings.get().gmBadges
     },
 
     {

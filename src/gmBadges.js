@@ -1,0 +1,233 @@
+let goosemodScope = {};
+let unpatchers = [];
+
+export const setThisScope = (scope) => {
+  goosemodScope = scope;
+
+  const styleSheet = document.createElement('style');
+
+  styleSheet.textContent = `
+/* Custom title replacing "Server Boost" */
+#gm-sponsor-modal .headerTitle-1_9Kor {
+  background-image: url(https://goosemod.com/img/goose_gold.jpg);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+
+  border-radius: 50%;
+
+  height: 60px;
+}
+
+#gm-sponsor-modal .headerTitle-1_9Kor::after {
+  font-family: var(--font-display);
+  font-size: 24px;
+
+  color: var(--text-normal);
+
+  width: 140px;
+  display: block;
+
+  margin-left: 70px;
+  margin-top: 6px;
+
+  content: 'GooseMod Sponsor';
+}
+
+#gm-sponsor-modal .guildBackground-3UtSZ2 > svg:first-child { /* Hide Lottie hands animation */
+  display: none;
+}
+
+#gm-sponsor-modal .contentWrapper-3INYJy {
+  padding: 16px;
+  padding-right: 8px;
+}
+
+#gm-sponsor-modal .contentWrapper-3INYJy > div > div:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+#gm-sponsor-modal .contentWrapper-3INYJy > div > .footer-2gL1pp {
+  left: -16px;
+  top: 16px;
+  width: calc(100% - 8px);
+}
+
+#gm-sponsor-modal .contentWrapper-3INYJy > div > div:first-child {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 20px;
+
+  color: var(--text-normal);
+}`;
+
+  document.head.appendChild(styleSheet);
+};
+
+const showSponsorModal = () => {
+  const { React } = goosemodScope.webpackModules.common;
+
+  const PremiumFeaturesList = goosemodScope.webpackModules.findByDisplayName('PremiumFeaturesList');
+  const FeaturesClasses = goosemodScope.webpackModules.findByProps('roleIcon', 'profileBadgeIcon');
+  const PersonShield = goosemodScope.webpackModules.findByDisplayName('PersonShield');
+
+  const ModalComponents = goosemodScope.webpackModules.findByProps('ModalFooter');
+
+  const { Button } = goosemodScope.webpackModules.findByPropsAll('Button')[1];
+  const ButtonClasses = goosemodScope.webpackModules.findByProps('button', 'colorRed');
+
+  const { PremiumGuildSubscriptionPurchaseModal } = goosemodScope.webpackModules.findByProps('PremiumGuildSubscriptionPurchaseModal');
+
+  const parent = { default: PremiumGuildSubscriptionPurchaseModal };
+
+  const makeIcon = (className, child = '') => (() => React.createElement('div', {
+    style: {
+      flexShrink: '0',
+      marginRight: '10px',
+
+      width: '24px',
+      height: '24px'
+    },
+
+    className: FeaturesClasses[className]
+  }, child));
+
+  goosemodScope.patcher.patch(parent, 'default', ([ { onClose } ], res) => {
+    res.props.id = 'gm-sponsor-modal';
+
+    res.props.children[1].props.children = [];
+
+    res.props.children[1].props.children.unshift(
+      React.createElement('div', {
+        
+        },
+
+        React.createElement('div', {}, `You can sponsor (donate regularly or one-time) GooseMod to help support it's development.`),
+
+        React.createElement(PremiumFeaturesList, {
+          columns: 2,
+          features: [
+            {
+              description: 'Sponsor badge in GooseMod',
+              overrideIcon: makeIcon('profileBadgeIcon')
+            },
+            {
+              description: 'Sponsor role in GooseNest Discord',
+              overrideIcon: makeIcon('roleIcon', React.createElement(PersonShield, { width: '24px', height: '24px' }))
+            }
+          ]
+        }),
+
+        React.createElement(ModalComponents.ModalFooter, {
+
+          },
+
+          React.createElement(Button, {
+            color: ButtonClasses.colorBrand,
+
+            type: 'submit',
+
+            onClick: () => {
+              window.open('https://github.com/sponsors/CanadaHonk'); // Open GitHub Sponsors link in user's browser
+
+              onClose();
+            }
+          }, 'Sponsor'),
+
+          React.createElement(Button, {
+            color: ButtonClasses.colorPrimary,
+            look: ButtonClasses.lookLink,
+
+            type: 'button',
+
+            onClick: () => {
+              onClose();
+            }
+          }, 'Close')
+        )
+      )
+    )
+
+    return res;
+  });
+
+  const { openModal } = goosemodScope.webpackModules.findByProps('openModal');
+
+  openModal((e) => React.createElement(parent.default, { ...e }));
+};
+
+const ids = {
+  sponsor: [ // People sponsoring (donating money) to GooseMod / Ducko
+    '506482395269169153', // Ducko
+    '597905003717459968', // creatable
+    '405400327370571786', // Chix
+    '707309693449535599', // Armagan
+    '302734867425132545', // hax4dayz
+    '557429876618166283', // sourTaste000
+  ],
+
+  dev: [ // People actively developing GooseMod itself
+    '506482395269169153', // Ducko
+  ],
+
+  translator: [ // People who have translated GooseMod to other languages
+    '506482395269169153', // Ducko
+    '394579914860396565', // C4Phoenix
+    '787017887877169173', // Dziurwa
+    '274213297316691968', // EnderXH
+    '500656746440949761', // PandaDriver
+    '326359466171826176', // sanana the skenana
+    '396360155480064003', // Skree
+    '169175121037099008', // TechnoJo4
+    '189079074054995969', // xirreal
+    '302734867425132545', // hax4dayz
+    '172866400900218881', // Komodo
+  ]
+};
+
+export const addBadges = () => {
+  unpatchers.push(
+    goosemodScope.patcher.userBadges.patch('GooseMod Sponsor',
+      'https://goosemod.com/img/goose_gold.jpg',
+
+      () => ids.sponsor,
+
+      () => {
+        showSponsorModal();
+      },
+
+      { round: true }
+    ),
+
+    goosemodScope.patcher.userBadges.patch('GooseMod Translator',
+      'https://goosemod.com/img/goose_globe.png',
+
+      () => ids.translator,
+
+      () => {
+        
+      },
+
+      { round: true }
+    ),
+
+    goosemodScope.patcher.userBadges.patch('GooseMod Developer',
+      'https://goosemod.com/img/goose_glitch.jpg',
+
+      () => ids.dev,
+
+      () => {
+        
+      },
+
+      { round: true }
+    )
+  )
+};
+
+export const removeBadges = () => {
+  for (const unpatch of unpatchers) {
+    unpatch();
+  }
+};

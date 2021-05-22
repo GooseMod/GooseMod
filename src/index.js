@@ -32,6 +32,8 @@ import * as i18n from './i18n';
 
 import * as CSSCache from './cssCache';
 
+import * as GMBadges from './gmBadges';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -51,7 +53,9 @@ const scopeSetterFncs = [
   confirmDialog.setThisScope,
 
   i18n.setThisScope,
-  CSSCache.setThisScope
+  CSSCache.setThisScope,
+
+  GMBadges.setThisScope
 ];
 
 const importsToAssign = {
@@ -83,7 +87,9 @@ const importsToAssign = {
 
   i18n,
 
-  cssCache: CSSCache
+  cssCache: CSSCache,
+
+  gmBadges: GMBadges
 };
 
 const init = async function () {
@@ -198,6 +204,8 @@ const init = async function () {
   this.cssCache.removeStyle();
 
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
+
+  if (this.settings.gmSettings.get().gmBadges) this.gmBadges.addBadges();
   
   this.saveInterval = setInterval(() => {
     this.cssCache.save();
