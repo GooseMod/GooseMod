@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.6.0-dev [2021-05-2X]
+## v8.6.0-dev [2021-05-22]
 
   - ### Main Settings
     - Added "Force Theme Settings" experimental option, forces all themes to show auto-generated settings
