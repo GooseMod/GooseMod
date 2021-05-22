@@ -10,10 +10,13 @@
 
   - ### Patcher API
     - Added UserBadges, lets you easily add custom badges to users
+    - Added Username, lets you easily add custom React elements to usernames
+    - Improved base patch to be more reliable when patches don't return proper values
     - Fixed tooltips being semi-broken for ChannelTextAreaButtons and MiniPopover
 
   - ### Tweaks
     - Removed safe mode
+    - Removed some excess debug logging
 
 
 ## v8.5.0 [2021-05-10]
