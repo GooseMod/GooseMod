@@ -8,6 +8,7 @@ import * as _internalMessage from './internalMessage';
 import * as _notices from './notices';
 import * as _headerBarButtons from './headerBarButtons';
 import * as _userBadges from './userBadges';
+import * as _username from './username';
 
 export const contextMenu = _contextMenu;
 export const miniPopover = _miniPopover;
@@ -17,6 +18,7 @@ export const internalMessage = _internalMessage.send;
 export const notices = _notices;
 export const headerBarButtons = _headerBarButtons;
 export const userBadges = _userBadges;
+export const username = _username;
 
 export const setThisScope = (scope) => {
   _contextMenu.setThisScope(scope);
@@ -27,4 +29,5 @@ export const setThisScope = (scope) => {
   _notices.setThisScope(scope);
   _headerBarButtons.setThisScope(scope);
   _userBadges.setThisScope(scope);
+  _username.setThisScope(scope);
 };
