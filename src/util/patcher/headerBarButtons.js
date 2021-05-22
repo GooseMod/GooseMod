@@ -18,8 +18,6 @@ export const patch = (tooltipText, imgSrc, clickHandler, { atEnd = false, showWh
 
     let currentWhere = 'other';
 
-    console.log(buttons);
-
     if (buttons[1] === null) {
       currentWhere = 'home';
     } else switch (buttons[0][1].key) {

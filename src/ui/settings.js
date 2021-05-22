@@ -2240,8 +2240,6 @@ export const makeGooseModSettings = () => {
       options: async (parentEl) => {
         await sleep(10);
 
-        console.log(parentEl)
-
         const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         const authors = [...cards.reduce((acc, e) => {
@@ -2334,8 +2332,6 @@ export const makeGooseModSettings = () => {
   goosemodScope.settings.createSeparator();
 
   goosemodScope.settings.createHeading(goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules);
-
-  console.log(goosemodScope.settings.items, oldItems);
 
   goosemodScope.settings.items = goosemodScope.settings.items.concat(oldItems);
 
