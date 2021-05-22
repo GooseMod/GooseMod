@@ -1,23 +1,27 @@
 let cache;
 
+const defaultSettings = {
+  changelog: true,
+  separators: true,
+  gmBadges: true,
+
+  devchannel: false,
+
+  autoupdate: true,
+
+  allThemeSettings: false
+};
+
 export const get = () => {
   // Cache as this function is called frequently
   if (cache) return cache;
   
-  cache = JSON.parse(localStorage.getItem('goosemodGMSettings')) || {
-    changelog: true,
-    separators: true,
+  cache = JSON.parse(localStorage.getItem('goosemodGMSettings')) || defaultSettings;
 
-    devchannel: false,
-
-    autoupdate: true,
-
-    allThemeSettings: false
+  cache = {
+    ...defaultSettings,
+    ...cache
   };
-
-  if (cache.allThemeSettings === undefined) { // New setting defaults to true
-    cache.allThemeSettings = false;
-  }
 
   return cache;
 };
