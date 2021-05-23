@@ -10,8 +10,8 @@
     - Added "GooseMod Badges" option, toggles GooseMod Badges (see features)
     - Better default settings implementation
 
-  - ### Settings API
-    - Allowed custom elements to be function called
+  - ### Module Store UI
+    - Added "Last Updated" option to sort dropdown, orders modules by when their source code was last updated
 
   - ### Patcher API
     - Added UserBadges, lets you easily add custom badges to users
@@ -22,6 +22,9 @@
   - ### Tweaks
     - Removed safe mode
     - Removed some excess debug logging
+
+  - ### Settings API
+    - Allowed custom elements to be function called
 
 
 ## v8.5.0 [2021-05-10]
