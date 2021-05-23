@@ -103,7 +103,12 @@ export const createItem = (panelName, content, clickHandler, danger = false) => 
 };
 
 export const removeItem = (setting) => {
-  goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === setting)), 1);
+  const ind = goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find((x) => x[1] === setting));
+
+  // Trying to remove non-existant item
+  if (ind === -1) return false;
+
+  goosemodScope.settings.items.splice(ind, 1);
 };
 
 export const createHeading = (headingName) => {

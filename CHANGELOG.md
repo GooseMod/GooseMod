@@ -25,6 +25,7 @@
 
   - ### Settings API
     - Allowed custom elements to be function called
+    - Fixed removeItem removing last item if the item with name provided doesn't exist
 
 
 ## v8.5.0 [2021-05-10]
