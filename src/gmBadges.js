@@ -1,12 +1,14 @@
 let goosemodScope = {};
 let unpatchers = [];
 
+let cssEl;
+
 export const setThisScope = (scope) => {
   goosemodScope = scope;
 
-  const styleSheet = document.createElement('style');
+  cssEl = document.createElement('style');
 
-  styleSheet.textContent = `
+  cssEl.textContent = `
 /* Custom title replacing "Server Boost" */
 #gm-sponsor-modal .headerTitle-1_9Kor {
   background-image: url(https://goosemod.com/img/goose_gold.jpg);
@@ -61,8 +63,6 @@ export const setThisScope = (scope) => {
 
   color: var(--text-normal);
 }`;
-
-  document.head.appendChild(styleSheet);
 };
 
 const showSponsorModal = () => {
@@ -187,6 +187,8 @@ const ids = {
 };
 
 export const addBadges = () => {
+  document.head.appendChild(cssEl);
+
   unpatchers.push(
     goosemodScope.patcher.userBadges.patch('GooseMod Sponsor',
       'https://goosemod.com/img/goose_gold.jpg',
@@ -203,7 +205,8 @@ export const addBadges = () => {
     goosemodScope.patcher.userBadges.patch('GooseMod Translator',
       'https://goosemod.com/img/goose_globe.png',
 
-      () => ids.translator,
+      // Force check via query because Discord not properly rerendering (just for translator)
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.translator : [],
 
       () => {
         
@@ -230,4 +233,6 @@ export const removeBadges = () => {
   for (const unpatch of unpatchers) {
     unpatch();
   }
+
+  cssEl.remove();
 };
