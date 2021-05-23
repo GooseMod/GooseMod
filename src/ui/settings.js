@@ -2200,7 +2200,11 @@ export const makeGooseModSettings = () => {
           break;
         }
 
-        case 'Last updated': {
+        case 'Last Updated': {
+          const module = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === name.trim());
+
+          c.style.order = '-' + module.lastUpdated;
+
           break;
         }
 
@@ -2241,7 +2245,7 @@ export const makeGooseModSettings = () => {
       options: async () => [
         'A-Z',
         'Stars',
-        // 'Last Updated'
+        'Last Updated'
       ],
 
       onchange: (val, parentEl) => {
