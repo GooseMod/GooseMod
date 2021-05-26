@@ -7,8 +7,8 @@ export const setThisScope = (scope) => {
 };
 
 export const patch = (generateElement) => {
-  const MessageHeader = goosemodScope.webpackModules.find((x) => x.default && x.default.toString().indexOf('headerText') > -1);
-  
+  const MessageHeader = goosemodScope.webpackModules.find((x) => x.default && !x.default.displayName && x.default.toString().indexOf('headerText') > -1);
+
   return PatcherBase.patch(MessageHeader, 'default', (_args, res) => {
     const header = goosemod.reactUtils.findInReactTree(res, el => Array.isArray(el?.props?.children) && el.props.children.find(c => c?.props?.message));
 
