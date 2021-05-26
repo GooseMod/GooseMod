@@ -165,6 +165,8 @@ const ids = {
     '707309693449535599', // Armagan
     '302734867425132545', // hax4dayz
     '557429876618166283', // sourTaste000
+    '250353310698176522', // p.marg
+    '301088721984552961', // overheremedia / jakefaith
   ],
 
   dev: [ // People actively developing GooseMod itself
@@ -193,7 +195,8 @@ export const addBadges = () => {
     goosemodScope.patcher.userBadges.patch('GooseMod Sponsor',
       'https://goosemod.com/img/goose_gold.jpg',
 
-      () => ids.sponsor,
+      // Force check via query because Discord not properly rerendering
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.sponsor : [],
 
       () => {
         showSponsorModal();
@@ -205,7 +208,7 @@ export const addBadges = () => {
     goosemodScope.patcher.userBadges.patch('GooseMod Translator',
       'https://goosemod.com/img/goose_globe.png',
 
-      // Force check via query because Discord not properly rerendering (just for translator)
+      // Force check via query because Discord not properly rerendering
       () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.translator : [],
 
       () => {
@@ -218,7 +221,8 @@ export const addBadges = () => {
     goosemodScope.patcher.userBadges.patch('GooseMod Developer',
       'https://goosemod.com/img/goose_glitch.jpg',
 
-      () => ids.dev,
+      // Force check via query because Discord not properly rerendering
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.dev : [],
 
       () => {
         
