@@ -1618,9 +1618,9 @@ export const makeGooseModSettings = () => {
           switch (i[0]) {
             case 'item':
               let obj = {
-                section: i[1],
+                section: 'gm-' + i[1],
                 label: i[1],
-                predicate: () => { alert(1); },
+                predicate: () => { },
                 element: function() {
                   if (typeof i[3] === 'function') {
                     document.getElementsByClassName('selected-3s45Ha')[0].click();
