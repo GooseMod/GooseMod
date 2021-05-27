@@ -1,5 +1,14 @@
 # GooseMod Changelog
 
+## v8.7.0-dev [2021-05-27]
+
+  - ### Settings API
+    - Prefix section to possibly fix conflicts with other mods
+
+  - ### Patcher API
+    - Fixed username being broken due to Discord update
+
+
 ## v8.6.0 [2021-05-24]
 
   - ### Features
