@@ -167,8 +167,8 @@ export const _createItem = (panelName, content) => {
 
       cardContainerEl.style.display = 'grid';
 
-      cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 330px)';
-      cardContainerEl.style.gridTemplateRows = 'repeat(auto-fill, 190px)';
+      cardContainerEl.style.gridTemplateColumns = 'repeat(auto-fill, 350px)';
+      cardContainerEl.style.gridTemplateRows = 'repeat(auto-fill, 400px)';
 
       cardContainerEl.style.width = '100%';
       cardContainerEl.style.justifyContent = 'center';
@@ -713,10 +713,47 @@ export const _createItem = (panelName, content) => {
           el.style.padding = '12px';
           el.style.margin = '10px';
 
-          el.style.width = '310px';
-          el.style.height = '170px';
+          el.style.width = '330px';
+          el.style.height = '380px';
 
           el.style.position = 'relative';
+
+          let headerEl = document.createElement('div');
+
+          headerEl.style.backgroundImage = e.images ? `url("${e.images[0]}")` : '';
+          headerEl.style.width = 'calc(100% + 24px)';
+          headerEl.style.height = '200px';
+
+          headerEl.style.marginTop = '-12px';
+          headerEl.style.marginLeft = '-12px';
+
+          headerEl.style.backgroundColor = 'var(--background-secondary-alt)';
+
+          headerEl.style.backgroundRepeat = 'no-repeat';
+          headerEl.style.backgroundSize = 'contain';
+          headerEl.style.backgroundPosition = '50%';
+
+          el.appendChild(headerEl);
+
+          let authorEl = document.createElement('div');
+
+          authorEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+          authorEl.style.position = 'absolute';
+          authorEl.style.top = '144px';
+          authorEl.style.right = '10px';
+
+          authorEl.style.opacity = '0.9';
+          authorEl.style.padding = '5px';
+          authorEl.style.borderRadius = '8px';
+
+          authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+
+          authorEl.style.width = 'fit-content';
+
+          authorEl.innerHTML = e.author;
+
+          el.appendChild(authorEl);
 
           let checked = e.isToggled();
 
@@ -762,7 +799,9 @@ export const _createItem = (panelName, content) => {
           txtEl.style.webkitLineClamp = '1';
           txtEl.style.webkitBoxOrient = 'vertical';
 
-          txtEl.innerHTML = e.text;
+          txtEl.style.marginTop = '10px';
+
+          txtEl.innerHTML = e.name;
 
           txtEl.style.width = '85%';
 
@@ -1058,7 +1097,7 @@ export const _createItem = (panelName, content) => {
           bottomRightContainerEl.style.marginLeft = 'auto';
 
           bottomRightContainerEl.style.position = 'absolute';
-          bottomRightContainerEl.style.top = '12px';
+          bottomRightContainerEl.style.top = '210px';
           bottomRightContainerEl.style.right = '12px';
 
           // bottomContainerEl.appendChild(bottomRightContainerEl);
