@@ -1,11 +1,30 @@
+import sleep from '../util/sleep';
+
 let goosemodScope = {};
 
 let getUser;
+
+let queueProcessInterval;
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
 
   getUser = goosemodScope.webpackModules.findByProps('getUser', 'fetchCurrentUser').getUser;
+};
+
+const queue = [], queueReturns = [];
+
+const processQueue = async () => {
+  if (queue.length === 0) {
+    clearInterval(queueProcessInterval);
+    queueProcessInterval = undefined;
+
+    return;
+  }
+
+  const id = queue.pop();
+
+  queueReturns.push(await getUser(id));
 };
 
 export const getCache = () => JSON.parse(localStorage.getItem('goosemodIDCache') || '{}');
@@ -15,7 +34,8 @@ export const updateCache = (id, data) => {
   let cache = getCache();
 
   cache[id] = {
-    data
+    data,
+    time: performance.now()
   };
 
   localStorage.setItem('goosemodIDCache', JSON.stringify(cache));
@@ -24,10 +44,28 @@ export const updateCache = (id, data) => {
 export const getDataForID = async (id) => {
   const cache = getCache();
 
-  if (cache[id]) { // && cache[id].time - (1000 * 60 * 60 * 24 * 30)
+  if (cache[id] && cache[id].time > performance.now() - (1000 * 60 * 60 * 24)) {
     return cache[id].data;
   } else {
-    const data = await getUser(id);
+    queue.push(id);
+
+    if (!queueProcessInterval) {
+      queueProcessInterval = setInterval(processQueue, 500);
+    }
+
+    let data;
+
+    while (true) {
+      data = queueReturns.find((x) => x.id === id);
+
+      if (data) {
+        queueReturns.splice(queueReturns.indexOf(data), 1);
+        break;
+      }
+
+      await sleep(500);
+    }
+
     updateCache(id, data);
 
     return data;
