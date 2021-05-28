@@ -1,6 +1,10 @@
 # GooseMod Changelog
 
-## v8.7.0-dev [2021-05-27]
+## v8.7.0-dev [2021-05-28]
+
+  - ### Module Store
+    - Add better user caching (queueing and time invalidation)
+    - Redesign cards to have header images
 
   - ### Settings API
     - Prefix section to possibly fix conflicts with other mods
