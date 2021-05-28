@@ -1104,20 +1104,47 @@ export const _createItem = (panelName, content) => {
           el.appendChild(bottomRightContainerEl);
 
           if (e.github) {
-            const repoEl = document.createElement('a');
-            repoEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
-            repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
+            const repoEl = document.createElement('div');
+            // repoEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+            // repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
+            repoEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorPrimary-3b3xI6', 'sizeSmall-2cSMqn', 'grow-q77ONN');
 
-            repoEl.href = `https://github.com/${e.github.repo}`;
-            repoEl.target = '_blank';
+            // repoEl.href = `https://github.com/${e.github.repo}`;
+            // repoEl.target = '_blank';
 
-            repoEl.style.position = 'relative';
-            repoEl.style.top = '4px';
+            // repoEl.style.position = 'relative';
+            repoEl.style.marginLeft = '14px';
+
+            repoEl.style.minWidth = '0px';
+            repoEl.style.padding = '2px 6px';
+
+            repoEl.style.color = 'var(--interactive-hover)';
+
+            repoEl.onclick = () => {
+              window.open(`https://github.com/${e.github.repo}`);
+            };
+
+            // repoEl.style.top = '5px';
+
+            // repoEl.style.cursor = 'pointer';
+
+            /* buttonEl.onclick = () => {
+              e.onclick(buttonEl);
+            }; */
+
+            repoEl.style.display = 'inline-flex';
 
             repoEl.style.cursor = 'pointer';
 
-            repoEl.onmouseover = function () { this.style.color = '#eee'; };
-            repoEl.onmouseleave = function () { this.style.color = ''; };
+            // repoEl.style.width = '90px';
+
+            let repoContentsEl = document.createElement('div');
+
+            repoContentsEl.classList.add('contents-18-Yxp');
+
+            repoContentsEl.innerHTML = `<svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+
+            repoEl.appendChild(repoContentsEl);
 
             const starsEl = document.createElement('div');
 
@@ -1141,7 +1168,8 @@ export const _createItem = (panelName, content) => {
             starsEl.appendChild(starsAmountEl);
             starsEl.appendChild(starsIconEl);
 
-            bottomRightContainerEl.appendChild(repoEl);
+            bottomContainerEl.appendChild(repoEl);
+
             bottomRightContainerEl.appendChild(starsEl);
           }
 
