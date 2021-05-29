@@ -283,7 +283,7 @@ export const _createItem = (panelName, content) => {
 
             subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
 
-            subtextEl.textContent = e.subtext;
+            subtextEl.innerHTML = e.subtext;
 
             subtextEl.style.clear = 'both';
 
