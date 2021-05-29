@@ -43,7 +43,8 @@ export const setThisScope = async (scope) => {
   }
 
   PatcherBase.patch(baseOwnerInstance.props.children, 'type', (_args, ret) => {
-    ret.props.children[1].props.children.unshift(React.createElement(NoticeContainer));
+    console.log(ret);
+    ret.props.children[1].props.children.props.children.unshift(React.createElement(NoticeContainer));
 
     return ret;
   });
