@@ -1510,6 +1510,8 @@ You can help the development of GooseMod by spreading the word and financial sup
             e.onchange(dropEl.value, contentEl);
           };
 
+          setTimeout(() => { dropEl.onchange(); }, 10);
+
           dropEl.style.maxWidth = '120px';
 
           dropEl.style.background = 'var(--background-secondary)';
