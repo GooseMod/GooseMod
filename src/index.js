@@ -6,6 +6,7 @@ import WebpackModules from './util/discord/webpackModules';
 import fixLocalStorage from './util/discord/fixLocalStorage';
 
 import * as Patcher from './util/patcher';
+import * as Attrs from './util/attrs';
 import * as ReactUtils from './util/react';
 
 import showToast from './ui/toast';
@@ -47,6 +48,7 @@ const scopeSetterFncs = [
 
   PackModal.setThisScope,
   Patcher.setThisScope,
+  Attrs.setThisScope,
 
   ModuleSettingsStore.setThisScope,
 
@@ -83,6 +85,7 @@ const importsToAssign = {
   packModal: PackModal,
 
   patcher: Patcher,
+  attrs: Attrs,
   reactUtils: ReactUtils,
 
   i18n,
@@ -206,6 +209,7 @@ const init = async function () {
   this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
 
   if (this.settings.gmSettings.get().gmBadges) this.gmBadges.addBadges();
+  if (this.settings.gmSettings.get().attrs) this.attrs.patch();
   
   this.saveInterval = setInterval(() => {
     this.cssCache.save();

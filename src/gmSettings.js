@@ -4,6 +4,7 @@ const defaultSettings = {
   changelog: true,
   separators: true,
   gmBadges: true,
+  attrs: false,
 
   devchannel: false,
 

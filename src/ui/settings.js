@@ -2142,7 +2142,7 @@ export const makeGooseModSettings = () => {
 
     {
       type: 'header',
-      text: 'Bootloader'
+      text: 'Internals'
     },
 
     {
@@ -2150,10 +2150,21 @@ export const makeGooseModSettings = () => {
 
       /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
       text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z"/></svg> <span style="vertical-align: top;">Development Channel</span>',
-      subtext: 'Use experimental development GooseMod builds',
+      subtext: 'Use experimental development GooseMod builds, <strong>requires refresh</strong>',
 
       onToggle: (c) => changeSetting('devchannel', c),
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'toggle',
+
+      /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
+      text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z"/></svg> <span style="vertical-align: top;">Data Attributes</span>',
+      subtext: 'Add data attributes to some elements for some themes to use, <strong>requires refresh</strong>',
+
+      onToggle: (c) => changeSetting('attrs', c),
+      isToggled: () => gmSettings.get().attrs
     },
 
     {
