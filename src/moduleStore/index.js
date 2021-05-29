@@ -190,11 +190,14 @@ export default {
       authors = a;
     };
     
-    return (await Promise.all(authors.map(async (x) => {
+    return (await Promise.all(authors.map(async (x, i) => {
       if (x.match(/^[0-9]{17,18}$/)) { // "<id>"
         const result = await IDCache.getDataForID(x);
 
-        return `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=32"><span class="author" style="cursor: pointer; line-height: 32px;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}<span class="description-3_Ncsb">#${result.discriminator}</span></span>`; // todo
+        const pfp = `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=32">`;
+        const name = `<span class="author" style="cursor: pointer; line-height: 32px;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}`; //<span class="description-3_Ncsb">#${result.discriminator}</span></span>`;
+
+        return i > 1 ? pfp : pfp + name;
       }
 
       let idMatch = x.match(/(.*) \(([0-9]{17,18})\)/); // "<name> (<id>)"
