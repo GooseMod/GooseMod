@@ -6,6 +6,12 @@
     - New header preview images with author inside
     - New GitHub button
 
+  - ### Data Attributes
+    - Added with experimental option (disabled by default), adds some data attributes to some elements as some themes require them
+
+  - ### Main Settings
+    - Added "requires refresh" to some options which require it
+
   - ### Module Store
     - Add better user caching (queueing and time invalidation)
     - Redo sorting and filtering dropdowns when values have been previously set
