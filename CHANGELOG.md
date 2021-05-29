@@ -2,9 +2,13 @@
 
 ## v8.7.0-dev [2021-05-28]
 
+  - ### Store Redesign
+    - New header preview images with author inside
+    - New GitHub button
+
   - ### Module Store
     - Add better user caching (queueing and time invalidation)
-    - Redesign cards to have header images
+    - Redo sorting and filtering dropdowns when values have been previously set
 
   - ### Settings API
     - Prefix section to possibly fix conflicts with other mods
