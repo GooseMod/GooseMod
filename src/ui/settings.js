@@ -723,12 +723,12 @@ export const _createItem = (panelName, content) => {
           headerEl.style.backgroundImage = e.images ? `url("${e.images[0]}")` : '';
           headerEl.style.width = 'calc(100% + 24px)';
           headerEl.style.height = '200px';
+          headerEl.style.borderRadius = '8px 8px 0 0';
 
           headerEl.style.marginTop = '-12px';
           headerEl.style.marginLeft = '-12px';
 
           headerEl.style.backgroundColor = 'var(--background-secondary-alt)';
-
           headerEl.style.backgroundRepeat = 'no-repeat';
           headerEl.style.backgroundSize = 'contain';
           headerEl.style.backgroundPosition = '50%';
@@ -743,11 +743,11 @@ export const _createItem = (panelName, content) => {
           authorEl.style.top = '144px';
           authorEl.style.right = '10px';
 
-          authorEl.style.opacity = '0.9';
+          authorEl.style.opacity = '0.95';
           authorEl.style.padding = '5px';
           authorEl.style.borderRadius = '8px';
 
-          authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+          authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 
           authorEl.style.width = 'fit-content';
 
