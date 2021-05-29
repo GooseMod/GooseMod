@@ -1117,7 +1117,7 @@ export const _createItem = (panelName, content) => {
             repoEl.style.minWidth = '0px';
             repoEl.style.padding = '2px 5px';
 
-            repoEl.style.color = 'var(--interactive-hover)';
+            repoEl.style.color = '#ddd';
 
             repoEl.onclick = () => {
               window.open(`https://github.com/${e.github.repo}`);
