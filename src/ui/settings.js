@@ -2254,10 +2254,12 @@ export const makeGooseModSettings = () => {
     const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
 
     for (let c of cards) {
-      const title = c.getElementsByClassName('title-31JmR4')[0];
-      if (!title) continue; // Not card
+      const titles = c.getElementsByClassName('title-31JmR4');
+      if (!titles[0]) continue; // Not card
 
-      const authors = [...title.getElementsByClassName('author')].map((x) => x.textContent.split('#')[0]);
+      const title = titles[1];
+
+      const authors = [...titles[0].getElementsByClassName('author')].map((x) => x.textContent.split('#')[0]);
       const name = title.childNodes[0].wholeText;
 
       const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
@@ -2284,7 +2286,7 @@ export const makeGooseModSettings = () => {
         }
 
         case 'Stars': {
-          c.style.order = '-' + c.children[2].children[1].children[0].textContent;
+          c.style.order = '-' + c.children[4].children[0].children[0].textContent;
 
           break;
         }
