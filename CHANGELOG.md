@@ -14,7 +14,8 @@
     - Prefix section to possibly fix conflicts with other mods
 
   - ### Patcher API
-    - Fixed username being broken due to Discord update
+    - Fixed username being broken due to update
+    - Fixed notices being broken due to update
 
 
 ## v8.6.0 [2021-05-24]
