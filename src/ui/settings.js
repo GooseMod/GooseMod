@@ -847,8 +847,7 @@ export const _createItem = (panelName, content) => {
               const moduleName = txtEl.childNodes[0].textContent;
 
               const authorsEl = txtEl.cloneNode(true);
-              authorsEl.childNodes[0].remove();
-              authorsEl.children[0].textContent = authorsEl.children[0].textContent[0].toUpperCase() + authorsEl.children[0].textContent.substring(1);
+              authorsEl.innerHTML = authorEl.innerHTML;
 
               const betterDescEl = subtextEl.cloneNode(true);
               betterDescEl.className = 'titleDefault-a8-ZSr title-31JmR4';
@@ -880,9 +879,9 @@ export const _createItem = (panelName, content) => {
               extraInfoEl.children[0].style.position = '';
               extraInfoEl.children[0].style.top = '';
 
-              extraInfoEl.children[1].style.marginBottom = '10px';
+              extraInfoEl.children[0].style.marginBottom = '10px';
 
-              extraInfoEl.children[2].style.marginTop = '4px';
+              extraInfoEl.children[1].style.marginTop = '4px';
 
               const imagesEl = document.createElement('div');
 
