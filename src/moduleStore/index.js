@@ -234,7 +234,7 @@ export default {
         author: await goosemodScope.moduleStoreAPI.parseAuthors(m.authors),
 
         subtext: m.description,
-        subtext2: `v${m.version}`,
+        subtext2: m.version === '0' || m.version.toLowerCase().includes('auto') ? '' : `v${m.version}`,
 
         buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async (el) => {
