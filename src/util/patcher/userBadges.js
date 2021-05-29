@@ -14,7 +14,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
 
   const BadgeClasses = goosemod.webpackModules.findByProps('profileBadge', 'colored');
 
-  const UserProfileBadgeList = goosemodScope.webpackModules.find((m) => m.default && m.default.displayName === 'UserProfileBadgeList')
+  const UserProfileBadgeList = goosemodScope.webpackModules.find((m) => m.default && m.default.displayName === 'UserProfileBadgeList');
   
   return PatcherBase.patch(UserProfileBadgeList, 'default', ([ { user, size } ], res) => {
     if (!forIds().includes(user.id)) return res;
