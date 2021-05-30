@@ -15,6 +15,7 @@
   - ### Module Store
     - Add better user caching (queueing and time invalidation)
     - Redo sorting and filtering dropdowns when values have been previously set
+    - Sort by stars by default
 
   - ### Settings API
     - Prefix section to possibly fix conflicts with other mods
