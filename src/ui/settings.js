@@ -744,8 +744,14 @@ export const _createItem = (panelName, content) => {
           authorEl.style.right = '10px';
 
           authorEl.style.opacity = '0.95';
-          authorEl.style.padding = '5px';
-          authorEl.style.borderRadius = '8px';
+
+          authorEl.style.borderRadius = '16px';
+
+          if (e.author.includes('avatar')) { // Has pfps
+            authorEl.style.paddingRight = '10px';
+          } else { // Does not have pfps
+            authorEl.style.padding = '4px 8px';
+          }
 
           authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 
