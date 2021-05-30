@@ -720,7 +720,9 @@ export const _createItem = (panelName, content) => {
 
           let headerEl = document.createElement('div');
 
-          headerEl.style.backgroundImage = e.images ? `url("${e.images[0]}")` : '';
+          const hasImage = e.images && e.images[0];
+  
+          headerEl.style.backgroundImage = hasImage ? `url("${e.images[0]}")` : '';
           headerEl.style.width = 'calc(100% + 24px)';
           headerEl.style.height = '200px';
           headerEl.style.borderRadius = '8px 8px 0 0';
@@ -732,6 +734,17 @@ export const _createItem = (panelName, content) => {
           headerEl.style.backgroundRepeat = 'no-repeat';
           headerEl.style.backgroundSize = 'contain';
           headerEl.style.backgroundPosition = '50%';
+
+          if (!hasImage) {
+            headerEl.textContent = 'No Preview';
+
+            headerEl.style.textAlign = 'center';
+            headerEl.style.lineHeight = '200px';
+
+            headerEl.style.color = 'var(--interactive-normal)';
+            headerEl.style.fontFamily = 'var(--font-display)';
+            headerEl.style.fontSize = '36px';
+          }
 
           el.appendChild(headerEl);
 
