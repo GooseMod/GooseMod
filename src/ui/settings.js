@@ -2275,7 +2275,7 @@ export const makeGooseModSettings = () => {
 
   if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
 
-  let sortedVal = 'A-Z';
+  let sortedVal = 'Stars';
   let importedVal = 'All';
   let authorVal = 'All';
 
@@ -2351,8 +2351,8 @@ export const makeGooseModSettings = () => {
       label: 'Sort by',
 
       options: async () => [
-        'A-Z',
         'Stars',
+        'A-Z',
         'Last Updated'
       ],
 
