@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.7.0-dev [2021-05-28]
+## v8.7.0 [2021-05-30]
 
   - ### Store Redesign
     - New header preview images with author inside
