@@ -740,7 +740,7 @@ export const _createItem = (panelName, content) => {
           authorEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
 
           authorEl.style.position = 'absolute';
-          authorEl.style.top = '144px';
+          authorEl.style.top = '152px';
           authorEl.style.right = '10px';
 
           authorEl.style.opacity = '0.95';
