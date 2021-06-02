@@ -5,7 +5,7 @@
   - ### Main Settings
     - Added verified mark by repo names which are official (by GooseMod) to the repos modal
 
-  - ### Tweaks
+  - ### Tweaks [progress]
     - Added new translators to GooseMod badges
 
 
