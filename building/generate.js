@@ -15,31 +15,13 @@ let body = split.slice(2).map((x) => x.trim().replace('- ', '')).filter((x) => x
 
 body = body.map((x, i) => {
   if (x.startsWith('###')) {
-    x = x.replace('### ', '');
+    let type = 'added';
 
-    let type;
+    x = x.replace('### ', '').replace(/\[(.*)\]/, (_, _type) => {
+      type = _type;
 
-    switch (x.toLowerCase()) {
-      case 'fixes': {
-        type = 'fixed';
-        break;
-      }
-      
-      case 'tweaks': {
-        type = 'progress';
-        break;
-      }
-
-      /*case 'features': {
-        type = 'added';
-        break;
-      }*/
-
-      default: {
-        type = 'added'; // 'progress';
-        break;
-      }
-    }
+      return '';
+    }).trim();
 
     x = `${i !== 0 ? '\n' : ''}${x} {${type}${i === 0 ? ' marginTop' : ''}}\n======================\n`;
   } else {
