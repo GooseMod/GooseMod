@@ -2,6 +2,9 @@
 
 ## v8.8.0-dev [2021-06-02]
 
+  - ### Main Settings
+    - Added verified mark by repo names which are official (by GooseMod) to the repos modal
+
   - ### Tweaks
     - Added new translators to GooseMod badges
 
