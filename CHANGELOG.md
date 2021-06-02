@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v8.8.0-dev [2021-06-02]
+
+  - ### Tweaks
+    - Added new translators to GooseMod badges
+
+
 ## v8.7.0 [2021-05-30]
 
   - ### Store Redesign
