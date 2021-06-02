@@ -2008,12 +2008,55 @@ export const makeGooseModSettings = () => {
         const Flex = goosemodScope.webpackModules.findByDisplayName('Flex');
         const TextInput = goosemodScope.webpackModules.findByDisplayName('TextInput');
 
+        const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
+        const FlowerStar = goosemodScope.webpackModules.findByDisplayName('FlowerStar');
+        const Verified = goosemodScope.webpackModules.findByDisplayName('Verified');
+
         const openReposModal = () => {
           const repoEls = [];
           let repoInd = 0;
 
           for (const repo of goosemodScope.moduleStoreAPI.repos) {
             const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
+
+            const verified = repoUrl.url.startsWith(`https://store.goosemod.com`);
+
+            const children = [
+              repo.meta.name
+            ];
+
+            if (verified) {
+              children.unshift(React.createElement('span', {
+                style: {
+                  display: 'inline-flex',
+                  position: 'relative',
+                  top: '2px',
+                  marginRight: '4px'
+                }
+              }, React.createElement(Tooltip, {
+                position: 'top',
+                color: 'primary',
+
+                text: 'GooseMod Store Repo'
+              }, ({
+                onMouseLeave,
+                onMouseEnter
+              }) =>
+                React.createElement(FlowerStar, {
+                  className: "verified-1eC5dy background-2uufRq disableColor-2z9rkr",
+                  'aria-label': 'GooseMod Store Repo',
+
+                  onMouseEnter,
+                  onMouseLeave
+                },
+                  React.createElement(Verified, {
+                    className: "icon-1ihkOt"
+                  })
+                )
+              )));
+            }
+
+            console.log(children, verified, repoUrl);
 
             repoEls.push(React.createElement(SwitchItemContainer, {
               style: {
@@ -2034,7 +2077,7 @@ export const makeGooseModSettings = () => {
 
                 restartModal();
               }
-            }, repo.meta.name));
+            }, ...children));
 
             repoInd++;
           }
