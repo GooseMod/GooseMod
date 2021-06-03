@@ -8,6 +8,7 @@
   - ### Tweaks [progress]
     - Added new translators to GooseMod badges
     - Changed settings from async waiting for i18n to awaiting i18n at start of load
+    - Removed message easter eggs
 
 
 ## v8.7.0 [2021-05-30]

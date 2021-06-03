@@ -21,8 +21,6 @@ import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScop
 
 import * as Settings from './ui/settings';
 
-import easterEggs from './ui/easterEggs';
-
 import { importModule, setThisScope as setThisScope3 } from './moduleManager';
 // import { saveModuleSettings, clearModuleSetting, clearSettings, loadSavedModuleSetting, loadSavedModuleSettings, setThisScope as setThisScope4 } from './moduleSettingsStore';
 import * as ModuleSettingsStore from './moduleSettingsStore';
@@ -41,7 +39,6 @@ const scopeSetterFncs = [
   setThisScope3,
 
   moduleStoreAPI.setThisScope,
-  easterEggs.setThisScope,
 
   Changelog.setThisScope,
   GoosemodChangelog.setThisScope,
@@ -72,7 +69,6 @@ const importsToAssign = {
   moduleSettingsStore: ModuleSettingsStore,
 
   webpackModules: WebpackModules,
-  messageEasterEggs: easterEggs,
   logger: Logger,
 
   showToast,
@@ -199,8 +195,6 @@ const init = async function () {
 
   this.cssCache.removeStyle();
 
-  this.messageEasterEggs.interval = setInterval(this.messageEasterEggs.check, 1000);
-
   if (this.settings.gmSettings.get().gmBadges) this.gmBadges.addBadges();
   if (this.settings.gmSettings.get().attrs) this.attrs.patch();
   
@@ -212,7 +206,6 @@ const init = async function () {
   this.remove = () => {
     this.settingsUninjects.forEach((x) => x());
 
-    clearInterval(this.messageEasterEggs.interval);
     clearInterval(this.saveInterval);
     clearInterval(this.i18nCheckNewLangInterval);
     clearInterval(this.hotupdateInterval);
