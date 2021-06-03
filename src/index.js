@@ -108,7 +108,7 @@ const init = async function () {
 
   let a = 1;
   for (let x of scopeSetterFncs) {
-    x(this);
+    await x(this);
 
     a++;
   }
@@ -138,20 +138,13 @@ const init = async function () {
 
   this.startLoadingScreen();
 
+  this.updateLoadingScreen('Getting i18n data...');
+  await this.i18n.checkForNewLang();
+
   this.updateLoadingScreen('Initialising internals...');
-  // this.updateLoadingScreen('Getting i18n data...');
 
-  // Wait for i18n to load
-  (new Promise(async (res) => {
-    while (!this.i18n.goosemodStrings || !this.i18n.discordStrings) {
-      await sleep(10);
-    }
-
-    res();
-  })).then(() => {
-    this.moduleStoreAPI.updateStoreSetting();
-    this.settings.makeGooseModSettings();
-  });
+  this.moduleStoreAPI.updateStoreSetting();
+  this.settings.makeGooseModSettings();
 
   this.moduleStoreAPI.initRepoURLs();
 

@@ -19,13 +19,11 @@ export const setThisScope = (scope) => {
   getDiscordLang = getLocaleInfo;
 
   goosemodScope.i18nCheckNewLangInterval = setInterval(checkForNewLang, 1000);
-
-  checkForNewLang();
 };
 
 let lastLangCode;
 
-const checkForNewLang = async () => {
+export const checkForNewLang = async () => {
   if (forced) return; // If forced, ignore Discord lang
 
   const { code } = getDiscordLang();
@@ -34,7 +32,7 @@ const checkForNewLang = async () => {
 
   // goosemodScope.showToast(`New lang detected`);
 
-  updateExports(code);
+  await updateExports(code);
 };
 
 export const updateExports = async (code) => {
