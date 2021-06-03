@@ -176,9 +176,9 @@ export const _createItem = (panelName, content) => {
       /*cardContainerEl.style.columnGap = '10px';
       cardContainerEl.style.rowGap = '10px';*/
 
-      document.querySelector('.sidebarRegion-VFTUkN').style.transition = '0.5s max-width';
+      /* document.querySelector('.sidebarRegion-VFTUkN').style.transition = '0.5s max-width';
   
-      document.querySelector('.contentColumnDefault-1VQkGM').style.transition = '0.5s max-width';
+      document.querySelector('.contentColumnDefault-1VQkGM').style.transition = '0.5s max-width'; */
     }
 
     let i = 0;
@@ -706,9 +706,11 @@ export const _createItem = (panelName, content) => {
 
           //if (e.class) el.classList.add(e.class);
 
+
           el.style.backgroundColor = 'var(--background-secondary)';
 
           el.style.borderRadius = '8px';
+          el.style.boxSizing = 'border-box';
 
           el.style.padding = '12px';
           el.style.margin = '10px';
@@ -1230,8 +1232,6 @@ export const _createItem = (panelName, content) => {
           searchbar.style.height = '32px';
 
           if (e.storeSpecific) {
-            el.style.marginLeft = '20px';
-
             // el.style.width = '30%'; // Force next element (a card) to go to next line
             el.style.flexGrow = '1'; // Actually grow to fit the whole line
           }
@@ -1704,7 +1704,7 @@ export const makeGooseModSettings = () => {
       sections.splice(
         sections.indexOf(logout) /* dividers[dividers.length - 2]) + 1 */, 0,
 
-        ...goosemodScope.settings.items.map((i) => {
+        ...goosemodScope.settings.items.filter((x) => gmSettings.get().home ? x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes : true).map((i) => {
           switch (i[0]) {
             case 'item':
               let obj = {
@@ -1913,10 +1913,20 @@ export const makeGooseModSettings = () => {
 
       /* color: #32cd32; background-color: #32cd32; margin-right: 3px; color: black; padding: 2px; border-radius: 4px; */
       text: '<svg style="color: var(--header-primary); margin-right: 2px; padding: 1px;" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path style="fill: currentColor" fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z"/></svg> <span style="vertical-align: top;">Force Theme Settings</span>',
-      subtext: 'Experimental: Force auto-generated settings for all themes (requires refresh)',
+      subtext: 'Experimental: Force auto-generated settings for all themes, <strong>requires refresh</strong>',
 
       onToggle: (c) => changeSetting('allThemeSettings', c),
       isToggled: () => gmSettings.get().allThemeSettings
+    },
+
+    {
+      type: 'toggle',
+
+      text: 'Store In Home',
+      subtext: 'Put GooseMod Store options in home instead of in settings, <strong>requires refresh</strong>',
+
+      onToggle: (c) => changeSetting('home', c),
+      isToggled: () => gmSettings.get().home
     },
 
     {
@@ -2374,14 +2384,14 @@ export const makeGooseModSettings = () => {
 
     const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
 
-    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} ${parentEl.parentElement.children[0].textContent.trim().toLowerCase()}`;
+    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} modules`;
   };
 
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
       onchange: (inp, parentEl) => {
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       },
@@ -2402,7 +2412,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         sortedVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       }
@@ -2416,7 +2426,7 @@ export const makeGooseModSettings = () => {
       options: async (parentEl) => {
         await sleep(10);
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         const authors = [...cards.reduce((acc, e) => {
           for (let el of e.getElementsByClassName('author')) {
@@ -2435,7 +2445,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         authorVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       }
@@ -2455,7 +2465,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         importedVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       }
@@ -2467,9 +2477,9 @@ export const makeGooseModSettings = () => {
         return new Promise(async (res) => {
           await sleep(10);
 
-          const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
+          const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
 
-          return res(`${cards.length} ${parentEl.parentElement.children[0].textContent.trim().toLowerCase()}`);
+          return res(`${cards.length} modules`);
         });
       }
     },
@@ -2512,6 +2522,7 @@ export const makeGooseModSettings = () => {
   goosemodScope.settings.items = goosemodScope.settings.items.concat(oldItems);
 
   addToContextMenu();
+  if (gmSettings.get().home) addToHome();
 };
 
 const addToContextMenu = () => {
@@ -2545,5 +2556,178 @@ const addToContextMenu = () => {
 
       return moduleItems.map((x) => basicSettingItem(x[1]));
     }
+  }));
+};
+
+const addToHome = () => {
+  const { React, ReactDOM } = goosemodScope.webpackModules.common;
+
+  const ConnectedPrivateChannelsList = goosemodScope.webpackModules.find((x) => x.default && x.default.displayName === 'ConnectedPrivateChannelsList');
+
+  const ListSectionItem = goosemodScope.webpackModules.findByDisplayName('ListSectionItem');
+  const { LinkButton } = goosemodScope.webpackModules.findByProps('LinkButton');
+
+  const LinkButtonClasses = goosemodScope.webpackModules.findByProps('selected', 'wrappedName');
+  const HeaderClasses = goosemodScope.webpackModules.findByProps('headerText', 'privateChannelsHeaderContainer');
+  const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
+  const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto');
+
+  const ThemesIcon = React.createElement('svg', {
+    viewBox: '0 0 24 24',
+    height: 24,
+    width: 24,
+    fill: 'none',
+    'aria-hidden': 'false'
+  },
+    React.createElement('path', {
+      fill: 'currentColor',
+
+      d: 'M15.5 12a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0z',
+    }),
+    React.createElement('path', {
+      fillRule: 'evenodd',
+      fill: 'currentColor',
+
+      d: 'M12 3.5c-3.432 0-6.125 1.534-8.054 3.24C2.02 8.445.814 10.352.33 11.202a1.6 1.6 0 0 0 0 1.598c.484.85 1.69 2.758 3.616 4.46C5.876 18.966 8.568 20.5 12 20.5c3.432 0 6.125-1.534 8.054-3.24c1.926-1.704 3.132-3.611 3.616-4.461a1.6 1.6 0 0 0 0-1.598c-.484-.85-1.69-2.757-3.616-4.46C18.124 5.034 15.432 3.5 12 3.5zM1.633 11.945c.441-.774 1.551-2.528 3.307-4.08C6.69 6.314 9.045 5 12 5c2.955 0 5.309 1.315 7.06 2.864c1.756 1.553 2.866 3.307 3.307 4.08a.111.111 0 0 1 .017.056a.111.111 0 0 1-.017.056c-.441.774-1.551 2.527-3.307 4.08C17.31 17.685 14.955 19 12 19c-2.955 0-5.309-1.315-7.06-2.864c-1.756-1.553-2.866-3.306-3.307-4.08A.11.11 0 0 1 1.616 12a.11.11 0 0 1 .017-.055z',
+    })
+  );
+
+  const PluginsIcon = React.createElement('svg', {
+    viewBox: '0 0 24 24',
+    height: 24,
+    width: 24,
+    fill: 'none',
+    'aria-hidden': 'false'
+  }, React.createElement('path', {
+    fillRule: 'evenodd',
+    fill: 'currentColor',
+
+    d: 'M8.78 4.97a.75.75 0 0 1 0 1.06L2.81 12l5.97 5.97a.75.75 0 1 1-1.06 1.06l-6.5-6.5a.75.75 0 0 1 0-1.06l6.5-6.5a.75.75 0 0 1 1.06 0zm6.44 0a.75.75 0 0 0 0 1.06L21.19 12l-5.97 5.97a.75.75 0 1 0 1.06 1.06l6.5-6.5a.75.75 0 0 0 0-1.06l-6.5-6.5a.75.75 0 0 0-1.06 0z',
+  }));
+
+  const HeaderBarContainer = goosemodScope.webpackModules.findByDisplayName('HeaderBarContainer');
+
+  const makePage = (icon, title) => React.createElement('div', {
+    style: {
+      height: '100%',
+      overflow: 'hidden'
+    }
+  },
+    React.createElement(HeaderBarContainer, {},
+      React.createElement(HeaderBarContainer.Icon, {
+        icon: () => icon,
+        'aria-label': true,
+        className: IconClasses.icon
+      }),
+
+      React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title])
+    ),
+
+    React.createElement('div', {
+      className: `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}`,
+      id: 'gm-settings-inject',
+
+      style: {
+        padding: '16px',
+        backgroundColor: 'var(--background-primary)',
+
+        height: '100%',
+        overflow: 'hidden scroll'
+      }
+    })
+  );
+
+  const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
+
+  goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
+    if (res.props.children[4]) return;
+
+    setTimeout(() => {
+      document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
+        console.log(e.target);
+        if (Object.values(LinkButtonClasses).includes(e.target.className.split(' ')[0]) && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins) {
+          console.log('yes');
+
+          const themesEl = document.getElementById('gm-home-themes');
+          themesEl.className = themesEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
+
+          const pluginsEl = document.getElementById('gm-home-plugins');
+          pluginsEl.className = pluginsEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
+
+          setTimeout(() => {
+            if (document.getElementById(`gm-settings-inject`) !== null) {
+              RoutingUtils.transitionTo('/invalid');
+              RoutingUtils.back();
+            }
+          }, 1);
+        }
+      });
+    }, 10);
+
+    const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
+    const themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+
+    const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
+    const pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+
+    res.props.children.push(() => React.createElement(ListSectionItem, {
+      className: HeaderClasses.privateChannelsHeaderContainer
+    }, 'GooseMod'),
+    
+    () => React.createElement(LinkButton, {
+      icon: () => ThemesIcon,
+      onClick: () => {
+        const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
+        parentEl.className = '';
+
+        ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl, () => {
+          const injectEl = document.getElementById('gm-settings-inject');
+
+          if (injectEl.children[0]) injectEl.children[0].remove();
+          injectEl.appendChild(themeContent);
+        });
+
+        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
+
+        setTimeout(() => {
+          const buttonEl = document.getElementById('gm-home-themes');
+          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
+        }, 0);
+      },
+
+      id: 'gm-home-themes',
+
+      text: goosemodScope.i18n.goosemodStrings.settings.itemNames.themes,
+
+      selected: false
+    }),
+
+    () => React.createElement(LinkButton, {
+      icon: () => PluginsIcon,
+      onClick: () => {
+        const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
+        parentEl.className = '';
+
+        ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl, () => {
+          const injectEl = document.getElementById(`gm-settings-inject`);
+
+          if (injectEl.children[0]) injectEl.children[0].remove();
+          injectEl.appendChild(pluginContent);
+        });
+
+        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
+
+        setTimeout(() => {
+          const buttonEl = document.getElementById('gm-home-plugins');
+          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
+        }, 0);
+      },
+
+      id: 'gm-home-plugins',
+
+      text: goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins,
+
+      selected: false
+    }));
   }));
 };

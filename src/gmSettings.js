@@ -5,6 +5,7 @@ const defaultSettings = {
   separators: true,
   gmBadges: true,
   attrs: false,
+  home: true,
 
   devchannel: false,
 
