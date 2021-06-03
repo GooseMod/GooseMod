@@ -2571,6 +2571,7 @@ const addToHome = () => {
   const HeaderClasses = goosemodScope.webpackModules.findByProps('headerText', 'privateChannelsHeaderContainer');
   const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
   const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto');
+  const HomeMiscClasses = goosemodScope.webpackModules.findByProps('headerBarContainer', 'pageContent');
 
   const ThemesIcon = React.createElement('svg', {
     viewBox: '0 0 24 24',
@@ -2613,7 +2614,9 @@ const addToHome = () => {
       overflow: 'hidden'
     }
   },
-    React.createElement(HeaderBarContainer, {},
+    React.createElement(HeaderBarContainer, {
+      className: HomeMiscClasses.headerBarContainer
+    },
       React.createElement(HeaderBarContainer.Icon, {
         icon: () => icon,
         'aria-label': true,
@@ -2644,10 +2647,7 @@ const addToHome = () => {
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
-        console.log(e.target);
         if (Object.values(LinkButtonClasses).includes(e.target.className.split(' ')[0]) && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins) {
-          console.log('yes');
-
           const themesEl = document.getElementById('gm-home-themes');
           themesEl.className = themesEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
 
