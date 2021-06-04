@@ -2348,7 +2348,7 @@ export const makeGooseModSettings = () => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = c.getElementsByClassName('control-2BBjec')[0] !== undefined ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
+      const importedSelector = c.getElementsByClassName('control-2BBjec')[0].style.display === 'block' ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
 
       const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
