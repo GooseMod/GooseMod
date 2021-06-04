@@ -800,6 +800,8 @@ export const _createItem = (panelName, content) => {
 
           toggleEl.onclick = fn;
 
+          toggleEl.style.display = e.showToggle ? 'block' : 'none';
+
           toggleEl.style.marginTop = '4px';
 
           toggleEl.style.position = 'absolute';
@@ -807,11 +809,7 @@ export const _createItem = (panelName, content) => {
 
           let txtEl = document.createElement('span');
           
-          //if (!e.showToggle) {
-            txtEl.style.cursor = 'auto';
-          /*} else {
-            txtEl.onclick = fn;
-          }*/
+          txtEl.style.cursor = 'auto';
 
           txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
 
@@ -1105,7 +1103,7 @@ export const _createItem = (panelName, content) => {
 
           bottomContainerEl.appendChild(buttonEl);
 
-          if (e.showToggle) bottomContainerEl.appendChild(toggleEl);
+          bottomContainerEl.appendChild(toggleEl);
 
           let bottomRightContainerEl = document.createElement('div');
 
