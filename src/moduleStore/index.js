@@ -197,7 +197,7 @@ export default {
 
     // If themes / plugins open
     if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
-      const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === moduleInfo.description)?.parentElement;
+      const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === m.description)?.parentElement;
 
       if (!cardEl) return;
 
