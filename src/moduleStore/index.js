@@ -164,6 +164,21 @@ export default {
         goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
       }
 
+      // If themes / plugins open
+      if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
+        const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === moduleInfo.description)?.parentElement;
+
+        if (!cardEl) return;
+
+        const buttonEl = cardEl.querySelector(`.colorBrand-3pXr91`);
+
+        buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
+        buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
+
+        const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+        toggleEl.style.display = 'block';
+      }
+
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
     } catch (e) {
       goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error' });
@@ -179,6 +194,21 @@ export default {
     item.buttonType = 'brand';
     item.buttonText = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
     item.showToggle = false;
+
+    // If themes / plugins open
+    if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
+      const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === moduleInfo.description)?.parentElement;
+
+      if (!cardEl) return;
+
+      const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
+
+      buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
+      buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
+
+      const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+      toggleEl.style.display = 'none';
+    }
   },
 
   parseAuthors: async (a) => {
@@ -270,10 +300,8 @@ To continue importing this module the dependencies need to be imported.`,
           }
 
           await goosemodScope.moduleStoreAPI.importModule(m.name);
-
-          goosemodScope.settings.openSettingItem(itemName);
         },
-        isToggled: () => goosemodScope.modules[m.name] !== undefined,
+        isToggled: () => goosemodScope.disabledModules[m.name] === undefined,
         onToggle: async (checked, el) => {
           if (checked) {
             goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
@@ -297,8 +325,6 @@ To continue importing this module the dependencies need to be imported.`,
 
             goosemodScope.moduleSettingsStore.disableModule(m.name);
           }
-
-          goosemodScope.settings.openSettingItem(itemName);
         }
       });
     }
