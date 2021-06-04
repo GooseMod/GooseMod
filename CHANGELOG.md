@@ -2,7 +2,11 @@
 
 ## v8.8.0-dev [2021-06-02]
 
+  - ### Home
+    - GooseMod Store is now in home under a new GooseMod section for better ease of use and visibility
+
   - ### Main Settings
+    - Added option to keep GooseMod Store in settings
     - Added verified mark by repo names which are official (by GooseMod) to the repos modal
 
   - ### Tweaks [progress]
