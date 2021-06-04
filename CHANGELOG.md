@@ -17,6 +17,7 @@
   - ### Fixes [fixed]
     - Fixed avatar data attributes causing errors / not working
 
+
 ## v8.7.0 [2021-05-30]
 
   - ### Store Redesign
