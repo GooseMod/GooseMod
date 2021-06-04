@@ -2707,4 +2707,9 @@ const addToHome = () => {
       selected: false
     }));
   }));
+
+  if (document.querySelector(`.privateChannels-1nO12o`)) {
+    RoutingUtils.transitionTo('/invalid');
+    RoutingUtils.back();
+  }
 };
