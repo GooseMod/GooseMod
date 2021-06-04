@@ -14,6 +14,8 @@
     - Changed settings from async waiting for i18n to awaiting i18n at start of load
     - Removed message easter eggs
 
+  - ### Fixes [fixed]
+    - Fixed avatar data attributes causing errors / not working
 
 ## v8.7.0 [2021-05-30]
 

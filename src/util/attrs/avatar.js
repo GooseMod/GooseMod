@@ -5,6 +5,8 @@ export const setThisScope = (scope) => {
 };
 
 export const patch = () => {
+  const { React } = goosemodScope.webpackModules.common;
+
   const Avatar = goosemodScope.webpackModules.findByProps('Sizes', 'AnimatedAvatar');
 
   goosemodScope.patcher.patch(Avatar, 'default', ([ { src } ], res) => {
