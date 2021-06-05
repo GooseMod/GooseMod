@@ -19,7 +19,7 @@
     - Removed separator
 
   - ### Fixes [fixed]
-    - Fixed avatar data attributes causing errors / not working
+    - Fixed avatar data attributes causing errors and not working
 
 
 ## v8.7.0 [2021-05-30]
