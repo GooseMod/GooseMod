@@ -1852,7 +1852,7 @@ export const makeGooseModSettings = () => {
 
       case 'separators': {
         if (value) {
-          goosemod.settings.items.splice(2, 0, ['separator']);
+          if (!gmSettings.get().home) goosemod.settings.items.splice(2, 0, ['separator']);
           if (gmSettings.get().changelog) goosemod.settings.items.splice(4, 0, ['separator']);
         } else {
           let main = true;
@@ -2324,7 +2324,7 @@ export const makeGooseModSettings = () => {
     { type: 'gm-footer' }
   ]);
 
-  if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
+  if (gmSettings.get().separators && !gmSettings.get().home) goosemodScope.settings.createSeparator();
 
   let sortedVal = 'Stars';
   let importedVal = 'All';
