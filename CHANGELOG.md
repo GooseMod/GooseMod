@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.8.0-dev [2021-06-04]
+## v8.8.0-dev [2021-06-05]
 
   - ### Home
     - GooseMod Store is now in home under a new GooseMod section for better ease of use and visibility
@@ -13,6 +13,9 @@
     - Added new translators to GooseMod badges
     - Changed settings from async waiting for i18n to awaiting i18n at start of load
     - Removed message easter eggs
+
+  - ### Store UI
+    - Small tweaks to increase accessibility and ease of use
 
   - ### Fixes [fixed]
     - Fixed avatar data attributes causing errors / not working
