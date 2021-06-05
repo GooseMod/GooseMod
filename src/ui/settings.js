@@ -2618,7 +2618,7 @@ const addToHome = () => {
   const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
-    if (res.props.children[4]) return;
+    if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
