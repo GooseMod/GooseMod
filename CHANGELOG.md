@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.8.0-dev [2021-06-05]
+## v8.8.0 [2021-06-05]
 
   - ### Home
     - GooseMod Store is now in home under a new GooseMod section for better ease of use and visibility
