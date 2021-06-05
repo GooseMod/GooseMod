@@ -2640,10 +2640,10 @@ const addToHome = () => {
     }, 10);
 
     const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
-    const themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+    let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
 
     const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
-    const pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+    let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
 
     res.props.children.push(() => React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
@@ -2659,6 +2659,12 @@ const addToHome = () => {
           const injectEl = document.getElementById('gm-settings-inject');
 
           if (injectEl.children[0]) injectEl.children[0].remove();
+
+          // Regenerate if no cards (injected into sidebar before loaded)
+          if (themeContent.children[0].children[5].children.length === 0) {
+            themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+          }
+
           injectEl.appendChild(themeContent);
         });
 
@@ -2687,6 +2693,12 @@ const addToHome = () => {
           const injectEl = document.getElementById(`gm-settings-inject`);
 
           if (injectEl.children[0]) injectEl.children[0].remove();
+
+          // Regenerate if no cards (injected into sidebar before loaded)
+          if (pluginContent.children[0].children[5].children.length === 0) {
+            pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
+          }
+
           injectEl.appendChild(pluginContent);
         });
 
@@ -2706,6 +2718,7 @@ const addToHome = () => {
     }));
   }));
 
+  // If home currently open, force update sidebar via routing
   if (document.querySelector(`.privateChannels-1nO12o`)) {
     RoutingUtils.transitionTo('/invalid');
     RoutingUtils.back();
