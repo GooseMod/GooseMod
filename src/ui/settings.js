@@ -1125,7 +1125,7 @@ export const _createItem = (panelName, content) => {
             const repoEl = document.createElement('div');
             // repoEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
             // repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
-            repoEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorPrimary-3b3xI6', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+            repoEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorGrey-2DXtkV', 'sizeSmall-2cSMqn', 'grow-q77ONN');
 
             // repoEl.href = `https://github.com/${e.github.repo}`;
             // repoEl.target = '_blank';
@@ -1483,7 +1483,7 @@ You can help the development of GooseMod by spreading the word and financial sup
         case 'dropdown-individual': {
           el = document.createElement('div');
 
-          el.style.marginLeft = '12px';
+          el.style.marginLeft = '20px';
           el.style.lineHeight = '32px';
 
           const labelEl = document.createElement('label');
@@ -2645,7 +2645,7 @@ const addToHome = () => {
           if (injectEl.children[0]) injectEl.children[0].remove();
 
           // Regenerate if no cards (injected into sidebar before loaded)
-          if (themeContent.children[0].children[5].children.length === 0) {
+          if (themeContent.children[0].children[4].children.length === 0) {
             themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
           }
 
@@ -2679,7 +2679,7 @@ const addToHome = () => {
           if (injectEl.children[0]) injectEl.children[0].remove();
 
           // Regenerate if no cards (injected into sidebar before loaded)
-          if (pluginContent.children[0].children[5].children.length === 0) {
+          if (pluginContent.children[0].children[4].children.length === 0) {
             pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
           }
 
