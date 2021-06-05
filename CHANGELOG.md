@@ -16,6 +16,7 @@
 
   - ### Store UI
     - Small tweaks to increase accessibility and ease of use
+    - Removed separator
 
   - ### Fixes [fixed]
     - Fixed avatar data attributes causing errors / not working
