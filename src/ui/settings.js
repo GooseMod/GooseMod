@@ -2566,36 +2566,40 @@ const addToHome = () => {
 
   const HeaderBarContainer = goosemodScope.webpackModules.findByDisplayName('HeaderBarContainer');
 
+  const makeHeader = (icon, title) => React.createElement(HeaderBarContainer, {
+    className: HomeMiscClasses.headerBarContainer
+  },
+    React.createElement(HeaderBarContainer.Icon, {
+      icon: () => icon,
+      'aria-label': true,
+      className: IconClasses.icon
+    }),
+
+    React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title])
+  );
+
+  const makeContent = () => React.createElement('div', {
+    className: `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}`,
+    id: 'gm-settings-inject',
+
+    style: {
+      padding: '22px',
+      backgroundColor: 'var(--background-primary)',
+
+      height: '100%',
+      overflow: 'hidden scroll'
+    }
+  });
+
   const makePage = (icon, title) => React.createElement('div', {
     style: {
       height: '100%',
       overflow: 'hidden'
     }
   },
-    React.createElement(HeaderBarContainer, {
-      className: HomeMiscClasses.headerBarContainer
-    },
-      React.createElement(HeaderBarContainer.Icon, {
-        icon: () => icon,
-        'aria-label': true,
-        className: IconClasses.icon
-      }),
+    makeHeader(icon, title),
 
-      React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title])
-    ),
-
-    React.createElement('div', {
-      className: `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}`,
-      id: 'gm-settings-inject',
-
-      style: {
-        padding: '22px',
-        backgroundColor: 'var(--background-primary)',
-
-        height: '100%',
-        overflow: 'hidden scroll'
-      }
-    })
+    makeContent()
   );
 
   const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
@@ -2639,18 +2643,38 @@ const addToHome = () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
         parentEl.className = '';
 
-        ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl, () => {
-          const injectEl = document.getElementById('gm-settings-inject');
-
-          if (injectEl.children[0]) injectEl.children[0].remove();
-
-          // Regenerate if no cards (injected into sidebar before loaded)
-          if (themeContent.children[0].children[4].children.length === 0) {
-            themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
-          }
-
-          injectEl.appendChild(themeContent);
-        });
+        if (parentEl.children.length === 1) {
+          ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl.children[0], () => {
+            const injectEl = document.getElementById('gm-settings-inject');
+    
+            if (injectEl.children[0]) injectEl.children[0].remove();
+    
+            // Regenerate if no cards (injected into sidebar before loaded)
+            if (themeContent.children[0].children[4].children.length === 0) {
+              themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+            }
+    
+            injectEl.appendChild(themeContent);
+          });
+        }
+        
+        if (parentEl.children.length === 2 || parentEl.children.length === 3) {
+          const indexOffset = parentEl.children.length - 2;
+          ReactDOM.render(makeHeader(ThemesIcon, 'themes'), parentEl.children[indexOffset + 0]);
+          
+          ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], () => {
+            const injectEl = document.getElementById('gm-settings-inject');
+    
+            if (injectEl.children[0]) injectEl.children[0].remove();
+    
+            // Regenerate if no cards (injected into sidebar before loaded)
+            if (themeContent.children[0].children[4].children.length === 0) {
+              themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+            }
+    
+            injectEl.appendChild(themeContent);
+          });
+        }
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
@@ -2673,18 +2697,38 @@ const addToHome = () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
         parentEl.className = '';
 
-        ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl, () => {
-          const injectEl = document.getElementById(`gm-settings-inject`);
-
-          if (injectEl.children[0]) injectEl.children[0].remove();
-
-          // Regenerate if no cards (injected into sidebar before loaded)
-          if (pluginContent.children[0].children[4].children.length === 0) {
-            pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
-          }
-
-          injectEl.appendChild(pluginContent);
-        });
+        if (parentEl.children.length === 1) {
+          ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl.children[0], () => {
+            const injectEl = document.getElementById('gm-settings-inject');
+    
+            if (injectEl.children[0]) injectEl.children[0].remove();
+    
+            // Regenerate if no cards (injected into sidebar before loaded)
+            if (pluginContent.children[0].children[4].children.length === 0) {
+              pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
+            }
+    
+            injectEl.appendChild(pluginContent);
+          });
+        }
+        
+        if (parentEl.children.length === 2 || parentEl.children.length === 3) {
+          const indexOffset = parentEl.children.length - 2;
+          ReactDOM.render(makeHeader(PluginsIcon, 'plugins'), parentEl.children[indexOffset + 0]);
+          
+          ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], () => {
+            const injectEl = document.getElementById('gm-settings-inject');
+    
+            if (injectEl.children[0]) injectEl.children[0].remove();
+    
+            // Regenerate if no cards (injected into sidebar before loaded)
+            if (pluginContent.children[0].children[4].children.length === 0) {
+              pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
+            }
+    
+            injectEl.appendChild(pluginContent);
+          });
+        }
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
