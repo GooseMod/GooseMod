@@ -2645,7 +2645,7 @@ const addToHome = () => {
     const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
     let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
 
-    res.props.children.splice(res.props.children.indexOf(null), 0, () => React.createElement(ListSectionItem, {
+    res.props.children.splice(res.props.children.indexOf(null) + 2, 0, () => React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
     }, 'GooseMod'),
     
