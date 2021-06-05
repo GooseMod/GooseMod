@@ -2641,7 +2641,7 @@ const addToHome = () => {
       icon: () => ThemesIcon,
       onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-        parentEl.className = '';
+        // parentEl.className = '';
 
         if (parentEl.children.length === 1) {
           ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl.children[0], () => {
@@ -2695,7 +2695,7 @@ const addToHome = () => {
       icon: () => PluginsIcon,
       onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-        parentEl.className = '';
+        // parentEl.className = '';
 
         if (parentEl.children.length === 1) {
           ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl.children[0], () => {
