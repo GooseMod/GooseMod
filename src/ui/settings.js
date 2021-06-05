@@ -2379,17 +2379,13 @@ export const makeGooseModSettings = () => {
         && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
-
-    const visibleModules = cards.filter((x) => x.style.display !== 'none').length;
-
-    parentEl.getElementsByClassName('divider-3573oO')[0].parentElement.children[1].innerText = `${visibleModules} modules`;
   };
 
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
       onchange: (inp, parentEl) => {
-        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       },
@@ -2410,7 +2406,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         sortedVal = val;
 
-        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       }
@@ -2424,7 +2420,7 @@ export const makeGooseModSettings = () => {
       options: async (parentEl) => {
         await sleep(10);
 
-        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         const authors = [...cards.reduce((acc, e) => {
           for (let el of e.getElementsByClassName('author')) {
@@ -2443,7 +2439,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         authorVal = val;
 
-        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
       }
@@ -2463,22 +2459,9 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         importedVal = val;
 
-        const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         updateModuleStoreUI(parentEl, cards);
-      }
-    },
-
-    {
-      type: 'divider',
-      text: (parentEl) => {
-        return new Promise(async (res) => {
-          await sleep(10);
-
-          const cards = [...parentEl.children[0].children[5].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1] && x.style.display !== 'none');
-
-          return res(`${cards.length} modules`);
-        });
       }
     },
 
