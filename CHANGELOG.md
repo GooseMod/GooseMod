@@ -1,5 +1,13 @@
 # GooseMod Changelog
 
+## v8.9.0-dev [2021-06-06]
+
+  - ### Home
+    - Made GooseMod section collapsible via an icon in the header
+    - Made new modules appearing in home pages easier, specifically without needing to click off then back to home
+    - Fixed various crashes caused by switching to store from a DM
+
+
 ## v8.8.0 [2021-06-05]
 
   - ### Home
