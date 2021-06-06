@@ -259,6 +259,7 @@ export default {
         tags: m.tags,
         github: m.github,
         images: m.images,
+        lastUpdated: m.lastUpdated,
 
         buttonType: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? 'danger' : 'brand',
         showToggle: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name],

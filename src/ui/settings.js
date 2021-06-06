@@ -156,6 +156,8 @@ export const _createItem = (panelName, content) => {
 
     let specialContainerEl, cardContainerEl;
 
+    const currentDate = new Date();
+
     if (panelName === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || panelName === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) {
       specialContainerEl = document.createElement('div');
 
@@ -719,6 +721,23 @@ export const _createItem = (panelName, content) => {
           el.style.height = '380px';
 
           el.style.position = 'relative';
+          
+          if ((currentDate - (e.lastUpdated * 1000)) / 1000 / 60 / 60 / 24 < 5) {
+            // <div class="textBadge-1iylP6 base-PmTxvP baseShapeRound-1Mm1YW" style="background-color: rgb(237, 66, 69);">NEW</div>
+            const updatedBadgeEl = document.createElement('div');
+
+            updatedBadgeEl.classList.add('textBadge-1iylP6', 'base-PmTxvP', 'baseShapeRound-1Mm1YW');
+            updatedBadgeEl.style.backgroundColor = 'var(--brand-experiment)';
+
+            updatedBadgeEl.textContent = 'UPDATED';
+
+            updatedBadgeEl.style.position = 'absolute';
+            updatedBadgeEl.style.top = '10px';
+            updatedBadgeEl.style.right = '10px';
+            updatedBadgeEl.style.opacity = '0.8';
+
+            el.appendChild(updatedBadgeEl);
+          }
 
           let headerEl = document.createElement('div');
 
