@@ -4,8 +4,10 @@
 
   - ### Home
     - Made GooseMod section collapsible via an icon in the header
+    - Added updated badge to modules which have been updated within 5 days
     - Made new modules appearing in home pages easier, specifically without needing to click off then back to home
     - Fixed various crashes caused by switching to store from a DM
+    - Fixed clicking a page from a group DM causing member list to remain shown
 
 
 ## v8.8.0 [2021-06-05]
