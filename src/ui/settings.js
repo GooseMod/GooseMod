@@ -2549,6 +2549,7 @@ const addToHome = () => {
   const { LinkButton } = goosemodScope.webpackModules.findByProps('LinkButton');
 
   const LinkButtonClasses = goosemodScope.webpackModules.findByProps('selected', 'wrappedName');
+  const ChannelLinkButtonClasses = goosemodScope.webpackModules.findByProps('channel', 'linkButtonIcon');
   const HeaderClasses = goosemodScope.webpackModules.findByProps('headerText', 'privateChannelsHeaderContainer');
   const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
   const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto');
@@ -2604,12 +2605,19 @@ const addToHome = () => {
 
   const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
 
+  const findClassInParentTree = (el, className, depth = 0) => {
+    if (depth > 5) return false;
+
+    const parentEl = el.parentElement;
+    return parentEl.classList.contains(className) || findClassInParentTree(parentEl, className, depth + 1);
+  };
+
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
-        if (Object.values(LinkButtonClasses).includes(e.target.className.split(' ')[0]) && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins) {
+        if (e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && findClassInParentTree(e.target, ChannelLinkButtonClasses.channel)) {
           const themesEl = document.getElementById('gm-home-themes');
           themesEl.className = themesEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
 
