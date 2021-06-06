@@ -2558,7 +2558,7 @@ const addToHome = () => {
   const ThemesIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Eye'), {
     width: 24,
     height: 24
-  })
+  });
 
   const PluginsIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('InlineCode'), {
     width: 24,
@@ -2612,6 +2612,14 @@ const addToHome = () => {
     return parentEl.classList.contains(className) || findClassInParentTree(parentEl, className, depth + 1);
   };
 
+  let expanded = true;
+
+  const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
+  let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+
+  const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
+  let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
 
@@ -2634,33 +2642,68 @@ const addToHome = () => {
       });
     }, 10);
 
-    const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
-    let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
-
-    const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
-    let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
-
     res.props.children.push(
     () => React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
-    }, 'GooseMod'),
-    
+    },
+      React.createElement('span', {
+        className: HeaderClasses.headerText
+      }, 'GooseMod'),
+
+      React.createElement('div', {
+        className: `${HeaderClasses.privateChannelRecipientsInviteButtonIcon} ${IconClasses.iconWrapper} ${IconClasses.clickable}`,
+
+        style: {
+          transform: `rotate(${expanded ? '0' : '-90'}deg)`,
+          width: '22px',
+
+          left: expanded ? '0px' : '-2px',
+          top: expanded ? '-6px' : '-2px'
+        },
+
+        onClick: () => {
+          expanded = !expanded;
+
+          // Force update sidebar (jank DOM way)
+          document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusin'));
+          document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusout'));
+        }
+      },
+        React.createElement(goosemodScope.webpackModules.findByDisplayName('DropdownArrow'), {
+          className: `${IconClasses.icon}`,
+
+          width: 24,
+          height: 24
+        })
+      )
+    ),
+
     () => React.createElement(LinkButton, {
+      style: {
+        display: expanded ? 'block' : 'none'
+      },
+
       icon: () => ThemesIcon,
       onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
         // parentEl.className = '';
+
+        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
+
+        if (themeSetting[2].slice(6).length !== themeContent.children[0].children[4]) {
+          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+        }
+
+        setTimeout(() => {
+          const buttonEl = document.getElementById('gm-home-themes');
+          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
+        }, 0);
 
         if (parentEl.children.length === 1) {
           ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl.children[0], () => {
             const injectEl = document.getElementById('gm-settings-inject');
     
             if (injectEl.children[0]) injectEl.children[0].remove();
-    
-            // Regenerate if no cards (injected into sidebar before loaded)
-            if (themeContent.children[0].children[4].children.length === 0) {
-              themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
-            }
     
             injectEl.appendChild(themeContent);
           });
@@ -2683,13 +2726,6 @@ const addToHome = () => {
             injectEl.appendChild(themeContent);
           });
         }
-
-        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
-
-        setTimeout(() => {
-          const buttonEl = document.getElementById('gm-home-themes');
-          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
-        }, 0);
       },
 
       id: 'gm-home-themes',
@@ -2700,10 +2736,25 @@ const addToHome = () => {
     }),
 
     () => React.createElement(LinkButton, {
+      style: {
+        display: expanded ? 'block' : 'none'
+      },
+
       icon: () => PluginsIcon,
       onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
         // parentEl.className = '';
+
+        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
+
+        setTimeout(() => {
+          const buttonEl = document.getElementById('gm-home-plugins');
+          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
+        }, 0);
+
+        if (pluginSetting[2].slice(6).length !== pluginContent.children[0].children[4]) {
+          pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
+        }
 
         if (parentEl.children.length === 1) {
           ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl.children[0], () => {
@@ -2729,21 +2780,9 @@ const addToHome = () => {
     
             if (injectEl.children[0]) injectEl.children[0].remove();
     
-            // Regenerate if no cards (injected into sidebar before loaded)
-            if (pluginContent.children[0].children[4].children.length === 0) {
-              pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
-            }
-    
             injectEl.appendChild(pluginContent);
           });
         }
-
-        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
-
-        setTimeout(() => {
-          const buttonEl = document.getElementById('gm-home-plugins');
-          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
-        }, 0);
       },
 
       id: 'gm-home-plugins',
