@@ -10,6 +10,9 @@
     - Fixed various crashes caused by switching to store from a DM
     - Fixed clicking a page from a group DM causing member list to remain shown
 
+  - ### Webpack API [progress]
+    - Added new common module: channels
+
   - ### Fixes [fixed]
     - Fixed changelog not appearing on new update versions
 
