@@ -128,7 +128,7 @@ const init = async function () {
     this.untetheredVersion = window.gmUntethered.slice();
   }
 
-  if (this.versioning.lastUsedVersion && this.versioning.lastUsedVersion !== this.versioning.lastUsedVersion) {
+  if (this.versioning.lastUsedVersion && this.versioning.version !== this.versioning.lastUsedVersion) {
     this.goosemodChangelog.show(); // Show changelog if last GooseMod version is different than this version
   }
 
