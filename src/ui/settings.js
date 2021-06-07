@@ -2560,6 +2560,13 @@ const addToHome = () => {
     height: 24
   });
 
+  const UpdateIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Synced'), {
+    width: 24,
+    height: 24,
+
+    className: IconClasses.icon
+  });
+
   const HeaderBarContainer = goosemodScope.webpackModules.findByDisplayName('HeaderBarContainer');
 
 
@@ -2572,14 +2579,7 @@ const addToHome = () => {
     toolbar: React.createElement('div', {
       className: IconClasses.toolbar
     }, React.createElement(HeaderBarContainer.Icon, {
-        icon: () => React.createElement(goosemodScope.webpackModules.findByDisplayName('Synced'), {
-          width: 24,
-          height: 24,
-
-          className: IconClasses.icon,
-
-          id: 'gm-update-store-icon'
-        }),
+        icon: () => UpdateIcon,
 
         tooltip: goosemodScope.i18n.discordStrings.STAGE_DISCOVERY_REFRESH_ICON_LABEL,
 
