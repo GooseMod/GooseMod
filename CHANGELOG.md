@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.9.0-dev [2021-06-07]
+## v8.9.0 [2021-06-07]
 
   - ### Home
     - Made GooseMod section collapsible via an icon in the header
