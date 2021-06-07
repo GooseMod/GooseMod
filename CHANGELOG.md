@@ -9,6 +9,9 @@
     - Fixed various crashes caused by switching to store from a DM
     - Fixed clicking a page from a group DM causing member list to remain shown
 
+  - ### Fixes [fixed]
+    - Fixed changelog not appearing on new update versions
+
 
 ## v8.8.0 [2021-06-05]
 
