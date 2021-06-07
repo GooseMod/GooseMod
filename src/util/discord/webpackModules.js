@@ -52,6 +52,7 @@ const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/mod
     obj.common.i18n = obj.findByProps('Messages', '_requestedLocale');
 
     obj.common.channels = obj.findByProps('getSelectedChannelState', 'getChannelId');
+    obj.common.constants = obj.findByProps('API_HOST', 'CaptchaTypes');
   },
 
   common: {}

@@ -11,7 +11,7 @@
     - Fixed clicking a page from a group DM causing member list to remain shown
 
   - ### Webpack API [progress]
-    - Added new common module: channels
+    - Added new common modules: channels, constants
 
   - ### Fixes [fixed]
     - Fixed changelog not appearing on new update versions
