@@ -2668,8 +2668,6 @@ const addToHome = () => {
       });
     }, 10);
 
-    let currentPageTitle = document.querySelector('.title-29uC1r')?.textContent;
-
     res.props.children.push(
     () => React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
@@ -2708,7 +2706,7 @@ const addToHome = () => {
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded || currentPageTitle === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'block' : 'none'
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'block' : 'none'
       },
 
       icon: () => ThemesIcon,
@@ -2762,7 +2760,7 @@ const addToHome = () => {
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded || currentPageTitle === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins ? 'block' : 'none'
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins ? 'block' : 'none'
       },
 
       icon: () => PluginsIcon,
