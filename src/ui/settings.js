@@ -1211,7 +1211,6 @@ export const _createItem = (panelName, content) => {
           el.appendChild(bottomContainerEl);
 
           if ((currentDate - (e.lastUpdated * 1000)) / 1000 / 60 / 60 / 24 < 5) {
-            // <div class="textBadge-1iylP6 base-PmTxvP baseShapeRound-1Mm1YW" style="background-color: rgb(237, 66, 69);">NEW</div>
             const updatedBadgeEl = document.createElement('div');
 
             updatedBadgeEl.classList.add('textBadge-1iylP6', 'base-PmTxvP', 'baseShapeRound-1Mm1YW');
@@ -2196,23 +2195,6 @@ export const makeGooseModSettings = () => {
     },
 
     {
-      type: 'text-and-button',
-
-      text: 'Force Update',
-      subtext: 'Force update repos and modules',
-
-      buttonText: 'Update',
-
-      onclick: async () => {
-        goosemodScope.startLoadingScreen();
-
-        await goosemodScope.moduleStoreAPI.hotupdate(true);
-
-        goosemodScope.stopLoadingScreen();
-      }
-    },
-
-    {
       type: 'toggle',
 
       text: 'Auto Update',
@@ -2566,6 +2548,7 @@ const addToHome = () => {
   const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
   const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto');
   const HomeMiscClasses = goosemodScope.webpackModules.findByProps('headerBarContainer', 'pageContent');
+  const SpinClasses = goosemodScope.webpackModules.findByProps('updateAvailable');
 
   const ThemesIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Eye'), {
     width: 24,
@@ -2579,12 +2562,43 @@ const addToHome = () => {
 
   const HeaderBarContainer = goosemodScope.webpackModules.findByDisplayName('HeaderBarContainer');
 
+
   const makeHeader = (icon, title) => React.createElement(HeaderBarContainer, {
-    className: HomeMiscClasses.headerBarContainer
-  },
+    className: HomeMiscClasses.headerBarContainer,
+
+    isAuthenticated: true,
+    transparent: false,
+
+    toolbar: React.createElement('div', {
+      className: IconClasses.toolbar
+    }, React.createElement(HeaderBarContainer.Icon, {
+        icon: () => React.createElement(goosemodScope.webpackModules.findByDisplayName('Synced'), {
+          width: 24,
+          height: 24,
+
+          className: IconClasses.icon,
+
+          id: 'gm-update-store-icon'
+        }),
+
+        tooltip: goosemodScope.i18n.discordStrings.STAGE_DISCOVERY_REFRESH_ICON_LABEL,
+
+        onClick: async () => {
+          const svgEl = document.querySelector(`.${IconClasses.toolbar} > [role="button"] > svg`);
+          svgEl.classList.add(SpinClasses.updateAvailable);
+
+          await goosemodScope.moduleStoreAPI.hotupdate(true);
+
+          document.querySelector(`.selected-aXhQR6`).click();
+        }
+      }),
+
+      React.createElement(HeaderBarContainer.Divider)
+    ),
+
+    },
     React.createElement(HeaderBarContainer.Icon, {
       icon: () => icon,
-      'aria-label': true,
       className: IconClasses.icon
     }),
 
@@ -2654,6 +2668,8 @@ const addToHome = () => {
       });
     }, 10);
 
+    let currentPageTitle = document.querySelector('.title-29uC1r')?.textContent;
+
     res.props.children.push(
     () => React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
@@ -2692,7 +2708,7 @@ const addToHome = () => {
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded ? 'block' : 'none'
+        display: expanded || currentPageTitle === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'block' : 'none'
       },
 
       icon: () => ThemesIcon,
@@ -2725,6 +2741,8 @@ const addToHome = () => {
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
           const indexOffset = parentEl.children.length - 2;
+
+          parentEl.children[indexOffset + 0].className = '';
           ReactDOM.render(makeHeader(ThemesIcon, 'themes'), parentEl.children[indexOffset + 0]);
           
           if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
@@ -2744,7 +2762,7 @@ const addToHome = () => {
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded ? 'block' : 'none'
+        display: expanded || currentPageTitle === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins ? 'block' : 'none'
       },
 
       icon: () => PluginsIcon,
@@ -2781,6 +2799,8 @@ const addToHome = () => {
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
           const indexOffset = parentEl.children.length - 2;
+
+          parentEl.children[indexOffset + 0].className = '';
           ReactDOM.render(makeHeader(PluginsIcon, 'plugins'), parentEl.children[indexOffset + 0]);
           
           if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
