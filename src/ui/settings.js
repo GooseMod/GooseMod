@@ -2804,7 +2804,7 @@ const addToHome = () => {
         }
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
-          const indexOffset = parentEl.children.length - 2;
+          let indexOffset = parentEl.children.length - 2;
 
           // Library has jank scroll elements so implement edge case
           const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE');
