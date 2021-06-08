@@ -2757,6 +2757,7 @@ const addToHome = () => {
             indexOffset = 1;
 
             parentEl.children[indexOffset + 1].className = '';
+            parentEl.children[indexOffset + 1].style.overflow = 'hidden';
           }
 
           ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
