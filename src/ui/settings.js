@@ -2742,8 +2742,8 @@ const addToHome = () => {
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
           let indexOffset = parentEl.children.length - 2;
 
-          // Library has jank elements so implement edge case
-          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE')
+          // Library has jank scroll elements so implement edge case
+          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE');
           if (isLibrary) indexOffset = 0;
 
           parentEl.children[indexOffset + 0].className = '';
@@ -2806,12 +2806,18 @@ const addToHome = () => {
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
           const indexOffset = parentEl.children.length - 2;
 
+          // Library has jank scroll elements so implement edge case
+          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE');
+          if (isLibrary) indexOffset = 0;
+
           parentEl.children[indexOffset + 0].className = '';
           ReactDOM.render(makeHeader(PluginsIcon, 'plugins'), parentEl.children[indexOffset + 0]);
           
           if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
             parentEl.children[indexOffset + 1].children[1].style.display = 'none';
           }
+
+          if (isLibrary) indexOffset = 1;
 
           ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
         }
