@@ -2614,7 +2614,7 @@ const addToHome = () => {
       backgroundColor: 'var(--background-primary)',
 
       height: '100%',
-      overflow: 'hidden scroll'
+      overflow: !isLibrary ? 'hidden scroll' : ''
     }
   });
 
