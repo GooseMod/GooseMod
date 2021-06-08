@@ -2740,7 +2740,8 @@ const addToHome = () => {
         }
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
-          const indexOffset = parentEl.children.length - 2;
+          let indexOffset = parentEl.children.length - 2;
+          if (parentEl.children[0].classList.contains('libraryHeader-3g95kE')) indexOffset = 0;
 
           parentEl.children[indexOffset + 0].className = '';
           ReactDOM.render(makeHeader(ThemesIcon, 'themes'), parentEl.children[indexOffset + 0]);
