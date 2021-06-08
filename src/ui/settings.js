@@ -2753,12 +2753,7 @@ const addToHome = () => {
             parentEl.children[indexOffset + 1].children[1].style.display = 'none';
           }
 
-          if (isLibrary) {
-            indexOffset = 1;
-
-            // parentEl.children[indexOffset + 1].className = '';
-            // parentEl.children[indexOffset + 1].style.overflow = 'hidden';
-          }
+          if (isLibrary) indexOffset = 1;
 
           ReactDOM.render(makeContent(isLibrary), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
         }
@@ -2822,13 +2817,9 @@ const addToHome = () => {
             parentEl.children[indexOffset + 1].children[1].style.display = 'none';
           }
 
-          if (isLibrary) {
-            indexOffset = 1;
+          if (isLibrary) indexOffset = 1;
 
-            parentEl.children[indexOffset + 1].className = '';
-          }
-
-          ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
+          ReactDOM.render(makeContent(isLibrary), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
         }
       },
 
