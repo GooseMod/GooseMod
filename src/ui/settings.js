@@ -2720,6 +2720,8 @@ const addToHome = () => {
           themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
         }
 
+        console.log('honk', parentEl);
+
         setTimeout(() => {
           const buttonEl = document.getElementById('gm-home-themes');
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
