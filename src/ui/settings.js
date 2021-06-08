@@ -2560,7 +2560,7 @@ const addToHome = () => {
     height: 24
   });
 
-  const UpdateIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Synced'), {
+  const UpdateIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Retry'), {
     width: 24,
     height: 24,
 
