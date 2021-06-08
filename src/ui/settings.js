@@ -2605,8 +2605,8 @@ const addToHome = () => {
     React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title])
   );
 
-  const makeContent = () => React.createElement('div', {
-    className: `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}`,
+  const makeContent = (isLibrary) => React.createElement('div', {
+    className: !isLibrary ? `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}` : '',
     id: 'gm-settings-inject',
 
     style: {
@@ -2756,11 +2756,11 @@ const addToHome = () => {
           if (isLibrary) {
             indexOffset = 1;
 
-            parentEl.children[indexOffset + 1].className = '';
-            parentEl.children[indexOffset + 1].style.overflow = 'hidden';
+            // parentEl.children[indexOffset + 1].className = '';
+            // parentEl.children[indexOffset + 1].style.overflow = 'hidden';
           }
 
-          ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
+          ReactDOM.render(makeContent(isLibrary), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
         }
       },
 
