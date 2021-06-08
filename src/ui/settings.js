@@ -2741,7 +2741,10 @@ const addToHome = () => {
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
           let indexOffset = parentEl.children.length - 2;
-          if (parentEl.children[0].classList.contains('libraryHeader-3g95kE')) indexOffset = 0;
+
+          // Library has jank elements so implement edge case
+          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE')
+          if (isLibrary) indexOffset = 0;
 
           parentEl.children[indexOffset + 0].className = '';
           ReactDOM.render(makeHeader(ThemesIcon, 'themes'), parentEl.children[indexOffset + 0]);
@@ -2749,6 +2752,8 @@ const addToHome = () => {
           if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
             parentEl.children[indexOffset + 1].children[1].style.display = 'none';
           }
+
+          if (isLibrary) indexOffset = 1;
 
           ReactDOM.render(makeContent(), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
         }
