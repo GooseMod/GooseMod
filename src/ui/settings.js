@@ -2743,7 +2743,7 @@ const addToHome = () => {
           let indexOffset = parentEl.children.length - 2;
 
           // Library has jank scroll elements so implement edge case
-          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE');
+          const isLibrary = parentEl.children[indexOffset + 1].classList.contains('stickyScroller-24zUyY');
           if (isLibrary) indexOffset = 0;
 
           parentEl.children[indexOffset + 0].className = '';
@@ -2807,7 +2807,7 @@ const addToHome = () => {
           let indexOffset = parentEl.children.length - 2;
 
           // Library has jank scroll elements so implement edge case
-          const isLibrary = parentEl.children[0].classList.contains('libraryHeader-3g95kE');
+          const isLibrary = parentEl.children[indexOffset + 1].classList.contains('stickyScroller-24zUyY');
           if (isLibrary) indexOffset = 0;
 
           parentEl.children[indexOffset + 0].className = '';
