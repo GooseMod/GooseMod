@@ -1,5 +1,10 @@
 # GooseMod Changelog
 
+## v8.10.0-dev [2021-06-09]
+
+  - ### Store
+    - Added shadow to cards
+
 ## v8.9.0 [2021-06-07]
 
   - ### Home

@@ -708,7 +708,7 @@ export const _createItem = (panelName, content) => {
 
           //if (e.class) el.classList.add(e.class);
 
-
+          el.style.boxShadow = 'var(--elevation-medium)';
           el.style.backgroundColor = 'var(--background-secondary)';
 
           el.style.borderRadius = '8px';
