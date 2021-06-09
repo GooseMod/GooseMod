@@ -9,6 +9,7 @@
     - Made new modules appearing in home pages easier, specifically without needing to click off then back to home
     - Fixed various crashes caused by switching to store from a DM or library
     - Fixed clicking a page from a group DM causing member list to remain shown
+    - Fixed clicking button icons not properly opening store pages
 
   - ### Webpack API [progress]
     - Added new common modules: channels, constants

@@ -2635,7 +2635,7 @@ const addToHome = () => {
     if (depth > 5) return false;
 
     const parentEl = el.parentElement;
-    return parentEl.classList.contains(className) || findClassInParentTree(parentEl, className, depth + 1);
+    return (parentEl.classList.contains(className) && parentEl) || findClassInParentTree(parentEl, className, depth + 1);
   };
 
   let expanded = true;
@@ -2651,7 +2651,8 @@ const addToHome = () => {
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
-        if (e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && e.target.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && findClassInParentTree(e.target, ChannelLinkButtonClasses.channel)) {
+        const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.channel);
+        if (buttonEl && buttonEl.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && buttonEl.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins) {
           const themesEl = document.getElementById('gm-home-themes');
           themesEl.className = themesEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
 
@@ -2710,17 +2711,14 @@ const addToHome = () => {
       },
 
       icon: () => ThemesIcon,
-      onClick: () => {
+      onFocus: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-        // parentEl.className = '';
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
         if (themeSetting[2].slice(6).length !== themeContent.children[0].children[4]) {
           themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
         }
-
-        console.log('honk', parentEl);
 
         setTimeout(() => {
           const buttonEl = document.getElementById('gm-home-themes');
@@ -2772,9 +2770,8 @@ const addToHome = () => {
       },
 
       icon: () => PluginsIcon,
-      onClick: () => {
+      onFocus: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-        // parentEl.className = '';
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
