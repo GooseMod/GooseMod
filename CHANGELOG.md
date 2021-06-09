@@ -5,6 +5,7 @@
   - ### Store
     - Added shadow to cards
 
+
 ## v8.9.0 [2021-06-07]
 
   - ### Home
