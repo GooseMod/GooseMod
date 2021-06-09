@@ -2711,7 +2711,7 @@ const addToHome = () => {
       },
 
       icon: () => ThemesIcon,
-      onFocus: () => {
+      onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
@@ -2770,7 +2770,7 @@ const addToHome = () => {
       },
 
       icon: () => PluginsIcon,
-      onFocus: () => {
+      onClick: () => {
         const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
