@@ -241,10 +241,7 @@ export default {
     //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
     let allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
 
-    allItems = allItems.map((x) => {
-      x[2] = x[2].slice(0, 6);
-      return x;
-    });
+    allItems = allItems.filter((x) => x.type !== 'card');
 
     // allItems.forEach((x) => x[2].slice(0, 5));
     //item[2] = item[2].slice(0, 5);

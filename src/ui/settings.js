@@ -183,6 +183,533 @@ export const _createItem = (panelName, content) => {
       document.querySelector('.contentColumnDefault-1VQkGM').style.transition = '0.5s max-width'; */
     }
 
+    const makeCard = (e) => {
+      let el = document.createElement('div');
+
+      if (e.tags) e.tags.forEach((x) => el.classList.add(x.replace(/ /g, '|')));
+
+      //if (e.class) el.classList.add(e.class);
+
+      el.style.boxShadow = 'var(--elevation-medium)';
+      el.style.backgroundColor = 'var(--background-secondary)';
+
+      el.style.borderRadius = '8px';
+      el.style.boxSizing = 'border-box';
+
+      el.style.padding = '12px';
+      el.style.margin = '10px';
+
+      el.style.width = '330px';
+      el.style.height = '380px';
+
+      el.style.position = 'relative';
+
+      let headerEl = document.createElement('div');
+
+      const hasImage = e.images && e.images[0];
+
+      headerEl.style.backgroundImage = hasImage ? `url("${e.images[0]}")` : '';
+      headerEl.style.width = 'calc(100% + 24px)';
+      headerEl.style.height = '200px';
+      headerEl.style.borderRadius = '8px 8px 0 0';
+
+      headerEl.style.marginTop = '-12px';
+      headerEl.style.marginLeft = '-12px';
+
+      headerEl.style.backgroundColor = 'var(--background-secondary-alt)';
+      headerEl.style.backgroundRepeat = 'no-repeat';
+      headerEl.style.backgroundSize = 'contain';
+      headerEl.style.backgroundPosition = '50%';
+
+      if (!hasImage) {
+        headerEl.textContent = 'No Preview';
+
+        headerEl.style.textAlign = 'center';
+        headerEl.style.lineHeight = '200px';
+
+        headerEl.style.color = 'var(--interactive-normal)';
+        headerEl.style.fontFamily = 'var(--font-display)';
+        headerEl.style.fontSize = '36px';
+      }
+
+      el.appendChild(headerEl);
+
+      let authorEl = document.createElement('div');
+
+      authorEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+
+      authorEl.style.position = 'absolute';
+      authorEl.style.top = '152px';
+      authorEl.style.right = '10px';
+
+      authorEl.style.opacity = '0.95';
+
+      authorEl.style.borderRadius = '16px';
+
+      if (e.author.includes('avatar')) { // Has pfps
+        authorEl.style.paddingRight = '10px';
+      } else { // Does not have pfps
+        authorEl.style.padding = '4px 8px';
+      }
+
+      authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+      authorEl.style.width = 'fit-content';
+
+      authorEl.innerHTML = e.author;
+
+      el.appendChild(authorEl);
+
+      let checked = e.isToggled();
+
+      let toggleEl = document.createElement('div');
+      toggleEl.classList.add('control-2BBjec');
+      
+      let offHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(114, 118, 125);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: -3px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(114, 118, 125, 1)" d="M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z"></path><path fill="rgba(114, 118, 125, 1)" d="M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
+      let onHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(67, 181, 129);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: 12px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(67, 181, 129, 1)" d="M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z"></path><path fill="rgba(67, 181, 129, 1)" d="M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
+
+      toggleEl.innerHTML = checked ? onHTML : offHTML;
+
+      let fn = () => {
+        checked = !checked;
+
+        if (checked) {
+          toggleEl.innerHTML = onHTML;
+        } else {
+          toggleEl.innerHTML = offHTML;
+        }
+
+        e.onToggle(checked, el);
+      };
+
+      toggleEl.onclick = fn;
+
+      toggleEl.style.display = e.showToggle ? 'block' : 'none';
+
+      toggleEl.style.marginTop = '4px';
+
+      toggleEl.style.position = 'absolute';
+      toggleEl.style.right = '-10px';
+
+      let txtEl = document.createElement('span');
+      
+      txtEl.style.cursor = 'auto';
+
+      txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+      txtEl.style.marginTop = '10px';
+
+      txtEl.style.width = '85%';
+
+      txtEl.style.overflow = 'hidden';
+      txtEl.style.display = '-webkit-box';
+      txtEl.style.webkitLineClamp = '1';
+      txtEl.style.webkitBoxOrient = 'vertical';
+
+      txtEl.innerHTML = e.name;
+
+      let buttonEl = document.createElement('div');
+      buttonEl.classList.add('button-38aScr', e.buttonType === 'danger' ? 'lookOutlined-3sRXeN' : 'lookFilled-1Gx00P', e.buttonType === 'danger' ? 'colorRed-1TFJan' : 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+      buttonEl.onclick = () => {
+        e.onclick(buttonEl);
+      };
+
+      buttonEl.style.display = 'inline-flex';
+
+      buttonEl.style.cursor = 'pointer';
+
+      buttonEl.style.width = '90px';
+
+      let contentsEl = document.createElement('div');
+
+      contentsEl.classList.add('contents-18-Yxp');
+
+      contentsEl.textContent = e.buttonText;
+
+      buttonEl.appendChild(contentsEl);
+
+      el.appendChild(txtEl);
+
+      if (e.subtext) {
+        let subtextEl = document.createElement('div');
+
+        subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
+
+        subtextEl.style.width = '85%';
+        subtextEl.style.marginTop = '5px';
+
+        subtextEl.style.overflow = 'hidden';
+        subtextEl.style.display = '-webkit-box';
+        subtextEl.style.webkitLineClamp = '3';
+        subtextEl.style.webkitBoxOrient = 'vertical';
+
+        subtextEl.onclick = () => {
+          const { React } = goosemodScope.webpackModules.common;
+
+          const moduleName = txtEl.childNodes[0].textContent;
+
+          const authorsEl = txtEl.cloneNode(true);
+          authorsEl.innerHTML = authorEl.innerHTML;
+
+          const betterDescEl = subtextEl.cloneNode(true);
+          betterDescEl.className = 'titleDefault-a8-ZSr title-31JmR4';
+          betterDescEl.style.pointer = 'auto';
+          betterDescEl.style.width = '';
+          betterDescEl.style.webkitLineClamp = '5';
+
+          betterDescEl.style.cursor = 'default';
+          betterDescEl.onclick = undefined;
+
+          betterDescEl.style.marginBottom = '10px';
+
+          const extraInfoEl = bottomRightContainerEl.cloneNode(true);
+          extraInfoEl.style.marginLeft = '';
+          extraInfoEl.style.flexDirection = 'row';
+
+          extraInfoEl.style.position = '';
+          extraInfoEl.style.top = '';
+          extraInfoEl.style.right = '';
+
+          extraInfoEl.style.marginBottom = '16px';
+          extraInfoEl.style.marginTop = '-5px';
+
+          [...extraInfoEl.children].forEach((x) => { x.style.marginRight = '20px' });
+
+          extraInfoEl.children[0].style.display = 'flex';
+          extraInfoEl.children[0].style.alignItems = 'flex-end';
+
+          extraInfoEl.children[0].style.position = '';
+          extraInfoEl.children[0].style.top = '';
+
+          extraInfoEl.children[0].style.marginBottom = '10px';
+
+          extraInfoEl.children[1].style.marginTop = '4px';
+
+          const imagesEl = document.createElement('div');
+
+          if (e.images && e.images.length > 0) {
+            // imagesEl.style.overflow = 'hidden';
+
+            extraInfoEl.style.marginBottom = '25px';
+
+            const controlLeftEl = document.createElement('a');
+            controlLeftEl.textContent = '❮';
+
+            const controlRightEl = document.createElement('a');
+            controlRightEl.textContent = '❯';
+
+            for (const c of [controlLeftEl, controlRightEl]) {
+              c.style.color = 'white';
+              c.style.fontWeight = 'bold';
+              c.style.fontSize = '20px';
+              c.style.borderRadius = '0 3px 3px 0';
+              c.style.userSelect = 'none';
+              c.style.padding = '14px';
+              c.style.cursor = 'pointer';
+              c.style.position = 'absolute';
+              c.style.width = 'auto';
+
+              c.style.backgroundColor = 'rgba(0, 0, 0, .3)';
+
+              c.style.top = '50%';
+              c.style.transform = 'translateY(-50%)';
+            }
+            
+            controlLeftEl.style.left = '0';
+
+            controlRightEl.style.right = '0';
+            controlRightEl.style.borderRadius = '3px 0 0 3px';
+
+            /*const updateShown = () => {
+              imgEls.forEach((x) => { x.style.display = 'none'; });
+
+              imgEls[currentImage].style.display = 'block';
+            };*/
+
+            let currentImage = 0;
+
+            controlLeftEl.onclick = () => { // https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp
+              const oldCurrent = currentImage;
+              imgEls[oldCurrent].style.marginLeft = '120%';
+
+              imgEls[oldCurrent].style.position = 'absolute';
+              imgEls[oldCurrent].style.top = '0';
+              imgEls[oldCurrent].style.left = '0';
+
+              currentImage--;
+
+              if (currentImage < 0) currentImage = e.images.length - 1;
+
+              imgEls[currentImage].style.transition = '';
+              imgEls[currentImage].style.marginLeft = '-120%';
+              
+              setTimeout(() => {
+                imgEls[currentImage].style.transition = 'all 1s';
+                imgEls[currentImage].style.marginLeft = '';
+              }, 10);
+
+              imgEls[currentImage].style.display = 'block';
+
+              imgEls[currentImage].style.position = '';
+            };
+
+            controlRightEl.onclick = () => {
+              const oldCurrent = currentImage;
+              imgEls[oldCurrent].style.marginLeft = '-120%';
+              // setTimeout(() => { imgEls[oldCurrent].style.display = 'none'; }, 1000);
+
+              imgEls[oldCurrent].style.position = 'absolute';
+              imgEls[oldCurrent].style.top = '0';
+              imgEls[oldCurrent].style.left = '0';
+
+              currentImage++;
+
+              if (currentImage >= e.images.length) currentImage = 0;
+
+              imgEls[currentImage].style.transition = '';
+              imgEls[currentImage].style.marginLeft = '120%';
+              
+              setTimeout(() => {
+                imgEls[currentImage].style.transition = 'all 1s';
+                imgEls[currentImage].style.marginLeft = '';
+              }, 10);
+
+              imgEls[currentImage].style.display = 'block';
+
+              imgEls[currentImage].style.position = '';
+            };
+
+            const imgEls = [];
+
+            let imgInd = 0;
+            for (const url of e.images) {
+              imagesEl.style.position = 'relative';
+
+              const currentEl = document.createElement('img');
+              currentEl.src = url;
+            
+              currentEl.style.width = '100%';
+              currentEl.style.height = '300px';
+              currentEl.style.objectFit = 'contain';
+              currentEl.style.backgroundColor = 'var(--background-secondary)';
+              currentEl.style.boxShadow = 'var(--elevation-medium)';
+
+              currentEl.style.borderRadius = '8px';
+
+              currentEl.style.transition = 'all 1s';
+
+              // currentEl.style.display = 'inline-block';
+
+              if (imgInd !== currentImage) currentEl.style.display = 'none';
+
+              imgEls.push(currentEl);
+
+              imagesEl.appendChild(currentEl);
+
+              imgInd++;
+            }
+
+            imagesEl.appendChild(controlLeftEl);
+            imagesEl.appendChild(controlRightEl);
+
+            imagesEl.style.marginBottom = '16px';
+          }
+
+          const ModalStuff = goosemodScope.webpackModules.findByProps('ModalRoot');
+          const FormStuff = goosemodScope.webpackModules.findByProps('FormTitle');
+
+          class RawDOMContainer extends React.Component {
+            constructor(props) {
+              super(props);
+            }
+
+            render() {
+              return React.createElement("div", {
+                ref: (ref) => ref?.appendChild(this.props.dom)
+              });
+            }
+          }
+
+          goosemodScope.webpackModules.findByProps("openModal").openModal((e) => {
+            return React.createElement(ModalStuff.ModalRoot, {
+                transitionState: e.transitionState
+              }, 
+              React.createElement(ModalStuff.ModalHeader, {},
+                React.createElement(FormStuff.FormTitle, { tag: 'h4'},
+                  moduleName,
+                  React.createElement(RawDOMContainer, {
+                    dom: authorsEl
+                  })
+                ),
+                React.createElement('FlexChild', {
+                    basis: 'auto',
+                    grow: 0,
+                    shrink: 1,
+                    wrap: false
+                  },
+                  React.createElement(ModalStuff.ModalCloseButton, {
+                    onClick: e.onClose
+                    })
+                )
+              ),
+      
+              React.createElement(ModalStuff.ModalContent, {},
+                React.createElement(RawDOMContainer, {
+                  dom: betterDescEl
+                }),
+                React.createElement(RawDOMContainer, {
+                  dom: extraInfoEl
+                }),
+                React.createElement(RawDOMContainer, {
+                  dom: imagesEl
+                })
+              )
+            );
+          });
+        };
+
+        subtextEl.textContent = e.subtext;
+
+        subtextEl.style.clear = 'both';
+
+        el.appendChild(subtextEl);
+      };
+
+      let bottomContainerEl = document.createElement('div');
+
+      bottomContainerEl.style.position = 'absolute';
+      bottomContainerEl.style.bottom = '12px';
+      bottomContainerEl.style.width = 'calc(100% - 32px)';
+
+      bottomContainerEl.style.display = 'flex';
+      bottomContainerEl.style.gap = '5px';
+
+      bottomContainerEl.appendChild(buttonEl);
+
+      bottomContainerEl.appendChild(toggleEl);
+
+      let bottomRightContainerEl = document.createElement('div');
+
+      bottomRightContainerEl.style.display = 'flex';
+      bottomRightContainerEl.style.alignItems = 'center';
+      bottomRightContainerEl.style.flexDirection = 'column';
+
+      bottomRightContainerEl.style.order = '2';
+      bottomRightContainerEl.style.marginLeft = 'auto';
+
+      bottomRightContainerEl.style.position = 'absolute';
+      bottomRightContainerEl.style.top = '208px';
+      bottomRightContainerEl.style.right = '12px';
+
+      // bottomContainerEl.appendChild(bottomRightContainerEl);
+      el.appendChild(bottomRightContainerEl);
+
+      if (e.github) {
+        const repoEl = document.createElement('div');
+        // repoEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+        // repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
+        repoEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorGrey-2DXtkV', 'sizeSmall-2cSMqn', 'grow-q77ONN');
+
+        // repoEl.href = `https://github.com/${e.github.repo}`;
+        // repoEl.target = '_blank';
+
+        // repoEl.style.position = 'relative';
+        repoEl.style.marginLeft = '14px';
+
+        repoEl.style.minWidth = '0px';
+        repoEl.style.padding = '2px 5px';
+
+        repoEl.style.color = '#ddd';
+
+        repoEl.onclick = () => {
+          window.open(`https://github.com/${e.github.repo}`);
+        };
+
+        // repoEl.style.top = '5px';
+
+        // repoEl.style.cursor = 'pointer';
+
+        /* buttonEl.onclick = () => {
+          e.onclick(buttonEl);
+        }; */
+
+        repoEl.style.display = 'inline-flex';
+
+        repoEl.style.cursor = 'pointer';
+
+        // repoEl.style.width = '90px';
+
+        let repoContentsEl = document.createElement('div');
+
+        repoContentsEl.classList.add('contents-18-Yxp');
+
+        repoContentsEl.style.position = 'relative';
+        repoContentsEl.style.top = '1px';
+
+        repoContentsEl.innerHTML = `<svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+
+        repoEl.appendChild(repoContentsEl);
+
+        const starsEl = document.createElement('div');
+
+        starsEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
+
+        const starsIconEl = document.createElement('span');
+        starsIconEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`; //`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.326 18.266l-4.326-2.314-4.326 2.313.863-4.829-3.537-3.399 4.86-.671 2.14-4.415 2.14 4.415 4.86.671-3.537 3.4.863 4.829z"/></svg>`;
+        starsIconEl.style.position = 'relative';
+        starsIconEl.style.top = '8px'; // '9px';
+        starsIconEl.style.marginLeft = '5px';
+
+        const starsAmountEl = document.createElement('span');
+        starsAmountEl.style.position = 'relative';
+        starsAmountEl.style.top = '7px';
+
+        starsAmountEl.style.fontSize = '18px';
+        starsAmountEl.style.fontWeight = '600';
+
+        starsAmountEl.textContent = e.github.stars;
+
+        starsEl.appendChild(starsAmountEl);
+        starsEl.appendChild(starsIconEl);
+
+        bottomContainerEl.appendChild(repoEl);
+
+        bottomRightContainerEl.appendChild(starsEl);
+      }
+
+      if (e.subtext2) {
+        let subtext2El = document.createElement('div');
+
+        subtext2El.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
+
+        subtext2El.textContent = e.subtext2;
+
+        subtext2El.style.marginTop = '20px';
+
+        bottomRightContainerEl.appendChild(subtext2El);
+      }
+
+      el.appendChild(bottomContainerEl);
+
+      if ((currentDate - (e.lastUpdated * 1000)) / 1000 / 60 / 60 / 24 < 5) {
+        const updatedBadgeEl = document.createElement('div');
+
+        updatedBadgeEl.classList.add('textBadge-1iylP6', 'base-PmTxvP', 'baseShapeRound-1Mm1YW');
+        updatedBadgeEl.style.backgroundColor = 'var(--brand-experiment)';
+
+        updatedBadgeEl.textContent = 'UPDATED';
+
+        updatedBadgeEl.style.position = 'absolute';
+        updatedBadgeEl.style.top = '10px';
+        updatedBadgeEl.style.right = '10px';
+        updatedBadgeEl.style.opacity = '0.8';
+
+        el.appendChild(updatedBadgeEl);
+      }
+
+      return el;
+    };
+
     let i = 0;
     for (let e of content.slice(1)) {
       let el;
@@ -701,530 +1228,65 @@ export const _createItem = (panelName, content) => {
           break;
         }
 
-        case 'card': {
+        case 'store-header': {
           el = document.createElement('div');
+          el.classList.add('headerContainer-1Wluzl');
 
-          if (e.tags) e.tags.forEach((x) => el.classList.add(x.replace(/ /g, '|')));
+          el.style.marginBottom = '0';
 
-          //if (e.class) el.classList.add(e.class);
+          const headerContentEl = document.createElement('div');
+          headerContentEl.classList.add('colorHeaderPrimary-26Jzh-', 'size20-17Iy80', 'pageHeader-3nuK1W');
 
-          el.style.boxShadow = 'var(--elevation-medium)';
-          el.style.backgroundColor = 'var(--background-secondary)';
-
-          el.style.borderRadius = '8px';
-          el.style.boxSizing = 'border-box';
-
-          el.style.padding = '12px';
-          el.style.margin = '10px';
-
-          el.style.width = '330px';
-          el.style.height = '380px';
-
-          el.style.position = 'relative';
-
-          let headerEl = document.createElement('div');
-
-          const hasImage = e.images && e.images[0];
+          headerContentEl.textContent = e.text;
   
-          headerEl.style.backgroundImage = hasImage ? `url("${e.images[0]}")` : '';
-          headerEl.style.width = 'calc(100% + 24px)';
-          headerEl.style.height = '200px';
-          headerEl.style.borderRadius = '8px 8px 0 0';
+          el.appendChild(headerContentEl);
 
-          headerEl.style.marginTop = '-12px';
-          headerEl.style.marginLeft = '-12px';
+          break;
+        }
 
-          headerEl.style.backgroundColor = 'var(--background-secondary-alt)';
-          headerEl.style.backgroundRepeat = 'no-repeat';
-          headerEl.style.backgroundSize = 'contain';
-          headerEl.style.backgroundPosition = '50%';
+        case 'store-category': {
+          el = document.createElement('div');
+          el.classList.add('storeCategory');
 
-          if (!hasImage) {
-            headerEl.textContent = 'No Preview';
+          el.style.width = '100%';
 
-            headerEl.style.textAlign = 'center';
-            headerEl.style.lineHeight = '200px';
+          // <div class="headerContainer-1Wluzl"><div class="colorHeaderPrimary-26Jzh- size20-17Iy80 pageHeader-3nuK1W">Live Stages</div></div>
+          const headerEl = document.createElement('div');
+          headerEl.classList.add('headerContainer-1Wluzl');
 
-            headerEl.style.color = 'var(--interactive-normal)';
-            headerEl.style.fontFamily = 'var(--font-display)';
-            headerEl.style.fontSize = '36px';
-          }
+          headerEl.style.marginBottom = '0';
+
+          const headerContentEl = document.createElement('div');
+          headerContentEl.classList.add('colorHeaderPrimary-26Jzh-', 'size20-17Iy80', 'pageHeader-3nuK1W');
+
+          headerContentEl.textContent = e.text;
+  
+          headerEl.appendChild(headerContentEl);
 
           el.appendChild(headerEl);
 
-          let authorEl = document.createElement('div');
+          const cardsEl = document.createElement('div');
+          cardsEl.classList.add('scrollerBase-289Jih', 'auto-Ge5KZx', 'scrollerBase-289Jih');
 
-          authorEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
+          cardsEl.style.display = 'grid';
+          cardsEl.style.overflowX = 'scroll';
 
-          authorEl.style.position = 'absolute';
-          authorEl.style.top = '152px';
-          authorEl.style.right = '10px';
+          cardsEl.style.gridTemplateColumns = 'repeat(auto-fill, 350px)';
+          cardsEl.style.gridAutoFlow = 'column';
 
-          authorEl.style.opacity = '0.95';
+          cardsEl.style.width = '100%';
 
-          authorEl.style.borderRadius = '16px';
-
-          if (e.author.includes('avatar')) { // Has pfps
-            authorEl.style.paddingRight = '10px';
-          } else { // Does not have pfps
-            authorEl.style.padding = '4px 8px';
-          }
-
-          authorEl.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-
-          authorEl.style.width = 'fit-content';
-
-          authorEl.innerHTML = e.author;
-
-          el.appendChild(authorEl);
-
-          let checked = e.isToggled();
-
-          let toggleEl = document.createElement('div');
-          toggleEl.classList.add('control-2BBjec');
+          const cards = content.filter((x) => x.type === 'card').sort(e.sort);
           
-          let offHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(114, 118, 125);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: -3px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(114, 118, 125, 1)" d="M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z"></path><path fill="rgba(114, 118, 125, 1)" d="M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
-          let onHTML = '<div class="container-3auIfb" tabindex="-1" style="opacity: 1; background-color: rgb(67, 181, 129);"><svg class="slider-TkfMQL" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet" style="left: 12px;"><rect fill="white" x="4" y="0" height="20" width="20" rx="10"></rect><svg viewBox="0 0 20 20" fill="none"><path fill="rgba(67, 181, 129, 1)" d="M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z"></path><path fill="rgba(67, 181, 129, 1)" d="M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z"></path></svg></svg><input id="uid_328" type="checkbox" class="input-rwLH4i" tabindex="0"></div>';
+          cardsEl.append(...cards.slice(0, 8).map((x) => makeCard(x)));
 
-          toggleEl.innerHTML = checked ? onHTML : offHTML;
+          el.appendChild(cardsEl);
 
-          let fn = () => {
-            checked = !checked;
+          break;
+        }
 
-            if (checked) {
-              toggleEl.innerHTML = onHTML;
-            } else {
-              toggleEl.innerHTML = offHTML;
-            }
-
-            e.onToggle(checked, el);
-          };
-
-          toggleEl.onclick = fn;
-
-          toggleEl.style.display = e.showToggle ? 'block' : 'none';
-
-          toggleEl.style.marginTop = '4px';
-
-          toggleEl.style.position = 'absolute';
-          toggleEl.style.right = '-10px';
-
-          let txtEl = document.createElement('span');
-          
-          txtEl.style.cursor = 'auto';
-
-          txtEl.classList.add('titleDefault-a8-ZSr', 'title-31JmR4');
-
-          txtEl.style.overflow = 'hidden';
-          txtEl.style.display = '-webkit-box';
-          txtEl.style.webkitLineClamp = '1';
-          txtEl.style.webkitBoxOrient = 'vertical';
-
-          txtEl.style.marginTop = '10px';
-
-          txtEl.innerHTML = e.name;
-
-          txtEl.style.width = '85%';
-
-          let buttonEl = document.createElement('div');
-          buttonEl.classList.add('button-38aScr', e.buttonType === 'danger' ? 'lookOutlined-3sRXeN' : 'lookFilled-1Gx00P', e.buttonType === 'danger' ? 'colorRed-1TFJan' : 'colorBrand-3pXr91', 'sizeSmall-2cSMqn', 'grow-q77ONN');
-
-          buttonEl.onclick = () => {
-            e.onclick(buttonEl);
-          };
-
-          buttonEl.style.display = 'inline-flex';
-
-          buttonEl.style.cursor = 'pointer';
-
-          buttonEl.style.width = '90px';
-
-          let contentsEl = document.createElement('div');
-
-          contentsEl.classList.add('contents-18-Yxp');
-
-          contentsEl.textContent = e.buttonText;
-
-          buttonEl.appendChild(contentsEl);
-
-          el.appendChild(txtEl);
-
-          if (e.subtext) {
-            let subtextEl = document.createElement('div');
-
-            subtextEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
-
-            subtextEl.style.width = '85%';
-            subtextEl.style.marginTop = '5px';
-
-            subtextEl.style.overflow = 'hidden';
-            subtextEl.style.display = '-webkit-box';
-            subtextEl.style.webkitLineClamp = '3';
-            subtextEl.style.webkitBoxOrient = 'vertical';
-
-            subtextEl.onclick = () => {
-              const { React } = goosemodScope.webpackModules.common;
-
-              const moduleName = txtEl.childNodes[0].textContent;
-
-              const authorsEl = txtEl.cloneNode(true);
-              authorsEl.innerHTML = authorEl.innerHTML;
-
-              const betterDescEl = subtextEl.cloneNode(true);
-              betterDescEl.className = 'titleDefault-a8-ZSr title-31JmR4';
-              betterDescEl.style.pointer = 'auto';
-              betterDescEl.style.width = '';
-              betterDescEl.style.webkitLineClamp = '5';
-
-              betterDescEl.style.cursor = 'default';
-              betterDescEl.onclick = undefined;
-
-              betterDescEl.style.marginBottom = '10px';
-
-              const extraInfoEl = bottomRightContainerEl.cloneNode(true);
-              extraInfoEl.style.marginLeft = '';
-              extraInfoEl.style.flexDirection = 'row';
-
-              extraInfoEl.style.position = '';
-              extraInfoEl.style.top = '';
-              extraInfoEl.style.right = '';
-
-              extraInfoEl.style.marginBottom = '16px';
-              extraInfoEl.style.marginTop = '-5px';
-
-              [...extraInfoEl.children].forEach((x) => { x.style.marginRight = '20px' });
-
-              extraInfoEl.children[0].style.display = 'flex';
-              extraInfoEl.children[0].style.alignItems = 'flex-end';
-
-              extraInfoEl.children[0].style.position = '';
-              extraInfoEl.children[0].style.top = '';
-
-              extraInfoEl.children[0].style.marginBottom = '10px';
-
-              extraInfoEl.children[1].style.marginTop = '4px';
-
-              const imagesEl = document.createElement('div');
-
-              if (e.images && e.images.length > 0) {
-                // imagesEl.style.overflow = 'hidden';
-
-                extraInfoEl.style.marginBottom = '25px';
-
-                const controlLeftEl = document.createElement('a');
-                controlLeftEl.textContent = '❮';
-
-                const controlRightEl = document.createElement('a');
-                controlRightEl.textContent = '❯';
-
-                for (const c of [controlLeftEl, controlRightEl]) {
-                  c.style.color = 'white';
-                  c.style.fontWeight = 'bold';
-                  c.style.fontSize = '20px';
-                  c.style.borderRadius = '0 3px 3px 0';
-                  c.style.userSelect = 'none';
-                  c.style.padding = '14px';
-                  c.style.cursor = 'pointer';
-                  c.style.position = 'absolute';
-                  c.style.width = 'auto';
-
-                  c.style.backgroundColor = 'rgba(0, 0, 0, .3)';
-
-                  c.style.top = '50%';
-                  c.style.transform = 'translateY(-50%)';
-                }
-                
-                controlLeftEl.style.left = '0';
-
-                controlRightEl.style.right = '0';
-                controlRightEl.style.borderRadius = '3px 0 0 3px';
-
-                /*const updateShown = () => {
-                  imgEls.forEach((x) => { x.style.display = 'none'; });
-
-                  imgEls[currentImage].style.display = 'block';
-                };*/
-
-                let currentImage = 0;
-
-                controlLeftEl.onclick = () => { // https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp
-                  const oldCurrent = currentImage;
-                  imgEls[oldCurrent].style.marginLeft = '120%';
-
-                  imgEls[oldCurrent].style.position = 'absolute';
-                  imgEls[oldCurrent].style.top = '0';
-                  imgEls[oldCurrent].style.left = '0';
-
-                  currentImage--;
-
-                  if (currentImage < 0) currentImage = e.images.length - 1;
-
-                  imgEls[currentImage].style.transition = '';
-                  imgEls[currentImage].style.marginLeft = '-120%';
-                  
-                  setTimeout(() => {
-                    imgEls[currentImage].style.transition = 'all 1s';
-                    imgEls[currentImage].style.marginLeft = '';
-                  }, 10);
-
-                  imgEls[currentImage].style.display = 'block';
-
-                  imgEls[currentImage].style.position = '';
-                };
-
-                controlRightEl.onclick = () => {
-                  const oldCurrent = currentImage;
-                  imgEls[oldCurrent].style.marginLeft = '-120%';
-                  // setTimeout(() => { imgEls[oldCurrent].style.display = 'none'; }, 1000);
-
-                  imgEls[oldCurrent].style.position = 'absolute';
-                  imgEls[oldCurrent].style.top = '0';
-                  imgEls[oldCurrent].style.left = '0';
-
-                  currentImage++;
-
-                  if (currentImage >= e.images.length) currentImage = 0;
-
-                  imgEls[currentImage].style.transition = '';
-                  imgEls[currentImage].style.marginLeft = '120%';
-                  
-                  setTimeout(() => {
-                    imgEls[currentImage].style.transition = 'all 1s';
-                    imgEls[currentImage].style.marginLeft = '';
-                  }, 10);
-
-                  imgEls[currentImage].style.display = 'block';
-
-                  imgEls[currentImage].style.position = '';
-                };
-
-                const imgEls = [];
-
-                let imgInd = 0;
-                for (const url of e.images) {
-                  imagesEl.style.position = 'relative';
-
-                  const currentEl = document.createElement('img');
-                  currentEl.src = url;
-                
-                  currentEl.style.width = '100%';
-                  currentEl.style.height = '300px';
-                  currentEl.style.objectFit = 'contain';
-                  currentEl.style.backgroundColor = 'var(--background-secondary)';
-                  currentEl.style.boxShadow = 'var(--elevation-medium)';
-
-                  currentEl.style.borderRadius = '8px';
-
-                  currentEl.style.transition = 'all 1s';
-
-                  // currentEl.style.display = 'inline-block';
-
-                  if (imgInd !== currentImage) currentEl.style.display = 'none';
-
-                  imgEls.push(currentEl);
-
-                  imagesEl.appendChild(currentEl);
-
-                  imgInd++;
-                }
-
-                imagesEl.appendChild(controlLeftEl);
-                imagesEl.appendChild(controlRightEl);
-
-                imagesEl.style.marginBottom = '16px';
-              }
-
-              const ModalStuff = goosemodScope.webpackModules.findByProps('ModalRoot');
-              const FormStuff = goosemodScope.webpackModules.findByProps('FormTitle');
-
-              class RawDOMContainer extends React.Component {
-                constructor(props) {
-                  super(props);
-                }
-
-                render() {
-                  return React.createElement("div", {
-                    ref: (ref) => ref?.appendChild(this.props.dom)
-                  });
-                }
-              }
-
-              goosemodScope.webpackModules.findByProps("openModal").openModal((e) => {
-                return React.createElement(ModalStuff.ModalRoot, {
-                    transitionState: e.transitionState
-                  }, 
-                  React.createElement(ModalStuff.ModalHeader, {},
-                    React.createElement(FormStuff.FormTitle, { tag: 'h4'},
-                      moduleName,
-                      React.createElement(RawDOMContainer, {
-                        dom: authorsEl
-                      })
-                    ),
-                    React.createElement('FlexChild', {
-                        basis: 'auto',
-                        grow: 0,
-                        shrink: 1,
-                        wrap: false
-                      },
-                      React.createElement(ModalStuff.ModalCloseButton, {
-                        onClick: e.onClose
-                        })
-                    )
-                  ),
-          
-                  React.createElement(ModalStuff.ModalContent, {},
-                    React.createElement(RawDOMContainer, {
-                      dom: betterDescEl
-                    }),
-                    React.createElement(RawDOMContainer, {
-                      dom: extraInfoEl
-                    }),
-                    React.createElement(RawDOMContainer, {
-                      dom: imagesEl
-                    })
-                  )
-                );
-              });
-            };
-
-            subtextEl.textContent = e.subtext;
-
-            subtextEl.style.clear = 'both';
-
-            el.appendChild(subtextEl);
-          };
-
-          let bottomContainerEl = document.createElement('div');
-
-          bottomContainerEl.style.position = 'absolute';
-          bottomContainerEl.style.bottom = '12px';
-          bottomContainerEl.style.width = 'calc(100% - 32px)';
-
-          bottomContainerEl.style.display = 'flex';
-          bottomContainerEl.style.gap = '5px';
-
-          bottomContainerEl.appendChild(buttonEl);
-
-          bottomContainerEl.appendChild(toggleEl);
-
-          let bottomRightContainerEl = document.createElement('div');
-
-          bottomRightContainerEl.style.display = 'flex';
-          bottomRightContainerEl.style.alignItems = 'center';
-          bottomRightContainerEl.style.flexDirection = 'column';
-
-          bottomRightContainerEl.style.order = '2';
-          bottomRightContainerEl.style.marginLeft = 'auto';
-
-          bottomRightContainerEl.style.position = 'absolute';
-          bottomRightContainerEl.style.top = '208px';
-          bottomRightContainerEl.style.right = '12px';
-
-          // bottomContainerEl.appendChild(bottomRightContainerEl);
-          el.appendChild(bottomRightContainerEl);
-
-          if (e.github) {
-            const repoEl = document.createElement('div');
-            // repoEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
-            // repoEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
-            repoEl.classList.add('button-38aScr', 'lookFilled-1Gx00P', 'colorGrey-2DXtkV', 'sizeSmall-2cSMqn', 'grow-q77ONN');
-
-            // repoEl.href = `https://github.com/${e.github.repo}`;
-            // repoEl.target = '_blank';
-
-            // repoEl.style.position = 'relative';
-            repoEl.style.marginLeft = '14px';
-
-            repoEl.style.minWidth = '0px';
-            repoEl.style.padding = '2px 5px';
-
-            repoEl.style.color = '#ddd';
-
-            repoEl.onclick = () => {
-              window.open(`https://github.com/${e.github.repo}`);
-            };
-
-            // repoEl.style.top = '5px';
-
-            // repoEl.style.cursor = 'pointer';
-
-            /* buttonEl.onclick = () => {
-              e.onclick(buttonEl);
-            }; */
-
-            repoEl.style.display = 'inline-flex';
-
-            repoEl.style.cursor = 'pointer';
-
-            // repoEl.style.width = '90px';
-
-            let repoContentsEl = document.createElement('div');
-
-            repoContentsEl.classList.add('contents-18-Yxp');
-
-            repoContentsEl.style.position = 'relative';
-            repoContentsEl.style.top = '1px';
-
-            repoContentsEl.innerHTML = `<svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
-
-            repoEl.appendChild(repoContentsEl);
-
-            const starsEl = document.createElement('div');
-
-            starsEl.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'modeDefault-3a2Ph1');
-
-            const starsIconEl = document.createElement('span');
-            starsIconEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`; //`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path style="fill: currentColor" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.326 18.266l-4.326-2.314-4.326 2.313.863-4.829-3.537-3.399 4.86-.671 2.14-4.415 2.14 4.415 4.86.671-3.537 3.4.863 4.829z"/></svg>`;
-            starsIconEl.style.position = 'relative';
-            starsIconEl.style.top = '8px'; // '9px';
-            starsIconEl.style.marginLeft = '5px';
-
-            const starsAmountEl = document.createElement('span');
-            starsAmountEl.style.position = 'relative';
-            starsAmountEl.style.top = '7px';
-
-            starsAmountEl.style.fontSize = '18px';
-            starsAmountEl.style.fontWeight = '600';
-
-            starsAmountEl.textContent = e.github.stars;
-
-            starsEl.appendChild(starsAmountEl);
-            starsEl.appendChild(starsIconEl);
-
-            bottomContainerEl.appendChild(repoEl);
-
-            bottomRightContainerEl.appendChild(starsEl);
-          }
-
-          if (e.subtext2) {
-            let subtext2El = document.createElement('div');
-  
-            subtext2El.classList.add('colorStandard-2KCXvj', 'size14-e6ZScH', 'description-3_Ncsb', 'formText-3fs7AJ', 'note-1V3kyJ', 'modeDefault-3a2Ph1');
-  
-            subtext2El.textContent = e.subtext2;
-
-            subtext2El.style.marginTop = '20px';
-  
-            bottomRightContainerEl.appendChild(subtext2El);
-          }
-
-          el.appendChild(bottomContainerEl);
-
-          if ((currentDate - (e.lastUpdated * 1000)) / 1000 / 60 / 60 / 24 < 5) {
-            const updatedBadgeEl = document.createElement('div');
-
-            updatedBadgeEl.classList.add('textBadge-1iylP6', 'base-PmTxvP', 'baseShapeRound-1Mm1YW');
-            updatedBadgeEl.style.backgroundColor = 'var(--brand-experiment)';
-
-            updatedBadgeEl.textContent = 'UPDATED';
-
-            updatedBadgeEl.style.position = 'absolute';
-            updatedBadgeEl.style.top = '10px';
-            updatedBadgeEl.style.right = '10px';
-            updatedBadgeEl.style.opacity = '0.8';
-
-            el.appendChild(updatedBadgeEl);
-          }
+        case 'card': {
+          el = makeCard(e);
 
           break;
         }
@@ -2324,7 +2386,10 @@ export const makeGooseModSettings = () => {
   let importedVal = 'All';
   let authorVal = 'All';
 
-  const updateModuleStoreUI = (parentEl, cards) => {
+  const updateModuleStoreUI = (parentEl) => {
+    const containerEl = parentEl.children[0];
+    const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
     const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
 
     const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
@@ -2338,7 +2403,7 @@ export const makeGooseModSettings = () => {
       const authors = [...titles[0].getElementsByClassName('author')].map((x) => x.textContent.split('#')[0]);
       const name = title.childNodes[0].wholeText;
 
-      const description = c.getElementsByClassName('description-3_Ncsb')[1].innerText;
+      const description = c.getElementsByClassName('description-3_Ncsb')[0].innerText;
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
@@ -2373,15 +2438,23 @@ export const makeGooseModSettings = () => {
         && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
+
+    [...parentEl.getElementsByClassName('storeCategory')].concat([...parentEl.getElementsByClassName('headerContainer-1Wluzl')]).forEach((x) => x.style.display = inp === '' && importedVal === 'All' && authorVal === 'All' ? 'block' : 'none');
+  };
+
+  const genCurrentDate = new Date();
+
+  const upcomingVal = (x) => {
+    const daysSinceUpdate = (genCurrentDate - (x.lastUpdated * 1000)) / 1000 / 60 / 60 / 24;
+
+    return (x.github.stars / daysSinceUpdate) - (x.github.stars / 2) + (1 - daysSinceUpdate);
   };
 
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
       onchange: (inp, parentEl) => {
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        updateModuleStoreUI(parentEl, cards);
+        updateModuleStoreUI(parentEl);
       },
       storeSpecific: true
     },
@@ -2400,9 +2473,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         sortedVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        updateModuleStoreUI(parentEl, cards);
+        updateModuleStoreUI(parentEl);
       }
     },
 
@@ -2414,7 +2485,8 @@ export const makeGooseModSettings = () => {
       options: async (parentEl) => {
         await sleep(10);
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const containerEl = parentEl.children[0];
+        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         const authors = [...cards.reduce((acc, e) => {
           for (let el of e.getElementsByClassName('author')) {
@@ -2433,9 +2505,7 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         authorVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        updateModuleStoreUI(parentEl, cards);
+        updateModuleStoreUI(parentEl);
       }
     },
 
@@ -2453,10 +2523,31 @@ export const makeGooseModSettings = () => {
       onchange: (val, parentEl) => {
         importedVal = val;
 
-        const cards = [...parentEl.children[0].children[4].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        updateModuleStoreUI(parentEl, cards);
+        updateModuleStoreUI(parentEl);
       }
+    },
+
+    {
+      type: 'store-category',
+      text: 'Top Starred',
+      sort: (a, b) => b.github.stars - a.github.stars
+    },
+
+    {
+      type: 'store-category',
+      text: 'Recently Updated',
+      sort: (a, b) => b.lastUpdated - a.lastUpdated
+    },
+
+    {
+      type: 'store-category',
+      text: 'Upcoming',
+      sort: (a, b) => upcomingVal(b) - upcomingVal(a)
+    },
+
+    {
+      type: 'store-header',
+      text: `All ${x}`
     },
 
     { type: 'gm-footer' }
@@ -2716,14 +2807,17 @@ const addToHome = () => {
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
-        if (themeSetting[2].slice(6).length !== themeContent.children[0].children[4]) {
-          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
-        }
-
         setTimeout(() => {
           const buttonEl = document.getElementById('gm-home-themes');
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
         }, 0);
+
+        const containerEl = themeContent.children[0];
+        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        if (themeSetting[2].slice(6).length !== cards.children?.length) {
+          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+        }
 
         const injectSettingsPage = () => {
           const injectEl = document.getElementById('gm-settings-inject');
@@ -2775,16 +2869,15 @@ const addToHome = () => {
 
         [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
 
-        if (themeSetting[2].slice(6).length !== themeContent.children[0].children[4]) {
-          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
-        }
-
         setTimeout(() => {
           const buttonEl = document.getElementById('gm-home-plugins');
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
         }, 0);
 
-        if (pluginSetting[2].slice(6).length !== pluginContent.children[0].children[4]) {
+        const containerEl = pluginContent.children[0];
+        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+
+        if (pluginSetting[2].slice(6).length !== cards.children?.length) {
           pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
         }
 

@@ -2,8 +2,14 @@
 
 ## v8.10.0-dev [2021-06-09]
 
+  - ### Home
+    - Improved selection performance
+    - Fixed clicking button icons not properly opening store pages
+    - Fixed various crashes caused by switching to store from library
+
   - ### Store
     - Added shadow to cards
+    - New categories design
 
 
 ## v8.9.0 [2021-06-07]
@@ -13,9 +19,8 @@
     - Added updated badge to modules which have been updated within 5 days
     - Added update button to page headers for easy updating of store repos
     - Made new modules appearing in home pages easier, specifically without needing to click off then back to home
-    - Fixed various crashes caused by switching to store from a DM or library
+    - Fixed various crashes caused by switching to store from a DM
     - Fixed clicking a page from a group DM causing member list to remain shown
-    - Fixed clicking button icons not properly opening store pages
 
   - ### Webpack API [progress]
     - Added new common modules: channels, constants
