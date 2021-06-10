@@ -2662,13 +2662,26 @@ const addToHome = () => {
 
 
   const makeHeader = (icon, title) => React.createElement(HeaderBarContainer, {
-    className: HomeMiscClasses.headerBarContainer,
+      className: HomeMiscClasses.headerBarContainer,
 
-    isAuthenticated: true,
-    transparent: false,
+      isAuthenticated: true,
+      transparent: false
+    },
 
-    toolbar: React.createElement('div', {
-      className: IconClasses.toolbar
+    React.createElement(HeaderBarContainer.Icon, {
+      icon: () => icon,
+      className: IconClasses.icon
+    }),
+
+    React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title]),
+
+    React.createElement('div', {
+      className: IconClasses.toolbar,
+
+      style: {
+        position: 'absolute',
+        right: '0px'
+      }
     }, React.createElement(HeaderBarContainer.Icon, {
         icon: () => UpdateIcon,
 
@@ -2682,18 +2695,8 @@ const addToHome = () => {
 
           document.querySelector(`.selected-aXhQR6`).click();
         }
-      }),
-
-      React.createElement(HeaderBarContainer.Divider)
-    ),
-
-    },
-    React.createElement(HeaderBarContainer.Icon, {
-      icon: () => icon,
-      className: IconClasses.icon
-    }),
-
-    React.createElement(HeaderBarContainer.Title, {}, goosemodScope.i18n.goosemodStrings.settings.itemNames[title])
+      })
+    )
   );
 
   const makeContent = (isLibrary) => React.createElement('div', {
