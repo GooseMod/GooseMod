@@ -102,11 +102,8 @@ const init = async function () {
     await sleep(10);
   }
 
-  let a = 1;
   for (let x of scopeSetterFncs) {
     await x(this);
-
-    a++;
   }
 
   this.versioning = {
