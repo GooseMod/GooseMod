@@ -238,13 +238,11 @@ export default {
   },
 
   updateStoreSetting: async () => {
-    //let item = goosemodScope.settings.items.find((x) => x[1] === 'Module Store');
     let allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
 
-    allItems = allItems.filter((x) => x.type !== 'card');
-
-    // allItems.forEach((x) => x[2].slice(0, 5));
-    //item[2] = item[2].slice(0, 5);
+    for (const i of allItems) {
+      i[2] = i[2].filter((x) => x.type !== 'card');
+    }
 
     for (const m of goosemodScope.moduleStoreAPI.modules) {
       const itemName = goosemodScope.moduleStoreAPI.getSettingItemName(m);
