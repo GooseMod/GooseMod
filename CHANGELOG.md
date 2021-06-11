@@ -10,8 +10,10 @@
   - ### Store
     - Added shadow to cards
     - New categories design
+    - Added loading indicator if the store is still loading
     - Removed Discord's default toolbar from the toolbar
     - Added repos button to header via cloud icon instead of being in settings
+    - Reduced delay between id cache queue API requests
 
 
 ## v8.9.0 [2021-06-07]

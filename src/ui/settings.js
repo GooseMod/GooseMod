@@ -2816,8 +2816,29 @@ const addToHome = () => {
         const containerEl = themeContent.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
-        if (themeSetting[2].slice(6).length !== cards.children?.length) {
-          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1]
+        if (themeSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
+          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+        }
+        
+        if (cards.length === 0) { // Store hasn't finished loading yet, show loading indicator
+          themeContent = document.createElement('div');
+
+          themeContent.style.display = 'flex';
+          themeContent.style.alignItems = 'center';
+          themeContent.style.justifyContent = 'center';
+          themeContent.style.height = '100%';
+
+          themeContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
+
+          setTimeout(async () => {
+            while (themeSetting[2].filter((x) => x.type === 'card').length === 0) {
+              await sleep(10);
+            }
+
+            themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+
+            document.querySelector(`.selected-aXhQR6`).click();
+          }, 100);
         }
 
         const injectSettingsPage = () => {
@@ -2878,8 +2899,29 @@ const addToHome = () => {
         const containerEl = pluginContent.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
-        if (pluginSetting[2].slice(6).length !== cards.children?.length) {
-          pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1]
+        if (pluginSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
+          pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+        }
+
+        if (cards.length === 0) { // Store hasn't finished loading yet, show loading indicator
+          pluginContent = document.createElement('div');
+
+          pluginContent.style.display = 'flex';
+          pluginContent.style.alignItems = 'center';
+          pluginContent.style.justifyContent = 'center';
+          pluginContent.style.height = '100%';
+
+          pluginContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
+
+          setTimeout(async () => {
+            while (pluginSetting[2].filter((x) => x.type === 'card').length === 0) {
+              await sleep(10);
+            }
+
+            pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+
+            document.querySelector(`.selected-aXhQR6`).click();
+          }, 100);
         }
 
         const injectSettingsPage = () => {

@@ -50,7 +50,7 @@ export const getDataForID = async (id) => {
     queue.push(id);
 
     if (!queueProcessInterval) {
-      queueProcessInterval = setInterval(processQueue, 500);
+      queueProcessInterval = setInterval(processQueue, 100);
     }
 
     let data;
@@ -63,7 +63,7 @@ export const getDataForID = async (id) => {
         break;
       }
 
-      await sleep(500);
+      await sleep(100);
     }
 
     updateCache(id, data);
