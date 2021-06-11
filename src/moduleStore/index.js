@@ -166,17 +166,19 @@ export default {
 
       // If themes / plugins open
       if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
-        const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === moduleInfo.description)?.parentElement;
+        const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
 
-        if (!cardEl) return;
+        if (cardEls.length === 0) return;
 
-        const buttonEl = cardEl.querySelector(`.colorBrand-3pXr91`);
+        for (const cardEl of cardEls) {
+          const buttonEl = cardEl.querySelector(`.colorBrand-3pXr91`);
 
-        buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
-        buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
+          buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
+          buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
 
-        const toggleEl = cardEl.querySelector(`.control-2BBjec`);
-        toggleEl.style.display = 'block';
+          const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+          toggleEl.style.display = 'block';
+        }
       }
 
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
@@ -197,17 +199,19 @@ export default {
 
     // If themes / plugins open
     if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
-      const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].find((x) => x.textContent === m.description)?.parentElement;
+      const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
-      if (!cardEl) return;
+      if (cardEls.length === 0) return;
 
-      const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
+      for (const cardEl of cardEls) {
+        const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
 
-      buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
-      buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
+        buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
+        buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
 
-      const toggleEl = cardEl.querySelector(`.control-2BBjec`);
-      toggleEl.style.display = 'none';
+        const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+        toggleEl.style.display = 'none';
+      }
     }
   },
 
