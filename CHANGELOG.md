@@ -11,6 +11,7 @@
     - Added shadow to cards
     - New categories design
     - Removed Discord's default toolbar from the toolbar
+    - Added repos button to header via cloud icon instead of being in settings
 
 
 ## v8.9.0 [2021-06-07]
