@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.10.0-dev [2021-06-09]
+## v8.10.0-dev [2021-06-11]
 
   - ### Home
     - Improved selection performance
