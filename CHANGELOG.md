@@ -2,18 +2,18 @@
 
 ## v8.10.0 [2021-06-12]
 
+  - ### Store
+    - New categories design, having headings and horizontal sections of cards for categories like top starred and recently updated
+    - Added repos button to header via cloud icon instead of being in settings
+    - Added shadow to cards
+    - Removed Discord's default toolbar from the toolbar
+    - Reduced delay between id cache queue API requests
+
   - ### Home
+    - Added loading indicator if the store is still loading
     - Improved selection performance
     - Fixed clicking button icons not properly opening store pages
     - Fixed various crashes caused by switching to store from library
-    - Added loading indicator if the store is still loading
-
-  - ### Store
-    - Added shadow to cards
-    - New categories design
-    - Removed Discord's default toolbar from the toolbar
-    - Added repos button to header via cloud icon instead of being in settings
-    - Reduced delay between id cache queue API requests
 
 
 ## v8.9.0 [2021-06-07]
