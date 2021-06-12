@@ -1,16 +1,16 @@
 # GooseMod Changelog
 
-## v8.10.0-dev [2021-06-11]
+## v8.10.0-dev [2021-06-12]
 
   - ### Home
     - Improved selection performance
     - Fixed clicking button icons not properly opening store pages
     - Fixed various crashes caused by switching to store from library
+    - Added loading indicator if the store is still loading
 
   - ### Store
     - Added shadow to cards
     - New categories design
-    - Added loading indicator if the store is still loading
     - Removed Discord's default toolbar from the toolbar
     - Added repos button to header via cloud icon instead of being in settings
     - Reduced delay between id cache queue API requests
