@@ -1278,7 +1278,7 @@ export const _createItem = (panelName, content) => {
 
           const cards = content.filter((x) => x.type === 'card').sort(e.sort);
           
-          cardsEl.append(...cards.slice(0, 8).map((x) => makeCard(x)));
+          cardsEl.append(...cards.slice(0, 10).map((x) => makeCard(x)));
 
           el.appendChild(cardsEl);
 
