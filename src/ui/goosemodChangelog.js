@@ -23,11 +23,18 @@ export const show = async () => {
 
   await sleep(300);
 
-  document.querySelector('.wrapper-1sSZUt ,size20-17Iy80').textContent = `GooseMod ${version}`; // Set changelog modal title
+  const customTweaks = () => {
+    document.querySelector('.modal-3O0aXp .size20-17Iy80').textContent = `GooseMod ${version}`; // Set changelog modal title
 
-  document.querySelector('.modal-3O0aXp .footer-2gL1pp').remove(); // Remove footer of modal with social media
+    document.querySelector('.modal-3O0aXp .footer-2gL1pp').remove(); // Remove footer of modal with social media
+  };
+
+  customTweaks();
 
   goosemodScope.changelog.resetChangelog();
+
+  // Tweak again since opening it right at beginning of injection / Discord load (eg: GooseMod update) often fails to do after first wait
+  setTimeout(customTweaks, 300);
 };
 
 export const generate = async () => {
