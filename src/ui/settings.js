@@ -1798,7 +1798,7 @@ export const makeGooseModSettings = () => {
                   if (i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) { // Settings expansion for Module Store panel
                     setTimeout(() => {
                       document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
-                      document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '100%';
+                      document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = 'calc(100vw - 218px - 60px - 20px)';
                     }, 10);
 
                     settingsSidebarEl.addEventListener('click', (e) => {
