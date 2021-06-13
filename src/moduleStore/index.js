@@ -50,7 +50,7 @@ export default {
       if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...\n${m}`);
 
       updatePromises.push(goosemodScope.moduleStoreAPI.importModule(m, goosemodScope.moduleSettingsStore.checkDisabled(m)).then(async () => {
-        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success' })
+        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' })
       }));
     }
 
@@ -113,7 +113,7 @@ export default {
 
         ind++;
       } catch (e) { // Failed fetching repo - do not error out and cause loading lockup
-        goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error' }); // Show error toast to user so they know
+        goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: 'GooseMod Store' }); // Show error toast to user so they know
       }
     }));
 
@@ -134,7 +134,7 @@ export default {
 
       const calculatedHash = await sha512(jsCode);
       if (calculatedHash !== moduleInfo.hash) {
-        goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, {timeout: 2000, type: 'danger'});
+        goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, { timeout: 2000, type: 'danger', subtext: 'GooseMod Store' });
 
         console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
         return;
@@ -183,7 +183,7 @@ export default {
 
       // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
     } catch (e) {
-      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error' });
+      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: 'GooseMod Store' });
       console.error(e);
     }
   },

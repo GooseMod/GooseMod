@@ -40,7 +40,7 @@ export const saveModuleSettings = async () => {
   if (JSON.stringify(JSON.parse(localStorage.getItem('goosemodModules'))) !== JSON.stringify(settings)) {
     localStorage.setItem('goosemodModules', JSON.stringify(settings));
 
-    goosemodScope.showToast('Settings saved');
+    // goosemodScope.showToast('Settings saved');
   }
 };
 
