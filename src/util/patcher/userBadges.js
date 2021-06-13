@@ -19,6 +19,20 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   return PatcherBase.patch(UserProfileBadgeList, 'default', ([ { user, size } ], res) => {
     if (!forIds().includes(user.id)) return res;
 
+    let sizeClass = '';
+
+    switch (size) {
+      case 1: { // User modal
+        sizeClass = BadgeClasses.profileBadge22;
+        break;
+      }
+
+      case 2: { // User popout
+        sizeClass = BadgeClasses.profileBadge18;
+        break;
+      }
+    }
+
     res.props.children.unshift(
       React.createElement(Tooltip, {
         position: "top",
@@ -39,7 +53,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
               backgroundImage: `url("${imgUrl}")`,
               borderRadius: round ? '50%' : ''
             },
-            className: `${BadgeClasses.profileBadge} ${size === 1 ? BadgeClasses.profileBadge18 : BadgeClasses.profileBadge24}`
+            className: `${BadgeClasses.profileBadge} ${sizeClass}`
           })
         )
       )
