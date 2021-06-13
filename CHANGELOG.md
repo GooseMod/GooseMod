@@ -1,5 +1,15 @@
 # GooseMod Changelog
 
+## v8.11.0-dev [2021-06-13]
+
+  - ### Patcher API
+    - Fixed UserBadges sizes being off
+
+  - ### Fixes [fixed]
+    - Fixed GooseMod changelog not removing footer and changing title when appearing at startup
+    - Fixed store in settings expanding too wide
+
+
 ## v8.10.0 [2021-06-12]
 
   - ### Store
