@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.11.0-dev [2021-06-13]
+## v8.11.0 [2021-06-15]
 
   - ### Toasts
     - New semi-transparent design
