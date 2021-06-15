@@ -3,7 +3,7 @@
 ## v8.11.0 [2021-06-15]
 
   - ### Toasts
-    - New semi-transparent design
+    - New translucent design
 
   - ### Patcher API
     - Fixed UserBadges sizes being off
