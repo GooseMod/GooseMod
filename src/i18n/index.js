@@ -40,9 +40,12 @@ export const updateExports = async (code) => {
 
   goosemodStrings = await Cache.geti18nData(code);
 
-  const { _proxyContext: { messages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
+  const { _proxyContext: { messages, defaultMessages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
 
-  discordStrings = messages;
+  discordStrings = {
+    ...defaultMessages,
+    ...messages
+  };
 }
 
 export const geti18nData = async (lang = (getDiscordLang().code)) => {
