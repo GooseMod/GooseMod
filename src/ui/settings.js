@@ -2820,7 +2820,7 @@ const addToHome = () => {
           themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
         }
         
-        if (cards.length === 0) { // Store hasn't finished loading yet, show loading indicator
+        if (themeSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme')).length) { // Store hasn't finished loading yet, show loading indicator
           themeContent = document.createElement('div');
 
           themeContent.style.display = 'flex';
@@ -2831,7 +2831,7 @@ const addToHome = () => {
           themeContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
 
           setTimeout(async () => {
-            while (themeSetting[2].filter((x) => x.type === 'card').length === 0) {
+            while (themeSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme')).length) {
               await sleep(10);
             }
 
@@ -2903,7 +2903,7 @@ const addToHome = () => {
           pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
         }
 
-        if (cards.length === 0) { // Store hasn't finished loading yet, show loading indicator
+        if (pluginSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme')).length) { // Store hasn't finished loading yet, show loading indicator
           pluginContent = document.createElement('div');
 
           pluginContent.style.display = 'flex';
@@ -2914,7 +2914,7 @@ const addToHome = () => {
           pluginContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
 
           setTimeout(async () => {
-            while (pluginSetting[2].filter((x) => x.type === 'card').length === 0) {
+            while (pluginSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme')).length) {
               await sleep(10);
             }
 
