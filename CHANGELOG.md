@@ -9,7 +9,7 @@
     - Fixed id cache not being invalidated every day
 
   - ### i18n
-    - Fix getting Discord's values
+    - Fixed getting Discord's values not working, caused settings and more to not appear correctly
 
 
 ## v8.11.0 [2021-06-15]
