@@ -1,5 +1,7 @@
 import sleep from '../util/sleep';
 
+const currentDate = new Date() - 0;
+
 let goosemodScope = {};
 
 let getUser;
@@ -35,7 +37,7 @@ export const updateCache = (id, data) => {
 
   cache[id] = {
     data,
-    time: performance.now()
+    time: currentDate
   };
 
   localStorage.setItem('goosemodIDCache', JSON.stringify(cache));
@@ -44,7 +46,7 @@ export const updateCache = (id, data) => {
 export const getDataForID = async (id) => {
   const cache = getCache();
 
-  if (cache[id] && cache[id].time > performance.now() - (1000 * 60 * 60 * 24)) {
+  if (cache[id] && cache[id].time > currentDate - (1000 * 60 * 60 * 24)) {
     return cache[id].data;
   } else {
     queue.push(id);
