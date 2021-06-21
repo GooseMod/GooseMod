@@ -11,6 +11,9 @@
   - ### i18n
     - Fixed getting Discord's values not working, caused settings and more to not appear correctly
 
+  - ### GooseMod Badges
+    - Added sponsor badge to new sponsors
+
 
 ## v8.11.0 [2021-06-15]
 
