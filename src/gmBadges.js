@@ -167,6 +167,8 @@ const ids = {
     '557429876618166283', // sourTaste000
     '250353310698176522', // p.marg
     '301088721984552961', // overheremedia / jakefaith
+    '700698485560705084', // debugproto
+    '274209973196816385', // quagsirus
   ],
 
   dev: [ // People actively developing GooseMod itself
