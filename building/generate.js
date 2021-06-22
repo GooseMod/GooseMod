@@ -48,6 +48,6 @@ const json = {
   body: body.join('\n')
 };
 
-console.log(JSON.stringify(json).replaceAll(`\\"`, `\\\\\\"`).replaceAll(`"`, `\\\\\\"`).replaceAll(`\\n`, `\\\\\\\\n`));
+console.log(JSON.stringify(json).replaceAll(`\\"`, `\\\\\\"`).replaceAll(`"`, `\\\\\\"`).replaceAll(`\\n`, `\\\\\\\\n`).replaceAll('/', '\\/'));
 
 // writeFileSync('../out/latestChangelogRelease.json', JSON.stringify(json));
