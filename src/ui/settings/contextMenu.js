@@ -1,3 +1,5 @@
+import sleep from '../../util/sleep';
+
 export default (goosemodScope, hasStoreInHome) => {
   const basicSettingItem = (name) => {
     return {
