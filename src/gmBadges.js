@@ -170,6 +170,7 @@ const ids = {
     '700698485560705084', // debugproto
     '274209973196816385', // quagsirus
     '274926795285987328', // Apollo
+    '293094733159333889', // b1sergiu
   ],
 
   dev: [ // People actively developing GooseMod itself
