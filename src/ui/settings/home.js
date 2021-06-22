@@ -323,7 +323,7 @@ export default (goosemodScope) => {
     )
   );
 
-  const makeContent = (isLibrary) => React.createElement('div', {
+  const makeContent = (isLibrary, content) => React.createElement('div', {
     className: !isLibrary ? `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}` : '',
     id: 'gm-settings-inject',
 
@@ -334,9 +334,9 @@ export default (goosemodScope) => {
       height: '100%',
       overflow: !isLibrary ? 'hidden scroll' : ''
     }
-  });
+  }, content);
 
-  const makePage = (icon, title) => React.createElement('div', {
+  const makePage = (icon, title, content) => React.createElement('div', {
     style: {
       height: '100%',
       overflow: 'hidden'
@@ -344,7 +344,7 @@ export default (goosemodScope) => {
   },
     makeHeader(icon, title),
 
-    makeContent()
+    makeContent(content)
   );
 
   const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
@@ -359,10 +359,10 @@ export default (goosemodScope) => {
   let expanded = true;
 
   const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
-  let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
+  let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2], false);
 
   const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
-  let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
+  let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2], false);
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
@@ -467,16 +467,16 @@ export default (goosemodScope) => {
           }, 100);
         }
 
-        const injectSettingsPage = () => {
+        /* const injectSettingsPage = () => {
           const injectEl = document.getElementById('gm-settings-inject');
   
           if (injectEl.children[0]) injectEl.children[0].remove();
   
           injectEl.appendChild(themeContent);
-        };
+        }; */
 
         if (parentEl.children.length === 1) {
-          ReactDOM.render(makePage(ThemesIcon, 'themes'), parentEl.children[0], injectSettingsPage);
+          ReactDOM.render(makePage(ThemesIcon, 'themes', themeContent), parentEl.children[0]);
         }
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
@@ -495,7 +495,7 @@ export default (goosemodScope) => {
 
           if (isLibrary) indexOffset = 1;
 
-          ReactDOM.render(makeContent(isLibrary), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
+          ReactDOM.render(makeContent(isLibrary, themeContent), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
         }
       },
 
@@ -550,16 +550,16 @@ export default (goosemodScope) => {
           }, 100);
         }
 
-        const injectSettingsPage = () => {
+        /* const injectSettingsPage = () => {
           const injectEl = document.getElementById('gm-settings-inject');
   
           if (injectEl.children[0]) injectEl.children[0].remove();
   
           injectEl.appendChild(pluginContent);
-        };
+        }; */
 
         if (parentEl.children.length === 1) {
-          ReactDOM.render(makePage(PluginsIcon, 'plugins'), parentEl.children[0], injectSettingsPage);
+          ReactDOM.render(makePage(PluginsIcon, 'plugins', pluginContent), parentEl.children[0]);
         }
         
         if (parentEl.children.length === 2 || parentEl.children.length === 3) {
@@ -578,7 +578,7 @@ export default (goosemodScope) => {
 
           if (isLibrary) indexOffset = 1;
 
-          ReactDOM.render(makeContent(isLibrary), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1], injectSettingsPage);
+          ReactDOM.render(makeContent(isLibrary, pluginContent), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
         }
       },
 

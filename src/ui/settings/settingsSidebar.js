@@ -25,7 +25,6 @@ export default (goosemodScope, gmSettings) => {
                     return React.createElement('div');
                   }
 
-
                   const settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
                   const settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
@@ -43,22 +42,12 @@ export default (goosemodScope, gmSettings) => {
                       document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
                     });
                   }
-                  
-                  let contentEl = goosemodScope.settings._createItem(i[1], i[2]);
 
-                  const ref = React.useRef(null);
-
-                  React.useEffect(() => { ref.current.appendChild(contentEl); }, []);
-
-                  return React.createElement('div', {
-                    ref
-                  });
-                  //return React.createElement(VanillaElement, { vanillaChild: contentEl });
+                  return goosemodScope.settings._createItem(i[1], i[2]);
                 }
               };
               if (i[4]) obj.color = '#f04747';
               return obj;
-              //goosemodScope.settings._createItem(i[1], i[2], i[3], i[4]);
 
             case 'heading':
               return {
