@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v8.12.0-dev [2021-06-19]
+## v8.12.0 [2021-06-22]
 
   - ### Home
     - Show loading indicator whilst loading fully, used to just wait for any modules, not all
