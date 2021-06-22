@@ -257,7 +257,7 @@ export default {
         
         tags: m.tags,
         github: m.github,
-        images: m.images.map((x) => {
+        images: m.images?.map((x) => {
           if (x.startsWith('/')) {
             const baseUrl = m.repo.split('/').slice(0, -1).join('/');
             x = baseUrl + x;
