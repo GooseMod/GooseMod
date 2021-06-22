@@ -59,7 +59,7 @@ export const openSettings = () => {
 
 export const openSettingItem = (name) => {
   try {
-    const children = [...settingsSidebarEl.children];
+    const children = [...(document.querySelector('div[aria-label="USER_SETTINGS"]').querySelector('nav > div')).children];
 
     children[1].click(); // To refresh / regenerate
 
@@ -97,8 +97,6 @@ export const reopenSettings = async () => {
 
   settingsButtonEl.addEventListener('click', injectInSettings);
 })();*/
-
-let settingsLayerEl, settingsSidebarEl;
 
 //const settings = {
 export let items = [];

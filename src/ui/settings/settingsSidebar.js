@@ -26,8 +26,8 @@ export default (goosemodScope, gmSettings) => {
                   }
 
 
-                  settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
-                  settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
+                  const settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
+                  const settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
 
                   if (i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) { // Settings expansion for Module Store panel
                     setTimeout(() => {
