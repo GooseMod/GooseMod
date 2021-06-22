@@ -10,6 +10,9 @@
     - Fixed id cache not being invalidated every day
     - Added localised path support for repo images, like using /images/file.png
 
+  - ### Settings
+    - Use Discord's new green color in switches
+
   - ### i18n
     - Fixed getting Discord's values not working, caused settings and more to not appear correctly
 
