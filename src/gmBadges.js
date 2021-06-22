@@ -171,6 +171,7 @@ const ids = {
     '274209973196816385', // quagsirus
     '274926795285987328', // Apollo
     '293094733159333889', // b1sergiu
+    '202740603790819328', // Snow Fox / Lisa
   ],
 
   dev: [ // People actively developing GooseMod itself
