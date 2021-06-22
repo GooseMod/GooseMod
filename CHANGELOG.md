@@ -2,21 +2,21 @@
 
 ## v8.12.0 [2021-06-22]
 
-  - ### Home
+  - ### Home [progress]
     - Show loading indicator whilst loading fully, used to just wait for any modules, not all
     - Fixed Store pages not opening when clicked if user has no DMs
 
-  - ### Store
+  - ### Store [progress]
     - Fixed id cache not being invalidated every day
     - Added localised path support for repo images, like using /images/file.png
 
   - ### Settings
     - Use Discord's new green color in switches
 
-  - ### i18n
+  - ### i18n [fixed]
     - Fixed getting Discord's values not working, caused settings and more to not appear correctly
 
-  - ### GooseMod Badges
+  - ### GooseMod Badges [progress]
     - Added sponsor badge to new sponsors
 
 
