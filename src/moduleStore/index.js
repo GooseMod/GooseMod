@@ -88,7 +88,6 @@ export default {
     goosemodScope.moduleStoreAPI.modules = [];
     goosemodScope.moduleStoreAPI.repos = [];
 
-    let ind = 0;
     await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
       try {
         if (shouldHandleLoadingText) {
@@ -110,8 +109,6 @@ export default {
           meta: resp.meta,
           enabled: repo.enabled
         });
-
-        ind++;
       } catch (e) { // Failed fetching repo - do not error out and cause loading lockup
         goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: 'GooseMod Store' }); // Show error toast to user so they know
       }
