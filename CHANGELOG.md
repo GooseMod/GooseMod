@@ -4,6 +4,7 @@
 
   - ### Home
     - Show loading indicator whilst loading fully, used to just wait for any modules, not all
+    - Fixed Store pages not opening when clicked if user has no DMs
 
   - ### Store
     - Fixed id cache not being invalidated every day
