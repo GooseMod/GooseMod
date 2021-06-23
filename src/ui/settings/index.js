@@ -9,9 +9,10 @@ import addToSettingsSidebar from './settingsSidebar';
 
 import addBaseItems from './baseItems';
 
+import addCustomCss from './css';
+
 import getItems from './items';
 let Items = {};
-
 
 let goosemodScope = {};
 
@@ -115,36 +116,29 @@ export const _createItem = (name, content, container = true) => {
   const FormSection = goosemodScope.webpackModules.findByDisplayName('FormSection');
   const FormTitle = goosemodScope.webpackModules.findByDisplayName('FormTitle');
 
+  const makeContent = () => content.slice(1).map((x, i) => {
+    if (x.type.includes('danger-button')) {
+      x.type = x.type.replace('danger-', '');
+      x.danger = true;
+    }
+
+    const component = Items[x.type];
+
+    if (!component) return React.createElement('div');
+
+    return React.createElement(component, {
+      i,
+      ...x
+    });
+  });
+
   return container ? React.createElement(FormSection, { },
     React.createElement(FormTitle, { tag: 'h1' }, name),
 
-    content.slice(1).map((x, i) => {
-      if (x.type.includes('danger-button')) {
-        x.type = x.type.replace('danger-', '');
-        x.danger = true;
-      }
-
-      const component = Items[x.type];
-
-      if (!component) return React.createElement('div');
-
-      return React.createElement(component, {
-        i,
-        ...x
-      });
-    })
+    makeContent()
   ) : React.createElement('div', { },
-    content.slice(1).map((x, i) => {
-      const component = Items[x.type];
-
-      if (!component) return React.createElement('div');
-
-      return React.createElement(component, {
-        i,
-        ...x
-      });
-    }
-  ))
+    makeContent()
+  );
 };
 
 export const makeGooseModSettings = () => {
@@ -155,6 +149,8 @@ export const makeGooseModSettings = () => {
   addToSettingsSidebar(goosemodScope, gmSettings);
   addToContextMenu(goosemodScope, gmSettings.get().home);
   if (gmSettings.get().home) addToHome(goosemodScope);
+
+  addCustomCss();
 
   loadColorPicker();
 };
