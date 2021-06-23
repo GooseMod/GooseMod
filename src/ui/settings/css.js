@@ -26,6 +26,10 @@ export default () => {
 
   margin-right: 12px;
 }
+
+.gm-store-header {
+  margin-bottom: 0;
+}
 `));
 
   document.body.appendChild(el);
