@@ -2,8 +2,14 @@ export default () => {
   const el = document.createElement('style');
 
   el.appendChild(document.createTextNode(`
+#gm-settings-inject > div {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
 .gm-inline-dropdown {
-  display: inline-flex;
+  display: flex;
   align-items: center;
 
   gap: 8px;
@@ -17,7 +23,6 @@ export default () => {
 
 .gm-store-search {
   flex-grow: 1;
-  display: inline-flex;
 
   margin-right: 12px;
 }
