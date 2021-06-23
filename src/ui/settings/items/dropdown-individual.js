@@ -29,9 +29,11 @@ export default class DropdownIndividual extends React.PureComponent {
         searchable: false,
 
         onChange: (x) => {
-          this.props.value = x;
+          this.props.value = x.value;
 
           this.forceUpdate();
+
+          this.props.onchange(this.props.value);
         },
 
         value: this.props.value,
