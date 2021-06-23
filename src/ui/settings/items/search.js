@@ -6,7 +6,7 @@ export default class Search extends React.PureComponent {
   render() {
     return React.createElement(SearchBar, {
       ...SearchBar.defaultProps,
-      className: this.props.className,
+      className: this.props.storeSpecific ? 'gm-store-search' : '',
 
       size: SearchBar.Sizes.MEDIUM,
 

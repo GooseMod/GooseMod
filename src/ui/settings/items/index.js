@@ -6,5 +6,6 @@ export default () => ({
   'text-and-button': require('./text-and-button').default,
   'text-and-color': require('./text-and-color').default,
   button: require('./button').default,
-  search: require('./search').default
+  search: require('./search').default,
+  'dropdown-individual': require('./dropdown-individual').default
 });

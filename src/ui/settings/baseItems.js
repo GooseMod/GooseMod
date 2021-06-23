@@ -299,7 +299,7 @@ export default (goosemodScope, gmSettings) => {
 
       label: 'Sort by',
 
-      options: async () => [
+      options: [
         'Stars',
         'A-Z',
         'Last Updated'
@@ -317,8 +317,9 @@ export default (goosemodScope, gmSettings) => {
 
       label: 'Author',
 
-      options: async (parentEl) => {
-        await sleep(10);
+      options: () => {
+        return [''];
+        // await sleep(10);
 
         const containerEl = parentEl.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
@@ -349,7 +350,7 @@ export default (goosemodScope, gmSettings) => {
 
       label: goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
 
-      options: async () => [
+      options: [
         'All',
         goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
         goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported
