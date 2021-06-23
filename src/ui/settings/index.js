@@ -128,7 +128,8 @@ export const _createItem = (name, content, container = true) => {
 
     return React.createElement(component, {
       i,
-      ...x
+      ...x,
+      itemName: name
     });
   });
 

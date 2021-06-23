@@ -181,6 +181,19 @@ export default () => {
 .gm-store-card > :nth-child(6) > :nth-child(3).hide-toggle {
   display: none;
 }
+
+
+.gm-store-category {
+  width: 100%;
+}
+
+.gm-store-category > :nth-child(2) {
+  display: grid;
+  overflow-x: scroll;
+  grid-template-columns: repeat(auto-fill, 350px);
+  grid-auto-flow: column;
+  width: 100%;
+}
 `));
 
   document.body.appendChild(el);

@@ -8,7 +8,7 @@ const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 const FormClasses = goosemod.webpackModules.findByProps('title', 'dividerDefault');
 
-export default class Header extends React.PureComponent {
+export default class Card extends React.PureComponent {
   render() {
     if (this.props.checked !== this.props.isToggled()) {
       this.props.checked = this.props.isToggled();
