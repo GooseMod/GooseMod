@@ -13,7 +13,7 @@ const Margins = goosemod.webpackModules.findByProps('marginTop20', 'marginBottom
 const FormClasses = goosemod.webpackModules.findByProps('title', 'dividerDefault');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 
-export default class ButtonItem extends React.PureComponent {
+export default class TextAndButton extends React.PureComponent {
   render() {
     return React.createElement(FormItem, {
         className: [Flex.Direction.VERTICAL, Flex.Justify.START, Flex.Align.STRETCH, Flex.Wrap.NO_WRAP, Margins.marginBottom20].join(' '),

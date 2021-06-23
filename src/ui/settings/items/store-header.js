@@ -4,7 +4,7 @@ const Text = goosemod.webpackModules.findByDisplayName('Text');
 
 const HeaderClasses = goosemod.webpackModules.findByProps('pageHeader');
 
-export default class Header extends React.PureComponent {
+export default class StoreHeader extends React.PureComponent {
   render() {
     return React.createElement('div', {
       className: [HeaderClasses.headerContainer, 'gm-store-header'].join(' ')

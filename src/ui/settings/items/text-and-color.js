@@ -23,7 +23,7 @@ function hexStringToColor(hex) {
   return (r | g << 8 | b << 16);
 }
 
-export default class ButtonItem extends React.PureComponent {
+export default class TextAndColor extends React.PureComponent {
   constructor(props) {
     props.default = hexStringToColor((props.initialValue || (() => {}))()) || 0;
     props.value = props.default;
