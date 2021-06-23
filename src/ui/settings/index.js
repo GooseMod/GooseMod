@@ -12,13 +12,13 @@ import addBaseItems from './baseItems';
 import getItems from './items';
 let Items = {};
 
-let goosemodScope = {};
 
+let goosemodScope = {};
 
 export const setThisScope = async (scope) => {
   goosemodScope = scope;
 
-  Items = await getItems();
+  Items = getItems();
 };
 
 
