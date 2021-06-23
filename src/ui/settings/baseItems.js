@@ -221,11 +221,11 @@ export default (goosemodScope, gmSettings) => {
   let importedVal = 'All';
   let authorVal = 'All';
 
-  const updateModuleStoreUI = (parentEl) => {
-    const containerEl = parentEl.children[0];
-    const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+  const updateModuleStoreUI = () => {
+    const containerEl = document.querySelector('#gm-settings-inject > :first-child');
+    const cards = [...containerEl.children].filter((x) => x.querySelector(':scope > .description-3_Ncsb'));
 
-    const inp = parentEl.querySelector('[contenteditable=true]').innerText.replace('\n', '');
+    const inp = containerEl.querySelector('.input-3Xdcic').value;
 
     const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
 
@@ -242,7 +242,7 @@ export default (goosemodScope, gmSettings) => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = c.getElementsByClassName('control-2BBjec')[0].style.display === 'block' ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
+      const importedSelector = c.getElementsByClassName('container-3auIfb')[0].style.display === 'block' ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
 
       const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -274,7 +274,7 @@ export default (goosemodScope, gmSettings) => {
         ? 'block' : 'none';
     }
 
-    [...parentEl.getElementsByClassName('storeCategory')].concat([...parentEl.getElementsByClassName('headerContainer-1Wluzl')]).forEach((x) => x.style.display = inp === '' && importedVal === 'All' && authorVal === 'All' ? 'block' : 'none');
+    [...containerEl.getElementsByClassName('gm-store-category')].concat([...containerEl.getElementsByClassName('headerContainer-1Wluzl')]).forEach((x) => x.style.display = inp === '' && importedVal === 'All' && authorVal === 'All' ? 'block' : 'none');
   };
 
   const genCurrentDate = new Date();
@@ -288,8 +288,8 @@ export default (goosemodScope, gmSettings) => {
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
-      onchange: (inp, parentEl) => {
-        updateModuleStoreUI(parentEl);
+      onchange: (inp) => {
+        updateModuleStoreUI();
       },
       storeSpecific: true
     },
@@ -305,10 +305,10 @@ export default (goosemodScope, gmSettings) => {
         'Last Updated'
       ],
 
-      onchange: (val, parentEl) => {
+      onchange: (val) => {
         sortedVal = val;
 
-        updateModuleStoreUI(parentEl);
+        updateModuleStoreUI();
       }
     },
 
@@ -338,10 +338,10 @@ export default (goosemodScope, gmSettings) => {
         return authors;
       },
 
-      onchange: (val, parentEl) => {
+      onchange: (val) => {
         authorVal = val;
 
-        updateModuleStoreUI(parentEl);
+        updateModuleStoreUI();
       }
     },
 
@@ -356,10 +356,10 @@ export default (goosemodScope, gmSettings) => {
         goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported
       ],
 
-      onchange: (val, parentEl) => {
+      onchange: (val) => {
         importedVal = val;
 
-        updateModuleStoreUI(parentEl);
+        updateModuleStoreUI();
       }
     },
 

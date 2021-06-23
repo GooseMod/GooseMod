@@ -10,6 +10,10 @@ export default () => {
   justify-content: center;
 }
 
+#gm-settings-inject > div > div:not(.gm-store-card) {
+  order: -999999999999;
+}
+
 .gm-inline-dropdown {
   display: flex;
   align-items: center;
