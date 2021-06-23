@@ -119,6 +119,11 @@ export const _createItem = (name, content, container = true) => {
     React.createElement(FormTitle, { tag: 'h1' }, name),
 
     content.slice(1).map((x, i) => {
+      if (x.type.includes('danger-button')) {
+        x.type = x.type.replace('danger-', '');
+        x.danger = true;
+      }
+
       const component = Items[x.type];
 
       if (!component) return React.createElement('div');
