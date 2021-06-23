@@ -19,7 +19,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   return PatcherBase.patch(UserProfileBadgeList, 'default', ([ { user, size } ], res) => {
     if (!forIds().includes(user.id)) return res;
 
-    let sizeClass = '';
+    let sizeClass = BadgeClasses.profileBadge24;
 
     switch (size) {
       case 1: { // User modal
