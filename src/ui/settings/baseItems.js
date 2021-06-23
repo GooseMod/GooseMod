@@ -220,14 +220,13 @@ export default (goosemodScope, gmSettings) => {
   let sortedVal = 'Stars';
   let importedVal = 'All';
   let authorVal = 'All';
+  let searchQuery = '';
 
   const updateModuleStoreUI = () => {
     const containerEl = document.querySelector('#gm-settings-inject > :first-child');
     const cards = [...containerEl.children].filter((x) => x.querySelector(':scope > .description-3_Ncsb'));
 
-    const inp = containerEl.querySelector('.input-3Xdcic').value;
-
-    const fuzzyReg = new RegExp(`.*${inp}.*`, 'i');
+    const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
@@ -242,7 +241,7 @@ export default (goosemodScope, gmSettings) => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = c.getElementsByClassName('container-3auIfb')[0].style.display === 'block' ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
+      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
 
       const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -274,7 +273,16 @@ export default (goosemodScope, gmSettings) => {
         ? 'block' : 'none';
     }
 
-    [...containerEl.getElementsByClassName('gm-store-category')].concat([...containerEl.getElementsByClassName('headerContainer-1Wluzl')]).forEach((x) => x.style.display = inp === '' && importedVal === 'All' && authorVal === 'All' ? 'block' : 'none');
+    const noInput = searchQuery === '' && importedVal === 'All' && authorVal === 'All';
+
+    [...containerEl.getElementsByClassName('gm-store-category')].forEach((x) => x.style.display = noInput ? 'block' : 'none');
+
+    // Keep all header but make height 0 so it breaks flex row
+    const allHeader = containerEl.querySelector(':scope > .headerContainer-1Wluzl');
+
+    allHeader.style.height = !noInput ? '0px' : '';
+    allHeader.style.opacity = !noInput ? '0' : '';
+    allHeader.style.margin = !noInput ? '0' : '';
   };
 
   const genCurrentDate = new Date();
@@ -288,7 +296,9 @@ export default (goosemodScope, gmSettings) => {
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
-      onchange: (inp) => {
+      onchange: (query) => {
+        searchQuery = query;
+
         updateModuleStoreUI();
       },
       storeSpecific: true
