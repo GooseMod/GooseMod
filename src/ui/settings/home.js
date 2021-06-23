@@ -439,6 +439,8 @@ export default (goosemodScope) => {
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
         }, 0);
 
+        themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2], false);
+
         /* const containerEl = themeContent.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 

@@ -8,5 +8,6 @@ export default () => ({
   button: require('./button').default,
   search: require('./search').default,
   'dropdown-individual': require('./dropdown-individual').default,
-  'store-header': require('./store-header').default
+  'store-header': require('./store-header').default,
+  'card': require('./card').default
 });

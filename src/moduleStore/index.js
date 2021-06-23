@@ -162,7 +162,7 @@ export default {
       }
 
       // If themes / plugins open
-      if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
+      if (document.querySelector(`#gm-settings-inject`)) {
         const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
 
         if (cardEls.length === 0) return;
@@ -173,7 +173,7 @@ export default {
           buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
           buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
 
-          const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+          const toggleEl = cardEl.querySelector(`.container-3auIfb`);
           toggleEl.style.display = 'block';
         }
       }
@@ -195,7 +195,7 @@ export default {
     item.showToggle = false;
 
     // If themes / plugins open
-    if (document.querySelector(`.children-rWhLdy .search-2oPWTC`)) {
+    if (document.querySelector(`#gm-settings-inject`)) {
       const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
       if (cardEls.length === 0) return;
@@ -206,7 +206,7 @@ export default {
         buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
         buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
 
-        const toggleEl = cardEl.querySelector(`.control-2BBjec`);
+        const toggleEl = cardEl.querySelector(`.container-3auIfb`);
         toggleEl.style.display = 'none';
       }
     }
@@ -274,16 +274,16 @@ export default {
         subtext2: m.version === '0' || m.version.toLowerCase().includes('auto') ? '' : `v${m.version}`,
 
         buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
-        onclick: async (el) => {
+        onclick: async () => {
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
-            el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
+            // el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
 
             goosemodScope.settings.removeModuleUI(m.name, itemName);
 
             return;
           }
 
-          el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.importing;
+          // el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.importing;
 
           if (m.dependencies && m.dependencies.length > 0) { // If it's the initial (on import) import that means it has been imported before
             const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';
@@ -306,7 +306,7 @@ To continue importing this module the dependencies need to be imported.`,
           await goosemodScope.moduleStoreAPI.importModule(m.name);
         },
         isToggled: () => goosemodScope.disabledModules[m.name] === undefined,
-        onToggle: async (checked, el) => {
+        onToggle: async (checked) => {
           if (checked) {
             goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
             delete goosemodScope.disabledModules[m.name];
