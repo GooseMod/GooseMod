@@ -155,4 +155,17 @@ export const makeGooseModSettings = () => {
   addToSettingsSidebar(goosemodScope, gmSettings);
   addToContextMenu(goosemodScope, gmSettings.get().home);
   if (gmSettings.get().home) addToHome(goosemodScope);
+
+  loadColorPicker();
+};
+
+const loadColorPicker = () => { // Force load ColorPicker as it's dynamically loaded
+  const { findInReactTree } = goosemodScope.reactUtils;
+
+  if (!goosemodScope.webpackModules.findByDisplayName('ColorPicker')) {
+    const GuildFolderSettingsModal = goosemodScope.webpackModules.findByDisplayName('GuildFolderSettingsModal');
+    const instance = GuildFolderSettingsModal.prototype.render.call({ props: {}, state: {}});
+  
+    findInReactTree(instance.props.children, (x) => x.props?.colors).type().props.children.type._ctor();
+  }
 };
