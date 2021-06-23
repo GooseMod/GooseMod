@@ -439,7 +439,7 @@ export default (goosemodScope) => {
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
         }, 0);
 
-        const containerEl = themeContent.children[0];
+        /* const containerEl = themeContent.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         if (themeSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
@@ -465,7 +465,7 @@ export default (goosemodScope) => {
 
             document.querySelector(`.selected-aXhQR6`).click();
           }, 100);
-        }
+        } */
 
         /* const injectSettingsPage = () => {
           const injectEl = document.getElementById('gm-settings-inject');
@@ -522,7 +522,7 @@ export default (goosemodScope) => {
           buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
         }, 0);
 
-        const containerEl = pluginContent.children[0];
+        /* const containerEl = pluginContent.children[0];
         const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
 
         if (pluginSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
@@ -548,7 +548,7 @@ export default (goosemodScope) => {
 
             document.querySelector(`.selected-aXhQR6`).click();
           }, 100);
-        }
+        } */
 
         /* const injectSettingsPage = () => {
           const injectEl = document.getElementById('gm-settings-inject');
