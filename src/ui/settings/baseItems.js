@@ -296,6 +296,7 @@ export default (goosemodScope, gmSettings) => {
   [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
+      placeholder: `${goosemodScope.i18n.discordStrings.SEARCH} ${x}`,
       onchange: (query) => {
         searchQuery = query;
 
