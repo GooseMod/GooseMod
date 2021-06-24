@@ -12,7 +12,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const Clickable = goosemodScope.webpackModules.findByDisplayName('Clickable');
 
-  const BadgeClasses = goosemod.webpackModules.findByProps('profileBadge', 'colored');
+  const BadgeClasses = goosemodScope.webpackModules.findByProps('profileBadge24', 'profileBadge22');
 
   const UserProfileBadgeList = goosemodScope.webpackModules.find((m) => m.default && m.default.displayName === 'UserProfileBadgeList');
   
