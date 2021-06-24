@@ -328,23 +328,34 @@ export default (goosemodScope, gmSettings) => {
       label: 'Author',
 
       options: () => {
-        return [''];
-        // await sleep(10);
+        const idCache = goosemodScope.moduleStoreAPI.idCache.getCache();
 
-        const containerEl = parentEl.children[0];
-        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
+        const authors = [...goosemodScope.moduleStoreAPI.modules.reduce((acc, x) => {
+          let authors = x.authors;
 
-        const authors = [...cards.reduce((acc, e) => {
-          for (let el of e.getElementsByClassName('author')) {
-            const x = el.textContent.split('#')[0];
-            acc.set(x, (acc.get(x) || 0) + (e.style.display !== 'none' ? 1 : 0));
+          if (!Array.isArray(authors)) authors = [ authors ];
+
+          for (let a of authors) {
+            let key = a;
+
+            if (a.match(/^[0-9]{17,18}$/)) {
+              key = idCache[a].data.username;
+            } else {
+              const idMatch = a.match(/(.*) \(([0-9]{17,18})\)/); // "<name> (<id>)"
+
+              if (idMatch !== null) {
+                key = idMatch[1];
+              }
+            }
+
+            acc.set(key, (acc.get(key) || 0) + 1);
           }
 
           return acc;
         }, new Map()).entries()].sort((a, b) => b[1] - a[1]).map((x) => `${x[0]} (${x[1]})`);
 
         authors.unshift('All');
-
+        
         return authors;
       },
 
