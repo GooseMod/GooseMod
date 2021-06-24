@@ -198,6 +198,14 @@ export default () => {
   grid-auto-flow: column;
   width: 100%;
 }
+
+
+.gm-store-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 `));
 
   document.body.appendChild(el);

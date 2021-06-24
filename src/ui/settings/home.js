@@ -16,15 +16,17 @@ export default (goosemodScope) => {
   const HomeMiscClasses = goosemodScope.webpackModules.findByProps('headerBarContainer', 'pageContent');
   const SpinClasses = goosemodScope.webpackModules.findByProps('updateAvailable');
 
-  const ThemesIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Eye'), {
-    width: 24,
-    height: 24
-  });
+  const homeIcons = {
+    themes: React.createElement(goosemodScope.webpackModules.findByDisplayName('Eye'), {
+      width: 24,
+      height: 24
+    }),
 
-  const PluginsIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('InlineCode'), {
-    width: 24,
-    height: 24
-  });
+    plugins: React.createElement(goosemodScope.webpackModules.findByDisplayName('InlineCode'), {
+      width: 24,
+      height: 24
+    })
+  };
 
   const UpdateIcon = React.createElement(goosemodScope.webpackModules.findByDisplayName('Retry'), {
     width: 24,
@@ -41,6 +43,7 @@ export default (goosemodScope) => {
   });
 
   const HeaderBarContainer = goosemodScope.webpackModules.findByDisplayName('HeaderBarContainer');
+  const LoadingPopout = goosemodScope.webpackModules.findByDisplayName('LoadingPopout');
 
 
   const makeHeader = (icon, title) => React.createElement(HeaderBarContainer, {
@@ -358,11 +361,76 @@ export default (goosemodScope) => {
 
   let expanded = true;
 
-  const pluginSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins);
-  let pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2], false);
+  let settings = {
+    plugins: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
+    themes: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes)
+  };
 
-  const themeSetting = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
-  let themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2], false);
+  let contents = {
+    plugins: goosemodScope.settings._createItem(settings.plugins[1], settings.plugins[2], false),
+    themes: goosemodScope.settings._createItem(settings.themes[1], settings.themes[2], false)
+  };
+
+  const handleItemClick = (type) => {
+    const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
+
+    [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className?.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
+
+    setTimeout(() => {
+      const buttonEl = document.getElementById(`gm-home-${type}`);
+      buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
+    }, 0);
+
+    const contentCards = contents[type].props.children.filter((x) => x.props.type === 'card').length;
+    const itemCards = settings[type][2].filter((x) => x.type === 'card').length;
+    const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
+
+    if (itemCards !== contentCards) {
+      contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false);
+    }
+
+    if (itemCards !== expectedModuleCount) { // Store hasn't finished loading yet, show loading indicator
+      contents[type] = React.createElement('div', {
+        className: 'gm-store-loading-container'
+      },
+        React.createElement(LoadingPopout)
+      );
+
+      setTimeout(async () => {
+        while (itemCards!== expectedModuleCount) {
+          await sleep(10);
+        }
+
+        contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false);
+
+        document.querySelector(`.selected-aXhQR6`).click();
+      }, 100);
+    }
+
+
+    if (parentEl.children.length === 1) {
+      ReactDOM.render(makePage(homeIcons[type], type, contents[type]), parentEl.children[0]);
+    }
+    
+    if (parentEl.children.length === 2 || parentEl.children.length === 3) {
+      let indexOffset = parentEl.children.length - 2;
+
+      // Library has jank scroll elements so implement edge case
+      const isLibrary = parentEl.children[indexOffset + 1].classList.contains('stickyScroller-24zUyY');
+      if (isLibrary) indexOffset = 0;
+
+      parentEl.children[indexOffset + 0].className = '';
+      ReactDOM.render(makeHeader(homeIcons[type], type), parentEl.children[indexOffset + 0]);
+      
+      if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
+        parentEl.children[indexOffset + 1].children[1].style.display = 'none';
+      }
+
+      if (isLibrary) indexOffset = 1;
+
+      ReactDOM.render(makeContent(isLibrary, contents[type]), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
+    }
+  };
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
@@ -428,78 +496,8 @@ export default (goosemodScope) => {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'block' : 'none'
       },
 
-      icon: () => ThemesIcon,
-      onClick: () => {
-        const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-
-        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className?.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
-
-        setTimeout(() => {
-          const buttonEl = document.getElementById('gm-home-themes');
-          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
-        }, 0);
-
-        themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2], false);
-
-        /* const containerEl = themeContent.children[0];
-        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        if (themeSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
-          themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
-        }
-        
-        if (themeSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme')).length) { // Store hasn't finished loading yet, show loading indicator
-          themeContent = document.createElement('div');
-
-          themeContent.style.display = 'flex';
-          themeContent.style.alignItems = 'center';
-          themeContent.style.justifyContent = 'center';
-          themeContent.style.height = '100%';
-
-          themeContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
-
-          setTimeout(async () => {
-            while (themeSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme')).length) {
-              await sleep(10);
-            }
-
-            themeContent = goosemodScope.settings._createItem(themeSetting[1], themeSetting[2]).children[1];
-
-            document.querySelector(`.selected-aXhQR6`).click();
-          }, 100);
-        } */
-
-        /* const injectSettingsPage = () => {
-          const injectEl = document.getElementById('gm-settings-inject');
-  
-          if (injectEl.children[0]) injectEl.children[0].remove();
-  
-          injectEl.appendChild(themeContent);
-        }; */
-
-        if (parentEl.children.length === 1) {
-          ReactDOM.render(makePage(ThemesIcon, 'themes', themeContent), parentEl.children[0]);
-        }
-        
-        if (parentEl.children.length === 2 || parentEl.children.length === 3) {
-          let indexOffset = parentEl.children.length - 2;
-
-          // Library has jank scroll elements so implement edge case
-          const isLibrary = parentEl.children[indexOffset + 1].classList.contains('stickyScroller-24zUyY');
-          if (isLibrary) indexOffset = 0;
-
-          parentEl.children[indexOffset + 0].className = '';
-          ReactDOM.render(makeHeader(ThemesIcon, 'themes'), parentEl.children[indexOffset + 0]);
-          
-          if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
-            parentEl.children[indexOffset + 1].children[1].style.display = 'none';
-          }
-
-          if (isLibrary) indexOffset = 1;
-
-          ReactDOM.render(makeContent(isLibrary, themeContent), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
-        }
-      },
+      icon: () => homeIcons.themes,
+      onClick: () => handleItemClick('themes'),
 
       id: 'gm-home-themes',
 
@@ -513,76 +511,8 @@ export default (goosemodScope) => {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins ? 'block' : 'none'
       },
 
-      icon: () => PluginsIcon,
-      onClick: () => {
-        const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
-
-        [...document.querySelector(`.scroller-1JbKMe`).children[0].children].forEach((x) => x.className = x.className?.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable));
-
-        setTimeout(() => {
-          const buttonEl = document.getElementById('gm-home-plugins');
-          buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
-        }, 0);
-
-        /* const containerEl = pluginContent.children[0];
-        const cards = [...containerEl.children[containerEl.children.length - 2].children].filter((x) => x.getElementsByClassName('description-3_Ncsb')[1]);
-
-        if (pluginSetting[2].filter((x) => x.type === 'card').length !== cards.length) {
-          pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
-        }
-
-        if (pluginSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme')).length) { // Store hasn't finished loading yet, show loading indicator
-          pluginContent = document.createElement('div');
-
-          pluginContent.style.display = 'flex';
-          pluginContent.style.alignItems = 'center';
-          pluginContent.style.justifyContent = 'center';
-          pluginContent.style.height = '100%';
-
-          pluginContent.innerHTML = `<div class="loadingPopout-qYljDW" role="dialog" tabindex="-1" aria-modal="true"><div class="spinner-2enMB9 spinningCircle-2NAjGW"><div class="spinningCircleInner-mbM5zM inner-1gJC7_"><svg class="circular-2NaZOq" viewBox="25 25 50 50"><circle class="path-92Hmty path3-2l9TIX" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty path2-1q7bG_" cx="50" cy="50" r="20"></circle><circle class="path-92Hmty" cx="50" cy="50" r="20"></circle></svg></div></div></div>`;
-
-          setTimeout(async () => {
-            while (pluginSetting[2].filter((x) => x.type === 'card').length !== goosemodScope.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme')).length) {
-              await sleep(10);
-            }
-
-            pluginContent = goosemodScope.settings._createItem(pluginSetting[1], pluginSetting[2]).children[1];
-
-            document.querySelector(`.selected-aXhQR6`).click();
-          }, 100);
-        } */
-
-        /* const injectSettingsPage = () => {
-          const injectEl = document.getElementById('gm-settings-inject');
-  
-          if (injectEl.children[0]) injectEl.children[0].remove();
-  
-          injectEl.appendChild(pluginContent);
-        }; */
-
-        if (parentEl.children.length === 1) {
-          ReactDOM.render(makePage(PluginsIcon, 'plugins', pluginContent), parentEl.children[0]);
-        }
-        
-        if (parentEl.children.length === 2 || parentEl.children.length === 3) {
-          let indexOffset = parentEl.children.length - 2;
-
-          // Library has jank scroll elements so implement edge case
-          const isLibrary = parentEl.children[indexOffset + 1].classList.contains('stickyScroller-24zUyY');
-          if (isLibrary) indexOffset = 0;
-
-          parentEl.children[indexOffset + 0].className = '';
-          ReactDOM.render(makeHeader(PluginsIcon, 'plugins'), parentEl.children[indexOffset + 0]);
-          
-          if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
-            parentEl.children[indexOffset + 1].children[1].style.display = 'none';
-          }
-
-          if (isLibrary) indexOffset = 1;
-
-          ReactDOM.render(makeContent(isLibrary, pluginContent), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
-        }
-      },
+      icon: () => homeIcons.plugins,
+      onClick: () => handleItemClick('plugins'),
 
       id: 'gm-home-plugins',
 
