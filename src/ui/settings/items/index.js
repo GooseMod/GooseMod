@@ -9,6 +9,7 @@ export default () => ({
   search: require('./search').default,
   'dropdown-individual': require('./dropdown-individual').default,
   'store-header': require('./store-header').default,
-  'card': require('./card').default,
-  'store-category': require('./store-category').default
+  card: require('./card').default,
+  'store-category': require('./store-category').default,
+  custom: require('./custom').default
 });
