@@ -11,16 +11,17 @@ const TitleClasses = goosemod.webpackModules.findByProps('defaultMarginh5');
 // https://gist.github.com/A1rPun/b650b819f70942feb324
 
 function colorToHexString(dColor) {
-  return '#' + ("000000" + (((dColor & 0xFF) << 16) + (dColor & 0xFF00) + ((dColor >> 16) & 0xFF)).toString(16)).slice(-6);
+  const r = ((dColor & 0xff0000) >>> 16).toString(16).padStart(2, '0');
+  const g = ((dColor & 0xff00) >>> 8).toString(16).padStart(2, '0');
+  const b = (dColor & 0xff).toString(16).padStart(2, '0');
+
+  return '#' + r + g + b;
 }
 
 function hexStringToColor(hex) {
   if (!hex || hex.length !== 7) return undefined;
 
-  var r = parseInt(hex.slice(1, 3), 16),
-      g = parseInt(hex.slice(3, 5), 16),
-      b = parseInt(hex.slice(5, 7), 16);
-  return (r | g << 8 | b << 16);
+  return parseInt(hex.slice(1), 16);
 }
 
 export default class TextAndColor extends React.PureComponent {
@@ -32,7 +33,7 @@ export default class TextAndColor extends React.PureComponent {
   }
 
   render() {
-    const ColorPicker = goosemod.webpackModules.findByDisplayName('ColorPicker');
+    const ColorPicker = goosemod.webpackModules.find((x) => x.default?.displayName === 'ColorPicker');
 
     return React.createElement(FormItem, {
         className: [Margins.marginBottom20].join(' '),
@@ -44,14 +45,26 @@ export default class TextAndColor extends React.PureComponent {
         className: (this.props.i !== 0 ? Margins.marginTop20 + ' ' : '') + TitleClasses.defaultMarginh5
       }, this.props.text),
 
-      React.createElement(ColorPicker, {
+      React.createElement(ColorPicker.default, {
         colors: ROLE_COLORS,
         defaultColor: this.props.default || DEFAULT_ROLE_COLOR,
+
+        disabled: false,
+
         value: this.props.value,
+        customColor: null,
+
+        renderDefaultButton: (props) => React.createElement(ColorPicker.DefaultColorButton, props),
+
+        renderCustomButton: (props) => React.createElement(ColorPicker.CustomColorButton, props),
+        customPickerPosition: 'bottom',
+
         onChange: (x) => {
           console.log('onChange', x);
 
           this.props.value = x;
+
+          this.forceUpdate();
 
           this.props.oninput(colorToHexString(x));
         }
