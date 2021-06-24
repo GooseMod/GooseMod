@@ -34,8 +34,6 @@ export default class TextAndColor extends React.PureComponent {
   render() {
     const ColorPicker = goosemod.webpackModules.findByDisplayName('ColorPicker');
 
-    console.log(ColorPicker);
-
     return React.createElement(FormItem, {
         className: [Margins.marginBottom20].join(' '),
       },
