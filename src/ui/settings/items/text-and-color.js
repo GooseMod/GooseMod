@@ -8,21 +8,19 @@ const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
 const Margins = goosemod.webpackModules.findByProps('marginTop20', 'marginBottom20');
 const TitleClasses = goosemod.webpackModules.findByProps('defaultMarginh5');
 
-// https://gist.github.com/A1rPun/b650b819f70942feb324
-
-function colorToHexString(dColor) {
+const colorToHexString = (dColor) => {
   const r = ((dColor & 0xff0000) >>> 16).toString(16).padStart(2, '0');
   const g = ((dColor & 0xff00) >>> 8).toString(16).padStart(2, '0');
   const b = (dColor & 0xff).toString(16).padStart(2, '0');
 
   return '#' + r + g + b;
-}
+};
 
-function hexStringToColor(hex) {
+const hexStringToColor = (hex) => {
   if (!hex || hex.length !== 7) return undefined;
 
   return parseInt(hex.slice(1), 16);
-}
+};
 
 export default class TextAndColor extends React.PureComponent {
   constructor(props) {
