@@ -6,13 +6,11 @@ import Card from './card';
 const ScrollerClasses = goosemod.webpackModules.findByProps('auto', 'scrollerBase');
 
 export default class StoreCategory extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.props.cards = goosemod.settings.items.find((x) => x[1] === this.props.itemName)[2].filter((x) => x.type === 'card').sort(this.props.sort).slice(0, 10).map((x) => React.createElement(Card, x));
-  }
-
   render() {
+    if (!this.props.cards) {
+      this.props.cards = goosemod.settings.items.find((x) => x[1] === this.props.itemName)[2].filter((x) => x.type === 'card').sort(this.props.sort).slice(0, 10).map((x) => React.createElement(Card, x));
+    }
+
     return React.createElement('div', {
       className: 'gm-store-category'
     },
