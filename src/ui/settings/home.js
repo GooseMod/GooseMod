@@ -382,22 +382,21 @@ export default (goosemodScope) => {
     }, 0);
 
     const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
-    const itemCards = settings[type][2].filter((x) => x.type === 'card').length;
     const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
 
-    if (contentCards !== expectedModuleCount) {
-      contents[type] = React.createElement('div', {
+    if (contentCards !== expectedModuleCount) { // If amount of cards in generated React content isn't the same as amount of modules in Store
+      contents[type] = React.createElement('div', { // Show loading indicator whilst wait
         className: 'gm-store-loading-container'
       },
         React.createElement(LoadingPopout)
       );
 
       setTimeout(async () => {
-        while (itemCards !== expectedModuleCount) {
+        while (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Wait for setting item to fill
           await sleep(10);
         }
 
-        contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false);
+        contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React content
 
         document.querySelector(`.selected-aXhQR6`).click();
       }, 10);
@@ -523,4 +522,19 @@ export default (goosemodScope) => {
     RoutingUtils.transitionTo('/invalid');
     RoutingUtils.back();
   }
+
+  setTimeout(async () => { // Pregenerate contents
+    for (const type of ['themes', 'plugins']) {
+      const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
+      const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
+
+      while (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Wait for setting item to fill
+        await sleep(10);
+      }
+
+      if (contentCards === expectedModuleCount) return; // If content already generated
+
+      contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
+    }
+  }, 1000);
 };
