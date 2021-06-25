@@ -11,7 +11,7 @@ echo $hash
 
 sed -i "s/<hash>/$hash/g" dist/index.js
 
-changelog="$(node building/generate.js)"
+changelog="$(node building/generateChangelogJson.js)"
 
 echo $changelog
 
