@@ -381,7 +381,7 @@ export default (goosemodScope) => {
       buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
     }, 0);
 
-    const contentCards = contents[type].props.children.filter((x) => x.props.type === 'card').length;
+    const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
     const itemCards = settings[type][2].filter((x) => x.type === 'card').length;
     const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
 
