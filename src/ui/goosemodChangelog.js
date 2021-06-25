@@ -1,6 +1,6 @@
 import sleep from '../util/sleep';
 
-const image = 'https://media.discordapp.net/attachments/756146058924392542/771374562184658944/2018-11-14-11-36-30-1200x800.png';
+const image = 'https://media.discordapp.net/attachments/756146058924392545/858062203373223966/imageonline-co-overlayed-image_1.jpg';
 
 let version, generated;
 
