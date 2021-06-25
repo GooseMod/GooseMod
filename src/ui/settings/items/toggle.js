@@ -4,6 +4,7 @@ const SwitchItem = goosemod.webpackModules.findByDisplayName('SwitchItem');
 
 const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
 
+const Tooltip = goosemod.webpackModules.findByDisplayName('Tooltip');
 const Science = goosemod.webpackModules.findByDisplayName('Science');
 
 
@@ -19,12 +20,25 @@ export default class Toggle extends React.Component {
     
     if (props.experimental) {
       props.text = [
-        React.createElement(Science, {
-          width: 22,
-          height: 22,
+        React.createElement(Tooltip, {
+          position: 'top',
+          color: 'primary',
 
-          className: 'gm-experimental-label-icon'
-        }),
+          text: 'Experimental',
+        }, ({
+          onMouseLeave,
+          onMouseEnter
+        }) =>
+          React.createElement(Science, {
+            width: 22,
+            height: 22,
+
+            className: 'gm-experimental-label-icon',
+
+            onMouseLeave,
+            onMouseEnter
+          })
+        ),
 
         React.createElement('span', {
           className: 'gm-experimental-label-text'
