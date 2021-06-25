@@ -523,7 +523,7 @@ export default (goosemodScope) => {
     RoutingUtils.back();
   }
 
-  setTimeout(async () => { // Pregenerate contents
+  setTimeout(async () => { // Pre-generate contents
     for (const type of ['themes', 'plugins']) {
       const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
       const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
