@@ -11,5 +11,6 @@ export default () => ({
   'store-header': require('./store-header').default,
   card: require('./card').default,
   'store-category': require('./store-category').default,
-  custom: require('./custom').default
+  custom: require('./custom').default,
+  'text-input': require('./text-input').default
 });
