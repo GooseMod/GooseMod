@@ -74,6 +74,12 @@ export default (goosemodScope, gmSettings) => {
     gmSettings.set(key, value);
   };
 
+  const refreshPrompt = async () => {
+    if (await goosemodScope.confirmDialog('Refresh', 'Refresh Required', 'This setting **requires a refresh to take effect**. You **may experience some strange behaviour** in this session before refreshing.')) {
+      location.reload();
+    }
+  };
+
   goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.SETTINGS, ['',
     {
       type: 'header',
@@ -105,9 +111,12 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Force Theme Settings',
-      subtext: 'Experimental: Force auto-generated settings for all themes, **requires refresh**',
+      subtext: 'Experimental: Force auto-generated settings for all themes',
 
-      onToggle: (c) => changeSetting('allThemeSettings', c),
+      onToggle: (c) => {
+        changeSetting('allThemeSettings', c);
+        refreshPrompt();
+      },
       isToggled: () => gmSettings.get().allThemeSettings
     },
 
@@ -115,9 +124,12 @@ export default (goosemodScope, gmSettings) => {
       type: 'toggle',
 
       text: 'Store In Home',
-      subtext: 'Put GooseMod Store options in home instead of in settings, **requires refresh**',
+      subtext: 'Put GooseMod Store options in home instead of in settings',
 
-      onToggle: (c) => changeSetting('home', c),
+      onToggle: (c) => {
+        changeSetting('home', c);
+        refreshPrompt();
+      },
       isToggled: () => gmSettings.get().home
     },
 
@@ -146,9 +158,12 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Development Channel',
-      subtext: 'Use experimental development GooseMod builds, **requires refresh**',
+      subtext: 'Use experimental development GooseMod builds',
 
-      onToggle: (c) => changeSetting('devchannel', c),
+      onToggle: (c) => {
+        changeSetting('devchannel', c);
+        refreshPrompt();
+      },
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
     },
 
@@ -157,9 +172,12 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use, **requires refresh**',
+      subtext: 'Add data attributes to some elements for some themes to use,',
 
-      onToggle: (c) => changeSetting('attrs', c),
+      onToggle: (c) => {
+        changeSetting('attrs', c);
+        refreshPrompt();
+      },
       isToggled: () => gmSettings.get().attrs
     },
 
