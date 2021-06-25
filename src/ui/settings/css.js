@@ -206,6 +206,24 @@ export default () => {
   justify-content: center;
   height: 100%;
 }
+
+
+.gm-settings-note-markdown {
+  font-size: inherit;
+}
+
+.gm-settings-note-markdown .paragraph-3Ejjt0 {
+  margin: 0;
+}
+
+.gm-experimental-label-icon {
+  vertical-align: sub;
+}
+
+.gm-experimental-label-text {
+  vertical-align: top;
+  margin-left: 6px;
+}
 `));
 
   document.body.appendChild(el);

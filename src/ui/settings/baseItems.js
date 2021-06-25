@@ -105,7 +105,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Force Theme Settings',
-      subtext: 'Experimental: Force auto-generated settings for all themes, <strong>requires refresh</strong>',
+      subtext: 'Experimental: Force auto-generated settings for all themes, **requires refresh**',
 
       onToggle: (c) => changeSetting('allThemeSettings', c),
       isToggled: () => gmSettings.get().allThemeSettings
@@ -115,7 +115,7 @@ export default (goosemodScope, gmSettings) => {
       type: 'toggle',
 
       text: 'Store In Home',
-      subtext: 'Put GooseMod Store options in home instead of in settings, <strong>requires refresh</strong>',
+      subtext: 'Put GooseMod Store options in home instead of in settings, **requires refresh**',
 
       onToggle: (c) => changeSetting('home', c),
       isToggled: () => gmSettings.get().home
@@ -146,7 +146,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Development Channel',
-      subtext: 'Use experimental development GooseMod builds, <strong>requires refresh</strong>',
+      subtext: 'Use experimental development GooseMod builds, **requires refresh**',
 
       onToggle: (c) => changeSetting('devchannel', c),
       isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
@@ -157,7 +157,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use, <strong>requires refresh</strong>',
+      subtext: 'Add data attributes to some elements for some themes to use, **requires refresh**',
 
       onToggle: (c) => changeSetting('attrs', c),
       isToggled: () => gmSettings.get().attrs
