@@ -2,7 +2,6 @@ const { React } = goosemod.webpackModules.common;
 
 const SwitchItem = goosemod.webpackModules.findByDisplayName('SwitchItem');
 
-const Text = goosemod.webpackModules.findByDisplayName('Text');
 const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
 
 const Science = goosemod.webpackModules.findByDisplayName('Science');
