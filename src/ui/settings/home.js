@@ -347,7 +347,7 @@ export default (goosemodScope) => {
   },
     makeHeader(icon, title),
 
-    makeContent(content)
+    makeContent(false, content)
   );
 
   const RoutingUtils = goosemodScope.webpackModules.findByProps('transitionTo');
