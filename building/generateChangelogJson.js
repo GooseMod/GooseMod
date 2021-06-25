@@ -25,7 +25,7 @@ body = body.map((x, i) => {
 
     x = `${i !== 0 ? '\n' : ''}${x} {${type}${i === 0 ? ' marginTop' : ''}}\n======================\n`;
   } else {
-    const split = x.split(/,/);
+    /* const split = x.split(/,/);
 
     if (split.length === 1) {
       x = `* **${x}.**`;
@@ -35,7 +35,9 @@ body = body.map((x, i) => {
       sub = sub[0].toUpperCase() + sub.substring(1);
 
       x = `* **${main}.** ${sub}.`;
-    }
+    } */
+
+    x = `* ${x}`;
   }
 
   return x;
