@@ -385,7 +385,7 @@ export default (goosemodScope) => {
     const itemCards = settings[type][2].filter((x) => x.type === 'card').length;
     const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
 
-    if (itemCards !== expectedModuleCount) { // Store hasn't finished loading yet, show loading indicator
+    if (contentCards !== expectedModuleCount) {
       contents[type] = React.createElement('div', {
         className: 'gm-store-loading-container'
       },
@@ -393,18 +393,14 @@ export default (goosemodScope) => {
       );
 
       setTimeout(async () => {
-        while (itemCards!== expectedModuleCount) {
+        while (itemCards !== expectedModuleCount) {
           await sleep(10);
         }
 
         contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false);
 
         document.querySelector(`.selected-aXhQR6`).click();
-      }, 100);
-    } else {
-      if (itemCards !== contentCards) {
-        contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false);
-      }
+      }, 10);
     }
 
 
