@@ -111,7 +111,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Force Theme Settings',
-      subtext: 'Experimental: Force auto-generated settings for all themes',
+      subtext: '**Experimental:** Force auto-generated settings for all themes',
 
       onToggle: (c) => {
         changeSetting('allThemeSettings', c);
@@ -158,7 +158,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Development Channel',
-      subtext: 'Use experimental development GooseMod builds',
+      subtext: '**Experimental:** Use experimental development GooseMod builds',
 
       onToggle: (c) => {
         changeSetting('devchannel', c);
@@ -172,7 +172,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use,',
+      subtext: '**Experimental:** Add data attributes to some elements for some themes to use,',
 
       onToggle: (c) => {
         changeSetting('attrs', c);
