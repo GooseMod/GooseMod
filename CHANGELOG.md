@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v9.0.0-dev [2021-06-25]
+## v9.0.0 [2021-06-25]
 
   - ### React Settings
     - **It's finally here: React settings.** Long requested by some, it's finally done. We rewrote essentially over 2.5 thousand lines of JS so now our settings are made using React (instead of DOM which it used to use). What this means for you:
@@ -8,7 +8,7 @@
     - **Plaid speed.** Settings should be somewhat noticeably faster both when opening it and when clicking GooseMod pages.
     - **Rewritten home.** We also rewrote some of our home settings code. Now home items should be more reliable, plus a new codebase which allows easier additions and tweaks for the future.
   
-  - ### Tweaks and Fixes
+  - ### Tweaks and Fixes [progress]
     - **Fixed user badges.** A friendly Discord update broke them sometimes a few days ago but now they are back up and running.
     - **Removed i18n debug option.** Removed as it was no longer being used and caused confusion with some users.
 
