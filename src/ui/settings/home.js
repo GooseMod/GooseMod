@@ -391,15 +391,15 @@ export default (goosemodScope) => {
         React.createElement(LoadingPopout)
       );
 
-      setTimeout(async () => {
-        while (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Wait for setting item to fill
-          await sleep(10);
+      (async () => {
+        if (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Update store settings if card counts mismatch
+          await goosemodScope.moduleStoreAPI.updateStoreSetting();
         }
 
         contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React content
 
         document.querySelector(`.selected-aXhQR6`).click();
-      }, 10);
+      })();
     }
 
 
@@ -527,7 +527,7 @@ export default (goosemodScope) => {
     console.log(goosemodScope.moduleStoreAPI.modules.length);
 
     // Make store setting with cached modules whilst waiting for hotupdate from repos
-    await goosemodScope.moduleStoreAPI.updateStoreSetting(true);
+    await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
     for (const type of ['themes', 'plugins']) {
       contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
