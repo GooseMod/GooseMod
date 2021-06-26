@@ -361,7 +361,6 @@ export default (goosemodScope, gmSettings, Items) => {
       type: 'search',
 
       placeholder: `${goosemodScope.i18n.discordStrings.SEARCH} ${x}`,
-      text: searchQuery,
 
       onchange: (query) => {
         searchQuery = query;
@@ -407,7 +406,7 @@ export default (goosemodScope, gmSettings, Items) => {
             let key = a;
 
             if (a.match(/^[0-9]{17,18}$/)) {
-              key = idCache[a].data.username;
+              key = idCache[a]?.data?.username;
             } else {
               const idMatch = a.match(/(.*) \(([0-9]{17,18})\)/); // "<name> (<id>)"
 
@@ -415,6 +414,8 @@ export default (goosemodScope, gmSettings, Items) => {
                 key = idMatch[1];
               }
             }
+
+            if (!key) continue;
 
             acc.set(key, (acc.get(key) || 0) + 1);
           }
