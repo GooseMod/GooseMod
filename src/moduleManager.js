@@ -25,12 +25,8 @@ export const importModule = async (f, disabled = false) => {
 
   goosemodScope[modulesKey][field] = Object.assign(eval(f.data), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
 
-  goosemodScope.logger.debug(`import.load.module.${field}`, `Evaled module JS`);
-
   if (disabled) return;
 
 
   await goosemodScope.modules[field].goosemodHandlers.onImport(); // Run the module's onImport handler
-
-  goosemodScope.logger.debug(`import.load.module.${field}`, `Ran onImport()`);
 };
