@@ -4,13 +4,19 @@ const SearchBar = goosemod.webpackModules.findByDisplayName('SearchBar');
 
 export default class Search extends React.PureComponent {
   render() {
+    if (!this.props.text) {
+      this.props.text = '';
+    }
+
+    setTimeout(() => { this.props.onchange(this.props.text); }, 10);
+
     return React.createElement(SearchBar, {
       ...SearchBar.defaultProps,
       className: this.props.storeSpecific ? 'gm-store-search' : '',
 
       size: SearchBar.Sizes.MEDIUM,
 
-      query: this.props.text || '',
+      query: this.props.text,
       placeholder: this.props.placeholder || 'Search',
 
       onClear: () => {

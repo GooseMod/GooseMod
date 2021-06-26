@@ -17,6 +17,8 @@ export default class DropdownIndividual extends React.PureComponent {
       this.props.value = (this.props.selected || (() => {}))() || this.props.options[0];
     }
 
+    setTimeout(() => { this.props.onchange(this.props.value); }, 10);
+
     return React.createElement('div', {
         className: 'gm-inline-dropdown'
       },
