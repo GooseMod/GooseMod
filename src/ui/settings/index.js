@@ -145,7 +145,7 @@ export const _createItem = (name, content, container = true) => {
 export const makeGooseModSettings = () => {
   goosemodScope.settingsUninjects = [];
 
-  addBaseItems(goosemodScope, gmSettings);
+  addBaseItems(goosemodScope, gmSettings, Items);
 
   addToSettingsSidebar(goosemodScope, gmSettings);
   addToContextMenu(goosemodScope, gmSettings.get().home);

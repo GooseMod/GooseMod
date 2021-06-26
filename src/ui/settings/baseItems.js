@@ -1,9 +1,6 @@
-import sleep from '../../util/sleep';
 import * as GoosemodChangelog from '../goosemodChangelog';
 
-export default (goosemodScope, gmSettings) => {
-  const { React } = goosemodScope.webpackModules.common;
-
+export default (goosemodScope, gmSettings, Items) => {
   let oldItems = goosemodScope.settings.items;
   goosemodScope.settings.items = [];
 
@@ -80,6 +77,8 @@ export default (goosemodScope, gmSettings) => {
     }
   };
 
+  let settingDebugShowing = false;
+
   goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.SETTINGS, ['',
     {
       type: 'header',
@@ -111,7 +110,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Force Theme Settings',
-      subtext: '**Experimental:** Force auto-generated settings for all themes',
+      subtext: 'Force auto-generated settings for all themes',
 
       onToggle: (c) => {
         changeSetting('allThemeSettings', c);
@@ -158,7 +157,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Development Channel',
-      subtext: '**Experimental:** Use experimental development GooseMod builds',
+      subtext: 'Use experimental development GooseMod builds',
 
       onToggle: (c) => {
         changeSetting('devchannel', c);
@@ -172,7 +171,7 @@ export default (goosemodScope, gmSettings) => {
 
       experimental: true,
       text: 'Data Attributes',
-      subtext: '**Experimental:** Add data attributes to some elements for some themes to use,',
+      subtext: 'Add data attributes to some elements for some themes to use,',
 
       onToggle: (c) => {
         changeSetting('attrs', c);
@@ -228,6 +227,52 @@ export default (goosemodScope, gmSettings) => {
 
         Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
       }
+    },
+
+    {
+      type: 'header',
+      text: 'Debug',
+      experimental: true
+    },
+
+    {
+      type: 'toggle',
+
+      debug: true,
+      text: 'Add Debug Setting',
+      subtext: 'Shows debug setting to test settings (per session, refresh to remove)',
+
+      onToggle: () => {
+        settingDebugShowing = true;
+
+        goosemodScope.settings.createItem('Debug', ['',
+          ...Object.keys(Items).filter((x) => x !== 'card').map((x) => ({
+            type: x,
+
+            text: x,
+            label: x,
+
+            subtext: 'subtext',
+
+            buttonText: 'button text',
+            placeholder: 'placeholder',
+
+            initialValue: () => 'value',
+            options: ['option 1', 'option 2', 'option 3'],
+            isToggled: () => true,
+
+            sort: () => 0,
+
+            element: () => {
+              const el = document.createElement('div');
+              el.textContent = 'element text content';
+              return el;
+            }
+          }))
+        ]);
+      },
+      isToggled: () => settingDebugShowing,
+      disabled: () => settingDebugShowing
     },
 
     { type: 'gm-footer' }
