@@ -85,8 +85,8 @@ export default {
   },
 
   updateModules: async (shouldHandleLoadingText = false) => {
-    goosemodScope.moduleStoreAPI.modules = [];
-    goosemodScope.moduleStoreAPI.repos = [];
+    let newModules = [];
+    let newRepos = [];
 
     await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
       try {
@@ -97,13 +97,13 @@ export default {
         const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
 
         if (repo.enabled) {
-          goosemodScope.moduleStoreAPI.modules = goosemodScope.moduleStoreAPI.modules.concat(resp.modules.map((x) => {
+          newModules = newModules.concat(resp.modules.map((x) => {
             x.repo = repo.url;
             return x;
           })).sort((a, b) => a.name.localeCompare(b.name));
         }
 
-        goosemodScope.moduleStoreAPI.repos.push({
+        newRepos.push({
           url: repo.url,
 
           meta: resp.meta,
@@ -116,8 +116,10 @@ export default {
 
     const pureRepoUrls = goosemodScope.moduleStoreAPI.repoURLs.map((x) => x.url);
 
-    goosemodScope.moduleStoreAPI.repos = goosemodScope.moduleStoreAPI.repos.sort((a, b) => pureRepoUrls.indexOf(a.url) - pureRepoUrls.indexOf(b.url));
+    newRepos = newRepos.sort((a, b) => pureRepoUrls.indexOf(a.url) - pureRepoUrls.indexOf(b.url));
 
+    goosemodScope.moduleStoreAPI.modules = newModules;
+    goosemodScope.moduleStoreAPI.repos = newRepos;
 
     localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repoURLs));
     localStorage.setItem('goosemodCachedModules', JSON.stringify(goosemodScope.moduleStoreAPI.modules));

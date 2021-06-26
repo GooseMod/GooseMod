@@ -523,18 +523,14 @@ export default (goosemodScope) => {
     RoutingUtils.back();
   }
 
-  setTimeout(async () => { // Pre-generate contents
+  (async () => { // Pre-generate contents with cached modules
+    console.log(goosemodScope.moduleStoreAPI.modules.length);
+
+    // Make store setting with cached modules whilst waiting for hotupdate from repos
+    await goosemodScope.moduleStoreAPI.updateStoreSetting(true);
+
     for (const type of ['themes', 'plugins']) {
-      const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
-      const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
-
-      while (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Wait for setting item to fill
-        await sleep(10);
-      }
-
-      if (contentCards === expectedModuleCount) return; // If content already generated
-
       contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
     }
-  }, 1000);
+  })();
 };

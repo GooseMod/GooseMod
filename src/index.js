@@ -136,17 +136,17 @@ const init = async function () {
 
   this.updateLoadingScreen('Initialising internals...');
 
-  this.moduleStoreAPI.updateStoreSetting();
+  this.modules = {};
+  this.disabledModules = {};
+
+  this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
+  this.moduleStoreAPI.modules.cached = true;
+  
   this.settings.makeGooseModSettings();
 
   this.moduleStoreAPI.initRepoURLs();
 
   this.removed = false;
-
-  this.modules = {};
-  this.disabledModules = {};
-
-  this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
 
   if (!localStorage.getItem('goosemodCachedModules')) { // If not cached, fetch latest repos
     await this.moduleStoreAPI.updateModules(true);
