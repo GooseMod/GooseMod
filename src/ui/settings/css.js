@@ -216,11 +216,11 @@ export default () => {
   margin: 0;
 }
 
-.gm-experimental-label-icon {
+.gm-settings-label-icon {
   vertical-align: sub;
 }
 
-.gm-experimental-label-text {
+.gm-settings-label-text {
   vertical-align: top;
   margin-left: 6px;
 }
