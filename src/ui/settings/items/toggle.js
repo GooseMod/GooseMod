@@ -6,16 +6,17 @@ const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
 
 const Tooltip = goosemod.webpackModules.findByDisplayName('Tooltip');
 const Science = goosemod.webpackModules.findByDisplayName('Science');
+const Alert = goosemod.webpackModules.findByDisplayName('InfoFilled');
 
 
 export default class Toggle extends React.Component {
   constructor(props) {
     const originalHandler = props.onToggle;
     props.onChange = (e) => {
-      originalHandler(e);
-
       this.props.value = e;
       this.forceUpdate();
+
+      originalHandler(e);
     };
     
     if (props.experimental) {
@@ -33,7 +34,7 @@ export default class Toggle extends React.Component {
             width: 22,
             height: 22,
 
-            className: 'gm-experimental-label-icon',
+            className: 'gm-settings-label-icon',
 
             onMouseLeave,
             onMouseEnter
@@ -41,9 +42,41 @@ export default class Toggle extends React.Component {
         ),
 
         React.createElement('span', {
-          className: 'gm-experimental-label-text'
+          className: 'gm-settings-label-text'
         }, props.text)
       ];
+
+      props.subtext = `**Experimental:** ` + props.subtext;
+    }
+
+    if (props.debug) {
+      props.text = [
+        React.createElement(Tooltip, {
+          position: 'top',
+          color: 'primary',
+
+          text: 'Debug',
+        }, ({
+          onMouseLeave,
+          onMouseEnter
+        }) =>
+          React.createElement(Alert, {
+            width: 22,
+            height: 22,
+
+            className: 'gm-settings-label-icon',
+
+            onMouseLeave,
+            onMouseEnter
+          })
+        ),
+
+        React.createElement('span', {
+          className: 'gm-settings-label-text'
+        }, props.text)
+      ];
+
+      props.subtext = `**Debug:** ` + props.subtext;
     }
 
     super(props);
@@ -55,6 +88,8 @@ export default class Toggle extends React.Component {
       note: React.createElement(Markdown, {
         className: 'gm-settings-note-markdown'
       }, this.props.subtext),
+
+      disabled: this.props.disabled ? this.props.disabled() : false,
 
       onChange: this.props.onChange
     }, this.props.text);
