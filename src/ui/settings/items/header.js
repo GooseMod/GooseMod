@@ -25,7 +25,7 @@ export default class Header extends React.PureComponent {
             width: 18,
             height: 18,
 
-            className: 'gm-experimental-label-icon',
+            className: 'gm-settings-label-icon',
 
             onMouseLeave,
             onMouseEnter
@@ -37,7 +37,7 @@ export default class Header extends React.PureComponent {
             verticalAlign: 'unset'
           },
 
-          className: 'gm-experimental-label-text'
+          className: 'gm-settings-label-text'
         }, props.text)
       ];
     }
