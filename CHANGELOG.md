@@ -1,5 +1,16 @@
 # GooseMod Changelog
 
+## v9.2.0-dev [2021-06-26]
+
+  - ### Backup System
+    - **New backup system.** There is a new backup system in GooseMod settings allowing you to backup your modules and settings. Backing up produces a backup file which you can then use to restore later on.
+
+  - ### Store Improvements [progress]
+    - **Ludicrous speed.** Clicking on home items is now significantly faster than before.
+    - **Squashed bugs.** A bug causing Store pages to load forever has been fixed, as well as some rare crashes. Store in Settings is also now up and working again.
+    - **Better sorting and filtering.** Options are now properly shown and applied after going off and back to Store pages.
+
+
 ## v9.1.0 [2021-06-26]
 
   - ### Settings Improvements
