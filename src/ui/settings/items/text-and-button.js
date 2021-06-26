@@ -4,6 +4,8 @@ import Divider from './divider';
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
+const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+
 const FormItem = goosemod.webpackModules.findByDisplayName('FormItem');
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 
@@ -41,7 +43,11 @@ export default class TextAndButton extends React.PureComponent {
 
           React.createElement(FormText, {
             className: FormTextClasses.description
-          }, this.props.subtext)
+          },
+            React.createElement(Markdown, {
+              className: 'gm-settings-note-markdown'
+            }, this.props.subtext)
+          )
         ),
 
         React.createElement(Button, {
