@@ -171,7 +171,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       experimental: true,
       text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use,',
+      subtext: 'Add data attributes to some elements for some themes to use',
 
       onToggle: (c) => {
         changeSetting('attrs', c);
