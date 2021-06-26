@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v9.1.0-dev [2021-06-26]
+## v9.1.0 [2021-06-26]
 
   - ### Settings Improvements
     - **Home now has improved loading.** Should be faster and no longer showing it's loading for the rest of time.
