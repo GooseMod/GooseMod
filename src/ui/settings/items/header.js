@@ -42,14 +42,47 @@ export default class Header extends React.PureComponent {
       ];
     }
 
+    props.id = `gm-settings-header-${Math.random().toString().substring(2)}`;
+    props.collapsed = false;
+
     super(props);
+
+    this.props.handleCollapse = () => {
+      const after = [...document.querySelectorAll(`#${this.props.id} ~ *`)];
+
+      const headerChildren = after.slice(0, after.indexOf(after.find((x) => x.tagName === 'H5')));
+
+      for (const child of headerChildren) {
+        child.style.display = this.props.collapsed ? 'none' : '';
+      }
+    };
   }
 
   render() {
+    setTimeout(this.props.handleCollapse, 100);
+
     return React.createElement(FormTitle, {
       tag: 'h5',
 
-      className: (this.props.i !== 0 ? Margins.marginTop20 + ' ' : '') + Margins.marginBottom8
-    }, this.props.text);
+      className: (this.props.i !== 0 ? Margins.marginTop20 + ' ' : '') + Margins.marginBottom8,
+
+      onClick: () => {
+        this.props.collapsed = !this.props.collapsed;
+        this.props.handleCollapse();
+
+        this.forceUpdate();
+      },
+
+      id: this.props.id
+    },
+      this.props.text,
+
+      React.createElement(goosemod.webpackModules.findByDisplayName('DropdownArrow'), {
+        className: [`gm-settings-header-collapser`, this.props.collapsed ? 'collapsed' : ''].join(' '),
+
+        width: 22,
+        height: 22
+      })
+    );
   }
 }

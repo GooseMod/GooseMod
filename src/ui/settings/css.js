@@ -224,6 +224,17 @@ export default () => {
   vertical-align: top;
   margin-left: 6px;
 }
+
+.gm-settings-header-collapser {
+  margin-top: -3px;
+  float: right;
+  width: 22px;
+  height: 22px;
+}
+
+.gm-settings-header-collapser.collapsed {
+  transform: rotate(-90deg);
+}
 `));
 
   document.body.appendChild(el);
