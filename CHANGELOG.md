@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v9.2.0-dev [2021-06-26]
+## v9.2.0 [2021-06-26]
 
   - ### Backup System
     - **New backup system.** There is a new backup system in GooseMod settings allowing you to backup your modules and settings. Backing up produces a backup file which you can then use to restore later on.

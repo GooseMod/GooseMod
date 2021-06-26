@@ -107,7 +107,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: '9.2.0-dev',
+    version: '9.2.0',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: localStorage.getItem('goosemodLastVersion')
