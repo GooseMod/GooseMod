@@ -46,7 +46,7 @@ export default class TextAndButton extends React.PureComponent {
           },
             React.createElement(Markdown, {
               className: 'gm-settings-note-markdown'
-            }, this.props.subtext)
+            }, this.props.subtext || '')
           )
         ),
 

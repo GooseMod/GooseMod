@@ -87,7 +87,7 @@ export default class Toggle extends React.Component {
       value: this.props.isToggled(),
       note: React.createElement(Markdown, {
         className: 'gm-settings-note-markdown'
-      }, this.props.subtext),
+      }, this.props.subtext || ''),
 
       disabled: this.props.disabled ? this.props.disabled() : false,
 
