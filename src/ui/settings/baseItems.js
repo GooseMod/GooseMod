@@ -231,6 +231,79 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
+      text: 'Backup'
+    },
+
+    {
+      type: 'text-and-button',
+
+      text: 'Create Backup',
+      subtext: 'Creates a file for backup of your GooseMod modules and settings',
+      buttonText: 'Backup',
+
+      onclick: () => {
+        const obj = Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && !x.includes('Cache')).reduce((acc, k) => {
+          acc[k] = localStorage.getItem(k);
+          return acc;
+        }, {});
+
+        const toSave = JSON.stringify(obj);
+
+        const el = document.createElement("a");
+        el.style.display = 'none';
+
+        const file = new Blob([ toSave ], { type: 'application/json' });
+
+        el.href = URL.createObjectURL(file);
+        el.download = `goosemodBackup.json`;
+
+        document.body.appendChild(el);
+
+        el.click();
+
+        el.remove();
+      }
+    },
+
+    {
+      type: 'text-and-button',
+
+      text: 'Restore Backup',
+      subtext: 'Restore your GooseMod modules and settings via a backup file, **only restore backups you trust**',
+      buttonText: 'Restore',
+
+      onclick: async () => {
+        const el = document.createElement('input');
+        el.style.display = 'none';
+        el.type = 'file';
+
+        el.click();
+
+        await new Promise((res) => { el.onchange = () => { res(); }; });
+        
+        const file = el.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const obj = JSON.parse(reader.result);
+
+          for (const k in obj) {
+            if (!k.startsWith('goosemod')) continue; // Don't set if not goosemod key for some security
+
+            localStorage.setItem(k, obj[k]);
+          }
+
+          location.reload();
+        };
+
+        reader.readAsText(file);
+      }
+    },
+
+    {
+      type: 'header',
       text: 'Debug',
       experimental: true
     },
