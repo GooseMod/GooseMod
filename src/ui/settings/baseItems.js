@@ -359,7 +359,7 @@ export default (goosemodScope, gmSettings, Items) => {
   let searchQuery = '';
 
   const updateModuleStoreUI = () => {
-    const containerEl = document.querySelector('#gm-settings-inject > :first-child');
+    const containerEl = document.querySelector('#gm-settings-inject > :first-child') || document.querySelector('.gm-store-settings');
     const cards = [...containerEl.children].filter((x) => x.querySelector(':scope > .description-3_Ncsb'));
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');

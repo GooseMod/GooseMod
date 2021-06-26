@@ -2,7 +2,7 @@ export default () => {
   const el = document.createElement('style');
 
   el.appendChild(document.createTextNode(`
-#gm-settings-inject > div {
+#gm-settings-inject > div, .gm-store-settings {
   display: flex;
   flex-flow: row wrap;
 
@@ -10,8 +10,12 @@ export default () => {
   justify-content: center;
 }
 
-#gm-settings-inject > div > div:not(.gm-store-card) {
+#gm-settings-inject > div > :not(.gm-store-card), .gm-store-settings > :not(.gm-store-card) {
   order: -999999999999;
+}
+
+.gm-store-settings > h1 {
+  flex-basis: 100%;
 }
 
 .gm-inline-dropdown {
