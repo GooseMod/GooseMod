@@ -139,8 +139,8 @@ const init = async function () {
   let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
   let disabledModules = Object.keys(JSON.parse(localStorage.getItem('goosemodDisabled')) || {});
 
-  this.modules = toInstallModules.filter((x) => disabledModules.indexOf(x) === -1).reduce((acc, v) => { acc[v] = true; return acc; }, {});
-  this.disabledModules = toInstallModules.filter((x) => disabledModules.indexOf(x) !== -1).reduce((acc, v) => { acc[v] = true; return acc; }, {});
+  this.modules = toInstallModules.filter((x) => disabledModules.indexOf(x) === -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
+  this.disabledModules = toInstallModules.filter((x) => disabledModules.indexOf(x) !== -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
 
   console.log(this.modules, this.disabledModules);
 

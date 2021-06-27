@@ -33,7 +33,7 @@ export const saveModuleSettings = async () => {
 
   for (let p in goosemodScope.modules) {
     if (goosemodScope.modules.hasOwnProperty(p)) {
-      settings[p] = await (goosemodScope.modules[p]?.goosemodHandlers?.getSettings || (async () => []))();
+      settings[p] = await (goosemodScope.modules[p].goosemodHandlers.getSettings || (async () => []))();
     }
   }
 
