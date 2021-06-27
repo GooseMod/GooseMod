@@ -218,7 +218,7 @@ export default (goosemodScope) => {
                 },
   
                 buttonOnClick: async () => {
-                  goosemodScope.moduleStoreAPI.repos.splice(goosemodScope.moduleStoreAPI.repos.indexOf(rep), 1);
+                  goosemodScope.moduleStoreAPI.repos.splice(goosemodScope.moduleStoreAPI.repos.indexOf(repo), 1);
   
                   restartModal();
                 }
