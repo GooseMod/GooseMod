@@ -166,9 +166,7 @@ export default (goosemodScope) => {
             let repoInd = 0;
   
             for (const repo of goosemodScope.moduleStoreAPI.repos) {
-              const repoUrl = goosemodScope.moduleStoreAPI.repoURLs.find((x) => x.url === repo.url);
-  
-              const verified = repoUrl.url.startsWith(`https://store.goosemod.com`);
+              const verified = repo.url.startsWith(`https://store.goosemod.com`);
   
               const children = [
                 repo.meta.name
@@ -205,8 +203,6 @@ export default (goosemodScope) => {
                 )));
               }
   
-              console.log(children, verified, repoUrl);
-  
               repoEls.push(React.createElement(SwitchItemContainer, {
                 style: {
                   marginTop: repoInd === 0 ? '16px' : ''
@@ -216,13 +212,13 @@ export default (goosemodScope) => {
                 value: repo.enabled,
   
                 onChange: (e) => {
-                  repoUrl.enabled = e;
+                  repo.enabled = e;
   
                   updateAfterChange();
                 },
   
                 buttonOnClick: async () => {
-                  goosemodScope.moduleStoreAPI.repoURLs.splice(goosemodScope.moduleStoreAPI.repoURLs.indexOf(repoUrl), 1);
+                  goosemodScope.moduleStoreAPI.repos.splice(goosemodScope.moduleStoreAPI.repos.indexOf(rep), 1);
   
                   restartModal();
                 }
@@ -306,7 +302,7 @@ export default (goosemodScope) => {
                         }
   
   
-                        goosemodScope.moduleStoreAPI.repoURLs.push({
+                        goosemodScope.moduleStoreAPI.repos.push({
                           url: currentNewRepoInput,
                           enabled: true
                         });

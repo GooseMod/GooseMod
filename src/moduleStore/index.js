@@ -22,8 +22,6 @@ export default {
   jsCache: JSCache,
   idCache: IDCache,
 
-  repoURLs: undefined,
-
   getSettingItemName: (moduleInfo) => {
     let item = goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins;
 
@@ -57,71 +55,56 @@ export default {
     await Promise.all(updatePromises);
   },
 
-  initRepoURLs: () => {
-    goosemodScope.moduleStoreAPI.repoURLs = JSON.parse(localStorage.getItem('goosemodRepos')) || [
-      {
-        url: `https://store.goosemod.com/goosemod.json`,
-        enabled: true
-      },
-      {
-        url: `https://store.goosemod.com/ms2porter.json`,
-        enabled: true
-      },
+  initRepos: async () => {
+    const getFirstMeta = async (url) => (await (await fetch(`${url}?_=${Date.now()}`)).json()).meta;
+    const getFirstObj = async (url) => ({
+      url,
+      enabled: true,
+      meta: await getFirstMeta(url)
+    });
 
-      {
-        url: `https://store.goosemod.com/bdthemes.json`,
-        enabled: true
-      },
-      {
-        url: `https://store.goosemod.com/pcthemes.json`,
-        enabled: true
-      },
-
-      {
-        url: `https://store.goosemod.com/pcplugins.json`,
-        enabled: true
-      }
+    goosemodScope.moduleStoreAPI.repos = JSON.parse(localStorage.getItem('goosemodRepos')) || [
+      await getFirstObj(`https://store.goosemod.com/goosemod.json`),
+      await getFirstObj(`https://store.goosemod.com/ms2porter.json`),
+      await getFirstObj(`https://store.goosemod.com/bdthemes.json`),
+      await getFirstObj(`https://store.goosemod.com/pcthemes.json`),
+      await getFirstObj(`https://store.goosemod.com/pcplugins.json`),
     ];
   },
 
   updateModules: async (shouldHandleLoadingText = false) => {
     let newModules = [];
-    let newRepos = [];
 
-    await Promise.all(goosemodScope.moduleStoreAPI.repoURLs.map(async (repo) => {
+    goosemodScope.moduleStoreAPI.repos = (await Promise.all(goosemodScope.moduleStoreAPI.repos.map(async (repo) => {
+      if (shouldHandleLoadingText) {
+        goosemodScope.updateLoadingScreen(`Getting modules...\n(${repo.url})`);
+      }
+
+      if (!repo.enabled) {
+        return repo;
+      }
+
       try {
-        if (shouldHandleLoadingText) {
-          goosemodScope.updateLoadingScreen(`Getting modules...\n(${repo.url})`);
-        }
-
         const resp = (await (await fetch(`${repo.url}?_=${Date.now()}`)).json());
 
-        if (repo.enabled) {
-          newModules = newModules.concat(resp.modules.map((x) => {
-            x.repo = repo.url;
-            return x;
-          })).sort((a, b) => a.name.localeCompare(b.name));
-        }
+        newModules = newModules.concat(resp.modules.map((x) => {
+          x.repo = repo.url;
+          return x;
+        })).sort((a, b) => a.name.localeCompare(b.name));
 
-        newRepos.push({
-          url: repo.url,
-
-          meta: resp.meta,
-          enabled: repo.enabled
-        });
-      } catch (e) { // Failed fetching repo - do not error out and cause loading lockup
+        return {
+          ...repo,
+          meta: resp.meta // Update meta
+        };
+      } catch (e) {
         goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: 'GooseMod Store' }); // Show error toast to user so they know
+        console.error(e);
       }
-    }));
-
-    const pureRepoUrls = goosemodScope.moduleStoreAPI.repoURLs.map((x) => x.url);
-
-    newRepos = newRepos.sort((a, b) => pureRepoUrls.indexOf(a.url) - pureRepoUrls.indexOf(b.url));
+    }))).sort((a, b) => goosemodScope.moduleStoreAPI.repos.indexOf(a.url) - goosemodScope.moduleStoreAPI.repos.indexOf(b.url));
 
     goosemodScope.moduleStoreAPI.modules = newModules;
-    goosemodScope.moduleStoreAPI.repos = newRepos;
 
-    localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repoURLs));
+    localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
     localStorage.setItem('goosemodCachedModules', JSON.stringify(goosemodScope.moduleStoreAPI.modules));
   },
 
