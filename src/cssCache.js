@@ -6,7 +6,7 @@ export const setThisScope = (scope) => {
 
 
 export const save = () => {
-  const styles = [...document.querySelectorAll(`style:not([data-emotion])`)];
+  const styles = [...document.querySelectorAll(`style:not([data-emotion]):not([id^="ace"])`)];
 
   const allCss = styles.map((x) => {
     let css = x.textContent;
