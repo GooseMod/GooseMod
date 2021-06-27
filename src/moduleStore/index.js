@@ -100,6 +100,8 @@ export default {
         goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: 'GooseMod Store' }); // Show error toast to user so they know
         console.error(e);
       }
+
+      return repo;
     }))).sort((a, b) => goosemodScope.moduleStoreAPI.repos.indexOf(a.url) - goosemodScope.moduleStoreAPI.repos.indexOf(b.url));
 
     goosemodScope.moduleStoreAPI.modules = newModules;
