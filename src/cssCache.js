@@ -31,6 +31,8 @@ const injectHooks = () => {
   CSSStyleSheet.prototype.insertRule = function(cssText) {
     _insertRule.apply(this, arguments);
 
+    if (!cssText.startsWith('body.')) return; // Most GM plugins which do insertRule use body class selectors, so make sure as we don't want to include Discord's dynamic styles
+
     css += cssText;
     triggerSave();
   };
@@ -44,14 +46,10 @@ const injectHooks = () => {
       if (el.tagName === 'STYLE') { // Style element
         if (el.id.startsWith('ace')) return; // Ignore Ace editor styles
 
-        console.log('caught style element being appended, hooking and catching');
-
         hookElement(el); // Hook so future appends to the style are caught
 
         for (const t of el.childNodes) { // Catch current CSS
           css += t.textContent;
-
-          console.log('caught current CSS in style element');
         }
 
         triggerSave();
@@ -59,8 +57,6 @@ const injectHooks = () => {
 
       if (el.data) { // Text node being appended to style
         css += el.textContent;
-
-        console.log('text node appended to style');
 
         triggerSave();
       }
