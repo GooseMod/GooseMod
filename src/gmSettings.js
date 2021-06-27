@@ -11,7 +11,8 @@ const defaultSettings = {
 
   autoupdate: true,
 
-  allThemeSettings: false
+  allThemeSettings: false,
+  debugToasts: false
 };
 
 export const get = () => {
@@ -35,5 +36,5 @@ export const set = (key, value) => {
 
   localStorage.setItem('goosemodGMSettings', JSON.stringify(settings));
 
-  cache = undefined; // Invalidate cache
+  cache = settings; // Set cache to new value
 };
