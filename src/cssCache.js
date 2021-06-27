@@ -19,7 +19,7 @@ const save = () => {
 
   localStorage.setItem('goosemodCSSCache', css);
 
-  // goosemod.showToast('Saved', { subtext: 'CSS Cache' });
+  goosemod.showToast('Saved', { subtext: 'CSS Cache', type: 'debuginfo' });
 };
 
 const injectHooks = () => {
@@ -79,7 +79,7 @@ export const load = () => {
 
   document.body.appendChild(el);
 
-  // goosemod.showToast('Loaded', { subtext: 'CSS Cache' });
+  goosemod.showToast('Loaded', { subtext: 'CSS Cache', type: 'debuginfo' });
 
   init();
 };

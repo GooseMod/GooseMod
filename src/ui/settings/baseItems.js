@@ -348,6 +348,17 @@ export default (goosemodScope, gmSettings, Items) => {
       disabled: () => settingDebugShowing
     },
 
+    {
+      type: 'toggle',
+
+      debug: true,
+      text: 'Show Debug Toasts',
+      subtext: 'Shows some debug toasts on some events',
+
+      onToggle: (c) => changeSetting('debugToasts', c),
+      isToggled: () => gmSettings.get().debugToasts
+    },
+
     { type: 'gm-footer' }
   ]);
 
