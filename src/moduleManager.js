@@ -11,7 +11,7 @@ export const importModule = async (f, disabled = false) => {
 
   goosemodScope.logger.debug('import', `Importing module: "${field}"`);
 
-  if (goosemodScope.modules[field] !== undefined) {
+  if (goosemodScope.modules[field]?.goosemodHandlers !== undefined) {
     goosemodScope.logger.debug(`import.load.module.${field}`, 'Module already imported, removing then installing new version');
 
     await goosemodScope.modules[field].goosemodHandlers.onRemove();

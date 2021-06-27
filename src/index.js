@@ -136,8 +136,13 @@ const init = async function () {
 
   this.updateLoadingScreen('Initialising internals...');
 
-  this.modules = {};
-  this.disabledModules = {};
+  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
+  let disabledModules = Object.keys(JSON.parse(localStorage.getItem('goosemodDisabled')) || {});
+
+  this.modules = toInstallModules.filter((x) => disabledModules.indexOf(x) === -1).reduce((acc, v) => { acc[v] = true; return acc; }, {});
+  this.disabledModules = toInstallModules.filter((x) => disabledModules.indexOf(x) !== -1).reduce((acc, v) => { acc[v] = true; return acc; }, {});
+
+  console.log(this.modules, this.disabledModules);
 
   this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
   this.moduleStoreAPI.modules.cached = true;
@@ -152,7 +157,7 @@ const init = async function () {
     await this.moduleStoreAPI.updateModules(true);
   }
 
-  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
+  
   let toInstallIsDefault = false;
   
   if (toInstallModules.length === 0) {
@@ -184,7 +189,7 @@ const init = async function () {
       this.updateLoadingScreen(`Importing modules from Module Store...\n${m}`);
 
       // await this.moduleStoreAPI.importModule(m);
-      importPromises.push(this.moduleStoreAPI.importModule(m, this.moduleSettingsStore.checkDisabled(m)));
+      importPromises.push(this.moduleStoreAPI.importModule(m, disabledModules.includes(m)));
     }
 
     await Promise.all(importPromises);
