@@ -52,7 +52,6 @@ const scopeSetterFncs = [
   confirmDialog.setThisScope,
 
   i18n.setThisScope,
-  CSSCache.setThisScope,
 
   GMBadges.setThisScope
 ];
@@ -201,7 +200,6 @@ const init = async function () {
   if (this.settings.gmSettings.get().attrs) this.attrs.patch();
   
   this.saveInterval = setInterval(() => {
-    this.cssCache.save();
     this.moduleSettingsStore.saveModuleSettings();
   }, 3000);
   
