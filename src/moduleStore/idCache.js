@@ -65,7 +65,7 @@ export const getDataForID = async (id) => {
         break;
       }
 
-      await sleep(200);
+      await sleep(300);
     }
 
     updateCache(id, data);
