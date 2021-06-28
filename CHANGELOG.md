@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## v9.3.0 [2021-06-28]
+
+  - ### Repos Improvements [progress]
+    - **More reliable modal.** Repos which fail to load now show up so you can remove / disable them.
+    - **Simplified internals.** Mostly a pro for us, repos are now easier to work with and simpler internally in GooseMod.
+  
+  - ### Store Improvements [progress]
+    - **Loading is more reliable.** Most bugs for being stuck in loading have been fixed, apologies for any issues.
+
+  - ### New Debug Setting [progress]
+    - **Debug toasts have been added.** You likely won't need them, but debug toasts have been added. This setting shows some toasts on certain events for insights into internal code.
+
+
 ## v9.2.0 [2021-06-26]
 
   - ### Backup System
