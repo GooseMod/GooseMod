@@ -394,7 +394,7 @@ export default (goosemodScope) => {
 
         contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React content
 
-        document.querySelector(`.selected-aXhQR6`).click();
+        document.querySelector(`#gm-home-${type}`).click();
       })();
     }
 
