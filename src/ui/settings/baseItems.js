@@ -486,10 +486,12 @@ export default (goosemodScope, gmSettings, Items) => {
 
           if (!Array.isArray(authors)) authors = [ authors ];
 
-          for (let a of authors) {
+          for (const a of authors) {
             let key = a;
 
-            if (a.match(/^[0-9]{17,18}$/)) {
+            if (typeof a === 'object') {
+              key = a.n;
+            } else if (a.match(/^[0-9]{17,18}$/)) {
               key = idCache[a]?.data?.username;
             } else {
               const idMatch = a.match(/(.*) \(([0-9]{17,18})\)/); // "<name> (<id>)"

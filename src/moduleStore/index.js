@@ -209,11 +209,18 @@ export default {
     };
     
     return (await Promise.all(authors.map(async (x, i) => {
+      if (typeof x === 'object') { // User object
+        const pfp = `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.i}/${x.a}.png?size=32">`;
+        const name = `<span class="author" style="cursor: pointer; line-height: 32px;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${x.i}') } catch (e) { }">${x.n}</span>`; //<span class="description-3_Ncsb">#${result.discriminator}</span></span>`;
+
+        return i > 1 ? pfp : pfp + name;
+      }
+
       if (x.match(/^[0-9]{17,18}$/)) { // "<id>"
         const result = await IDCache.getDataForID(x);
 
         const pfp = `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=32">`;
-        const name = `<span class="author" style="cursor: pointer; line-height: 32px;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}`; //<span class="description-3_Ncsb">#${result.discriminator}</span></span>`;
+        const name = `<span class="author" style="cursor: pointer; line-height: 32px;" onmouseover="this.style.color = '#ccc'" onmouseout="this.style.color = '#fff'" onclick="try { window.goosemod.webpackModules.findByProps('open', 'fetchMutualFriends').open('${result.id}') } catch (e) { }">${result.username}</span>`; //<span class="description-3_Ncsb">#${result.discriminator}</span></span>`;
 
         return i > 1 ? pfp : pfp + name;
       }
