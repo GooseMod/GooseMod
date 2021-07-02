@@ -22,13 +22,12 @@ export default () => {
   display: flex;
   align-items: center;
 
-  gap: 8px;
-
   margin-left: 12px;
 }
 
 .gm-inline-dropdown > .select-2TCrqx {
   width: 120px;
+  margin-left: 8px;
 }
 
 .gm-store-search {
