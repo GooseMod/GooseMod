@@ -224,8 +224,9 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onclick: async () => {
         // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
-
         Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
+
+        refreshPrompt();
       }
     },
 
