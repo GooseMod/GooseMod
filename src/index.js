@@ -235,6 +235,13 @@ const init = async function () {
   if (this.settings.isSettingsOpen()) { // If settings are open, reopen to inject new GooseMod options
     this.settings.reopenSettings();
   }
+
+  if (!localStorage.getItem('goosemodModules')) { // First time install (OOTB)
+    const RoutingUtils = this.webpackModules.findByProps('transitionTo');
+
+    RoutingUtils.transitionTo('/channels/@me'); // Go to home
+    document.getElementById('gm-home-themes').click(); // Go to GM Store Themes
+  }
 };
 
 window.goosemod = {};
