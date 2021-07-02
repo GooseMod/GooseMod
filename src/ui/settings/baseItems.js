@@ -134,7 +134,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
-      text: 'Module Store'
+      text: 'Store'
     },
 
     {
