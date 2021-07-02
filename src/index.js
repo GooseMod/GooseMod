@@ -180,13 +180,11 @@ const init = async function () {
   if (toInstallIsDefault) {
     await this.packModal.ask();
   } else {
-    this.updateLoadingScreen('Importing modules from Module Store...');
+    this.updateLoadingScreen('Importing modules from Store...');
 
     const importPromises = [];
 
     for (let m of toInstallModules) {
-      this.updateLoadingScreen(`Importing modules from Module Store...\n${m}`);
-
       // await this.moduleStoreAPI.importModule(m);
       importPromises.push(this.moduleStoreAPI.importModule(m, disabledModules.includes(m)));
     }
@@ -236,15 +234,6 @@ const init = async function () {
   
   if (this.settings.isSettingsOpen()) { // If settings are open, reopen to inject new GooseMod options
     this.settings.reopenSettings();
-  } else {
-    // Only open settings (when not already open) if new user
-    if (!localStorage.getItem('goosemodModules')) {
-      this.settings.openSettings();
-      
-      await sleep(200);
-      
-      this.settings.openSettingItem('Module Store');
-    }
   }
 };
 
