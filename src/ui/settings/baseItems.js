@@ -390,11 +390,11 @@ export default (goosemodScope, gmSettings, Items) => {
 
       const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
 
-      const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
+      // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
       switch (sortedVal) {
         case 'A-Z': { // Already pre-sorted to A-Z
-          c.style.order = '0';
+          c.style.order = '';
 
           break;
         }
@@ -402,13 +402,13 @@ export default (goosemodScope, gmSettings, Items) => {
         case 'Last Updated': {
           const module = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === name.trim());
 
-          c.style.order = '-' + module.lastUpdated;
+          c.style.order = 3000000000 - module.lastUpdated;
 
           break;
         }
 
         case 'Stars': {
-          c.style.order = '-' + c.children[4].children[0].children[0].textContent;
+          c.style.order = 10000 - parseInt(c.children[4].children[0].children[0].textContent);
 
           break;
         }

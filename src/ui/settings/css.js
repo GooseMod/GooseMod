@@ -10,10 +10,6 @@ export default () => {
   justify-content: center;
 }
 
-#gm-settings-inject > div > :not(.gm-store-card), .gm-store-settings > :not(.gm-store-card) {
-  order: -999999999999;
-}
-
 .gm-store-settings > h1 {
   flex-basis: 100%;
 }
