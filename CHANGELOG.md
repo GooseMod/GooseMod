@@ -1,5 +1,16 @@
 # GooseMod Changelog
 
+## v9.4.0 [2021-07-03]
+
+  - ### Fixes and Tweaks [progress]
+    - **Dramatically decreased Store loading times (40s -> 3s) when loading GooseMod sometimes.** Mostly when opening GooseMod for the first time, purging cache, or sometimes randomly.
+    - **Renamed Module Store to Store fully throughout.**
+    - **Added refresh prompt when purging cache via setting.**
+    - **Fixed some small UI bugs with Firefox.**
+    - **Fixed GooseMod commands not working.**
+    - **Fixed OOTB to open Themes in Home instead of trying to open it in settings.**
+
+
 ## v9.3.0 [2021-06-28]
 
   - ### Repos Improvements [progress]
