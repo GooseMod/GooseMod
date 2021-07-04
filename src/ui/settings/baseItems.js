@@ -366,7 +366,6 @@ export default (goosemodScope, gmSettings, Items) => {
   if (gmSettings.get().separators && !gmSettings.get().home) goosemodScope.settings.createSeparator();
 
   let sortedVal = 'Stars';
-  let importedVal = 'All';
   let authorVal = 'All';
   let searchQuery = '';
 
@@ -375,6 +374,8 @@ export default (goosemodScope, gmSettings, Items) => {
     const cards = [...containerEl.children].filter((x) => x.querySelector(':scope > .description-3_Ncsb'));
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
+
+    const importedVal = document.querySelector('.selected-3s45Ha').textContent;
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
@@ -389,7 +390,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported : goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported;
+      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? 'Imported' : 'Store';
 
       // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -416,12 +417,12 @@ export default (goosemodScope, gmSettings, Items) => {
       }
 
       c.style.display = matches
-        && (importedVal === 'All' || importedVal === importedSelector)
+        && (importedVal === 'Store' || importedVal === importedSelector)
         && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
 
-    const noInput = searchQuery === '' && importedVal === 'All' && authorVal === 'All';
+    const noInput = searchQuery === '' && importedVal === 'Store' && authorVal === 'All';
 
     [...containerEl.getElementsByClassName('gm-store-category')].forEach((x) => x.style.display = noInput ? 'block' : 'none');
 
@@ -432,6 +433,8 @@ export default (goosemodScope, gmSettings, Items) => {
     allHeader.style.opacity = !noInput ? '0' : '';
     allHeader.style.margin = !noInput ? '0' : '';
   };
+
+  goosemodScope.settings.updateModuleStoreUI = updateModuleStoreUI;
 
   const genCurrentDate = new Date();
 
@@ -517,24 +520,6 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onchange: (val) => {
         authorVal = val;
-
-        updateModuleStoreUI();
-      }
-    },
-
-    {
-      type: 'dropdown-individual',
-
-      label: goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
-
-      options: [
-        'All',
-        goosemodScope.i18n.goosemodStrings.moduleStore.selectors.imported,
-        goosemodScope.i18n.goosemodStrings.moduleStore.selectors.notImported
-      ],
-
-      onchange: (val) => {
-        importedVal = val;
 
         updateModuleStoreUI();
       }

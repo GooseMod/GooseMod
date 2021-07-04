@@ -3,7 +3,7 @@ import sleep from '../../util/sleep';
 import * as GMSettings from '../../gmSettings';
 export const gmSettings = GMSettings;
 
-import addToHome from './home';
+import addToHome from './home/index';
 import addToContextMenu from './contextMenu';
 import addToSettingsSidebar from './settingsSidebar';
 

@@ -161,11 +161,9 @@ export default {
           buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
 
           const toggleEl = cardEl.querySelector(`.container-3auIfb`);
-          toggleEl.style.display = 'block';
+          toggleEl.classList.remove('hide-toggle');
         }
       }
-
-      // if (goosemodScope.settings.isSettingsOpen() && !goosemodScope.initialImport) goosemodScope.settings.createFromItems();
     } catch (e) {
       goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: 'GooseMod Store' });
       console.error(e);
@@ -194,7 +192,7 @@ export default {
         buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
 
         const toggleEl = cardEl.querySelector(`.container-3auIfb`);
-        toggleEl.style.display = 'none';
+        toggleEl.classList.add('hide-toggle');
       }
     }
   },
