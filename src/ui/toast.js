@@ -88,7 +88,7 @@ styleSheet.textContent = toastCSS;
 document.head.appendChild(styleSheet);
 
 export default (text, options = {}) => {
-  if (options.type.startsWith('debug')) {
+  if (options?.type?.startsWith('debug')) {
     if (!goosemod.settings.gmSettings.get().debugToasts) return;
 
     options.type = options.type.replace('debug', '');
