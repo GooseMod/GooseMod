@@ -182,7 +182,7 @@ export default () => {
 }
 
 .gm-store-card > :nth-child(6) > :nth-child(3).hide-toggle {
-  display: none;
+  display: none !important;
 }
 
 
