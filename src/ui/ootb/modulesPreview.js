@@ -16,6 +16,8 @@ export default class ModulesPreview extends React.PureComponent {
     setTimeout(() => {
       const splashes = document.querySelectorAll('.discoverPreview-3q1szX .splashImage-352DQ1');
 
+      console.log('honk', splashes, this.props.modules);
+
       splashes[splashes.length - 3].src = baseImages(this.props.modules[1])[0];
       splashes[splashes.length - 2].src = baseImages(this.props.modules[0])[0];
       splashes[splashes.length - 1].src = baseImages(this.props.modules[2])[0];
