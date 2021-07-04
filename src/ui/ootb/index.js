@@ -33,11 +33,13 @@ export const themes = () => {
 
     onConfirm: async () => {
       if (goosemod.ootb.todo.length === 0) {
-        while (document.querySelector('#gm-home-themes').classList.contains('selected-aXhQR6')) {
+        /* while (document.querySelector('#gm-home-themes').classList.contains('selected-aXhQR6')) {
           await sleep(100);
-        }
+        } */
 
-        goosemod.ootb.community();
+        await sleep(2000);
+
+        goosemod.ootb.settings();
       }
     },
 
@@ -86,11 +88,13 @@ export const plugins = () => {
 
     onConfirm: async () => {
       if (goosemod.ootb.todo.length === 0) {
-        while (document.querySelector('#gm-home-plugins').classList.contains('selected-aXhQR6')) {
+        /* while (document.querySelector('#gm-home-plugins').classList.contains('selected-aXhQR6')) {
           await sleep(100);
-        }
+        } */
 
-        goosemod.ootb.community();
+        await sleep(2000);
+
+        goosemod.ootb.settings();
       }
     },
 
@@ -144,7 +148,7 @@ export const store = () => {
       
       document.body.classList.add('gm-highlight');
 
-      await sleep(4000);
+      await sleep(3000);
 
       document.body.classList.remove('gm-highlight');
     },
@@ -198,7 +202,7 @@ export const settings = () => {
         await sleep(100);
       }
 
-      goosemod.ootb.store();
+      goosemod.ootb.community();
     },
 
     body: React.createElement('div', {
@@ -315,7 +319,7 @@ export const start = () => {
     onConfirm: () => {
       goosemod.ootb.enabled = true;
 
-      goosemod.ootb.settings();
+      goosemod.ootb.store();
     },
 
     body: React.createElement('div', {
