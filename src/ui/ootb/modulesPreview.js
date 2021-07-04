@@ -14,11 +14,15 @@ const baseImages = (m) => m.images?.map((x) => {
 export default class ModulesPreview extends React.PureComponent {
   render() {
     setTimeout(() => {
-      const splashes = document.querySelectorAll('.discoverPreview-3q1szX .splashImage-352DQ1');
+      try {
+        const splashes = document.querySelectorAll('.discoverPreview-3q1szX .splashImage-352DQ1');
 
-      splashes[splashes.length - 3].src = baseImages(this.props.modules[1])[0];
-      splashes[splashes.length - 2].src = baseImages(this.props.modules[0])[0];
-      splashes[splashes.length - 1].src = baseImages(this.props.modules[2])[0];
+        splashes[splashes.length - 3].src = baseImages(this.props.modules[1])[0];
+        splashes[splashes.length - 2].src = baseImages(this.props.modules[0])[0];
+        splashes[splashes.length - 1].src = baseImages(this.props.modules[2])[0];
+      } catch (e) { // Probably has no images array so ignore
+
+      }
     }, 100);
 
     return React.createElement('div', {
