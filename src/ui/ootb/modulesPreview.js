@@ -46,14 +46,14 @@ export default class ModulesPreview extends React.PureComponent {
       }),
 
       React.createElement(DiscoverStaticGuildCard, {
-        className: "previewCard-DOrO3c",
+        className: 'placeholderCard-3Zu1qO',
 
         guild: {
-          banner: '0',
-          splash: '0',
-          discoverySplash: '0',
-          icon: '0',
-          id: '',
+          banner: null,
+          splash: null,
+          discoverySplash: null,
+          icon: null,
+          id: null,
           memberCount: null,
           presenceCount: null,
           ...this.props.modules[0] // name, description
@@ -68,11 +68,11 @@ export default class ModulesPreview extends React.PureComponent {
         loading: false,
 
         guild: {
-          banner: '0',
-          splash: '0',
-          discoverySplash: '0',
-          icon: '0',
-          id: '',
+          banner: null,
+          splash: null,
+          discoverySplash: null,
+          icon: null,
+          id: null,
           memberCount: null,
           presenceCount: null,
           ...this.props.modules[2] // name, description
