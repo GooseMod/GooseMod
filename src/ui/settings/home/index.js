@@ -91,7 +91,9 @@ export default (goosemodScope) => {
     const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
     const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
 
-    if (contentCards !== expectedModuleCount) { // If amount of cards in generated React content isn't the same as amount of modules in Store
+    if (contentCards !== expectedModuleCount || goosemodScope.settings[`regen${type}`]) { // If amount of cards in generated React content isn't the same as amount of modules in Store
+      delete goosemodScope.settings[`regen${type}`];
+
       contents[type] = React.createElement('div', { // Show loading indicator whilst wait
         className: 'gm-store-loading-container'
       },

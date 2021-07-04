@@ -241,6 +241,8 @@ export default {
       const itemName = goosemodScope.moduleStoreAPI.getSettingItemName(m);
       const item = allItems.find((x) => x[1] === itemName);
 
+      const type = m.tags.includes('theme') ? 'themes' : 'plugins';
+
       item[2].push({
         type: 'card',
         
@@ -267,6 +269,8 @@ export default {
 
         buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
         onclick: async () => {
+          goosemodScope.settings[`regen${type}`] = true;
+
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
             // el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
 
@@ -299,6 +303,8 @@ To continue importing this module the dependencies need to be imported.`,
         },
         isToggled: () => goosemodScope.disabledModules[m.name] === undefined,
         onToggle: async (checked) => {
+          goosemodScope.settings[`regen${type}`] = true;
+
           if (checked) {
             goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
             delete goosemodScope.disabledModules[m.name];
