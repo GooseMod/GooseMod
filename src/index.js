@@ -16,6 +16,7 @@ import * as Changelog from './ui/modals/changelog';
 import * as GoosemodChangelog from './ui/goosemodChangelog';
 
 import * as PackModal from './ui/packModal';
+import * as OOTB from './ui/ootb';
 
 import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScope as setThisScope1 } from './ui/loading';
 
@@ -87,7 +88,9 @@ const importsToAssign = {
 
   cssCache: CSSCache,
 
-  gmBadges: GMBadges
+  gmBadges: GMBadges,
+
+  ootb: OOTB
 };
 
 const init = async function () {
@@ -236,11 +239,17 @@ const init = async function () {
     this.settings.reopenSettings();
   }
 
-  if (!localStorage.getItem('goosemodModules')) { // First time install (OOTB)
+  /* if (!localStorage.getItem('goosemodModules')) { // First time install (OOTB)
     const RoutingUtils = this.webpackModules.findByProps('transitionTo');
 
     RoutingUtils.transitionTo('/channels/@me'); // Go to home
     document.getElementById('gm-home-themes').click(); // Go to GM Store Themes
+  } */
+
+  if (!localStorage.getItem('goosemodOOTB')) { // First time install
+    this.ootb.start();
+
+    localStorage.setItem('goosemodOOTB', true);
   }
 };
 

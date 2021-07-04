@@ -1,4 +1,6 @@
 export default async () => {
+  const { React } = goosemod.webpackModules.common;
+
   const SwitchItem = goosemod.webpackModules.findByDisplayName('SwitchItem');
   
   class SwitchItemContainer extends React.Component {

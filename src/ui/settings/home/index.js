@@ -134,6 +134,12 @@ export default (goosemodScope) => {
 
       ReactDOM.render(makeContent(isLibrary, contents[type]), indexOffset !== 0 ? parentEl.children[indexOffset + 1].children[0] : parentEl.children[indexOffset + 1]);
     }
+
+    if (goosemodScope.ootb.enabled && goosemodScope.ootb.todo.includes(type)) {
+      goosemodScope.ootb[type]();
+
+      goosemodScope.ootb.done(type);
+    }
   };
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
