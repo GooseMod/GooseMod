@@ -109,7 +109,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: '9.5.0-dev',
+    version: '9.5.0',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: localStorage.getItem('goosemodLastVersion')
@@ -239,15 +239,13 @@ const init = async function () {
     this.settings.reopenSettings();
   }
 
-  /* if (!localStorage.getItem('goosemodModules')) { // First time install (OOTB)
-    const RoutingUtils = this.webpackModules.findByProps('transitionTo');
-
-    RoutingUtils.transitionTo('/channels/@me'); // Go to home
-    document.getElementById('gm-home-themes').click(); // Go to GM Store Themes
-  } */
 
   if (!localStorage.getItem('goosemodOOTB')) { // First time install
-    await sleep(5000); // Wait for slowdown / Discord loading to ease, changelog modal, etc.
+    await sleep(1000); // Wait for slowdown / Discord loading to ease
+
+    while (document.querySelector('.modal-3O0aXp')) { // Wait for modals to close (GM changelog, etc)
+      await sleep(100);
+    }
 
     this.ootb.start();
 
