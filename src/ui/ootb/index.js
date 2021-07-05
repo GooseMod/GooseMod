@@ -256,7 +256,7 @@ export const community = () => {
 
     title: 'Community',
 
-    confirmText: 'Join Discord',
+    confirmText: 'Join GooseMod Discord',
 
     onConfirm: () => {
       window.open('https://goosemod.com/discord');
