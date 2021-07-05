@@ -247,6 +247,8 @@ const init = async function () {
   } */
 
   if (!localStorage.getItem('goosemodOOTB')) { // First time install
+    await sleep(5000); // Wait for slowdown / Discord loading to ease, changelog modal, etc.
+
     this.ootb.start();
 
     localStorage.setItem('goosemodOOTB', true);
