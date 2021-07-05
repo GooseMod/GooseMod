@@ -12,7 +12,7 @@ export const setThisScope = (scope) => {
 
 export const show = async () => {
   if (!generated) {
-    await generate();
+    generate();
   }
 
   goosemodScope.changelog.resetChangelog();
@@ -37,7 +37,7 @@ export const show = async () => {
   setTimeout(customTweaks, 300);
 };
 
-export const generate = async () => {
+export const generate = () => {
   const changelog = JSON.parse("<changelog>");
 
   version = changelog.version;
