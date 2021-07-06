@@ -8,6 +8,9 @@ const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 const FormClasses = goosemod.webpackModules.findByProps('title', 'dividerDefault');
 
+const ModalHandler = goosemod.webpackModules.findByProps('openModal');
+const SmallMediaCarousel = goosemod.webpackModules.findByDisplayName('SmallMediaCarousel')
+
 export default class Card extends React.PureComponent {
   render() {
     if (this.props.checked !== this.props.isToggled()) {
@@ -20,7 +23,20 @@ export default class Card extends React.PureComponent {
 
       React.createElement('div', {
         style: {
-        backgroundImage: this.props.images?.length ? `url("${this.props.images[0]}")` : ''
+          backgroundImage: this.props.images?.length ? `url("${this.props.images[0]}")` : ''
+        },
+
+        onClick: () => {
+          if (!this.props.images?.length) return; // Ignore if no images
+
+          ModalHandler.openModal(() => React.createElement('div', {
+            className: 'gm-carousel-modal'
+          },
+            React.createElement(SmallMediaCarousel, {
+              items: this.props.images.map((x) => ({ type: 1, src: x })),
+              autoplayInterval: 5000 // Time between automatically cycling to next image
+            })
+          ));
         }
       }, this.props.images?.length ? '' : 'No Preview'),
 

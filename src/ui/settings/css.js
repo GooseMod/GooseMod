@@ -236,6 +236,33 @@ export default () => {
 }
 
 
+/* Store image carousel */
+.gm-carousel-modal {
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  padding: 12px;
+
+  pointer-events: all;
+}
+
+.gm-carousel-modal .outer-s4sY2_ {
+  width: 600px;
+  height: 400px;
+
+  padding-top: 0 !important;
+
+  background-color: var(--background-secondary-alt);
+}
+
+.gm-carousel-modal .root-3tU4d2 {
+  background-color: unset;
+}
+
+.gm-carousel-modal .smallCarouselImage-2Qvg9S {
+  cursor: default;
+}
+
+
 /* OOTB */
 .gm-modules-preview .guildIcon-cyDh6h {
   display: none;
