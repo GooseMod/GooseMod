@@ -194,9 +194,12 @@ export const settings = () => {
     onConfirm: async () => {
       goosemod.settings.openSettings();
 
-      await sleep(10);
+      await sleep(20);
 
-      document.querySelector(`[aria-controls="gm-${goosemod.i18n.discordStrings.SETTINGS}-tab"]`).click();
+      document.querySelector(`[aria-controls="gm-${goosemod.i18n.discordStrings.SETTINGS}-tab"]`).click(); // Open GM Settings page
+
+      const scroller = document.querySelector(`.sidebarRegionScroller-3MXcoP`); // Scroll to bottom of Settings
+      scroller.scrollTop = scroller.offsetHeight - 270;
 
       while (document.querySelector('.closeButton-1tv5uR')) {
         await sleep(100);
