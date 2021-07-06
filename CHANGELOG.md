@@ -1,5 +1,19 @@
 # GooseMod Changelog
 
+## v9.5.0 [2021-07-06]
+
+  - ### New First Time Tour
+    - **New tour system.** There is now a tour when opening GooseMod for the first time (since this update). It covers the core features of GooseMod: the Store, settings and community (focusing on the Discord server).
+
+  - ### Store Improvements [progress]
+    - **Added separate imported tab in Home header.** Now has a tab just for imported modules, and a main Store tab for all.
+    - **Fixed bugs with modules not looking removed / added after changing Home page.**
+    - **Fixed conflicts with some themes.** Mostly where toggles for modules would show when it shouldn't be shown.
+
+  - ### Fixes and Tweaks [progress]
+    - **Fixed some toasts not working.** Previously toasts without options or type would cause errors.
+
+
 ## v9.4.0 [2021-07-03]
 
   - ### Fixes and Tweaks [progress]
