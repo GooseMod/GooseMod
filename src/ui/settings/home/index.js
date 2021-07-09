@@ -367,6 +367,8 @@ export default (goosemodScope) => {
 
     await snippetsLoad('755005803303403570', 'Powercord CSS Snippets');
     await snippetsLoad('836694789898109009', 'BetterDiscord CSS Snippets');
+    await snippetsLoad('449569809613717518', 'Black Box CSS Snippets');
+
 
     for (const type of ['themes', 'plugins', 'snippets']) {
       contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
