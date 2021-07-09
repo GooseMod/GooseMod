@@ -31,7 +31,7 @@ const injectHooks = () => {
   CSSStyleSheet.prototype.insertRule = function(cssText) {
     _insertRule.apply(this, arguments);
 
-    if (!cssText.startsWith('body.')) return; // Most GM plugins which do insertRule use body class selectors, so make sure as we don't want to include Discord's dynamic styles
+    if (!cssText.includes('body.')) return; // Most GM plugins which do insertRule use body class selectors, so make sure as we don't want to include Discord's dynamic styles
 
     css += cssText;
     triggerSave();
@@ -69,13 +69,10 @@ const injectHooks = () => {
 };
 
 export const load = () => {
-  css = localStorage.getItem('goosemodCSSCache');
-  if (!css) return;
-
   const el = document.createElement('style');
   el.id = `gm-css-cache`;
 
-  el.appendChild(document.createTextNode(css));
+  el.appendChild(document.createTextNode(localStorage.getItem('goosemodCSSCache') || ''));
 
   document.body.appendChild(el);
 
