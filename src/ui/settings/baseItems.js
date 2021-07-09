@@ -216,7 +216,7 @@ export default (goosemodScope, gmSettings, Items) => {
     },
 
     {
-      type: 'text-and-danger-button',
+      type: 'text-and-button',
 
       text: 'Purge Caches',
       subtext: 'Purges (completely removes) most caches GooseMod uses',
