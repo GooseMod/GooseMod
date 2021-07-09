@@ -21,6 +21,11 @@ export default (goosemodScope) => {
     plugins: React.createElement(goosemodScope.webpackModules.findByDisplayName('InlineCode'), {
       width: 24,
       height: 24
+    }),
+
+    snippets: React.createElement(goosemodScope.webpackModules.findByDisplayName('Pictures'), {
+      width: 24,
+      height: 24
     })
   };
 
@@ -70,12 +75,14 @@ export default (goosemodScope) => {
 
   let settings = {
     plugins: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
-    themes: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes)
+    themes: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes),
+    snippets: goosemodScope.settings.items.find((x) => x[1] === 'Snippets')
   };
 
   let contents = {
     plugins: goosemodScope.settings._createItem(settings.plugins[1], settings.plugins[2], false),
-    themes: goosemodScope.settings._createItem(settings.themes[1], settings.themes[2], false)
+    themes: goosemodScope.settings._createItem(settings.themes[1], settings.themes[2], false),
+    snippets: goosemodScope.settings._createItem(settings.snippets[1], settings.snippets[2], false)
   };
 
   const handleItemClick = (type) => {
@@ -88,8 +95,8 @@ export default (goosemodScope) => {
       buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
     }, 0);
 
-    const contentCards = Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
-    const expectedModuleCount = goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length;
+    const contentCards = type !== 'snippets' && Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
+    const expectedModuleCount = type !== 'snippets' ? goosemodScope.moduleStoreAPI.modules.filter((x) => type === 'plugins' ? !x.tags.includes('theme') : x.tags.includes('theme')).length : 0;
 
     if (contentCards !== expectedModuleCount || goosemodScope.settings[`regen${type}`]) { // If amount of cards in generated React content isn't the same as amount of modules in Store
       delete goosemodScope.settings[`regen${type}`];
@@ -101,7 +108,7 @@ export default (goosemodScope) => {
       );
 
       (async () => {
-        if (settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Update store settings if card counts mismatch
+        if (type !== 'snippets' && settings[type][2].filter((x) => x.type === 'card').length !== expectedModuleCount) { // Update store settings if card counts mismatch
           await goosemodScope.moduleStoreAPI.updateStoreSetting();
         }
 
@@ -148,12 +155,8 @@ export default (goosemodScope) => {
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
         const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.channel);
-        if (buttonEl && buttonEl.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && buttonEl.textContent !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins) {
-          const themesEl = document.getElementById('gm-home-themes');
-          themesEl.className = themesEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
-
-          const pluginsEl = document.getElementById('gm-home-plugins');
-          pluginsEl.className = pluginsEl.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
+        if (buttonEl && !buttonEl.id.startsWith('gm-home-')) {
+          document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable)); 
 
           setTimeout(() => {
             if (document.getElementById(`gm-settings-inject`) !== null) {
@@ -229,7 +232,23 @@ export default (goosemodScope) => {
       text: goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins,
 
       selected: false
-    }));
+    }),
+
+    () => React.createElement(LinkButton, {
+      style: {
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === 'Snippets' ? 'block' : 'none'
+      },
+
+      icon: () => homeIcons.snippets,
+      onClick: () => handleItemClick('snippets'),
+
+      id: 'gm-home-snippets',
+
+      text: 'Snippets',
+
+      selected: false
+    })
+    );
   }));
 
   // If home currently open, force update sidebar via routing
@@ -242,7 +261,114 @@ export default (goosemodScope) => {
     // Make store setting with cached modules whilst waiting for hotupdate from repos
     await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-    for (const type of ['themes', 'plugins']) {
+    const snippetsLoaded = (JSON.parse(localStorage.getItem('goosemodSnippets')) || {});
+
+    for (const id in snippetsLoaded) {
+      const css = snippetsLoaded[id];
+
+      snippetsLoaded[id] = document.createElement('style');
+
+      snippetsLoaded[id].appendChild(document.createTextNode(css));
+
+      document.body.appendChild(snippetsLoaded[id]);
+    }
+
+    const snippetsLoad = async (channelId, label) => {
+      const { fetchMessages } = goosemodScope.webpackModules.findByProps('fetchMessages');
+      const { getRawMessages } = goosemodScope.webpackModules.findByProps('getMessages');
+      const { getChannel, hasChannel } = goosemodScope.webpackModules.findByProps('getChannel');
+  
+      if (!hasChannel(channelId)) return;
+
+      await fetchMessages({ channelId: channelId }); // Load messages
+  
+      const channel = getChannel(channelId);
+      const messages = Object.values(getRawMessages(channelId))
+        .filter((x) => x.content.includes('\`\`\`css') && // Make sure it has CSS codeblock
+          !x.message_reference && // Exclude replies
+          !x.content.includes('quick CSS') && // Exclude PC / BD specific snippets
+          !x.content.includes('Theme Toggler')
+        ).sort((a, b) => (b.attachments.length + b.embeds.length) - (a.attachments.length + a.embeds.length));
+  
+      const settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Snippets');
+  
+      settingItem[2].push(
+        {
+          type: 'store-header',
+          text: label
+        },
+        ...messages.map((x) => ({
+          type: 'card',
+  
+          tags: [ x.id ],
+          lastUpdated: 0,
+
+          discordMessage: {
+            guild: channel.guild_id,
+            channel: channel.id,
+            message: x.id
+          },
+  
+          images: x.attachments[0] ? [ x.attachments[0].proxy_url ] : (x.embeds[0] ? [ x.embeds[0].thumbnail.proxy_url ] : []),
+  
+          name: '',
+          author: `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.author.id}/${x.author.avatar}.png?size=32"><span class="author" style="line-height: 32px;">${x.author.username}</span>`,
+  
+          subtext: x.content.substring(0, x.content.indexOf('\`\`\`css')),
+  
+          buttonText: snippetsLoaded[x.id] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.discordStrings.ADD,
+          buttonType: snippetsLoaded[x.id] ? 'danger' : 'brand',
+
+          onclick: () => {
+            const cardSet = settingItem[2].find((y) => y.tags?.includes(x.id));
+            const cardEl = document.querySelector(`[class*="${x.id}"]`);
+            const buttonEl = cardEl.querySelector(`button`);
+  
+            goosemodScope.settings.regensnippets = true;
+
+            if (snippetsLoaded[x.id]) { // Remove
+              snippetsLoaded[x.id].remove();
+
+              delete snippetsLoaded[x.id];
+
+              buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
+              buttonEl.textContent = goosemodScope.i18n.discordStrings.ADD;
+
+              cardSet.buttonText = goosemodScope.i18n.discordStrings.ADD;
+              cardSet.buttonType = 'brand';
+            } else {
+              snippetsLoaded[x.id] = document.createElement('style');
+
+              snippetsLoaded[x.id].appendChild(document.createTextNode(/```css(.*)```/s.exec(x.content)[1]));
+
+              document.body.appendChild(snippetsLoaded[x.id]);
+
+              buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
+              buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
+
+              cardSet.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
+              cardSet.buttonType = 'danger';
+            }
+
+            const toSave = Object.assign({}, snippetsLoaded);
+
+            for (const id in toSave) {
+              toSave[id] = toSave[id].textContent;
+            }
+
+            localStorage.setItem('goosemodSnippets', JSON.stringify(toSave));
+          },
+
+          showToggle: false,
+          isToggled: () => false
+        }))
+      );
+    };
+
+    await snippetsLoad('755005803303403570', 'Powercord CSS Snippets');
+    await snippetsLoad('836694789898109009', 'BetterDiscord CSS Snippets');
+
+    for (const type of ['themes', 'plugins', 'snippets']) {
       contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
     }
   })();

@@ -370,8 +370,7 @@ export default (goosemodScope, gmSettings, Items) => {
   let searchQuery = '';
 
   const updateModuleStoreUI = () => {
-    const containerEl = document.querySelector('#gm-settings-inject > :first-child') || document.querySelector('.gm-store-settings');
-    const cards = [...containerEl.children].filter((x) => x.querySelector(':scope > .description-3_Ncsb'));
+    const cards = document.getElementsByClassName('gm-store-card');
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
@@ -379,7 +378,6 @@ export default (goosemodScope, gmSettings, Items) => {
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
-      if (!titles[0]) continue; // Not card
 
       const title = titles[1];
 
@@ -424,10 +422,10 @@ export default (goosemodScope, gmSettings, Items) => {
 
     const noInput = searchQuery === '' && importedVal === 'Store' && authorVal === 'All';
 
-    [...containerEl.getElementsByClassName('gm-store-category')].forEach((x) => x.style.display = noInput ? 'block' : 'none');
+    [...document.getElementsByClassName('gm-store-category')].forEach((x) => x.style.display = noInput ? 'block' : 'none');
 
     // Keep all header but make height 0 so it breaks flex row
-    const allHeader = containerEl.querySelector(':scope > .headerContainer-1Wluzl');
+    const allHeader = document.querySelector(':not(.gm-store-category) > .gm-store-header');
 
     allHeader.style.height = !noInput ? '0px' : '';
     allHeader.style.opacity = !noInput ? '0' : '';
@@ -550,6 +548,30 @@ export default (goosemodScope, gmSettings, Items) => {
 
     { type: 'gm-footer' }
   ]));
+
+  goosemodScope.settings.createItem('Snippets', ['',
+    {
+      type: 'search',
+
+      placeholder: 'Search Snippets',
+
+      onchange: (query) => {
+        const cards = document.getElementsByClassName('gm-store-card');
+
+        const fuzzyReg = new RegExp(`.*${query}.*`, 'i');
+
+        for (const c of cards) {
+          const description = c.getElementsByClassName('markdown-11q6EU')[0].textContent;
+
+          const matches = (fuzzyReg.test(description));
+
+          c.style.display = matches ? '' : 'none';
+        }
+      },
+
+      storeSpecific: true
+    }
+  ]);
 
   if (gmSettings.get().changelog) {
     if (gmSettings.get().separators) goosemodScope.settings.createSeparator();

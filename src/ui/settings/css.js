@@ -209,6 +209,7 @@ export default () => {
 
 .gm-settings-note-markdown {
   font-size: inherit;
+  color: inherit !important;
 }
 
 .gm-settings-note-markdown .paragraph-3Ejjt0 {

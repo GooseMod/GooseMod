@@ -50,11 +50,11 @@ export default class Header extends React.PureComponent {
       className: IconClasses.icon
     }),
 
-    React.createElement(HeaderBarContainer.Title, {}, goosemod.i18n.goosemodStrings.settings.itemNames[this.props.title]),
+    React.createElement(HeaderBarContainer.Title, {}, goosemod.i18n.goosemodStrings.settings.itemNames[this.props.title] || (this.props.title[0].toUpperCase() + this.props.title.substring(1))),
 
-    React.createElement(HeaderBarContainer.Divider),
+    tabsSelected[this.props.title] ? React.createElement(HeaderBarContainer.Divider) : null,
 
-    React.createElement(TabBar, {
+    tabsSelected[this.props.title] ? React.createElement(TabBar, {
       selectedItem: tabsSelected[this.props.title],
 
       type: TabBarClasses1.topPill,
@@ -67,12 +67,6 @@ export default class Header extends React.PureComponent {
         setTimeout(goosemod.settings.updateModuleStoreUI, 10);
       }
     },
-      /* React.createElement(TabBar.Item, {
-        id: 'ALL',
-        look: 0,
-        
-        className: TabBarClasses2.item
-      }, 'All'), */
       React.createElement(TabBar.Item, {
         id: 'STORE',
         look: 0,
@@ -85,10 +79,10 @@ export default class Header extends React.PureComponent {
         
         className: TabBarClasses2.item
       }, 'Imported'),
-    ),
+    ) : null,
 
 
-    React.createElement('div', {
+    this.props.title !== 'snippets' ? React.createElement('div', {
       className: IconClasses.toolbar,
 
       style: {
@@ -117,7 +111,7 @@ export default class Header extends React.PureComponent {
 
         onClick: openReposModal
       })
-    )
+    ) : ''
     );
   }
 }
