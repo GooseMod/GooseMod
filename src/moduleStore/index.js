@@ -31,9 +31,13 @@ export default {
   },
 
   hotupdate: async (shouldHandleLoadingText = false) => { // Update repos, hotreload any updated modules (compare hashes to check if updated)
-    await goosemodScope.moduleStoreAPI.updateModules(shouldHandleLoadingText);
+    if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Getting modules from repos...`);
+
+    await goosemodScope.moduleStoreAPI.updateModules();
   
     await goosemodScope.moduleStoreAPI.updateStoreSetting();
+
+    if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...`);
 
     const updatePromises = [];
 
@@ -72,14 +76,10 @@ export default {
     ];
   },
 
-  updateModules: async (shouldHandleLoadingText = false) => {
+  updateModules: async () => {
     let newModules = [];
 
     goosemodScope.moduleStoreAPI.repos = (await Promise.all(goosemodScope.moduleStoreAPI.repos.map(async (repo) => {
-      if (shouldHandleLoadingText) {
-        goosemodScope.updateLoadingScreen(`Getting modules...\n(${repo.url})`);
-      }
-
       if (!repo.enabled) {
         return repo;
       }
