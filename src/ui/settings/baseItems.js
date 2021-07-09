@@ -231,6 +231,18 @@ export default (goosemodScope, gmSettings, Items) => {
     },
 
     {
+      type: 'text-and-button',
+
+      text: 'Start Tour',
+      subtext: 'Go through GooseMod\'s startup tour again',
+      buttonText: 'Tour',
+
+      onclick: async () => {
+        goosemodScope.ootb.start();
+      }
+    },
+
+    {
       type: 'header',
       text: 'Backup'
     },
