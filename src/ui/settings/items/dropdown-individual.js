@@ -35,7 +35,7 @@ export default class DropdownIndividual extends React.PureComponent {
 
           this.forceUpdate();
 
-          this.props.onchange(this.props.value);
+          // this.props.onchange(this.props.value);
         },
 
         value: this.props.value,

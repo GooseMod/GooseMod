@@ -24,7 +24,7 @@ export default class Search extends React.PureComponent {
 
         this.forceUpdate();
 
-        this.props.onchange(this.props.text);
+        // this.props.onchange(this.props.text);
       },
 
       onChange: (x) => {
@@ -32,7 +32,7 @@ export default class Search extends React.PureComponent {
 
         this.forceUpdate();
 
-        this.props.onchange(this.props.text);
+        // this.props.onchange(this.props.text);
       }
     })
   }
