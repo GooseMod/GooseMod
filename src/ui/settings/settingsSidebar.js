@@ -13,7 +13,7 @@ export default (goosemodScope, gmSettings) => {
     sections.splice(
       sections.indexOf(logout), 0,
       
-      ...goosemodScope.settings.items.filter((x) => gmSettings.get().home ? x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes : true).map((i) => {
+      ...goosemodScope.settings.items.filter((x) => gmSettings.get().home ? x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && x[1] !== 'Snippets': true).map((i) => {
         switch (i[0]) {
           case 'item':
           let obj = {
@@ -32,7 +32,7 @@ export default (goosemodScope, gmSettings) => {
               const settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
               const settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
               
-              if (i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) { // Settings expansion for Store panel
+              if (i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || i[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes || i[1] === 'Snippets') { // Settings expansion for Store panel
                 setTimeout(() => {
                   document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '218px';
                   document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = 'calc(100vw - 218px - 60px - 20px)';
@@ -40,7 +40,7 @@ export default (goosemodScope, gmSettings) => {
                 
                 settingsSidebarEl.addEventListener('click', (e) => {
                   if (e.clientX === 0 // <el>.click() - not an actual user click - as it has no mouse position coords (0, 0)
-                  || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes) return;  // Clicking on Store when already in it should not break resizing
+                  || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || e.target.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes || e.target.textContent === 'Snippets') return;  // Clicking on Store when already in it should not break resizing
                   
                   document.querySelector('.sidebarRegion-VFTUkN').style.maxWidth = '50%';
                   document.querySelector('.contentColumnDefault-1VQkGM').style.maxWidth = '740px';
