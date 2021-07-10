@@ -181,19 +181,21 @@ const init = async function () {
   }
 
   if (toInstallIsDefault) {
-    await this.packModal.ask();
-  } else {
-    this.updateLoadingScreen('Importing modules from Store...');
-
-    const importPromises = [];
-
-    for (let m of toInstallModules) {
-      // await this.moduleStoreAPI.importModule(m);
-      importPromises.push(this.moduleStoreAPI.importModule(m, disabledModules.includes(m)));
-    }
-
-    await Promise.all(importPromises);
+    // await this.packModal.ask();
+    toInstallModules = ['Fucklytics', 'Custom CSS']; // Base modules
   }
+
+  this.updateLoadingScreen('Importing modules from Store...');
+
+  const importPromises = [];
+
+  for (let m of toInstallModules) {
+    // await this.moduleStoreAPI.importModule(m);
+    importPromises.push(this.moduleStoreAPI.importModule(m, disabledModules.includes(m)));
+  }
+
+  await Promise.all(importPromises);
+
 
   this.cssCache.removeStyle();
 
