@@ -247,8 +247,8 @@ export default () => {
 }
 
 .gm-carousel-modal .outer-s4sY2_ {
-  width: 600px;
-  height: 400px;
+  width: 50vw;
+  height: 30vw;
 
   padding-top: 0 !important;
 
