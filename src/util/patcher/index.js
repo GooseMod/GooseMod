@@ -9,6 +9,7 @@ import * as _notices from './notices';
 import * as _headerBarButtons from './headerBarButtons';
 import * as _userBadges from './userBadges';
 import * as _username from './username';
+import * as _guildBadges from './guildBadges';
 
 export const contextMenu = _contextMenu;
 export const miniPopover = _miniPopover;
@@ -19,6 +20,7 @@ export const notices = _notices;
 export const headerBarButtons = _headerBarButtons;
 export const userBadges = _userBadges;
 export const username = _username;
+export const guildBadges = _guildBadges;
 
 export const setThisScope = (scope) => {
   _contextMenu.setThisScope(scope);
@@ -30,4 +32,5 @@ export const setThisScope = (scope) => {
   _headerBarButtons.setThisScope(scope);
   _userBadges.setThisScope(scope);
   _username.setThisScope(scope);
+  _guildBadges.setThisScope(scope);
 };
