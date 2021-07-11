@@ -199,6 +199,7 @@ export const addBadges = () => {
   document.head.appendChild(cssEl);
 
   unpatchers.push(
+    // User badges
     goosemodScope.patcher.userBadges.patch('GooseMod Sponsor',
       'https://goosemod.com/img/goose_gold.jpg',
 
@@ -235,6 +236,20 @@ export const addBadges = () => {
         
       },
 
+      { round: true }
+    ),
+
+    // Guild badges
+    goosemod.patcher.guildBadges.patch('GooseMod Official Discord',
+      'https://goosemod.com/img/logo.jpg',
+    
+      // Force check via query because Discord not properly rerendering
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? ['756146058320674998'] : [],
+    
+      () => {
+
+      },
+    
       { round: true }
     )
   );
