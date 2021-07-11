@@ -157,7 +157,7 @@ const showSponsorModal = () => {
   openModal((e) => React.createElement(parent.default, { ...e }));
 };
 
-const ids = {
+const badgeUsers = {
   sponsor: [ // People sponsoring (donating money) to GooseMod / Ducko
     '506482395269169153', // Ducko
     '597905003717459968', // creatable
@@ -203,7 +203,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_gold.jpg',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.sponsor : [],
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.sponsor : [],
 
       () => {
         showSponsorModal();
@@ -216,7 +216,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_globe.png',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.translator : [],
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.translator : [],
 
       () => {
         
@@ -229,7 +229,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_glitch.jpg',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? ids.dev : [],
+      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.dev : [],
 
       () => {
         
@@ -237,7 +237,7 @@ export const addBadges = () => {
 
       { round: true }
     )
-  )
+  );
 };
 
 export const removeBadges = () => {
