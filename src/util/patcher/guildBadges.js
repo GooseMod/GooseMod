@@ -17,7 +17,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   const GuildHeader = goosemodScope.webpackModules.findByDisplayName('GuildHeader');
   
   return PatcherBase.patch(GuildHeader.prototype, 'renderHeader', function (_args, res) {
-    if (!forIds().includes(this.props.guild.id)) return res;
+    if (!forIds().includes(this.props.guild?.id)) return res;
 
     res.props.children.unshift(
       React.createElement(Tooltip, {
