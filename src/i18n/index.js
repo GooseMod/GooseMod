@@ -3,23 +3,21 @@ export const cache = Cache;
 
 let goosemodScope = {};
 
-let getDiscordLang;
-
 export let forced = false;
 
 export let goosemodStrings; // goosemod.i18n.strings
 export let discordStrings;
+
 
 export const setThisScope = (scope) => {
   Cache.setThisScope(scope);
 
   goosemodScope = scope;
 
-  const { getLocaleInfo } = goosemodScope.webpackModules.findByProps('getLocaleInfo');
-  getDiscordLang = getLocaleInfo;
-
   goosemodScope.i18nCheckNewLangInterval = setInterval(checkForNewLang, 1000);
 };
+
+const getDiscordLang = () => goosemodScope.webpackModules.findByProps('getLocaleInfo').getLocaleInfo();
 
 let lastLangCode;
 
