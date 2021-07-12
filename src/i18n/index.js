@@ -15,7 +15,7 @@ export const setThisScope = (scope) => {
 
   goosemodScope = scope;
 
-  const { getLocaleInfo } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
+  const { getLocaleInfo } = goosemodScope.webpackModules.findByProps('getLocaleInfo');
   getDiscordLang = getLocaleInfo;
 
   goosemodScope.i18nCheckNewLangInterval = setInterval(checkForNewLang, 1000);
@@ -40,11 +40,19 @@ export const updateExports = async (code) => {
 
   goosemodStrings = await Cache.geti18nData(code);
 
-  const { _proxyContext: { messages, defaultMessages } } = goosemodScope.webpackModules.findByProps('chosenLocale', 'languages');
+  const module = goosemodScope.webpackModules.findByProps('getLocaleInfo');
 
-  discordStrings = {
-    ...defaultMessages,
-    ...messages
+  if (module._proxyContext) { // Old 
+    discordStrings = {
+      ...module._proxyContext.defaultMessages,
+      ...module._proxyContext.messages  
+    };
+
+    return;
+  }
+
+  discordStrings = { // New - Canary-only as of 12/7
+    ...module.Messages
   };
 }
 
