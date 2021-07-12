@@ -40,19 +40,13 @@ export const updateExports = async (code) => {
 
   const module = goosemodScope.webpackModules.findByProps('getLocaleInfo');
 
-  if (module._proxyContext) { // Old 
-    discordStrings = {
-      ...module._proxyContext.defaultMessages,
-      ...module._proxyContext.messages  
-    };
+  const context = module._proxyContext || module._provider._context;
 
-    return;
-  }
-
-  discordStrings = { // New - Canary-only as of 12/7
-    ...module.Messages
+  discordStrings = {
+    ...context.defaultMessages,
+    ...context.messages  
   };
-}
+};
 
 export const geti18nData = async (lang = (getDiscordLang().code)) => {
   let json; // Undefined by default
