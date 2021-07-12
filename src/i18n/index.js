@@ -40,7 +40,7 @@ export const updateExports = async (code) => {
 
   const module = goosemodScope.webpackModules.findByProps('getLocaleInfo');
 
-  const context = module._proxyContext || module._provider._context;
+  const context = module._proxyContext || module._provider._context; // _proxyContext is old, not in Canary since 12th July
 
   discordStrings = {
     ...context.defaultMessages,
