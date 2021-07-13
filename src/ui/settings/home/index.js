@@ -290,7 +290,7 @@ export default (goosemodScope) => {
           !x.message_reference && // Exclude replies
           !x.content.includes('quick CSS') && // Exclude PC / BD specific snippets
           !x.content.includes('Theme Toggler')
-        ).sort((a, b) => (b.attachments.length + b.embeds.length) - (a.attachments.length + a.embeds.length));
+        ).sort((a, b) => (b.attachments.length + b.embeds.length) - (a.attachments.length + a.embeds.length)); // Bias to favour images so we can have previews first
   
       const settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Snippets');
   
@@ -313,10 +313,10 @@ export default (goosemodScope) => {
   
           images: x.attachments[0] ? [ x.attachments[0].proxy_url ] : (x.embeds[0] ? [ x.embeds[0].thumbnail.proxy_url ] : []),
   
-          name: '',
-          author: `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.author.id}/${x.author.avatar}.png?size=32"><span class="author" style="line-height: 32px;">${x.author.username}</span>`,
+          name: '', // No name makes subtext main content (not gray)
+          author: `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.author.id}/${x.author.avatar}.png?size=32"><span class="author" style="line-height: 32px;">${x.author.username}</span>`, // Based off Store author generation
   
-          subtext: x.content.replace(/```css(.*)```/gs, ''),
+          subtext: x.content.replace(/```css(.*)```/gs, ''), // Only context / text without code
   
           buttonText: snippetsLoaded[x.id] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.discordStrings.ADD,
           buttonType: snippetsLoaded[x.id] ? 'danger' : 'brand',
@@ -338,7 +338,7 @@ export default (goosemodScope) => {
 
               cardSet.buttonText = goosemodScope.i18n.discordStrings.ADD;
               cardSet.buttonType = 'brand';
-            } else {
+            } else { // Add
               snippetsLoaded[x.id] = document.createElement('style');
 
               snippetsLoaded[x.id].appendChild(document.createTextNode(/```css(.*)```/s.exec(x.content)[1]));
@@ -361,7 +361,7 @@ export default (goosemodScope) => {
             localStorage.setItem('goosemodSnippets', JSON.stringify(toSave));
           },
 
-          showToggle: false,
+          showToggle: false, // No toggling snippets as overcomplex for small snippets
           isToggled: () => false
         }))
       );
