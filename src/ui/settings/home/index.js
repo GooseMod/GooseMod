@@ -316,7 +316,7 @@ export default (goosemodScope) => {
           name: '',
           author: `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.author.id}/${x.author.avatar}.png?size=32"><span class="author" style="line-height: 32px;">${x.author.username}</span>`,
   
-          subtext: x.content.substring(0, x.content.indexOf('\`\`\`css')),
+          subtext: x.content.replace(/```css(.*)```/gs, ''),
   
           buttonText: snippetsLoaded[x.id] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.discordStrings.ADD,
           buttonType: snippetsLoaded[x.id] ? 'danger' : 'brand',
