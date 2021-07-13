@@ -26,8 +26,6 @@
     - **Fixed various issues caused by a Discord update breaking i18n.**
     - **Fixed CSS cache keeping old / removed themes, as well as other improvements.**
 
-  - [Snippets] Initial add (also other tweaks / improvements for snippets)
-
 
 ## v9.5.0 [2021-07-06]
 
