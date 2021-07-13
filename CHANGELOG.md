@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v9.6.0-dev [2021-07-13]
+## v9.6.0 [2021-07-13]
 
   - ### Store
     - **Images are now shown larger when clicked.** When clicking a header image, a modal now appears showing all the images for the module (with larger sizing).
