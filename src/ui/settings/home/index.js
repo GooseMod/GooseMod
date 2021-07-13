@@ -148,6 +148,8 @@ export default (goosemodScope) => {
       goosemodScope.ootb.done(type);
     }
   };
+  
+  const snippetsEnabled = goosemodScope.settings.gmSettings.get().snippets;
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
@@ -234,7 +236,7 @@ export default (goosemodScope) => {
       selected: false
     }),
 
-    () => React.createElement(LinkButton, {
+    snippetsEnabled ? () => React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === 'Snippets' ? 'block' : 'none'
       },
@@ -247,7 +249,7 @@ export default (goosemodScope) => {
       text: 'Snippets',
 
       selected: false
-    })
+    }) : null
     );
   }));
 

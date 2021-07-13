@@ -9,6 +9,7 @@ const defaultSettings = {
 
   devchannel: false,
 
+  snippets: false,
   autoupdate: true,
 
   allThemeSettings: false,

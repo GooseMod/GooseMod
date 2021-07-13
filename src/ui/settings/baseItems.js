@@ -148,6 +148,20 @@ export default (goosemodScope, gmSettings, Items) => {
     },
 
     {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Snippets',
+      subtext: 'Enable Snippets tab in Store',
+
+      onToggle: (c) => {
+        changeSetting('snippets', c);
+        refreshPrompt();
+      },
+      isToggled: () => gmSettings.get().snippets
+    },
+
+    {
       type: 'header',
       text: 'Internals'
     },
