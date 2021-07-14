@@ -67,7 +67,7 @@ export default {
       meta: await getFirstMeta(url)
     });
 
-    goosemodScope.moduleStoreAPI.repos = JSON.parse(localStorage.getItem('goosemodRepos')) || [
+    goosemodScope.moduleStoreAPI.repos = JSON.parse(goosemod.storage.get('goosemodRepos')) || [
       await getFirstObj(`https://store.goosemod.com/goosemod.json`),
       await getFirstObj(`https://store.goosemod.com/ms2porter.json`),
       await getFirstObj(`https://store.goosemod.com/bdthemes.json`),
@@ -106,8 +106,8 @@ export default {
 
     goosemodScope.moduleStoreAPI.modules = newModules;
 
-    localStorage.setItem('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
-    localStorage.setItem('goosemodCachedModules', JSON.stringify(goosemodScope.moduleStoreAPI.modules));
+    goosemod.storage.set('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
+    goosemod.storage.set('goosemodCachedModules', JSON.stringify(goosemodScope.moduleStoreAPI.modules));
   },
 
   importModule: async (moduleName, disabled = false) => {

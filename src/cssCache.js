@@ -17,7 +17,7 @@ const save = () => {
     css = css.replace(new RegExp(`body.${x}`, 'g'), `body`)
   });
 
-  localStorage.setItem('goosemodCSSCache', css);
+  goosemod.storage.set('goosemodCSSCache', css);
 
   goosemod.showToast('Saved', { subtext: 'CSS Cache', type: 'debuginfo' });
 };
@@ -72,7 +72,7 @@ export const load = () => {
   const el = document.createElement('style');
   el.id = `gm-css-cache`;
 
-  el.appendChild(document.createTextNode(localStorage.getItem('goosemodCSSCache') || ''));
+  el.appendChild(document.createTextNode(goosemod.storage.get('goosemodCSSCache') || ''));
 
   document.body.appendChild(el);
 

@@ -7,15 +7,15 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const getCache = () => JSON.parse(localStorage.getItem('goosemodi18nCache') || '{}');
-export const purgeCache = () => localStorage.removeItem('goosemodi18nCache');
+export const getCache = () => JSON.parse(goosemod.storage.get('goosemodi18nCache') || '{}');
+export const purgeCache = () => goosemod.storage.remove('goosemodi18nCache');
 
 export const updateCache = (lang, hash, goosemodStrings) => {
   let cache = getCache();
 
   cache[lang] = { hash, goosemodStrings };
 
-  localStorage.setItem('goosemodi18nCache', JSON.stringify(cache));
+  goosemod.storage.set('goosemodi18nCache', JSON.stringify(cache));
 };
 
 export const geti18nData = async (lang) => {

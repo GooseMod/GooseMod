@@ -29,8 +29,8 @@ const processQueue = async () => {
   queueReturns.push(await getUser(id));
 };
 
-export const getCache = () => JSON.parse(localStorage.getItem('goosemodIDCache') || '{}');
-export const purgeCache = () => localStorage.removeItem('goosemodIDCache');
+export const getCache = () => JSON.parse(goosemod.storage.get('goosemodIDCache') || '{}');
+export const purgeCache = () => goosemod.storage.remove('goosemodIDCache');
 
 export const updateCache = (id, data) => {
   let cache = getCache();
@@ -40,7 +40,7 @@ export const updateCache = (id, data) => {
     time: currentDate
   };
 
-  localStorage.setItem('goosemodIDCache', JSON.stringify(cache));
+  goosemod.storage.set('goosemodIDCache', JSON.stringify(cache));
 };
 
 export const getDataForID = async (id) => {

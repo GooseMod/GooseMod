@@ -6,30 +6,30 @@ export const setThisScope = (scope) => {
 
 
 export const disableModule = (name) => {
-  let settings = JSON.parse(localStorage.getItem('goosemodDisabled')) || {};
+  let settings = JSON.parse(goosemod.storage.get('goosemodDisabled')) || {};
 
   settings[name] = true;
 
-  localStorage.setItem('goosemodDisabled', JSON.stringify(settings));
+  goosemod.storage.set('goosemodDisabled', JSON.stringify(settings));
 };
 
 export const enableModule = (name) => {
-  let settings = JSON.parse(localStorage.getItem('goosemodDisabled')) || {};
+  let settings = JSON.parse(goosemod.storage.get('goosemodDisabled')) || {};
 
   delete settings[name];
 
-  localStorage.setItem('goosemodDisabled', JSON.stringify(settings));
+  goosemod.storage.set('goosemodDisabled', JSON.stringify(settings));
 };
 
 export const checkDisabled = (name) => {
-  return Object.keys(JSON.parse(localStorage.getItem('goosemodDisabled')) || {}).includes(name);
+  return Object.keys(JSON.parse(goosemod.storage.get('goosemodDisabled')) || {}).includes(name);
 };
 
 
 export const saveModuleSettings = async () => {
   //goosemodScope.logger.debug('settings', 'Saving module settings...');
 
-  let settings = JSON.parse(localStorage.getItem('goosemodModules')) || {};
+  let settings = JSON.parse(goosemod.storage.get('goosemodModules')) || {};
 
   for (let p in goosemodScope.modules) {
     if (goosemodScope.modules.hasOwnProperty(p)) {
@@ -37,29 +37,29 @@ export const saveModuleSettings = async () => {
     }
   }
 
-  if (JSON.stringify(JSON.parse(localStorage.getItem('goosemodModules'))) !== JSON.stringify(settings)) {
-    localStorage.setItem('goosemodModules', JSON.stringify(settings));
+  if (JSON.stringify(JSON.parse(goosemod.storage.get('goosemodModules'))) !== JSON.stringify(settings)) {
+    goosemod.storage.set('goosemodModules', JSON.stringify(settings));
 
     // goosemodScope.showToast('Settings saved');
   }
 };
 
 export const clearModuleSetting = (moduleName) => {
-  let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+  let settings = JSON.parse(goosemod.storage.get('goosemodModules'));
 
   if (!settings || !settings[moduleName]) return;
 
   delete settings[moduleName];
 
-  localStorage.setItem('goosemodModules', JSON.stringify(settings));
+  goosemod.storage.set('goosemodModules', JSON.stringify(settings));
 };
 
 export const clearSettings = () => {
-  localStorage.removeItem('goosemodModules');
+  goosemod.storage.remove('goosemodModules');
 };
 
 export const loadSavedModuleSetting = async (moduleName) => {
-  let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+  let settings = JSON.parse(goosemod.storage.get('goosemodModules'));
 
   if (!settings || !settings[moduleName]) return;
 
@@ -69,7 +69,7 @@ export const loadSavedModuleSetting = async (moduleName) => {
 /* export const loadSavedModuleSettings = async () => {
   //goosemodScope.logger.debug('settings', 'Loading module settings...');
 
-  let settings = JSON.parse(localStorage.getItem('goosemodModules'));
+  let settings = JSON.parse(goosemod.storage.get('goosemodModules'));
 
   if (!settings) return;
 

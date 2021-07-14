@@ -263,7 +263,7 @@ export default (goosemodScope) => {
     // Make store setting with cached modules whilst waiting for hotupdate from repos
     await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-    const snippetsLoaded = (JSON.parse(localStorage.getItem('goosemodSnippets')) || {});
+    const snippetsLoaded = (JSON.parse(goosemod.storage.get('goosemodSnippets')) || {});
 
     for (const id in snippetsLoaded) {
       const css = snippetsLoaded[id];
@@ -358,7 +358,7 @@ export default (goosemodScope) => {
               toSave[id] = toSave[id].textContent;
             }
 
-            localStorage.setItem('goosemodSnippets', JSON.stringify(toSave));
+            goosemod.storage.set('goosemodSnippets', JSON.stringify(toSave));
           },
 
           showToggle: false, // No toggling snippets as overcomplex for small snippets

@@ -33,9 +33,9 @@ export default (goosemodScope, gmSettings, Items) => {
 
       case 'devchannel': {
         if (value) {
-          localStorage.setItem('goosemodUntetheredBranch', 'dev');
+          goosemod.storage.set('goosemodUntetheredBranch', 'dev');
         } else {
-          localStorage.removeItem('goosemodUntetheredBranch');
+          goosemod.storage.remove('goosemodUntetheredBranch');
         }
 
         break;
@@ -177,7 +177,7 @@ export default (goosemodScope, gmSettings, Items) => {
         changeSetting('devchannel', c);
         refreshPrompt();
       },
-      isToggled: () => localStorage.getItem('goosemodUntetheredBranch') === 'dev'
+      isToggled: () => goosemod.storage.get('goosemodUntetheredBranch') === 'dev'
     },
 
     {
@@ -238,7 +238,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onclick: async () => {
         // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
-        Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => localStorage.removeItem(x));
+        goosemod.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => goosemod.storage.remove(x));
 
         refreshPrompt();
       }
@@ -269,8 +269,8 @@ export default (goosemodScope, gmSettings, Items) => {
       buttonText: 'Backup',
 
       onclick: () => {
-        const obj = Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod') && !x.includes('Cache')).reduce((acc, k) => {
-          acc[k] = localStorage.getItem(k);
+        const obj = goosemod.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod') && !x.includes('Cache')).reduce((acc, k) => {
+          acc[k] = goosemod.storage.get(k);
           return acc;
         }, {});
 
@@ -319,7 +319,7 @@ export default (goosemodScope, gmSettings, Items) => {
           for (const k in obj) {
             if (!k.startsWith('goosemod')) continue; // Don't set if not goosemod key for some security
 
-            localStorage.setItem(k, obj[k]);
+            goosemod.storage.set(k, obj[k]);
           }
 
           location.reload();

@@ -34,7 +34,7 @@ import * as CSSCache from './cssCache';
 
 import * as GMBadges from './gmBadges';
 
-import * as Storage from './storage';
+import Storage from './storage';
 
 const scopeSetterFncs = [
   setThisScope1,
@@ -112,15 +112,15 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: '10.0.0-dev (AND/I)',
+    version: '10.0.0-dev (S:LS)',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
-    lastUsedVersion: localStorage.getItem('goosemodLastVersion')
+    lastUsedVersion: this.storage.get('goosemodLastVersion')
   };
 
   this.versioning.isDeveloperBuild = this.versioning.hash === '<hash>';
 
-  localStorage.setItem('goosemodLastVersion', this.versioning.version);
+  this.storage.set('goosemodLastVersion', this.versioning.version);
 
   this.logger.debug('import.version.goosemod', `${this.versioning.version} (${this.versioning.hash})`);
 
@@ -141,15 +141,15 @@ const init = async function () {
 
   this.updateLoadingScreen('Initialising internals...');
 
-  let toInstallModules = Object.keys(JSON.parse(localStorage.getItem('goosemodModules')) || {});
-  let disabledModules = Object.keys(JSON.parse(localStorage.getItem('goosemodDisabled')) || {});
+  let toInstallModules = Object.keys(JSON.parse(this.storage.get('goosemodModules')) || {});
+  let disabledModules = Object.keys(JSON.parse(this.storage.get('goosemodDisabled')) || {});
 
   this.modules = toInstallModules.filter((x) => disabledModules.indexOf(x) === -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
   this.disabledModules = toInstallModules.filter((x) => disabledModules.indexOf(x) !== -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
 
   console.log(this.modules, this.disabledModules);
 
-  this.moduleStoreAPI.modules = JSON.parse(localStorage.getItem('goosemodCachedModules')) || [];
+  this.moduleStoreAPI.modules = JSON.parse(this.storage.get('goosemodCachedModules')) || [];
   this.moduleStoreAPI.modules.cached = true;
   
   this.settings.makeGooseModSettings();
@@ -158,7 +158,7 @@ const init = async function () {
 
   this.removed = false;
 
-  if (!localStorage.getItem('goosemodCachedModules')) { // If not cached, fetch latest repos
+  if (!this.storage.get('goosemodCachedModules')) { // If not cached, fetch latest repos
     await this.moduleStoreAPI.updateModules(true);
   }
 
@@ -216,7 +216,7 @@ const init = async function () {
     clearInterval(this.i18nCheckNewLangInterval);
     clearInterval(this.hotupdateInterval);
     
-    Object.keys(localStorage).filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => localStorage.removeItem(x));
+    this.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => this.storage.remove(x));
     
     this.removed = true;
     
@@ -245,7 +245,7 @@ const init = async function () {
   }
 
 
-  if (!localStorage.getItem('goosemodOOTB')) { // First time install
+  if (!this.storage.get('goosemodOOTB')) { // First time install
     await sleep(1000); // Wait for slowdown / Discord loading to ease
 
     while (document.querySelector('.modal-3O0aXp')) { // Wait for modals to close (GM changelog, etc)
@@ -254,7 +254,7 @@ const init = async function () {
 
     this.ootb.start();
 
-    localStorage.setItem('goosemodOOTB', true);
+    this.storage.set('goosemodOOTB', true);
   }
 };
 

@@ -4,15 +4,15 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const getCache = () => JSON.parse(localStorage.getItem('goosemodJSCache') || '{}');
-export const purgeCache = () => localStorage.removeItem('goosemodJSCache');
+export const getCache = () => JSON.parse(goosemod.storage.get('goosemodJSCache') || '{}');
+export const purgeCache = () => goosemod.storage.remove('goosemodJSCache');
 
 export const updateCache = (moduleName, hash, js) => {
   let cache = goosemodScope.moduleStoreAPI.jsCache.getCache();
 
   cache[moduleName] = {hash, js};
 
-  localStorage.setItem('goosemodJSCache', JSON.stringify(cache));
+  goosemod.storage.set('goosemodJSCache', JSON.stringify(cache));
 };
 
 export const getJSForModule = async (moduleName) => {
