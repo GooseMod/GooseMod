@@ -34,6 +34,8 @@ import * as CSSCache from './cssCache';
 
 import * as GMBadges from './gmBadges';
 
+import * as Storage from './storage';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -90,7 +92,8 @@ const importsToAssign = {
 
   gmBadges: GMBadges,
 
-  ootb: OOTB
+  ootb: OOTB,
+  storage: Storage
 };
 
 const init = async function () {
@@ -109,7 +112,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: '9.6.0',
+    version: '10.0.0-dev (AND/I)',
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: localStorage.getItem('goosemodLastVersion')
