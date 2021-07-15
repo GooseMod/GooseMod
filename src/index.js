@@ -241,7 +241,6 @@ const init = async function () {
     this.settings.reopenSettings();
   }
 
-
   if (!this.storage.get('goosemodOOTB')) { // First time install
     await sleep(1000); // Wait for slowdown / Discord loading to ease
 
