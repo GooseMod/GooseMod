@@ -3,7 +3,6 @@ import sleep from './util/sleep';
 import * as Logger from './util/logger';
 
 import WebpackModules from './util/discord/webpackModules';
-import fixLocalStorage from './util/discord/fixLocalStorage';
 
 import * as Patcher from './util/patcher';
 import * as Attrs from './util/attrs';
@@ -99,8 +98,6 @@ const importsToAssign = {
 const init = async function () {
   Object.assign(this, importsToAssign);
 
-  fixLocalStorage();
-
   this.cssCache.load();
 
   while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
@@ -112,7 +109,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: '10.0.0-dev (S:LS)',
+    version: `10.0.0-dev (S=${this.storage.type.substring(0, 3)})`,
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: this.storage.get('goosemodLastVersion')
