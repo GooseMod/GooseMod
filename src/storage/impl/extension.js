@@ -4,7 +4,6 @@ export const type = 'Extension';
 
 document.addEventListener('gmes_get_return', ({ detail }) => {
   storageCache = detail;
-  console.log('honk', JSON.stringify(storageCache));
 }, { once: true });
 
 document.dispatchEvent(new CustomEvent('gmes_get'));
