@@ -92,6 +92,15 @@ export default (goosemodScope, gmSettings) => {
             React.createElement('span', {
               className: VersionClasses.versionHash
             }, '(', goosemodScope.versioning.hash.substring(0, 7), ')')
+          ),
+
+          React.createElement(Text, {
+            className: VersionClasses.line,
+            size: Text.Sizes.SIZE_12,
+            color: Text.Colors.MUTED,
+            tag: 'span'
+          },
+            'GooseMod Ext', ' ', window.gmExtension
           )
         )
       }
