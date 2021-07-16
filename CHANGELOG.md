@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v10.0.0 [2021-07-16]
+
+  - ### Storage
+    - **New storage system.** GooseMod now uses WebExtension storage for storing GooseMod preferences, installed modules, cache, etc. This should make storing more reliable, secure, and generally better.
+
+
 ## v9.6.0 [2021-07-13]
 
   - ### Store
