@@ -101,6 +101,15 @@ export default (goosemodScope, gmSettings) => {
             tag: 'span'
           },
             'GooseMod Ext', ' ', window.gmExtension
+          ),
+
+          React.createElement(Text, {
+            className: VersionClasses.line,
+            size: Text.Sizes.SIZE_12,
+            color: Text.Colors.MUTED,
+            tag: 'span'
+          },
+            'GM Storage', ' ', goosemodScope.storage.type
           )
         )
       }
