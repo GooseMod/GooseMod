@@ -5,6 +5,9 @@
   - ### Storage
     - **New storage system.** GooseMod now uses WebExtension storage for storing GooseMod preferences, installed modules, cache, etc. This should make storing more reliable, secure, and generally better.
 
+  - ### Desktop Using Extension
+    - **GooseMod for desktop clients now uses the GooseMod for Web extension internally.** This simplifies code (avoiding reuse / complications) and should result in faster (~50%) and lighter injection.
+
 
 ## v9.6.0 [2021-07-13]
 
