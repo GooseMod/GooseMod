@@ -109,7 +109,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: `10.0.0`,
+    version: `10.1.0-dev`,
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: this.storage.get('goosemodLastVersion')
@@ -159,7 +159,7 @@ const init = async function () {
     await this.moduleStoreAPI.updateModules(true);
   }
 
-  
+
   let toInstallIsDefault = false;
   
   if (toInstallModules.length === 0) {
@@ -252,6 +252,8 @@ const init = async function () {
 
     this.storage.set('goosemodOOTB', true);
   }
+
+  require('./gmProfileStore').default();
 };
 
 window.goosemod = {};

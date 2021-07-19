@@ -103,8 +103,8 @@ export default () => {
 
   overflow: hidden;
   display: -webkit-box;
-  webkit-line-clamp: 1;
-  webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .gm-store-card > :nth-child(4) {
@@ -113,8 +113,8 @@ export default () => {
 
   overflow: hidden;
   display: -webkit-box;
-  webkit-line-clamp: 3;
-  webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 
   clear: both;
 }
@@ -128,10 +128,11 @@ export default () => {
   position: absolute;
   top: 208px;
   right: 12px;
+  width: calc(15% - 12px);
 }
 
 .gm-store-card > :nth-child(5) > :nth-child(1) {
-
+  width: max-content;
 }
 
 .gm-store-card > :nth-child(5) > :nth-child(1) > :nth-child(1) {
@@ -149,6 +150,14 @@ export default () => {
 
 .gm-store-card > :nth-child(5) > :nth-child(2) {
   margin-top: 20px;
+
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  width: 100%;
+  line-break: anywhere;
 }
 
 .gm-store-card > :nth-child(6) {
@@ -183,6 +192,50 @@ export default () => {
 
 .gm-store-card > :nth-child(6) > :nth-child(3).hide-toggle {
   display: none !important;
+}
+
+/* .gm-store-card-mini {
+  width: 166px;
+  height: 220px;
+}
+
+.gm-store-card-mini > :nth-child(1) {
+  height: 110px;
+}*/
+
+
+.gm-store-card-mini {
+  width: 100%;
+  height: 74px;
+}
+
+.gm-store-card-mini > :nth-child(1) {
+  background-color: unset;
+  right: 0px;
+  position: absolute;
+  width: 120px;
+  border-radius: 0 8px 8px 0;
+  height: 100%;
+}
+
+.gm-store-card-mini > :nth-child(3) {
+  margin-top: 0;
+}
+
+.gm-store-card-mini > :nth-child(4) {
+  -webkit-line-clamp: 1;
+  width: 75%;
+}
+
+.gm-store-card-mini > :nth-child(2), .gm-store-card-mini > :nth-child(5), .gm-store-card-mini > :nth-child(6) {
+  display: none;
+}
+
+.gm-modules-container {
+  display: flex;
+  grid-template-columns: none;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 
