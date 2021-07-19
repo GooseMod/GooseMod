@@ -108,20 +108,6 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'toggle',
 
-      experimental: true,
-      text: 'Force Theme Settings',
-      subtext: 'Force auto-generated settings for all themes',
-
-      onToggle: (c) => {
-        changeSetting('allThemeSettings', c);
-        refreshPrompt();
-      },
-      isToggled: () => gmSettings.get().allThemeSettings
-    },
-
-    {
-      type: 'toggle',
-
       text: 'Store In Home',
       subtext: 'Put GooseMod Store options in home instead of in settings',
 
@@ -145,53 +131,6 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onToggle: (c) => changeSetting('autoupdate', c),
       isToggled: () => gmSettings.get().autoupdate
-    },
-
-    {
-      type: 'toggle',
-
-      experimental: true,
-      text: 'Snippets',
-      subtext: 'Enable Snippets tab in Store',
-
-      onToggle: (c) => {
-        changeSetting('snippets', c);
-        refreshPrompt();
-      },
-      isToggled: () => gmSettings.get().snippets
-    },
-
-    {
-      type: 'header',
-      text: 'Internals'
-    },
-
-    {
-      type: 'toggle',
-
-      experimental: true,
-      text: 'Development Channel',
-      subtext: 'Use experimental development GooseMod builds',
-
-      onToggle: (c) => {
-        changeSetting('devchannel', c);
-        refreshPrompt();
-      },
-      isToggled: () => goosemod.storage.get('goosemodUntetheredBranch') === 'dev'
-    },
-
-    {
-      type: 'toggle',
-
-      experimental: true,
-      text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use',
-
-      onToggle: (c) => {
-        changeSetting('attrs', c);
-        refreshPrompt();
-      },
-      isToggled: () => gmSettings.get().attrs
     },
 
     {
@@ -331,6 +270,68 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
+      text: 'Experimental',
+      // experimental: true
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Development Channel',
+      subtext: 'Use experimental development GooseMod builds',
+
+      onToggle: (c) => {
+        changeSetting('devchannel', c);
+        refreshPrompt();
+      },
+      isToggled: () => goosemod.storage.get('goosemodUntetheredBranch') === 'dev'
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Data Attributes',
+      subtext: 'Add data attributes to some elements for some themes to use',
+
+      onToggle: (c) => {
+        changeSetting('attrs', c);
+        refreshPrompt();
+      },
+      isToggled: () => gmSettings.get().attrs
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Snippets',
+      subtext: 'Enable Snippets tab in Store',
+
+      onToggle: (c) => {
+        changeSetting('snippets', c);
+        refreshPrompt();
+      },
+      isToggled: () => gmSettings.get().snippets
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Force Theme Settings',
+      subtext: 'Force auto-generated settings for all themes',
+
+      onToggle: (c) => {
+        changeSetting('allThemeSettings', c);
+        refreshPrompt();
+      },
+      isToggled: () => gmSettings.get().allThemeSettings
+    },
+
+    /* {
+      type: 'header',
       text: 'Debug',
       experimental: true
     },
@@ -384,7 +385,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onToggle: (c) => changeSetting('debugToasts', c),
       isToggled: () => gmSettings.get().debugToasts
-    },
+    }, */
 
     { type: 'gm-footer' }
   ]);
