@@ -144,8 +144,6 @@ const init = async function () {
   this.modules = toInstallModules.filter((x) => disabledModules.indexOf(x) === -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
   this.disabledModules = toInstallModules.filter((x) => disabledModules.indexOf(x) !== -1).reduce((acc, v) => { acc[v] = { goosemodHandlers: { } }; return acc; }, {});
 
-  console.log(this.modules, this.disabledModules);
-
   this.moduleStoreAPI.modules = JSON.parse(this.storage.get('goosemodCachedModules')) || [];
   this.moduleStoreAPI.modules.cached = true;
   

@@ -58,8 +58,6 @@ export default class TextAndColor extends React.PureComponent {
         customPickerPosition: 'bottom',
 
         onChange: (x) => {
-          console.log('onChange', x);
-
           this.props.value = x;
 
           this.forceUpdate();
