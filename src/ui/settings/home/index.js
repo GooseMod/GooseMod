@@ -39,7 +39,7 @@ export default (goosemodScope) => {
   });
 
   const makeContent = (isLibrary, content) => React.createElement('div', {
-    className: !isLibrary ? `${ScrollerClasses.scrollerBase} ${ScrollerClasses.auto}` : '',
+    className: !isLibrary ? `${ScrollerClasses.auto}` : '',
     id: 'gm-settings-inject',
 
     style: {
