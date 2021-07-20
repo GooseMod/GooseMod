@@ -194,16 +194,7 @@ export default () => {
   display: none !important;
 }
 
-/* .gm-store-card-mini {
-  width: 166px;
-  height: 220px;
-}
-
-.gm-store-card-mini > :nth-child(1) {
-  height: 110px;
-}*/
-
-
+/* Mini cards (profile store) */
 .gm-store-card-mini {
   width: 100%;
   height: 74px;
@@ -350,6 +341,12 @@ export default () => {
   z-index: 10;
 
   transition: all .5s;
+}
+
+/* Discord fixes */
+/* Color picker is behind settings layer (and other things like modals / etc) */
+.layer-v9HyYc {
+  z-index: 999;
 }
 `));
 
