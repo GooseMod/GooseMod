@@ -1,4 +1,5 @@
 import Card from './ui/settings/items/card';
+import sleep from './util/sleep';
 
 export default () => {
   const { React, ReactDOM } = goosemod.webpackModules.common;
@@ -30,8 +31,24 @@ export default () => {
         ...module,
         mini: true,
 
-        onClick: () => {
+        onClick: async () => {
+          document.querySelector('.backdrop-1wrmKB').click(); // Hide user profile modal
 
+          const RoutingUtils = goosemod.webpackModules.findByProps('transitionTo');
+
+          RoutingUtils.transitionTo('/channels/@me'); // Go to home
+
+          await sleep(200);
+
+          document.getElementById('gm-home-' + (module.tags.includes('theme') ? 'themes' : 'plugins')).click(); // Go to GM Store themes / plugins page
+
+          await sleep(100);
+
+          const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === module.description).pop().parentElement;
+
+          document.querySelector('.scrollerBase-289Jih').scrollTop = cardEl.scrollTop - 10; // Scroll to card
+
+          cardEl.style.boxShadow = '0 0 12px 6px rgb(88 101 242 / 30%)'; // Highlight with message highlight color (improve in future likely)
         }
       });
       
