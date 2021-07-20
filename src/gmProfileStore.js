@@ -25,6 +25,15 @@ export default () => {
       
       const tabbar = res.props.children;
       const baseOff = tabbar.props.children[0];
+
+      const makeCard = (module) => React.createElement(Card, {
+        ...module,
+        mini: true,
+
+        onClick: () => {
+
+        }
+      });
       
       goosemod.patcher.patch(tabbar.props, 'onItemSelect', ([ selected ]) => {
         if (!selected.startsWith('GM_')) return;
@@ -35,8 +44,8 @@ export default () => {
           ReactDOM.render(React.createElement('div', {
             className: [ScrollerClasses.auto, 'gm-modules-container'].join(' ')
           },
-            ...themes.map((x) => themesItem.find((y) => y.name === x.name)).map((x) => React.createElement(Card, { ...x, mini: true })),
-            ...plugins.map((x) => pluginsItem.find((y) => y.name === x.name)).map((x) => React.createElement(Card, { ...x, mini: true })),
+            ...themes.map((x) => themesItem.find((y) => y.name === x.name)).map((x) => makeCard(x)),
+            ...plugins.map((x) => pluginsItem.find((y) => y.name === x.name)).map((x) => makeCard(x)),
           ), target);
         }, 1);
       });

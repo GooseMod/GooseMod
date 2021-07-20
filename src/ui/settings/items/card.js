@@ -22,7 +22,8 @@ export default class Card extends React.PureComponent {
     }
 
     return React.createElement('div', {
-      className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' ')
+      className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' '),
+      onClick: this.props.onClick
     },
 
       React.createElement('div', {
