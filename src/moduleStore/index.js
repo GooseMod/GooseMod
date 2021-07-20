@@ -303,6 +303,11 @@ To continue importing this module the dependencies need to be imported.`,
         },
         isToggled: () => goosemodScope.disabledModules[m.name] === undefined,
         onToggle: async (checked) => {
+          if (goosemodScope.settings.ignoreVisualToggle) {
+            delete goosemodScope.settings.ignoreVisualToggle;
+            return;
+          }
+
           goosemodScope.settings[`regen${type}`] = true;
 
           if (checked) {
@@ -326,6 +331,20 @@ To continue importing this module the dependencies need to be imported.`,
             delete goosemodScope.modules[m.name];
 
             goosemodScope.moduleSettingsStore.disableModule(m.name);
+          }
+
+          // If themes / plugins open
+          if (document.querySelector(`#gm-settings-inject`)) {
+            const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
+
+            if (cardEls.length === 0) return;
+
+            for (const cardEl of cardEls) {
+              goosemodScope.settings.ignoreVisualToggle = true;
+
+              const toggleInputEl = cardEl.querySelector('.input-rwLH4i');
+              toggleInputEl.click();
+            }
           }
         }
       });
