@@ -1,63 +1,49 @@
-const obj = { // https://github.com/rauenzi/BetterDiscordApp/blob/master/src/modules/webpackModules.js
-  req: undefined,
+let wpRequire;
 
-  init: () => {
-    obj.req = window.webpackJsonp.push([[], {__extra_id__: (module, exports, req) => module.exports = req}, [["__extra_id__"]]]);
+wpRequire = window.webpackJsonp.push([[], { get_require: (mod, _exports, wpRequire) => mod.exports = wpRequire }, [["get_require"]]]); // Get Webpack's require via injecting into webpackJsonp
 
-    delete obj.req.m.__extra_id__;
-    delete obj.req.c.__extra_id__;
+// Remove module injected
+delete wpRequire.m.get_require;
+delete wpRequire.c.get_require;
 
-    obj.generateCommons();
-  },
-  
-  find: (filter) => {
-    for (const i in obj.req.c) {
-      if (obj.req.c.hasOwnProperty(i)) {
-          const m = obj.req.c[i].exports;
-          if (m && m.__esModule && m.default && filter(m.default)) return m.default;
-          if (m && filter(m))	return m;
-      }
-    }
 
-    // console.warn("Cannot find loaded module in cache");
-    return null;
-  },
+export const all = () => Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x); // Get all modules
 
-  findAll: (filter) => {
-    const modules = [];
-    for (const i in obj.req.c) {
-        if (obj.req.c.hasOwnProperty(i)) {
-            const m = obj.req.c[i].exports;
-            if (m && m.__esModule && m.default && filter(m.default)) modules.push(m.default);
-            else if (m && filter(m)) modules.push(m);
-        }
-    }
-    return modules;
-  },
-
-  findByProps: (...propNames) => obj.find(module => propNames.every(prop => module[prop] !== undefined)),
-  findByPropsAll: (...propNames) => obj.findAll(module => propNames.every(prop => module[prop] !== undefined)),
-
-  findByPrototypes: (...protoNames) => obj.find(module => module.prototype && protoNames.every(protoProp => module.prototype[protoProp] !== undefined)),
-
-  findByDisplayName: (displayName) => obj.find(module => module.displayName === displayName),
-
-  generateCommons: () => {
-    obj.common.React = obj.findByProps('createElement');
-    obj.common.ReactDOM = obj.findByProps('render', 'hydrate');
-
-    obj.common.Flux = obj.findByProps('Store', 'CachedStore', 'PersistedStore');
-    obj.common.FluxDispatcher = obj.findByProps('_waitQueue', '_orderedActionHandlers');
-
-    obj.common.i18n = obj.findByProps('Messages', '_requestedLocale');
-
-    obj.common.channels = obj.findByProps('getSelectedChannelState', 'getChannelId');
-    obj.common.constants = obj.findByProps('API_HOST', 'CaptchaTypes');
-  },
-
-  common: {}
+export const find = (filter) => { // Generic find utility
+  for (const m of all()) {
+    if (m.default && filter(m.default)) return m.default;
+    if (filter(m)) return m;
+  }
 };
 
-obj.init();
+export const findAll = (filter) => { // Find but return all matches, not just first
+  const out = [];
 
-export default obj;
+  for (const m of all()) {
+    if (m.default && filter(m.default)) out.push(m.default);
+    if (filter(m)) out.push(m);
+  }
+
+  return out;
+};
+
+export const findByProps = (...props) => find((m) => props.every((x) => m[x] !== undefined)); // Find by props in module
+export const findByPropsAll = (...props) => findAll((m) => props.every((x) => m[x] !== undefined)); // Find by props but return all matches
+
+export const findByPrototypes = (...protos) => find((m) => m.prototype && protos.every((x) => m.prototype[x] !== undefined)); // Like find by props but prototype
+
+export const findByDisplayName = (name) => find((m) => m.displayName === name); // Find by displayName
+
+
+export const common = { // Common modules
+  React: findByProps('createElement'),
+  ReactDOM: findByProps('render', 'hydrate'),
+  
+  Flux: findByProps('Store', 'CachedStore', 'PersistedStore'),
+  FluxDispatcher: findByProps('_waitQueue', '_orderedActionHandlers'),
+
+  i18n: findByProps('Messages', '_requestedLocale'),
+
+  channels: findByProps('getSelectedChannelState', 'getChannelId'),
+  constants: findByProps('API_HOST', 'CaptchaTypes')
+};

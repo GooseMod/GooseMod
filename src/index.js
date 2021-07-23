@@ -2,7 +2,7 @@ import sleep from './util/sleep';
 
 import * as Logger from './util/logger';
 
-import WebpackModules from './util/discord/webpackModules';
+import * as WebpackModules from './util/discord/webpackModules';
 
 import * as Patcher from './util/patcher';
 import * as Attrs from './util/attrs';
