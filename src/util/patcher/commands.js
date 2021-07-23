@@ -8,12 +8,15 @@ const getModule = () => goosemodScope.webpackModules.findByProps('BUILT_IN_COMMA
 
 const applicationId = '827187782140428288';
 
+const addSection = (obj) => true; //getModule().BUILT_IN_SECTIONS[obj.id] = obj;
+const removeSection = (id) => true; // delete getModule().BUILT_IN_COMMANDS[id];
+const hasSection = (id) => true; // !!getModule().BUILT_IN_SECTIONS[id];
 
 export const add = (name, description, execute, options = []) => {
   const mod = getModule();
 
-  if (!mod.BUILT_IN_SECTIONS.find((x) => x.name === 'GooseMod')) { // If no GooseMod section, create it
-    mod.BUILT_IN_SECTIONS.push({
+  if (!hasSection(applicationId)) { // If no GooseMod section, create it
+    addSection({
       id: applicationId,
       icon: '7f274cc3c1216505238ce047ce6e35e9', // Avatar file name for application
 
@@ -23,7 +26,7 @@ export const add = (name, description, execute, options = []) => {
   }
 
   mod.BUILT_IN_COMMANDS.push({
-    applicationId,
+    applicationId: '-1', //applicationId,
 
     type: 0,
     target: 1,
@@ -45,6 +48,6 @@ export const remove = (name) => {
   const gmCommands = mod.BUILT_IN_COMMANDS.filter(x => x.applicationId === applicationId); // Find GooseMod commands via applicationId
 
   if (gmCommands.length === 0) { // If there is currently no GooseMod commands, remove the section
-    mod.BUILT_IN_SECTIONS = mod.BUILT_IN_SECTIONS.filter(x => x.name !== 'GooseMod'); // Filter out GooseMod section
+    removeSection(applicationId);
   }
 };
