@@ -1,5 +1,7 @@
-// https://gist.github.com/noodlebox/047a9f57a8a714d88ca4a60672a22c81
-export function getReactInstance (e) { return e && e[Object.keys(e).find(k => k.startsWith("__reactInternalInstance"))]; }
+export const getReactInstance = (el) => el && el[Object.keys(el).find((x) =>
+  x.startsWith('__reactInternalInstance') || // Old React
+  x.startsWith('__reactFiber$') // New React (in Canary since ~22/07/21)
+)];
 
 // https://rauenzi.github.io/BDPluginLibrary/docs/modules_reacttools.js.html
 export function getOwnerInstance(node, {include, exclude = ["Popout", "Tooltip", "Scroller", "BackgroundFlash"], filter = _ => _} = {}) {
