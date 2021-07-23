@@ -145,7 +145,7 @@ export default {
         item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
         item.showToggle = true;
       } catch (e) {
-        goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
+        // goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
       }
 
       // If themes / plugins open
