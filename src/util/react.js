@@ -6,33 +6,31 @@ export const getReactInstance = (el) => el && el[Object.keys(el).find((x) => // 
 export const getOwnerInstance = (node) => { // Go through React node's parent until one is a React node (not null or HTML element)
   let inst = getReactInstance(node);
 
-  while (inst.return) {
-    inst = inst.return;
+  while (inst.return) { // Whilst we can still go through parents
+    inst = inst.return; // Go up to next parent
 
-    if (inst.stateNode?._reactInternals) return inst.stateNode;
+    if (inst.stateNode?._reactInternals) return inst.stateNode; // If React node, return
   }
-
-  return null;
 };
 
 export const findInTree = (parent, filter, opts) => { // Find in tree utility function - parameters supported like BD's + PC's APIs to maintain compatibility
   const { walkable = null, ignore = [] } = opts;
 
-  if (!parent || typeof parent !== 'object') {
+  if (!parent || typeof parent !== 'object') { // Parent is invalid to search through
     return null;
   }
 
-  if (typeof filter === 'string') {
-    if (parent.hasOwnProperty(filter)) return tree[filter];
-    return null;
+  if (typeof filter === 'string') { // Finding key in object
+    return parent[filter];
   }
   
-  if (filter(parent)) return parent;
+  if (filter(parent)) return parent; // Parent matches, just return
 
-  if (Array.isArray(parent)) {
+  if (Array.isArray(parent)) { // Parent is an array, go through values
     return parent.find((x) => findInTree(x, filter, opts));
   }
 
+  // Parent is an object, go through values (or option to only use certain keys)
   return (walkable || Object.keys(parent)).find((x) => !ignore.includes(x) && findInTree(parent[x], filter, opts));
 };
 
