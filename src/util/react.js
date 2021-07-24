@@ -27,11 +27,11 @@ export const findInTree = (parent, filter, opts) => { // Find in tree utility fu
   if (filter(parent)) return parent; // Parent matches, just return
 
   if (Array.isArray(parent)) { // Parent is an array, go through values
-    return parent.find((x) => findInTree(x, filter, opts));
+    return parent.map((x) => findInTree(x, filter, opts)).find((x) => x);
   }
 
   // Parent is an object, go through values (or option to only use certain keys)
-  return (walkable || Object.keys(parent)).find((x) => !ignore.includes(x) && findInTree(parent[x], filter, opts));
+  return (walkable || Object.keys(parent)).map((x) => !ignore.includes(x) && findInTree(parent[x], filter, opts)).find((x) => x);
 };
 
 export const findInReactTree = (node, filter) => findInTree(node, filter, { // Specialised findInTree for React nodes
