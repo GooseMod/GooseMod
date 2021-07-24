@@ -1,5 +1,5 @@
 import * as PatcherBase from './base';
-import { getOwnerInstance, findInReactTree } from '../react';
+import { getOwnerInstance, getNodeInternals, findInReactTree } from '../react';
 
 let goosemodScope = {};
 
@@ -28,10 +28,10 @@ export const getExtraInfo = (type) => {
   try {
     switch (type) {
       case 'message':
-        return getOwnerInstance(document.getElementById('message'))._reactInternalFiber.child.memoizedProps.children.props.children.props;
+        return getNodeInternals(getOwnerInstance(document.getElementById('message'))).child.memoizedProps.children.props.children.props;
     
       case 'user':
-        return getOwnerInstance(document.getElementById('user-context'))._reactInternalFiber.return.memoizedProps;
+        return getNodeInternals(getOwnerInstance(document.getElementById('user-context'))).return.memoizedProps;
 
       default:
         return undefined;

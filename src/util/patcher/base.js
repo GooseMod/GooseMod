@@ -13,7 +13,7 @@ const beforePatches = (context, args, id, functionName) => {
 
   for (const patch of patches) {
     try {
-      let toSetNewArgs = patch.call(context, args);
+      let toSetNewArgs = patch.call(context, newArgs);
 
       if (toSetNewArgs === false) return false;
 
