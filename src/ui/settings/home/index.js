@@ -71,7 +71,7 @@ export default (goosemodScope) => {
     return (parentEl.classList.contains(className) && parentEl) || findClassInParentTree(parentEl, className, depth + 1);
   };
 
-  let expanded = true;
+  let expanded = goosemod.storage.get('goosemodHomeExpanded') || true;
 
   let settings = {
     plugins: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
@@ -191,6 +191,7 @@ export default (goosemodScope) => {
 
         onClick: () => {
           expanded = !expanded;
+          goosemod.storage.set('goosemodHomeExpanded', expanded);
 
           // Force update sidebar (jank DOM way)
           document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusin'));
