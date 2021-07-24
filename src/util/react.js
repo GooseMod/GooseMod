@@ -3,6 +3,10 @@ export const getReactInstance = (el) => el && el[Object.keys(el).find((x) => // 
   x.startsWith('__reactFiber$') // New React (in Canary since ~22/07/21)
 )];
 
+export const getNodeInternals = (node) => node &&
+  node._reactInternalFiber || // Old React
+  node._reactInternals; // New React (in Canary since ~22/07/21)
+
 export const getOwnerInstance = (node) => { // Go through React node's parent until one is a React node (not null or HTML element)
   let inst = getReactInstance(node);
 
