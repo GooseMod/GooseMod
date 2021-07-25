@@ -42,11 +42,11 @@ export default () => {
 
           document.getElementById('gm-home-' + (module.tags.includes('theme') ? 'themes' : 'plugins')).click(); // Go to GM Store themes / plugins page
 
-          await sleep(100);
+          await sleep(200);
 
-          const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === module.description).pop().parentElement;
+          const cardEl = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === module.subtext).pop().parentElement;
 
-          document.querySelector('.scrollerBase-289Jih').scrollTop = cardEl.scrollTop - 10; // Scroll to card
+          document.querySelector('#gm-settings-inject').scrollTo({ top: cardEl.offsetTop - 12, behavior: 'smooth' }); // Scroll to card smoothly
 
           cardEl.style.boxShadow = '0 0 12px 6px rgb(88 101 242 / 30%)'; // Highlight with message highlight color (improve in future likely)
         }
