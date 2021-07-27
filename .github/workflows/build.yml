@@ -28,7 +28,8 @@ jobs:
     - name: Build GooseMod
       run: npm run build
 
-    - uses: ncipollo/release-action@v1
+    - name: Release Dev
+      uses: ncipollo/release-action@v1
       with:
         tag: "dev"
         allowUpdates: true
