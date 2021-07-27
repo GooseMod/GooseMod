@@ -3,10 +3,6 @@ name: Build And Release GooseMod Dev
 on:
   push:
     branches: [ master ]
-    paths:
-    - 'src/**'
-    - 'building/**'
-    - 'CHANGELOG.md'
 
 jobs:
   build:
