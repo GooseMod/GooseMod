@@ -154,21 +154,6 @@ export default (goosemodScope, gmSettings, Items) => {
     },
 
     {
-      type: 'text-and-danger-button',
-      
-      text: 'Reset GooseMod',
-      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
-      buttonText: 'Reset',
-
-      onclick: async () => {
-        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
-          goosemodScope.remove();
-          window.location.reload();
-        }
-      }
-    },
-
-    {
       type: 'text-and-button',
 
       text: 'Purge Caches',
@@ -224,6 +209,21 @@ GM Branch: ${goosemodScope.storage.get('goosemodUntetheredBranch')}
 GM Extension Version: ${gmExtension}
 Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 `);
+      }
+    },
+
+    {
+      type: 'text-and-danger-button',
+      
+      text: 'Reset GooseMod',
+      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
+      buttonText: 'Reset',
+
+      onclick: async () => {
+        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
+          goosemodScope.remove();
+          window.location.reload();
+        }
       }
     },
 
