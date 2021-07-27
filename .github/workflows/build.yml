@@ -28,6 +28,9 @@ jobs:
     - name: Build GooseMod
       run: npm run build
 
+    - name: Build Dev Changelog
+      run: bash building/generateDevChangelog.sh
+
     - name: Release Dev
       uses: ncipollo/release-action@v1
       with:
@@ -35,5 +38,8 @@ jobs:
         allowUpdates: true
         prerelease: true
         artifacts: "dist/index.js"
-        # bodyFile: "body.md"
+
+        name: "GooseMod dev"
+        bodyFile: "dist/devChangelog.md"
+
         token: ${{ secrets.GITHUB_TOKEN }}
