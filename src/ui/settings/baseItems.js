@@ -307,6 +307,11 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     },
 
     {
+      type: 'subtext',
+      text: 'Experimental settings are likely incomplete and unstable, which may result in a reduced experience'
+    },
+
+    {
       type: 'toggle',
 
       experimental: true,
