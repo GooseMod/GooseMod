@@ -12,5 +12,6 @@ export default () => ({
   card: require('./card').default,
   'store-category': require('./store-category').default,
   custom: require('./custom').default,
-  'text-input': require('./text-input').default
+  'text-input': require('./text-input').default,
+  subtext: require('./subtext').default
 });
