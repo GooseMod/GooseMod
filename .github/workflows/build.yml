@@ -39,7 +39,7 @@ jobs:
         prerelease: true
         artifacts: "dist/index.js"
 
-        name: "GooseMod dev"
+        name: "GooseMod Dev"
         bodyFile: "dist/devChangelog.md"
 
         token: ${{ secrets.GITHUB_TOKEN }}
