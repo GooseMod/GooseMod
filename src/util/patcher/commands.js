@@ -2,15 +2,34 @@ let goosemodScope = {};
 
 export const setThisScope = (scope) => {
   goosemodScope = scope;
+
+  const Commands = getModule();
+  const Hook = goosemod.webpackModules.findByProps('useApplicationCommandsDiscoveryState');
+
+  goosemodScope.patcher.patch(Hook, 'useApplicationCommandsDiscoveryState', (_, res) => {
+    const gmCommands = res.commands.filter((x) => x.applicationId === applicationId);
+    const gmSection = Commands.BUILT_IN_SECTIONS[applicationId];
+
+    res.discoveryCommands.push(...gmCommands);
+    res.discoverySections.push({
+      data: gmCommands,
+      section: gmSection,
+      key: applicationId
+    });
+
+    res.applicationCommandSections.push(gmSection);
+    
+    return res;
+  });
 };
 
 const getModule = () => goosemodScope.webpackModules.findByProps('BUILT_IN_COMMANDS', 'BUILT_IN_SECTIONS');
 
 const applicationId = '827187782140428288';
 
-const addSection = (obj) => true; //getModule().BUILT_IN_SECTIONS[obj.id] = obj;
-const removeSection = (id) => true; // delete getModule().BUILT_IN_COMMANDS[id];
-const hasSection = (id) => true; // !!getModule().BUILT_IN_SECTIONS[id];
+const addSection = (obj) => getModule().BUILT_IN_SECTIONS[obj.id] = obj;
+const removeSection = (id) => delete getModule().BUILT_IN_COMMANDS[id];
+const hasSection = (id) => !!getModule().BUILT_IN_SECTIONS[id];
 
 export const add = (name, description, execute, options = []) => {
   const mod = getModule();
@@ -26,7 +45,7 @@ export const add = (name, description, execute, options = []) => {
   }
 
   mod.BUILT_IN_COMMANDS.push({
-    applicationId: '-1', //applicationId,
+    applicationId: applicationId,
 
     type: 0,
     target: 1,
