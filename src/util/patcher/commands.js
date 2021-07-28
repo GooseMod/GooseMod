@@ -7,7 +7,7 @@ export const setThisScope = (scope) => {
   const Hook = goosemod.webpackModules.findByProps('useApplicationCommandsDiscoveryState');
 
   goosemodScope.patcher.patch(Hook, 'useApplicationCommandsDiscoveryState', (_, res) => {
-    const gmCommands = res.commands.filter((x) => x.applicationId === applicationId);
+    const gmCommands = res.commands.filter((x, i) => x.applicationId === applicationId && res.commands.indexOf(x) === i);
     const gmSection = Commands.BUILT_IN_SECTIONS[applicationId];
 
     res.discoveryCommands.push(...gmCommands);
