@@ -40,6 +40,8 @@ export default {
 
     if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...`);
 
+    const repoPgpChecks = {};
+
     const updatePromises = [];
 
     for (const m in goosemodScope.modules) {
@@ -49,11 +51,27 @@ export default {
 
       if (msHash === undefined || cacheHash === undefined || msHash === cacheHash) continue;
 
+      if (repoPgpChecks[m.repo] === undefined) { // Force check repo's PGP if updating from there
+        const repo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === m.repo);
+
+        const newResult = goosemodScope.moduleStoreAPI.verifyPpg(repo, false);
+
+        if (newResult !== 'verified' && repo.oncePgp) { // Repo PGP failed to verify and once had PGP success, refuse to update modules for this repo
+          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update it's modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
+          repoPgpChecks[m.repo] = false;
+          continue;
+        }
+
+        repoPgpChecks[m.repo] = true;
+      }
+
+      if (repoPgpChecks[m.repo] === false) continue; // Failed to verify PGP, skip
+
       // New update for it, cached JS != repo JS hashes
       if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...\n${m}`);
 
       updatePromises.push(goosemodScope.moduleStoreAPI.importModule(m, goosemodScope.moduleSettingsStore.checkDisabled(m)).then(async () => {
-        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' })
+        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' });
       }));
     }
 
@@ -81,7 +99,13 @@ export default {
     let newModules = [];
 
     goosemodScope.moduleStoreAPI.repos = (await Promise.all(goosemodScope.moduleStoreAPI.repos.map(async (repo) => {
-      goosemodScope.moduleStoreAPI.verifyPpg(repo);
+      goosemodScope.moduleStoreAPI.verifyPpg(repo).then((result) => { // Async verify PGP (w/ caching)
+        if (result !== 'verified' && repo.oncePgp) { // Repo PGP failed to verify and once had PGP success, show warning to user
+          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
+        }
+
+        goosemodScope.showToast(`Routine PGP: ${result}`, { type: 'debuginfo', subtext: repo.meta.name });
+      });
 
       if (!repo.enabled) {
         return repo;
@@ -355,15 +379,21 @@ To continue importing this module the dependencies need to be imported.`,
   },
 
   verifyPpg: async (repo, useCache = true) => {
-    if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24)) return repo.pgp.result; // If trying to verify and already cache in last day, return cache
+    if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24 * 7)) return repo.pgp.result; // If trying to verify and already cache in last week, return cache
 
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
-      repo.pgp = {
+      const storedRepo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === repo.url);
+
+      storedRepo.pgp = {
         result,
         when: Date.now()
       };
 
-      if (result === 'verified') repo.oncePgp = true; // Mark repo as once having PGP as if it doesn't in future it should be flagged
+      if (result === 'verified') storedRepo.oncePgp = true; // Mark repo as once having PGP as if it doesn't in future it should be flagged
+
+      goosemod.logger.debug('pgp.save', storedRepo);
+
+      goosemod.storage.set('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
 
       return result;
     };
