@@ -4,7 +4,7 @@ let openpgp = undefined;
 
 const loadLibrary = async () => {
   const jsCached = goosemod.storage.get('goosemodPgpLibrary');
-  const js = jsCached || await (await fetch(`https://unpkg.com/openpgp@5.0.0-5/dist/openpgp.min.js`)).text();
+  const js = jsCached || await (await fetch(`https://api.goosemod.com/pgp.js`)).text();
 
   if (!jsCached) goosemod.storage.set('goosemodPgpLibrary', js);
 
