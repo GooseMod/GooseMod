@@ -1,3 +1,4 @@
+import { verifySignature } from './pgp';
 import { sha512 } from '../util/hash';
 
 import * as JSCache from './jsCache';
@@ -80,6 +81,8 @@ export default {
     let newModules = [];
 
     goosemodScope.moduleStoreAPI.repos = (await Promise.all(goosemodScope.moduleStoreAPI.repos.map(async (repo) => {
+      goosemodScope.moduleStoreAPI.verifyPpg(repo);
+
       if (!repo.enabled) {
         return repo;
       }
@@ -349,5 +352,46 @@ To continue importing this module the dependencies need to be imported.`,
         }
       });
     }
-  }
-}
+  },
+
+  verifyPpg: async (repo, useCache = true) => {
+    if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24)) return repo.pgp.result; // If trying to verify and already cache in last day, return cache
+
+    const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
+      repo.pgp = {
+        result,
+        when: Date.now()
+      };
+
+      if (result === 'verified') repo.oncePgp = true; // Mark repo as once having PGP as if it doesn't in future it should be flagged
+
+      return result;
+    };
+
+    goosemod.logger.debug('pgp', 'verifying repo:', repo.meta.name);
+
+    const get = async (url) => {
+      const req = await fetch(url + '?_=' + Date.now()); // Add query to prevent caching
+
+      if (!req.ok) return false;
+
+      return await req.text();
+    };
+
+    const publicKey = await get(`https://goosemod.github.io/Keyserver/repos/${repo.meta.name}.gpg`);
+    if (!publicKey) {
+      goosemod.logger.debug('pgp', 'no public key, aborting');
+      return setInRepo('no_public_key');
+    }
+
+    const signature = await get(repo.url + '.sig');
+    if (!signature) {
+      goosemod.logger.debug('pgp', 'no signature, aborting');
+      return setInRepo('no_signature');
+    }
+
+    const original = await get(repo.url);
+
+    return setInRepo(await verifySignature(publicKey, signature, original) ? 'verified' : 'invalid_signature');
+  },
+};
