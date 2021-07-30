@@ -239,17 +239,33 @@ export default async () => {
 
                 const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.`);
                 if (!confirmExternal) {
-                  goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'GooseMod Store' });
+                  goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'Refused Security Prompt' });
+
+                  return;
+                }
+
+                const repo = {
+                  url: currentNewRepoInput,
+                  meta: resp.meta,
+                  enabled: true
+                };
+
+                const pgpResult = await goosemod.moduleStoreAPI.verifyPgp(repo, false);
+
+                if (pgpResult.trustState === 'untrusted') { // Refuse untrusted (PGP fail)
+                  goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'PGP Untrusted Failure' });
+
+                  return;
+                }
+
+                if (pgpResult.trustState !== 'verified' && !confirm(`This repo is not known or trusted (no PGP verification), please be extra careful. Make sure you trust the owner(s) of this repo completely.\n\nTo solve this issue ask the repo maintainer to add PGP support.\n\nPlease reconfirm adding this repo by pressing OK.`)) { // Warn again with no PGP
+                  goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'Refused Security Prompt' });
 
                   return;
                 }
 
 
-                goosemod.moduleStoreAPI.repos.push({
-                  url: currentNewRepoInput,
-                  meta: resp.meta,
-                  enabled: true
-                });
+                goosemod.moduleStoreAPI.repos.push(repo);
 
                 restartModal();
               }
