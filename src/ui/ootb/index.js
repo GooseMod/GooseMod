@@ -11,8 +11,8 @@ export const done = (thing) => {
   todo.splice(todo.indexOf(thing), 1);
 };
 
-export const themes = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const themes = async () => {
+  const ModulesPreview = await import('./modulesPreview').default;
 
   const { React } = goosemod.webpackModules.common;
 
@@ -66,8 +66,8 @@ export const themes = () => {
   });
 };
 
-export const plugins = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const plugins = async () => {
+  const ModulesPreview = await import('./modulesPreview').default();
 
   const { React } = goosemod.webpackModules.common;
 
@@ -121,8 +121,8 @@ export const plugins = () => {
   });
 };
 
-export const store = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const store = async () => {
+  const ModulesPreview = await import('./modulesPreview').default;
 
   const { React } = goosemod.webpackModules.common;
 
@@ -176,8 +176,8 @@ export const store = () => {
   });
 };
 
-export const settings = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const settings = async () => {
+  const ModulesPreview = await import('./modulesPreview').default;
 
   const { React } = goosemod.webpackModules.common;
 
@@ -246,8 +246,8 @@ export const settings = () => {
   });
 };
 
-export const community = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const community = async () => {
+  const ModulesPreview = await import('./modulesPreview').default;
 
   const { React } = goosemod.webpackModules.common;
 
@@ -303,8 +303,8 @@ export const community = () => {
   });
 };
 
-export const start = () => {
-  const ModulesPreview = require('./modulesPreview').default;
+export const start = async () => {
+  const ModulesPreview = await import('./modulesPreview').default;
 
   const { React } = goosemod.webpackModules.common;
 

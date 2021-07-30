@@ -35,6 +35,8 @@ import * as GMBadges from './gmBadges';
 
 import Storage from './storage';
 
+import ProfileStoreInit from './gmProfileStore';
+
 const scopeSetterFncs = [
   setThisScope1,
   Settings.setThisScope,
@@ -251,7 +253,8 @@ const init = async function () {
     this.storage.set('goosemodOOTB', true);
   }
 
-  require('./gmProfileStore').default();
+
+  ProfileStoreInit();
 };
 
 window.goosemod = {};

@@ -1,5 +1,6 @@
 import openReposModal from './repos';
 
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const HomeMiscClasses = goosemod.webpackModules.findByProps('headerBarContainer', 'pageContent');
@@ -32,7 +33,7 @@ const tabsSelected = {
 };
 
 
-export default class Header extends React.PureComponent {
+return class Header extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -115,3 +116,4 @@ export default class Header extends React.PureComponent {
     );
   }
 }
+};

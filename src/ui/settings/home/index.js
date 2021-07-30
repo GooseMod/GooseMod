@@ -1,4 +1,4 @@
-export default (goosemodScope) => {
+export default async (goosemodScope) => {
   const { React, ReactDOM } = goosemodScope.webpackModules.common;
 
   const ConnectedPrivateChannelsList = goosemodScope.webpackModules.find((x) => x.default && x.default.displayName === 'ConnectedPrivateChannelsList');
@@ -29,7 +29,7 @@ export default (goosemodScope) => {
     })
   };
 
-  const Header = require('./header').default;
+  const Header = await import('./header').default();
 
   const LoadingPopout = goosemodScope.webpackModules.findByDisplayName('LoadingPopout');
 

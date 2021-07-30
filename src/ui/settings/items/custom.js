@@ -1,6 +1,7 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
-export default class Custom extends React.PureComponent {
+return class Custom extends React.PureComponent {
   render() {
     return React.createElement('div', {
       ref: (ref) => {
@@ -10,3 +11,4 @@ export default class Custom extends React.PureComponent {
     });
   }
 }
+};

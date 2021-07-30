@@ -1,7 +1,9 @@
+import _Divider from './divider';
+
+export default () => {
 const { React, constants: { DEFAULT_ROLE_COLOR, ROLE_COLORS } } = goosemod.webpackModules.common;
 
-import Divider from './divider';
-
+const Divider = _Divider();
 const FormItem = goosemod.webpackModules.findByDisplayName('FormItem');
 const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
 
@@ -22,7 +24,7 @@ const hexStringToColor = (hex) => {
   return parseInt(hex.slice(1), 16);
 };
 
-export default class TextAndColor extends React.PureComponent {
+return class TextAndColor extends React.PureComponent {
   constructor(props) {
     props.default = hexStringToColor((props.initialValue || (() => {}))()) || 0;
     props.value = props.default;
@@ -70,3 +72,4 @@ export default class TextAndColor extends React.PureComponent {
     );
   }
 }
+};

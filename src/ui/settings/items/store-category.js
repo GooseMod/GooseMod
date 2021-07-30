@@ -1,11 +1,15 @@
+import _StoreHeader from './store-header';
+import _Card from './card';
+
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
-import StoreHeader from './store-header';
-import Card from './card';
+const StoreHeader = _StoreHeader();
+const Card = _Card();
 
 const ScrollerClasses = goosemod.webpackModules.findByProps('auto', 'scrollerBase');
 
-export default class StoreCategory extends React.PureComponent {
+return class StoreCategory extends React.PureComponent {
   render() {
     if (!this.props.cards) {
       this.props.cards = goosemod.settings.items.find((x) => x[1] === this.props.itemName)[2].filter((x) => x.type === 'card').sort(this.props.sort).slice(0, 10).map((x) => React.createElement(Card, x));
@@ -26,3 +30,4 @@ export default class StoreCategory extends React.PureComponent {
     );
   }
 }
+};

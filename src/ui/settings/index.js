@@ -19,7 +19,7 @@ let goosemodScope = {};
 export const setThisScope = async (scope) => {
   goosemodScope = scope;
 
-  Items = getItems();
+  Items = await getItems();
 };
 
 

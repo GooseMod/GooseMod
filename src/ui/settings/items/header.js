@@ -1,3 +1,4 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
@@ -8,7 +9,7 @@ const Tooltip = goosemod.webpackModules.findByDisplayName('Tooltip');
 const Science = goosemod.webpackModules.findByDisplayName('Science');
 
 
-export default class Header extends React.PureComponent {
+return class Header extends React.PureComponent {
   constructor(props) {
     if (props.experimental) {
       props.text = [
@@ -86,3 +87,4 @@ export default class Header extends React.PureComponent {
     );
   }
 }
+};

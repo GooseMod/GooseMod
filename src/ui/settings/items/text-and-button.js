@@ -1,6 +1,9 @@
+import _Divider from './divider';
+
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
-import Divider from './divider';
+const Divider = _Divider();
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
@@ -15,7 +18,7 @@ const Margins = goosemod.webpackModules.findByProps('marginTop20', 'marginBottom
 const FormClasses = goosemod.webpackModules.findByProps('title', 'dividerDefault');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 
-export default class TextAndButton extends React.PureComponent {
+return class TextAndButton extends React.PureComponent {
   render() {
     return React.createElement(FormItem, {
         className: [Flex.Direction.VERTICAL, Flex.Justify.START, Flex.Align.STRETCH, Flex.Wrap.NO_WRAP, Margins.marginBottom20].join(' '),
@@ -65,3 +68,4 @@ export default class TextAndButton extends React.PureComponent {
     );
   }
 }
+};

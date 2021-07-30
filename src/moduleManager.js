@@ -23,7 +23,9 @@ export const importModule = async (f, disabled = false) => {
 
   const modulesKey = !disabled ? 'modules' : 'disabledModules';
 
-  goosemodScope[modulesKey][field] = Object.assign(eval(f.data), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
+  const eval2 = eval;
+
+  goosemodScope[modulesKey][field] = Object.assign(eval2(`const goosemodScope=goosemod;` + f.data), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
 
   if (disabled) return;
 

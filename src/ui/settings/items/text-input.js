@@ -1,6 +1,9 @@
+import _Divider from './divider';
+
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
-import Divider from './divider';
+const Divider = _Divider;
 
 const FormItem = goosemod.webpackModules.findByDisplayName('FormItem');
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
@@ -11,7 +14,7 @@ const Margins = goosemod.webpackModules.findByProps('marginTop20', 'marginBottom
 const FormClasses = goosemod.webpackModules.findByProps('formText', 'description');
 
 
-export default class TextInputGM extends React.PureComponent {
+return class TextInputGM extends React.PureComponent {
   render() {
     return React.createElement(FormItem, {
         title: this.props.text,
@@ -33,3 +36,4 @@ export default class TextInputGM extends React.PureComponent {
     );
   }
 }
+};

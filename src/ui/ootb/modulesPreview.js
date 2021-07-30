@@ -1,3 +1,4 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const DiscoverStaticGuildCard = goosemod.webpackModules.findByDisplayName('DiscoverStaticGuildCard');
@@ -11,7 +12,7 @@ const baseImages = (m) => m.images?.map((x) => {
   return x;
 });
 
-export default class ModulesPreview extends React.PureComponent {
+return class ModulesPreview extends React.PureComponent {
   render() {
     setTimeout(() => {
       try {
@@ -83,3 +84,4 @@ export default class ModulesPreview extends React.PureComponent {
     );
   }
 }
+};

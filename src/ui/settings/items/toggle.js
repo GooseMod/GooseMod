@@ -1,3 +1,4 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const SwitchItem = goosemod.webpackModules.findByDisplayName('SwitchItem');
@@ -9,7 +10,7 @@ const Science = goosemod.webpackModules.findByDisplayName('Science');
 const Alert = goosemod.webpackModules.findByDisplayName('InfoFilled');
 
 
-export default class Toggle extends React.Component {
+return class Toggle extends React.Component {
   constructor(props) {
     const originalHandler = props.onToggle;
     props.onChange = (e) => {
@@ -95,3 +96,4 @@ export default class Toggle extends React.Component {
     }, this.props.text);
   }
 }
+};

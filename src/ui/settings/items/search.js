@@ -1,8 +1,9 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const SearchBar = goosemod.webpackModules.findByDisplayName('SearchBar');
 
-export default class Search extends React.PureComponent {
+return class Search extends React.PureComponent {
   render() {
     if (!this.props.text) {
       this.props.text = '';
@@ -37,3 +38,4 @@ export default class Search extends React.PureComponent {
     })
   }
 }
+};

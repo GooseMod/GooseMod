@@ -1,17 +1,17 @@
-export default () => ({
-  divider: require('./divider').default,
-  header: require('./header').default,
-  toggle: require('./toggle').default,
-  text: require('./text').default,
-  'text-and-button': require('./text-and-button').default,
-  'text-and-color': require('./text-and-color').default,
-  button: require('./button').default,
-  search: require('./search').default,
-  'dropdown-individual': require('./dropdown-individual').default,
-  'store-header': require('./store-header').default,
-  card: require('./card').default,
-  'store-category': require('./store-category').default,
-  custom: require('./custom').default,
-  'text-input': require('./text-input').default,
-  subtext: require('./subtext').default
+export default async () => ({
+  divider: (await import('./divider')).default(),
+  header: (await import('./header')).default(),
+  toggle: (await import('./toggle')).default(),
+  text: (await import('./text')).default(),
+  'text-and-button': (await import('./text-and-button')).default(),
+  'text-and-color': (await import('./text-and-color')).default(),
+  button: (await import('./button')).default(),
+  search: (await import('./search')).default(),
+  'dropdown-individual': (await import('./dropdown-individual')).default(),
+  'store-header': (await import('./store-header')).default(),
+  card: (await import('./card')).default(),
+  'store-category': (await import('./store-category')).default(),
+  custom: (await import('./custom')).default(),
+  'text-input': (await import('./text-input')).default(),
+  subtext: (await import('./subtext')).default()
 });

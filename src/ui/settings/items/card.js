@@ -1,3 +1,4 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
@@ -15,7 +16,7 @@ const SmallMediaCarousel = goosemod.webpackModules.findByDisplayName('SmallMedia
 const Discord = goosemod.webpackModules.findByDisplayName('Discord');
 
 
-export default class Card extends React.PureComponent {
+return class Card extends React.PureComponent {
   render() {
     if (this.props.checked !== this.props.isToggled()) {
       this.props.checked = this.props.isToggled();
@@ -161,3 +162,4 @@ export default class Card extends React.PureComponent {
     );
   }
 }
+};

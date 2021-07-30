@@ -1,9 +1,10 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
 
-export default class Divider extends React.PureComponent {
+return class Button extends React.PureComponent {
   render() {
     return React.createElement(Button, {
       color: Button.Colors.BRAND,
@@ -18,3 +19,4 @@ export default class Divider extends React.PureComponent {
     );
   }
 }
+};

@@ -1,3 +1,4 @@
+export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const SelectTempWrapper = goosemod.webpackModules.findByDisplayName('SelectTempWrapper');
@@ -7,7 +8,7 @@ const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 
 
-export default class DropdownIndividual extends React.PureComponent {
+return class DropdownIndividual extends React.PureComponent {
   render() {
     if (typeof this.props.options === 'function') {
       this.props.options = this.props.options();
@@ -45,3 +46,4 @@ export default class DropdownIndividual extends React.PureComponent {
   )
   }
 }
+};

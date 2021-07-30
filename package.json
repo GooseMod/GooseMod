@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "bash ./building/build.sh",
-    "dev": "parcel src/index.js"
+    "dev": "rollup -cw"
   },
   "repository": {
     "type": "git",
@@ -16,13 +16,16 @@
     "discord"
   ],
   "author": "GooseMod",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GooseMod/GooseMod/issues"
   },
   "homepage": "https://github.com/GooseMod/GooseMod#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "rollup": "^2.55.1",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "type": "module"
 }
