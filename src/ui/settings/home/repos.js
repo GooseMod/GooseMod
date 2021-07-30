@@ -71,20 +71,53 @@ export default async () => {
 
   const Tooltip = goosemod.webpackModules.findByDisplayName('Tooltip');
   const FlowerStar = goosemod.webpackModules.findByDisplayName('FlowerStar');
+
   const Verified = goosemod.webpackModules.findByDisplayName('Verified');
+  // const Help = goosemod.webpackModules.findByDisplayName('Help');
+  const Alert = goosemod.webpackModules.findAll((x) => x.displayName === 'Alert').pop(); // Discord has 2 components with "Alert" displayName
 
   const openReposModal = () => {
     const repoEls = [];
     let repoInd = 0;
 
     for (const repo of goosemod.moduleStoreAPI.repos) {
-      const verified = repo.url.startsWith(`https://store.goosemod.com`);
-
       const children = [
         repo.meta.name
       ];
 
-      if (verified) {
+      if (repo.pgp?.trustState) {
+        let tooltip = '';
+        let icon = null;
+
+        switch (repo.pgp.trustState) {
+          case 'trusted':
+            tooltip = 'PGP Verified';
+
+            icon = React.createElement(Verified, {
+              className: "icon-1ihkOt"
+            });
+
+            break;
+
+          case 'untrusted':
+            tooltip = 'PGP Untrusted';
+
+            icon = React.createElement(Alert, {
+              className: "icon-1ihkOt"
+            });
+
+            break;
+
+          case 'unknown':
+            tooltip = 'No PGP';
+
+            icon = React.createElement(Alert, {
+              className: "icon-1ihkOt"
+            });
+
+            break;
+        }
+
         children.unshift(React.createElement('span', {
           style: {
             display: 'inline-flex',
@@ -96,21 +129,19 @@ export default async () => {
           position: 'top',
           color: 'primary',
 
-          text: 'GooseMod Store Repo'
+          text: tooltip
         }, ({
           onMouseLeave,
           onMouseEnter
         }) =>
           React.createElement(FlowerStar, {
-            className: "verified-1eC5dy background-2uufRq disableColor-2z9rkr",
-            'aria-label': 'GooseMod Store Repo',
+            className: `gm-repos-modal-icon-${icon.type.displayName}`,
+            'aria-label': tooltip,
 
             onMouseEnter,
             onMouseLeave
           },
-            React.createElement(Verified, {
-              className: "icon-1ihkOt"
-            })
+            icon
           )
         )));
       }

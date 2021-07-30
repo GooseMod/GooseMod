@@ -54,9 +54,9 @@ export default {
       if (repoPgpChecks[m.repo] === undefined) { // Force check repo's PGP if updating from there
         const repo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === m.repo);
 
-        const newResult = goosemodScope.moduleStoreAPI.verifyPpg(repo, false);
+        const pgpUntrusted = goosemodScope.moduleStoreAPI.verifyPgp(repo, false).trustState === 'untrusted';
 
-        if (newResult !== 'verified' && repo.oncePgp) { // Repo PGP failed to verify and once had PGP success, refuse to update modules for this repo
+        if (pgpUntrusted) { // Repo PGP failed to verify and once had PGP success, refuse to update modules for this repo
           goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update it's modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
           repoPgpChecks[m.repo] = false;
           continue;
@@ -99,15 +99,17 @@ export default {
     let newModules = [];
 
     goosemodScope.moduleStoreAPI.repos = (await Promise.all(goosemodScope.moduleStoreAPI.repos.map(async (repo) => {
-      goosemodScope.moduleStoreAPI.verifyPpg(repo).then((result) => { // Async verify PGP (w/ caching)
-        if (result !== 'verified' && repo.oncePgp) { // Repo PGP failed to verify and once had PGP success, show warning to user
-          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
-        }
-
-        goosemodScope.showToast(`Routine PGP: ${result}`, { type: 'debuginfo', subtext: repo.meta.name });
-      });
-
       if (!repo.enabled) {
+        return repo;
+      }
+
+      const pgpUntrusted = await goosemodScope.moduleStoreAPI.verifyPpg(repo).trustState === 'untrusted';
+
+      if (pgpUntrusted) {
+        goosemodScope.showToast(`Failed to verify repo: ${repo.meta.name}, refusing to use new modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
+
+        newModules = newModules.concat(goosemodScope.moduleStoreAPI.modules.filter((x) => x.repo === repo.url)).sort((a, b) => a.name.localeCompare(b.name)); // Use cached / pre-existing modules
+
         return repo;
       }
 
@@ -378,7 +380,7 @@ To continue importing this module the dependencies need to be imported.`,
     }
   },
 
-  verifyPpg: async (repo, useCache = true) => {
+  verifyPgp: async (repo, useCache = true) => {
     if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24 * 7)) return repo.pgp.result; // If trying to verify and already cache in last week, return cache
 
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
@@ -386,6 +388,7 @@ To continue importing this module the dependencies need to be imported.`,
 
       storedRepo.pgp = {
         result,
+        trustState: result !== 'verified' && storedRepo.oncePgp || result === 'invalid_signature' ? 'untrusted' : (result === 'verified' ? 'trusted' : 'unknown'),
         when: Date.now()
       };
 
@@ -395,7 +398,7 @@ To continue importing this module the dependencies need to be imported.`,
 
       goosemod.storage.set('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
 
-      return result;
+      return storedRepo;
     };
 
     goosemod.logger.debug('pgp', 'verifying repo:', repo.meta.name);

@@ -1,17 +1,13 @@
 let openpgp = undefined;
 
 // Dynamically load library as bundle size dramatically (3x) increases if we just import / use with NPM
-
 const loadLibrary = async () => {
-  const jsCached = goosemod.storage.get('goosemodPgpLibrary');
-  const js = jsCached || await (await fetch(`https://api.goosemod.com/pgp.js`)).text();
+  // const jsCached = goosemod.storage.get('goosemodPgpLibrary');
+  const js = await (await fetch(`https://api.goosemod.com/pgp.js`, { cache: 'force-cache' })).text();
 
-  if (!jsCached) goosemod.storage.set('goosemodPgpLibrary', js);
+  // if (!jsCached) goosemod.storage.set('goosemodPgpLibrary', js);
 
-  eval(js);
-
-  openpgp = window.openpgp;
-  delete window.openpgp;
+  openpgp = (eval(js + ';openpgp'));
 };
 
 export const verifySignature = async (_publicKey, _signature, _original) => {

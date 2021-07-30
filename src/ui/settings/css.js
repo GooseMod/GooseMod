@@ -343,6 +343,24 @@ export default () => {
   transition: all .5s;
 }
 
+/* Repos modal icons */
+.gm-repos-modal-icon-Verified {
+  color: var(--status-positive-background);
+}
+
+.gm-repos-modal-icon-Alert {
+  color: var(--status-danger-background);
+}
+
+.gm-repos-modal-icon-Alert .icon-1ihkOt {
+  width: 12px;
+  height: 12px;
+}
+
+.gm-repos-modal-icon-Help {
+  color: var(--status-warning-background);
+}
+
 /* Discord fixes */
 /* Color picker is behind settings layer (and other things like modals / etc) */
 .layer-v9HyYc {
