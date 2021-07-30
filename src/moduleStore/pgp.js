@@ -2,10 +2,7 @@ let openpgp = undefined;
 
 // Dynamically load library as bundle size dramatically (3x) increases if we just import / use with NPM
 const loadLibrary = async () => {
-  // const jsCached = goosemod.storage.get('goosemodPgpLibrary');
   const js = await (await fetch(`https://api.goosemod.com/pgp.js`, { cache: 'force-cache' })).text();
-
-  // if (!jsCached) goosemod.storage.set('goosemodPgpLibrary', js);
 
   openpgp = (eval(js + ';openpgp'));
 };
