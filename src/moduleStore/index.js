@@ -103,7 +103,7 @@ export default {
         return repo;
       }
 
-      const pgpUntrusted = await goosemodScope.moduleStoreAPI.verifyPpg(repo).trustState === 'untrusted';
+      const pgpUntrusted = await goosemodScope.moduleStoreAPI.verifyPgp(repo).trustState === 'untrusted';
 
       if (pgpUntrusted) {
         goosemodScope.showToast(`Failed to verify repo: ${repo.meta.name}, refusing to use new modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
