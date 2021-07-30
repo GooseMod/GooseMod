@@ -247,6 +247,7 @@ export default async () => {
 
                 goosemod.moduleStoreAPI.repos.push({
                   url: currentNewRepoInput,
+                  meta: resp.meta,
                   enabled: true
                 });
 
