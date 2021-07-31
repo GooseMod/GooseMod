@@ -381,7 +381,7 @@ To continue importing this module the dependencies need to be imported.`,
   },
 
   verifyPgp: async (repo, useCache = true) => {
-    if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24 * 7)) return repo.pgp.result; // If trying to verify and already cache in last week, return cache
+    if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24)) return repo.pgp.result; // If trying to verify and already cache in last day, return cache
 
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
       const pgpObj = {
