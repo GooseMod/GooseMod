@@ -222,16 +222,13 @@ export default async () => {
               // color: ButtonClasses['colorBrand']
               size: ButtonClasses['sizeMedium'],
               onClick: async () => {
-                let failed = false;
+                let resp = {};
                 try {
-                  const resp = await (await fetch(currentNewRepoInput)).json();
-
-                  failed = resp.meta?.name === undefined;
+                  resp = await (await fetch(currentNewRepoInput)).json();
                 } catch (e) {
-                  failed = true;
                 }
 
-                if (failed) {
+                if (resp.meta?.name === undefined) {
                   goosemod.showToast(`Invalid Repo`, { type: 'error', timeout: 5000, subtext: 'GooseMod Store' });
 
                   return;
