@@ -389,7 +389,7 @@ To continue importing this module the dependencies need to be imported.`,
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
       const pgpObj = {
         result,
-        trustState: result !== 'verified' && repo.oncePgp || result === 'invalid_signature' ? 'untrusted' : (result === 'verified' ? 'trusted' : 'unknown'),
+        trustState: result !== 'verified' && repo.oncePgp || (result === 'invalid_signature' || result === 'no_signature') ? 'untrusted' : (result === 'verified' ? 'trusted' : 'unknown'),
         when: Date.now()
       };
 
