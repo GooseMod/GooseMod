@@ -384,14 +384,16 @@ To continue importing this module the dependencies need to be imported.`,
     if (useCache && Date.now() < repo.pgp?.when + (1000 * 60 * 60 * 24 * 7)) return repo.pgp.result; // If trying to verify and already cache in last week, return cache
 
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
-      const storedRepo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === repo.url);
-      if (!storedRepo) return repo;
-
-      storedRepo.pgp = {
+      const pgpObj = {
         result,
-        trustState: result !== 'verified' && storedRepo.oncePgp || result === 'invalid_signature' ? 'untrusted' : (result === 'verified' ? 'trusted' : 'unknown'),
+        trustState: result !== 'verified' && repo.oncePgp || result === 'invalid_signature' ? 'untrusted' : (result === 'verified' ? 'trusted' : 'unknown'),
         when: Date.now()
       };
+
+      const storedRepo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === repo.url);
+      if (!storedRepo) return pgpObj;
+
+      storedRepo.pgp = pgpObj;
 
       if (result === 'verified') storedRepo.oncePgp = true; // Mark repo as once having PGP as if it doesn't in future it should be flagged
 
@@ -399,7 +401,7 @@ To continue importing this module the dependencies need to be imported.`,
 
       goosemod.storage.set('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos));
 
-      return storedRepo;
+      return storedRepo.pgp;
     };
 
     goosemod.logger.debug('pgp', 'verifying repo:', repo.meta.name);
