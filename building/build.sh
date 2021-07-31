@@ -18,4 +18,4 @@ echo $changelog
 sed -i "s/<changelog>/$changelog/g" dist/index.js
 
 # Remove the auto-added map comment line as to not trigger the client trying to get the map
-sed -i '$ d' dist/index.js
+# sed -i '$ d' dist/index.js
