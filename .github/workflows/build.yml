@@ -28,7 +28,7 @@ jobs:
       run: bash building/generateDevChangelog.sh
 
     - name: Testing
-      run: l dist
+      run: ls dist
 
     - name: Release Dev
       uses: ncipollo/release-action@v1
