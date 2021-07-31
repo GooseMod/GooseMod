@@ -29,7 +29,7 @@ export default async (goosemodScope) => {
     })
   };
 
-  const Header = await import('./header').default();
+  const Header = (await import('./header')).default();
 
   const LoadingPopout = goosemodScope.webpackModules.findByDisplayName('LoadingPopout');
 
