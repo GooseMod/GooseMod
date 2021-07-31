@@ -385,6 +385,7 @@ To continue importing this module the dependencies need to be imported.`,
 
     const setInRepo = (result) => { // Return wrapper also setting value in repo object to cache
       const storedRepo = goosemodScope.moduleStoreAPI.repos.find((x) => x.url === repo.url);
+      if (!storedRepo) return repo;
 
       storedRepo.pgp = {
         result,
