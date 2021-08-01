@@ -255,7 +255,7 @@ export default async () => {
                   return;
                 }
 
-                if (pgpResult.trustState !== 'verified' && !confirm(`This repo is not known or trusted (no PGP verification), please be extra careful. Make sure you trust the owner(s) of this repo completely.\n\nTo solve this issue ask the repo maintainer to add PGP support.\n\nPlease reconfirm adding this repo by pressing OK.`)) { // Warn again with no PGP
+                if (pgpResult.trustState !== 'trusted' && !confirm(`This repo is not known or trusted (no PGP verification), please be extra careful. Make sure you trust the owner(s) of this repo completely.\n\nTo solve this issue ask the repo maintainer to add PGP support.\n\nPlease reconfirm adding this repo by pressing OK.`)) { // Warn again with no PGP
                   goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'Refused Security Prompt' });
 
                   return;
