@@ -9,7 +9,7 @@ export default () => {
   return {
     name: 'goosemod',
 
-    renderChunk: (code) => {
+    renderChunk: async (code) => {
       const commitHash = await new Promise((res) => exec(`git rev-parse HEAD`, (_err, stdout) => res(stdout.trim())));
 
       return code
