@@ -1,7 +1,12 @@
 import { readFileSync } from 'fs';
 
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 export default () => {
-  const changelog = readFileSync('CHANGELOG.md', 'utf8');
+  const changelog = readFileSync(join(__dirname, '..', '..', 'CHANGELOG.md'), 'utf8');
   const firstRelease = changelog.split(/^##/m)[1].trim();
   
   const split = firstRelease.split('\n');
