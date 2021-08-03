@@ -8,6 +8,8 @@ export const setThisScope = (scope) => {
   const Hook = goosemodScope.webpackModules.findByProps('useApplicationCommandsDiscoveryState');
 
   goosemodScope.patcher.patch(Hook, 'useApplicationCommandsDiscoveryState', (_, res) => {
+    if (res.applicationCommandSections.find((x) => x.id === applicationId)) return; // Don't add if already added
+
     const gmCommands = res.commands.filter((x, i) => x.applicationId === applicationId && res.commands.indexOf(x) === i);
     const gmSection = Commands.BUILT_IN_SECTIONS[applicationId];
 
