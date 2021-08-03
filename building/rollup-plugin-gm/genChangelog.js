@@ -44,6 +44,6 @@ export default () => {
     body: body.join('\n')
   };
   
-  return JSON.stringify(json).replaceAll('`', '\\`').replaceAll(`\\n`, `\\\\n`);
+  return JSON.stringify(json).replaceAll('`', '\\`').replaceAll(`\\n`, `\\\\n`).replaceAll(`\\"`, `\\\\"`).replaceAll(`"`, `\\"`);
 };
 // console.log(JSON.stringify(json).replaceAll(`\\"`, `\\\\\\"`).replaceAll(`"`, `\\\\\\"`).replaceAll(`\\n`, `\\\\\\\\n`).replaceAll('/', '\\/'));
