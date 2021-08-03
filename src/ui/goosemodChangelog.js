@@ -38,7 +38,7 @@ export const show = async () => {
 };
 
 export const generate = () => {
-  const changelog = JSON.parse("<changelog>");
+  const changelog = JSON.parse(`<changelog>`);
 
   version = changelog.version;
 

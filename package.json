@@ -4,7 +4,7 @@
   "description": "GooseMod injector",
   "main": "index.js",
   "scripts": {
-    "build": "bash ./building/build.sh",
+    "build": "rollup -c",
     "dev": "rollup -cw"
   },
   "repository": {

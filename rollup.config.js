@@ -1,9 +1,11 @@
 import localResolve from 'rollup-plugin-local-resolve';
 import { terser } from 'rollup-plugin-terser';
-
 import serve from 'rollup-plugin-serve';
 
 const prod = !process.env.ROLLUP_WATCH;
+
+import goosemod from './building/rollup-plugin-gm/index';
+
 
 export default {
   input: './src/index.js',
@@ -27,7 +29,9 @@ export default {
       headers: {
         'Access-Control-Allow-Origin': '*',
       }
-    })
+    }),
+
+    goosemod()
   ],
 
   // fix rollup jank
