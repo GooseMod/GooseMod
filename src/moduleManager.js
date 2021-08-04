@@ -2,6 +2,8 @@ import ab2str from './util/ab2str';
 
 const evalGlobal = eval;
 
+const makeSourceURL = (name) => `${name} | GM Module`.replaceAll(' ', '%20');
+
 let goosemodScope = {};
 
 export const setThisScope = (scope) => {
@@ -25,7 +27,7 @@ export const importModule = async (f, disabled = false) => {
 
   const modulesKey = !disabled ? 'modules' : 'disabledModules';
 
-  goosemodScope[modulesKey][field] = Object.assign(evalGlobal(`const goosemodScope=goosemod;` + f.data), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
+  goosemodScope[modulesKey][field] = Object.assign(evalGlobal(`const goosemodScope=goosemod;` + f.data + ` //# sourceURL=${makeSourceURL(f.name)}`), f.metadata); // Set goosemodScope.modules.<module_name> to the return value of the module (an object containing handlers)
 
   if (disabled) return;
 
