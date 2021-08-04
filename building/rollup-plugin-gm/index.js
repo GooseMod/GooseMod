@@ -14,7 +14,7 @@ export default () => {
 
       return code
         .replace('<changelog>', changelog)
-        .replace('<hash>', commitHash);
+        .replace('<hash>', commitHash) + '//# sourceURL=GooseMod';
     }
   }
 };
