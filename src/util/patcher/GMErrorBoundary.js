@@ -21,12 +21,17 @@ return class GMErrorBoundary extends React.PureComponent {
     const errorStack = decodeURI(error.stack.split('\n').filter((x) => !x.includes('/assets/')).join('\n'));
     const componentStack = decodeURI(moreInfo.componentStack.split('\n').slice(1, 9).join('\n'));
 
-    const suspectedCause = errorStack.match(/\((.*) \| GM Module:/)?.[1] || componentStack.match(/\((.*) \| GM Module:/)?.[1] || 'Unknown';
+    const suspectedPlugin = errorStack.match(/\((.*) \| GM Module:/)?.[1] || componentStack.match(/\((.*) \| GM Module:/)?.[1];
+    const suspectedName = suspectedPlugin || (errorStack.includes('GooseMod') || componentStack.includes('GooseMod')) ? 'GooseMod Internals' : 'Unknown';
+    const suspectedType = suspectedPlugin ? 'Plugin' : 'Cause';
 
     this.setState({
       error: true,
 
-      suspectedCause,
+      suspectedCause: {
+        name: suspectedName,
+        type: suspectedType
+      },
 
       errorStack: {
         raw: error.stack,
@@ -58,7 +63,7 @@ return class GMErrorBoundary extends React.PureComponent {
         React.createElement(Header, {
           size: Header.Sizes.SIZE_24,
         },  'GooseMod has handled an error',
-          React.createElement(Markdown, {}, '## Suspected Cause: ' + this.state.suspectedCause)
+          React.createElement(Markdown, {}, `## Suspected ${this.state.suspectedCause.type}: ${this.state.suspectedCause.name}`)
         )
       ),
   
