@@ -361,6 +361,71 @@ export default () => {
   color: var(--status-warning-background);
 }
 
+/* GM Error Boundary */
+.gm-error-boundary {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.gm-error-boundary > :first-child {
+  display: flex;
+  justify-content: center;
+
+  width: 90%;
+}
+
+.gm-error-boundary > :first-child > :first-child {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  object-fit: cover;
+
+  height: 48px;
+  width: 48px;
+  margin-right: 22px;
+
+  border-radius: 50%;
+  background-image: url("https://goosemod.com/img/goose_glitch.jpg");
+}
+
+.gm-error-boundary > :first-child > :nth-child(2) {
+  margin-top: -2px;
+}
+
+.gm-error-boundary > :first-child > :nth-child(2) .title-3KTIjF {
+  color: var(--interactive-normal);
+  font-family: var(--font-primary);
+
+  margin-left: 1px;
+  margin-bottom: 0;
+}
+
+.gm-error-boundary > :nth-child(2) {
+  display: flex;
+  justify-content: center;
+
+  width: 90%;
+
+  margin-top: 28px;
+  gap: 40px;
+}
+
+.gm-error-boundary > :nth-child(3) {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.gm-error-boundary > :nth-child(3) pre {
+  margin-bottom: 20px;
+}
+
 /* Discord fixes */
 /* Color picker is behind settings layer (and other things like modals / etc) */
 .layer-v9HyYc {

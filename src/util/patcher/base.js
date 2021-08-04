@@ -1,11 +1,21 @@
+import _GMErrorBoundary from "./GMErrorBoundary";
+let GMErrorBoundary;
+
 const generateIdSegment = () => Math.random().toString(36).replace(/[^a-z0-9]+/g, ''); // Random 12 char string
 
 export const generateId = (segments = 3) => new Array(segments).fill(0).map(() => generateIdSegment()).join(''); // Chain random 12 char strings together X times
 
 const modIndex = {};
 
-const beforePatches = (context, args, id, functionName) => {
-  const patches = modIndex[id][functionName].before;
+const isReactComponent = (component) => {
+  return !!(component && (
+    component.prototype?.render || component.displayName
+  ));
+};
+
+
+const beforePatches = (context, args, id, functionName, keyName) => {
+  const patches = modIndex[id][keyName].before;
 
   if (patches.length === 0) return args;
 
@@ -28,8 +38,8 @@ const beforePatches = (context, args, id, functionName) => {
   return newArgs;
 };
 
-const afterPatches = (context, newArgs, returnValue, id, functionName) => {
-  const patches = modIndex[id][functionName].after;
+const afterPatches = (context, newArgs, returnValue, id, functionName, keyName) => {
+  const patches = modIndex[id][keyName].after;
   
   let newReturnValue = returnValue;
 
@@ -48,17 +58,30 @@ const afterPatches = (context, newArgs, returnValue, id, functionName) => {
   return newReturnValue;
 };
 
-const generateNewFunction = (originalFunction, id, functionName) => (function (...args) {
-  const newArgs = beforePatches(this, args, id, functionName);
+const generateNewFunction = (originalFunction, id, functionName, keyName) => (function (...args) {
+  const newArgs = beforePatches(this, args, id, functionName, keyName);
+
+  let toReturn;
 
   if (Array.isArray(newArgs)) {
     const returnValue = originalFunction.call(this, ...newArgs);
 
-    return afterPatches(this, newArgs, returnValue, id, functionName);
+    toReturn = afterPatches(this, newArgs, returnValue, id, functionName, keyName);
   }
+
+  const { harden } = modIndex[id][keyName];
+
+  if (harden) {
+    if (!GMErrorBoundary) GMErrorBoundary = _GMErrorBoundary();
+    const { React } = goosemod.webpackModules.common;
+
+    return React.createElement(GMErrorBoundary, {}, toReturn);
+  }
+
+  return toReturn;
 });
 
-export const patch = (parent, functionName, handler, before = false) => {
+export const patch = (parent, functionName, handler, before = false, forceHarden = false) => {
   if (!parent._goosemodPatcherId) {
     const id = generateId();
 
@@ -68,24 +91,38 @@ export const patch = (parent, functionName, handler, before = false) => {
   }
 
   const id = parent._goosemodPatcherId;
+  const keyName = `gm-${functionName}`;
 
-  if (!modIndex[id][functionName]) {
+  if (!modIndex[id][keyName]) {
     const originalFunctionClone = Object.assign({}, parent)[functionName];
 
-    parent[functionName] = Object.assign(generateNewFunction(parent[functionName], id, functionName), originalFunctionClone);
+    parent[functionName] = Object.assign(generateNewFunction(parent[functionName], id, functionName, keyName), originalFunctionClone);
 
     parent[functionName].toString = () => originalFunctionClone.toString(); // You cannot just set directly a.toString = b.toString like we used to because strange internal JS prototype things, so make a new function just to run original function
 
-    modIndex[id][functionName] = {
+    let toHarden = true;
+
+    if (!forceHarden) {
+      toHarden = false;
+
+      if (isReactComponent(parent[functionName])) toHarden = true;
+      if (parent.render) {
+        patch(parent, 'render', () => {}, false, true); // Random patch in component to force harden
+      }
+    }
+
+    modIndex[id][keyName] = {
       before: [],
-      after: []
+      after: [],
+
+      harden: toHarden
     };
   }
 
-  const newLength = modIndex[id][functionName][before ? 'before' : 'after'].push(handler);
+  const newLength = modIndex[id][keyName][before ? 'before' : 'after'].push(handler);
 
   return () => { // Unpatch function
-    modIndex[id][functionName][before ? 'before' : 'after'].splice(newLength - 1, 1);
+    modIndex[id][keyName][before ? 'before' : 'after'].splice(newLength - 1, 1);
   };
 };
 
