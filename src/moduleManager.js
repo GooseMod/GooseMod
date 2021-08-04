@@ -2,7 +2,7 @@ import ab2str from './util/ab2str';
 
 const evalGlobal = eval;
 
-const makeSourceURL = (name) => `${name} | GM Module`.replaceAll(' ', '%20');
+const makeSourceURL = (name) => `${name} | GM Module`.replace(/ /g, '%20');
 
 let goosemodScope = {};
 
