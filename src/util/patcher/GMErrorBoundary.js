@@ -6,6 +6,8 @@ const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', '
 
 const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
 
+const DropdownArrow = goosemod.webpackModules.findByDisplayName('DropdownArrow');
+
 return class GMErrorBoundary extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -68,7 +70,7 @@ return class GMErrorBoundary extends React.PureComponent {
       ),
   
       React.createElement('div', {},
-        React.createElement(Button, {
+        /* React.createElement(Button, {
           color: Button.Colors.LINK,
           size: Button.Sizes.LARGE,
   
@@ -78,7 +80,7 @@ return class GMErrorBoundary extends React.PureComponent {
             this.state.showDetails = !this.state.showDetails;
             this.forceUpdate();
           }
-        }, this.state.showDetails ? 'Hide Details' : 'Show Details'),
+        }, this.state.showDetails ? 'Hide Details' : 'Show Details'), */
 
         React.createElement(Button, {
           color: Button.Colors.RED,
@@ -88,6 +90,28 @@ return class GMErrorBoundary extends React.PureComponent {
             location.reload();
           }
         }, 'Refresh')
+      ),
+
+      React.createElement('div', {
+        onClick: () => {
+          this.state.toRetry = false;
+
+          this.state.showDetails = !this.state.showDetails;
+          this.forceUpdate();
+        }
+      },
+        React.createElement('div', {
+          style: {
+            transform: `rotate(${this.state.showDetails ? '0' : '-90'}deg)`
+          },
+        },
+          React.createElement(DropdownArrow, {
+            width: 24,
+            height: 24
+          })
+        ),
+
+        this.state.showDetails ? 'Hide Details' : 'Show Details'
       ),
 
       this.state.showDetails ? React.createElement('div', {},

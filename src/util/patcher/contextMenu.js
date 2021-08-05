@@ -24,14 +24,17 @@ export const patchTypeToNavId = (type) => {
   }
 };
 
-export const getExtraInfo = (type) => {
+export const getExtraInfo = (navId) => {
   try {
-    switch (type) {
+    switch (navId) {
       case 'message':
-        return getNodeInternals(getOwnerInstance(document.getElementById('message'))).child.memoizedProps.children.props.children.props;
+        return getNodeInternals(getOwnerInstance(document.getElementById('message'))).return.return.memoizedProps;
     
-      case 'user':
-        return getNodeInternals(getOwnerInstance(document.getElementById('user-context'))).return.memoizedProps;
+      case 'message-actions':
+        return getNodeInternals(getOwnerInstance(document.getElementById('message-actions'))).return.return.memoizedProps;
+
+      case 'user-context':
+        return getNodeInternals(getOwnerInstance(document.getElementById('user-context'))).return.return.return.return.return.return.memoizedProps;
 
       default:
         return undefined;
@@ -82,7 +85,10 @@ export const patch = (type, itemProps) => {
 
   return PatcherBase.patch(Menu, 'default', (args) => {
     const [ { navId, children } ] = args;
-    if (navId !== wantedNavId) {
+
+    if (navId !== wantedNavId &&
+      !(wantedNavId === 'message' && navId === 'message-actions') // Special case: expanded MiniPopover menu
+    ) {
       return args;
     }
 
@@ -91,7 +97,7 @@ export const patch = (type, itemProps) => {
 
     const clonedProps = Object.assign({}, itemProps);
 
-    const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(type)), { Menu, React });
+    const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(navId)), { Menu, React });
   
     let goosemodGroup = findInReactTree(children, child => child && child.props && child.props.goosemod === true);
 
