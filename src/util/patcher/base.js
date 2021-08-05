@@ -1,9 +1,9 @@
 import _GMErrorBoundary from "./GMErrorBoundary";
 let GMErrorBoundary;
 
-const generateIdSegment = () => Math.random().toString(16).substring(2); // Random 12 char string
+const generateIdSegment = () => Math.random().toString(16).substring(2); // Random 13 char hex string
 
-export const generateId = (segments = 3) => new Array(segments).fill(0).map(() => generateIdSegment()).join(''); // Chain random 12 char strings together X times
+export const generateId = (segments = 3) => new Array(segments).fill(0).map(() => generateIdSegment()).join(''); // Chain random ID segments
 
 const modIndex = {};
 
