@@ -26,6 +26,13 @@ export default async (goosemodScope) => {
     snippets: React.createElement(goosemodScope.webpackModules.findByDisplayName('Pictures'), {
       width: 24,
       height: 24
+    }),
+
+    expandable: React.createElement(goosemod.webpackModules.findByDisplayName('DropdownArrow'), {
+      className: `${IconClasses.icon}`,
+
+      width: 24,
+      height: 24
     })
   };
 
@@ -198,12 +205,7 @@ export default async (goosemodScope) => {
           document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusout'));
         }
       },
-        React.createElement(goosemodScope.webpackModules.findByDisplayName('DropdownArrow'), {
-          className: `${IconClasses.icon}`,
-
-          width: 24,
-          height: 24
-        })
+        homeIcons.expandable
       )
     ),
 
