@@ -6,6 +6,7 @@ const generateIdSegment = () => Math.random().toString(36).replace(/[^a-z0-9]+/g
 export const generateId = (segments = 3) => new Array(segments).fill(0).map(() => generateIdSegment()).join(''); // Chain random 12 char strings together X times
 
 const modIndex = {};
+window._gm = modIndex;
 
 const isReactComponent = (component) => {
   return !!(component && (
@@ -81,7 +82,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
   return toReturn;
 });
 
-export const patch = (parent, functionName, handler, before = false, forceHarden = false) => {
+export const patch = (parent, functionName, handler, before = false) => {
   if (!parent._goosemodPatcherId) {
     const id = generateId();
 
@@ -100,14 +101,13 @@ export const patch = (parent, functionName, handler, before = false, forceHarden
 
     parent[functionName].toString = () => originalFunctionClone.toString(); // You cannot just set directly a.toString = b.toString like we used to because strange internal JS prototype things, so make a new function just to run original function
 
-    let toHarden = true;
-
-    if (!forceHarden) {
-      toHarden = false;
-
-      if (isReactComponent(parent[functionName])) toHarden = true;
-      if (parent.render) {
-        patch(parent, 'render', () => {}, false, true); // Random patch in component to force harden
+    let toHarden = false;
+    if (isReactComponent(parent[functionName])) toHarden = true;
+    if (parent.render) {
+      if (functionName !== 'render') {
+        patch(parent, 'render', () => {}); // Noop patch in component render to force harden
+      } else {
+        toHarden = true;
       }
     }
 
