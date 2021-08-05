@@ -365,7 +365,6 @@ export default () => {
 .gm-error-boundary {
   display: flex;
   flex-flow: column;
-  align-items: center;
 
   width: 100%;
   height: 100%;
@@ -375,7 +374,7 @@ export default () => {
   display: flex;
   justify-content: center;
 
-  width: 90%;
+  width: 100%;
 }
 
 .gm-error-boundary > :first-child > :first-child {
@@ -411,19 +410,35 @@ export default () => {
   display: flex;
   justify-content: center;
 
-  width: 90%;
+  width: 100%;
 
   margin-top: 28px;
   gap: 40px;
 }
 
 .gm-error-boundary > :nth-child(3) {
-  width: 100%;
-  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-top: 28px;
+  color: var(--header-secondary);
 }
 
-.gm-error-boundary > :nth-child(3) pre {
-  margin-bottom: 20px;
+.gm-error-boundary > :nth-child(3) > :nth-child(1) {
+  width: 24px;
+  height: 24px;
+
+  margin-right: 4px;
+}
+
+.gm-error-boundary > :nth-child(4) {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.gm-error-boundary > :nth-child(4) pre {
+  margin-bottom: 28px;
 }
 
 /* Discord fixes */

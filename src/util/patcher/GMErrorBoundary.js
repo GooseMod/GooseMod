@@ -70,18 +70,6 @@ return class GMErrorBoundary extends React.PureComponent {
       ),
   
       React.createElement('div', {},
-        /* React.createElement(Button, {
-          color: Button.Colors.LINK,
-          size: Button.Sizes.LARGE,
-  
-          onClick: () => {
-            this.state.toRetry = false;
-
-            this.state.showDetails = !this.state.showDetails;
-            this.forceUpdate();
-          }
-        }, this.state.showDetails ? 'Hide Details' : 'Show Details'), */
-
         React.createElement(Button, {
           color: Button.Colors.RED,
           size: Button.Sizes.LARGE,
