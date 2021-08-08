@@ -12,7 +12,7 @@ export const done = (thing) => {
 };
 
 export const themes = async () => {
-  const ModulesPreview = await import('./modulesPreview').default;
+  const ModulesPreview = (await import('./modulesPreview')).default();
 
   const { React } = goosemod.webpackModules.common;
 
@@ -67,7 +67,7 @@ export const themes = async () => {
 };
 
 export const plugins = async () => {
-  const ModulesPreview = await import('./modulesPreview').default();
+  const ModulesPreview = (await import('./modulesPreview')).default();
 
   const { React } = goosemod.webpackModules.common;
 
@@ -122,7 +122,7 @@ export const plugins = async () => {
 };
 
 export const store = async () => {
-  const ModulesPreview = await import('./modulesPreview').default;
+  const ModulesPreview = (await import('./modulesPreview')).default();
 
   const { React } = goosemod.webpackModules.common;
 
@@ -177,7 +177,9 @@ export const store = async () => {
 };
 
 export const settings = async () => {
-  const ModulesPreview = await import('./modulesPreview').default;
+  const ModulesPreview = (await import('./modulesPreview')).default();
+
+  console.log(ModulesPreview);
 
   const { React } = goosemod.webpackModules.common;
 
@@ -247,7 +249,7 @@ export const settings = async () => {
 };
 
 export const community = async () => {
-  const ModulesPreview = await import('./modulesPreview').default;
+  const ModulesPreview = (await import('./modulesPreview')).default();
 
   const { React } = goosemod.webpackModules.common;
 
@@ -304,7 +306,7 @@ export const community = async () => {
 };
 
 export const start = async () => {
-  const ModulesPreview = await import('./modulesPreview').default;
+  const ModulesPreview = (await import('./modulesPreview')).default();
 
   const { React } = goosemod.webpackModules.common;
 
