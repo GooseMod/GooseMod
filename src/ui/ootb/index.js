@@ -179,8 +179,6 @@ export const store = async () => {
 export const settings = async () => {
   const ModulesPreview = (await import('./modulesPreview')).default();
 
-  console.log(ModulesPreview);
-
   const { React } = goosemod.webpackModules.common;
 
   const Header = goosemod.webpackModules.findByDisplayName('Header');
