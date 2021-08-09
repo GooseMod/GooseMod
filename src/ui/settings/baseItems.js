@@ -206,7 +206,8 @@ Other Mods: ${Object.keys(mods).filter((x) => Object.keys(window).includes(x)).m
 GooseMod:
 GM Version: ${goosemodScope.versioning.version} (${goosemodScope.versioning.hash})
 GM Branch: ${goosemodScope.storage.get('goosemodUntetheredBranch')}
-GM Extension Version: ${gmExtension}
+GM Extension Version: ${window.gmExtension}
+GM Storage Impl: ${goosemodScope.storage.type}
 Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 `);
       }
