@@ -71,7 +71,7 @@ export default {
       if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...\n${m}`);
 
       updatePromises.push(goosemodScope.moduleStoreAPI.importModule(m, goosemodScope.moduleSettingsStore.checkDisabled(m)).then(async () => {
-        goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' });
+        // goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' });
       }));
     }
 
