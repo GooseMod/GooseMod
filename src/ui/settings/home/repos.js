@@ -62,7 +62,10 @@ export default async () => {
   const ButtonClasses = goosemod.webpackModules.findByProps('button', 'colorRed');
 
   const ModalStuff = goosemod.webpackModules.findByProps('ModalRoot');
-  const FormStuff = goosemod.webpackModules.findByProps('FormTitle');
+  const ChangelogModalClasses = goosemod.webpackModules.findByProps('socialLink', 'date');
+
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
+  const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   const { openModal } = goosemod.webpackModules.findByProps("openModal");
 
@@ -180,8 +183,25 @@ export default async () => {
           size: 'medium'
         },
         React.createElement(ModalStuff.ModalHeader, {},
-          React.createElement(FormStuff.FormTitle, { tag: 'h4' },
-            goosemod.i18n.goosemodStrings.moduleStore.repos.repos
+          React.createElement(Flex.Child, {
+            basis: 'auto',
+            grow: 1,
+            shrink: 1,
+            wrap: false,
+          },
+            React.createElement(Header, {
+              tag: 'h2',
+              size: Header.Sizes.SIZE_20
+            }, goosemod.i18n.goosemodStrings.moduleStore.repos.repos),
+
+            React.createElement(Text, {
+              size: Text.Sizes.SIZE_12,
+              className: ChangelogModalClasses.date
+            },
+              goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme')).length, ' Themes', ', ',
+              goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme')).length, ' Plugins', ', ',
+              Object.keys(goosemod.moduleStoreAPI.modules.reduce((acc, x) => { let a = x.authors; if (!a.forEach) a = [ a ]; a.forEach((y) => acc[y.n || y.match(/(.*) \(([0-9]{17,18})\)/)?.[1] || y] = true); return acc; }, {})).length, ' Developers'
+            )
           ),
           React.createElement('FlexChild', {
               basis: 'auto',
