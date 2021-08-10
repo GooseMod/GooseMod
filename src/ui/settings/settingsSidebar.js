@@ -13,7 +13,7 @@ export default (goosemodScope, gmSettings) => {
     sections.splice(
       sections.indexOf(logout), 0,
       
-      ...goosemodScope.settings.items.filter((x) => (gmSettings.get().home ? x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && x[1] !== 'Snippets': true) && (gmSettings.get().snippets ? x[1] !== 'Snippets' : true)).map((i) => {
+      ...goosemodScope.settings.items.filter((x) => (gmSettings.get().home ? x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins && x[1] !== goosemodScope.i18n.goosemodStrings.settings.itemNames.themes && x[1] !== 'Snippets': true) && (!gmSettings.get().snippets ? x[1] !== 'Snippets' : true)).map((i) => {
         switch (i[0]) {
           case 'item':
           let obj = {
