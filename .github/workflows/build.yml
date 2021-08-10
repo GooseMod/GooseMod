@@ -37,18 +37,18 @@ jobs:
         git commit -m "[CI Chore] Update dist-dev"
         git push origin dist-dev
 
-    # - name: Build Dev Changelog
-    #   run: bash building/generateDevChangelog.sh
+    - name: Build Dev Changelog
+      run: bash building/generateDevChangelog.sh
 
-    # - name: Release Dev
-    #   uses: ncipollo/release-action@v1
-    #   with:
-    #     tag: "dev"
-    #     allowUpdates: true
-    #     prerelease: true
-    #     artifacts: "dist/index.js"
+    - name: Release Dev
+      uses: ncipollo/release-action@v1
+      with:
+        tag: "dev"
+        allowUpdates: true
+        prerelease: true
+        artifacts: "dist/index.js"
 
-    #     name: "GooseMod Dev"
-    #     bodyFile: "dist/devChangelog.md"
+        name: "GooseMod Dev"
+        bodyFile: "dist/devChangelog.md"
 
-    #     token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
