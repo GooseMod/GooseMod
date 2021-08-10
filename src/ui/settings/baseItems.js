@@ -439,7 +439,8 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
-    const importedVal = document.querySelector('.selected-3s45Ha').textContent;
+    let importedVal = document.querySelector('.selected-3s45Ha').textContent;
+    if (importedVal !== 'Store' && importedVal !== 'Imported') importedVal = 'Store';
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
