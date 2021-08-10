@@ -24,18 +24,29 @@ jobs:
     - name: Build GooseMod
       run: npm run build
 
-    - name: Build Dev Changelog
-      run: bash building/generateDevChangelog.sh
+    - name: Release via dist branch
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        cp dist ..
+        git checkout dist
+        cp ../dist/* .
+        git add --all
+        git commit -m "[CI Chore] Update dist"
+        git push origin dist
 
-    - name: Release Dev
-      uses: ncipollo/release-action@v1
-      with:
-        tag: "dev"
-        allowUpdates: true
-        prerelease: true
-        artifacts: "dist/index.js"
+    # - name: Build Dev Changelog
+    #   run: bash building/generateDevChangelog.sh
 
-        name: "GooseMod Dev"
-        bodyFile: "dist/devChangelog.md"
+    # - name: Release Dev
+    #   uses: ncipollo/release-action@v1
+    #   with:
+    #     tag: "dev"
+    #     allowUpdates: true
+    #     prerelease: true
+    #     artifacts: "dist/index.js"
 
-        token: ${{ secrets.GITHUB_TOKEN }}
+    #     name: "GooseMod Dev"
+    #     bodyFile: "dist/devChangelog.md"
+
+    #     token: ${{ secrets.GITHUB_TOKEN }}
