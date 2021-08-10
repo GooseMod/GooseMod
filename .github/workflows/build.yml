@@ -31,7 +31,7 @@ jobs:
         rm -rf ../dist
         cp -rf dist ..
         git checkout dist --
-        rm -rf .
+        rm -rf *
         cp -rf ../dist/* .
         git add --all
         git commit -m "[CI Chore] Update dist"
