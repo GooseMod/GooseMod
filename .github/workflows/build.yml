@@ -30,6 +30,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         cp -rf dist ..
         git checkout dist --
+        rm -rf .
         cp -rf ../dist/* .
         git add --all
         git commit -m "[CI Chore] Update dist"
