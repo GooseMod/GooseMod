@@ -30,12 +30,12 @@ jobs:
         git config --local user.name "github-actions[bot]"
         rm -rf ../dist
         cp -rf dist ..
-        git checkout dist --
+        git checkout dist-dev --
         rm -rf *
         cp -rf ../dist/* .
         git add --all
-        git commit -m "[CI Chore] Update dist"
-        git push origin dist
+        git commit -m "[CI Chore] Update dist-dev"
+        git push origin dist-dev
 
     # - name: Build Dev Changelog
     #   run: bash building/generateDevChangelog.sh
