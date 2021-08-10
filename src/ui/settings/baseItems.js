@@ -435,7 +435,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
   let searchQuery = '';
 
   const updateModuleStoreUI = () => {
-    const cards = document.getElementsByClassName('gm-store-card');
+    const cards = document.querySelectorAll(':not(.gm-store-category) > div > .gm-store-card');
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
