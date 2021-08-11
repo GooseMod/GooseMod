@@ -74,7 +74,7 @@
     "settings": {
         "items": {
             "force_theme_settings": {
-                "note": "Força configurações geradas automaticamente para todos os temas",
+                "note": "Força as configurações geradas automaticamente para todos os temas",
                 "title": "Forçar Configurações de Temas"
             },
             "snippets": {
@@ -158,7 +158,7 @@
             },
             "cancelled": {
                 "reasons": {
-                    "pgp": "Falha Não Confiável na Assinatura PGP",
+                    "pgp": "Falha na Assinatura PGP Não Confiável",
                     "refused": "Aviso de Segurança Recusado"
                 },
                 "text": "Adição do Repositório Cancelada"
@@ -189,7 +189,7 @@
             "items": {
                 "tweaks": {
                     "title": "Ajustes",
-                    "subtext": "Ajuste GooseMod do jeito que preferir"
+                    "subtext": "Ajuste o GooseMod do jeito que preferir"
                 },
                 "utilities": {
                     "subtext": "Faça backups, redefinir o GooseMod, e mais",
