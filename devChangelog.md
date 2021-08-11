@@ -1,5 +1,6 @@
-### Based on commit fd61bf3, made 11/08 17:03 UTC
+### Based on commit 31acfc6, made 11/08 17:06 UTC
 ## Commits this release
+  - [Doc] Tweak badges
   - [Doc] Add badges to README
   - [Doc] Add Weblate to README
   - Translated using Weblate (Dutch)
