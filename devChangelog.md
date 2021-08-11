@@ -1,5 +1,17 @@
-### Based on commit a8720fe, made 10/08 16:31 UTC
+### Based on commit 18ab372, made 11/08 14:16 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Chore] Bump version: v12.0-dev
+  - [Build > i18n] Fix error on no dist
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Italian)
+  - Translated using Weblate (German)
+  - Translated using Weblate (German)
+  - Translated using Weblate (Danish)
+  - Translated using Weblate (German)
+  - [i18n] Add empty translations for all Discord langs
+  - [i18n-2] i18n rewrite - core done
   - [CI] build: make release first
   - [CI] build: also make release
   - [CI] build: rewrite (7)
