@@ -3,7 +3,12 @@
         "add": "Hinzufügen",
         "store": {
             "developers": "Entwickler",
-            "modules": "Module"
+            "modules": "Module",
+            "repos": "Repos",
+            "snippets": "Snippets",
+            "plugins": "Plugins",
+            "themes": "Themes",
+            "store": "Store"
         },
         "changelog": "Änderungsprotokoll",
         "settings": "Einstellungen",
@@ -20,10 +25,11 @@
             "sort": {
                 "stars": "Sternen",
                 "last_updated": "Zuletzt aktualisiert",
-                "label": "Sortieren nach"
+                "label": "Sortieren nach",
+                "az": "A-Z"
             },
             "author": {
-                "all": "Alles",
+                "all": "Alle",
                 "label": "Autor"
             },
             "search": {
@@ -33,7 +39,8 @@
                 }
             },
             "tabs": {
-                "imported": "Importiert"
+                "imported": "Importiert",
+                "store": "Store"
             }
         },
         "categories": {
@@ -46,7 +53,7 @@
             "recently_updated": "Zuletzt aktualisiert"
         },
         "pgp": {
-            "untrusted": "Nicht PGP vertrauenswürdig",
+            "untrusted": "PGP Untrusted",
             "unknown": "Kein PGP",
             "verified": "PGP verifiziert"
         }
@@ -60,6 +67,7 @@
     "badges": {
         "guild": "GooseMod offizieller Discord",
         "developer": "GooseMod Entwickler",
-        "translator": "GooseMod Übersetzer"
+        "translator": "GooseMod Übersetzer",
+        "sponsor": "GooseMod Sponsor"
     }
 }
