@@ -154,6 +154,13 @@
             "invalid_repo": {
                 "subtext": "Formato Inválido",
                 "text": "Repo Inválido"
+            },
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Falha Não Confiável na Assinatura PGP",
+                    "refused": "Aviso de Segurança Recusado"
+                },
+                "text": "Adição do Repositório Cancelada"
             }
         }
     }
