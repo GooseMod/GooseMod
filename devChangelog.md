@@ -1,5 +1,9 @@
-### Based on commit 91d5806, made 11/08 18:56 UTC
+### Based on commit 8587275, made 11/08 19:11 UTC
 ## Commits this release
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (French)
+  - Translated using Weblate (German)
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (Polish)
   - Translated using Weblate (Hungarian)
