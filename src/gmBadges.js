@@ -180,19 +180,6 @@ const badgeUsers = {
   ],
 
   translator: [ // People who have translated GooseMod to other languages
-    '506482395269169153', // Ducko
-    '394579914860396565', // C4Phoenix
-    '787017887877169173', // Dziurwa
-    '274213297316691968', // EnderXH
-    '500656746440949761', // PandaDriver
-    '326359466171826176', // sanana the skenana
-    '396360155480064003', // Skree
-    '169175121037099008', // TechnoJo4
-    '189079074054995969', // xirreal
-    '302734867425132545', // hax4dayz
-    '172866400900218881', // Komodo
-    '751092600890458203', // Pukima
-    '266001128318042113', // maikirakiwi
   ]
 };
 
@@ -201,7 +188,7 @@ export const addBadges = () => {
 
   unpatchers.push(
     // User badges
-    goosemodScope.patcher.userBadges.patch('GooseMod Sponsor',
+    goosemodScope.patcher.userBadges.patch('#badges.sponsor#',
       'https://goosemod.com/img/goose_gold.jpg',
 
       // Force check via query because Discord not properly rerendering
@@ -214,7 +201,7 @@ export const addBadges = () => {
       { round: true }
     ),
 
-    goosemodScope.patcher.userBadges.patch('GooseMod Translator',
+    goosemodScope.patcher.userBadges.patch('#badges.translator#',
       'https://goosemod.com/img/goose_globe.png',
 
       // Force check via query because Discord not properly rerendering
@@ -227,7 +214,7 @@ export const addBadges = () => {
       { round: true }
     ),
 
-    goosemodScope.patcher.userBadges.patch('GooseMod Developer',
+    goosemodScope.patcher.userBadges.patch('#badges.developer#',
       'https://goosemod.com/img/goose_glitch.jpg',
 
       // Force check via query because Discord not properly rerendering
@@ -241,7 +228,7 @@ export const addBadges = () => {
     ),
 
     // Guild badges
-    goosemod.patcher.guildBadges.patch('GooseMod Official Discord',
+    goosemod.patcher.guildBadges.patch('#badges.guild#',
       'https://goosemod.com/img/logo.jpg',
     
       // Force check via query because Discord not properly rerendering

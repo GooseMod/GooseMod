@@ -40,9 +40,10 @@ export default async (goosemodScope) => {
 
   const LoadingPopout = goosemodScope.webpackModules.findByDisplayName('LoadingPopout');
 
-  const makeHeader = (icon, title) => React.createElement(Header, {
+  const makeHeader = (icon, title, id) => React.createElement(Header, {
     icon,
-    title
+    title,
+    id
   });
 
   const makeContent = (isLibrary, content) => React.createElement('div', {
@@ -58,13 +59,13 @@ export default async (goosemodScope) => {
     }
   }, content);
 
-  const makePage = (icon, title, content) => React.createElement('div', {
+  const makePage = (icon, title, id, content) => React.createElement('div', {
     style: {
       height: '100%',
       overflow: 'hidden'
     }
   },
-    makeHeader(icon, title),
+    makeHeader(icon, title, id),
 
     makeContent(false, content)
   );
@@ -81,9 +82,9 @@ export default async (goosemodScope) => {
   let expanded = goosemod.storage.get('goosemodHomeExpanded') || true;
 
   let settings = {
-    plugins: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins),
-    themes: goosemodScope.settings.items.find((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes),
-    snippets: goosemodScope.settings.items.find((x) => x[1] === 'Snippets')
+    plugins: goosemodScope.settings.items.find((x) => x[1] === '#terms.store.plugins#'),
+    themes: goosemodScope.settings.items.find((x) => x[1] === '#terms.store.themes#'),
+    snippets: goosemodScope.settings.items.find((x) => x[1] === '#terms.store.snippets#')
   };
 
   let contents = {
@@ -92,7 +93,7 @@ export default async (goosemodScope) => {
     snippets: goosemodScope.settings._createItem(settings.snippets[1], settings.snippets[2], false)
   };
 
-  const handleItemClick = (type) => {
+  const handleItemClick = (title, type) => {
     const parentEl = [...document.querySelector(`.content-98HsJk`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
     for (const x of document.querySelector(`.scroller-1JbKMe`).children[0].children) {
@@ -130,7 +131,7 @@ export default async (goosemodScope) => {
 
 
     if (parentEl.children.length === 1) {
-      ReactDOM.render(makePage(homeIcons[type], type, contents[type]), parentEl.children[0]);
+      ReactDOM.render(makePage(homeIcons[type], title, type, contents[type]), parentEl.children[0]);
     }
     
     if (parentEl.children.length === 2 || parentEl.children.length === 3) {
@@ -141,7 +142,7 @@ export default async (goosemodScope) => {
       if (isLibrary) indexOffset = 0;
 
       parentEl.children[indexOffset + 0].className = '';
-      ReactDOM.render(makeHeader(homeIcons[type], type), parentEl.children[indexOffset + 0]);
+      ReactDOM.render(makeHeader(homeIcons[type], title, type), parentEl.children[indexOffset + 0]);
       
       if (indexOffset !== 0 && parentEl.children[indexOffset + 1].children[1]) {
         parentEl.children[indexOffset + 1].children[1].style.display = 'none';
@@ -214,45 +215,45 @@ export default async (goosemodScope) => {
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'block' : 'none'
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.themes#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.themes,
-      onClick: () => handleItemClick('themes'),
+      onClick: () => handleItemClick('#terms.store.themes#', 'themes'),
 
       id: 'gm-home-themes',
 
-      text: goosemodScope.i18n.goosemodStrings.settings.itemNames.themes,
+      text: '#terms.store.themes#',
 
       selected: false
     }),
 
     () => React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-29uC1r')?.textContent === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins ? 'block' : 'none'
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.plugins#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.plugins,
-      onClick: () => handleItemClick('plugins'),
+      onClick: () => handleItemClick('#terms.store.plugins#', 'plugins'),
 
       id: 'gm-home-plugins',
 
-      text: goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins,
+      text: '#terms.store.plugins#',
 
       selected: false
     }),
 
     snippetsEnabled ? () => React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-29uC1r')?.textContent === 'Snippets' ? 'block' : 'none'
+        display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.snippets#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.snippets,
-      onClick: () => handleItemClick('snippets'),
+      onClick: () => handleItemClick('#terms.store.snippets#', 'snippets'),
 
       id: 'gm-home-snippets',
 
-      text: 'Snippets',
+      text: '#terms.store.snippets#',
 
       selected: false
     }) : null
@@ -324,7 +325,7 @@ export default async (goosemodScope) => {
   
           subtext: x.content.replace(/```css(.*)```/gs, ''), // Only context / text without code
   
-          buttonText: snippetsLoaded[x.id] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.discordStrings.ADD,
+          buttonText: snippetsLoaded[x.id] ? '#terms.remove#' : '#terms.add#',
           buttonType: snippetsLoaded[x.id] ? 'danger' : 'brand',
 
           onclick: () => {
@@ -340,9 +341,9 @@ export default async (goosemodScope) => {
               delete snippetsLoaded[x.id];
 
               buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
-              buttonEl.textContent = goosemodScope.i18n.discordStrings.ADD;
+              buttonEl.textContent = '#terms.add#';
 
-              cardSet.buttonText = goosemodScope.i18n.discordStrings.ADD;
+              cardSet.buttonText = '#terms.add#';
               cardSet.buttonType = 'brand';
             } else { // Add
               snippetsLoaded[x.id] = document.createElement('style');
@@ -352,9 +353,9 @@ export default async (goosemodScope) => {
               document.body.appendChild(snippetsLoaded[x.id]);
 
               buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
-              buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
+              buttonEl.textContent = '#terms.remove#';
 
-              cardSet.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
+              cardSet.buttonText = '#terms.remove#';
               cardSet.buttonType = 'danger';
             }
 

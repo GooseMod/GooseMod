@@ -6,7 +6,7 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const startLoadingScreen = () => {
+export const startLoadingScreen = () => { return;
   loadingEl = document.createElement('div');
 
   loadingEl.style.position = 'absolute';
@@ -37,7 +37,7 @@ export const startLoadingScreen = () => {
   titleEl.style.boxShadow = 'none';
   titleEl.style.webkitBoxShadow = 'none';
 
-  titleEl.textContent = `Loading GooseMod`;
+  titleEl.textContent = `#loading.title#`;
 
   const versionEl = document.createElement('div');
 
@@ -64,9 +64,14 @@ export const startLoadingScreen = () => {
 };
 
 export const updateLoadingScreen = (tip) => {
+  if (!loadingEl) return;
+
   descEl.textContent = tip;
 };
 
 export const stopLoadingScreen = () => {
+  if (!loadingEl) return;
+
   loadingEl.remove();
+  loadingEl = null;
 };

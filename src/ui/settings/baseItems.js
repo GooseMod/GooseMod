@@ -11,7 +11,7 @@ export default (goosemodScope, gmSettings, Items) => {
       case 'changelog': {
         if (value) {
           const items = [
-            ['item', goosemodScope.i18n.discordStrings.CHANGE_LOG, [''], async () => {
+            ['item', '#terms.changelog#', [''], async () => {
               GoosemodChangelog.show();
             }, false]
           ];
@@ -49,7 +49,7 @@ export default (goosemodScope, gmSettings, Items) => {
           let main = true;
 
           goosemodScope.settings.items = goosemodScope.settings.items.filter((x, i) => {
-            if (goosemodScope.settings.items[i + 1] && goosemodScope.settings.items[i + 1][1] && goosemodScope.settings.items[i + 1][1] === 'GooseMod Modules') main = false;
+            if (goosemodScope.settings.items[i + 1] && goosemodScope.settings.items[i + 1][1] && goosemodScope.settings.items[i + 1][1] === '#terms.goosemod.modules#') main = false;
 
             return !(x[0] === 'separator' && main);
           });
@@ -79,7 +79,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
   let settingDebugShowing = false;
 
-  goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.SETTINGS, ['',
+  goosemodScope.settings.createItem('#terms.settings#', ['',
     {
       type: 'header',
       text: 'Settings'
@@ -508,11 +508,11 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     return (x.github.stars / daysSinceUpdate) - (x.github.stars / 2) + (1 - daysSinceUpdate);
   };
 
-  [goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins, goosemodScope.i18n.goosemodStrings.settings.itemNames.themes].forEach((x) => goosemodScope.settings.createItem(x, ['',
+  ['#terms.store.plugins#', '#terms.store.themes#'].forEach((x, i) => goosemodScope.settings.createItem(x, ['',
     {
       type: 'search',
 
-      placeholder: `${goosemodScope.i18n.discordStrings.SEARCH} ${x}`,
+      placeholder: i === 0 ? '#store.options.search.placeholder.plugins#' : '#store.options.search.placeholder.themes#',
 
       onchange: (query) => {
         searchQuery = query;
@@ -642,14 +642,14 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
   if (gmSettings.get().changelog) {
     if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
 
-    goosemodScope.settings.createItem(goosemodScope.i18n.discordStrings.CHANGE_LOG, [""], async () => {
+    goosemodScope.settings.createItem('#terms.changelog#', [""], async () => {
       GoosemodChangelog.show();
     });
   }
 
   goosemodScope.settings.createSeparator();
 
-  goosemodScope.settings.createHeading(goosemodScope.i18n.goosemodStrings.settings.itemNames.goosemodModules);
+  goosemodScope.settings.createHeading('#terms.goosemod.modules#');
 
   goosemodScope.settings.items = goosemodScope.settings.items.concat(oldItems);
 };

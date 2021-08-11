@@ -134,7 +134,7 @@ export const _createItem = (name, content, container = true) => {
   });
 
   return container ? React.createElement(FormSection, {
-      className: name === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || name === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes ? 'gm-store-settings' : ''
+      className: name === '#terms.store.plugins#' || name === '#terms.store.themes#' ? 'gm-store-settings' : ''
     },
 
     React.createElement(FormTitle, { tag: 'h1' }, name),

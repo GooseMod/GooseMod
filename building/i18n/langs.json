@@ -1,0 +1,226 @@
+{
+  "en-US": {
+      "name": "English, US",
+      "englishName": "English, US",
+      "code": "en-US",
+      "postgresLang": "english",
+      "enabled": true
+  },
+  "en-GB": {
+      "name": "English, UK",
+      "englishName": "English, UK",
+      "code": "en-GB",
+      "postgresLang": "english",
+      "enabled": true
+  },
+  "zh-CN": {
+      "name": "中文",
+      "englishName": "Chinese Simplified",
+      "code": "zh-CN",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "zh-TW": {
+      "name": "繁體中文",
+      "englishName": "Traditional Chinese",
+      "code": "zh-TW",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "cs": {
+      "name": "Čeština",
+      "englishName": "Czech",
+      "code": "cs",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "da": {
+      "name": "Dansk",
+      "englishName": "Danish",
+      "code": "da",
+      "postgresLang": "danish",
+      "enabled": true
+  },
+  "nl": {
+      "name": "Nederlands",
+      "englishName": "Dutch",
+      "code": "nl",
+      "postgresLang": "dutch",
+      "enabled": true
+  },
+  "fr": {
+      "name": "Français",
+      "englishName": "French",
+      "code": "fr",
+      "postgresLang": "french",
+      "enabled": true
+  },
+  "de": {
+      "name": "Deutsch",
+      "englishName": "German",
+      "code": "de",
+      "postgresLang": "german",
+      "enabled": true
+  },
+  "el": {
+      "name": "Ελληνικά",
+      "englishName": "Greek",
+      "code": "el",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "hu": {
+      "name": "Magyar",
+      "englishName": "Hungarian",
+      "code": "hu",
+      "postgresLang": "hungarian",
+      "enabled": true
+  },
+  "it": {
+      "name": "Italiano",
+      "englishName": "Italian",
+      "code": "it",
+      "postgresLang": "italian",
+      "enabled": true
+  },
+  "ja": {
+      "name": "日本語",
+      "englishName": "Japanese",
+      "code": "ja",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "ko": {
+      "name": "한국어",
+      "englishName": "Korean",
+      "code": "ko",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "pl": {
+      "name": "Polski",
+      "englishName": "Polish",
+      "code": "pl",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "pt-PT": {
+      "name": "Português",
+      "englishName": "Portuguese",
+      "code": "pt-PT",
+      "postgresLang": "portuguese",
+      "enabled": false
+  },
+  "pt-BR": {
+      "name": "Português do Brasil",
+      "englishName": "Portuguese, Brazilian",
+      "code": "pt-BR",
+      "postgresLang": "portuguese",
+      "enabled": true
+  },
+  "ru": {
+      "name": "Русский",
+      "englishName": "Russian",
+      "code": "ru",
+      "postgresLang": "russian",
+      "enabled": true
+  },
+  "sk": {
+      "name": "Slovenčina",
+      "englishName": "Slovak",
+      "code": "sk",
+      "postgresLang": "simple",
+      "enabled": false
+  },
+  "es-ES": {
+      "name": "Español",
+      "englishName": "Spanish",
+      "code": "es-ES",
+      "postgresLang": "spanish",
+      "enabled": true
+  },
+  "sv-SE": {
+      "name": "Svenska",
+      "englishName": "Swedish",
+      "code": "sv-SE",
+      "postgresLang": "swedish",
+      "enabled": true
+  },
+  "tr": {
+      "name": "Türkçe",
+      "englishName": "Turkish",
+      "code": "tr",
+      "postgresLang": "turkish",
+      "enabled": true
+  },
+  "bg": {
+      "name": "български",
+      "englishName": "Bulgarian",
+      "code": "bg",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "uk": {
+      "name": "Українська",
+      "englishName": "Ukrainian",
+      "code": "uk",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "fi": {
+      "name": "Suomi",
+      "englishName": "Finnish",
+      "code": "fi",
+      "postgresLang": "finnish",
+      "enabled": true
+  },
+  "no": {
+      "name": "Norsk",
+      "englishName": "Norwegian",
+      "code": "no",
+      "postgresLang": "norwegian",
+      "enabled": true
+  },
+  "hr": {
+      "name": "Hrvatski",
+      "englishName": "Croatian",
+      "code": "hr",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "ro": {
+      "name": "Română",
+      "englishName": "Romanian",
+      "code": "ro",
+      "postgresLang": "romanian",
+      "enabled": true
+  },
+  "lt": {
+      "name": "Lietuviškai",
+      "englishName": "Lithuanian",
+      "code": "lt",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "th": {
+      "name": "ไทย",
+      "englishName": "Thai",
+      "code": "th",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "vi": {
+      "name": "Tiếng Việt",
+      "englishName": "Vietnamese",
+      "code": "vi",
+      "postgresLang": "simple",
+      "enabled": true
+  },
+  "hi": {
+      "name": "हिंदी",
+      "englishName": "Hindi",
+      "code": "hi",
+      "postgresLang": "simple",
+      "enabled": true
+  }
+}

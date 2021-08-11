@@ -32,7 +32,7 @@ export default async () => {
           size: ButtonClasses['sizeSmall'],
 
           onClick: this.props.buttonOnClick
-        }, goosemod.i18n.discordStrings.REMOVE),
+        }, '#terms.remove#'),
 
         React.createElement(SwitchItem, {
           ...this.props
@@ -94,7 +94,7 @@ export default async () => {
 
         switch (repo.pgp.trustState) {
           case 'trusted':
-            tooltip = 'PGP Verified';
+            tooltip = '#store.pgp.verified#';
 
             icon = React.createElement(Verified, {
               className: "icon-1ihkOt"
@@ -103,7 +103,7 @@ export default async () => {
             break;
 
           case 'untrusted':
-            tooltip = 'PGP Untrusted';
+            tooltip = '#store.pgp.untrusted#';
 
             icon = React.createElement(Alert, {
               className: "icon-1ihkOt"
@@ -112,7 +112,7 @@ export default async () => {
             break;
 
           case 'unknown':
-            tooltip = 'No PGP';
+            tooltip = '#store.pgp.unknown#';
 
             icon = React.createElement(Alert, {
               className: "icon-1ihkOt"
@@ -192,7 +192,7 @@ export default async () => {
             React.createElement(Header, {
               tag: 'h2',
               size: Header.Sizes.SIZE_20
-            }, goosemod.i18n.goosemodStrings.moduleStore.repos.repos),
+            }, '#terms.store.repos#'),
 
             React.createElement(Text, {
               size: Text.Sizes.SIZE_12,
@@ -249,12 +249,12 @@ export default async () => {
                 }
 
                 if (resp.meta?.name === undefined) {
-                  goosemod.showToast(`Invalid Repo`, { type: 'error', timeout: 5000, subtext: 'GooseMod Store' });
+                  goosemod.showToast(`Invalid Repo`, { type: 'error', timeout: 5000, subtext: '#terms.goosemod.store#' });
 
                   return;
                 }
 
-                const confirmExternal = confirm(`External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.`);
+                const confirmExternal = confirm('#modals.external_repo_security.main#');
                 if (!confirmExternal) {
                   goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'Refused Security Prompt' });
 
@@ -275,7 +275,7 @@ export default async () => {
                   return;
                 }
 
-                if (pgpResult.trustState !== 'trusted' && !confirm(`This repo is not known or trusted (no PGP verification), please be extra careful. Make sure you trust the owner(s) of this repo completely.\n\nTo solve this issue ask the repo maintainer to add PGP support.\n\nPlease reconfirm adding this repo by pressing OK.`)) { // Warn again with no PGP
+                if (pgpResult.trustState !== 'trusted' && !confirm(`#modals.external_repo_security.bad_pgp#`)) { // Warn again with no PGP
                   goosemod.showToast(`Cancelled Adding Repo`, { type: 'danger', timeout: 5000, subtext: 'Refused Security Prompt' });
 
                   return;
@@ -286,7 +286,7 @@ export default async () => {
 
                 restartModal();
               }
-            }, goosemod.i18n.discordStrings.ADD)
+            }, '#terms.add#')
           )
         )
       );

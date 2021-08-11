@@ -23,13 +23,7 @@ export default {
   jsCache: JSCache,
   idCache: IDCache,
 
-  getSettingItemName: (moduleInfo) => {
-    let item = goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins;
-
-    if (moduleInfo.tags.includes('theme')) item = goosemodScope.i18n.goosemodStrings.settings.itemNames.themes;
-
-    return item;
-  },
+  getSettingItemName: (moduleInfo) => moduleInfo.tags.includes('theme') ? '#terms.store.themes#' : '#terms.store.plugins#',
 
   hotupdate: async (shouldHandleLoadingText = false) => { // Update repos, hotreload any updated modules (compare hashes to check if updated)
     if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Getting modules from repos...`);
@@ -57,7 +51,7 @@ export default {
         const pgpUntrusted = goosemodScope.moduleStoreAPI.verifyPgp(repo).trustState === 'untrusted';
 
         if (pgpUntrusted) { // Repo PGP failed to verify and once had PGP success, refuse to update modules for this repo
-          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update it's modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
+          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update it's modules`, { timeout: 10000, type: 'error', subtext: '#terms.goosemod.store#' });
           repoPgpChecks[m.repo] = false;
           continue;
         }
@@ -71,7 +65,7 @@ export default {
       if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...\n${m}`);
 
       updatePromises.push(goosemodScope.moduleStoreAPI.importModule(m, goosemodScope.moduleSettingsStore.checkDisabled(m)).then(async () => {
-        // goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: 'GooseMod Store' });
+        // goosemodScope.showToast(`Updated ${m}`, { timeout: 5000, type: 'success', subtext: '#terms.goosemod.store#' });
       }));
     }
 
@@ -110,7 +104,7 @@ export default {
         const pgpUntrusted = await goosemodScope.moduleStoreAPI.verifyPgp(repo).trustState === 'untrusted';
 
         if (pgpUntrusted) {
-          goosemodScope.showToast(`Failed to verify repo: ${repo.meta.name}, refusing to use new modules`, { timeout: 10000, type: 'error', subtext: 'GooseMod Store (PGP)' });
+          goosemodScope.showToast(`Failed to verify repo: ${repo.meta.name}, refusing to use new modules`, { timeout: 10000, type: 'error', subtext: '#terms.goosemod.store#' });
 
           newModules = newModules.concat(goosemodScope.moduleStoreAPI.modules.filter((x) => x.repo === repo.url)).sort((a, b) => a.name.localeCompare(b.name)); // Use cached / pre-existing modules
 
@@ -129,7 +123,7 @@ export default {
           resp: _resp // Store raw response (PGP caching)
         };
       } catch (e) {
-        goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: 'GooseMod Store' }); // Show error toast to user so they know
+        goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: '#terms.goosemod.store#' }); // Show error toast to user so they know
         console.error(e);
       }
 
@@ -150,7 +144,7 @@ export default {
 
       const calculatedHash = await sha512(jsCode);
       if (calculatedHash !== moduleInfo.hash) {
-        goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, { timeout: 2000, type: 'danger', subtext: 'GooseMod Store' });
+        goosemodScope.showToast(`Cancelled importing of ${moduleName} due to hash mismatch`, { timeout: 2000, type: 'danger', subtext: '#terms.goosemod.store#' });
 
         console.warn('Hash mismatch', calculatedHash, moduleInfo.hash);
         return;
@@ -174,7 +168,7 @@ export default {
         const item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo))[2].find((x) => x.subtext === moduleInfo.description);
 
         item.buttonType = 'danger';
-        item.buttonText = goosemodScope.i18n.discordStrings.REMOVE;
+        item.buttonText = '#terms.remove#';
         item.showToggle = true;
       } catch (e) {
         // goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
@@ -190,14 +184,14 @@ export default {
           const buttonEl = cardEl.querySelector(`.colorBrand-3pXr91`);
 
           buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
-          buttonEl.textContent = goosemodScope.i18n.discordStrings.REMOVE;
+          buttonEl.textContent = '#terms.remove#';
 
           const toggleEl = cardEl.querySelector(`.container-3auIfb`);
           toggleEl.classList.remove('hide-toggle');
         }
       }
     } catch (e) {
-      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: 'GooseMod Store' });
+      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: '#terms.goosemod.store#' });
       console.error(e);
     }
   },
@@ -208,7 +202,7 @@ export default {
     if (item === undefined) return;
 
     item.buttonType = 'brand';
-    item.buttonText = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
+    item.buttonText = '#terms.add#';
     item.showToggle = false;
 
     // If themes / plugins open
@@ -221,7 +215,7 @@ export default {
         const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
 
         buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
-        buttonEl.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import;
+        buttonEl.textContent = '#terms.add#';
 
         const toggleEl = cardEl.querySelector(`.container-3auIfb`);
         toggleEl.classList.add('hide-toggle');
@@ -263,7 +257,7 @@ export default {
   },
 
   updateStoreSetting: async () => {
-    let allItems = goosemodScope.settings.items.filter((x) => x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.plugins || x[1] === goosemodScope.i18n.goosemodStrings.settings.itemNames.themes);
+    let allItems = goosemodScope.settings.items.filter((x) => x[1] === '#terms.store.plugins#' || x[1] === '#terms.store.themes#');
 
     for (const i of allItems) {
       i[2] = i[2].filter((x) => x.type !== 'card');
@@ -299,19 +293,15 @@ export default {
         subtext: m.description,
         subtext2: m.version === '0' || m.version.toLowerCase().includes('auto') ? '' : `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? goosemodScope.i18n.discordStrings.REMOVE : goosemodScope.i18n.goosemodStrings.moduleStore.card.button.import,
+        buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? '#terms.remove#' : '#terms.add#',
         onclick: async () => {
           goosemodScope.settings[`regen${type}`] = true;
 
           if (goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name]) {
-            // el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.removing;
-
             goosemodScope.settings.removeModuleUI(m.name, itemName);
 
             return;
           }
-
-          // el.textContent = goosemodScope.i18n.goosemodStrings.moduleStore.card.button.importing;
 
           if (m.dependencies && m.dependencies.length > 0) { // If it's the initial (on import) import that means it has been imported before
             const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';

@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 
 import genChangelog from './genChangelog';
+import geni18nFiles from './i18n';
 
 
 export default () => {
@@ -12,9 +13,13 @@ export default () => {
     renderChunk: async (code) => {
       const commitHash = await new Promise((res) => exec(`git rev-parse HEAD`, (_err, stdout) => res(stdout.trim())));
 
-      return code
+      code = code
         .replace('<changelog>', changelog)
         .replace('<hash>', commitHash) + '//# sourceURL=GooseMod';
+
+      geni18nFiles(code);
+
+      return code;
     }
   }
 };

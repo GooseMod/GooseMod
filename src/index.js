@@ -14,7 +14,6 @@ import * as confirmDialog from './ui/modals/confirm';
 import * as Changelog from './ui/modals/changelog';
 import * as GoosemodChangelog from './ui/goosemodChangelog';
 
-import * as PackModal from './ui/packModal';
 import * as OOTB from './ui/ootb';
 
 import { startLoadingScreen, stopLoadingScreen, updateLoadingScreen, setThisScope as setThisScope1 } from './ui/loading';
@@ -26,8 +25,6 @@ import { importModule, setThisScope as setThisScope3 } from './moduleManager';
 import * as ModuleSettingsStore from './moduleSettingsStore';
 
 import moduleStoreAPI from './moduleStore';
-
-import * as i18n from './i18n';
 
 import * as CSSCache from './cssCache';
 
@@ -47,15 +44,12 @@ const scopeSetterFncs = [
   Changelog.setThisScope,
   GoosemodChangelog.setThisScope,
 
-  PackModal.setThisScope,
   Patcher.setThisScope,
   Attrs.setThisScope,
 
   ModuleSettingsStore.setThisScope,
 
   confirmDialog.setThisScope,
-
-  i18n.setThisScope,
 
   GMBadges.setThisScope
 ];
@@ -81,13 +75,9 @@ const importsToAssign = {
   changelog: Changelog,
   goosemodChangelog: GoosemodChangelog,
 
-  packModal: PackModal,
-
   patcher: Patcher,
   attrs: Attrs,
   reactUtils: ReactUtils,
-
-  i18n,
 
   cssCache: CSSCache,
 
@@ -135,9 +125,6 @@ const init = async function () {
 
   this.startLoadingScreen();
 
-  this.updateLoadingScreen('Getting i18n data...');
-  await this.i18n.checkForNewLang();
-
   this.updateLoadingScreen('Initialising internals...');
 
   let toInstallModules = Object.keys(JSON.parse(this.storage.get('goosemodModules')) || {});
@@ -181,7 +168,6 @@ const init = async function () {
   }
 
   if (toInstallIsDefault) {
-    // await this.packModal.ask();
     toInstallModules = ['Fucklytics', 'Custom CSS']; // Base modules
   }
 
@@ -210,7 +196,6 @@ const init = async function () {
     this.settingsUninjects.forEach((x) => x());
 
     clearInterval(this.saveInterval);
-    clearInterval(this.i18nCheckNewLangInterval);
     clearInterval(this.hotupdateInterval);
     
     this.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => this.storage.remove(x));

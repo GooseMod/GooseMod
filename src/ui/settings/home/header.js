@@ -51,18 +51,18 @@ return class Header extends React.PureComponent {
       className: IconClasses.icon
     }),
 
-    React.createElement(HeaderBarContainer.Title, {}, goosemod.i18n.goosemodStrings.settings.itemNames[this.props.title] || (this.props.title[0].toUpperCase() + this.props.title.substring(1))),
+    React.createElement(HeaderBarContainer.Title, {}, this.props.title),
 
-    tabsSelected[this.props.title] ? React.createElement(HeaderBarContainer.Divider) : null,
+    tabsSelected[this.props.id] ? React.createElement(HeaderBarContainer.Divider) : null,
 
-    tabsSelected[this.props.title] ? React.createElement(TabBar, {
-      selectedItem: tabsSelected[this.props.title],
+    tabsSelected[this.props.id] ? React.createElement(TabBar, {
+      selectedItem: tabsSelected[this.props.id],
 
       type: TabBarClasses1.topPill,
       className: TabBarClasses2.tabBar,
 
       onItemSelect: (x) => {
-        tabsSelected[this.props.title] = x;
+        tabsSelected[this.props.id] = x;
         this.forceUpdate();
 
         setTimeout(goosemod.settings.updateModuleStoreUI, 10);
@@ -83,7 +83,7 @@ return class Header extends React.PureComponent {
     ) : null,
 
 
-    this.props.title !== 'snippets' ? React.createElement('div', {
+    this.props.id !== 'snippets' ? React.createElement('div', {
       className: IconClasses.toolbar,
 
       style: {
@@ -94,7 +94,7 @@ return class Header extends React.PureComponent {
       React.createElement(HeaderBarContainer.Icon, {
         icon: () => UpdateIcon,
 
-        tooltip: goosemod.i18n.discordStrings.STAGE_DISCOVERY_REFRESH_ICON_LABEL,
+        tooltip: '#terms.refresh#',
 
         onClick: async () => {
           const svgEl = document.querySelector(`.${IconClasses.toolbar} > [role="button"] > svg`);
@@ -108,7 +108,7 @@ return class Header extends React.PureComponent {
       React.createElement(HeaderBarContainer.Icon, {
         icon: () => ReposIcon,
 
-        tooltip: goosemod.i18n.goosemodStrings.moduleStore.repos.repos,
+        tooltip: '#terms.store.repos#',
 
         onClick: openReposModal
       })

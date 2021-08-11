@@ -17,8 +17,8 @@ export default () => {
 
       if (modules.length === 0) return;
       
-      const themesItem = goosemod.settings.items.find((x) => x[1] === goosemod.i18n.goosemodStrings.settings.itemNames.themes)[2];
-      const pluginsItem = goosemod.settings.items.find((x) => x[1] === goosemod.i18n.goosemodStrings.settings.itemNames.plugins)[2];
+      const themesItem = goosemod.settings.items.find((x) => x[1] === '#terms.store.themes#')[2];
+      const pluginsItem = goosemod.settings.items.find((x) => x[1] === '#terms.store.plugins#')[2];
       
       const themes = modules.filter((x) => x.tags.includes('theme'));
       const plugins = modules.filter((x) => !x.tags.includes('theme'));
@@ -69,7 +69,7 @@ export default () => {
       
       tabbar.props.children.push(React.cloneElement(baseOff, {
         id: 'GM_MODULES'
-      }, 'GooseMod Modules'));
+      }, '#terms.goosemod.modules#'));
       
       return res;
     });
