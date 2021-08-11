@@ -196,7 +196,7 @@
                     "title": "Utilidades"
                 },
                 "experimental_features": {
-                    "subtext": "Tente experimentar as novas funções experimentais",
+                    "subtext": "Tente usar as novas funções experimentais",
                     "title": "Funções Experimentais"
                 }
             },
@@ -229,7 +229,8 @@
         },
         "themes": {
             "text": {
-                "main": "Embeleze seu Discord com Temas"
+                "main": "Embeleze seu Discord com Temas",
+                "subtext": "Escolha entre 100 temas para melhorarem sua experiência e sua interface"
             },
             "confirm": "Pesquise por Temas"
         },
@@ -244,7 +245,8 @@
             "text": {
                 "subtext": "o GooseMod usa a sua própria Loja, onde você pode facilmente os instalar",
                 "main": "Procure por Temas e Plugins na Loja"
-            }
+            },
+            "confirm": "Ver a Loja na Pagina Inicial"
         }
     }
 }
