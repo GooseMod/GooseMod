@@ -1,6 +1,10 @@
-### Based on commit 7d289bc, made 11/08 15:38 UTC
+### Based on commit 3e510aa, made 11/08 15:41 UTC
 ## Commits this release
+  - [i18n] Implement store options
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
   - Translated using Weblate (German)
+  - Translated using Weblate (German)
+  - [Bootstrap] Change to new dev builds domain
   - Translated using Weblate (French)
   - Update translation files
   - Translated using Weblate (Polish)
