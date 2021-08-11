@@ -73,13 +73,13 @@ return class Header extends React.PureComponent {
         look: 0,
         
         className: TabBarClasses2.item
-      }, 'Store'),
+      }, '#store.options.tabs.store#'),
       React.createElement(TabBar.Item, {
         id: 'IMPORTED',
         look: 0,
         
         className: TabBarClasses2.item
-      }, 'Imported'),
+      }, '#store.options.tabs.imported#'),
     ) : null,
 
 
