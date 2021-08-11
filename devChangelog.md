@@ -1,5 +1,10 @@
-### Based on commit f001249, made 11/08 18:56 UTC
+### Based on commit 91d5806, made 11/08 18:56 UTC
 ## Commits this release
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Hungarian)
+  - Translated using Weblate (French)
+  - Translated using Weblate (German)
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - Translated using Weblate (Portuguese (Brazil))
   - Merge branch 'master' of github.com:GooseMod/GooseMod
