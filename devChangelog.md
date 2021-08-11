@@ -1,5 +1,6 @@
-### Based on commit d4775a6, made 11/08 17:11 UTC
+### Based on commit f097322, made 11/08 17:38 UTC
 ## Commits this release
+  - [i18n] Fix Store filtering and sorting further
   - [i18n] Fix more Store filtering and sorting
   - [i18n] Fix Store sorting
   - [Doc] Tweak badges
