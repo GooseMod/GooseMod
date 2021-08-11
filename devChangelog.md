@@ -1,5 +1,6 @@
-### Based on commit fdb1938, made 11/08 14:37 UTC
+### Based on commit d31eb71, made 11/08 14:37 UTC
 ## Commits this release
+  - [Settings] Fix Snippets name not using i18n
   - [Build > i18n] Fix not escaping quotes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Chore] Bump version: v12.0-dev
