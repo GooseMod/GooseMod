@@ -18,7 +18,8 @@
         },
         "settings": "Instellingen",
         "remove": "Verwijderen",
-        "add": "Toevoegen"
+        "add": "Toevoegen",
+        "community": "Community"
     },
     "badges": {
         "guild": "GooseMod Officiële Discord",
@@ -162,6 +163,30 @@
                 "subtext": "Ongeldig formaat",
                 "text": "Ongeldige repo"
             }
+        }
+    },
+    "ootb": {
+        "community": {
+            "confirm": "Word lid van GooseMod Discord"
+        },
+        "start": {
+            "text": {
+                "subtext": "Ga door een korte tour door GooseMod's kernfuncties",
+                "main": "Leer over GooseMod"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Word lid van onze Discord om vragen te stellen, feedback te geven, up to date te blijven met nieuws, en meer"
+                },
+                "settings": {
+                    "subtext": "Lees meer over de instellingen voor GooseMod en plugins"
+                },
+                "store": {
+                    "subtext": "Leer over GooseMod's Winkel en wat er in te vinden is"
+                }
+            },
+            "cancel": "Niet Geïnteresseerd",
+            "confirm": "Leer Meer"
         }
     }
 }
