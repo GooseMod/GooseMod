@@ -167,7 +167,12 @@
     },
     "ootb": {
         "community": {
-            "confirm": "Word lid van GooseMod Discord"
+            "confirm": "Word lid van GooseMod Discord",
+            "items": {
+                "ask_questions": {
+                    "title": "Stel Vragen"
+                }
+            }
         },
         "start": {
             "text": {
