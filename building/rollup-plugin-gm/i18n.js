@@ -52,7 +52,7 @@ export default (code) => {
     const flatTranslation = flattenObj(translation);
 
     for (const key in flatTranslation) {
-      const val = flatTranslation[key].replaceAll('\n', '\\n').replaceAll('\'', '\\\'').replaceAll('"', '\\"');
+      const val = flatTranslation[key].replaceAll('\n', '\\n').replaceAll('\'', '\\\'').replaceAll('"', '\\"').replaceAll('`', '\\`').replaceAll('$', '\\$');
       langCode = langCode.replaceAll(`#${key}#`, val);
     }
 
