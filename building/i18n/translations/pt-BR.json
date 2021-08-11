@@ -69,5 +69,84 @@
             "settings": "Configurações do GooseMod",
             "store": "Loja do GooseMod"
         }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "Força configurações geradas automaticamente para todos os temas",
+                "title": "Forçar Configurações de Temas"
+            },
+            "snippets": {
+                "note": "Habilita a aba de Snippets na Loja",
+                "title": "Snippets"
+            },
+            "data_attributes": {
+                "note": "Adiciona atributos de dados de alguns elementos para temas usarem",
+                "title": "Atributos de Dados"
+            },
+            "development_channel": {
+                "note": "Usa versões experimentais de desenvolvimento do GooseMod",
+                "title": "Canal de Desenvolvimento"
+            },
+            "restore_backup": {
+                "button": "Restaurar",
+                "note": "Restaura seus módulos e configurações do GooseMod pelo arquivo de backup, **não restaure arquivos de backup não confiáveis**",
+                "title": "Restaurar Backup"
+            },
+            "start_tour": {
+                "note": "Passar de novo pelo tour do GooseMod",
+                "button": "Tour",
+                "title": "Começar Tour"
+            },
+            "create_backup": {
+                "button": "Backup",
+                "note": "Cria um arquivo de backup de seus módulos e configurações do GooseMod",
+                "title": "Criar Backup"
+            },
+            "reset_goosemod": {
+                "button": "Redefinir",
+                "note": "Redefine o GooseMod completamente: remove todas preferencias e módulos; funciona como uma instalação nova",
+                "title": "Redefinir GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Copiar",
+                "note": "Copia informações do setup e do GooseMod para reportar e depurar",
+                "title": "Copiar informações de Depuração"
+            },
+            "purge_caches": {
+                "button": "Limpar",
+                "note": "Limpa (completamente remove) a maioria dos caches que o GooseMod usa",
+                "title": "Limpar Caches"
+            },
+            "goosemod_badges": {
+                "note": "Mostra os Emblemas do GooseMod",
+                "title": "Emblemas do GooseMod"
+            },
+            "auto_update": {
+                "note": "Atualiza automaticamente seus repositórios e módulos a cada hora",
+                "title": "Atualização Automatica"
+            },
+            "store_in_home": {
+                "note": "Colocar a Loja do GooseMod na Tela Inicial ao invés de mostrar nas configurações",
+                "title": "Loja na pagina do Início"
+            },
+            "main_separators": {
+                "note": "Mostrar separadores entre as principais configurações do GooseMod",
+                "title": "Separadores Principais"
+            },
+            "goosemod_change_log": {
+                "note": "Mostrar \"Registro de Alterações\" do GooseMod",
+                "title": "Registro de Alterações do GooseMod"
+            },
+            "subtexts": {
+                "experimental_warning": "Configurações experimentais provavelmente serão incompletas e instáveis, o que pode resultar numa experiência reduzida"
+            },
+            "headers": {
+                "experimental": "Experimental",
+                "backup": "Backup",
+                "utilities": "Utilidades",
+                "appearance": "Aparência"
+            }
+        }
     }
 }
