@@ -459,13 +459,13 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
       // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
       switch (sortedVal) {
-        case 'A-Z': { // Already pre-sorted to A-Z
+        case '#store.options.sort.az#': { // Already pre-sorted to A-Z
           c.style.order = '';
 
           break;
         }
 
-        case 'Last Updated': {
+        case '#store.options.sort.last_updated#': {
           const module = goosemodScope.moduleStoreAPI.modules.find((x) => x.name === name.trim());
 
           c.style.order = 3000000000 - module.lastUpdated;
@@ -473,7 +473,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
           break;
         }
 
-        case 'Stars': {
+        case '#store.options.sort.stars#': {
           c.style.order = 10000 - parseInt(c.children[4].children[0].children[0].textContent);
 
           break;
