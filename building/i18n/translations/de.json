@@ -69,5 +69,84 @@
         "developer": "GooseMod Entwickler",
         "translator": "GooseMod Übersetzer",
         "sponsor": "GooseMod Sponsor"
+    },
+    "settings": {
+        "items": {
+            "goosemod_badges": {
+                "note": "Zeigt GooseMod's Badges an",
+                "title": "GooseMod Badges"
+            },
+            "main_separators": {
+                "title": "Main Separators",
+                "note": "Zeige Seperatoren zwischen Haupt-GooseMod Einstellungen"
+            },
+            "headers": {
+                "utilities": "Utilities",
+                "experimental": "Experimentell",
+                "backup": "Sichern",
+                "appearance": "Aussehen"
+            },
+            "force_theme_settings": {
+                "note": "Erzwinge auto-generierte Einstellungen für alle Themes",
+                "title": "Theme Einstellungen Erzwingen"
+            },
+            "snippets": {
+                "note": "Aktiviere den Snippets Tab im Store",
+                "title": "Snippets"
+            },
+            "data_attributes": {
+                "note": "Fügt Daten Attribute zu manchen Elementen hinzu, für Themes zum nutzen",
+                "title": "Daten Attribute"
+            },
+            "development_channel": {
+                "note": "Nutze experimentelle Entwicklungs-Builds von GooseMod",
+                "title": "Development Channel"
+            },
+            "restore_backup": {
+                "button": "Wiederherstellen",
+                "note": "Stellt deine GooseMod Module und Einstellungen via eine Sicherungs-Datei her, **stelle nur Sicherungen wieder her denen du vertraust**",
+                "title": "Sicherung Wiederherstellen"
+            },
+            "create_backup": {
+                "button": "Sichern",
+                "note": "Erstellt eine Datei zum sichern deiner GooseMod Module und Einstellungen",
+                "title": "Sicherung Erstellen"
+            },
+            "reset_goosemod": {
+                "button": "Zurücksetzen",
+                "note": "Setzt GooseMod komplett zurück: Entfernt alle Preferenzen und Module; wie eine erstmalige Installation",
+                "title": "GooseMod Zurücksetzen"
+            },
+            "copy_debug_info": {
+                "button": "Kopieren",
+                "note": "Kopiert Information vom Setup und GooseMod fürs reporten und debuggen",
+                "title": "Kopiere Debug Info"
+            },
+            "start_tour": {
+                "button": "Tour",
+                "note": "Gehe erneut durch GooseMod's startup Tour",
+                "title": "Tour Starten"
+            },
+            "purge_caches": {
+                "button": "Bereinigen",
+                "note": "Reinigt (entfernt komplett) die meisten Caches die GooseMod benutzt",
+                "title": "Caches leeren"
+            },
+            "auto_update": {
+                "note": "Aktualisiert automatisch Repos und Module jede Stunde",
+                "title": "Auto Aktualisierung"
+            },
+            "store_in_home": {
+                "note": "Platziert die GooseMod Store Optionen in Home anstatt in den Einstellungen",
+                "title": "Store In Home"
+            },
+            "goosemod_change_log": {
+                "note": "Zeige GooseMod \"Änderungsprotokoll\" Einstellung",
+                "title": "GooseMod Änderungsprotokoll"
+            },
+            "subtexts": {
+                "experimental_warning": "Experimentelle Einstellungen sind wahrscheinlich unvollständig und instabil, was zu einer geringeren Erfahrung führen kann"
+            }
+        }
     }
 }
