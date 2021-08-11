@@ -1,15 +1,15 @@
 {
     "terms": {
         "store": {
-            "developers": "Developers",
-            "repos": "Repos",
+            "developers": "Ontwikkelaars",
+            "repos": "Repo's",
             "plugins": "Plugins",
             "snippets": "Snippets",
             "modules": "Modules",
             "themes": "Themas",
             "store": "Winkel"
         },
-        "changelog": "Change Log",
+        "changelog": "Wijzigingslog",
         "refresh": "Herlaad",
         "goosemod": {
             "modules": "GooseMod Modules",
@@ -66,8 +66,102 @@
     },
     "modals": {
         "external_repo_security": {
-            "main": "Externe repos kunnen security risicos hebben omdat ze niet gecontrolleerd worden door de GooseMod developers. We zijn niet verantwoordelijk voor schade door externe repos die toegevoegd werden door users.\n\nAls je de owner van de repo niet vertrouwd, gebruik de repo dan niet want hij zou je Discord installatie kunnen compromiseren.\n\nConfirmeer dat je deze repo wilt toevoegen door op OK te duwen.",
+            "main": "Externe repo's kunnen beveiligingsrisicos hebben omdat ze niet gecontrolleerd worden door de GooseMod ontwikkelaars. We zijn niet verantwoordelijk voor schade door externe repos die toegevoegd werden door gebruikers.\n\nAls je de beheerder van de repo niet vertrouwd, gebruik de repo dan niet want hij zou je Discord installatie kunnen compromiseren.\n\nBevestig dat je deze repo wilt toevoegen door op OK te duwen.",
             "bad_pgp": "Deze repo is niet gekent of vertrouwd (geen PGP verificatie), ben extra voorzightig. Zorg ervoor dat je de owner(s) van deze repo voledig vertrouwd.\n\nOm dit probleem op te lossen, vraag de repo owner om PGP support toe te voegen.\n\nConfirmeer opniew om deze repo toe te voegen door op OK te duwen."
+        }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "Forceer automatisch gegenereerde instellingen voor alle thema's",
+                "title": "Forceer Thema Instellingen"
+            },
+            "snippets": {
+                "note": "Zet Snippets tablad aan in Store",
+                "title": "Snippets"
+            },
+            "data_attributes": {
+                "note": "Voeg data attributen toe aan elementen voor gebruik in bepaalde thema's",
+                "title": "Data Attributen"
+            },
+            "development_channel": {
+                "note": "Gebruik experimentele GooseMod builds",
+                "title": "Ontwikkelaars Kanaal"
+            },
+            "restore_backup": {
+                "button": "Herstel",
+                "note": "Herstel je GooseMod modules en instellingen via een backup bestand, **herstel alleen backups die je vertrouwt**",
+                "title": "Backup Herstellen"
+            },
+            "create_backup": {
+                "button": "Backup",
+                "note": "Maakt een bestand voor GooseMod modules en instellingen te backuppen",
+                "title": "Backup Maken"
+            },
+            "reset_goosemod": {
+                "button": "Reset",
+                "note": "GooseMod compleet resetten: verwijdert alle voorkeuren en modules; alsof het een eerste installatie is",
+                "title": "Reset GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Kopieer",
+                "note": "Kopieert informatie over de setup en GooseMod voor reporteren en debuggen",
+                "title": "Kopieer Debug Info"
+            },
+            "start_tour": {
+                "button": "Tour",
+                "note": "Doorloop GooseMod's opstarttour opnieuw",
+                "title": "Start Tour"
+            },
+            "purge_caches": {
+                "button": "Zuiver",
+                "note": "Zuivert (verwijdert) meeste caches die GooseMod gebruikt",
+                "title": "Caches Zuiveren"
+            },
+            "goosemod_badges": {
+                "note": "Laat GooseMod's badges zien",
+                "title": "GooseMod Badges"
+            },
+            "auto_update": {
+                "note": "Repo's en module's elk uur automatisch updaten",
+                "title": "Automatisch Updaten"
+            },
+            "store_in_home": {
+                "note": "Zet GooseMod Store opties in home in plaats van instellingen",
+                "title": "Store in Home"
+            },
+            "main_separators": {
+                "note": "Toon verdelers tussen GooseMod hoofdinstellingen",
+                "title": "Hoofdverdelers"
+            },
+            "goosemod_change_log": {
+                "note": "GooseMod \"Veranderingslog\" optie weergeven",
+                "title": "GooseMod Wijzigingslog"
+            },
+            "subtexts": {
+                "experimental_warning": "Experimentele instellingen zijn waarschijnlijk niet compleet en onstabiel, wat kan resulteren in een verslechterde ervaring"
+            },
+            "headers": {
+                "experimental": "Experimenteel",
+                "backup": "Backup",
+                "utilities": "Nutsvoorzieningen",
+                "appearance": "Uiterlijk"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Onvertrouwde PGP mislukking",
+                    "refused": "Beveiligingsprompt afgewezen"
+                },
+                "text": "Repo toevoegen geannuleerd"
+            },
+            "invalid_repo": {
+                "subtext": "Ongeldig formaat",
+                "text": "Ongeldige repo"
+            }
         }
     }
 }
