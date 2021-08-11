@@ -69,5 +69,12 @@
             "settings": "Ustawienia GooseMod",
             "store": "Sklep GooseMod"
         }
+    },
+    "settings": {
+        "items": {
+            "headers": {
+                "appearance": "Wygląd"
+            }
+        }
     }
 }
