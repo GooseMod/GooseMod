@@ -69,5 +69,95 @@
             "bad_pgp": "Ce dépôt n'est pas connu ou n'est pas fiable (pas de vérification PGP), faites particulièrement attention. Assurez-vous de faire complètement confiance au(x) propriétaire(s) de ce dépôt.\n\nPour résoudre ce problème, demandez au gérant du dépôt d'ajouter le support PGP.\n\nVeuillez reconfirmer l'ajout du dépôt en cliquant sur OK.",
             "main": "Les dépôts externes sont source de risques de sécurité car ils ne sont pas contrôlés par les développeurs de GooseMod. Nous ne sommes pas responsable d'aucun dangers encourus à cause de dépôts externes ajoutés par les utilisateurs.\n\nSi vous ne faites pas confiance au propriétaire de ce dépôt, ne l'utilisez pas, il risque de compromettre votre installation Discord.\n\nConfirmez l'ajout de ce dépôt en cliquant sur OK."
         }
+    },
+    "settings": {
+        "items": {
+            "data_attributes": {
+                "note": "Ajoute des attributs de données à certains éléments pour permettre leur utilisation par des thèmes"
+            },
+            "development_channel": {
+                "note": "Utiliser les versions expérimentales de développement de GooseMod"
+            },
+            "restore_backup": {
+                "button": "Restaurer",
+                "note": "Restaure un fichier de sauvegarde de paramètres et modules de GooseMod, **n'appliquez que des sauvegardes auxquelles vous faites confiance**",
+                "title": "Restaurer une sauvegarde"
+            },
+            "create_backup": {
+                "button": "Sauvegarder",
+                "note": "Crée un fichier de sauvegarde des paramètres et modules de GooseMod",
+                "title": "Créer une sauvegarde"
+            },
+            "reset_goosemod": {
+                "button": "Remettre à zéro",
+                "note": "Remet GooseMod à zéro complètement : efface tous les paramètres et modules, comme une première installation",
+                "title": "Remettre GooseMod à zéro"
+            },
+            "copy_debug_info": {
+                "button": "Copier",
+                "note": "Copie des informations sur l'installation et GooseMod pour rapports et débogage",
+                "title": "Copier les informations de débogage"
+            },
+            "start_tour": {
+                "button": "Visiter",
+                "note": "Redémarre la visite guidée de GooseMod",
+                "title": "Démarrer la visite guidée"
+            },
+            "purge_caches": {
+                "button": "Vider",
+                "note": "Vide complètement la plupart des caches utilisés par GooseMod",
+                "title": "Vider les caches"
+            },
+            "goosemod_badges": {
+                "note": "Afficher les badges de GooseMod",
+                "title": "Badges de GooseMod"
+            },
+            "auto_update": {
+                "note": "Mettre à jour les dépôts et modules automatiquement toutes les heures",
+                "title": "Mise à jour automatique"
+            },
+            "store_in_home": {
+                "note": "Placer les options de boutique de GooseMod dans l'accueil au lieu de les mettre dans les paramètres",
+                "title": "Boutique à l'Accueil"
+            },
+            "main_separators": {
+                "note": "Afficher des séparateurs entre les principales entrées de paramètres de GooseMod",
+                "title": "Séparateurs principaux"
+            },
+            "goosemod_change_log": {
+                "note": "Afficher l'entrée \"Notes de mise à jour\" de GooseMod dans les paramètres",
+                "title": "Notes de mise à jour de GooseMod"
+            },
+            "subtexts": {
+                "experimental_warning": "Les paramètres expérimentaux sont probablement incomplets et instables, ce qui peut nuire à votre expérience"
+            },
+            "headers": {
+                "experimental": "Expérimental",
+                "backup": "Sauvegarde",
+                "appearance": "Apparence"
+            },
+            "force_theme_settings": {
+                "note": "Force la génération de paramètres pour tous les thèmes",
+                "title": "Forcer les paramètres de thèmes"
+            },
+            "snippets": {
+                "note": "Active la catégorie \"Extraits CSS\" de la boutique"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Échec de la vérification de la signature PGP",
+                    "refused": "Refus à l'invite de sécurité"
+                },
+                "text": "Ajout du dépôt annulé"
+            },
+            "invalid_repo": {
+                "subtext": "Format invalide",
+                "text": "Dépôt invalide"
+            }
+        }
     }
 }
