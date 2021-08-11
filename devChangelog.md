@@ -1,5 +1,6 @@
-### Based on commit d31eb71, made 11/08 14:37 UTC
+### Based on commit a9532e4, made 11/08 14:53 UTC
 ## Commits this release
+  - [Settings > Snippets] Fix Snippets gen not using i18n label
   - [Settings] Fix Snippets name not using i18n
   - [Build > i18n] Fix not escaping quotes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
