@@ -1,5 +1,8 @@
-### Based on commit 8adf2b4, made 11/08 20:21 UTC
+### Based on commit a707763, made 11/08 20:21 UTC
 ## Commits this release
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Dutch)
+  - Translated using Weblate (French)
   - [i18n] Add OOTB
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - Translated using Weblate (French)
