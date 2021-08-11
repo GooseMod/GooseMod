@@ -1,9 +1,13 @@
-### Based on commit 8587275, made 11/08 19:11 UTC
+### Based on commit 8adf2b4, made 11/08 20:21 UTC
 ## Commits this release
+  - [i18n] Add OOTB
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - Translated using Weblate (French)
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (French)
   - Translated using Weblate (German)
+  - [Store > Repos Modal] Tweak repo toasts formatting
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (Polish)
   - Translated using Weblate (Hungarian)
