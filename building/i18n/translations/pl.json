@@ -73,7 +73,94 @@
     "settings": {
         "items": {
             "headers": {
-                "appearance": "Wygląd"
+                "appearance": "Wygląd",
+                "experimental": "Eksperymentalne",
+                "backup": "Kopia zapasowa",
+                "utilities": "Przydatne narzędzia"
+            },
+            "purge_caches": {
+                "note": "Czyść większość \"Cache\" który GooseMod używa",
+                "title": "Wyczyść Cache",
+                "button": "Wyczyść"
+            },
+            "reset_goosemod": {
+                "note": "Całkowicie resetuje GooseMod-a: usuwa wszystkie preferencje, moduły; Resetuje do stanu początkowego",
+                "button": "Resetuj",
+                "title": "Resetuj GooseMod"
+            },
+            "force_theme_settings": {
+                "note": "Wymuś automatycznie wygenerowane ustawienia dla wszystkich motywów",
+                "title": "Wymuszaj ustawienia motywów"
+            },
+            "snippets": {
+                "note": "Aktywuje zakładkę urywki w sklepie",
+                "title": "Urywki"
+            },
+            "data_attributes": {
+                "note": "Dodaje atrybuty do niektórych elementów dla motywów do użycia",
+                "title": "Atrybuty danych (Data Attributes)"
+            },
+            "development_channel": {
+                "note": "Użyj eksperymentalnej wersji GooseMod",
+                "title": "Kanał deweloperski"
+            },
+            "restore_backup": {
+                "button": "Przywróć",
+                "note": "Przywróć swoją instalacja GooseMod poprzez kopię zapasową, **przywracaj tylko kopię którym ufasz**",
+                "title": "Przywróć kopię zapasową"
+            },
+            "create_backup": {
+                "button": "Zapisz kopię zapasową",
+                "note": "Tworzy kopię zapasową w formie pliku dla wszystkich pluginów oraz ustawień",
+                "title": "Stwórz kopie zapasową"
+            },
+            "copy_debug_info": {
+                "button": "Kopiuj",
+                "note": "Kopiuje informacje na temat obecnej instalacji GooseMod, użyteczne do zgłaszania i debugowania",
+                "title": "Skopiuj informacje debug"
+            },
+            "start_tour": {
+                "button": "Wycieczka",
+                "note": "Przejdź wycieczkę przez GooseMod która pojawia się na pierwszym starcie",
+                "title": "Zacznij wycieczkę"
+            },
+            "goosemod_badges": {
+                "note": "Pokazuj odznaki GooseMod",
+                "title": "Odznaki GooseMod"
+            },
+            "auto_update": {
+                "note": "Automatycznie aktualizuj repozytoria i pluginy co każdą godzinę",
+                "title": "Auto-aktualizacja"
+            },
+            "store_in_home": {
+                "note": "Opcje sklepu GooseMod na stronie głównej zamiast ustawień",
+                "title": "Sklep na stronie głównej"
+            },
+            "main_separators": {
+                "note": "Pokaż seperatory pomiędzy głównymi ustawieniami GooseMod",
+                "title": "Główne seperatory"
+            },
+            "goosemod_change_log": {
+                "note": "Pokaż ustawienie \"Lista zmian\" GooseMod-a",
+                "title": "Lista zmian GooseMod"
+            },
+            "subtexts": {
+                "experimental_warning": "Eksperymentalne ustawienia które są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Błąd Niezaufany PGP",
+                    "refused": "Odmowa monitu bezpieczeństwa"
+                },
+                "text": "Anulowano dodawanie repozytorium"
+            },
+            "invalid_repo": {
+                "subtext": "Nieprawidłowy format",
+                "text": "Nieprawidłowe repozytorium"
             }
         }
     }
