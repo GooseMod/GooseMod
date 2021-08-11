@@ -87,7 +87,99 @@
   },
 
   "settings": {
+    "items": {
+      "headers": {
+        "appearance": "Appearance",
+        "utilities": "Utilities",
+        "backup": "Backup",
+        "experimental": "Experimental"
+      },
 
+      "subtexts": {
+        "experimental_warning": "Experimental settings are likely incomplete and unstable, which may result in a reduced experience"
+      },
+
+      "goosemod_change_log": {
+        "title": "GooseMod Change Log",
+        "note": "Show GooseMod \"Change Log\" setting"
+      },
+
+      "main_separators": {
+        "title": "Main Separators",
+        "note": "Show separators between main GooseMod settings"
+      },
+
+      "store_in_home": {
+        "title": "Store In Home",
+        "note": "Put GooseMod Store options in home instead of in settings"
+      },
+
+      "auto_update": {
+        "title": "Auto Update",
+        "note": "Automatically update repos and modules every hour"
+      },
+
+      "goosemod_badges": {
+        "title": "GooseMod Badges",
+        "note": "Shows GooseMod's badges"
+      },
+
+      "purge_caches": {
+        "title": "Purge Caches",
+        "note": "Purges (completely removes) most caches GooseMod uses",
+        "button": "Purge"
+      },
+
+      "start_tour": {
+        "title": "Start Tour",
+        "note": "Go through GooseMod's startup tour again",
+        "button": "Tour"
+      },
+
+      "copy_debug_info": {
+        "title": "Copy Debug Info",
+        "note": "Copies information on setup and GooseMod for reporting and debugging",
+        "button": "Copy"
+      },
+
+      "reset_goosemod": {
+        "title": "Reset GooseMod",
+        "note": "Resets GooseMod completely: removes all preferences and modules; like a first-time install",
+        "button": "Reset"
+      },
+
+      "create_backup": {
+        "title": "Create Backup",
+        "note": "Creates a file for backup of your GooseMod modules and settings",
+        "button": "Backup"
+      },
+
+      "restore_backup": {
+        "title": "Restore Backup",
+        "note": "Restore your GooseMod modules and settings via a backup file, **only restore backups you trust**",
+        "button": "Restore"
+      },
+
+      "development_channel": {
+        "title": "Development Channel",
+        "note": "Use experimental development GooseMod builds"
+      },
+
+      "data_attributes": {
+        "title": "Data Attributes",
+        "note": "Add data attributes to some elements for some themes to use"
+      },
+
+      "snippets": {
+        "title": "Snippets",
+        "note": "Enable Snippets tab in Store"
+      },
+
+      "force_theme_settings": {
+        "title": "Force Theme Settings",
+        "note": "Force auto-generated settings for all themes"
+      }
+    }
   },
 
   "ootb": {

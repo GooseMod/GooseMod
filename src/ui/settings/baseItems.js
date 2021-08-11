@@ -82,14 +82,14 @@ export default (goosemodScope, gmSettings, Items) => {
   goosemodScope.settings.createItem('#terms.settings#', ['',
     {
       type: 'header',
-      text: 'Settings'
+      text: '#terms.settings#'
     },
 
     {
       type: 'toggle',
 
-      text: 'GooseMod Change Log',
-      subtext: 'Show GooseMod "Change Log" setting',
+      text: '#settings.items.goosemod_change_log.title#',
+      subtext: '#settings.items.goosemod_change_log.note#',
 
       onToggle: (c) => changeSetting('changelog', c),
       isToggled: () => gmSettings.get().changelog
@@ -98,8 +98,8 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'toggle',
 
-      text: 'Main Separators',
-      subtext: 'Show separators between main GooseMod settings',
+      text: '#settings.items.main_separators.title#',
+      subtext: '#settings.items.main_separators.note#',
 
       onToggle: (c) => changeSetting('separators', c),
       isToggled: () => gmSettings.get().separators
@@ -108,8 +108,8 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'toggle',
 
-      text: 'Store In Home',
-      subtext: 'Put GooseMod Store options in home instead of in settings',
+      text: '#settings.items.store_in_home.title#',
+      subtext: '#settings.items.store_in_home.note#',
 
       onToggle: (c) => {
         changeSetting('home', c);
@@ -120,14 +120,14 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
-      text: 'Store'
+      text: '#terms.store.store#'
     },
 
     {
       type: 'toggle',
 
-      text: 'Auto Update',
-      subtext: 'Automatically update repos and modules every hour',
+      text: '#settings.items.auto_update.title#',
+      subtext: '#settings.items.auto_update.note#',
 
       onToggle: (c) => changeSetting('autoupdate', c),
       isToggled: () => gmSettings.get().autoupdate
@@ -135,14 +135,14 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
-      text: 'Appearance'
+      text: '#settings.items.headers.appearance#'
     },
 
     {
       type: 'toggle',
 
-      text: 'GooseMod Badges',
-      subtext: 'Shows GooseMod\'s badges',
+      text: '#settings.items.goosemod_badges.title#',
+      subtext: '#settings.items.goosemod_badges.note#',
 
       onToggle: (c) => changeSetting('gmBadges', c),
       isToggled: () => gmSettings.get().gmBadges
@@ -150,15 +150,15 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'header',
-      text: 'Utilities'
+      text: '#settings.items.headers.utilities#'
     },
 
     {
       type: 'text-and-button',
 
-      text: 'Purge Caches',
-      subtext: 'Purges (completely removes) most caches GooseMod uses',
-      buttonText: 'Purge',
+      text: '#settings.items.purge_caches.title#',
+      subtext: '#settings.items.purge_caches.note#',
+      buttonText: '#settings.items.purge_caches.button#',
 
       onclick: async () => {
         // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
@@ -171,9 +171,9 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'text-and-button',
 
-      text: 'Start Tour',
-      subtext: 'Go through GooseMod\'s startup tour again',
-      buttonText: 'Tour',
+      text: '#settings.items.start_tour.title#',
+      subtext: '#settings.items.start_tour.note#',
+      buttonText: '#settings.items.start_tour.button#',
 
       onclick: async () => {
         goosemodScope.ootb.start();
@@ -183,9 +183,9 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'text-and-button',
 
-      text: 'Copy Debug Info',
-      subtext: 'Copies information on setup and GooseMod for reporting and debugging',
-      buttonText: 'Copy',
+      text: '#settings.items.copy_debug_info.title#',
+      subtext: '#settings.items.copy_debug_info.note#',
+      buttonText: '#settings.items.copy_debug_info.button#',
 
       onclick: async () => {
         const { copy } = goosemodScope.webpackModules.findByProps('copy', 'SUPPORTS_COPY');
@@ -216,9 +216,9 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     {
       type: 'text-and-danger-button',
       
-      text: 'Reset GooseMod',
-      subtext: 'Resets GooseMod completely: removes all preferences and modules; like a first-time install',
-      buttonText: 'Reset',
+      text: '#settings.items.reset_goosemod.title#',
+      subtext: '#settings.items.reset_goosemod.note#',
+      buttonText: '#settings.items.reset_goosemod.button#',
 
       onclick: async () => {
         if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
@@ -230,15 +230,15 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
     {
       type: 'header',
-      text: 'Backup'
+      text: '#settings.items.headers.backup#'
     },
 
     {
       type: 'text-and-button',
 
-      text: 'Create Backup',
-      subtext: 'Creates a file for backup of your GooseMod modules and settings',
-      buttonText: 'Backup',
+      text: '#settings.items.create_backup.title#',
+      subtext: '#settings.items.create_backup.note#',
+      buttonText: '#settings.items.create_backup.button#',
 
       onclick: () => {
         const obj = goosemod.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod') && !x.includes('Cache')).reduce((acc, k) => {
@@ -267,9 +267,9 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     {
       type: 'text-and-button',
 
-      text: 'Restore Backup',
-      subtext: 'Restore your GooseMod modules and settings via a backup file, **only restore backups you trust**',
-      buttonText: 'Restore',
+      text: '#settings.items.restore_backup.title#',
+      subtext: '#settings.items.restore_backup.note#',
+      buttonText: '#settings.items.restore_backup.button#',
 
       onclick: async () => {
         const el = document.createElement('input');
@@ -303,21 +303,21 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
     {
       type: 'header',
-      text: 'Experimental',
+      text: '#settings.items.headers.experimental#',
       // experimental: true
     },
 
     {
       type: 'subtext',
-      text: 'Experimental settings are likely incomplete and unstable, which may result in a reduced experience'
+      text: '#settings.items.subtexts.experimental_warning#'
     },
 
     {
       type: 'toggle',
 
       experimental: true,
-      text: 'Development Channel',
-      subtext: 'Use experimental development GooseMod builds',
+      text: '#settings.items.development_channel.title#',
+      subtext: '#settings.items.development_channel.note#',
 
       onToggle: (c) => {
         changeSetting('devchannel', c);
@@ -330,8 +330,8 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
       type: 'toggle',
 
       experimental: true,
-      text: 'Data Attributes',
-      subtext: 'Add data attributes to some elements for some themes to use',
+      text: '#settings.items.data_attributes.title#',
+      subtext: '#settings.items.data_attributes.note#',
 
       onToggle: (c) => {
         changeSetting('attrs', c);
@@ -344,8 +344,8 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
       type: 'toggle',
 
       experimental: true,
-      text: 'Snippets',
-      subtext: 'Enable Snippets tab in Store',
+      text: '#settings.items.snippets.title#',
+      subtext: '#settings.items.snippets.note#',
 
       onToggle: (c) => {
         changeSetting('snippets', c);
@@ -358,8 +358,8 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
       type: 'toggle',
 
       experimental: true,
-      text: 'Force Theme Settings',
-      subtext: 'Force auto-generated settings for all themes',
+      text: '#settings.items.force_theme_settings.title#',
+      subtext: '#settings.items.force_theme_settings.note#',
 
       onToggle: (c) => {
         changeSetting('allThemeSettings', c);
