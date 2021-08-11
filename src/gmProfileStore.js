@@ -1,7 +1,9 @@
-import Card from './ui/settings/items/card';
+import _Card from './ui/settings/items/card';
 import sleep from './util/sleep';
 
 export default () => {
+  const Card = _Card();
+
   const { React, ReactDOM } = goosemod.webpackModules.common;
     
   const UserProfileModal = goosemod.webpackModules.find((x) => x.default?.displayName === 'UserProfileModal');
