@@ -1,5 +1,6 @@
-### Based on commit 31acfc6, made 11/08 17:06 UTC
+### Based on commit 07c76b9, made 11/08 17:08 UTC
 ## Commits this release
+  - [i18n] Fix Store sorting
   - [Doc] Tweak badges
   - [Doc] Add badges to README
   - [Doc] Add Weblate to README
