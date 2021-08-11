@@ -1,5 +1,6 @@
-### Based on commit 8d05f61, made 11/08 15:00 UTC
+### Based on commit 7d289bc, made 11/08 15:38 UTC
 ## Commits this release
+  - Translated using Weblate (German)
   - Translated using Weblate (French)
   - Update translation files
   - Translated using Weblate (Polish)
