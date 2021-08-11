@@ -135,6 +135,28 @@
                 "experimental": "Expérimental",
                 "backup": "Sauvegarde",
                 "appearance": "Apparence"
+            },
+            "force_theme_settings": {
+                "note": "Force la génération de paramètres pour tous les thèmes",
+                "title": "Forcer les paramètres de thèmes"
+            },
+            "snippets": {
+                "note": "Active la catégorie \"Extraits CSS\" de la boutique"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Échec de vérification de la signature PGP",
+                    "refused": "Refus à l'invite de sécurité"
+                },
+                "text": "Ajout du dépôt annulé"
+            },
+            "invalid_repo": {
+                "subtext": "Format invalide",
+                "text": "Dépôt invalide"
             }
         }
     }
