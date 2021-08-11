@@ -1,5 +1,6 @@
-### Based on commit fdd1256, made 11/08 16:26 UTC
+### Based on commit e21631e, made 11/08 16:32 UTC
 ## Commits this release
+  - Deleted translation using Weblate (English (United Kingdom))
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [CI] build: add _headers
   - Translated using Weblate (Thai)
