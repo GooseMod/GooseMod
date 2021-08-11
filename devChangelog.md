@@ -1,6 +1,9 @@
-### Based on commit af8d7c2, made 11/08 18:55 UTC
+### Based on commit f001249, made 11/08 18:56 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
   - Translated using Weblate (Portuguese (Brazil))
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [i18n] Add repo toasts
   - Translated using Weblate (Polish)
   - Translated using Weblate (Dutch)
   - Translated using Weblate (Hungarian)
