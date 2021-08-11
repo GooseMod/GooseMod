@@ -430,8 +430,8 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
   if (gmSettings.get().separators && !gmSettings.get().home) goosemodScope.settings.createSeparator();
 
-  let sortedVal = 'Stars';
-  let authorVal = 'All';
+  let sortedVal = '#store.options.sort.stars#';
+  let authorVal = '#store.options.author.all#';
   let searchQuery = '';
 
   const updateModuleStoreUI = () => {
@@ -440,7 +440,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
     let importedVal = document.querySelector('.selected-3s45Ha').textContent;
-    if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = 'Store';
+    if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = '#store.options.tabs.store#';
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
@@ -482,7 +482,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
       c.style.display = matches
         && (importedVal === '#store.options.tabs.store#' || importedVal === importedSelector)
-        && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
+        && (authorVal === '#store.options.author.all#' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
 
