@@ -27,9 +27,9 @@ export const themes = async () => {
   goosemod.webpackModules.findByProps('show').show({
     className: 'gm-ootb-modal',
 
-    title: 'Themes',
+    title: '#terms.store.themes#',
 
-    confirmText: 'Browse Themes',
+    confirmText: '#ootb.themes.confirm#',
 
     onConfirm: async () => {
       if (goosemod.ootb.todo.length === 0) {
@@ -54,14 +54,14 @@ export const themes = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Beautify your Discord with Themes'),
+      }, '#ootb.themes.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'Pick from over 100 themes to tweak and enhance your user interface')
+      }, '#ootb.themes.text.subtext#')
     )
   });
 };
@@ -82,9 +82,9 @@ export const plugins = async () => {
   goosemod.webpackModules.findByProps('show').show({
     className: 'gm-ootb-modal',
 
-    title: 'Plugins',
+    title: '#terms.store.plugins#',
 
-    confirmText: 'Browse Plugins',
+    confirmText: '#ootb.plugins.confirm#',
 
     onConfirm: async () => {
       if (goosemod.ootb.todo.length === 0) {
@@ -109,14 +109,14 @@ export const plugins = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Amplify your Discord under the hood'),
+      }, '#ootb.plugins.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'Plugins augment your experience with improvements in the app itself')
+      }, '#ootb.plugins.text.subtext#')
     )
   });
 };
@@ -137,9 +137,9 @@ export const store = async () => {
   goosemod.webpackModules.findByProps('show').show({
     className: 'gm-ootb-modal',
 
-    title: 'Store',
+    title: '#terms.store.store#',
 
-    confirmText: 'View Store in Home',
+    confirmText: '#ootb.store.confirm#',
 
     onConfirm: async () => {
       RoutingUtils.transitionTo('/channels/@me'); // Go to home
@@ -164,14 +164,14 @@ export const store = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Browse Themes and Plugins in the Store'),
+      }, '#ootb.store.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'GooseMod uses it\'s own Store, where you can easily look around and install')
+      }, '#ootb.store.text.subtext#')
     )
   });
 };
@@ -187,9 +187,9 @@ export const settings = async () => {
   goosemod.webpackModules.findByProps('show').show({
     className: 'gm-ootb-modal',
 
-    title: 'Settings',
+    title: '#terms.settings#',
 
-    confirmText: 'View GooseMod Settings',
+    confirmText: '#ootb.settings.confirm#',
 
     onConfirm: async () => {
       goosemod.settings.openSettings();
@@ -214,18 +214,18 @@ export const settings = async () => {
       React.createElement(ModulesPreview, {
         modules: [
           {
-            name: 'Experimental Features',
-            description: 'Try out new experimental features'
+            name: '#ootb.settings.items.experimental_features.title#',
+            description: '#ootb.settings.items.experimental_features.subtext#'
           },
 
           {
-            name: 'Utilities',
-            description: 'Make backups, reset GooseMod, and more'
+            name: '#ootb.settings.items.utilities.title#',
+            description: '#ootb.settings.items.utilities.subtext#'
           },
 
           {
-            name: 'Tweaks',
-            description: 'Tweak GooseMod to how you want it'
+            name: '#ootb.settings.items.tweaks.title#',
+            description: '#ootb.settings.items.tweaks.subtext#'
           }
         ]
       }),
@@ -234,14 +234,14 @@ export const settings = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Use GooseMod\'s Settings to customise it\'s features'),
+      }, '#ootb.settings.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'There are various options for you to change')
+      }, '#ootb.settings.text.subtext#')
     )
   });
 };
@@ -257,9 +257,9 @@ export const community = async () => {
   goosemod.webpackModules.findByProps('show').show({
     className: 'gm-ootb-modal',
 
-    title: 'Community',
+    title: '#terms.community#',
 
-    confirmText: 'Join GooseMod Discord',
+    confirmText: '#ootb.community.confirm#',
 
     onConfirm: () => {
       window.open('https://goosemod.com/discord');
@@ -271,18 +271,18 @@ export const community = async () => {
       React.createElement(ModulesPreview, {
         modules: [
           {
-            name: 'Ask Questions',
-            description: 'Ask any questions and get support'
+            name: '#ootb.community.items.ask_questions.title#',
+            description: '#ootb.community.items.ask_questions.subtext#'
           },
 
           {
-            name: 'News',
-            description: 'Get the latest news and announcements around GooseMod and related projects'
+            name: '#ootb.community.items.news.title#',
+            description: '#ootb.community.items.news.subtext'
           },
 
           {
-            name: 'Get Involved',
-            description: 'Help out with suggestions, supporting others, and more'
+            name: '#ootb.community.items.get_involved.title#',
+            description: '#ootb.community.items.get_involved.subtext#'
           }
         ]
       }),
@@ -291,14 +291,14 @@ export const community = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Join GooseMod\'s Community'),
+      }, '#ootb.community.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'Join our Discord for further information and more')
+      }, '#ootb.community.text.subtext#')
     )
   });
 };
@@ -316,8 +316,8 @@ export const start = async () => {
 
     title: 'GooseMod',
 
-    confirmText: 'Learn More',
-    cancelText: 'Not Interested',
+    confirmText: '#ootb.start.confirm#',
+    cancelText: '#ootb.start.cancel#',
 
     onConfirm: () => {
       goosemod.ootb.enabled = true;
@@ -331,18 +331,18 @@ export const start = async () => {
       React.createElement(ModulesPreview, {
         modules: [
           {
-            name: 'Store',
-            description: 'Learn about GooseMod\'s Store and what\'s in it'
+            name: '#terms.store.store#',
+            description: '#ootb.start.items.store.subtext#'
           },
 
           {
-            name: 'Settings',
-            description: 'Find out about the settings for GooseMod and plugins'
+            name: '#terms.settings#',
+            description: '#ootb.start.items.settings.subtext#'
           },
 
           {
-            name: 'Community',
-            description: 'Join our Discord to ask questions, give feedback, keep up to date with news, and more'
+            name: '#terms.community#',
+            description: '#ootb.start.items.community.subtext#'
           }
         ]
       }),
@@ -351,14 +351,14 @@ export const start = async () => {
         className: "header-2MiVco",
 
         size: Header.Sizes.SIZE_24
-      }, 'Learn about GooseMod'),
+      }, '#ootb.start.text.main#'),
 
       React.createElement(Text, {
         className: "byline-3REiHf",
 
         size: Text.Sizes.SIZE_16,
         color: Text.Colors.HEADER_SECONDARY
-      }, 'Go through a short tour through GooseMod\'s core functions')
+      }, '#ootb.start.text.subtext#')
     )
   });
 };

@@ -14,6 +14,8 @@
     "settings": "Settings",
     "changelog": "Change Log",
 
+    "community": "Community",
+
     "store": {
       "store": "Store",
 
@@ -197,7 +199,108 @@
   },
 
   "ootb": {
+    "start": {
+      "confirm": "Learn More",
+      "cancel": "Not Interested",
 
+      "items": {
+        "store": {
+          "subtext": "Learn about GooseMod's Store and what's in it"
+        },
+
+        "settings": {
+          "subtext": "Find out about the settings for GooseMod and plugins"
+        },
+
+        "community": {
+          "subtext": "Join our Discord to ask questions, give feedback, keep up to date with news, and more"
+        }
+      },
+
+      "text": {
+        "main": "Learn about GooseMod",
+        "subtext": "Go through a short tour through GooseMod's core functions"
+      }
+    },
+
+    "community": {
+      "confirm": "Join GooseMod Discord",
+
+      "items": {
+        "ask_questions": {
+          "title": "Ask Questions",
+          "subtext": "Ask any questions and get support"
+        },
+
+        "news": {
+          "title": "News",
+          "subtext": "Get the latest news and announcements around GooseMod and related projects"
+        },
+
+        "get_involved": {
+          "title": "Get Involved",
+          "subtext": "Help out with suggestions, supporting others, and more"
+        }
+      },
+
+      "text": {
+        "main": "Join GooseMod's Community",
+        "subtext": "Join our Discord for further information and more"
+      }
+    },
+
+    "settings": {
+      "confirm": "View GooseMod Settings",
+
+      "items": {
+        "experimental_features": {
+          "title": "Experimental Features",
+          "subtext": "Try out new experimental features"
+        },
+
+        "utilities": {
+          "title": "Utilities",
+          "subtext": "Make backups, reset GooseMod, and more"
+        },
+
+        "tweaks": {
+          "title": "Tweaks",
+          "subtext": "Tweak GooseMod to how you want it"
+        }
+      },
+
+      "text": {
+        "main": "Use GooseMod's Settings to customise it's features",
+        "subtext": "There are various options for you to change"
+      }
+    },
+
+    "store": {
+      "confirm": "View Store in Home",
+
+      "text": {
+        "main": "Browse Themes and Plugins in the Store",
+        "subtext": "GooseMod uses it's own Store, where you can easily look around and install"
+      }
+    },
+
+    "plugins": {
+      "confirm": "Browse Plugins",
+
+      "text": {
+        "main": "Amplify your Discord under the hood",
+        "subtext": "Plugins augment your experience with improvements in the app itself"
+      }
+    },
+
+    "themes": {
+      "confirm": "Browse Themes",
+
+      "text": {
+        "main": "Beautify your Discord with Themes",
+        "subtext": "Pick from over 100 themes to tweak and enhance your user interface"
+      }
+    }
   },
 
   "badges": {
