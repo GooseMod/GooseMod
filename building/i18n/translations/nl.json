@@ -1,1 +1,51 @@
-{}
+{
+    "terms": {
+        "store": {
+            "developers": "Developers",
+            "repos": "Repos",
+            "plugins": "Plugins",
+            "snippets": "Snippets",
+            "modules": "Modules",
+            "themes": "Themas",
+            "store": "Winkel"
+        },
+        "changelog": "Change Log",
+        "refresh": "Herlaad",
+        "goosemod": {
+            "modules": "GooseMod Modules",
+            "settings": "GooseMod Instellingen",
+            "store": "GooseMod Winkel"
+        },
+        "settings": "Instellingen",
+        "remove": "Verwijderen",
+        "add": "Toevoegen"
+    },
+    "badges": {
+        "guild": "GooseMod Officiële Discord",
+        "developer": "GooseMod Developer",
+        "translator": "GooseMod Vertaler"
+    },
+    "store": {
+        "options": {
+            "author": {
+                "all": "Alle",
+                "label": "Auteur"
+            },
+            "sort": {
+                "last_updated": "Laats Geupdate",
+                "az": "A-Z",
+                "stars": "Sterren",
+                "label": "Sorteer op"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Zoek Plugins",
+                    "themes": "Zoek Themas"
+                }
+            },
+            "tabs": {
+                "imported": "Geimporteerd"
+            }
+        }
+    }
+}
