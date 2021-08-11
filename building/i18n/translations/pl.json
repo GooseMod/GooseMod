@@ -68,7 +68,8 @@
             "modules": "Moduły GooseMod",
             "settings": "Ustawienia GooseMod",
             "store": "Sklep GooseMod"
-        }
+        },
+        "community": "Społeczność"
     },
     "settings": {
         "items": {
@@ -162,6 +163,20 @@
                 "subtext": "Nieprawidłowy format",
                 "text": "Nieprawidłowe repozytorium"
             }
+        }
+    },
+    "ootb": {
+        "start": {
+            "items": {
+                "settings": {
+                    "subtext": "Dowiedz się o ustawienia GooseMod oraz pluginach"
+                },
+                "store": {
+                    "subtext": "Poznaj sklep GooseMod i co on zawiera"
+                }
+            },
+            "cancel": "Nie jestem zainteresowany/ana",
+            "confirm": "Dowiedz się więcej"
         }
     }
 }
