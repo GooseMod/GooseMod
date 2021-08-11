@@ -1,5 +1,11 @@
-### Based on commit 09e74e7, made 11/08 16:13 UTC
+### Based on commit 28fe93a, made 11/08 16:15 UTC
 ## Commits this release
+  - Translated using Weblate (Thai)
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Dutch)
+  - Translated using Weblate (Hungarian)
+  - Translated using Weblate (French)
+  - Translated using Weblate (German)
   - [i18n] Remove blank translations
   - [ProfileStore] Fix for Rollup rewrite
   - [i18n] Implement store options
