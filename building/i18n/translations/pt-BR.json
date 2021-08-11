@@ -128,7 +128,7 @@
             },
             "store_in_home": {
                 "note": "Colocar a Loja do GooseMod na Tela Inicial ao invés de mostrar nas configurações",
-                "title": "Loja na pagina do Início"
+                "title": "Loja na página Inicial"
             },
             "main_separators": {
                 "note": "Mostrar separadores entre as principais configurações do GooseMod",
