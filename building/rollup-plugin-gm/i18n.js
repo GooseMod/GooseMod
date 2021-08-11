@@ -35,7 +35,7 @@ const flattenObj = (obj, key = '') => Object.keys(obj).reduce((acc, x) => {
 }, {});
 
 export default (code) => {
-  const defaultTranslation = getTranslation('en-US');
+  const defaultTranslation = flattenObj(getTranslation('en-US'));
 
   if (!existsSync(distDir)) mkdirSync(distDir);
 
@@ -44,15 +44,13 @@ export default (code) => {
 
     const translation = {
       ...defaultTranslation,
-      ...(getTranslation(lang) || {})
+      ...(flattenObj(getTranslation(lang)) || {})
     };
 
     let langCode = code;
 
-    const flatTranslation = flattenObj(translation);
-
-    for (const key in flatTranslation) {
-      const val = flatTranslation[key].replaceAll('\n', '\\n').replaceAll('\'', '\\\'').replaceAll('"', '\\"').replaceAll('`', '\\`').replaceAll('$', '\\$');
+    for (const key in translation) {
+      const val = translation[key].replaceAll('\n', '\\n').replaceAll('\'', '\\\'').replaceAll('"', '\\"').replaceAll('`', '\\`').replaceAll('$', '\\$');
       langCode = langCode.replaceAll(`#${key}#`, val);
     }
 
