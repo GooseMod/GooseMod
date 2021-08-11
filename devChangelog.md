@@ -1,5 +1,6 @@
-### Based on commit 1ba6685, made 11/08 21:19 UTC
+### Based on commit 299747d, made 11/08 23:34 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [i18n > Base] Imported -> Added
   - [i18n] Use i18n values for Home header
   - Merge branch 'master' of github.com:GooseMod/GooseMod
