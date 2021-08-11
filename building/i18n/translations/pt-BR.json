@@ -105,7 +105,7 @@
             },
             "reset_goosemod": {
                 "button": "Redefinir",
-                "note": "Redefine o GooseMod completamente: remove todas preferencias e módulos; funciona como uma instalação nova",
+                "note": "Redefine o GooseMod completamente: remove todas preferencias e módulos; como se fosse uma instalação nova",
                 "title": "Redefinir GooseMod"
             },
             "copy_debug_info": {
@@ -146,6 +146,14 @@
                 "backup": "Backup",
                 "utilities": "Utilidades",
                 "appearance": "Aparência"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "subtext": "Formato Inválido",
+                "text": "Repo Inválido"
             }
         }
     }
