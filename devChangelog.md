@@ -1,5 +1,6 @@
-### Based on commit 6b2ff47, made 11/08 16:47 UTC
+### Based on commit 706054b, made 11/08 16:49 UTC
 ## Commits this release
+  - [Doc] Add Weblate to README
   - Translated using Weblate (Dutch)
   - Translated using Weblate (Hungarian)
   - Revert "[i18n] Remove blank translations"
