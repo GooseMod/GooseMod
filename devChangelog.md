@@ -1,5 +1,8 @@
-### Based on commit 29761ec, made 11/08 18:22 UTC
+### Based on commit 80d973b, made 11/08 18:22 UTC
 ## Commits this release
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Dutch)
+  - Translated using Weblate (Hungarian)
   - [i18n] Settings items
   - [i18n] Fix Store filtering and sorting further
   - [i18n] Fix more Store filtering and sorting
