@@ -1,5 +1,10 @@
-### Based on commit a9532e4, made 11/08 14:53 UTC
+### Based on commit ebfa590, made 11/08 15:00 UTC
 ## Commits this release
+  - Update translation files
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Dutch)
+  - Translated using Weblate (German)
+  - Translated using Weblate (Danish)
   - [Settings > Snippets] Fix Snippets gen not using i18n label
   - [Settings] Fix Snippets name not using i18n
   - [Build > i18n] Fix not escaping quotes
