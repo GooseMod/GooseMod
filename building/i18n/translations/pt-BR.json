@@ -68,7 +68,8 @@
             "modules": "Modulos do GooseMod",
             "settings": "Configurações do GooseMod",
             "store": "Loja do GooseMod"
-        }
+        },
+        "community": "Comunidade"
     },
     "settings": {
         "items": {
@@ -162,6 +163,17 @@
                 },
                 "text": "Adição do Repositório Cancelada"
             }
+        }
+    },
+    "ootb": {
+        "start": {
+            "items": {
+                "store": {
+                    "subtext": "Leia sobre a Loja do GooseMod e o que está nela"
+                }
+            },
+            "cancel": "Não Interessado",
+            "confirm": "Saber Mais"
         }
     }
 }
