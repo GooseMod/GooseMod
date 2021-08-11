@@ -69,5 +69,84 @@
             "bad_pgp": "Ez az adattár ismeretlen, vagy nem megbízható (nincs PGP által ellenőrizve), légy különösen óvatos. Gondold át, hogy bízol -e az adattár fejlesztőjében.\n\nHogy kijavítsd ezt a hibát, jelentsd az adattár fejlesztőjének, hogy adjon az adattárhoz PGP támogatást.\n\nErősítsd meg az adattár hozzáadását az OK gombbal.",
             "main": "Külső adattárak biztonsági kockázattal járhatnak, mivel nem GooseMod fejlesztők kezelik őket. Nem vagyunk felelősek semmi fajta átlag felhasználók által publikált adattárak miatt okozott károkért.\n\nHa nem bízol az adattár fejlesztőjében, ne használd, ugyanis tönkreteheted a teljes discord telepítményedet.\n\nKérlek erősítsd meg az adattár hozzáadását az OK gombbal."
         }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "Automatikusan generált téma beállítások kényszerítése",
+                "title": "Téma beállítások kényszerítése"
+            },
+            "snippets": {
+                "note": "CSS Snippet részleg megjelenítése az áruházban",
+                "title": "CSS Töredékek"
+            },
+            "data_attributes": {
+                "note": "adatattribútumokokat ad olyan elemekhez, amit aztán témák felhasználhatnak",
+                "title": "Adatattribútumok"
+            },
+            "development_channel": {
+                "note": "Kísérleti GooseMod verziókat használhatsz",
+                "title": "Fejlesztői Csatorna"
+            },
+            "restore_backup": {
+                "button": "Visszaállítás",
+                "note": "Betölti a GooseMod moduljaidat és beállításaidat egy biztonsági mentés fájlból, **CSAK OLYAN BIZTONSÁGI MENTÉST TÖLTS BE, AMIBEN MEGBÍZOL**",
+                "title": "Biztonsági Mentés Betöltése"
+            },
+            "create_backup": {
+                "button": "Biztonsági mentés",
+                "note": "Készít egy fájlt, amiből visszaállíthatod a GooseMod moduljaidat és beállításaidat",
+                "title": "Biztonsági Mentés Készítése"
+            },
+            "reset_goosemod": {
+                "button": "Visszaállítás",
+                "note": "Visszaviszi a GooseMod-ot olyan állapotba, mint amilyen először volt",
+                "title": "A GooseMod teljes visszaállítása"
+            },
+            "copy_debug_info": {
+                "button": "Másolás",
+                "note": "Kimásolja az információkat a GooseMod-ból jelentés és problémamegoldás céljából",
+                "title": "Debug Infók Másolása"
+            },
+            "start_tour": {
+                "button": "Körbevezetés",
+                "note": "Újra körbevezet a GooseMod-on",
+                "title": "Körbevezető indítása"
+            },
+            "purge_caches": {
+                "button": "Teljes törlés",
+                "note": "Kitörli a legtöbb GooseMod által használt felesleges fájlt",
+                "title": "Felesleges fájlok törlése"
+            },
+            "goosemod_badges": {
+                "note": "GooseMod kitűzőket mutat a profiloknál",
+                "title": "GooseMod Kitűzök"
+            },
+            "auto_update": {
+                "note": "Automatikusan frissíti az adattárakat és modulokat óránként",
+                "title": "Automatikus Frissítések"
+            },
+            "store_in_home": {
+                "note": "Átrakja a GooseMod Áruház beállításait a főoldalra a beállítások oldal helyett",
+                "title": "Áruház beállítások a fő oldalon"
+            },
+            "main_separators": {
+                "note": "Elválasztók mutatása a fő GooseMod beállítások között",
+                "title": "Fő elválasztók"
+            },
+            "goosemod_change_log": {
+                "note": "A GooseMod Frissítési napló beállítás mutatása",
+                "title": "GooseMod Frissítési Napló"
+            },
+            "subtexts": {
+                "experimental_warning": "A kísérleti beállítások valószínűleg nem befejezettek és instabilak, amik ronthatnak a használati élményen"
+            },
+            "headers": {
+                "experimental": "Kísérlet alatt",
+                "backup": "Biztonsági mentés",
+                "utilities": "Hasznos funkciók",
+                "appearance": "Megjelenés"
+            }
+        }
     }
 }
