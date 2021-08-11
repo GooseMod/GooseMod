@@ -1,5 +1,7 @@
-### Based on commit b67976e, made 11/08 20:59 UTC
+### Based on commit b20399b, made 11/08 21:06 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Settings > Main] Close settings on start tour
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (Portuguese (Brazil))
   - [Build > i18n] Better English fallback
