@@ -1,1 +1,14 @@
-{}
+{
+    "store": {
+        "options": {
+            "sort": {
+                "label": "Sorter efter"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Søg efter Plugins"
+                }
+            }
+        }
+    }
+}
