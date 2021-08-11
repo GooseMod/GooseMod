@@ -9,6 +9,19 @@
                     "plugins": "Søg efter Plugins"
                 }
             }
+        },
+        "pgp": {
+            "unknown": "",
+            "verified": "PGP verificeret"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Alle Plugins",
+                "themes": "Alle Themes"
+            }
         }
+    },
+    "badges": {
+        "guild": "GooseMod Officiel Discord"
     }
 }
