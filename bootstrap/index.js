@@ -11,7 +11,7 @@ const init = async () => {
   console.log('[GooseMod Bootstrap]', 'Found locale', locale);
 
   // eval(await (await fetch(`http://localhost:1234/goosemod.${locale}.js`)).text());
-  eval(await (await fetch(`https://raw.githubusercontent.com/GooseMod/GooseMod/dist-dev/goosemod.${locale}.js`)).text());
+  eval(await (await fetch(`https://dev.builds.goosemod.com/goosemod.${locale}.js`)).text());
 };
 
 init();
