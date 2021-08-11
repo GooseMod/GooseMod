@@ -1,1 +1,104 @@
-{}
+{
+  "terms": {
+    "goosemod": {
+      "store": "GooseMod Store",
+      "settings": "GooseMod Einstellungen",
+      "modules": "GooseMod Module"
+    },
+
+    "add": "Hinzufügen",
+    "remove": "Entfernen",
+
+    "refresh": "Refresh",
+
+    "settings": "Einstellungen",
+    "changelog": "Änderungsprotokoll",
+
+    "store": {
+      "store": "Store",
+
+      "themes": "Themes",
+      "plugins": "Plugins",
+      "snippets": "Snippets",
+
+      "modules": "Module",
+      "repos": "Repos",
+
+      "developers": "Entwickler"
+    }
+  },
+
+  "store": {
+    "options": {
+      "tabs": {
+        "store": "Store",
+        "imported": "Importiert"
+      },
+
+      "search": {
+        "placeholder": {
+          "themes": "Dursuche Themes",
+          "plugins": "Dursuche Plugins"
+        }
+      },
+
+      "sort": {
+        "label": "Sortieren nach",
+
+        "stars": "Stars",
+        "az": "A-Z",
+        "last_updated": "Zuletzt aktualisiert"
+      },
+
+      "author": {
+        "label": "Autor",
+
+        "all": "Alles"
+      }
+    },
+    
+    "categories": {
+      "top_starred": "Top Starred",
+      "recently_updated": "Zuletzt aktualisiert",
+      "upcoming": "Upcoming",
+
+      "all": {
+        "themes": "All Themes",
+        "plugins": "All Plugins"
+      }
+    },
+
+    "pgp": {
+      "verified": "PGP Verifiziert",
+      "untrusted": "PGP Unverifiziert",
+      "unknown": "Kein PGP"
+    }
+  },
+
+  "modals": {
+    "external_repo_security": {
+      "main": "External repos pose security risks as they are not controlled by GooseMod developers. We are not responsible for any dangers because of external repos added by users.\n\nIf you do not trust the owner of this repo do not use it as it could compromise your Discord install.\n\nPlease confirm adding this repo by pressing OK.",
+      "bad_pgp": "This repo is not known or trusted (no PGP verification), please be extra careful. Make sure you trust the owner(s) of this repo completely.\n\nTo solve this issue ask the repo maintainer to add PGP support.\n\nPlease reconfirm adding this repo by pressing OK."
+    }
+  },
+
+  "toasts": {
+
+  },
+
+  "settings": {
+
+  },
+
+  "ootb": {
+
+  },
+
+  "badges": {
+    "sponsor": "GooseMod Sponsor",
+    "translator": "GooseMod Übersetzer",
+    "developer": "GooseMod Entwickler",
+
+    "guild": "GooseMod offizieller Discord"
+  }
+}
