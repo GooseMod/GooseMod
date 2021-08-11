@@ -1,5 +1,6 @@
-### Based on commit e423a25, made 11/08 16:01 UTC
+### Based on commit 09e74e7, made 11/08 16:13 UTC
 ## Commits this release
+  - [i18n] Remove blank translations
   - [ProfileStore] Fix for Rollup rewrite
   - [i18n] Implement store options
   - Merge branch 'master' of github.com:GooseMod/GooseMod
