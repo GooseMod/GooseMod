@@ -2,18 +2,18 @@
     "badges": {
         "translator": "Tłumacz GooseMod",
         "guild": "Oficjalny Discord GooseMod",
-        "developer": "Developer GooseMod",
+        "developer": "Deweloper GooseMod",
         "sponsor": "Sponsor GooseMod"
     },
     "modals": {
         "external_repo_security": {
-            "main": "Nieoficjalne repozytoria mogą wdrożyć zagrożenia ponieważ nie są kontrolowane przez deweloperów GooseMod. Nie jesteśmy odpowiedzialni za żadne niebezpieczeństwa ponieważ oddzielne repozytoria są dodawane przez użytkowników.\n\nJeśli nie ufasz właścicielowi tego repozytorium nie używaj go ponieważ może zagrozić twojej instalacji Discorda.\n\nNaciśnij OK aby potwierdzić dodawanie repozytorium.",
+            "main": "Nieoficjalne repozytoria mogą wdrożyć zagrożenia ponieważ nie są kontrolowane przez deweloperów GooseMod. Nie jesteśmy odpowiedzialni za niebezpieczeństwa gdyż oddzielne repozytoria są dodawane przez użytkowników.\n\nJeśli nie ufasz właścicielowi tego repozytorium nie używaj go ponieważ może zagrozić twojej instalacji Discorda.\n\nNaciśnij OK aby potwierdzić dodawanie repozytorium.",
             "bad_pgp": "To repozytorium nie jest znane albo zaufane (brak weryfikacji PGP), proszę być ostrożnym na zapas. Miej pewność że ufasz właścicielowi tego repozytorium.\n\nAby rozwiązać problem poproś właściciela repozytorium aby dodał wsparcie PGP. \n\nNaciśnij OK jeśli chcesz dodać to repozytorium."
         }
     },
     "store": {
         "pgp": {
-            "unknown": "Bez PGP",
+            "unknown": "Brak PGP",
             "untrusted": "Niezaufane PGP",
             "verified": "Zweryfikowane PGP"
         },
@@ -28,7 +28,7 @@
         },
         "options": {
             "author": {
-                "all": "Wszystko",
+                "all": "Wszyscy",
                 "label": "Autor"
             },
             "sort": {

@@ -2,11 +2,11 @@
     "terms": {
         "store": {
             "modules": "Modulok",
-            "plugins": "Pluginok",
+            "plugins": "Bővítmények",
             "themes": "Témák",
             "store": "Áruház",
-            "snippets": "Kód darabkák",
-            "repos": "Bővítmények",
+            "snippets": "Snippetek",
+            "repos": "Adattárak",
             "developers": "Fejlesztők"
         },
         "changelog": "Frissítési Napló",
@@ -66,8 +66,8 @@
     },
     "modals": {
         "external_repo_security": {
-            "bad_pgp": "Ez a bővítmény ismeretlen, vagy nem megbízható (nincs PGP által ellenőrizve), légy különösen óvatos. Gondold át, hogy -e a bővítmény fejlesztőjében.\n\nHogy kijavítsd ezt a hibát, jelentsd a bővítmény fejlesztőjének, hogy adjon a bővítményhez PGP támogatást.\n\nErősítsd meg a bővítmény hozzáadását az OK gombbal.",
-            "main": "Külső bővítmények biztonsági kockázattal járhatnak, mivel nem GooseMod fejlesztők kezelik őket. Nem vagyunk felelősek semmi fajta átlag felhasználók által publikált bővítmény által okozott kárért.\n\nHa nem bízol a bővítmény fejlesztőjében, ne használd, ugyanis tönkreteheted a teljes discord telepítményedet.\n\nKérlek erősítsd meg a bővítmény hozzáadását az OK gombbal."
+            "bad_pgp": "Ez az adattár ismeretlen, vagy nem megbízható (nincs PGP által ellenőrizve), légy különösen óvatos. Gondold át, hogy bízol -e az adattár fejlesztőjében.\n\nHogy kijavítsd ezt a hibát, jelentsd az adattár fejlesztőjének, hogy adjon az adattárhoz PGP támogatást.\n\nErősítsd meg az adattár hozzáadását az OK gombbal.",
+            "main": "Külső adattárak biztonsági kockázattal járhatnak, mivel nem GooseMod fejlesztők kezelik őket. Nem vagyunk felelősek semmi fajta átlag felhasználók által publikált adattárak miatt okozott károkért.\n\nHa nem bízol az adattár fejlesztőjében, ne használd, ugyanis tönkreteheted a teljes discord telepítményedet.\n\nKérlek erősítsd meg az adattár hozzáadását az OK gombbal."
         }
     }
 }
