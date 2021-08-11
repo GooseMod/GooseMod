@@ -27,7 +27,7 @@
             "verified": "Signature PGP vérifiée"
         },
         "categories": {
-            "upcoming": "Upcoming",
+            "upcoming": "En vogue",
             "top_starred": "Mieux classés",
             "all": {
                 "plugins": "Tous les plug-ins",
@@ -73,10 +73,12 @@
     "settings": {
         "items": {
             "data_attributes": {
-                "note": "Ajoute des attributs de données à certains éléments pour permettre leur utilisation par des thèmes"
+                "note": "Ajoute des attributs de données à certains éléments pour permettre leur utilisation par des thèmes",
+                "title": "Attributs de données"
             },
             "development_channel": {
-                "note": "Utiliser les versions expérimentales de développement de GooseMod"
+                "note": "Utiliser les versions expérimentales de développement de GooseMod",
+                "title": "Version de développement"
             },
             "restore_backup": {
                 "button": "Restaurer",
@@ -134,14 +136,16 @@
             "headers": {
                 "experimental": "Expérimental",
                 "backup": "Sauvegarde",
-                "appearance": "Apparence"
+                "appearance": "Apparence",
+                "utilities": "Actions"
             },
             "force_theme_settings": {
                 "note": "Force la génération de paramètres pour tous les thèmes",
                 "title": "Forcer les paramètres de thèmes"
             },
             "snippets": {
-                "note": "Active la catégorie \"Extraits CSS\" de la boutique"
+                "note": "Active la catégorie \"Extraits CSS\" de la boutique",
+                "title": "Extraits CSS"
             }
         }
     },
