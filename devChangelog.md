@@ -1,5 +1,7 @@
-### Based on commit b9fa57f, made 11/08 20:58 UTC
+### Based on commit b67976e, made 11/08 20:59 UTC
 ## Commits this release
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Portuguese (Brazil))
   - [Build > i18n] Better English fallback
   - [Build > i18n] More escaping values
   - Translated using Weblate (Portuguese (Brazil))
