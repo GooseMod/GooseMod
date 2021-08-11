@@ -1,1 +1,19 @@
-{}
+{
+    "terms": {
+        "store": {
+            "modules": "Modulok",
+            "plugins": "Pluginok",
+            "themes": "Témák",
+            "store": "Áruház"
+        },
+        "changelog": "Frissítési Napló",
+        "settings": "Beállítások",
+        "refresh": "Frissítés",
+        "remove": "Törlés",
+        "goosemod": {
+            "modules": "GooseMod Modulkezelő",
+            "settings": "GooseMod Beállítások",
+            "store": "GooseMod Áruház"
+        }
+    }
+}
