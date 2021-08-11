@@ -170,10 +170,57 @@
             "items": {
                 "store": {
                     "subtext": "Leia sobre a Loja do GooseMod e o que está nela"
+                },
+                "community": {
+                    "subtext": "Entre no nosso Discord para perguntar questões, dar um feedback, manter-se atualizado com as novidades, e mais"
+                },
+                "settings": {
+                    "subtext": "Descubra mais sobre as configurações do GooseMod e os plugins"
                 }
             },
             "cancel": "Não Interessado",
-            "confirm": "Saber Mais"
+            "confirm": "Saber Mais",
+            "text": {
+                "subtext": "Faça um pequeno tour dentro das funções principais do GooseMod",
+                "main": "Leia sobre o GooseMod"
+            }
+        },
+        "settings": {
+            "items": {
+                "tweaks": {
+                    "title": "Ajustes"
+                },
+                "utilities": {
+                    "subtext": "Faça backups, redefinir o GooseMod, e mais",
+                    "title": "Utilidades"
+                },
+                "experimental_features": {
+                    "subtext": "Tente experimentar as novas funções experimentais",
+                    "title": "Funções Experimentais"
+                }
+            },
+            "confirm": "Ver as Configurações do GooseMod"
+        },
+        "community": {
+            "text": {
+                "subtext": "Entre no nosso Discord para futuras informações e mais",
+                "main": "Entre na Comunidade do GooseMod"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Ajude com sugestões, ajudando os outros, e mais",
+                    "title": "Seja Envolvido"
+                },
+                "news": {
+                    "subtext": "Tenha as últimas notícias e anúncios sobre o GooseMod e projetos relacionados",
+                    "title": "Novidades"
+                },
+                "ask_questions": {
+                    "subtext": "Pergunte qualquer questão e tenha suporte",
+                    "title": "Pergunte Questões"
+                }
+            },
+            "confirm": "Entre no Discord do GooseMod"
         }
     }
 }
