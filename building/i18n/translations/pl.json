@@ -14,7 +14,7 @@
     "store": {
         "pgp": {
             "unknown": "Bez PGP",
-            "untrusted": "Niezweryfikowane PGP",
+            "untrusted": "Niezaufane PGP",
             "verified": "Zweryfikowane PGP"
         },
         "categories": {
