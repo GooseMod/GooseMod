@@ -615,7 +615,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     { type: 'gm-footer' }
   ]));
 
-  goosemodScope.settings.createItem('Snippets', ['',
+  goosemodScope.settings.createItem('#terms.store.snippets#', ['',
     {
       type: 'search',
 
