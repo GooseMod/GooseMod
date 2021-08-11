@@ -1,5 +1,7 @@
-### Based on commit eea4eb9, made 11/08 16:47 UTC
+### Based on commit 6b2ff47, made 11/08 16:47 UTC
 ## Commits this release
+  - Translated using Weblate (Dutch)
+  - Translated using Weblate (Hungarian)
   - Revert "[i18n] Remove blank translations"
   - [i18n] Fix imported and store filtering for i18n
   - Deleted translation using Weblate (English (United Kingdom))
