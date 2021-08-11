@@ -12,7 +12,8 @@
             "modules": "GooseMod Module",
             "settings": "GooseMod Einstellungen",
             "store": "GooseMod Store"
-        }
+        },
+        "remove": "Entfernen"
     },
     "store": {
         "options": {
