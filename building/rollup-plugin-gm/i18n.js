@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 
 import langs from '../i18n/langs.json';
 
@@ -36,6 +36,8 @@ const flattenObj = (obj, key = '') => Object.keys(obj).reduce((acc, x) => {
 
 export default (code) => {
   const defaultTranslation = getTranslation('en-US');
+
+  if (!existsSync(distDir)) mkdirSync(distDir);
 
   for (const lang of Object.keys(langs)) {
     const outPath = join(distDir, 'goosemod.' + lang + '.js');
