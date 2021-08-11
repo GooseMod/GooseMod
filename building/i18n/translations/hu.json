@@ -18,7 +18,8 @@
             "settings": "GooseMod Beállítások",
             "store": "GooseMod Áruház"
         },
-        "add": "Aktiválás"
+        "add": "Aktiválás",
+        "community": "Közösség"
     },
     "store": {
         "options": {
@@ -27,7 +28,7 @@
                 "all": "Mind"
             },
             "sort": {
-                "label": "Rendezési szempont",
+                "label": "Rendezés",
                 "last_updated": "Nemrég Frissítve",
                 "az": "ABC Sorrendben",
                 "stars": "Értékelés"
@@ -146,6 +147,105 @@
                 "backup": "Biztonsági mentés",
                 "utilities": "Hasznos funkciók",
                 "appearance": "Megjelenés"
+            }
+        }
+    },
+    "ootb": {
+        "themes": {
+            "text": {
+                "subtext": "Válassz több mint 100 téma közül, hogy finomítsd és fejleszd a felhasználási területed",
+                "main": "Tedd gyönyörűvé a Discordot Témákkal"
+            },
+            "confirm": "Keress Témákat"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "A bővítmények a felhasználói élményed teszik jobbá, mindezt az alkalmazásból",
+                "main": "Tedd jobbá a Discord-od a felszín alatt"
+            },
+            "confirm": "Keress bővítményeket"
+        },
+        "store": {
+            "text": {
+                "subtext": "A GooseMod a saját áruházát használja, ahol könnyen nézelődhetsz és letölthetsz bármit",
+                "main": "Keresgélj témákat és bővítményeket az Áruházban"
+            },
+            "confirm": "Az Áruház megnyitása a Főoldalról"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Rengeteg beállítás van, amit kedvedre változtathatsz",
+                "main": "Használd a GooseMod Beállításokat, hogy testre szabd a GooseMod-ot"
+            },
+            "items": {
+                "tweaks": {
+                    "title": "Finomítások",
+                    "subtext": "Finomítsd olyanra a GooseMod-ot amilyenre akarod"
+                },
+                "utilities": {
+                    "subtext": "Készíts biztonsági mentéseket, állítsd vissza a GooseMod-ot, és még más",
+                    "title": "Hasznos beállítások"
+                },
+                "experimental_features": {
+                    "subtext": "Próbálj ki új kísérleti beállításokat",
+                    "title": "Kísérleti Beállítások"
+                }
+            },
+            "confirm": "GooseMod Beállítások megtekintése"
+        },
+        "community": {
+            "text": {
+                "subtext": "További információért csatlakozz a Discord szerverünkhöz",
+                "main": "Csatlakozz a GooseMod Közösséghez"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Segíts az ajánlásokkal, segíts mások problémáin, és sok más",
+                    "title": "Vegyél részt"
+                },
+                "news": {
+                    "subtext": "Olvasd el a legújabb híreket a GooseMod-ról, és egyéb kapcsolódó projektekről",
+                    "title": "Hírek/Újdonságok"
+                },
+                "ask_questions": {
+                    "subtext": "Kérdezz bármit, a segítői csapat majd segít",
+                    "title": "Kérdezz bármit"
+                }
+            },
+            "confirm": "Csatlakozz a GooseMod Discordhoz"
+        },
+        "start": {
+            "text": {
+                "subtext": "Menj keresztül egy kis körbevezetőn a GooseMod legalapabb funkcióiról",
+                "main": "Tudj meg többet a GooseMod-ról"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Csatlakozz a Discord szerverünkhöz, ha van kérdésed, értékelni akarsz, hallani akarod a legfrissebb híreket, és sok mást"
+                },
+                "settings": {
+                    "subtext": "Tudj meg többet a GooseMod és a bővítmények beállításairól"
+                },
+                "store": {
+                    "subtext": "Tudj meg többet a GooseMod Áruházról, és hogy mi van benne"
+                }
+            },
+            "cancel": "Nem érdekel",
+            "confirm": "Nézz utána"
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP Által Meg-Nem-Bízott Hiba",
+                    "refused": "Biztonsági Kérelem Elutasítva"
+                },
+                "text": "Adattár Hozzáadása Visszavonva"
+            },
+            "invalid_repo": {
+                "subtext": "Érvénytelen Formátum",
+                "text": "Érvénytelen Adattár"
             }
         }
     }

@@ -14,8 +14,8 @@
     "store": {
         "pgp": {
             "unknown": "Brak PGP",
-            "untrusted": "Niezaufane PGP",
-            "verified": "Zweryfikowane PGP"
+            "untrusted": "Niezaufane poprzez PGP",
+            "verified": "Zweryfikowane poprzez PGP"
         },
         "categories": {
             "all": {
@@ -34,8 +34,8 @@
             "sort": {
                 "last_updated": "Ostatnio zaktualizowane",
                 "az": "A-Z",
-                "stars": "Gwiazdki",
-                "label": "Sortuj przez"
+                "stars": "Ilość Gwiazdek",
+                "label": "Sortuj według"
             },
             "search": {
                 "placeholder": {
@@ -76,25 +76,25 @@
             "headers": {
                 "appearance": "Wygląd",
                 "experimental": "Eksperymentalne",
-                "backup": "Kopia zapasowa",
+                "backup": "Kopie zapasowe",
                 "utilities": "Przydatne narzędzia"
             },
             "purge_caches": {
-                "note": "Czyść większość \"Cache\" który GooseMod używa",
-                "title": "Wyczyść Cache",
+                "note": "Czyść większość pamięci podręcznej którą używa GooseMod",
+                "title": "Wyczyść pamięć podręczna",
                 "button": "Wyczyść"
             },
             "reset_goosemod": {
                 "note": "Całkowicie resetuje GooseMod-a: usuwa wszystkie preferencje, moduły; Resetuje do stanu początkowego",
                 "button": "Resetuj",
-                "title": "Resetuj GooseMod"
+                "title": "Zresetuj GooseMod"
             },
             "force_theme_settings": {
                 "note": "Wymuś automatycznie wygenerowane ustawienia dla wszystkich motywów",
                 "title": "Wymuszaj ustawienia motywów"
             },
             "snippets": {
-                "note": "Aktywuje zakładkę urywki w sklepie",
+                "note": "Aktywuje zakładkę \"Urywki\" w sklepie",
                 "title": "Urywki"
             },
             "data_attributes": {
@@ -118,7 +118,7 @@
             "copy_debug_info": {
                 "button": "Kopiuj",
                 "note": "Kopiuje informacje na temat obecnej instalacji GooseMod, użyteczne do zgłaszania i debugowania",
-                "title": "Skopiuj informacje debug"
+                "title": "Skopiuj informacje do debugowania"
             },
             "start_tour": {
                 "button": "Wycieczka",
@@ -146,7 +146,7 @@
                 "title": "Lista zmian GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Eksperymentalne ustawienia które są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia"
+                "experimental_warning": "Eksperymentalne ustawienia są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia"
             }
         }
     },
@@ -173,10 +173,80 @@
                 },
                 "store": {
                     "subtext": "Poznaj sklep GooseMod i co on zawiera"
+                },
+                "community": {
+                    "subtext": "Dołącz do naszego Discorda aby zadawać pytania, zostawiać opinie, bądź na czasie z wiadomościami i więcej"
                 }
             },
             "cancel": "Nie jestem zainteresowany/ana",
-            "confirm": "Dowiedz się więcej"
+            "confirm": "Dowiedz się więcej",
+            "text": {
+                "subtext": "Przejdź krótka wycieczkę aby poznać podstawowe funkcje GooseMod-a",
+                "main": "Poznaj GooseMod-a"
+            }
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod używa swój własny sklep gdzie możesz łatwo znaleźć różne motywy i pluginy, potem je zainstalować",
+                "main": "Przeglądaj motywy i pluginy w sklepie"
+            },
+            "confirm": "Pokaż sklep na stronie głównej"
+        },
+        "themes": {
+            "text": {
+                "subtext": "Wybierz z ponad stu motywów aby zmienić oraz ulepszyć twój interfejs",
+                "main": "Upiększ swojego Discorda z motywami"
+            },
+            "confirm": "Przeglądaj motywy"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Pluginy ulepszają twoje wrazenia poprzez ulepszania w aplikacji",
+                "main": "Ulepsz swojego Discorda pod maską"
+            },
+            "confirm": "Przeglądaj Pluginy"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Jest wiele opcji które możesz zmienić",
+                "main": "Używaj ustawień GooseMod-a aby spersonalizować jego funkcje"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Dopasuj GooseMod-a do swoich upodobań",
+                    "title": "Poprawki/ulepszenia"
+                },
+                "utilities": {
+                    "subtext": "Rób kopie zapasowe, resetuj GooseMod-a i więcej",
+                    "title": "Przydatne narzędzia"
+                },
+                "experimental_features": {
+                    "subtext": "Wypróbuj nowe eksperymentalne funkcje",
+                    "title": "Funkcje eksperymentalne"
+                }
+            },
+            "confirm": "Zobacz ustawienia GooseMod"
+        },
+        "community": {
+            "text": {
+                "subtext": "Dołącz do Discorda aby otrzymywać informacje i więcej",
+                "main": "Dołącz do społeczności GooseMod"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Pomóż z sugestiami, wsparciem innych itd",
+                    "title": "Zaangażuj się"
+                },
+                "news": {
+                    "subtext": "Otrzymaj najnowsze wiadomości i ogłoszenia na temat GooseMod-a",
+                    "title": "Wiadomości"
+                },
+                "ask_questions": {
+                    "subtext": "Zadaj pytania i otrzymaj wsparcie techniczne",
+                    "title": "Zadaj pytania"
+                }
+            },
+            "confirm": "Dołącz do Discorda GooseMod"
         }
     }
 }

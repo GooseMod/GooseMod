@@ -115,9 +115,9 @@
                 "title": "Start Tour"
             },
             "purge_caches": {
-                "button": "Zuiver",
-                "note": "Zuivert (verwijdert) meeste caches die GooseMod gebruikt",
-                "title": "Caches Zuiveren"
+                "button": "Verwijder",
+                "note": "Verwijdert meeste caches die GooseMod gebruikt",
+                "title": "Caches Verwijderen"
             },
             "goosemod_badges": {
                 "note": "Laat GooseMod's badges zien",
@@ -170,8 +170,21 @@
             "confirm": "Word lid van GooseMod Discord",
             "items": {
                 "ask_questions": {
-                    "title": "Stel Vragen"
+                    "title": "Stel Vragen",
+                    "subtext": "Stel vragen en krijg support"
+                },
+                "get_involved": {
+                    "subtext": "Help mee met suggesties, anderen supporten, en meer",
+                    "title": "Raak Betrokken"
+                },
+                "news": {
+                    "subtext": "Krijg het laatste nieuws en aankondigingen over GooseMod en gerelateerde projecten",
+                    "title": "Nieuws"
                 }
+            },
+            "text": {
+                "subtext": "Word lid van onze Discord voor meer informatie en meer",
+                "main": "Word lid van GooseMod's community"
             }
         },
         "start": {
@@ -192,6 +205,48 @@
             },
             "cancel": "Niet Geïnteresseerd",
             "confirm": "Leer Meer"
+        },
+        "store": {
+            "text": {
+                "main": "Blader door Thema's en Plugins in de Winkel",
+                "subtext": "GooseMod gebruikt zijn eigen Winkel, waar je makelijk rond kan kijken en installeren"
+            },
+            "confirm": "Bekijk Store in Home"
+        },
+        "themes": {
+            "text": {
+                "subtext": "Selecteer van over 100 thema's om je gebruikersinterface uit te breiden en te verfraaien",
+                "main": "Verfraai je Discord met Thema's"
+            },
+            "confirm": "Blader door Thema's"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Plugins vergroten je ervaring met verbeteringen in de app zelf",
+                "main": "Versterk je Discord onder de motorkap"
+            },
+            "confirm": "Blader door Plugins"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Er zijn verschillende opties die je kan veranderen",
+                "main": "Gebruik GooseMod's instellingen om de functies aan te passen"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Pas GooseMod aan naar jou wens",
+                    "title": "Tweaks"
+                },
+                "utilities": {
+                    "subtext": "Maak backups, reset GooseMod, en meer",
+                    "title": "Voorzieningen"
+                },
+                "experimental_features": {
+                    "subtext": "Probeer nieuwe experimentele functies",
+                    "title": "Experimentele Functies"
+                }
+            },
+            "confirm": "Bekijk GooseMod's Instellingen"
         }
     }
 }

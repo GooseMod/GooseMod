@@ -18,7 +18,8 @@
         "settings": "Paramètres",
         "refresh": "Rafraîchir",
         "remove": "Retirer",
-        "add": "Ajouter"
+        "add": "Ajouter",
+        "community": "Communauté"
     },
     "store": {
         "pgp": {
@@ -27,7 +28,7 @@
             "verified": "Signature PGP vérifiée"
         },
         "categories": {
-            "upcoming": "En vogue",
+            "upcoming": "À l'affiche",
             "top_starred": "Mieux classés",
             "all": {
                 "plugins": "Tous les plug-ins",
@@ -120,7 +121,7 @@
             },
             "store_in_home": {
                 "note": "Placer les options de boutique de GooseMod dans l'accueil au lieu de les mettre dans les paramètres",
-                "title": "Boutique à l'Accueil"
+                "title": "Boutique à l'accueil"
             },
             "main_separators": {
                 "note": "Afficher des séparateurs entre les principales entrées de paramètres de GooseMod",
@@ -161,6 +162,90 @@
             "invalid_repo": {
                 "subtext": "Format invalide",
                 "text": "Dépôt invalide"
+            }
+        }
+    },
+    "ootb": {
+        "themes": {
+            "text": {
+                "main": "Embellissez votre client Discord avec des thèmes",
+                "subtext": "Choisissez parmi plus de 100 thèmes pour ajuster et améliorer votre interface utilisateur"
+            },
+            "confirm": "Explorez les thèmes"
+        },
+        "plugins": {
+            "text": {
+                "main": "Améliorez votre client Discord sous le capot",
+                "subtext": "Les plug-ins améliorent votre expérience avec des améliorations dans l'application même"
+            },
+            "confirm": "Explorez les plug-ins"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod utilise sa propre boutique, que vous pouvez explorer et où vous pouvez installer des modules",
+                "main": "Explorez les thèmes et plug-ins dans la boutique"
+            },
+            "confirm": "Voir la boutique dans l'accueil"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Il y a divers paramètres que vous pouvez modifier",
+                "main": "Utilisez les paramètres de GooseMod pour personnaliser ses fonctionnalités"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Ajustez GooseMod comme vous le souhaitez",
+                    "title": "Ajustements"
+                },
+                "utilities": {
+                    "subtext": "Sauvegardez votre configuration, remettez GooseMod à zéro et plus",
+                    "title": "Actions"
+                },
+                "experimental_features": {
+                    "subtext": "Essayez de nouvelles fonctionnalités expérimentales",
+                    "title": "Fonctionnalités expérimentales"
+                }
+            },
+            "confirm": "Voir les paramètres de GooseMod"
+        },
+        "start": {
+            "confirm": "En savoir plus",
+            "text": {
+                "subtext": "Faites le tour des fonctionnalités principales de GooseMod",
+                "main": "Découvrez GooseMod"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Rejoignez notre serveur Discord pour poser des questions, donner votre avis, rester à jour avec les nouveautés et plus"
+                },
+                "settings": {
+                    "subtext": "Découvrez les paramètres de GooseMod et des plug-ins"
+                },
+                "store": {
+                    "subtext": "Découvrez la boutique GooseMod et son contenu"
+                }
+            },
+            "cancel": "Pas intéressé"
+        },
+        "community": {
+            "text": {
+                "subtext": "Rejoignez notre serveur Discord pour plus d'informations",
+                "main": "Rejoignez la communauté de GooseMod"
+            },
+            "confirm": "Rejoignez le serveur Discord de GooseMod",
+            "items": {
+                "get_involved": {
+                    "subtext": "Aidez avec des suggestions, en aidant d'autres personnes et plus",
+                    "title": "Impliquez-vous"
+                },
+                "news": {
+                    "subtext": "Obtenez les dernières nouveautés et annonces autour de GooseMod et des projets liés",
+                    "title": "Nouveautés"
+                },
+                "ask_questions": {
+                    "subtext": "Posez n'importe quelle question et obtenez de l'aide",
+                    "title": "Posez des questions"
+                }
             }
         }
     }

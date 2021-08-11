@@ -1,1 +1,177 @@
-{}
+{
+    "settings": {
+        "items": {
+            "restore_backup": {
+                "button": "Gjenopprett",
+                "title": "Gjenopprett sikkerhetskopi"
+            },
+            "create_backup": {
+                "button": "Sikkerhetskopier",
+                "title": "Opprett sikkerhetskopi"
+            },
+            "reset_goosemod": {
+                "button": "Tilbakestill",
+                "title": "Tilbakestill GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Kopier",
+                "title": "Kopier avlusingsinfo"
+            },
+            "main_separators": {
+                "title": "Hovedinndelere"
+            },
+            "headers": {
+                "experimental": "Eksperimentelt",
+                "backup": "Sikkerhetskopi",
+                "utilities": "Verktøy",
+                "appearance": "Utseende"
+            },
+            "data_attributes": {
+                "title": "Data-attributter"
+            },
+            "development_channel": {
+                "title": "Utviklingskanal"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "subtext": "Ugyldig format"
+            }
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Ingen PGP",
+            "untrusted": "PGP ubetrodd",
+            "verified": "PGP bekreftet"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Alle programtillegg",
+                "themes": "Alle drakter"
+            },
+            "upcoming": "Kommende",
+            "recently_updated": "Nylig oppdatert",
+            "top_starred": "Flest stjerner"
+        },
+        "options": {
+            "author": {
+                "all": "Alle",
+                "label": "Utvikler"
+            },
+            "sort": {
+                "last_updated": "Sist oppdatert",
+                "az": "A-Å",
+                "stars": "Stjerner",
+                "label": "Sorter etter"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Søk etter programtillegg",
+                    "themes": "Søk i drakter"
+                }
+            },
+            "tabs": {
+                "imported": "Importert",
+                "store": "Butikk"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Utviklere",
+            "modules": "Moduler",
+            "plugins": "Programtillegg",
+            "themes": "Drakter",
+            "store": "Butikk"
+        },
+        "community": "Gemenskap",
+        "changelog": "Endringslogg",
+        "settings": "Innstillinger",
+        "refresh": "Gjenoppfrisk",
+        "remove": "Fjern",
+        "add": "Legg til",
+        "goosemod": {
+            "modules": "GooseMod-moduler",
+            "settings": "GooseMod-innstillinger",
+            "store": "GooseMod-butikken"
+        }
+    },
+    "ootb": {
+        "start": {
+            "text": {
+                "main": "Lær om GooseMod",
+                "subtext": "Gå gjennom en kort veiledning i GooseMod sin kjernefunksjonalitet"
+            },
+            "cancel": "Ikke interessert",
+            "items": {
+                "community": {
+                    "subtext": "Ta del i vår Discord for å stille spørsmål, gi tilbakemeldinger, sjekke hva som er nytt, med mer"
+                },
+                "settings": {
+                    "subtext": "Finn ut mer om innstillingene i GooseMod og dets programtillegg"
+                },
+                "store": {
+                    "subtext": "Lær om GooseMod sin butikk og hva som er i den"
+                }
+            },
+            "confirm": "Lær mer"
+        },
+        "settings": {
+            "items": {
+                "utilities": {
+                    "subtext": "Lag sikkerhetskopier, tilbakestill GooseMod, og annet",
+                    "title": "Verktøy"
+                },
+                "tweaks": {
+                    "subtext": "Sett opp GooseMod akkurat slik du vil ha det",
+                    "title": "Tilpasninger"
+                },
+                "experimental_features": {
+                    "subtext": "Prøv nye eksperimentelle funksjoner",
+                    "title": "Eksperimentelle funksjoner"
+                }
+            },
+            "confirm": "Vis innstillingene i GooseMod",
+            "text": {
+                "subtext": "Det er forskjellige ting du kan endre på",
+                "main": "Bruk innstillinger i GooseMod for å tilpasse dets funksjoner"
+            }
+        },
+        "community": {
+            "text": {
+                "subtext": "Ta del i vår Discord for mer info og andre ting",
+                "main": "Ta del i GooseMod-gemenskapen"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Hjelp til med forslag, støtt andre, og mye annet",
+                    "title": "Involver deg"
+                },
+                "news": {
+                    "subtext": "Få siste nytt og kunngjøringer om GooseMod og relaterte prosjekter",
+                    "title": "Nyheter"
+                },
+                "ask_questions": {
+                    "subtext": "Still de spørsmålene du ønsker og få støtte",
+                    "title": "Still spørsmål"
+                }
+            },
+            "confirm": "Ta del I GooseMod-Discord"
+        },
+        "themes": {
+            "confirm": "Utforsk drakter"
+        },
+        "plugins": {
+            "confirm": "Utforsk programtillegg"
+        }
+    },
+    "badges": {
+        "guild": "Offisiell GooseMod-Discord",
+        "developer": "GooseMod-utvikler",
+        "translator": "GooseMod-oversetter",
+        "sponsor": "GooseMod-sponsor"
+    }
+}

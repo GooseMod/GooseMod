@@ -74,7 +74,7 @@
     "settings": {
         "items": {
             "force_theme_settings": {
-                "note": "Força as configurações geradas automaticamente para todos os temas",
+                "note": "Força configurações geradas automaticamente para todos os temas",
                 "title": "Forçar Configurações de Temas"
             },
             "snippets": {
@@ -230,7 +230,7 @@
         "themes": {
             "text": {
                 "main": "Embeleze seu Discord com Temas",
-                "subtext": "Escolha entre 100 temas para melhorarem sua experiência e sua interface"
+                "subtext": "Escolha entre 100 temas para melhorar a sua experiência e sua interface de usuário"
             },
             "confirm": "Pesquise por Temas"
         },
@@ -243,7 +243,7 @@
         },
         "store": {
             "text": {
-                "subtext": "o GooseMod usa a sua própria Loja, onde você pode facilmente os instalar",
+                "subtext": "O GooseMod usa a sua própria Loja, onde você pode olhar facilmente ao redor e instalar",
                 "main": "Procure por Temas e Plugins na Loja"
             },
             "confirm": "Ver a Loja na Pagina Inicial"
