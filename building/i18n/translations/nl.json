@@ -23,7 +23,8 @@
     "badges": {
         "guild": "GooseMod Officiële Discord",
         "developer": "GooseMod Developer",
-        "translator": "GooseMod Vertaler"
+        "translator": "GooseMod Vertaler",
+        "sponsor": "GooseMod Sponsor"
     },
     "store": {
         "options": {
@@ -44,8 +45,29 @@
                 }
             },
             "tabs": {
-                "imported": "Geimporteerd"
+                "imported": "Geimporteerd",
+                "store": "Winkel"
             }
+        },
+        "categories": {
+            "upcoming": "Aanstaand",
+            "top_starred": "Meeste Sterren",
+            "all": {
+                "plugins": "Alle Plugins",
+                "themes": "Alle Themas"
+            },
+            "recently_updated": "Recent Geupdate"
+        },
+        "pgp": {
+            "unknown": "Geen PGP",
+            "untrusted": "PGP Onvertrouwd",
+            "verified": "PGP Geverifieerd"
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Externe repos kunnen security risicos hebben omdat ze niet gecontrolleerd worden door de GooseMod developers. We zijn niet verantwoordelijk voor schade door externe repos die toegevoegd werden door users\n\nAls je de owner van de repo niet vertrouwd, gebruik de repo dan niet want hij zou je Discord installatie can compromisen.\n\nConfirmeer dat je deze repo wilt toevoegen door op OK te duwen.",
+            "bad_pgp": "Deze repo is niet gekent of vertrouwd (geen PGP verificatie), ben astublieft extra voorzightig. Zorg ervoor dat je de owner(s) van deze repo voledig vertrouwd.\n\nOm dit probleem op te lossen, vraag de repo owner om PGP support toe te voegen.\n\nReconfirm dat je deze repo wilt toevoegen door op OK te duwen."
         }
     }
 }

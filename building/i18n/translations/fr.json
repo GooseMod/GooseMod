@@ -1,7 +1,73 @@
 {
     "terms": {
         "goosemod": {
-            "settings": "Paramètres de GooseMod"
+            "settings": "Paramètres de GooseMod",
+            "store": "Boutique de GooseMod",
+            "modules": "Modules GooseMod"
+        },
+        "store": {
+            "snippets": "Extraits CSS",
+            "plugins": "Plug-ins",
+            "developers": "Développeurs",
+            "repos": "Dépôts",
+            "modules": "Modules",
+            "themes": "Thèmes",
+            "store": "Boutique"
+        },
+        "changelog": "Notes de mise à jour",
+        "settings": "Paramètres",
+        "refresh": "Rafraîchir",
+        "remove": "Retirer",
+        "add": "Ajouter"
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Pas de signature PGP",
+            "untrusted": "Signature PGP non-fiable",
+            "verified": "Signature PGP vérifiée"
+        },
+        "categories": {
+            "upcoming": "Upcoming",
+            "top_starred": "Mieux classés",
+            "all": {
+                "plugins": "Tous les plug-ins",
+                "themes": "Tous les thèmes"
+            },
+            "recently_updated": "Récemment mis à jour"
+        },
+        "options": {
+            "sort": {
+                "last_updated": "Date de mise à jour",
+                "az": "A-Z",
+                "stars": "Étoiles",
+                "label": "Trier par"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Chercher des plug-ins",
+                    "themes": "Chercher des thèmes"
+                }
+            },
+            "author": {
+                "all": "Tous",
+                "label": "Auteur"
+            },
+            "tabs": {
+                "imported": "Importés",
+                "store": "Boutique"
+            }
+        }
+    },
+    "badges": {
+        "guild": "Serveur Discord officiel de GooseMod",
+        "developer": "Développeur de GooseMod",
+        "sponsor": "Sponsor de GooseMod",
+        "translator": "Traducteur de GooseMod"
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Ce dépôt n'est pas connu ou n'est pas fiable (pas de vérification PGP), faites particulièrement attention. Assurez-vous de faire complètement confiance au(x) propriétaire(s) de ce dépôt.\n\nPour résoudre ce problème, demandez au gérant du dépôt d'ajouter le support PGP.\n\nVeuillez reconfirmer l'ajout du dépôt en cliquant sur OK.",
+            "main": "Les dépôts externes sont source de risques de sécurité car ils ne sont pas contrôlés par les développeurs de GooseMod. Nous ne sommes pas responsable d'aucun dangers encourus à cause de dépôts externes ajoutés par les utilisateurs.\n\nSi vous ne faites pas confiance au propriétaire de ce dépôt, ne l'utilisez pas, il risque de compromettre votre installation Discord.\n\nConfirmez l'ajout de ce dépôt en cliquant sur OK."
         }
     }
 }
