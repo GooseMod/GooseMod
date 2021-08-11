@@ -1,5 +1,7 @@
-### Based on commit b20399b, made 11/08 21:06 UTC
+### Based on commit 1ba6685, made 11/08 21:19 UTC
 ## Commits this release
+  - [i18n > Base] Imported -> Added
+  - [i18n] Use i18n values for Home header
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Settings > Main] Close settings on start tour
   - Translated using Weblate (Portuguese (Brazil))
