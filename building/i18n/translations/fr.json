@@ -149,7 +149,7 @@
         "add_repo": {
             "cancelled": {
                 "reasons": {
-                    "pgp": "Échec de vérification de la signature PGP",
+                    "pgp": "Échec de la vérification de la signature PGP",
                     "refused": "Refus à l'invite de sécurité"
                 },
                 "text": "Ajout du dépôt annulé"
