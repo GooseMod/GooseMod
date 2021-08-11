@@ -1,5 +1,6 @@
-### Based on commit e21631e, made 11/08 16:32 UTC
+### Based on commit a00bdd3, made 11/08 16:45 UTC
 ## Commits this release
+  - [i18n] Fix imported and store filtering for i18n
   - Deleted translation using Weblate (English (United Kingdom))
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [CI] build: add _headers
