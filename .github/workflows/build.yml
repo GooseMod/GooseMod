@@ -49,6 +49,7 @@ jobs:
         git checkout dist-dev --
         rm -rf *
         cp -rf ../dist/* .
+        echo -e "/*\n  Access-Control-Allow-Origin: *" > _headers
         git add --all
         git commit -m "[CI Chore] Update dist-dev"
         git push origin dist-dev
