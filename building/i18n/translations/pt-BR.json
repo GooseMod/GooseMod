@@ -188,7 +188,8 @@
         "settings": {
             "items": {
                 "tweaks": {
-                    "title": "Ajustes"
+                    "title": "Ajustes",
+                    "subtext": "Ajuste GooseMod do jeito que preferir"
                 },
                 "utilities": {
                     "subtext": "Faça backups, redefinir o GooseMod, e mais",
@@ -199,7 +200,11 @@
                     "title": "Funções Experimentais"
                 }
             },
-            "confirm": "Ver as Configurações do GooseMod"
+            "confirm": "Ver as Configurações do GooseMod",
+            "text": {
+                "subtext": "Há varias opções para você mudar",
+                "main": "Use as Configurações do GooseMod para customizar suas funções"
+            }
         },
         "community": {
             "text": {
@@ -221,6 +226,25 @@
                 }
             },
             "confirm": "Entre no Discord do GooseMod"
+        },
+        "themes": {
+            "text": {
+                "main": "Embeleze seu Discord com Temas"
+            },
+            "confirm": "Pesquise por Temas"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Plugins acrescentam sua experiência com melhorias no próprio aplicativo",
+                "main": "Amplifique o seu Discord de maneira superficial"
+            },
+            "confirm": "Pesquisar por Plugins"
+        },
+        "store": {
+            "text": {
+                "subtext": "o GooseMod usa a sua própria Loja, onde você pode facilmente os instalar",
+                "main": "Procure por Temas e Plugins na Loja"
+            }
         }
     }
 }
