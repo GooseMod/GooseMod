@@ -1,1 +1,73 @@
-{}
+{
+    "store": {
+        "options": {
+            "tabs": {
+                "store": "Negozio",
+                "imported": "Importato"
+            },
+            "author": {
+                "all": "Tutti",
+                "label": "Autore"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Cerca Plugin",
+                    "themes": "Cerca Temi"
+                }
+            },
+            "sort": {
+                "last_updated": "Ultimo Aggiornamento",
+                "az": "A-Z",
+                "stars": "Stelle",
+                "label": "Ordina per"
+            }
+        },
+        "pgp": {
+            "unknown": "PGP Non disponibile",
+            "untrusted": "PGP Non affidabile",
+            "verified": "Verificata con PGP"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Tutti i plugin",
+                "themes": "Tutti i temi"
+            },
+            "upcoming": "In crescita",
+            "recently_updated": "Aggiornati di recente",
+            "top_starred": "Più Stellato"
+        }
+    },
+    "terms": {
+        "store": {
+            "snippets": "Frammenti",
+            "store": "Negozio",
+            "developers": "Sviluppatori",
+            "repos": "Repo",
+            "modules": "Moduli",
+            "plugins": "Plugin",
+            "themes": "Temi"
+        },
+        "goosemod": {
+            "store": "Negozio GooseMod",
+            "modules": "Moduli GooseMod",
+            "settings": "Impostazioni GooseMod"
+        },
+        "changelog": "Registro dei cambiamenti",
+        "settings": "Impostazioni",
+        "refresh": "Aggiorna",
+        "remove": "Rimuovi",
+        "add": "Aggiungi"
+    },
+    "badges": {
+        "guild": "Discord Ufficiale GooseMod",
+        "developer": "Sviluppatore GooseMod",
+        "translator": "Traduttore GooseMod",
+        "sponsor": "Sponsor GooseMod"
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Questa repo non è conosciuta o ritenuta affidabile (non è stata verificato con PGP), per cui sii estremamente cauto. Assicurati di fidarti del proprietario / dei proprietari della repo completamente.\n\nPer risolvere questo problema chiedi ai mantenitori della repo di aggiungere il supporto per PGP.\n\nPer favore, conferma nuovamente di voler aggiungere questa repo premendo OK.",
+            "main": "Le repo esterne pongono a rischio gli utenti, poiché non controllate dagli sviluppatori di GooseMod. Non siamo responsabili di danni causati dall'aggiunta di repo esterne da parte degli utenti.\n\nSe non ti fidi del proprietario di questa repo non usarla, poiché potrebbe compromettere la tua installazione di Discord.\n\nPer favore conferma l'aggiunta di questa repo premendo OK."
+        }
+    }
+}
