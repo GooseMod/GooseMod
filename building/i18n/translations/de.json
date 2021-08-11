@@ -1,5 +1,64 @@
 {
     "terms": {
-        "add": "Hinzufügen"
+        "add": "Hinzufügen",
+        "store": {
+            "developers": "Entwickler",
+            "modules": "Module"
+        },
+        "changelog": "Änderungsprotokoll",
+        "settings": "Einstellungen",
+        "refresh": "Aktualisieren",
+        "goosemod": {
+            "modules": "GooseMod Module",
+            "settings": "GooseMod Einstellungen",
+            "store": "GooseMod Store"
+        }
+    },
+    "store": {
+        "options": {
+            "sort": {
+                "stars": "Sternen",
+                "last_updated": "Zuletzt aktualisiert",
+                "label": "Sortieren nach"
+            },
+            "author": {
+                "all": "Alles",
+                "label": "Autor"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Durchsuche Plugins",
+                    "themes": "Durchsuche Themes"
+                }
+            },
+            "tabs": {
+                "imported": "Importiert"
+            }
+        },
+        "categories": {
+            "top_starred": "Am meisten Sterne",
+            "all": {
+                "plugins": "Alle Plugins",
+                "themes": "Alle Themes"
+            },
+            "upcoming": "Anstehende",
+            "recently_updated": "Zuletzt aktualisiert"
+        },
+        "pgp": {
+            "untrusted": "Nicht PGP vertrauenswürdig",
+            "unknown": "Kein PGP",
+            "verified": "PGP verifiziert"
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Dieses Repo ist nicht bekannt oder vertrauenswürdig (keine PGP-Verifizierung), bitte sei besonders vorsichtig. Stelle sicher, dass du dem/den Eigentümer(n) dieses Repos vollständig vertraust.\n\nUm dieses Problem zu lösen, bitte den Repo-Maintainer, PGP-Unterstützung hinzuzufügen.\n\nBitte bestätige das Hinzufügen dieses Repos durch Drücken von OK.",
+            "main": "Externe Repos weißen Sicherheitsprobleme auf da sie nicht von den GooseMod Entwicklern kontrolliert werden. Wir sind nicht verantwortlich für irgendwelche Gefahren durch externe Repos die von Nutzern hinzugefügt wurden.\n\nWenn du dem Besitzer dieses Repos nicht vertraust, verwenden es nicht, da es deine Discord-Installation gefährden könnte.\n\nBitte bestätige das Hinzufügen dieses Repos durch Drücken von OK."
+        }
+    },
+    "badges": {
+        "guild": "GooseMod offizieller Discord",
+        "developer": "GooseMod Entwickler",
+        "translator": "GooseMod Übersetzer"
     }
 }
