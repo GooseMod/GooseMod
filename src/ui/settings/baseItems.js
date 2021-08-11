@@ -440,7 +440,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
     let importedVal = document.querySelector('.selected-3s45Ha').textContent;
-    if (importedVal !== 'Store' && importedVal !== 'Imported') importedVal = 'Store';
+    if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = 'Store';
 
     for (let c of cards) {
       const titles = c.getElementsByClassName('title-31JmR4');
@@ -454,7 +454,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? 'Imported' : 'Store';
+      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? '#store.options.tabs.imported#' : '#store.options.tabs.store#';
 
       // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -481,7 +481,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
       }
 
       c.style.display = matches
-        && (importedVal === 'Store' || importedVal === importedSelector)
+        && (importedVal === '#store.options.tabs.store#' || importedVal === importedSelector)
         && (authorVal === 'All' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
     }
