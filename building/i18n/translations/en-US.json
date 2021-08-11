@@ -83,7 +83,21 @@
   },
 
   "toasts": {
+    "add_repo": {
+      "invalid_repo": {
+        "text": "Invalid Repo",
+        "subtext": "Invalid Format"
+      },
 
+      "cancelled": {
+        "text": "Cancelled Adding Repo",
+
+        "reasons": {
+          "refused": "Refused Security Prompt",
+          "pgp": "PGP Untrusted Failure"
+        }
+      }
+    }
   },
 
   "settings": {
