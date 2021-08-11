@@ -1,1 +1,7 @@
-{}
+{
+    "terms": {
+        "goosemod": {
+            "settings": "Paramètres de GooseMod"
+        }
+    }
+}
