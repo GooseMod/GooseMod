@@ -61,7 +61,7 @@
     "modals": {
         "external_repo_security": {
             "bad_pgp": "Dieses Repo ist nicht bekannt oder vertrauenswürdig (keine PGP-Verifizierung), bitte sei besonders vorsichtig. Stelle sicher, dass du dem/den Eigentümer(n) dieses Repos vollständig vertraust.\n\nUm dieses Problem zu lösen, bitte den Repo-Maintainer, PGP-Unterstützung hinzuzufügen.\n\nBitte bestätige das Hinzufügen dieses Repos durch Drücken von OK.",
-            "main": "Externe Repos weißen Sicherheitsprobleme auf da sie nicht von den GooseMod Entwicklern kontrolliert werden. Wir sind nicht verantwortlich für irgendwelche Gefahren durch externe Repos die von Nutzern hinzugefügt wurden.\n\nWenn du dem Besitzer dieses Repos nicht vertraust, verwenden es nicht, da es deine Discord-Installation gefährden könnte.\n\nBitte bestätige das Hinzufügen dieses Repos durch Drücken von OK."
+            "main": "Externe Repos weißen Sicherheitsprobleme auf weil sie nicht von den GooseMod Entwicklern kontrolliert werden. Wir sind nicht verantwortlich für irgendwelche Gefahren durch externe Repos die von Nutzern hinzugefügt wurden.\n\nWenn du dem Besitzer dieses Repos nicht vertraust, verwenden es nicht, da es deine Discord-Installation gefährden könnte.\n\nBitte bestätige das Hinzufügen dieses Repos durch Drücken von OK."
         }
     },
     "badges": {
