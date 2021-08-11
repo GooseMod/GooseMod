@@ -176,6 +176,8 @@ export default (goosemodScope, gmSettings, Items) => {
       buttonText: '#settings.items.start_tour.button#',
 
       onclick: async () => {
+        document.querySelector('.closeButton-1tv5uR').click(); // Close settings
+
         goosemodScope.ootb.start();
       }
     },
