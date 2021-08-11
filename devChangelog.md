@@ -1,5 +1,7 @@
-### Based on commit 28fe93a, made 11/08 16:15 UTC
+### Based on commit fdd1256, made 11/08 16:26 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [CI] build: add _headers
   - Translated using Weblate (Thai)
   - Translated using Weblate (Portuguese (Brazil))
   - Translated using Weblate (Dutch)
