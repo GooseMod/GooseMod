@@ -1,5 +1,6 @@
-### Based on commit a00bdd3, made 11/08 16:45 UTC
+### Based on commit eea4eb9, made 11/08 16:47 UTC
 ## Commits this release
+  - Revert "[i18n] Remove blank translations"
   - [i18n] Fix imported and store filtering for i18n
   - Deleted translation using Weblate (English (United Kingdom))
   - Merge branch 'master' of github.com:GooseMod/GooseMod
