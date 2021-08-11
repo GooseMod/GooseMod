@@ -1,5 +1,8 @@
-### Based on commit a707763, made 11/08 20:21 UTC
+### Based on commit 8df3ca0, made 11/08 20:25 UTC
 ## Commits this release
+  - Translated using Weblate (Portuguese (Brazil))
+  - Translated using Weblate (Polish)
+  - Translated using Weblate (Dutch)
   - Translated using Weblate (Polish)
   - Translated using Weblate (Dutch)
   - Translated using Weblate (French)
