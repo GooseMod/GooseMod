@@ -256,7 +256,7 @@ export default async () => {
 
                 const confirmExternal = confirm('#modals.external_repo_security.main#');
                 if (!confirmExternal) {
-                  goosemod.showToast(`#toasts.add_repo.cancelled.text#`, { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.refused#' });
+                  goosemod.showToast('#toasts.add_repo.cancelled.text#', { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.refused#' });
 
                   return;
                 }
@@ -270,13 +270,13 @@ export default async () => {
                 const pgpResult = await goosemod.moduleStoreAPI.verifyPgp(repo, false);
 
                 if (pgpResult.trustState === 'untrusted') { // Refuse untrusted (PGP fail)
-                  goosemod.showToast(`#toasts.add_repo.cancelled.text#`, { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.pgp#' });
+                  goosemod.showToast('#toasts.add_repo.cancelled.text#', { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.pgp#' });
 
                   return;
                 }
 
                 if (pgpResult.trustState !== 'trusted' && !confirm(`#modals.external_repo_security.bad_pgp#`)) { // Warn again with no PGP
-                  goosemod.showToast(`#toasts.add_repo.cancelled.text#`, { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.refused#' });
+                  goosemod.showToast('#toasts.add_repo.cancelled.text#', { type: 'danger', timeout: 5000, subtext: '#toasts.add_repo.cancelled.reasons.refused#' });
 
                   return;
                 }
