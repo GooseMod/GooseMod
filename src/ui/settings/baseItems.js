@@ -486,7 +486,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
         ? 'block' : 'none';
     }
 
-    const noInput = searchQuery === '' && importedVal === 'Store' && authorVal === 'All';
+    const noInput = searchQuery === '' && importedVal === '#store.options.tabs.store#' && authorVal === '#store.options.author.all#';
 
     [...document.getElementsByClassName('gm-store-category')].forEach((x) => x.style.display = noInput ? 'block' : 'none');
 
