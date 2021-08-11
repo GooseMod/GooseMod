@@ -148,5 +148,20 @@
                 "experimental_warning": "Experimentelle Einstellungen sind wahrscheinlich unvollständig und instabil, was zu einer geringeren Erfahrung führen kann"
             }
         }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP Untrusted Fehler",
+                    "refused": "Verweigerte Sicherheitsabfrage"
+                },
+                "text": "Hinzufügen des Repos abgebrochen"
+            },
+            "invalid_repo": {
+                "subtext": "Ungültiges Format",
+                "text": "Ungültiges Repo"
+            }
+        }
     }
 }
