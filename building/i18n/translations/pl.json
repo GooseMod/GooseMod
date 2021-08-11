@@ -1,1 +1,73 @@
-{}
+{
+    "badges": {
+        "translator": "Tłumacz GooseMod",
+        "guild": "Oficjalny Discord GooseMod",
+        "developer": "Developer GooseMod",
+        "sponsor": "Sponsor GooseMod"
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Nieoficjalne repozytoria mogą wdrożyć zagrożenia ponieważ nie są kontrolowane przez deweloperów GooseMod. Nie jesteśmy odpowiedzialni za żadne niebezpieczeństwa ponieważ oddzielne repozytoria są dodawane przez użytkowników.\n\nJeśli nie ufasz właścicielowi tego repozytorium nie używaj go ponieważ może zagrozić twojej instalacji Discorda.\n\nNaciśnij OK aby potwierdzić dodawanie repozytorium.",
+            "bad_pgp": "To repozytorium nie jest znane albo zaufane (brak weryfikacji PGP), proszę być ostrożnym na zapas. Miej pewność że ufasz właścicielowi tego repozytorium.\n\nAby rozwiązać problem poproś właściciela repozytorium aby dodał wsparcie PGP. \n\nNaciśnij OK jeśli chcesz dodać to repozytorium."
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Bez PGP",
+            "untrusted": "Niezweryfikowane PGP",
+            "verified": "Zweryfikowane PGP"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Wszystkie pluginy",
+                "themes": "Wszystkie motywy"
+            },
+            "upcoming": "Nadchodzące",
+            "recently_updated": "Ostatnio zaktualizowane",
+            "top_starred": "Najwyżej oceniane"
+        },
+        "options": {
+            "author": {
+                "all": "Wszystko",
+                "label": "Autor"
+            },
+            "sort": {
+                "last_updated": "Ostatnio zaktualizowane",
+                "az": "A-Z",
+                "stars": "Gwiazdki",
+                "label": "Sortuj przez"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Wyszukaj pluginy",
+                    "themes": "Wyszukaj motywy"
+                }
+            },
+            "tabs": {
+                "imported": "Zaimportowane",
+                "store": "Sklep"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Deweloperzy",
+            "repos": "Repozytoria",
+            "modules": "Moduły",
+            "snippets": "Urywki",
+            "plugins": "Pluginy",
+            "themes": "Motywy",
+            "store": "Sklep"
+        },
+        "changelog": "Lista zmian",
+        "settings": "Ustawienia",
+        "refresh": "Odśwież",
+        "remove": "Usuń",
+        "add": "Dodaj",
+        "goosemod": {
+            "modules": "Moduły GooseMod",
+            "settings": "Ustawienia GooseMod",
+            "store": "Sklep GooseMod"
+        }
+    }
+}
