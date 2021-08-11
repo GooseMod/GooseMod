@@ -13,14 +13,14 @@
     },
     "store": {
         "pgp": {
-            "unknown": "Sem assinatura PGP",
+            "unknown": "Assinatura PGP Não Apresentada",
             "untrusted": "Assinatura PGP Não Confiável",
             "verified": "Assinatura PGP Verificada"
         },
         "categories": {
             "all": {
-                "plugins": "Todos Plugins",
-                "themes": "Todos Temas"
+                "plugins": "Todos os Plugins",
+                "themes": "Todos os Temas"
             },
             "upcoming": "Lançamento",
             "recently_updated": "Atualizado Recentemente",
