@@ -299,7 +299,7 @@ export default async (goosemodScope) => {
           !x.content.includes('Theme Toggler')
         ).sort((a, b) => (b.attachments.length + b.embeds.length) - (a.attachments.length + a.embeds.length)); // Bias to favour images so we can have previews first
   
-      const settingItem = goosemodScope.settings.items.find((x) => x[1] === 'Snippets');
+      const settingItem = goosemodScope.settings.items.find((x) => x[1] === '#terms.store.snippets#');
   
       settingItem[2].push(
         {
