@@ -526,12 +526,12 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     {
       type: 'dropdown-individual',
 
-      label: 'Sort by',
+      label: '#store.options.sort.label#',
 
       options: [
-        'Stars',
-        'A-Z',
-        'Last Updated'
+        '#store.options.sort.stars#',
+        '#store.options.sort.az#',
+        '#store.options.sort.last_updated#'
       ],
 
       onchange: (val) => {
@@ -544,7 +544,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     {
       type: 'dropdown-individual',
 
-      label: 'Author',
+      label: '#store.options.author.label#',
 
       options: () => {
         const idCache = goosemodScope.moduleStoreAPI.idCache.getCache();
@@ -577,7 +577,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
           return acc;
         }, new Map()).entries()].sort((a, b) => b[1] - a[1]).map((x) => `${x[0]} (${x[1]})`);
 
-        authors.unshift('All');
+        authors.unshift('#store.options.author.all#');
         
         return authors;
       },
@@ -591,25 +591,25 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
     {
       type: 'store-category',
-      text: 'Top Starred',
+      text: '#store.categories.top_starred#',
       sort: (a, b) => b.github.stars - a.github.stars
     },
 
     {
       type: 'store-category',
-      text: 'Recently Updated',
+      text: '#store.categories.recently_updated#',
       sort: (a, b) => b.lastUpdated - a.lastUpdated
     },
 
     {
       type: 'store-category',
-      text: 'Upcoming',
+      text: '#store.categories.upcoming#',
       sort: (a, b) => upcomingVal(b) - upcomingVal(a)
     },
 
     {
       type: 'store-header',
-      text: `All ${x}`
+      text: i === 0 ? '#store.categories.all.plugins#' : '#store.categories.all.themes#'
     },
 
     { type: 'gm-footer' }
