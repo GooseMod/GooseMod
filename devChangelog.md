@@ -1,5 +1,6 @@
-### Based on commit f097322, made 11/08 17:38 UTC
+### Based on commit 29761ec, made 11/08 18:22 UTC
 ## Commits this release
+  - [i18n] Settings items
   - [i18n] Fix Store filtering and sorting further
   - [i18n] Fix more Store filtering and sorting
   - [i18n] Fix Store sorting
