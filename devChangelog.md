@@ -1,5 +1,6 @@
-### Based on commit d028d67, made 12/08 09:43 UTC
+### Based on commit 9a8c430, made 12/08 10:43 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [i18n] Fix broken OOTB substiution
   - [CI i18n] Update translations from Weblate
   - [i18n > Base] Imported -> Added
