@@ -304,7 +304,7 @@ export default {
           }
 
           if (m.dependencies && m.dependencies.length > 0) { // If it's the initial (on import) import that means it has been imported before
-            const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';
+            /* const mainWord = m.dependencies.length === 1 ? 'dependency' : 'dependencies';
 
             const toContinue = await goosemod.confirmDialog('Continue',
               `${m.name} has ${m.dependencies.length === 1 ? 'a ' : ''}${mainWord}`,
@@ -314,7 +314,7 @@ To continue importing this module the dependencies need to be imported.`,
               undefined,
               'brand');
 
-            if (!toContinue) return;
+            if (!toContinue) return; */
 
             for (const d of m.dependencies) {
               await goosemodScope.moduleStoreAPI.importModule(d);
