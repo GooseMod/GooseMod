@@ -2,12 +2,12 @@
     "badges": {
         "translator": "Tłumacz GooseMod",
         "guild": "Oficjalny Discord GooseMod",
-        "developer": "Deweloper GooseMod",
+        "developer": "Programista GooseMod",
         "sponsor": "Sponsor GooseMod"
     },
     "modals": {
         "external_repo_security": {
-            "main": "Nieoficjalne repozytoria mogą wdrożyć zagrożenia ponieważ nie są kontrolowane przez deweloperów GooseMod. Nie jesteśmy odpowiedzialni za niebezpieczeństwa gdyż oddzielne repozytoria są dodawane przez użytkowników.\n\nJeśli nie ufasz właścicielowi tego repozytorium nie używaj go ponieważ może zagrozić twojej instalacji Discorda.\n\nNaciśnij OK aby potwierdzić dodawanie repozytorium.",
+            "main": "Nieoficjalne repozytoria mogą wdrożyć zagrożenia ponieważ nie są kontrolowane przez programistów GooseMod. Nie jesteśmy odpowiedzialni za niebezpieczeństwa gdyż oddzielne repozytoria są dodawane przez użytkowników.\n\nJeśli nie ufasz właścicielowi tego repozytorium nie używaj go ponieważ może zagrozić twojej instalacji Discorda.\n\nNaciśnij OK aby potwierdzić dodawanie repozytorium.",
             "bad_pgp": "To repozytorium nie jest znane albo zaufane (brak weryfikacji PGP), proszę być ostrożnym na zapas. Miej pewność że ufasz właścicielowi tego repozytorium.\n\nAby rozwiązać problem poproś właściciela repozytorium aby dodał wsparcie PGP. \n\nNaciśnij OK jeśli chcesz dodać to repozytorium."
         }
     },
@@ -51,7 +51,7 @@
     },
     "terms": {
         "store": {
-            "developers": "Deweloperzy",
+            "developers": "Programiści",
             "repos": "Repozytoria",
             "modules": "Moduły",
             "snippets": "Urywki",
@@ -80,18 +80,18 @@
                 "utilities": "Przydatne narzędzia"
             },
             "purge_caches": {
-                "note": "Czyść większość pamięci podręcznej którą używa GooseMod",
+                "note": "Czyści większość pamięci podręcznej którą używa GooseMod",
                 "title": "Wyczyść pamięć podręczna",
                 "button": "Wyczyść"
             },
             "reset_goosemod": {
-                "note": "Całkowicie resetuje GooseMod-a: usuwa wszystkie preferencje, moduły; Resetuje do stanu początkowego",
+                "note": "Całkowicie resetuje GooseMod'a: usuwa wszystkie preferencje, moduły; Resetuje do stanu początkowego",
                 "button": "Resetuj",
                 "title": "Zresetuj GooseMod"
             },
             "force_theme_settings": {
-                "note": "Wymuś automatycznie wygenerowane ustawienia dla wszystkich motywów",
-                "title": "Wymuszaj ustawienia motywów"
+                "note": "Wymusza automatycznie wygenerowane ustawienia dla wszystkich motywów",
+                "title": "Wymuś ustawienia motywów"
             },
             "snippets": {
                 "note": "Aktywuje zakładkę \"Urywki\" w sklepie",
@@ -103,27 +103,27 @@
             },
             "development_channel": {
                 "note": "Użyj eksperymentalnej wersji GooseMod",
-                "title": "Kanał deweloperski"
+                "title": "Kanał eksperymentalny"
             },
             "restore_backup": {
                 "button": "Przywróć",
-                "note": "Przywróć swoją instalacja GooseMod poprzez kopię zapasową, **przywracaj tylko kopię którym ufasz**",
+                "note": "Przywróć swoją instalacje GooseMod poprzez kopię zapasową, **przywracaj tylko kopie którym ufasz**",
                 "title": "Przywróć kopię zapasową"
             },
             "create_backup": {
-                "button": "Zapisz kopię zapasową",
-                "note": "Tworzy kopię zapasową w formie pliku dla wszystkich pluginów oraz ustawień",
+                "button": "Stwórz kopię zapasową",
+                "note": "Tworzy kopię zapasową w formie pliku dla wszystkich modułów oraz ustawień",
                 "title": "Stwórz kopie zapasową"
             },
             "copy_debug_info": {
                 "button": "Kopiuj",
-                "note": "Kopiuje informacje na temat obecnej instalacji GooseMod, użyteczne do zgłaszania i debugowania",
+                "note": "Kopiuje informacje na temat obecnej instalacji GooseMod, użyteczne do zgłaszania błędów i debugowania",
                 "title": "Skopiuj informacje do debugowania"
             },
             "start_tour": {
-                "button": "Wycieczka",
-                "note": "Przejdź wycieczkę przez GooseMod która pojawia się na pierwszym starcie",
-                "title": "Zacznij wycieczkę"
+                "button": "Poradnik",
+                "note": "Uruchom poradnik która pojawia się na pierwszym starcie",
+                "title": "Zacznij poradnik"
             },
             "goosemod_badges": {
                 "note": "Pokazuj odznaki GooseMod",
@@ -131,7 +131,7 @@
             },
             "auto_update": {
                 "note": "Automatycznie aktualizuj repozytoria i pluginy co każdą godzinę",
-                "title": "Auto-aktualizacja"
+                "title": "Automatyczna aktualizacja"
             },
             "store_in_home": {
                 "note": "Opcje sklepu GooseMod na stronie głównej zamiast ustawień",
@@ -142,7 +142,7 @@
                 "title": "Główne seperatory"
             },
             "goosemod_change_log": {
-                "note": "Pokaż ustawienie \"Lista zmian\" GooseMod-a",
+                "note": "Pokaż ustawienie \"Lista zmian\" GooseMod'a",
                 "title": "Lista zmian GooseMod"
             },
             "subtexts": {
@@ -155,7 +155,7 @@
             "cancelled": {
                 "reasons": {
                     "pgp": "Błąd Niezaufany PGP",
-                    "refused": "Odmowa monitu bezpieczeństwa"
+                    "refused": "Odmówiono potwierdzenie bezpieczeństwa"
                 },
                 "text": "Anulowano dodawanie repozytorium"
             },
@@ -181,8 +181,8 @@
             "cancel": "Nie jestem zainteresowany/ana",
             "confirm": "Dowiedz się więcej",
             "text": {
-                "subtext": "Przejdź krótka wycieczkę aby poznać podstawowe funkcje GooseMod-a",
-                "main": "Poznaj GooseMod-a"
+                "subtext": "Przejdź krótki poradnik aby poznać podstawowe funkcje GooseMod'a",
+                "main": "Poznaj GooseMod'a"
             }
         },
         "store": {
@@ -201,7 +201,7 @@
         },
         "plugins": {
             "text": {
-                "subtext": "Pluginy ulepszają twoje wrazenia poprzez ulepszania w aplikacji",
+                "subtext": "Pluginy ulepszają twoje wrażenia poprzez ulepszania w aplikacji",
                 "main": "Ulepsz swojego Discorda pod maską"
             },
             "confirm": "Przeglądaj Pluginy"
@@ -209,15 +209,15 @@
         "settings": {
             "text": {
                 "subtext": "Jest wiele opcji które możesz zmienić",
-                "main": "Używaj ustawień GooseMod-a aby spersonalizować jego funkcje"
+                "main": "Używaj ustawień GooseMod'a aby spersonalizować jego funkcje"
             },
             "items": {
                 "tweaks": {
-                    "subtext": "Dopasuj GooseMod-a do swoich upodobań",
+                    "subtext": "Dopasuj GooseMod'a do swoich upodobań",
                     "title": "Poprawki/ulepszenia"
                 },
                 "utilities": {
-                    "subtext": "Rób kopie zapasowe, resetuj GooseMod-a i więcej",
+                    "subtext": "Rób kopie zapasowe, resetuj GooseMod'a i więcej",
                     "title": "Przydatne narzędzia"
                 },
                 "experimental_features": {
@@ -238,12 +238,12 @@
                     "title": "Zaangażuj się"
                 },
                 "news": {
-                    "subtext": "Otrzymaj najnowsze wiadomości i ogłoszenia na temat GooseMod-a",
+                    "subtext": "Otrzymaj najnowsze wiadomości i ogłoszenia na temat GooseMod'a",
                     "title": "Wiadomości"
                 },
                 "ask_questions": {
-                    "subtext": "Zadaj pytania i otrzymaj wsparcie techniczne",
-                    "title": "Zadaj pytania"
+                    "subtext": "Zadawaj pytania i otrzymuj wsparcie techniczne",
+                    "title": "Zadawaj pytania"
                 }
             },
             "confirm": "Dołącz do Discorda GooseMod"

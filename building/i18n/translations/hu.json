@@ -153,7 +153,7 @@
     "ootb": {
         "themes": {
             "text": {
-                "subtext": "Válassz több mint 100 téma közül, hogy finomítsd és fejleszd a felhasználási területed",
+                "subtext": "Válassz több mint 100 téma közül, hogy szebbé tedd a Discord-ot",
                 "main": "Tedd gyönyörűvé a Discordot Témákkal"
             },
             "confirm": "Keress Témákat"
@@ -167,7 +167,7 @@
         },
         "store": {
             "text": {
-                "subtext": "A GooseMod a saját áruházát használja, ahol könnyen nézelődhetsz és letölthetsz bármit",
+                "subtext": "A GooseMod a saját áruházát használja, ahol könnyen megtalálhatsz bármit",
                 "main": "Keresgélj témákat és bővítményeket az Áruházban"
             },
             "confirm": "Az Áruház megnyitása a Főoldalról"
@@ -175,7 +175,7 @@
         "settings": {
             "text": {
                 "subtext": "Rengeteg beállítás van, amit kedvedre változtathatsz",
-                "main": "Használd a GooseMod Beállításokat, hogy testre szabd a GooseMod-ot"
+                "main": "Itt testre szabhatod a GooseMod-ot"
             },
             "items": {
                 "tweaks": {
@@ -204,7 +204,7 @@
                     "title": "Vegyél részt"
                 },
                 "news": {
-                    "subtext": "Olvasd el a legújabb híreket a GooseMod-ról, és egyéb kapcsolódó projektekről",
+                    "subtext": "Olvasd el a legújabb híreket a GooseMod-ról, és egyéb projektekről",
                     "title": "Hírek/Újdonságok"
                 },
                 "ask_questions": {
@@ -221,7 +221,7 @@
             },
             "items": {
                 "community": {
-                    "subtext": "Csatlakozz a Discord szerverünkhöz, ha van kérdésed, értékelni akarsz, hallani akarod a legfrissebb híreket, és sok mást"
+                    "subtext": "Csatlakozz a Discord szerverünkhöz, ha hallani szeretnél az újdonságokról"
                 },
                 "settings": {
                     "subtext": "Tudj meg többet a GooseMod és a bővítmények beállításairól"
@@ -231,7 +231,7 @@
                 }
             },
             "cancel": "Nem érdekel",
-            "confirm": "Nézz utána"
+            "confirm": "Kezdjük"
         }
     },
     "toasts": {

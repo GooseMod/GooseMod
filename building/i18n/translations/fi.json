@@ -1,1 +1,43 @@
-{}
+{
+    "settings": {
+        "items": {
+            "auto_update": {
+                "title": "Automaattiset päivitykset"
+            },
+            "store_in_home": {
+                "title": "Kauppa kotisivulla"
+            },
+            "goosemod_change_log": {
+                "note": "Näytä GooseMod \"Muutosloki\" -asetus",
+                "title": "GooseMod Muutosloki"
+            },
+            "subtexts": {
+                "experimental_warning": "Kokeelliset asetukset ovat todennäköisestä keskeneräisiä ja epävakaita, joka vai haitata käyttökokemusta"
+            },
+            "headers": {
+                "experimental": "Kokeellinen",
+                "backup": "Varmuuskopiointi",
+                "utilities": "Apuvälineet",
+                "appearance": "Ulkonäkö"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP-virhe"
+                }
+            },
+            "invalid_repo": {
+                "subtext": "Virheellinen muotoilu"
+            }
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Ei PGP: tä",
+            "untrusted": "PGP:hen ei luoteta"
+        }
+    }
+}
