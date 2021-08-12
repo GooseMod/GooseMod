@@ -18,7 +18,8 @@
         "settings": "การตั้งค่า",
         "refresh": "โหลดใหม่",
         "remove": "ลบ",
-        "add": "เพิ่ม"
+        "add": "เพิ่ม",
+        "community": "ชุมชน"
     },
     "badges": {
         "guild": "ดิสคอร์ดหลักของ GooseMod",
@@ -65,8 +66,19 @@
                 }
             },
             "tabs": {
-                "imported": "นำเข้า",
+                "imported": "ถูกนำเข้า",
                 "store": "ร้านค้า"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "text": "การนำเข้าที่จัดเก็บถูกยกเลิก"
+            },
+            "invalid_repo": {
+                "subtext": "รูบแบบไม่ถูกต้อง",
+                "text": "ที่จัดเก็บไม่ถูกต้อง"
             }
         }
     }
