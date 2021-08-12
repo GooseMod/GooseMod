@@ -27,17 +27,79 @@
             "cancelled": {
                 "reasons": {
                     "pgp": "PGP-virhe"
-                }
+                },
+                "text": "Repositorion lisääminen peruttiin"
             },
             "invalid_repo": {
-                "subtext": "Virheellinen muotoilu"
+                "subtext": "Virheellinen muotoilu",
+                "text": "Viallinen repositorio"
             }
         }
     },
     "store": {
         "pgp": {
             "unknown": "Ei PGP: tä",
-            "untrusted": "PGP:hen ei luoteta"
+            "untrusted": "PGP:hen ei luoteta",
+            "verified": "PGP-varmennettu"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Kaikki lisäosat",
+                "themes": "Kaikki teemat"
+            },
+            "upcoming": "Tulevat",
+            "recently_updated": "Hiljattain päivitetty",
+            "top_starred": "Suosituimmat"
+        },
+        "options": {
+            "author": {
+                "all": "Kaikki",
+                "label": "Tekijä"
+            },
+            "sort": {
+                "last_updated": "Viimeksi päivitetty",
+                "az": "A-Z",
+                "stars": "Tähdet",
+                "label": "Lajitteluperuste"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Hae laajennuksia",
+                    "themes": "Hae teemoja"
+                }
+            },
+            "tabs": {
+                "imported": "Tuodut",
+                "store": "Kauppa"
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Tämä repositorio ei ole tunnettu tai luotettu (ei PGP-varmennetta), ole erityisen varovainen. Varmista, että luotat täysin tämän repositorion omistajaan (omistajiin).\n\nTämän ongelman ratkaisemiseksi pyydä repositorion ylläpitäjää lisäämään PGP-tuki.\n\nVahvista uudelleen tämän repositorion lisääminen painamalla OK.",
+            "main": "Ulkoiset repositoriot voivat aiheuttaa turvallisuusriskejä, koska GooseModin kehittäjät eivät hallitse niit. Emme ole vastuussa mistään vaaroista, jotka johtuvat käyttäjien lisäämistä ulkoisista repositoiroista.\n\nJos et luota repositorion omistajaan älä käytä sitä, koska se voisi vaarantaa Discord-asennuksesi.\n\nVarmista repositorion lisääminen painamalla OK."
+        }
+    },
+    "terms": {
+        "store": {
+            "repos": "Repositoriot",
+            "developers": "Kehittäjät",
+            "modules": "Moduulit",
+            "snippets": "Snippets",
+            "plugins": "Laajennukset",
+            "themes": "Teemat",
+            "store": "Kauppa"
+        },
+        "community": "Yhteisö",
+        "changelog": "Muutosloki",
+        "settings": "Asetukset",
+        "refresh": "Lataa uudelleen",
+        "remove": "Poista",
+        "add": "Lisää",
+        "goosemod": {
+            "modules": "GooseMod Moduulit",
+            "settings": "GooseMod Asetukset",
+            "store": "GooseMod Kauppa"
         }
     }
 }
