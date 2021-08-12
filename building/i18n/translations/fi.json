@@ -71,6 +71,10 @@
             "goosemod_badges": {
                 "note": "Näyttää GooseMod merkit",
                 "title": "GooseMod Merkit"
+            },
+            "main_separators": {
+                "note": "näytä erottimet asetuksien välissä GooseModin asetuksissa",
+                "title": "Erottimet asetuksissa"
             }
         }
     },
@@ -138,7 +142,7 @@
             "repos": "Repositoriot",
             "developers": "Kehittäjät",
             "modules": "Moduulit",
-            "snippets": "Snippets",
+            "snippets": "Koodipätkät",
             "plugins": "Laajennukset",
             "themes": "Teemat",
             "store": "Kauppa"
@@ -159,7 +163,8 @@
         "community": {
             "items": {
                 "get_involved": {
-                    "title": "Osallistu"
+                    "title": "Osallistu",
+                    "subtext": "Auta ehdotuksilla, muiden tukemisella ja muuten"
                 },
                 "news": {
                     "subtext": "Saa viimeisimmät uutiset ja ilmoitukset GooseModista ja siihen liittyvistä projekteista",
@@ -170,7 +175,11 @@
                     "title": "Kysy kysymyksiä"
                 }
             },
-            "confirm": "Liity GooseMod Discordiin"
+            "confirm": "Liity GooseMod Discordiin",
+            "text": {
+                "subtext": "Liity Discordiin saadaksesi lisätietoja paljon muuta",
+                "main": "Liity GooseModin yhteisöön"
+            }
         },
         "start": {
             "text": {
@@ -190,6 +199,54 @@
             },
             "cancel": "En ole kiinnostunut",
             "confirm": "Lue lisää"
+        },
+        "themes": {
+            "text": {
+                "subtext": "Valitse yli 100 teeman joukosta, joilla voit muokata ja parantaa käyttöliittymääsi",
+                "main": "Kaunista Discordia teemoilla"
+            },
+            "confirm": "Selaa teemoja"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Laajennukset parantavat käyttökokemustasi itse sovelluksen parannuksilla",
+                "main": "Paranna Discordin ominaisuuksia"
+            },
+            "confirm": "Selaa laajennuksia"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod käyttää omaa Kauppaa, jossa voit helposti tutustua teemoihin ja laajennuksiin ja asentaa niitä",
+                "main": "Selaa teemoja ja laajennuksia kaupassa"
+            },
+            "confirm": "Näytä Kauppa kotisivulla"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Voit muuttaa useita asetuksia",
+                "main": "Käytä GooseModin Asetuksia sen ominaisuuksien mukauttamiseen"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Muokkaa GooseMod haluamaksesi",
+                    "title": "Säädöt"
+                },
+                "utilities": {
+                    "subtext": "Tee varmuuskopioita, nollaa GooseMod ja paljon muuta",
+                    "title": "Apuvälineet"
+                },
+                "experimental_features": {
+                    "subtext": "Kokeile uusia kokeellisia ominaisuuksia",
+                    "title": "Kokeelliset ominaisuudet"
+                }
+            },
+            "confirm": "Näytä GooseModin asetukset"
         }
+    },
+    "badges": {
+        "guild": "GooseModin virallinen Discord",
+        "developer": "GooseMod kehittäjä",
+        "translator": "GooseMod Kääntäjä",
+        "sponsor": "GooseMod Sponsori"
     }
 }
