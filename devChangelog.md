@@ -1,5 +1,6 @@
-### Based on commit 299747d, made 11/08 23:34 UTC
+### Based on commit d028d67, made 12/08 09:43 UTC
 ## Commits this release
+  - [i18n] Fix broken OOTB substiution
   - [CI i18n] Update translations from Weblate
   - [i18n > Base] Imported -> Added
   - [i18n] Use i18n values for Home header
