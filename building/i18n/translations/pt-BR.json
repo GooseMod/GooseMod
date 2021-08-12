@@ -8,7 +8,7 @@
     "modals": {
         "external_repo_security": {
             "bad_pgp": "Esse repositório não é conhecido e nem confiável (sem assinatura PGP), por favor seja mais cuidadoso ainda. Tenha certeza que você confia no dono desse repositório.\n\nPara resolver esse problema, peça ao dono do repositório para que adicione suporte a assinatura PGP.\n\nPor favor reconfirme a sua decisão de adicionar esse repositório clicando no OK.",
-            "main": "Repositórios externos podem causar problemas de segurança, pois não são controlados por desenvolvedores do GooseMod. Nós não somos responsáveis por qualquer problema causados por repositórios adicionados por usuários.\n\nSe você não confia no dono desse repositório, não o use, pois o mesmo poderá comprometer sua instancia do Discord.\n\nPor favor, confirme a sua decisão de adicionar esse repositório clicando no OK."
+            "main": "Repositórios externos podem comprometer sua segurança, pois não são controlados por desenvolvedores do GooseMod. Nós não somos responsáveis por quaisquer problemas causados por repositórios adicionados por usuários.\n\nSe você não confia no dono desse repositório, não o use, pois o mesmo poderá comprometer sua instancia do Discord.\n\nPor favor, confirme a sua decisão de adicionar esse repositório clicando no OK."
         }
     },
     "store": {
@@ -44,7 +44,7 @@
                 }
             },
             "tabs": {
-                "imported": "Importado",
+                "imported": "Instalados",
                 "store": "Loja"
             }
         }
@@ -154,7 +154,7 @@
         "add_repo": {
             "invalid_repo": {
                 "subtext": "Formato Inválido",
-                "text": "Repo Inválido"
+                "text": "Repositório Inválido"
             },
             "cancelled": {
                 "reasons": {
@@ -169,7 +169,7 @@
         "start": {
             "items": {
                 "store": {
-                    "subtext": "Leia sobre a Loja do GooseMod e o que está nela"
+                    "subtext": "Leia sobre a Loja do GooseMod"
                 },
                 "community": {
                     "subtext": "Entre no nosso Discord para perguntar questões, dar um feedback, manter-se atualizado com as novidades, e mais"

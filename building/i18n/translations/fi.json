@@ -2,10 +2,12 @@
     "settings": {
         "items": {
             "auto_update": {
-                "title": "Automaattiset päivitykset"
+                "title": "Automaattiset päivitykset",
+                "note": "Päivitä repositoriot ja moduulit automaattisesti joka tunti"
             },
             "store_in_home": {
-                "title": "Kauppa kotisivulla"
+                "title": "Kauppa kotisivulla",
+                "note": "Näytä GooseMod kaupan asetukset kotisivulla astetusten sijasta"
             },
             "goosemod_change_log": {
                 "note": "Näytä GooseMod \"Muutosloki\" -asetus",
@@ -19,6 +21,56 @@
                 "backup": "Varmuuskopiointi",
                 "utilities": "Apuvälineet",
                 "appearance": "Ulkonäkö"
+            },
+            "force_theme_settings": {
+                "note": "Pakota automaattisesti luodut asetukset kaikille teemoille",
+                "title": "Pakota teema-asetukset"
+            },
+            "snippets": {
+                "note": "Ota Koodipätkät välilehti käyttöön kaupassa",
+                "title": "Koodipätkät"
+            },
+            "data_attributes": {
+                "note": "Lisää tietomääritteitä joihinkin elementteihin, joidenkin teemojen toimivuudin lisäämiseksi",
+                "title": "Tietomääritteet"
+            },
+            "development_channel": {
+                "note": "Käytä kokeellisia GooseMod versioita",
+                "title": "Kehityskanava"
+            },
+            "restore_backup": {
+                "button": "Palauta",
+                "note": "Palauta GooseMod-moduulisi ja -asetuksesi varmuuskopiotiedoston avulla, **palauta vain varmuuskopiot, joihin luotat**",
+                "title": "Palauta varmuuskopiosta"
+            },
+            "create_backup": {
+                "button": "Varmuuskopio",
+                "note": "Luo tiedoston GooseMod-moduulien ja -asetusten varmuuskopiointia varten",
+                "title": "Luo varmuuskopio"
+            },
+            "reset_goosemod": {
+                "button": "Nollaa",
+                "note": "Nollaa GooseModin kokonaan: poistaa kaikki asetukset ja moduulit; kuten ensiasennuksen yhteydessä",
+                "title": "Palauta GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Kopioi",
+                "note": "Kopioi tietoja asetuksista ja GooseModista raportointia ja virheenkorjausta varten",
+                "title": "Kopio virheenkorjaustiedot"
+            },
+            "start_tour": {
+                "button": "Esittely",
+                "note": "Käy GooseModin esittely uudelleen läpi",
+                "title": "Aloita Esittely"
+            },
+            "purge_caches": {
+                "button": "Tyhjennä",
+                "note": "Puhdistaa (poistaa kokonaan) lähes kaiken GooseModin käyttämän välimuistin",
+                "title": "Tyhjennä välimuistit"
+            },
+            "goosemod_badges": {
+                "note": "Näyttää GooseMod merkit",
+                "title": "GooseMod Merkit"
             }
         }
     },
@@ -26,7 +78,8 @@
         "add_repo": {
             "cancelled": {
                 "reasons": {
-                    "pgp": "PGP-virhe"
+                    "pgp": "PGP-virhe",
+                    "refused": "Hylätty turvallisuuskehote"
                 },
                 "text": "Repositorion lisääminen peruttiin"
             },
@@ -100,6 +153,43 @@
             "modules": "GooseMod Moduulit",
             "settings": "GooseMod Asetukset",
             "store": "GooseMod Kauppa"
+        }
+    },
+    "ootb": {
+        "community": {
+            "items": {
+                "get_involved": {
+                    "title": "Osallistu"
+                },
+                "news": {
+                    "subtext": "Saa viimeisimmät uutiset ja ilmoitukset GooseModista ja siihen liittyvistä projekteista",
+                    "title": "Uutiset"
+                },
+                "ask_questions": {
+                    "subtext": "Kysy kysymyksiä ja saa tukea",
+                    "title": "Kysy kysymyksiä"
+                }
+            },
+            "confirm": "Liity GooseMod Discordiin"
+        },
+        "start": {
+            "text": {
+                "subtext": "Käy läpi lyhyt kierros GooseModin perustoiminnoista",
+                "main": "Lisätietoja GooseModista"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Liity Discordiin kysyäksesi kysymyksiä, antaaksesi palautetta, pysyäksesi ajan tasalla uutisista ja paljon muuta"
+                },
+                "settings": {
+                    "subtext": "Tutustu GooseModin ja liitännäisten asetuksiin"
+                },
+                "store": {
+                    "subtext": "Opi GooseModin kaupasta ja sen sisällöstä"
+                }
+            },
+            "cancel": "En ole kiinnostunut",
+            "confirm": "Lue lisää"
         }
     }
 }

@@ -18,7 +18,8 @@
             "settings": "GooseMod Einstellungen",
             "store": "GooseMod Store"
         },
-        "remove": "Entfernen"
+        "remove": "Entfernen",
+        "community": "Community"
     },
     "store": {
         "options": {
@@ -39,7 +40,7 @@
                 }
             },
             "tabs": {
-                "imported": "Importiert",
+                "imported": "Hinzugefügt",
                 "store": "Store"
             }
         },
@@ -162,6 +163,82 @@
                 "subtext": "Ungültiges Format",
                 "text": "Ungültiges Repo"
             }
+        }
+    },
+    "ootb": {
+        "plugins": {
+            "text": {
+                "main": "Amplify your Discord under the hood"
+            },
+            "confirm": "Durchsuche Plugins"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod verwendet einen eigenen Store, in dem du dich einfach umsehen und Module installieren kannst",
+                "main": "Themes und Plugins im Store durchsuchen"
+            },
+            "confirm": "Store in Home anzeigen"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Es gibt verschiedene Optionen für dich zu ändern",
+                "main": "Verwende die Einstellungen von GooseMod, um die Funktionen anzupassen"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Passe GooseMod so an, wie du möchtest",
+                    "title": "Tweaks"
+                },
+                "utilities": {
+                    "subtext": "Erstelle Sicherungen, setze GooseMod zurück und mehr",
+                    "title": "Utilities"
+                },
+                "experimental_features": {
+                    "subtext": "Probiere neue experimentelle Funktionen aus",
+                    "title": "Experimentelle Funktionen"
+                }
+            },
+            "confirm": "GooseMod Einstellungen Anzeigen"
+        },
+        "community": {
+            "text": {
+                "subtext": "Tritt unserem Discord bei für weitere Informationen und mehr",
+                "main": "Trete der GooseMod-Community bei"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Helfe mit Vorschlägen, unterstütze andere, und mehr",
+                    "title": "Mach mit"
+                },
+                "news": {
+                    "subtext": "Erhalte die neuesten Neuigkeiten und Ankündigungen zu GooseMod und verwandten Projekten",
+                    "title": "Neuigkeiten"
+                },
+                "ask_questions": {
+                    "subtext": "Stelle jegliche Fragen und erhalte Support",
+                    "title": "Fragen Stellen"
+                }
+            },
+            "confirm": "Trete den GooseMod Discord bei"
+        },
+        "start": {
+            "text": {
+                "subtext": "Mache eine kurze Tour über GooseMod's Kernfunktionen",
+                "main": "Lerne etwas über GooseMod"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Trete unseren Discord bei um Fragen zu stellen, Feedback zu geben, auf den neusten Stand mit Neuigkeiten zu sein und mehr"
+                },
+                "settings": {
+                    "subtext": "Finde etwas über den Einstellungen für GooseMod und Plugins heraus"
+                },
+                "store": {
+                    "subtext": "Lerne etwas über GooseMod's Store und was er enthält"
+                }
+            },
+            "cancel": "Nicht interessiert",
+            "confirm": "Erfahre mehr"
         }
     }
 }
