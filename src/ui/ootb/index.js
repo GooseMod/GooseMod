@@ -277,7 +277,7 @@ export const community = async () => {
 
           {
             name: '#ootb.community.items.news.title#',
-            description: '#ootb.community.items.news.subtext'
+            description: '#ootb.community.items.news.subtext#'
           },
 
           {
