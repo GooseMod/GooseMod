@@ -222,7 +222,7 @@
                 }
             },
             "tabs": {
-                "imported": "已下載",
+                "imported": "已安裝",
                 "store": "商店"
             }
         }
@@ -247,6 +247,7 @@
             "modules": "GooseMod 模組",
             "settings": "GooseMod 設定",
             "store": "GooseMod 商店"
-        }
+        },
+        "install": "安裝"
     }
 }

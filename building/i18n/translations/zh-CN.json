@@ -205,7 +205,7 @@
                 "label": "排序"
             },
             "tabs": {
-                "imported": "已下载",
+                "imported": "已安装",
                 "store": "商店"
             }
         },
@@ -247,6 +247,7 @@
             "modules": "GooseMod 模组",
             "settings": "GooseMod 设置",
             "store": "GooseMod 商店"
-        }
+        },
+        "install": "安装"
     }
 }

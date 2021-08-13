@@ -19,7 +19,8 @@
         "settings": "Instellingen",
         "remove": "Verwijderen",
         "add": "Toevoegen",
-        "community": "Community"
+        "community": "Community",
+        "install": "Installeer"
     },
     "badges": {
         "guild": "GooseMod Officiële Discord",
@@ -46,7 +47,7 @@
                 }
             },
             "tabs": {
-                "imported": "Geimporteerd",
+                "imported": "Geïnstalleerd",
                 "store": "Winkel"
             }
         },

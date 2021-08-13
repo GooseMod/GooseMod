@@ -3,7 +3,7 @@
         "options": {
             "tabs": {
                 "store": "Negozio",
-                "imported": "Importato"
+                "imported": "Installato"
             },
             "author": {
                 "all": "Tutti",
@@ -56,7 +56,8 @@
         "settings": "Impostazioni",
         "refresh": "Aggiorna",
         "remove": "Rimuovi",
-        "add": "Aggiungi"
+        "add": "Aggiungi",
+        "install": "Installare"
     },
     "badges": {
         "guild": "Discord Ufficiale GooseMod",
