@@ -1,1 +1,177 @@
-{}
+{
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "このレポが（多分）信頼できない（PGP暗号化なし）と判断しましたので、このリポジトリの所有者を信用できない場合は、\nDiscordアプリを危険にさらす可能性がありますが、レポの追加しないでください。\n\nもし、追加を確認するには、OKをクリックしてください。",
+            "main": "外部リポジトリは、GooseModの開発者が管理していないため、色々なリスクがあります。\n\nそのため、このリポジトリの所有者を信用できない場合は、Discordアプリを危険にさらす可能性がありますので、レポの追加しないでください。\n\nもし、追加を確認するには、OKをクリックしてください。"
+        }
+    },
+    "ootb": {
+        "settings": {
+            "items": {
+                "utilities": {
+                    "title": "道具"
+                }
+            }
+        }
+    },
+    "badges": {
+        "guild": "GooseMod 公式サーバー",
+        "developer": "GooseMod 開発者",
+        "translator": "GooseMod 翻訳者",
+        "sponsor": "GooseMod スポンサー"
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "すべてテーマ設定を強制的に自動生成させる",
+                "title": "テーマ設定"
+            },
+            "snippets": {
+                "note": "スニペットセクションを表示する",
+                "title": "スニペット"
+            },
+            "data_attributes": {
+                "note": "あるテーマは、このデータ属性に依存して機能しています",
+                "title": "データ属性"
+            },
+            "development_channel": {
+                "note": "GooseModの実験的なバージョンを使用します",
+                "title": "開発版"
+            },
+            "restore_backup": {
+                "button": "今すぐバックアップから復元",
+                "note": "バックアップからすべてGooseModのデータを復元する **自分のバックアップのみを復元してください**",
+                "title": "バックアップから復元する"
+            },
+            "create_backup": {
+                "note": "すべてGooseModのデータを保存する",
+                "title": "バックアップする",
+                "button": "今すぐバックアップ"
+            },
+            "reset_goosemod": {
+                "button": "復元",
+                "note": "GooseModを初期化する：すべての設定と拡張機能がリセットされる",
+                "title": "GooseModをリセット"
+            },
+            "copy_debug_info": {
+                "button": "コピー",
+                "note": "デバッグ情報をコピーするので、エラーを報告することができます",
+                "title": "デバッグ情報をコピー"
+            },
+            "start_tour": {
+                "button": "再起動する",
+                "note": "GooseModのツアーを再起動する",
+                "title": "ツアーを再起動"
+            },
+            "purge_caches": {
+                "button": "クリア",
+                "note": "GooseModのキャッシュをクリアします",
+                "title": "キャッシュをクリア"
+            },
+            "goosemod_badges": {
+                "note": "GooseModのカスタムバッジを示します",
+                "title": "GooseModプロフィールバッジ"
+            },
+            "auto_update": {
+                "note": "毎時間ごとに自動的にレポと拡張機能をアップデートします",
+                "title": "自動更新"
+            },
+            "store_in_home": {
+                "note": "ダイレクトメッセージの上にGooseModストアを置く",
+                "title": "ストアセクションの位置"
+            },
+            "main_separators": {
+                "title": "閲覧設定",
+                "note": "GooseModの重要な設定を分割する"
+            },
+            "goosemod_change_log": {
+                "note": "設定にGooseModの変更履歴を表示する",
+                "title": "GooseMod 変更履歴"
+            },
+            "subtexts": {
+                "experimental_warning": "開発中の実験的な機能は以下の通りですが、ご注意してください"
+            },
+            "headers": {
+                "experimental": "試験的な",
+                "backup": "バックアップ",
+                "utilities": "道具",
+                "appearance": "外観"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP 認証失敗",
+                    "refused": "OKをクリックしなかった"
+                },
+                "text": "レポの追加がキャンセルされました"
+            },
+            "invalid_repo": {
+                "subtext": "無効な形式",
+                "text": "無効なレポ"
+            }
+        }
+    },
+    "store": {
+        "options": {
+            "tabs": {
+                "imported": "インストール済み",
+                "store": "ストア"
+            },
+            "author": {
+                "label": "作成者",
+                "all": "すべて"
+            },
+            "sort": {
+                "stars": "スター件数順",
+                "az": "A-Z順",
+                "last_updated": "新着順",
+                "label": "並べ替え"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "拡張機能を検索",
+                    "themes": "テーマを検索"
+                }
+            }
+        },
+        "categories": {
+            "recently_updated": "最新の更新",
+            "all": {
+                "plugins": "すべての拡張機能",
+                "themes": "すべてのテーマ"
+            },
+            "top_starred": "みんなの推し",
+            "upcoming": "急上昇"
+        },
+        "pgp": {
+            "unknown": "PGP 暗号化なし",
+            "untrusted": "PGP 認証されません",
+            "verified": "PGP 認証されます"
+        }
+    },
+    "terms": {
+        "store": {
+            "repos": "リポジトリ",
+            "snippets": "スニペット",
+            "developers": "開発者",
+            "store": "ストア",
+            "modules": "Mods",
+            "themes": "テーマ",
+            "plugins": "拡張機能"
+        },
+        "changelog": "変更履歴",
+        "community": "コミュニティ",
+        "remove": "削除",
+        "add": "追加",
+        "settings": "設定",
+        "refresh": "更新",
+        "goosemod": {
+            "modules": "GooseMod Mods",
+            "settings": "GooseMod 設定",
+            "store": "GooseMod ストア"
+        }
+    }
+}

@@ -1,1 +1,252 @@
-{}
+{
+    "ootb": {
+        "settings": {
+            "items": {
+                "experimental_features": {
+                    "subtext": "来试用新鲜出炉的实验功能",
+                    "title": "实验功能"
+                },
+                "tweaks": {
+                    "subtext": "随心所欲的自定义GooseMod",
+                    "title": "模组支持"
+                },
+                "utilities": {
+                    "subtext": "随时创造备份，恢复GooseMod至出厂设置等",
+                    "title": "实用的工具"
+                }
+            },
+            "text": {
+                "subtext": "琳琅满目的选项",
+                "main": "使用GooseMod的设置界面来自定义各项功能"
+            },
+            "confirm": "查看GooseMod设置"
+        },
+        "community": {
+            "items": {
+                "news": {
+                    "subtext": "第一时间得到GooseMod官方发布的最新消息",
+                    "title": "新闻"
+                },
+                "get_involved": {
+                    "subtext": "帮助其他人回答疑难杂症",
+                    "title": "参与进社区"
+                },
+                "ask_questions": {
+                    "subtext": "问任何问题并得到解答",
+                    "title": "询问问题"
+                }
+            },
+            "confirm": "加入GooseMod的官方Discord服务器",
+            "text": {
+                "subtext": "加入我们的Discord服务器",
+                "main": "加入GooseMod的社区"
+            }
+        },
+        "themes": {
+            "text": {
+                "subtext": "从上百种主题中自定义您的客户端界面",
+                "main": "安装主题来美化你的Discord客户端"
+            },
+            "confirm": "浏览主题"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "插件可彻底改进您的用户体验",
+                "main": "随心所欲的自定义您的Discord客户端"
+            },
+            "confirm": "浏览插件"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod有自己的商店，为浏览与安装模组提供了便利",
+                "main": "在商店里浏览各式各样的主题与插件"
+            },
+            "confirm": "跳转至商店页面"
+        },
+        "start": {
+            "text": {
+                "subtext": "本向导将带领您了解GooseMod的核心功能",
+                "main": "了解关于GooseMod的一切"
+            },
+            "items": {
+                "community": {
+                    "subtext": "加入我们的Discord服务器来问问题，回馈使用体验，以及实时跟随开发进度"
+                },
+                "settings": {
+                    "subtext": "了解GooseMod的设置和插件"
+                },
+                "store": {
+                    "subtext": "了解GooseMod商店以及其中的内容"
+                }
+            },
+            "cancel": "暂无兴趣",
+            "confirm": "了解更多"
+        }
+    },
+    "settings": {
+        "items": {
+            "create_backup": {
+                "note": "将备份目前GooseMod的模组和设置",
+                "button": "备份",
+                "title": "创建备份"
+            },
+            "force_theme_settings": {
+                "note": "将强制所有主题使用系统生成的设置",
+                "title": "强制主题设置"
+            },
+            "snippets": {
+                "note": "在商店中显示小型插件一栏",
+                "title": "小插件"
+            },
+            "data_attributes": {
+                "note": "一些主题需要这些额外的数据标签来运行",
+                "title": "额外数据标签"
+            },
+            "development_channel": {
+                "note": "使用正在测试中的GooseMod版本",
+                "title": "开发者版本"
+            },
+            "restore_backup": {
+                "button": "回档",
+                "note": "从一个备份里恢复GooseMod的模组和设置",
+                "title": "恢复备份"
+            },
+            "reset_goosemod": {
+                "button": "重置",
+                "note": "完全重装 GooseMod：删除所有模组并恢复出厂设置",
+                "title": "重置 GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "复制",
+                "note": "将复制GooseMod的调试信息方便提交",
+                "title": "复制调试信息"
+            },
+            "start_tour": {
+                "button": "开始",
+                "note": "重新过一遍GooseMod的初始向导",
+                "title": "开始向导"
+            },
+            "purge_caches": {
+                "button": "重置",
+                "note": "删除大部分GooseMod正在使用的缓存",
+                "title": "重置缓存"
+            },
+            "goosemod_badges": {
+                "note": "显示 GooseMod 的自定义徽章",
+                "title": "GooseMod 徽章"
+            },
+            "auto_update": {
+                "note": "将每小时更新源和模组内容",
+                "title": "自动更新"
+            },
+            "store_in_home": {
+                "note": "将GooseMod商店一栏放在主菜单而非用户设定里",
+                "title": "将商店放在主菜单"
+            },
+            "main_separators": {
+                "note": "在GooseMod设置里用横杠区分开核心设置和其他设置",
+                "title": "单独显示重要设置"
+            },
+            "goosemod_change_log": {
+                "note": "在GooseMod设置里显示 \"更新日志\"",
+                "title": "GooseMod 更新日志"
+            },
+            "subtexts": {
+                "experimental_warning": "测试功能一般都是不稳定的半成品，并极大可能会降低GooseMod的体验"
+            },
+            "headers": {
+                "experimental": "测试功能",
+                "backup": "备份",
+                "utilities": "实用工具",
+                "appearance": "外观"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "text": "已取消添加新的源",
+                "reasons": {
+                    "pgp": "PGP 信任错误",
+                    "refused": "确认取消"
+                }
+            },
+            "invalid_repo": {
+                "subtext": "格式错误",
+                "text": "源无效"
+            }
+        }
+    },
+    "store": {
+        "categories": {
+            "top_starred": "最高下载数",
+            "upcoming": "小有人气",
+            "all": {
+                "plugins": "所有插件",
+                "themes": "所有主题"
+            },
+            "recently_updated": "最近更新"
+        },
+        "options": {
+            "search": {
+                "placeholder": {
+                    "themes": "搜索",
+                    "plugins": "搜索"
+                }
+            },
+            "author": {
+                "all": "全部",
+                "label": "作者"
+            },
+            "sort": {
+                "last_updated": "更新时间",
+                "az": "A-Z",
+                "stars": "下载数",
+                "label": "排序"
+            },
+            "tabs": {
+                "imported": "已下载",
+                "store": "商店"
+            }
+        },
+        "pgp": {
+            "unknown": "无 PGP 验证",
+            "untrusted": "未通过 PGP 验证",
+            "verified": "已通过 PGP 验证"
+        }
+    },
+    "badges": {
+        "guild": "GooseMod 官方 Discord 服务器",
+        "developer": "GooseMod 开发者",
+        "translator": "GooseMod 翻译者",
+        "sponsor": "GooseMod 捐赠者"
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "此第三方源没有通过 PGP 验证，请在加入此源之前确认源开发者的可信度。\n\n如想解决这个问题，请要求源开发者增加 PGP 支持。\n\n按下面的OK来确认您信任此源开发者并且要订阅这个源。",
+            "main": "GooseMod的开发者将无法保证第三方源的模组质量。\n\n如果您对此源的开发者并不熟悉，请不要加这个源。\n\n按下面的OK来确认您已知悉增加第三方源的风险。"
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "作者",
+            "repos": "源",
+            "modules": "模组",
+            "snippets": "小插件",
+            "plugins": "插件",
+            "themes": "主题",
+            "store": "商店"
+        },
+        "community": "社区",
+        "changelog": "更新日志",
+        "settings": "设置",
+        "refresh": "刷新",
+        "remove": "卸载",
+        "add": "下载",
+        "goosemod": {
+            "modules": "GooseMod 模组",
+            "settings": "GooseMod 设置",
+            "store": "GooseMod 商店"
+        }
+    }
+}

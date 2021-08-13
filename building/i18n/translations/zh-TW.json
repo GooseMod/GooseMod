@@ -1,1 +1,252 @@
-{}
+{
+    "badges": {
+        "guild": "GooseMod 官方 Discord 伺服器",
+        "developer": "GooseMod 開發者",
+        "translator": "GooseMod 翻譯者",
+        "sponsor": "GooseMod 捐贈者"
+    },
+    "ootb": {
+        "themes": {
+            "text": {
+                "subtext": "從上百種主題中自定義您的客戶端界面",
+                "main": "安裝主題來美化你的Discord客戶端"
+            },
+            "confirm": "瀏覽主題"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "插件可徹底改進您的用戶體驗",
+                "main": "隨心所欲的自定義您的Discord客戶端"
+            },
+            "confirm": "瀏覽插件"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod有自己的商店，為瀏覽與安裝模組提供了便利",
+                "main": "在商店裏瀏覽各式各樣的主題與插件"
+            },
+            "confirm": "跳轉至商店頁面"
+        },
+        "settings": {
+            "text": {
+                "subtext": "琳琅滿目的選項",
+                "main": "使用GooseMod來自定義各種功能"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "隨心所欲的自定義GooseMod",
+                    "title": "模組支持"
+                },
+                "utilities": {
+                    "subtext": "隨時創造備份，重灌GooseMod等",
+                    "title": "實用的工具"
+                },
+                "experimental_features": {
+                    "subtext": "來試用新鮮出爐的實驗功能",
+                    "title": "實驗功能"
+                }
+            },
+            "confirm": "查看GooseMod設定"
+        },
+        "community": {
+            "text": {
+                "subtext": "加入我們的Discord伺服器",
+                "main": "加入GooseMod的社區"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "幫助其他人回答疑難雜症",
+                    "title": "參與進社區"
+                },
+                "news": {
+                    "subtext": "第一時間得到GooseMod官方發佈的最新消息",
+                    "title": "新聞"
+                },
+                "ask_questions": {
+                    "subtext": "詢問任何問題並得到解答",
+                    "title": "詢問問題"
+                }
+            },
+            "confirm": "加入GooseMod的官方Discord伺服器"
+        },
+        "start": {
+            "text": {
+                "subtext": "本向導將帶領您瞭解GooseMod的核心功能",
+                "main": "瞭解關於GooseMod的一切"
+            },
+            "items": {
+                "community": {
+                    "subtext": "加入我們的Discord伺服器來問問題，給予開發團隊建議以及使用體驗，和實時跟隨開發進度"
+                },
+                "settings": {
+                    "subtext": "瞭解GooseMod的設定和插件"
+                },
+                "store": {
+                    "subtext": "瞭解GooseMod商店以及裏面的内容"
+                }
+            },
+            "cancel": "沒有興趣",
+            "confirm": "瞭解更多"
+        }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "將强制所有主題使用自動生成的設定",
+                "title": "强制主題設定"
+            },
+            "snippets": {
+                "note": "在商店中顯示小插件一欄",
+                "title": "小插件"
+            },
+            "data_attributes": {
+                "note": "一些主題依賴於這些額外的數據標簽來正常工作",
+                "title": "額外數據標簽"
+            },
+            "development_channel": {
+                "note": "使用GooseMod的測試版本",
+                "title": "開發版"
+            },
+            "restore_backup": {
+                "button": "回檔",
+                "note": "從一個備份裏恢復GooseMod的模組和設定",
+                "title": "恢復備份"
+            },
+            "create_backup": {
+                "button": "備份",
+                "note": "將備份目前GooseMod的模組和設置",
+                "title": "創建備份"
+            },
+            "reset_goosemod": {
+                "button": "重置",
+                "note": "完全重灌 GooseMod：移除所有的模組以及設定",
+                "title": "重置 GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "複製",
+                "note": "將複製GooseMod的調試訊息方便提交",
+                "title": "複製調製訊息"
+            },
+            "start_tour": {
+                "button": "開始",
+                "note": "重新開啓GooseMod的初始向導",
+                "title": "開始向導"
+            },
+            "purge_caches": {
+                "button": "重置",
+                "note": "重灌大部分GooseMod的緩存",
+                "title": "重灌緩存"
+            },
+            "goosemod_badges": {
+                "note": "顯示 GooseMod 的自定義徽章",
+                "title": "GooseMod 徽章"
+            },
+            "auto_update": {
+                "note": "將每小時更新源和模組内容",
+                "title": "自動更新"
+            },
+            "store_in_home": {
+                "note": "將GooseMod商店一欄放在主菜單而非使用者設定裏",
+                "title": "將商店放在主菜單"
+            },
+            "main_separators": {
+                "note": "在GooseMod設定中用橫杠區分開核心設定與其他設定",
+                "title": "單獨顯示重要設定"
+            },
+            "goosemod_change_log": {
+                "note": "在GooseMod設置中顯示 \"更新日誌\"",
+                "title": "GooseMod 更新日誌"
+            },
+            "subtexts": {
+                "experimental_warning": "測試中的功能基本都是未開發完畢的半成品，並極大可能會降低GooseMod的體驗"
+            },
+            "headers": {
+                "experimental": "測試功能",
+                "backup": "備份",
+                "utilities": "實用工具",
+                "appearance": "外觀"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP 認證錯誤",
+                    "refused": "確認取消"
+                },
+                "text": "已取消添加新的源"
+            },
+            "invalid_repo": {
+                "subtext": "格式錯誤",
+                "text": "源無效"
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "因爲此第三方源沒有 PGP 驗證，請在加入此源之前確認源開發者的可信度。\n\n如想徹底解決這個問題，請要求源開發者增加 PGP 支援。\n\n如您已知悉潛在的風險並執意要添加，請在下面點OK。",
+            "main": "GooseMod的開發者將因爲沒有對此第三方源的控制權而無法保證模組的安全與質量。\n\n因可能會對您Discord客戶端造成不必要的安全風險，如果您不信任此源的擁有者，請不要添加此源。\n\n如您已知悉添加第三方源帶來的風險並執意要添加，請在下面點OK。"
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "無 PGP 驗證",
+            "untrusted": "未通過 PGP 驗證",
+            "verified": "已通過 PGP 驗證"
+        },
+        "categories": {
+            "all": {
+                "plugins": "所有插件",
+                "themes": "所有主題"
+            },
+            "upcoming": "小有人氣",
+            "recently_updated": "最近更新",
+            "top_starred": "最高下載數"
+        },
+        "options": {
+            "author": {
+                "all": "全部",
+                "label": "作者"
+            },
+            "sort": {
+                "last_updated": "上次更新時間",
+                "az": "A-Z",
+                "stars": "下載數",
+                "label": "排列方式"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "搜索插件",
+                    "themes": "搜索主題"
+                }
+            },
+            "tabs": {
+                "imported": "已下載",
+                "store": "商店"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "作者",
+            "repos": "源",
+            "modules": "模組",
+            "snippets": "小插件",
+            "plugins": "插件",
+            "themes": "主題",
+            "store": "商店"
+        },
+        "community": "社群",
+        "changelog": "更新日志",
+        "settings": "設定",
+        "refresh": "刷新",
+        "remove": "移除",
+        "add": "下載",
+        "goosemod": {
+            "modules": "GooseMod 模組",
+            "settings": "GooseMod 設定",
+            "store": "GooseMod 商店"
+        }
+    }
+}
