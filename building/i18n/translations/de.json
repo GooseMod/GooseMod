@@ -19,7 +19,8 @@
             "store": "GooseMod Store"
         },
         "remove": "Entfernen",
-        "community": "Community"
+        "community": "Community",
+        "install": "Installieren"
     },
     "store": {
         "options": {
@@ -40,7 +41,7 @@
                 }
             },
             "tabs": {
-                "imported": "Hinzugefügt",
+                "imported": "Installiert",
                 "store": "Store"
             }
         },
@@ -168,7 +169,8 @@
     "ootb": {
         "plugins": {
             "text": {
-                "main": "Amplify your Discord under the hood"
+                "main": "Verbessere dein Discord unter der Haube",
+                "subtext": "Plugins erweitern dein Erlebnis mit Verbesserungen in der App selbst"
             },
             "confirm": "Durchsuche Plugins"
         },
@@ -239,6 +241,13 @@
             },
             "cancel": "Nicht interessiert",
             "confirm": "Erfahre mehr"
+        },
+        "themes": {
+            "text": {
+                "subtext": "Wähle aus über 100 Themes, um deine Benutzeroberfläche zu optimieren und zu verbessern",
+                "main": "Verschönere dein Discord mit Themes"
+            },
+            "confirm": "Durchsuche Themes"
         }
     }
 }
