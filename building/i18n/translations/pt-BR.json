@@ -69,7 +69,8 @@
             "settings": "Configurações do GooseMod",
             "store": "Loja do GooseMod"
         },
-        "community": "Comunidade"
+        "community": "Comunidade",
+        "install": "Instalar"
     },
     "settings": {
         "items": {
