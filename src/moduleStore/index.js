@@ -202,7 +202,7 @@ export default {
     if (item === undefined) return;
 
     item.buttonType = 'brand';
-    item.buttonText = '#terms.add#';
+    item.buttonText = '#terms.install#';
     item.showToggle = false;
 
     // If themes / plugins open
@@ -215,7 +215,7 @@ export default {
         const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
 
         buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
-        buttonEl.textContent = '#terms.add#';
+        buttonEl.textContent = '#terms.install#';
 
         const toggleEl = cardEl.querySelector(`.container-3auIfb`);
         toggleEl.classList.add('hide-toggle');
@@ -293,7 +293,7 @@ export default {
         subtext: m.description,
         subtext2: m.version === '0' || m.version.toLowerCase().includes('auto') ? '' : `v${m.version}`,
 
-        buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? '#terms.remove#' : '#terms.add#',
+        buttonText: goosemodScope.modules[m.name] || goosemodScope.disabledModules[m.name] ? '#terms.remove#' : '#terms.install#',
         onclick: async () => {
           goosemodScope.settings[`regen${type}`] = true;
 

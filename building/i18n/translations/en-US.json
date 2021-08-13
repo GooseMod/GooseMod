@@ -6,6 +6,7 @@
       "modules": "GooseMod Modules"
     },
 
+    "install": "Install",
     "add": "Add",
     "remove": "Remove",
 
@@ -34,7 +35,7 @@
     "options": {
       "tabs": {
         "store": "Store",
-        "imported": "Added"
+        "imported": "Installed"
       },
 
       "search": {
