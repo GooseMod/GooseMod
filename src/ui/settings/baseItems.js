@@ -449,7 +449,7 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
       const title = titles[1];
 
-      const authors = [...titles[0].getElementsByClassName('author')].map((x) => x.textContent.split('#')[0]);
+      const authors = [...titles[0].getElementsByClassName('gm-store-author-name')].map((x) => x.textContent.split('#')[0]);
       const name = title.childNodes[0].wholeText;
 
       const description = c.getElementsByClassName('description-3_Ncsb')[0].innerText;

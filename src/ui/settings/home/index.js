@@ -321,7 +321,13 @@ export default async (goosemodScope) => {
           images: x.attachments[0] ? [ x.attachments[0].proxy_url ] : (x.embeds[0] ? [ x.embeds[0].thumbnail.proxy_url ] : []),
   
           name: '', // No name makes subtext main content (not gray)
-          author: `<img style="display: inline; border-radius: 50%; margin-right: 5px; vertical-align: bottom;" src="https://cdn.discordapp.com/avatars/${x.author.id}/${x.author.avatar}.png?size=32"><span class="author" style="line-height: 32px;">${x.author.username}</span>`, // Based off Store author generation
+          author: [
+            {
+              name: x.author.username,
+              id: x.author.id,
+              avatar: x.author.avatar
+            }
+          ],
   
           subtext: x.content.replace(/```css(.*)```/gs, ''), // Only context / text without code
   

@@ -3,7 +3,7 @@ import _Divider from './divider';
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const Divider = _Divider;
+const Divider = _Divider();
 
 const FormItem = goosemod.webpackModules.findByDisplayName('FormItem');
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');

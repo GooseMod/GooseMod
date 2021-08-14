@@ -94,7 +94,7 @@ export default () => {
 }
 
 .gm-store-card > :nth-child(2).no-pfp {
-  padding: 4px 8px;
+  padding: 0px 8px;
 }
 
 .gm-store-card > :nth-child(3) {
@@ -248,6 +248,18 @@ export default () => {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+
+.gm-store-author-pfp {
+  display: inline;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+
+.gm-store-author-name {
+  line-height: 32px;
 }
 
 

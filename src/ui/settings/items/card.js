@@ -1,6 +1,9 @@
+import _LazyBanner from './sub/lazyBanner';
+
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
+const LazyBanner = _LazyBanner();
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
 
@@ -26,8 +29,7 @@ return class Card extends React.PureComponent {
       className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' '),
       onClick: this.props.onClick
     },
-
-      React.createElement('div', {
+      /* React.createElement('div', {
         style: {
           backgroundImage: this.props.images?.length ? `url("${this.props.images[0]}")` : ''
         },
@@ -44,16 +46,42 @@ return class Card extends React.PureComponent {
             })
           ));
         }
-      }, this.props.images?.length ? '' : 'No Preview'),
+      }), */
 
-      React.createElement('div', {
-        className: [FormClasses.title, !this.props.author.includes('avatar') ? 'no-pfp' : ''].join(' '),
+      React.createElement(LazyBanner, {
+        src: this.props.images?.[0],
 
-        ref: (ref) => {
-          if (!ref) return;
-          ref.innerHTML = this.props.author;
+        onClick: () => {
+          if (!this.props.images?.length) return; // Ignore if no images
+
+          ModalHandler.openModal(() => React.createElement('div', {
+            className: 'gm-carousel-modal'
+          },
+            React.createElement(SmallMediaCarousel, {
+              items: this.props.images.map((x) => ({ type: 1, src: x })),
+              autoplayInterval: 5000 // Time between automatically cycling to next image
+            })
+          ));
         }
       }),
+
+      React.createElement('div', {
+        className: [FormClasses.title, this.props.author.every((x) => !x.avatar) ? 'no-pfp' : ''].join(' '),
+      },
+        ...this.props.author.map((x, i) => [
+          x.avatar ? React.createElement('img', {
+            loading: 'lazy',
+            src: `https://cdn.discordapp.com/avatars/${x.id}/${x.avatar}.png?size=32`,
+            className: 'gm-store-author-pfp'
+          }) : null,
+          React.createElement('span', {
+            className: 'gm-store-author-name'
+          }, x.name),
+          i !== this.props.author.length - 1 ? React.createElement('span', {
+            className: FormTextClasses.description
+          }, ',') : null
+        ])
+      ),
 
       React.createElement('div', {
         className: FormClasses.title,
