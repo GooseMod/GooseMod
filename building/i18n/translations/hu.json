@@ -19,7 +19,8 @@
             "store": "GooseMod Áruház"
         },
         "add": "Aktiválás",
-        "community": "Közösség"
+        "community": "Közösség",
+        "install": "Telepítés"
     },
     "store": {
         "options": {
@@ -40,7 +41,7 @@
                 }
             },
             "tabs": {
-                "imported": "Importált",
+                "imported": "Telepítve",
                 "store": "Áruház"
             }
         },

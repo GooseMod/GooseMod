@@ -247,6 +247,7 @@
             "settings": "Настройки GooseMod",
             "store": "Магазин GooseMod"
         },
-        "remove": "Удалить"
+        "remove": "Удалить",
+        "install": "Установить"
     }
 }

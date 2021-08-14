@@ -247,6 +247,7 @@
             "modules": "Модулі GooseMod",
             "settings": "Налаштування GooseMod",
             "store": "Крамниця GooseMod"
-        }
+        },
+        "install": "Встановити"
     }
 }

@@ -1,1 +1,236 @@
-{}
+{
+    "settings": {
+        "items": {
+            "headers": {
+                "experimental": "Experimental",
+                "backup": "Copia de seguridad",
+                "utilities": "Utilidades",
+                "appearance": "Apariencia"
+            },
+            "force_theme_settings": {
+                "note": "Forzar la generación automatica de ajustes para todos los temas",
+                "title": "Forzar Ajustes de Temas"
+            },
+            "data_attributes": {
+                "note": "Añade atributos de datos a algunos elementos para que algunos temas los usen",
+                "title": "Atributos de Datos"
+            },
+            "development_channel": {
+                "note": "Usa versiones experimentales de desarrollo de GooseMod"
+            },
+            "restore_backup": {
+                "button": "Reestablecer",
+                "note": "Reestablece tus preferencias y módulos de GooseMod a partir de un archivo de copia de seguridad, **solo reestablece copias en las que confíes**",
+                "title": "Reestablecer Copia de seguridad"
+            },
+            "create_backup": {
+                "button": "Confirmar",
+                "note": "Crea un archivo de copia de seguridad de tus preferencias y módulos de GooseMod",
+                "title": "Crear Copia de seguridad"
+            },
+            "reset_goosemod": {
+                "button": "Reestablecer",
+                "note": "Reestablece completamente GooseMod: elimina todas las preferencias y módulos; como una instalación por primera vez",
+                "title": "Restablecer GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Copiar",
+                "note": "Copia la información de instalacion y de GooseMod para reportar y depurar",
+                "title": "Copiar información de depuración"
+            },
+            "start_tour": {
+                "note": "Ir por el tutorial inicial de GooseMod otra vez",
+                "title": "Empezar Tour"
+            },
+            "purge_caches": {
+                "button": "Purgar",
+                "note": "Purga (borra completamente) la mayoría de cachés que usa GooseMod",
+                "title": "Purgar Cachés"
+            },
+            "goosemod_badges": {
+                "note": "Mostrar las insignias de GooseMod",
+                "title": "Insignias de GooseMod"
+            },
+            "auto_update": {
+                "note": "Actualizar automaticamente repositorios y módulos cada hora",
+                "title": "Actualización Automática"
+            },
+            "store_in_home": {
+                "note": "Poner las opciones de Tienda de GooseMod en inicio en vez de en ajustes",
+                "title": "Tienda en Inicio"
+            },
+            "main_separators": {
+                "note": "Mostrar separadores entre los ajustes principales de GooseMod",
+                "title": "Separadores Principales"
+            },
+            "goosemod_change_log": {
+                "note": "Mostrar el ajuste de GooseMod \"Historial de cambios\"",
+                "title": "Historial de cambios de GooseMod"
+            },
+            "subtexts": {
+                "experimental_warning": "Los ajustes experimentales probablemente estan incompletos y son inusables, lo que puede resultar en una experiencia reducida"
+            }
+        }
+    },
+    "badges": {
+        "guild": "Discord Oficial de GooseMod",
+        "developer": "Desarrollador de GooseMod",
+        "translator": "Traductor de GooseMod",
+        "sponsor": "Sponsor de GooseMod"
+    },
+    "ootb": {
+        "themes": {
+            "text": {
+                "subtext": "Elije de entre 100 Temas para ajustar y mejorar tu interfaz de usuario",
+                "main": "Embellece tu Discord con Temas"
+            },
+            "confirm": "Ver Temas"
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Los complementos aumentan tu experiencia con mejoras en la app misma",
+                "main": "Amplifica tu Discord a otro nivel"
+            },
+            "confirm": "Ver Complementos"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod usa su propia Tienda, donde facilmente puedes mirar e instalar cosas",
+                "main": "Hojea entre los Plugins y Temas en la Tienda"
+            },
+            "confirm": "Ver Tienda en Inicio"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Hay muchas opciones que puedes cambiar",
+                "main": "Usa los ajustes de GooseMod para personalizar sus funcionalidades"
+            },
+            "items": {
+                "tweaks": {
+                    "subtext": "Ajusta GooseMod a como lo quieras tú",
+                    "title": "Ajustes"
+                },
+                "utilities": {
+                    "subtext": "Hace copias de seguridad, reestablece GooseMod, y demás",
+                    "title": "Utilidades"
+                },
+                "experimental_features": {
+                    "subtext": "Prueba nuevas caracteristicas experimentales",
+                    "title": "Caracteristicas Experimentales"
+                }
+            },
+            "confirm": "Ver Ajustes de GooseMod"
+        },
+        "community": {
+            "text": {
+                "subtext": "Unete a nuestro Discord para más información",
+                "main": "Unirse a la Comunidad de GooseMod"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Ayuda con sugerencias, ayudando a otros, y demás",
+                    "title": "Involúcrate"
+                },
+                "news": {
+                    "subtext": "Enterate de los ultimos anuncios y noticias sobre GooseMod y otros proyectos relacionados",
+                    "title": "Noticias"
+                },
+                "ask_questions": {
+                    "subtext": "Pregunta cualquier cosa y obten soporte",
+                    "title": "Hace preguntas"
+                }
+            },
+            "confirm": "Unirse al Discord de GooseMod"
+        },
+        "start": {
+            "text": {
+                "subtext": "Ve por un corto tour de las funcionalidades principales de GooseMod",
+                "main": "Conoce más sobre GooseMod"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Únete a nuestro Discord para hacer consultas, dar feedback, enterarte de las ultimas noticias, y más"
+                },
+                "store": {
+                    "subtext": "Conoce más sobre la tienda de GooseMod y que hay en ella"
+                }
+            },
+            "cancel": "No me interesa",
+            "confirm": "Saber más"
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "text": "Cancelado Añadir Repositorio"
+            },
+            "invalid_repo": {
+                "subtext": "Formato Inválido",
+                "text": "Repositorio Inválido"
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Este repositorio no es conocido o confiable (sin verificación PGP), por favor tenga cuidado extra. Asegurese de que confía completamente en el/los dueño(s) de este repositorio. \n\nPara arreglar este problema contactese con el mantenedor de este repositorio para que añada soporte de PGP.\n\nPor favor confirme el añadir este repositorio clickeando OK.",
+            "main": "Los repositorios externos suponen riesgos de seguridad ya que no son controlados por los desarrolladores de GooseMod. No somos responsables de ningún daño que sea causado por repositorios externos añadidos por el usuario.\n\nSi no confías en el propietario de este repositorio, no lo uses ya que podría comprometer tu instalación de Discord.\n\nPor favor confirma el añadir este repositorio clickeando OK."
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Sin PGP"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Todos los complementos",
+                "themes": "Todos los temas"
+            },
+            "upcoming": "Próximos",
+            "recently_updated": "Actualizados Recientemente"
+        },
+        "options": {
+            "author": {
+                "all": "Todos",
+                "label": "Autor"
+            },
+            "sort": {
+                "last_updated": "Actualizados Recientemente",
+                "az": "A-Z",
+                "stars": "Estrellas",
+                "label": "Ordenar por"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Buscar Complementos",
+                    "themes": "Buscar Temas"
+                }
+            },
+            "tabs": {
+                "imported": "Instalado",
+                "store": "Tienda"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Desarrolladores",
+            "repos": "Repositorios",
+            "modules": "Módulos",
+            "plugins": "Complementos",
+            "themes": "Temas",
+            "store": "Tienda"
+        },
+        "community": "Comunidad",
+        "changelog": "Historial de cambios",
+        "settings": "Ajustes",
+        "refresh": "Recargar",
+        "remove": "Remover",
+        "add": "Añadir",
+        "install": "Instalar",
+        "goosemod": {
+            "modules": "Módulos de GooseMod",
+            "settings": "Ajustes de GooseMod",
+            "store": "Tienda de GooseMod"
+        }
+    }
+}

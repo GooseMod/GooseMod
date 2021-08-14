@@ -19,7 +19,8 @@
         "refresh": "Rafraîchir",
         "remove": "Retirer",
         "add": "Ajouter",
-        "community": "Communauté"
+        "community": "Communauté",
+        "install": "Installer"
     },
     "store": {
         "pgp": {
@@ -54,7 +55,7 @@
                 "label": "Auteur"
             },
             "tabs": {
-                "imported": "Ajoutés",
+                "imported": "Installés",
                 "store": "Boutique"
             }
         }
