@@ -44,7 +44,7 @@
                 }
             },
             "tabs": {
-                "imported": "Zaimportowane",
+                "imported": "Zainstalowane",
                 "store": "Sklep"
             }
         }
@@ -69,7 +69,8 @@
             "settings": "Ustawienia GooseMod",
             "store": "Sklep GooseMod"
         },
-        "community": "Społeczność"
+        "community": "Społeczność",
+        "install": "Zainstaluj"
     },
     "settings": {
         "items": {
