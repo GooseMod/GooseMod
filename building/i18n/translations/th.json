@@ -19,7 +19,8 @@
         "refresh": "โหลดใหม่",
         "remove": "ลบ",
         "add": "เพิ่ม",
-        "community": "ชุมชน"
+        "community": "ชุมชน",
+        "install": "ติดตั้ง"
     },
     "badges": {
         "guild": "ดิสคอร์ดหลักของ GooseMod",
@@ -66,7 +67,7 @@
                 }
             },
             "tabs": {
-                "imported": "ถูกนำเข้า",
+                "imported": "ติดตั้งแล้ว",
                 "store": "ร้านค้า"
             }
         }
