@@ -1,9 +1,6 @@
-import _LazyBanner from './sub/lazyBanner';
-
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const LazyBanner = _LazyBanner();
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
 
@@ -29,26 +26,12 @@ return class Card extends React.PureComponent {
       className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' '),
       onClick: this.props.onClick
     },
-      /* React.createElement('div', {
-        style: {
-          backgroundImage: this.props.images?.length ? `url("${this.props.images[0]}")` : ''
-        },
 
-        onClick: () => {
-          if (!this.props.images?.length) return; // Ignore if no images
+      React.createElement('img', {
+        loading: 'lazy',
+        alt: '',
+        draggable: 'false',
 
-          ModalHandler.openModal(() => React.createElement('div', {
-            className: 'gm-carousel-modal'
-          },
-            React.createElement(SmallMediaCarousel, {
-              items: this.props.images.map((x) => ({ type: 1, src: x })),
-              autoplayInterval: 5000 // Time between automatically cycling to next image
-            })
-          ));
-        }
-      }), */
-
-      React.createElement(LazyBanner, {
         src: this.props.images?.[0],
 
         onClick: () => {

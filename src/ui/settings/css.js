@@ -66,16 +66,11 @@ export default () => {
   margin-left: -12px;
 
   background-color: var(--background-secondary-alt);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50%;
 
-  text-align: center;
-  line-height: 200px;
+  object-fit: contain;
 
-  color: var(--interactive-normal);
-  font-family: var(--font-display);
-  font-size: 36px;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .gm-store-card > :nth-child(2) {
@@ -91,6 +86,8 @@ export default () => {
   width: fit-content;
 
   padding-right: 10px;
+
+  cursor: default;
 }
 
 .gm-store-card > :nth-child(2).no-pfp {
