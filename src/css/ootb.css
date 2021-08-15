@@ -1,0 +1,34 @@
+/* OOTB */
+.gm-modules-preview .guildIcon-cyDh6h {
+  display: none;
+}
+
+.gm-modules-preview .cardHeader-2XrQbx {
+  margin-bottom: 12px;
+}
+
+.gm-modules-preview .card-3_CqkU {
+  background-color: var(--background-tertiary);
+}
+
+.gm-ootb-modal {
+  width: 600px;
+}
+
+.gm-highlight #app-mount::after {
+  display: block;
+  content: '';
+
+  box-shadow: 0 0 0 99999px rgb(0 0 0 / 50%);
+  z-index: 9;
+}
+
+.gm-highlight .content-3YMskv [id*="gm"] {
+  filter: brightness(2);
+  background: var(--background-modifier-selected);
+
+  border-radius: 0;
+  z-index: 10;
+
+  transition: all .5s;
+}

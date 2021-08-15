@@ -1,6 +1,9 @@
 import localResolve from 'rollup-plugin-local-resolve';
 import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss';
 import serve from 'rollup-plugin-serve';
+
+import pcImport from 'postcss-import';
 
 const prod = !process.env.ROLLUP_WATCH;
 
@@ -15,7 +18,7 @@ export default [
       file: './dist/goosemod.js',
       format: 'iife',
       name: 'goosemod',
-      sourcemap: false,
+      sourcemap: !prod,
       
       freeze: false /* do not freeze exports */
     },
@@ -30,6 +33,15 @@ export default [
         headers: {
           'Access-Control-Allow-Origin': '*',
         }
+      }),
+
+      postcss({
+        minimize: prod,
+        sourceMap: !prod,
+
+        plugins: [
+          pcImport()
+        ]
       }),
       
       goosemod()
@@ -46,7 +58,7 @@ export default [
       file: './dist/index.js',
       format: 'iife',
       name: 'goosemod_bootstrap',
-      sourcemap: false,
+      sourcemap: !prod,
       
       freeze: false /* do not freeze exports */
     },

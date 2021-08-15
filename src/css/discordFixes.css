@@ -1,0 +1,5 @@
+/* Discord fixes */
+/* Color picker is behind settings layer (and other things like modals / etc) */
+.layer-v9HyYc {
+  z-index: 999;
+}

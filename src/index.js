@@ -1,3 +1,5 @@
+import './css/index.css';
+
 import sleep from './util/sleep';
 
 import * as Logger from './util/logger';
