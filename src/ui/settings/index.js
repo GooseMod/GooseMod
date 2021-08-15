@@ -9,8 +9,6 @@ import addToSettingsSidebar from './settingsSidebar';
 
 import addBaseItems from './baseItems';
 
-import addCustomCss from './css';
-
 import getItems from './items';
 let Items = {};
 
@@ -153,8 +151,6 @@ export const makeGooseModSettings = () => {
   addToSettingsSidebar(goosemodScope, gmSettings);
   addToContextMenu(goosemodScope, gmSettings.get().home);
   if (gmSettings.get().home) addToHome(goosemodScope);
-
-  addCustomCss();
 
   loadColorPicker();
 };

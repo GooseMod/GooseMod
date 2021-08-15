@@ -1,68 +1,8 @@
 let goosemodScope = {};
 let unpatchers = [];
 
-let cssEl;
-
 export const setThisScope = (scope) => {
   goosemodScope = scope;
-
-  cssEl = document.createElement('style');
-
-  cssEl.textContent = `
-/* Custom title replacing "Server Boost" */
-#gm-sponsor-modal .headerTitle-1_9Kor {
-  background-image: url(https://goosemod.com/img/goose_gold.jpg);
-
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50%;
-
-  border-radius: 50%;
-
-  height: 60px;
-}
-
-#gm-sponsor-modal .headerTitle-1_9Kor::after {
-  font-family: var(--font-display);
-  font-size: 24px;
-
-  color: var(--text-normal);
-
-  width: 140px;
-  display: block;
-
-  margin-left: 70px;
-  margin-top: 6px;
-
-  content: 'GooseMod Sponsor';
-}
-
-#gm-sponsor-modal .guildBackground-3UtSZ2 > svg:first-child { /* Hide Lottie hands animation */
-  display: none;
-}
-
-#gm-sponsor-modal .contentWrapper-3INYJy {
-  padding: 16px;
-  padding-right: 8px;
-}
-
-#gm-sponsor-modal .contentWrapper-3INYJy > div > div:not(:last-child) {
-  margin-bottom: 32px;
-}
-
-#gm-sponsor-modal .contentWrapper-3INYJy > div > .footer-2gL1pp {
-  left: -16px;
-  top: 16px;
-  width: calc(100% - 8px);
-}
-
-#gm-sponsor-modal .contentWrapper-3INYJy > div > div:first-child {
-  font-family: var(--font-primary);
-  font-size: 16px;
-  line-height: 20px;
-
-  color: var(--text-normal);
-}`;
 };
 
 const showSponsorModal = () => {
@@ -184,8 +124,6 @@ const badgeUsers = {
 };
 
 export const addBadges = () => {
-  document.head.appendChild(cssEl);
-
   unpatchers.push(
     // User badges
     goosemodScope.patcher.userBadges.patch('#badges.sponsor#',
@@ -247,6 +185,4 @@ export const removeBadges = () => {
   for (const unpatch of unpatchers) {
     unpatch();
   }
-
-  cssEl.remove();
 };
