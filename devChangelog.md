@@ -1,4 +1,4 @@
-### Based on commit 877b462, made 15/08 16:28 UTC
+### Based on commit f48ba9d, made 15/08 21:36 UTC
 ## Commits this release
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
