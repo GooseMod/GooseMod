@@ -85,7 +85,9 @@
             "modules": "Moduler",
             "plugins": "Programtillegg",
             "themes": "Drakter",
-            "store": "Butikk"
+            "store": "Butikk",
+            "repos": "Kodelagre",
+            "snippets": "Snutter"
         },
         "community": "Gemenskap",
         "changelog": "Endringslogg",
@@ -97,7 +99,8 @@
             "modules": "GooseMod-moduler",
             "settings": "GooseMod-innstillinger",
             "store": "GooseMod-butikken"
-        }
+        },
+        "install": "Installer"
     },
     "ootb": {
         "start": {
