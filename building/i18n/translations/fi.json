@@ -126,7 +126,7 @@
                 }
             },
             "tabs": {
-                "imported": "Tuodut",
+                "imported": "Asennetut",
                 "store": "Kauppa"
             }
         }
@@ -157,7 +157,8 @@
             "modules": "GooseMod Moduulit",
             "settings": "GooseMod Asetukset",
             "store": "GooseMod Kauppa"
-        }
+        },
+        "install": "Asenna"
     },
     "ootb": {
         "community": {
