@@ -3,22 +3,27 @@
         "items": {
             "restore_backup": {
                 "button": "Gjenopprett",
-                "title": "Gjenopprett sikkerhetskopi"
+                "title": "Gjenopprett sikkerhetskopi",
+                "note": "Gjenopprett dine GooseMod-moduler og innstillinger via en sikkerhetskopifil, **kun gjenopprett sikkerhetskopier du har tiltro til**"
             },
             "create_backup": {
                 "button": "Sikkerhetskopier",
-                "title": "Opprett sikkerhetskopi"
+                "title": "Opprett sikkerhetskopi",
+                "note": "Oppretter en fil for sikkerhetskopiering av dine GooseMod-moduler og innstillinger"
             },
             "reset_goosemod": {
                 "button": "Tilbakestill",
-                "title": "Tilbakestill GooseMod"
+                "title": "Tilbakestill GooseMod",
+                "note": "Tilbakestiller GooseMod fullstendig: Fjerner alle innstillinger og moduler; som for en førstegangsinstallasjon"
             },
             "copy_debug_info": {
                 "button": "Kopier",
-                "title": "Kopier avlusingsinfo"
+                "title": "Kopier avlusingsinfo",
+                "note": "Kopier info om oppsett og GooseMod for rapportering og avlusing."
             },
             "main_separators": {
-                "title": "Hovedinndelere"
+                "title": "Hovedinndelere",
+                "note": "Vis inndelere mellom hoved-GooseMod-innstillinger"
             },
             "headers": {
                 "experimental": "Eksperimentelt",
@@ -27,17 +32,61 @@
                 "appearance": "Utseende"
             },
             "data_attributes": {
-                "title": "Data-attributter"
+                "title": "Data-attributter",
+                "note": "Legg til dataatributter for noen elementer som drakter bruker"
             },
             "development_channel": {
-                "title": "Utviklingskanal"
+                "title": "Utviklingskanal",
+                "note": "Bruk eksperimentelle GooseMod-bygg ment for utvikling"
+            },
+            "store_in_home": {
+                "note": "Vis GoosMod-butikkvalg på hjemmeskjermen istedenfor i innsntillinger",
+                "title": "Butikk på hjemmeskjerm"
+            },
+            "force_theme_settings": {
+                "note": "Påtving auto-genererte innstillinger for alle drakter",
+                "title": "Påtving draktendringer"
+            },
+            "snippets": {
+                "note": "Skru på «Snutter»-fane i butikk",
+                "title": "Snutter"
+            },
+            "start_tour": {
+                "button": "Veiledning",
+                "note": "Gå gjennom GooseMod sin oppstartsveiledning igjen",
+                "title": "Start veiledning"
+            },
+            "purge_caches": {
+                "button": "Tøm",
+                "note": "Tøm (fullstendig fjerning) de fleste hurtiglagrene GooseMod bruker",
+                "title": "Tøm hurtiglagre"
+            },
+            "goosemod_badges": {
+                "note": "Vis GooseMod-skilt",
+                "title": "GooseMod-skilt"
+            },
+            "auto_update": {
+                "note": "Oppdater kodelagre og moduler hver time",
+                "title": "Automatisk oppdatering"
+            },
+            "goosemod_change_log": {
+                "note": "Vis «Endringslogg»-innstilling",
+                "title": "GooseMod-endringslogg"
             }
         }
     },
     "toasts": {
         "add_repo": {
             "invalid_repo": {
-                "subtext": "Ugyldig format"
+                "subtext": "Ugyldig format",
+                "text": "Ugyldig kodelager"
+            },
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Feil som følge av ubetrodd PGP",
+                    "refused": "Sikkerhetsspørsmål nektet"
+                },
+                "text": "Tillegg av kodelager avbrutt"
             }
         }
     },
@@ -165,10 +214,25 @@
             "confirm": "Ta del I GooseMod-Discord"
         },
         "themes": {
-            "confirm": "Utforsk drakter"
+            "confirm": "Utforsk drakter",
+            "text": {
+                "subtext": "Velg blandt over 100 drakter for å tilpasse og forbedre ditt brukergrensesnitt",
+                "main": "Ikle din Discord fine drakter"
+            }
         },
         "plugins": {
-            "confirm": "Utforsk programtillegg"
+            "confirm": "Utforsk programtillegg",
+            "text": {
+                "main": "Finjuster din Discord under panseret",
+                "subtext": "Programtillegg endrer opplevelsen, og forbedrer selve programmet"
+            }
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseMod bruker sin egen butikk, der du enkelt kan utforske og installere",
+                "main": "Utforsk drakter og programtillegg i butikk"
+            },
+            "confirm": "Vis butikk på hjemmeskjerm"
         }
     },
     "badges": {
