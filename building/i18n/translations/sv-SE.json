@@ -1,1 +1,155 @@
-{}
+{
+    "badges": {
+        "developer": "GooseMod Utvecklare",
+        "translator": "GooseMod Översättare",
+        "sponsor": "GooseMod Sponsor"
+    },
+    "ootb": {
+        "store": {
+            "confirm": "Visa butik i hem"
+        },
+        "settings": {
+            "items": {
+                "utilities": {
+                    "title": "Verktyg"
+                },
+                "experimental_features": {
+                    "subtext": "Prova nya experimentella funktioner",
+                    "title": "Experimentella funktioner"
+                }
+            },
+            "confirm": "Visa GooseMod inställningar"
+        },
+        "community": {
+            "items": {
+                "get_involved": {
+                    "title": "Bli involverad"
+                },
+                "news": {
+                    "title": "Nyheter"
+                },
+                "ask_questions": {
+                    "title": "Ställ frågor"
+                }
+            }
+        },
+        "start": {
+            "cancel": "Inte Intresserad",
+            "confirm": "Läs mer"
+        }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "title": "Tvinga temainställningar"
+            },
+            "data_attributes": {
+                "title": "Dataattribut"
+            },
+            "development_channel": {
+                "title": "Utvecklingskanal"
+            },
+            "restore_backup": {
+                "button": "Återställ",
+                "title": "Återställ säkerhetskopia"
+            },
+            "create_backup": {
+                "button": "Säkerhetskopia",
+                "title": "Skapa säkerhetskopia"
+            },
+            "reset_goosemod": {
+                "button": "Återställ",
+                "title": "Återställ GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Kopiera",
+                "title": "Kopiera Debuginfo"
+            },
+            "purge_caches": {
+                "button": "Rensa",
+                "title": "Rensa cacher"
+            },
+            "auto_update": {
+                "title": "Automatisk uppdatering"
+            },
+            "store_in_home": {
+                "title": "Butik i hem"
+            },
+            "headers": {
+                "experimental": "Experimentell",
+                "backup": "Säkerhetskopiering",
+                "utilities": "Verktyg",
+                "appearance": "Utseende"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "PGP Otillförlitligt misslyckande"
+                }
+            },
+            "invalid_repo": {
+                "subtext": "Ogiltigt format"
+            }
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Ingen PGP",
+            "untrusted": "PGP Otillförlitlig",
+            "verified": "PGP Verifierad"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Alla insticksprogram",
+                "themes": "Alla teman"
+            },
+            "upcoming": "Kommande",
+            "recently_updated": "Nyligen uppdaterade"
+        },
+        "options": {
+            "author": {
+                "all": "Alla"
+            },
+            "sort": {
+                "last_updated": "Senast uppdaterad",
+                "az": "A-Z",
+                "stars": "Stjärnor",
+                "label": "Sortera efter"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Sök efter insticksprogram",
+                    "themes": "Sök efter teman"
+                }
+            },
+            "tabs": {
+                "imported": "Installerad",
+                "store": "Butik"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Utvecklare",
+            "modules": "Moduler",
+            "plugins": "Insticksprogram",
+            "themes": "Teman",
+            "store": "Butik"
+        },
+        "community": "Gemenskap",
+        "changelog": "Ändringslogg",
+        "settings": "Inställningar",
+        "refresh": "Uppdatera",
+        "remove": "Ta bort",
+        "add": "Lägg till",
+        "install": "Installera",
+        "goosemod": {
+            "modules": "GooseMod moduler",
+            "store": "GooseMod butik",
+            "settings": "GooseMod inställningar"
+        }
+    }
+}
