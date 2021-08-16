@@ -1,0 +1,28 @@
+.gm-settings-note-markdown {
+  font-size: inherit;
+  color: inherit !important;
+}
+
+.gm-settings-note-markdown .paragraph-3Ejjt0 {
+  margin: 0;
+}
+
+.gm-settings-label-icon {
+  vertical-align: sub;
+}
+
+.gm-settings-label-text {
+  vertical-align: top;
+  margin-left: 6px;
+}
+
+.gm-settings-header-collapser {
+  margin-top: -3px;
+  float: right;
+  width: 22px;
+  height: 22px;
+}
+
+.gm-settings-header-collapser.collapsed {
+  transform: rotate(-90deg);
+}

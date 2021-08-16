@@ -1,0 +1,10 @@
+.gm-store-author-pfp {
+  display: inline;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+
+.gm-store-author-name {
+  line-height: 32px;
+}

@@ -1,20 +1,3 @@
-/* OOTB */
-.gm-modules-preview .guildIcon-cyDh6h {
-  display: none;
-}
-
-.gm-modules-preview .cardHeader-2XrQbx {
-  margin-bottom: 12px;
-}
-
-.gm-modules-preview .card-3_CqkU {
-  background-color: var(--background-tertiary);
-}
-
-.gm-ootb-modal {
-  width: 600px;
-}
-
 .gm-highlight #app-mount::after {
   display: block;
   content: '';

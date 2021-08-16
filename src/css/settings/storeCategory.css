@@ -1,0 +1,11 @@
+.gm-store-category {
+  width: 100%;
+}
+
+.gm-store-category > :nth-child(2) {
+  display: grid;
+  overflow-x: scroll;
+  grid-template-columns: repeat(auto-fill, 350px);
+  grid-auto-flow: column;
+  width: 100%;
+}

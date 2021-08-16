@@ -1,0 +1,11 @@
+.gm-inline-dropdown {
+  display: flex;
+  align-items: center;
+
+  margin-left: 12px;
+}
+
+.gm-inline-dropdown > .select-2TCrqx {
+  width: 120px;
+  margin-left: 8px;
+}

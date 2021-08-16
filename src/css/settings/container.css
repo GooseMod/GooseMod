@@ -1,0 +1,11 @@
+#gm-settings-inject > div, .gm-store-settings {
+  display: flex;
+  flex-flow: row wrap;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.gm-store-settings > h1 {
+  flex-basis: 100%;
+}

@@ -1,6 +1,6 @@
-@import "settings.css";
-@import "ootb.css";
-@import "repoModal.css";
+@import "settings/";
+@import "ootb/";
+@import "store/";
 @import "errorBoundary.css";
 @import "discordFixes.css";
 @import "sponsorModal.css";

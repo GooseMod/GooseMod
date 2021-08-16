@@ -1,13 +1,19 @@
+import { resolve } from 'path';
+import { readdirSync } from 'fs';
+
+// Rollup plugins
 import localResolve from 'rollup-plugin-local-resolve';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import serve from 'rollup-plugin-serve';
 
+// PostCSS plugins
 import pcImport from 'postcss-import';
 
-const prod = !process.env.ROLLUP_WATCH;
-
+// Custom plugins
 import goosemod from './building/rollup-plugin-gm/index';
+
+const prod = !process.env.ROLLUP_WATCH;
 
 
 export default [
@@ -40,7 +46,16 @@ export default [
         sourceMap: !prod,
 
         plugins: [
-          pcImport()
+          pcImport({
+            resolve: (id, base, opts) => { // Resolve for @import
+              if (id.endsWith('/')) { // Directory resolving, eg: test/ imports all css files in test dir
+                const dir = resolve(base, id);
+                return readdirSync(dir).filter((x) => x.split('.').pop().startsWith('css')).map((x) => resolve(dir, x));
+              }
+
+              return resolve(base, id);
+            },
+          })
         ]
       }),
       
