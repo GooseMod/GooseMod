@@ -57,7 +57,8 @@
         "refresh": "Aggiorna",
         "remove": "Rimuovi",
         "add": "Aggiungi",
-        "install": "Installare"
+        "install": "Installare",
+        "community": "Comunità"
     },
     "badges": {
         "guild": "Discord Ufficiale GooseMod",
@@ -69,6 +70,115 @@
         "external_repo_security": {
             "bad_pgp": "Questa repo non è conosciuta o ritenuta affidabile (non è stata verificato con PGP), per cui sii estremamente cauto. Assicurati di fidarti del proprietario / dei proprietari della repo completamente.\n\nPer risolvere questo problema chiedi ai mantenitori della repo di aggiungere il supporto per PGP.\n\nPer favore, conferma nuovamente di voler aggiungere questa repo premendo OK.",
             "main": "Le repo esterne pongono a rischio gli utenti, poiché non controllate dagli sviluppatori di GooseMod. Non siamo responsabili di danni causati dall'aggiunta di repo esterne da parte degli utenti.\n\nSe non ti fidi del proprietario di questa repo non usarla, poiché potrebbe compromettere la tua installazione di Discord.\n\nPer favore conferma l'aggiunta di questa repo premendo OK."
+        }
+    },
+    "ootb": {
+        "start": {
+            "text": {
+                "main": "Scopri di più su GooseMod"
+            },
+            "items": {
+                "community": {
+                    "subtext": "Entra nel nostro Discord per fare domante, dare un feedback, tenerti aggiornato sulle notizie, ed altro"
+                },
+                "settings": {
+                    "subtext": "Scopri di più riguardo alle impostazioni per GooseMod e per i plugin"
+                },
+                "store": {
+                    "subtext": "Scopri di più sul negozio di GooseMod e su cosa c'è al suo interno"
+                }
+            },
+            "cancel": "Non sono interessato",
+            "confirm": "Scopri di più"
+        }
+    },
+    "settings": {
+        "items": {
+            "force_theme_settings": {
+                "note": "Imposta forzaamente le impostazioni auto-generate a tutti i temi",
+                "title": "Impostazioni per forzare il tema"
+            },
+            "data_attributes": {
+                "note": "Aggiungi attributi di dati ad alcuni elementi per alcuni temi da usare",
+                "title": "Inglese"
+            },
+            "development_channel": {
+                "note": "Usa le funzioni sperimentali di GooseMod",
+                "title": "Canale per il development"
+            },
+            "restore_backup": {
+                "button": "Ripristina",
+                "note": "Ripristina i tuoi moduli di GooseMod e le impostazioni da salvataggio, **ripristina solo salvataggi di cui ti fidi**",
+                "title": "Ripristina da salvataggio"
+            },
+            "create_backup": {
+                "button": "Salva",
+                "note": "Crea un file di salvataggio per i tuoi moduli di GooseMod e per le impostazioni",
+                "title": "Crea Salvataggio"
+            },
+            "reset_goosemod": {
+                "button": "Rpristina",
+                "note": "Ripristina GooseMod completamente: rimuove tutte le preferenze ed u moduli; come installarlo la prima volta",
+                "title": "Ripristina GooseMod"
+            },
+            "copy_debug_info": {
+                "button": "Copia",
+                "note": "Copia le informazioni del setup e di GooseMod per reportare e per debugging",
+                "title": "Copia le info di debug"
+            },
+            "start_tour": {
+                "button": "Tour",
+                "note": "Guarda il tour di incomincio di GooseMod di nuovo",
+                "title": "Comincia il tour"
+            },
+            "purge_caches": {
+                "button": "Purga",
+                "note": "Purga (rimuove completamente) la maggior parte della cache degli utenti di GooseMod",
+                "title": "Purga la cache"
+            },
+            "goosemod_badges": {
+                "note": "Mostra i bedge di GooseMod",
+                "title": "Bedge di GooseMod"
+            },
+            "auto_update": {
+                "note": "Aggiorna automaticamente le repo ed i moduli ogni ora",
+                "title": "Aggiornamenti automatici"
+            },
+            "store_in_home": {
+                "note": "Trasferisci le opzioni di GooseMod per il salvataggio dalle impostazioni alla Home",
+                "title": "Salvalo nella Home"
+            },
+            "main_separators": {
+                "note": "Mostra i separatore tra le impostazioni principali di GooseMod",
+                "title": "Separatori Principali"
+            },
+            "goosemod_change_log": {
+                "note": "Mostra le impostazioni \"Change Log\" di GooseMod"
+            },
+            "subtexts": {
+                "experimental_warning": "Le impostazioni sperimentali sono probabilmente inncomplete o instabili, quindi potrebbero risultare in un'esperienza ridota"
+            },
+            "headers": {
+                "experimental": "Sperimentale",
+                "backup": "Ripristino",
+                "utilities": "Utilità",
+                "appearance": "Aspetto"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Fallimento non fidato PGP",
+                    "refused": "Rifiutata la richiesta di sicurezza"
+                },
+                "text": "Cancellata l'aggiunta del repo"
+            },
+            "invalid_repo": {
+                "subtext": "Formato invalido",
+                "text": "Repo invalido"
+            }
         }
     }
 }

@@ -55,7 +55,7 @@
             "recently_updated": "Zuletzt aktualisiert"
         },
         "pgp": {
-            "untrusted": "PGP Untrusted",
+            "untrusted": "PGP ungültig",
             "unknown": "Kein PGP",
             "verified": "PGP verifiziert"
         }
@@ -102,7 +102,7 @@
             },
             "development_channel": {
                 "note": "Nutze experimentelle Entwicklungs-Builds von GooseMod",
-                "title": "Development Channel"
+                "title": "Entwicklungs-Kanal"
             },
             "restore_backup": {
                 "button": "Wiederherstellen",
