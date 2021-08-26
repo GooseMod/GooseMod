@@ -15,7 +15,7 @@ import goosemod from './building/rollup-plugin-gm/index';
 const goosemodBootstrap = () => ({
   name: 'goosemod-bootstrap',
 
-  renderChunk: async (code) => code.replace('<buildtime>', Date.now())
+  renderChunk: async (code) => code.replaceAll('<buildtime>', Date.now())
 });
 
 const prod = !process.env.ROLLUP_WATCH;
