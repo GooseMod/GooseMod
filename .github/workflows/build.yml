@@ -59,7 +59,7 @@ jobs:
         git checkout dist-prod --
         rm -rf *
         cp -rf ../dist/* .
-        sed -i 's/dist-dev/dist-prod/g' dist/index.js
+        sed -i 's/dist-dev/dist-prod/g' index.js
         git add --all
         git commit -m "[CI Chore] Update dist-prod"
         git push origin dist-prod
