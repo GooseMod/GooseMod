@@ -1,5 +1,6 @@
-### Based on commit 8a3e1bd, made 26/08 21:12 UTC
+### Based on commit 3750c4b, made 26/08 21:13 UTC
 ## Commits this release
+  - [Release] v12.0 (rebuild CI)
   - [CI] build: fix sed path
   - [Release] v12.0 (fixes)
   - [CI] build: replace bootstrap branch with sed for dist-prod
