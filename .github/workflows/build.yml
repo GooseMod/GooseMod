@@ -1,4 +1,4 @@
-name: Build And Release GooseMod Dev
+name: Build
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
     - name: Build Dev Changelog
       run: bash building/generateDevChangelog.sh
 
-    - name: Release Dev
+    - name: Dev GitHub Release
       uses: ncipollo/release-action@v1
       with:
         tag: "dev"
@@ -40,7 +40,7 @@ jobs:
 
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Release via dist branch
+    - name: Dev Dist Branch
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
@@ -49,7 +49,16 @@ jobs:
         git checkout dist-dev --
         rm -rf *
         cp -rf ../dist/* .
-        echo -e "/*\n  Access-Control-Allow-Origin: *" > _headers
         git add --all
         git commit -m "[CI Chore] Update dist-dev"
         git push origin dist-dev
+    
+    - name: Prod Dist Branch
+      if: ${{ contains(github.event.head_commit.message, '[Release] ') }}
+      run: |
+        git checkout dist-prod --
+        rm -rf *
+        cp -rf ../dist/* .
+        git add --all
+        git commit -m "[CI Chore] Update dist-prod"
+        git push origin dist-prod
