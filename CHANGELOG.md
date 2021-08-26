@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## v12.0 [2021-08-26]
+
+  - ### Translations
+    - **GooseMod now supports almost entire translations.** Almost all of GooseMod now supports translations, instead of previously where it was only some features and only a few languages.
+
+  - ### Store
+    - **Decreased data usage and improved performance.** Images (banners, profile pictures) are now lazy loaded, meaning they are only loaded when visible. This should decrease data usage a lot, and help performance for low-end devices.
+    - **Removed some UI to simplify usage.** Disabled toasts on module updates and removed dependencies modal (now just installs them).
+
+  - ### Rewrites [progress]
+    - **Rewrote internal CSS loading to be simpler and faster.**
+
+
 ## v11.1 [2021-08-10]
 
   - ### Store
