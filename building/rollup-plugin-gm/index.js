@@ -5,12 +5,12 @@ import geni18nFiles from './i18n';
 
 
 export default () => {
-  const changelog = genChangelog();
-
   return {
     name: 'goosemod',
 
     renderChunk: async (code) => {
+      const changelog = genChangelog();
+
       const commitHash = await new Promise((res) => exec(`git rev-parse HEAD`, (_err, stdout) => res(stdout.trim())));
 
       code = code

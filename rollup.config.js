@@ -12,6 +12,11 @@ import pcImport from 'postcss-import';
 
 // Custom plugins
 import goosemod from './building/rollup-plugin-gm/index';
+const goosemodBootstrap = () => ({
+  name: 'goosemod-bootstrap',
+
+  renderChunk: async (code) => code.replace('<buildtime>', Date.now())
+});
 
 const prod = !process.env.ROLLUP_WATCH;
 
@@ -80,7 +85,9 @@ export default [
     
     plugins: [
       localResolve(),
-      prod && terser()
+      prod && terser(),
+
+      goosemodBootstrap()
     ],
     
     // fix rollup jank
