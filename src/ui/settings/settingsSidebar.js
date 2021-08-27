@@ -16,8 +16,37 @@ export default (goosemodScope, gmSettings) => {
       ...goosemodScope.settings.items.filter((x) => (gmSettings.get().home ? x[1] !== '#terms.store.plugins#' && x[1] !== '#terms.store.themes#' && x[1] !== '#terms.store.snippets#': true) && (!gmSettings.get().snippets ? x[1] !== '#terms.store.snippets#' : true)).map((i) => {
         switch (i[0]) {
           case 'item':
+          let id = i[1];
+
+          switch (id) { // Special IDs (attributes in DOM elements) for GM built-in i18n labels for easier theming
+            case '#terms.settings#': {
+              id = 'settings';
+              break;
+            }
+
+            case '#terms.store.plugins#': {
+              id = 'plugins';
+              break;
+            }
+
+            case '#terms.store.themes#': {
+              id = 'themes';
+              break;
+            }
+
+            case '#terms.store.snippets#': {
+              id = 'snippets';
+              break;
+            }
+
+            case '#terms.changelog#': {
+              id = 'changelog';
+              break;
+            }
+          }
+
           let obj = {
-            section: 'gm-' + i[1],
+            section: 'gm-' + id,
             label: i[1],
             predicate: () => { },
             element: function() {
