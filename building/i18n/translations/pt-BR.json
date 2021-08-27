@@ -22,7 +22,7 @@
                 "plugins": "Todos os Plugins",
                 "themes": "Todos os Temas"
             },
-            "upcoming": "Lançamento",
+            "upcoming": "Por Vir",
             "recently_updated": "Atualizado Recentemente",
             "top_starred": "Com Mais Estrelas"
         },
@@ -32,7 +32,7 @@
                 "label": "Autor"
             },
             "sort": {
-                "last_updated": "Ultima Atualização",
+                "last_updated": "Última Atualização",
                 "az": "A-Z",
                 "stars": "Estrelas",
                 "label": "Ordenar por"
@@ -53,8 +53,8 @@
         "store": {
             "developers": "Desenvolvedores",
             "repos": "Repositórios",
-            "modules": "Modulos",
-            "snippets": "Snippets",
+            "modules": "Módulos",
+            "snippets": "Prévias",
             "plugins": "Plugins",
             "themes": "Temas",
             "store": "Loja"
@@ -65,7 +65,7 @@
         "remove": "Remover",
         "add": "Adicionar",
         "goosemod": {
-            "modules": "Modulos do GooseMod",
+            "modules": "Módulos do GooseMod",
             "settings": "Configurações do GooseMod",
             "store": "Loja do GooseMod"
         },
@@ -79,8 +79,8 @@
                 "title": "Forçar Configurações de Temas"
             },
             "snippets": {
-                "note": "Habilita a aba de Snippets na Loja",
-                "title": "Snippets"
+                "note": "Habilita a aba de Prévias na Loja",
+                "title": "Prévias"
             },
             "data_attributes": {
                 "note": "Adiciona atributos de dados de alguns elementos para temas usarem",
@@ -117,7 +117,7 @@
             },
             "purge_caches": {
                 "button": "Limpar",
-                "note": "Limpa (completamente remove) a maioria dos caches que o GooseMod usa",
+                "note": "Limpa (remove completamente) a maioria dos caches que o GooseMod usa",
                 "title": "Limpar Caches"
             },
             "goosemod_badges": {
@@ -218,7 +218,7 @@
                     "title": "Se Envolva Conosco"
                 },
                 "news": {
-                    "subtext": "Tenha as últimas notícias e anúncios sobre o GooseMod e projetos relacionados",
+                    "subtext": "Receba as últimas notícias e anúncios sobre o GooseMod e projetos relacionados",
                     "title": "Novidades"
                 },
                 "ask_questions": {
@@ -231,7 +231,7 @@
         "themes": {
             "text": {
                 "main": "Embeleze seu Discord com Temas",
-                "subtext": "Escolha entre 100 temas para melhorar a sua experiência e sua interface de usuário"
+                "subtext": "Escolha entre mais de 100 temas para melhorar a sua experiência e sua interface de usuário"
             },
             "confirm": "Pesquise por Temas"
         },
