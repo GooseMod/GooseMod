@@ -9,26 +9,83 @@
         "settings": {
             "items": {
                 "utilities": {
-                    "title": "道具"
+                    "title": "ユーティリティ",
+                    "subtext": "バックアップの作成、GooseModのリセットなど"
                 },
                 "tweaks": {
-                    "title": "拡張機能"
+                    "title": "拡張機能",
+                    "subtext": "GooseModを思いのままに調整"
+                },
+                "experimental_features": {
+                    "subtext": "試験的な機能を試す",
+                    "title": "試験的な機能"
                 }
-            }
+            },
+            "text": {
+                "subtext": "変更するための様々な選択肢があります",
+                "main": "GooseModの設定を使用して、機能をカスタマイズ"
+            },
+            "confirm": "GooseMod設定の表示"
         },
         "themes": {
             "text": {
-                "subtext": "100以上のテーマをカスタマイズ"
-            }
+                "subtext": "100以上のテーマをカスタマイズ",
+                "main": "テーマでDiscordを美しく"
+            },
+            "confirm": "テーマをブラウズ"
         },
         "start": {
             "items": {
                 "store": {
                     "subtext": "GooseMod には色々なアイテムがあります"
+                },
+                "community": {
+                    "subtext": "Discordサーバーに参加して質問やフィードバック、最新情報などをチェック"
+                },
+                "settings": {
+                    "subtext": "GooseModとプラグインの設定について確認"
                 }
             },
             "cancel": "興味なし",
-            "confirm": "詳細情報"
+            "confirm": "詳細情報",
+            "text": {
+                "subtext": "GooseModの主要な機能について紹介します",
+                "main": "GooseModについてもっと知る"
+            }
+        },
+        "plugins": {
+            "text": {
+                "subtext": "プラグインでアプリを改善し、あなたにとって使いやすいものに"
+            },
+            "confirm": "プラグインをブラウズする"
+        },
+        "store": {
+            "text": {
+                "subtext": "GooseModは、独自のストアを使用しており、簡単に探して、インストールすることができます",
+                "main": "ストアでテーマとプラグインを探す"
+            },
+            "confirm": "ホームでストアを表示"
+        },
+        "community": {
+            "text": {
+                "subtext": "詳しくはDiscordに参加してください",
+                "main": "GooseModのコミュニティに参加"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "提案やサポートなどの支援をする",
+                    "title": "参加する"
+                },
+                "news": {
+                    "subtext": "GooseModや関連プロジェクトに関する最新情報やお知らせをお届けします",
+                    "title": "ニュース"
+                },
+                "ask_questions": {
+                    "subtext": "質問してサポートを受ける",
+                    "title": "質問する"
+                }
+            },
+            "confirm": "GooseMod のDiscordに参加"
         }
     },
     "badges": {
