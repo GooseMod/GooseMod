@@ -1,5 +1,7 @@
-### Based on commit aa1fd25, made 27/08 15:34 UTC
+### Based on commit 79646ad, made 27/08 18:38 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Settings > Sidebar] Set standard ID instead of label for built-in i18n items
   - [CI i18n] Update translations from Weblate
   - [Chore] Bump version: 12.1-dev
   - [Release] v12.0 (rebuild CI)
