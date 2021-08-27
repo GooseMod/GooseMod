@@ -1,5 +1,6 @@
-### Based on commit db251db, made 27/08 13:24 UTC
+### Based on commit aa1fd25, made 27/08 15:34 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Chore] Bump version: 12.1-dev
   - [Release] v12.0 (rebuild CI)
   - [CI] build: fix sed path
