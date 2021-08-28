@@ -1,5 +1,11 @@
 # GooseMod Changelog
 
+## v12.1-dev [2021-08-28]
+
+  - ### Themeability
+    - **GooseMod settings sidebar items now have easier ids to grab.** Used to just use label so was reliant on supporting all translations.
+
+
 ## v12.0 [2021-08-26]
 
   - ### Translations
