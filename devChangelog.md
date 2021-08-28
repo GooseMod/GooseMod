@@ -1,5 +1,6 @@
-### Based on commit 68b9157, made 28/08 06:02 UTC
+### Based on commit 72582c9, made 28/08 06:04 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Settings > Sidebar] Set standard ID instead of label for built-in i18n items
