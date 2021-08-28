@@ -4,6 +4,7 @@
 
   - ### Themeability
     - **GooseMod settings sidebar items now have easier ids to grab.** Used to just use label so was reliant on supporting all translations.
+    - **Added GooseMod class to body so themes know if it's in use.**
 
 
 ## v12.0 [2021-08-26]

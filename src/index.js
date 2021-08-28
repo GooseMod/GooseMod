@@ -242,6 +242,8 @@ const init = async function () {
 
 
   ProfileStoreInit();
+
+  document.body.classList.add('goosemod'); // Add goosemod class to body for themes
 };
 
 window.goosemod = {};
