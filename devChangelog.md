@@ -1,5 +1,7 @@
-### Based on commit 9841335, made 28/08 07:33 UTC
+### Based on commit 8f1936d, made 28/08 08:40 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Changelog] Add current dev changes
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
