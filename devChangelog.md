@@ -1,5 +1,6 @@
-### Based on commit 72582c9, made 28/08 06:04 UTC
+### Based on commit 9841335, made 28/08 07:33 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - Merge branch 'master' of github.com:GooseMod/GooseMod
