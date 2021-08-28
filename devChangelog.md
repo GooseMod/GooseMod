@@ -1,5 +1,6 @@
-### Based on commit 8f1936d, made 28/08 08:40 UTC
+### Based on commit 25b8f53, made 28/08 14:45 UTC
 ## Commits this release
+  - [Index] Add GM class to body
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Changelog] Add current dev changes
   - [CI i18n] Update translations from Weblate
