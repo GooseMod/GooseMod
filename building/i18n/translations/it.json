@@ -75,7 +75,8 @@
     "ootb": {
         "start": {
             "text": {
-                "main": "Scopri di più su GooseMod"
+                "main": "Scopri di più su GooseMod",
+                "subtext": "Fai un breve tour delle funzioni principali di GooseMod"
             },
             "items": {
                 "community": {
@@ -90,6 +91,41 @@
             },
             "cancel": "Non sono interessato",
             "confirm": "Scopri di più"
+        },
+        "store": {
+            "confirm": "Visualizza il negozio nella Pagina principale"
+        },
+        "settings": {
+            "text": {
+                "subtext": "Ci sono varie opzioni per voi per cambiare"
+            },
+            "items": {
+                "experimental_features": {
+                    "subtext": "Prova nuove funzionalità sperimentali",
+                    "title": "Caratteristiche sperimentali"
+                }
+            },
+            "confirm": "Visualizza le impostazioni GooseMod"
+        },
+        "community": {
+            "text": {
+                "subtext": "Unisciti al nostro Discord per ulteriori informazioni e altro",
+                "main": "Unisciti alla comunità di GooseMod"
+            },
+            "items": {
+                "get_involved": {
+                    "subtext": "Aiuta con suggerimenti, sostenendo gli altri e altro"
+                },
+                "news": {
+                    "subtext": "Ricevi le ultime notizie e gli annunci su GooseMod e i progetti correlati",
+                    "title": "Novità"
+                },
+                "ask_questions": {
+                    "subtext": "Fai tutte le domande e ottieni supporto",
+                    "title": "Fai domande"
+                }
+            },
+            "confirm": "Unisciti a GooseMod Discord"
         }
     },
     "settings": {
@@ -153,7 +189,8 @@
                 "title": "Separatori Principali"
             },
             "goosemod_change_log": {
-                "note": "Mostra le impostazioni \"Change Log\" di GooseMod"
+                "note": "Mostra le impostazioni \"Change Log\" di GooseMod",
+                "title": "Registro delle modifiche di GooseMod"
             },
             "subtexts": {
                 "experimental_warning": "Le impostazioni sperimentali sono probabilmente inncomplete o instabili, quindi potrebbero risultare in un'esperienza ridota"
@@ -163,6 +200,10 @@
                 "backup": "Ripristino",
                 "utilities": "Utilità",
                 "appearance": "Aspetto"
+            },
+            "snippets": {
+                "note": "Abilita la scheda Frammenti nel negozio",
+                "title": "Frammenti"
             }
         }
     },
