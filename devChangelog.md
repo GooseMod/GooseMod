@@ -1,5 +1,6 @@
-### Based on commit c30cc95, made 31/08 20:45 UTC
+### Based on commit 4317eac, made 31/08 21:01 UTC
 ## Commits this release
+  - [Store > Card] Lazy load card containers (mistake?)
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Store > Card] Add space between author comma
   - [CI i18n] Update translations from Weblate
