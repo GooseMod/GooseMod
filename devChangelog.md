@@ -1,5 +1,7 @@
-### Based on commit 373d47f, made 29/08 01:36 UTC
+### Based on commit c30cc95, made 31/08 20:45 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Store > Card] Add space between author comma
   - [CI i18n] Update translations from Weblate
   - [Index] Add GM class to body
   - Merge branch 'master' of github.com:GooseMod/GooseMod
