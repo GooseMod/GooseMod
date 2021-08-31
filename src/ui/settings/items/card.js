@@ -1,5 +1,17 @@
+const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      const image = entry.target;
+
+      image._lazyLoad();
+
+      observer.unobserve(image);
+    }
+  }
+});
+
 export default () => {
-const { React } = goosemod.webpackModules.common;
+const { React, ReactDOM } = goosemod.webpackModules.common;
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
@@ -17,12 +29,32 @@ const Discord = goosemod.webpackModules.findByDisplayName('Discord');
 
 
 return class Card extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loaded: false
+    };
+  }
+
+  componentDidMount() {
+    const node = ReactDOM.findDOMNode(this);
+
+    node._lazyLoad = () => {
+      this.setState({
+        loaded: true
+      });
+    };
+
+    observer.observe(node);
+  }
+
   render() {
     if (this.props.checked !== this.props.isToggled()) {
       this.props.checked = this.props.isToggled();
     }
 
-    return React.createElement('div', {
+    return !this.state.loaded ? React.createElement('div', { className: 'test' }) : React.createElement('div', {
       className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' '),
       onClick: this.props.onClick
     },
