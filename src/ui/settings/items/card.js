@@ -62,7 +62,7 @@ return class Card extends React.PureComponent {
           }, x.name),
           i !== this.props.author.length - 1 ? React.createElement('span', {
             className: FormTextClasses.description
-          }, ',') : null
+          }, ', ') : null
         ])
       ),
 
