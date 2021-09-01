@@ -1,5 +1,6 @@
-### Based on commit 1d33db3, made 01/09 18:35 UTC
+### Based on commit 251c66f, made 01/09 19:22 UTC
 ## Commits this release
+  - [Store > Card] Tweak whether to update state only if not already
   - [Store > Card] More card lazy loading rewriting and tweaks
   - [Store > Card] Rewrite lazy loading card containers
   - [Store > Card] Lazy load card containers (mistake?)
