@@ -1,5 +1,5 @@
 export default () => {
-const { React, ReactDOM } = goosemod.webpackModules.common;
+const { React } = goosemod.webpackModules.common;
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
@@ -27,7 +27,7 @@ return class Card extends React.PureComponent {
     if (!this.state.renderLoaded) {
       this.state.loaded = !this.props.i;
 
-      setTimeout(() => {
+      if (!this.state.loaded) setTimeout(() => {
         this.setState({
           loaded: true,
           renderLoaded: true
