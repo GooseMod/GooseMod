@@ -1,5 +1,6 @@
-### Based on commit 29d7ba5, made 01/09 11:44 UTC
+### Based on commit 1d33db3, made 01/09 18:35 UTC
 ## Commits this release
+  - [Store > Card] More card lazy loading rewriting and tweaks
   - [Store > Card] Rewrite lazy loading card containers
   - [Store > Card] Lazy load card containers (mistake?)
   - Merge branch 'master' of github.com:GooseMod/GooseMod
