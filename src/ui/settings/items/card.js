@@ -1,15 +1,3 @@
-/* const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-      const image = entry.target;
-
-      image._lazyLoad();
-
-      observer.unobserve(image);
-    }
-  }
-}); */
-
 export default () => {
 const { React, ReactDOM } = goosemod.webpackModules.common;
 
@@ -27,40 +15,12 @@ const SmallMediaCarousel = goosemod.webpackModules.findByDisplayName('SmallMedia
 
 const Discord = goosemod.webpackModules.findByDisplayName('Discord');
 
-/* const visibleCardCount = Math.ceil((window.innerWidth - 300) / 350);
-const visibleCategoryCount = Math.ceil((window.innerHeight - 200) / 450); */
 
 return class Card extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {};
-
-    /* // Predictive lazy loading
-    const categoryNum = Math.floor(this.props.i / 10);
-    const cardNum = this.props.i % 10;
-
-    this.state = {
-      loaded: cardNum < visibleCardCount && categoryNum < visibleCategoryCount
-    }; */
-  }
-
-  componentDidMount() {
-    /* const node = ReactDOM.findDOMNode(this);
-
-    node._lazyLoad = () => {
-      this.setState({
-        loaded: true
-      });
-    };
-
-    observer.observe(node);
-
-    if (this.props.i === 10) console.log('componentDidMount');
-
-    this.setState({
-      loaded: true
-    }); */
   }
 
   render() {
@@ -81,9 +41,15 @@ return class Card extends React.PureComponent {
       this.props.checked = this.props.isToggled();
     }
 
-    return !this.state.loaded ? React.createElement('div') : React.createElement('div', {
+    return !this.state.loaded ? React.createElement('div', {
+      className: 'gm-store-card-loading-placeholder'
+    }) : React.createElement('div', {
       className: ['gm-store-card', this.props.mini ? 'gm-store-card-mini' : '', ...this.props.tags.map((x) => x.replace(/ /g, '|'))].join(' '),
-      onClick: this.props.onClick
+      onClick: this.props.onClick,
+
+      style: {
+        display: this.props.i ? 'none' : 'block'
+      }
     },
 
       React.createElement('img', {

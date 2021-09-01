@@ -1,5 +1,8 @@
 import * as GoosemodChangelog from '../goosemodChangelog';
 
+import sleep from '../../util/sleep';
+
+
 export default (goosemodScope, gmSettings, Items) => {
   let oldItems = goosemodScope.settings.items;
   goosemodScope.settings.items = [];
@@ -436,15 +439,12 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
   let authorVal = '#store.options.author.all#';
   let searchQuery = '';
 
-  const updateModuleStoreUI = () => {
-    const cards = document.querySelectorAll(':not(.gm-store-category) > div > .gm-store-card');
+  let processingMSUpdate = false;
+  const updateModuleStoreUI = async () => {
+    if (processingMSUpdate) return;
+    processingMSUpdate = true;
 
-    const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
-
-    let importedVal = document.querySelector('.selected-3s45Ha').textContent;
-    if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = '#store.options.tabs.store#';
-
-    for (let c of cards) {
+    const processCard = (c) => {
       const titles = c.getElementsByClassName('title-31JmR4');
 
       const title = titles[1];
@@ -486,7 +486,16 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
         && (importedVal === '#store.options.tabs.store#' || importedVal === importedSelector)
         && (authorVal === '#store.options.author.all#' || authors.includes(authorVal.split(' (').slice(0, -1).join(' (')))
         ? 'block' : 'none';
-    }
+    };
+
+    const cards = document.querySelectorAll(':not(.gm-store-category) > div > .gm-store-card');
+
+    const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
+
+    let importedVal = document.querySelector('.selected-3s45Ha').textContent;
+    if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = '#store.options.tabs.store#';
+
+    cards.forEach(processCard);
 
     const noInput = searchQuery === '' && importedVal === '#store.options.tabs.store#' && authorVal === '#store.options.author.all#';
 
@@ -498,6 +507,25 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     allHeader.style.height = !noInput ? '0px' : '';
     allHeader.style.opacity = !noInput ? '0' : '';
     allHeader.style.margin = !noInput ? '0' : '';
+
+    if (document.querySelector('.gm-store-card-loading-placeholder')) { // Still loading cards
+      let placeholders = [...document.querySelectorAll('.gm-store-card-loading-placeholder')];
+
+      while (placeholders.length !== 0) {
+        placeholders = placeholders.filter((x) => {
+          if (x.className !== 'gm-store-card-loading-placeholder') {
+            processCard(x);
+            return false;
+          }
+
+          return true;
+        });
+
+        await sleep(10);
+      }
+    }
+
+    processingMSUpdate = false;
   };
 
   goosemodScope.settings.updateModuleStoreUI = updateModuleStoreUI;
