@@ -1,5 +1,6 @@
-### Based on commit 0c32574, made 02/09 13:34 UTC
+### Based on commit d3dfcdb, made 02/09 14:37 UTC
 ## Commits this release
+  - [Bootstrap] Revert accidental change
   - [CI i18n] Update translations from Weblate
   - [Storage > Ext] Hybrid localStorage backup
   - Merge branch 'master' of github.com:GooseMod/GooseMod
