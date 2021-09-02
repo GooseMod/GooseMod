@@ -1,5 +1,6 @@
-### Based on commit 8d2b04f, made 02/09 12:19 UTC
+### Based on commit 47cbb82, made 02/09 13:29 UTC
 ## Commits this release
+  - [Storage > Ext] Hybrid localStorage backup
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Patcher > Base] Small rewrite tweaks
   - [CI i18n] Update translations from Weblate
