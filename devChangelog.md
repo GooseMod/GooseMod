@@ -1,5 +1,6 @@
-### Based on commit 47cbb82, made 02/09 13:29 UTC
+### Based on commit 0c32574, made 02/09 13:34 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Storage > Ext] Hybrid localStorage backup
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Patcher > Base] Small rewrite tweaks
