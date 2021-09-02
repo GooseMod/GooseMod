@@ -13,7 +13,6 @@ const isReactComponent = (component) => {
   ));
 };
 
-
 const beforePatches = (context, args, id, functionName, keyName) => {
   const patches = modIndex[id][keyName].before;
 
@@ -28,7 +27,7 @@ const beforePatches = (context, args, id, functionName, keyName) => {
       if (toSetNewArgs === false) return false;
 
       if (Array.isArray(toSetNewArgs)) {
-        newArgs = args;
+        newArgs = toSetNewArgs;
       }
     } catch (e) {
       console.error(`Before patch (${id} - ${functionName}) failed, skipping`, e);
@@ -69,9 +68,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
     toReturn = afterPatches(this, newArgs, returnValue, id, functionName, keyName);
   }
 
-  const { harden } = modIndex[id][keyName];
-
-  if (harden) {
+  if (modIndex[id][keyName].harden) {
     if (!GMErrorBoundary) GMErrorBoundary = _GMErrorBoundary();
     const { React } = goosemod.webpackModules.common;
 
