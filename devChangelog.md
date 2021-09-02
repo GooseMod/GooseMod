@@ -1,5 +1,6 @@
-### Based on commit 251c66f, made 01/09 19:22 UTC
+### Based on commit 8553c1a, made 02/09 07:34 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Store > Card] Tweak whether to update state only if not already
   - [Store > Card] More card lazy loading rewriting and tweaks
   - [Store > Card] Rewrite lazy loading card containers
