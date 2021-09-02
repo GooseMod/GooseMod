@@ -1,5 +1,7 @@
-### Based on commit 8553c1a, made 02/09 07:34 UTC
+### Based on commit 8d2b04f, made 02/09 12:19 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Patcher > Base] Small rewrite tweaks
   - [CI i18n] Update translations from Weblate
   - [Store > Card] Tweak whether to update state only if not already
   - [Store > Card] More card lazy loading rewriting and tweaks
