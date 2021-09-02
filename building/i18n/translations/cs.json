@@ -21,6 +21,13 @@
                 "backup": "Záloha",
                 "utilities": "Utitlity",
                 "appearance": "Vzhled"
+            },
+            "create_backup": {
+                "title": "Vytvořit zálohu"
+            },
+            "reset_goosemod": {
+                "button": "Resetovat",
+                "title": "Resetovat GooseMod"
             }
         }
     },
