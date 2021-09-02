@@ -1,1 +1,109 @@
-{}
+{
+    "settings": {
+        "items": {
+            "copy_debug_info": {
+                "title": "Kopírovat ladící informace",
+                "button": "Kopírovat"
+            },
+            "main_separators": {
+                "note": "Zobrazit oddělovače mezi hlavními nastaveními goosemodu",
+                "title": "Hlavní Oddělovače"
+            },
+            "goosemod_change_log": {
+                "note": "Zobrazit Goosemod Seznam změn",
+                "title": "GooseMod seznam změn"
+            },
+            "subtexts": {
+                "experimental_warning": "Experimentální nastavení jsou většinou nehotová a nestabilní což by mohlo způsobit horší zkušenost používání goosemodu"
+            },
+            "headers": {
+                "experimental": "Experimentální",
+                "backup": "Záloha",
+                "utilities": "Utitlity",
+                "appearance": "Vzhled"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "cancelled": {
+                "reasons": {
+                    "pgp": "Nedůvěryhodné selhání PGP",
+                    "refused": "Odmítnutá zabezpečovací výzva"
+                },
+                "text": "Přidání repozitáře bylo zrušeno"
+            },
+            "invalid_repo": {
+                "subtext": "Neplatný formát",
+                "text": "Neplatný repozitář"
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Tento repozitář není znám ani ověření (žádné ověření PGP), prosím buďte extra opatrní. Dejte si pozor že kompletně věříte vlastníkům tohoto repozitáře.\n\nNa vyřešení tohoto problémů kontaktujte vlastníka repozitáře aby přidal podporu PGP.\n\nProsím znovu potvrďte přidání toho repozitáře kliknutím na tlačítko OK.",
+            "main": "Externí repozitáře mohou představovat bezpečnostní rizika protože nejsou ověřeny vývojáři GooseModu. Neneseme zodpovědnost za žádná nebezpečí z důvodu externích repozitářů přidaných uživateli.\n\nPokud nevěříte tomuto repozitáři nebo nejste vlastníkem toho repozitáře nepoužívejte ho protože by mohlo prolomit zabezpečení vaší instalace discordu.\n\nProsíme potvrďte přidání tohoto repozitáře kliknutím na tlačítko OK."
+        }
+    },
+    "store": {
+        "pgp": {
+            "unknown": "Žádné PGP",
+            "untrusted": "PGP Nedůvěryhodný",
+            "verified": "PGP Ověřeno"
+        },
+        "categories": {
+            "all": {
+                "plugins": "Všechny pluginy",
+                "themes": "Všechny témata/vzhledy"
+            },
+            "upcoming": "Nadcházející",
+            "recently_updated": "S nedávnou aktualizací",
+            "top_starred": "S nejvíce hvězdami"
+        },
+        "options": {
+            "author": {
+                "all": "Všechny",
+                "label": "Autor"
+            },
+            "sort": {
+                "last_updated": "Poslední aktualizace",
+                "az": "A-Z",
+                "stars": "Hvězdy",
+                "label": "Seřadit"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Hledat mezi pluginy",
+                    "themes": "Hledat mezi vzhledy/tématy"
+                }
+            },
+            "tabs": {
+                "imported": "Instalováno",
+                "store": "Obchod"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Vývojáři",
+            "repos": "Repozitáře",
+            "modules": "Moduly",
+            "snippets": "Snippety",
+            "plugins": "Pluginy",
+            "themes": "Vzhledy",
+            "store": "Obchod"
+        },
+        "community": "Komunita",
+        "changelog": "Seznam změn",
+        "settings": "Nastavení",
+        "refresh": "Obnovit",
+        "remove": "Odebrat",
+        "add": "Přidat",
+        "install": "Instalovat",
+        "goosemod": {
+            "modules": "Goosemod moduly",
+            "settings": "Nastavení goosemodu",
+            "store": "Obchod goosemod"
+        }
+    }
+}
