@@ -1,5 +1,6 @@
-### Based on commit 3e94af5, made 04/09 21:15 UTC
+### Based on commit 8bd6544, made 04/09 23:33 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Settings > Main] Add tweaks category with items: placeholder image, collapsible home
   - [Changelog] Add current dev changes
   - [Settings] Make headers not collapsible by default, make experimental section collapsed by default
