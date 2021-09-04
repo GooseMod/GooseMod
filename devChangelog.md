@@ -1,5 +1,6 @@
-### Based on commit 9e1e677, made 04/09 16:09 UTC
+### Based on commit 1af166b, made 04/09 17:15 UTC
 ## Commits this release
+  - [Settings] Make headers not collapsible by default, make experimental section collapsed by default
   - [Store > Card] Fix white outline showing with no image
   - [Changelog] Add current dev changes
   - [Bootstrap] Revert accidental change
