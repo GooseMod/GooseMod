@@ -139,7 +139,8 @@
                 "experimental": "Expérimental",
                 "backup": "Sauvegarde",
                 "appearance": "Apparence",
-                "utilities": "Actions"
+                "utilities": "Actions",
+                "tweaks": "Ajustements"
             },
             "force_theme_settings": {
                 "note": "Force la génération de paramètres pour tous les thèmes",

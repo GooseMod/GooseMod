@@ -141,13 +141,23 @@
                 "title": "GooseMod Wijzigingslog"
             },
             "subtexts": {
-                "experimental_warning": "Experimentele instellingen zijn waarschijnlijk niet compleet en onstabiel, wat kan resulteren in een verslechterde ervaring"
+                "experimental_warning": "Experimentele instellingen zijn waarschijnlijk niet compleet en onstabiel, wat kan resulteren in een verslechterde ervaring",
+                "tweaks_description": "Kleine veranderingen aan bijvoorbeeld de gebruikersinterface om GooseMod te maken zoals jij het wilt"
             },
             "headers": {
                 "experimental": "Experimenteel",
                 "backup": "Backup",
                 "utilities": "Nutsvoorzieningen",
-                "appearance": "Uiterlijk"
+                "appearance": "Uiterlijk",
+                "tweaks": "Tweaks"
+            },
+            "collapsible_home_category": {
+                "note": "Maak de Home categorie opvouwbaar via icoon",
+                "title": "Opvouwbare Home Categorie"
+            },
+            "placeholder_image": {
+                "note": "Gebruik een plaatsvervangende afbeelding in de Winkel voor modules zonder foto's",
+                "title": "Plaatsvervangende afbeelding"
             }
         }
     },
