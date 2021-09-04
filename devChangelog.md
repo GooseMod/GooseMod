@@ -1,5 +1,6 @@
-### Based on commit 8dd6c2c, made 04/09 15:59 UTC
+### Based on commit 9e1e677, made 04/09 16:09 UTC
 ## Commits this release
+  - [Store > Card] Fix white outline showing with no image
   - [Changelog] Add current dev changes
   - [Bootstrap] Revert accidental change
   - [CI i18n] Update translations from Weblate
