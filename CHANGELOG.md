@@ -5,6 +5,9 @@
   - ### Store
     - **Ludicrous speed.** The Store should now be quite faster, especially on low-end hardware.
 
+  - ### Settings
+    - **Headers are now not collapsible by default.** Now has to be turned on for individual headers. The experimental section is also now collapsed by default.
+
   - ### Themeability
     - **Various minor additions to allow for easier theming.** We introduced a variety of small tweaks to help make some of GooseMod easier to theme for theme developers:
     - **GooseMod settings sidebar items now have easier ids to grab.** Used to just use label so was reliant on supporting all translations.
