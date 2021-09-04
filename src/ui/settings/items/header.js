@@ -44,7 +44,8 @@ return class Header extends React.PureComponent {
     }
 
     props.id = `gm-settings-header-${Math.random().toString().substring(2)}`;
-    props.collapsed = false;
+    props.collapsible = props.collapsed !== undefined;
+    props.collapsed = props.collapsed || false;
 
     super(props);
 
@@ -53,10 +54,12 @@ return class Header extends React.PureComponent {
 
       const headerChildren = after.slice(0, after.indexOf(after.find((x) => x.tagName === 'H5')));
 
-      for (const child of headerChildren) {
+      for (const child of headerChildren.slice(this.props.collapseOffset || 0)) {
         child.style.display = this.props.collapsed ? 'none' : '';
       }
     };
+
+    if (this.props.collapsed) this.props.handleCollapse();
   }
 
   render() {
@@ -67,23 +70,23 @@ return class Header extends React.PureComponent {
 
       className: (this.props.i !== 0 ? Margins.marginTop20 + ' ' : '') + Margins.marginBottom8,
 
-      onClick: () => {
+      onClick: this.props.collapsible ? () => {
         this.props.collapsed = !this.props.collapsed;
         this.props.handleCollapse();
 
         this.forceUpdate();
-      },
+      } : undefined,
 
       id: this.props.id
     },
       this.props.text,
 
-      React.createElement(goosemod.webpackModules.findByDisplayName('DropdownArrow'), {
+      this.props.collapsible ? React.createElement(goosemod.webpackModules.findByDisplayName('DropdownArrow'), {
         className: [`gm-settings-header-collapser`, this.props.collapsed ? 'collapsed' : ''].join(' '),
 
         width: 22,
         height: 22
-      })
+      }) : null
     );
   }
 }

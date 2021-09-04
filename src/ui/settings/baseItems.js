@@ -309,7 +309,9 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
     {
       type: 'header',
       text: '#settings.items.headers.experimental#',
-      // experimental: true
+      
+      collapsed: true,
+      collapseOffset: 1
     },
 
     {
