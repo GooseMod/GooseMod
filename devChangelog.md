@@ -1,5 +1,6 @@
-### Based on commit bbe1c35, made 04/09 17:16 UTC
+### Based on commit 3e94af5, made 04/09 21:15 UTC
 ## Commits this release
+  - [Settings > Main] Add tweaks category with items: placeholder image, collapsible home
   - [Changelog] Add current dev changes
   - [Settings] Make headers not collapsible by default, make experimental section collapsed by default
   - [Store > Card] Fix white outline showing with no image
