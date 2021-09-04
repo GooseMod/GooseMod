@@ -57,7 +57,7 @@ return class Card extends React.PureComponent {
         alt: '',
         draggable: 'false',
 
-        src: this.props.images?.[0],
+        src: this.props.images?.[0] || 'data:', // Use "data:" for blank so no white outline for bad image
 
         onClick: () => {
           if (!this.props.images?.length) return; // Ignore if no images
