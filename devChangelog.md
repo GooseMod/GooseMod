@@ -1,5 +1,6 @@
-### Based on commit d3dfcdb, made 02/09 14:37 UTC
+### Based on commit 8dd6c2c, made 04/09 15:59 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
   - [Bootstrap] Revert accidental change
   - [CI i18n] Update translations from Weblate
   - [Storage > Ext] Hybrid localStorage backup
