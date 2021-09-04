@@ -79,7 +79,7 @@ export default async (goosemodScope) => {
     return (parentEl.classList.contains(className) && parentEl) || findClassInParentTree(parentEl, className, depth + 1);
   };
 
-  let expanded = goosemod.storage.get('goosemodHomeExpanded') || true;
+  let expanded = goosemodScope.settings.gmSettings.get().collapsiblehome ? (goosemod.storage.get('goosemodHomeExpanded') || true) : true;
 
   let settings = {
     plugins: goosemodScope.settings.items.find((x) => x[1] === '#terms.store.plugins#'),
@@ -189,7 +189,7 @@ export default async (goosemodScope) => {
         className: HeaderClasses.headerText
       }, 'GooseMod'),
 
-      React.createElement('div', {
+      goosemodScope.settings.gmSettings.get().collapsiblehome ? React.createElement('div', {
         className: `${HeaderClasses.privateChannelRecipientsInviteButtonIcon} ${IconClasses.iconWrapper} ${IconClasses.clickable}`,
 
         style: {
@@ -210,7 +210,7 @@ export default async (goosemodScope) => {
         }
       },
         homeIcons.expandable
-      )
+      ) : null
     ),
 
     () => React.createElement(LinkButton, {

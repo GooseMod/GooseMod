@@ -12,6 +12,9 @@ const defaultSettings = {
   snippets: false,
   autoupdate: true,
 
+  placeholderimage: false,
+  collapsiblehome: true,
+
   allThemeSettings: false,
   debugToasts: false
 };

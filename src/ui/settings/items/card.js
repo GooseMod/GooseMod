@@ -57,7 +57,7 @@ return class Card extends React.PureComponent {
         alt: '',
         draggable: 'false',
 
-        src: this.props.images?.[0] || 'data:', // Use "data:" for blank so no white outline for bad image
+        src: this.props.images?.[0] || (goosemod.settings.gmSettings.get().placeholderimage ? '/assets/2366391afb15ed6c2a019a0c0caa0797.svg' : 'data:'), // Use "data:" for blank so no white outline for bad image
 
         onClick: () => {
           if (!this.props.images?.length) return; // Ignore if no images

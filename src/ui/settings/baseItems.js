@@ -308,6 +308,43 @@ Modules: ${Object.keys(goosemodScope.modules).join(', ')}
 
     {
       type: 'header',
+      text: '#settings.items.headers.tweaks#',
+      
+      collapsed: true,
+      collapseOffset: 1
+    },
+
+    {
+      type: 'subtext',
+      text: '#settings.items.subtexts.tweaks_description#'
+    },
+
+    {
+      type: 'toggle',
+
+      text: '#settings.items.placeholder_image.title#',
+      subtext: '#settings.items.placeholder_image.note#',
+
+      onToggle: (c) => {
+        changeSetting('placeholderimage', c);
+      },
+      isToggled: () => gmSettings.get().placeholderimage
+    },
+
+    {
+      type: 'toggle',
+
+      text: '#settings.items.collapsible_home_category.title#',
+      subtext: '#settings.items.collapsible_home_category.note#',
+
+      onToggle: (c) => {
+        changeSetting('collapsiblehome', c);
+      },
+      isToggled: () => gmSettings.get().collapsiblehome
+    },
+
+    {
+      type: 'header',
       text: '#settings.items.headers.experimental#',
       
       collapsed: true,

@@ -109,11 +109,13 @@
         "appearance": "Appearance",
         "utilities": "Utilities",
         "backup": "Backup",
-        "experimental": "Experimental"
+        "experimental": "Experimental",
+        "tweaks": "Tweaks"
       },
 
       "subtexts": {
-        "experimental_warning": "Experimental settings are likely incomplete and unstable, which may result in a reduced experience"
+        "experimental_warning": "Experimental settings are likely incomplete and unstable, which may result in a reduced experience",
+        "tweaks_description": "Minor changes like small UI changes to make GooseMod be how you like"
       },
 
       "goosemod_change_log": {
@@ -195,6 +197,16 @@
       "force_theme_settings": {
         "title": "Force Theme Settings",
         "note": "Force auto-generated settings for all themes"
+      },
+
+      "placeholder_image": {
+        "title": "Placeholder Image",
+        "note": "Use a placeholder image in the Store for modules without images"
+      },
+
+      "collapsible_home_category": {
+        "title": "Collapsible Home Category",
+        "note": "Let home category be collapsible via icon"
       }
     }
   },

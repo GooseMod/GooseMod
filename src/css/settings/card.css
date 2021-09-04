@@ -31,6 +31,10 @@
   user-select: none;
 }
 
+.gm-store-card > :nth-child(1)[src="/assets/2366391afb15ed6c2a019a0c0caa0797.svg"] {
+  object-fit: cover;
+}
+
 .gm-store-card > :nth-child(2) {
   position: absolute;
   top: 152px;
