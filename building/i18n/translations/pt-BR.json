@@ -141,13 +141,23 @@
                 "title": "Registro de Alterações do GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Configurações experimentais provavelmente serão incompletas e instáveis, o que pode resultar numa experiência reduzida"
+                "experimental_warning": "Configurações experimentais provavelmente serão incompletas e instáveis, o que pode resultar numa experiência reduzida",
+                "tweaks_description": "Mudanças minimas como pequenas mudanças na Interface do Usuário, deixando o GooseMod do jeito que você preferir"
             },
             "headers": {
                 "experimental": "Experimental",
                 "backup": "Backup",
                 "utilities": "Utilidades",
-                "appearance": "Aparência"
+                "appearance": "Aparência",
+                "tweaks": "Ajustes"
+            },
+            "collapsible_home_category": {
+                "note": "Deixa a categoria de Início colapsível pelo icone",
+                "title": "Categoria de Início Colapsável"
+            },
+            "placeholder_image": {
+                "title": "Imagem de Modelo",
+                "note": "Use uma imagem de modelo para os modulos sem imagens na Loja"
             }
         }
     },

@@ -141,13 +141,23 @@
                 "title": "GooseMod Frissítési Napló"
             },
             "subtexts": {
-                "experimental_warning": "A kísérleti beállítások valószínűleg nem befejezettek és instabilak, amik ronthatnak a használati élményen"
+                "experimental_warning": "A kísérleti beállítások valószínűleg nem befejezettek és instabilak, amik ronthatnak a használati élményen",
+                "tweaks_description": "Kisebb változtatások, például kisebb UI változtatások, amikkel egyedivé teheted a GooseMod kinézetét"
             },
             "headers": {
                 "experimental": "Kísérlet alatt",
                 "backup": "Biztonsági mentés",
                 "utilities": "Hasznos funkciók",
-                "appearance": "Megjelenés"
+                "appearance": "Megjelenés",
+                "tweaks": "Bónusz beállítások"
+            },
+            "collapsible_home_category": {
+                "note": "A Főoldal kategória egy ikon segítségével összecsukható",
+                "title": "Összecsukható Főoldal kategória"
+            },
+            "placeholder_image": {
+                "note": "Használj helyettesítő képeket az Áruházban a modulokhoz képek nélkül",
+                "title": "Helyettesítő kép"
             }
         }
     },
