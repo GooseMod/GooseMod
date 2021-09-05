@@ -60,27 +60,6 @@ return class Card extends React.PureComponent {
       }
     },
 
-      /* React.createElement('img', {
-        loading: 'lazy',
-        alt: '',
-        draggable: 'false',
-
-        src: this.props.images?.[0] || (goosemod.settings.gmSettings.get().placeholderimage ? '/assets/2366391afb15ed6c2a019a0c0caa0797.svg' : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA='), // Use blank (1x1 transparent) image if no images, with blank / broken src browsers break formatting and styling
-
-        onClick: () => {
-          if (!this.props.images?.length) return; // Ignore if no images
-
-          ModalHandler.openModal(() => React.createElement('div', {
-            className: 'gm-carousel-modal'
-          },
-            React.createElement(SmallMediaCarousel, {
-              items: this.props.images.map((x) => ({ type: 1, src: x })),
-              autoplayInterval: 5000 // Time between automatically cycling to next image
-            })
-          ));
-        }
-      }), */
-
       React.createElement(goosemod.webpackModules.findByDisplayName('SmallMediaCarousel'), {
         autoplayInterval: 0,
         items: (this.props.images?.[0] ? this.props.images : [ (goosemod.settings.gmSettings.get().placeholderimage ? '/assets/2366391afb15ed6c2a019a0c0caa0797.svg' : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=') ]).map((x) => ({ type: 1, src: x })),
