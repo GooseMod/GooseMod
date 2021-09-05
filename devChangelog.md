@@ -1,5 +1,6 @@
-### Based on commit 6511810, made 05/09 16:00 UTC
+### Based on commit 3d8f86e, made 05/09 16:33 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Store > Card] Image carousel in banner, not modal
   - [Store > Card] Make image banner background gradient
   - [Changelog] Add current dev changes
