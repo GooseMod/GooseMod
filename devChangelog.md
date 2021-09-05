@@ -1,5 +1,6 @@
-### Based on commit 8bd6544, made 04/09 23:33 UTC
+### Based on commit 26cd1f2, made 05/09 09:33 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [Settings > Main] Add tweaks category with items: placeholder image, collapsible home
   - [Changelog] Add current dev changes
