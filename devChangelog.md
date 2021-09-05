@@ -1,5 +1,8 @@
-### Based on commit 3d8f86e, made 05/09 16:33 UTC
+### Based on commit 9950e74, made 05/09 21:07 UTC
 ## Commits this release
+  - [Store > Card] Readd modal
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Store > Card] Remove old image code (previously commented out)
   - [CI i18n] Update translations from Weblate
   - [Store > Card] Image carousel in banner, not modal
   - [Store > Card] Make image banner background gradient
