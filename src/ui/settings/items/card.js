@@ -41,6 +41,14 @@ return class Card extends React.PureComponent {
       this.props.checked = this.props.isToggled();
     }
 
+    let forceDisplay = false;
+    if (this.state.forceDisplay) {
+      forceDisplay = true;
+
+      this.state.forceDisplay = false;
+      delete this.state.forceDisplay;
+    }
+
     return !this.state.loaded ? React.createElement('div', {
       className: 'gm-store-card-loading-placeholder'
     }) : React.createElement('div', {
@@ -48,7 +56,7 @@ return class Card extends React.PureComponent {
       onClick: this.props.onClick,
 
       style: {
-        display: this.props.i ? 'none' : 'block'
+        display: this.props.i && !forceDisplay ? 'none' : 'block'
       }
     },
 
@@ -189,6 +197,8 @@ return class Card extends React.PureComponent {
           onChange: (x) => {
             this.props.checked = !this.props.checked;
 
+            this.state.renderLoaded = true; // Set state to fix rerendering display props
+            this.state.forceDisplay = true;
             this.forceUpdate();
 
             this.props.onToggle(this.props.checked);
