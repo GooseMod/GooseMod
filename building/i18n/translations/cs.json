@@ -14,7 +14,8 @@
                 "title": "GooseMod seznam změn"
             },
             "subtexts": {
-                "experimental_warning": "Experimentální nastavení jsou většinou nehotová a nestabilní což by mohlo způsobit horší zkušenost používání goosemodu"
+                "experimental_warning": "Experimentální nastavení jsou většinou nehotová a nestabilní což by mohlo způsobit horší zkušenost používání goosemodu",
+                "tweaks_description": "Drobné změny jako např.malé úpravy UI aby byl GooseMod tak jak ho máte rádi"
             },
             "headers": {
                 "experimental": "Experimentální",
@@ -23,11 +24,46 @@
                 "appearance": "Vzhled"
             },
             "create_backup": {
-                "title": "Vytvořit zálohu"
+                "title": "Vytvořit zálohu",
+                "button": "Záloha",
+                "note": "Vytvoří zálohu vašich GooseMod nastavení a modulů"
             },
             "reset_goosemod": {
                 "button": "Resetovat",
-                "title": "Resetovat GooseMod"
+                "title": "Resetovat GooseMod",
+                "note": "Kompletně resetuje GooseMod: odstraní všechny nastavení a moduly jako kdyby jste ho poprvé nainstalovali"
+            },
+            "start_tour": {
+                "button": "Prohlídka"
+            },
+            "purge_caches": {
+                "button": "Promazat Dočasné soubory",
+                "title": "Promazat dočasné soubory GooseModu"
+            },
+            "data_attributes": {
+                "note": "Přidat Atributy dat na použití pro některé elementy a některé témata/vzhledy",
+                "title": "Atributy dat"
+            },
+            "store_in_home": {
+                "note": "Přesunout Nastavení Obchodu GooseMod do karty domů místo nastavení",
+                "title": "Obchod v kartě domů"
+            },
+            "auto_update": {
+                "note": "Automaticky aktualizovat repozitáře a moduly každou hodinu",
+                "title": "Automatické aktualizace"
+            },
+            "development_channel": {
+                "note": "Používat experimentální vývojové verze GooseModu",
+                "title": "Vývojový kanál"
+            },
+            "restore_backup": {
+                "button": "Obnovit",
+                "note": "Obnoví vaše GooseMod moduly a nastavení ze souboru zálohy, **obnovujte pouze zálohy kterým věříte!**",
+                "title": "Obnovit ze zálohy"
+            },
+            "goosemod_badges": {
+                "title": "GooseMod odznaky",
+                "note": "Zobrazí GooseMod odznaky"
             }
         }
     },
@@ -85,7 +121,7 @@
                 }
             },
             "tabs": {
-                "imported": "Instalováno",
+                "imported": "Nainstalované",
                 "store": "Obchod"
             }
         }
@@ -97,7 +133,7 @@
             "modules": "Moduly",
             "snippets": "Snippety",
             "plugins": "Pluginy",
-            "themes": "Vzhledy",
+            "themes": "Vzhledy/Témata",
             "store": "Obchod"
         },
         "community": "Komunita",
@@ -112,5 +148,49 @@
             "settings": "Nastavení goosemodu",
             "store": "Obchod goosemod"
         }
+    },
+    "ootb": {
+        "settings": {
+            "items": {
+                "utilities": {
+                    "title": "Utility"
+                },
+                "experimental_features": {
+                    "subtext": "Vyzkoušejte nové experimentální funkce",
+                    "title": "Experimentální Funkce"
+                }
+            },
+            "confirm": "Zobrazit nastavení GooseModu"
+        },
+        "community": {
+            "text": {
+                "main": "Připojit se na Komunitu GooseModu"
+            },
+            "confirm": "Připojit se GooseMod discord server"
+        },
+        "themes": {
+            "confirm": "Procházet témata/vzhledy"
+        },
+        "store": {
+            "confirm": "Zobrazit Obchod v kartě domů"
+        },
+        "start": {
+            "items": {
+                "store": {
+                    "subtext": "Zjistit více o Obchodu GooseMod a co v něm je"
+                }
+            },
+            "cancel": "Nezajímá mě",
+            "text": {
+                "main": "Zjistit více o GooseModu"
+            },
+            "confirm": "Zjistit více"
+        }
+    },
+    "badges": {
+        "sponsor": "Sponsor GooseModu",
+        "translator": "Překladatel GooseModu",
+        "developer": "Vývojář GooseModu",
+        "guild": "Officiální discord server GooseModu"
     }
 }

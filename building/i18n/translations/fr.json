@@ -133,7 +133,8 @@
                 "title": "Notes de mise à jour de GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Les paramètres expérimentaux sont probablement incomplets et instables, ce qui peut nuire à votre expérience"
+                "experimental_warning": "Les paramètres expérimentaux sont probablement incomplets et instables, ce qui peut nuire à votre expérience",
+                "tweaks_description": "Ajustements mineurs tels que de petits changements d'interface pour rendre GooseMod tel que vous le souhaitez"
             },
             "headers": {
                 "experimental": "Expérimental",
@@ -149,6 +150,10 @@
             "snippets": {
                 "note": "Activer l'onglet Extraits CSS de la boutique",
                 "title": "Extraits CSS"
+            },
+            "collapsible_home_category": {
+                "title": "Catégorie pliable dans l'accueil",
+                "note": "Possibilité de plier la catégorie GooseMod dans l'accueil"
             }
         }
     },
