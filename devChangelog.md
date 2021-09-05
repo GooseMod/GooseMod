@@ -1,5 +1,6 @@
-### Based on commit 6c596e3, made 05/09 14:16 UTC
+### Based on commit 6511810, made 05/09 16:00 UTC
 ## Commits this release
+  - [Store > Card] Image carousel in banner, not modal
   - [Store > Card] Make image banner background gradient
   - [Changelog] Add current dev changes
   - [Store > Card] Fix blank images causing broken formatting / styling in some older browsers
