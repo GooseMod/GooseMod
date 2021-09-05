@@ -1,5 +1,7 @@
-### Based on commit 26cd1f2, made 05/09 09:33 UTC
+### Based on commit 873ca00, made 05/09 09:42 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Store > Card] Fix rerendering on switch toggle
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [Settings > Main] Add tweaks category with items: placeholder image, collapsible home
