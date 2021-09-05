@@ -34,7 +34,9 @@
                 "note": "Kompletně resetuje GooseMod: odstraní všechny nastavení a moduly jako kdyby jste ho poprvé nainstalovali"
             },
             "start_tour": {
-                "button": "Prohlídka"
+                "button": "Prohlídka",
+                "note": "Znovu projít začáteční prohlídku GooseModu",
+                "title": "Spustit prohlídku"
             },
             "purge_caches": {
                 "button": "Promazat Dočasné soubory",
