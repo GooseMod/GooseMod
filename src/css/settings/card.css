@@ -23,7 +23,7 @@
   margin-top: -12px;
   margin-left: -12px;
 
-  background-color: var(--background-secondary-alt);
+  background: linear-gradient(225deg, var(--background-tertiary), var(--background-secondary-alt));
 
   object-fit: contain;
 
