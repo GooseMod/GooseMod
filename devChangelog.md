@@ -1,5 +1,6 @@
-### Based on commit 9950e74, made 05/09 21:07 UTC
+### Based on commit 4c4dcf3, made 05/09 21:13 UTC
 ## Commits this release
+  - [Store > Card] Custom easing for banner controls
   - [Store > Card] Readd modal
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Store > Card] Remove old image code (previously commented out)
