@@ -1,5 +1,6 @@
-### Based on commit 47f1f96, made 05/09 09:55 UTC
+### Based on commit fb89772, made 05/09 10:35 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
   - [Store > Card] Fix blank images causing broken formatting / styling in some older browsers
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Store > Card] Fix rerendering on switch toggle
