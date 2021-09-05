@@ -5,10 +5,15 @@
   - ### Store
     - **Ludicrous speed.** The Store should now be quite faster, especially on low-end hardware.
 
+  - ### Tweaks
+    - **Added tweaks setting section.** Includes new minor changes you can now toggle on or off. New settings (and more will likely be added in future updates):
+    - **Placeholder Image.** Use a placeholder image in the Store for modules without images.
+    - **Collapsible Home Category.** Let home category be collapsible via icon.
+
   - ### Settings
     - **Headers are now not collapsible by default.** Now has to be turned on for individual headers. The experimental section is also now collapsed by default.
 
-  - ### Themeability
+  - ### Themeability [progress]
     - **Various minor additions to allow for easier theming.** We introduced a variety of small tweaks to help make some of GooseMod easier to theme for theme developers:
     - **GooseMod settings sidebar items now have easier ids to grab.** Used to just use label so was reliant on supporting all translations.
     - **Added GooseMod class to body so themes know if it's in use.**
