@@ -154,6 +154,10 @@
             "collapsible_home_category": {
                 "title": "Catégorie pliable dans l'accueil",
                 "note": "Possibilité de plier la catégorie GooseMod dans l'accueil"
+            },
+            "placeholder_image": {
+                "note": "Utiliser une image de substitution dans la boutique de modules pour ceux sans images",
+                "title": "Image de substitution"
             }
         }
     },
