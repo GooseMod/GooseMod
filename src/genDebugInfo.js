@@ -13,9 +13,9 @@ Release Channel: ${GLOBAL_ENV.RELEASE_CHANNEL}
 Other Mods: ${Object.keys(mods).filter((x) => Object.keys(window).includes(x)).map((x) => mods[x]).join(', ')}
 
 GooseMod:
-GM Version: ${goosemodScope.versioning.version} (${goosemodScope.versioning.hash})
-GM Branch: ${goosemodScope.storage.get('goosemodUntetheredBranch')}
+GM Version: ${goosemod.versioning.version} (${goosemod.versioning.hash})
+GM Branch: ${goosemod.storage.get('goosemodUntetheredBranch')}
 GM Extension Version: ${window.gmExtension}
-GM Storage Impl: ${goosemodScope.storage.type}
-Modules: ${Object.keys(goosemodScope.modules).join(', ')}`;
+GM Storage Impl: ${goosemod.storage.type}
+Modules: ${Object.keys(goosemod.modules).join(', ')}`;
 };

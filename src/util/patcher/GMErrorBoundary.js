@@ -58,13 +58,13 @@ return class GMErrorBoundary extends React.PureComponent {
   }
 
   render() {
-    /* if (this.state.toRetry) {
+    if (this.state.toRetry) {
       this.state.error = false;
     }
 
     setTimeout(() => {
       this.state.toRetry = true;
-    }, 100); */
+    }, 100);
 
     return this.state.error ? React.createElement('div', {
       className: 'gm-error-boundary'
@@ -85,13 +85,11 @@ return class GMErrorBoundary extends React.PureComponent {
           size: Button.Sizes.LARGE,
   
           onClick: () => {
-            this.state.error = false;
+            this.state.toRetry = true;
             this.forceUpdate();
           }
-        }, 'Retry')
-      ),
+        }, 'Retry'),
 
-      React.createElement('div', {},
         React.createElement(Button, {
           color: Button.Colors.RED,
           size: Button.Sizes.LARGE,
@@ -104,6 +102,7 @@ return class GMErrorBoundary extends React.PureComponent {
 
       React.createElement('div', {
         onClick: () => {
+          this.state.toRetry = false;
           this.state.showDetails = !this.state.showDetails;
           this.forceUpdate();
         }
