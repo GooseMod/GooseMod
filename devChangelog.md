@@ -1,5 +1,6 @@
-### Based on commit 4c4dcf3, made 05/09 21:13 UTC
+### Based on commit d30c4a7, made 06/09 07:33 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Store > Card] Custom easing for banner controls
   - [Store > Card] Readd modal
   - Merge branch 'master' of github.com:GooseMod/GooseMod
