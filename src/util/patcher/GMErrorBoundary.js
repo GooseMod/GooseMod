@@ -24,8 +24,18 @@ return class GMErrorBoundary extends React.PureComponent {
     const componentStack = decodeURI(moreInfo.componentStack.split('\n').slice(1, 9).join('\n'));
 
     const suspectedPlugin = errorStack.match(/\((.*) \| GM Module:/)?.[1] || componentStack.match(/\((.*) \| GM Module:/)?.[1];
-    const suspectedName = suspectedPlugin || ((errorStack.includes('GooseMod') || componentStack.includes('GooseMod')) ? 'GooseMod Internals' : 'Unknown');
+    let suspectedName = suspectedPlugin || 'Unknown';
     const suspectedType = suspectedPlugin ? 'Plugin' : 'Cause';
+
+    if (suspectedName === 'Unknown') {
+      if (errorStack.includes('GooseMod')) {
+        suspectedName = 'GooseMod Internals';
+      }
+
+      if (errorStack.includes('Powercord')) {
+        suspectedName = 'Other Mods';
+      }
+    }
 
     this.setState({
       error: true,
@@ -48,13 +58,13 @@ return class GMErrorBoundary extends React.PureComponent {
   }
 
   render() {
-    if (this.state.toRetry) {
+    /* if (this.state.toRetry) {
       this.state.error = false;
     }
 
     setTimeout(() => {
       this.state.toRetry = true;
-    }, 100);
+    }, 100); */
 
     return this.state.error ? React.createElement('div', {
       className: 'gm-error-boundary'
@@ -71,6 +81,18 @@ return class GMErrorBoundary extends React.PureComponent {
   
       React.createElement('div', {},
         React.createElement(Button, {
+          color: Button.Colors.BRAND,
+          size: Button.Sizes.LARGE,
+  
+          onClick: () => {
+            this.state.error = false;
+            this.forceUpdate();
+          }
+        }, 'Retry')
+      ),
+
+      React.createElement('div', {},
+        React.createElement(Button, {
           color: Button.Colors.RED,
           size: Button.Sizes.LARGE,
   
@@ -82,8 +104,6 @@ return class GMErrorBoundary extends React.PureComponent {
 
       React.createElement('div', {
         onClick: () => {
-          this.state.toRetry = false;
-
           this.state.showDetails = !this.state.showDetails;
           this.forceUpdate();
         }
@@ -110,6 +130,10 @@ ${this.state.errorStack.useful}
         React.createElement(Markdown, {}, `# Component Stack`),
         React.createElement(Markdown, {}, `\`\`\`
 ${this.state.componentStack.useful}
+\`\`\``),
+        React.createElement(Markdown, {}, `# Debug Info`),
+        React.createElement(Markdown, {}, `\`\`\`
+${goosemod.genDebugInfo()}
 \`\`\``)
       ) : null
     ) : this.props.children;

@@ -35,6 +35,7 @@ import * as GMBadges from './gmBadges';
 import Storage from './storage';
 
 import ProfileStoreInit from './gmProfileStore';
+import GenDebugInfo from './genDebugInfo';
 
 const scopeSetterFncs = [
   setThisScope1,
@@ -86,7 +87,9 @@ const importsToAssign = {
   gmBadges: GMBadges,
 
   ootb: OOTB,
-  storage: Storage
+  storage: Storage,
+
+  genDebugInfo: GenDebugInfo
 };
 
 const init = async function () {
