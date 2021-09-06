@@ -1,5 +1,6 @@
-### Based on commit 08f2bfa, made 06/09 07:55 UTC
+### Based on commit 4d3e361, made 06/09 08:02 UTC
 ## Commits this release
+  - [Patcher > Hardening] Fix genDebugInfo, readd retry system
   - [Patcher > Hardening] Rewrite to not use retry, add debug info, add other mods cause
   - [Changelog] Add current dev changes
   - [CI i18n] Update translations from Weblate
