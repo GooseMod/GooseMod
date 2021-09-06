@@ -80,10 +80,10 @@
             },
             "items": {
                 "community": {
-                    "subtext": "Entra nel nostro Discord per fare domante, dare un feedback, tenerti aggiornato sulle notizie, ed altro"
+                    "subtext": "Entra nel nostro Discord per fare domande, dare feedback, tenerti aggiornato sulle notizie, ed altro"
                 },
                 "settings": {
-                    "subtext": "Scopri di più riguardo alle impostazioni per GooseMod e per i plugin"
+                    "subtext": "Scopri di più riguardo alle impostazioni di GooseMod e dei plugin"
                 },
                 "store": {
                     "subtext": "Scopri di più sul negozio di GooseMod e su cosa c'è al suo interno"
@@ -93,117 +93,155 @@
             "confirm": "Scopri di più"
         },
         "store": {
-            "confirm": "Visualizza il negozio nella Pagina principale"
+            "confirm": "Mostra il negozio nella home",
+            "text": {
+                "main": "Esplora Temi e Plugin nel negozio",
+                "subtext": "GooseMod usa il suo negozio, dove puoi guardare in giro e installare moduli facilmente"
+            }
         },
         "settings": {
             "text": {
-                "subtext": "Ci sono varie opzioni per voi per cambiare"
+                "subtext": "Ci sono varie opzioni per voi da cambiare",
+                "main": "Usa le impostazioni di GooseMod per personalizzare le sue funzioni"
             },
             "items": {
                 "experimental_features": {
                     "subtext": "Prova nuove funzionalità sperimentali",
-                    "title": "Caratteristiche sperimentali"
+                    "title": "Funzionalità sperimentali"
+                },
+                "utilities": {
+                    "title": "Strumenti",
+                    "subtext": "Crea backup, resetta GooseMod e altro ancora"
+                },
+                "tweaks": {
+                    "title": "Aggiustamenti",
+                    "subtext": "Personalizza GooseMod come ti pare"
                 }
             },
             "confirm": "Visualizza le impostazioni GooseMod"
         },
         "community": {
             "text": {
-                "subtext": "Unisciti al nostro Discord per ulteriori informazioni e altro",
+                "subtext": "Unisciti al nostro Discord per ulteriori informazioni e altro ancora",
                 "main": "Unisciti alla comunità di GooseMod"
             },
             "items": {
                 "get_involved": {
-                    "subtext": "Aiuta con suggerimenti, sostenendo gli altri e altro"
+                    "subtext": "Fornisci suggerimenti, aiuta gli altri e altro ancora",
+                    "title": "Partecipa anche tu"
                 },
                 "news": {
-                    "subtext": "Ricevi le ultime notizie e gli annunci su GooseMod e i progetti correlati",
+                    "subtext": "Ricevi le ultime notizie e gli annunci di GooseMod e dei progetti correlati",
                     "title": "Novità"
                 },
                 "ask_questions": {
-                    "subtext": "Fai tutte le domande e ottieni supporto",
+                    "subtext": "Fai qualsiasi domanda e ottieni supporto",
                     "title": "Fai domande"
                 }
             },
-            "confirm": "Unisciti a GooseMod Discord"
+            "confirm": "Unisciti al Discord di GooseMod"
+        },
+        "plugins": {
+            "confirm": "Esplora Plugin",
+            "text": {
+                "main": "Elabora il tuo Discord sotto al cofano",
+                "subtext": "I plugin espandono la tua esperienza con dei miglioramenti all'app stessa"
+            }
+        },
+        "themes": {
+            "confirm": "Esplora Temi",
+            "text": {
+                "main": "Rendi il tuo Discord più bello con dei temi",
+                "subtext": "Scegli tra oltre 100 temi per modificare e migliorare la tua interfaccia utente"
+            }
         }
     },
     "settings": {
         "items": {
             "force_theme_settings": {
-                "note": "Imposta forzaamente le impostazioni auto-generate a tutti i temi",
+                "note": "Mostra forzatamente le impostazioni auto-generate a tutti i temi",
                 "title": "Impostazioni per forzare il tema"
             },
             "data_attributes": {
-                "note": "Aggiungi attributi di dati ad alcuni elementi per alcuni temi da usare",
-                "title": "Inglese"
+                "note": "Aggiungi attributi dati ad alcuni elementi per alcuni temi da usare",
+                "title": "Attributi Dati"
             },
             "development_channel": {
-                "note": "Usa le funzioni sperimentali di GooseMod",
-                "title": "Canale per il development"
+                "note": "Usa build GooseMod sperimentali di sviluppo",
+                "title": "Canale per lo sviluppo"
             },
             "restore_backup": {
                 "button": "Ripristina",
-                "note": "Ripristina i tuoi moduli di GooseMod e le impostazioni da salvataggio, **ripristina solo salvataggi di cui ti fidi**",
-                "title": "Ripristina da salvataggio"
+                "note": "Ripristina i tuoi moduli di GooseMod e le impostazioni da un backup, **ripristina solo salvataggi di cui ti fidi**",
+                "title": "Ripristina da backup"
             },
             "create_backup": {
-                "button": "Salva",
-                "note": "Crea un file di salvataggio per i tuoi moduli di GooseMod e per le impostazioni",
-                "title": "Crea Salvataggio"
+                "button": "Crea backup",
+                "note": "Crea un file di backup per i tuoi moduli di GooseMod e per le impostazioni",
+                "title": "Crea Backup"
             },
             "reset_goosemod": {
-                "button": "Rpristina",
-                "note": "Ripristina GooseMod completamente: rimuove tutte le preferenze ed u moduli; come installarlo la prima volta",
+                "button": "Ripristina",
+                "note": "Ripristina GooseMod completamente: rimuove tutte le preferenze ed i moduli; come quando viene installato la prima volta",
                 "title": "Ripristina GooseMod"
             },
             "copy_debug_info": {
                 "button": "Copia",
-                "note": "Copia le informazioni del setup e di GooseMod per reportare e per debugging",
+                "note": "Copia le informazioni del setup e di GooseMod per report e debugging",
                 "title": "Copia le info di debug"
             },
             "start_tour": {
                 "button": "Tour",
-                "note": "Guarda il tour di incomincio di GooseMod di nuovo",
-                "title": "Comincia il tour"
+                "note": "Guarda il tour iniziale di GooseMod nuovamente",
+                "title": "Inizia il tour"
             },
             "purge_caches": {
-                "button": "Purga",
-                "note": "Purga (rimuove completamente) la maggior parte della cache degli utenti di GooseMod",
-                "title": "Purga la cache"
+                "button": "Pulisci",
+                "note": "Pulisci (rimuovi completamente) la maggior parte della cache che GooseMod utilizza",
+                "title": "Pulisci la cache"
             },
             "goosemod_badges": {
-                "note": "Mostra i bedge di GooseMod",
-                "title": "Bedge di GooseMod"
+                "note": "Mostra i badge di GooseMod",
+                "title": "Badge di GooseMod"
             },
             "auto_update": {
                 "note": "Aggiorna automaticamente le repo ed i moduli ogni ora",
                 "title": "Aggiornamenti automatici"
             },
             "store_in_home": {
-                "note": "Trasferisci le opzioni di GooseMod per il salvataggio dalle impostazioni alla Home",
-                "title": "Salvalo nella Home"
+                "note": "Mostra il Negozio GooseMod nella Home",
+                "title": "Negozio nella Home"
             },
             "main_separators": {
-                "note": "Mostra i separatore tra le impostazioni principali di GooseMod",
+                "note": "Mostra i separatori tra le impostazioni principali di GooseMod",
                 "title": "Separatori Principali"
             },
             "goosemod_change_log": {
-                "note": "Mostra le impostazioni \"Change Log\" di GooseMod",
+                "note": "Mostra le impostazioni \"Registro delle modifiche\" di GooseMod",
                 "title": "Registro delle modifiche di GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Le impostazioni sperimentali sono probabilmente inncomplete o instabili, quindi potrebbero risultare in un'esperienza ridota"
+                "experimental_warning": "Le impostazioni sperimentali sono probabilmente incomplete o instabili, quindi potrebbero risultare in un'esperienza ridotta",
+                "tweaks_description": "Piccoli cambiamenti come cambiamenti all IU per rendere GooseMod come lo vuoi tu"
             },
             "headers": {
                 "experimental": "Sperimentale",
-                "backup": "Ripristino",
-                "utilities": "Utilità",
-                "appearance": "Aspetto"
+                "backup": "Backup",
+                "utilities": "Strumenti",
+                "appearance": "Aspetto",
+                "tweaks": "Aggiustamenti"
             },
             "snippets": {
                 "note": "Abilita la scheda Frammenti nel negozio",
                 "title": "Frammenti"
+            },
+            "placeholder_image": {
+                "title": "Immagine di rimpiazzamento",
+                "note": "Use un immagine di rimpiazzamento per i moduli nello store senza immagini"
+            },
+            "collapsible_home_category": {
+                "title": "Categoria Home Riducibile",
+                "note": "Rendi la categoria nella home riducibile"
             }
         }
     },
@@ -211,14 +249,14 @@
         "add_repo": {
             "cancelled": {
                 "reasons": {
-                    "pgp": "Fallimento non fidato PGP",
+                    "pgp": "Fallimento PGP Non affidabile",
                     "refused": "Rifiutata la richiesta di sicurezza"
                 },
-                "text": "Cancellata l'aggiunta del repo"
+                "text": "Annulla l'aggiunta della repo"
             },
             "invalid_repo": {
-                "subtext": "Formato invalido",
-                "text": "Repo invalido"
+                "subtext": "Formato non valido",
+                "text": "Repo non valida"
             }
         }
     }
