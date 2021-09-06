@@ -1,5 +1,6 @@
-### Based on commit d30c4a7, made 06/09 07:33 UTC
+### Based on commit 2f2e296, made 06/09 07:39 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
   - [CI i18n] Update translations from Weblate
   - [Store > Card] Custom easing for banner controls
   - [Store > Card] Readd modal
