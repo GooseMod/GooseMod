@@ -9,7 +9,36 @@ export default (goosemodScope, hasStoreInHome) => {
 
         await sleep(10);
 
-        [...(document.getElementsByClassName('side-8zPYf6')[0]).children].find((x) => x.textContent === name).click();
+        let id = name;
+
+        switch (id) { // Special IDs (attributes in DOM elements) for GM built-in i18n labels for easier theming
+          case '#terms.settings#': {
+            id = 'settings';
+            break;
+          }
+
+          case '#terms.store.plugins#': {
+            id = 'plugins';
+            break;
+          }
+
+          case '#terms.store.themes#': {
+            id = 'themes';
+            break;
+          }
+
+          case '#terms.store.snippets#': {
+            id = 'snippets';
+            break;
+          }
+
+          case '#terms.changelog#': {
+            id = 'changelog';
+            break;
+          }
+        }
+
+        document.querySelector(`[aria-controls="gm-${id.replace(/ /g, '-').toLowerCase()}-tab"]`).click();
       }
     };
   };
