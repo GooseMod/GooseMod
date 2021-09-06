@@ -1,5 +1,8 @@
-### Based on commit 45ee006, made 06/09 12:33 UTC
+### Based on commit 44c60c8, made 06/09 20:51 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Settings > ContextMenu] Rewrite to use aria-controls selection
   - [CI i18n] Update translations from Weblate
   - [Patcher > Hardening] Fix genDebugInfo, readd retry system
   - [Patcher > Hardening] Rewrite to not use retry, add debug info, add other mods cause
