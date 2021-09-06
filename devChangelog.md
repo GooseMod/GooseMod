@@ -1,5 +1,6 @@
-### Based on commit 2f2e296, made 06/09 07:39 UTC
+### Based on commit 08f2bfa, made 06/09 07:55 UTC
 ## Commits this release
+  - [Patcher > Hardening] Rewrite to not use retry, add debug info, add other mods cause
   - [Changelog] Add current dev changes
   - [CI i18n] Update translations from Weblate
   - [Store > Card] Custom easing for banner controls
