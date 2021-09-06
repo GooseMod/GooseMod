@@ -13,6 +13,7 @@
 
   - ### Settings
     - **Headers are now not collapsible by default.** Now has to be turned on for individual headers. The experimental section is also now collapsed by default.
+    - **Rewrote settings context (right click) menu to use ids.** Should no longer open wrong tabs if named the same.
 
   - ### Themeability [progress]
     - **Various minor additions to allow for easier theming.** We introduced a variety of small tweaks to help make some of GooseMod easier to theme for theme developers:
