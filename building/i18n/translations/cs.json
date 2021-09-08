@@ -168,7 +168,12 @@
             "text": {
                 "main": "Připojit se na Komunitu GooseModu"
             },
-            "confirm": "Připojit se GooseMod discord server"
+            "confirm": "Připojit se GooseMod discord server",
+            "items": {
+                "news": {
+                    "title": "Novinky"
+                }
+            }
         },
         "themes": {
             "confirm": "Procházet témata/vzhledy"
