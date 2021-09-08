@@ -1,5 +1,6 @@
-### Based on commit 44c60c8, made 06/09 20:51 UTC
+### Based on commit 347a039, made 08/09 17:35 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Changelog] Add current dev changes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Settings > ContextMenu] Rewrite to use aria-controls selection
