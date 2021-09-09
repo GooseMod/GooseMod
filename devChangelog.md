@@ -1,5 +1,6 @@
-### Based on commit d95c83d, made 08/09 19:13 UTC
+### Based on commit a467f0b, made 09/09 14:35 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Store > PGP] Force openpgp Node check to false
   - [CI i18n] Update translations from Weblate
