@@ -5,7 +5,8 @@
                 "experimental": "Experimental",
                 "backup": "Copia de seguridad",
                 "utilities": "Utilidades",
-                "appearance": "Apariencia"
+                "appearance": "Apariencia",
+                "tweaks": "Ajustes"
             },
             "force_theme_settings": {
                 "note": "Forzar la generación automatica de ajustes para todos los temas",
@@ -16,7 +17,8 @@
                 "title": "Atributos de Datos"
             },
             "development_channel": {
-                "note": "Usa versiones experimentales de desarrollo de GooseMod"
+                "note": "Usa versiones experimentales de desarrollo de GooseMod",
+                "title": "Canal de Desarrollo"
             },
             "restore_backup": {
                 "button": "Reestablecer",
@@ -40,7 +42,8 @@
             },
             "start_tour": {
                 "note": "Ir por el tutorial inicial de GooseMod otra vez",
-                "title": "Empezar Tour"
+                "title": "Empezar Tour",
+                "button": "Tour"
             },
             "purge_caches": {
                 "button": "Purgar",
@@ -69,6 +72,9 @@
             },
             "subtexts": {
                 "experimental_warning": "Los ajustes experimentales probablemente estan incompletos y son inusables, lo que puede resultar en una experiencia reducida"
+            },
+            "snippets": {
+                "note": "Habilitar la pestaña Snippets en la Tienda"
             }
         }
     },
@@ -162,7 +168,11 @@
     "toasts": {
         "add_repo": {
             "cancelled": {
-                "text": "Cancelado Añadir Repositorio"
+                "text": "Cancelado Añadir Repositorio",
+                "reasons": {
+                    "pgp": "Confianza PGP fallida",
+                    "refused": "Mensaje de seguridad rechazado"
+                }
             },
             "invalid_repo": {
                 "subtext": "Formato Inválido",
@@ -178,7 +188,9 @@
     },
     "store": {
         "pgp": {
-            "unknown": "Sin PGP"
+            "unknown": "Sin PGP",
+            "untrusted": "PGP no confiable",
+            "verified": "Verificación PGP"
         },
         "categories": {
             "all": {
@@ -186,7 +198,8 @@
                 "themes": "Todos los temas"
             },
             "upcoming": "Próximos",
-            "recently_updated": "Actualizados Recientemente"
+            "recently_updated": "Actualizados Recientemente",
+            "top_starred": "Top Estrellas"
         },
         "options": {
             "author": {
@@ -218,7 +231,8 @@
             "modules": "Módulos",
             "plugins": "Complementos",
             "themes": "Temas",
-            "store": "Tienda"
+            "store": "Tienda",
+            "snippets": "Snippets"
         },
         "community": "Comunidad",
         "changelog": "Historial de cambios",
