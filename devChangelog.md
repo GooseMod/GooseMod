@@ -1,5 +1,6 @@
-### Based on commit e8d12d6, made 11/09 19:28 UTC
+### Based on commit 07e0469, made 11/09 19:55 UTC
 ## Commits this release
+  - [Changelog] Tweak current changes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Patcher > Hardening] Tweak other mod suggesting
   - [CI i18n] Update translations from Weblate
