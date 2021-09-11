@@ -1,5 +1,7 @@
-### Based on commit a467f0b, made 09/09 14:35 UTC
+### Based on commit e8d12d6, made 11/09 19:28 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Patcher > Hardening] Tweak other mod suggesting
   - [CI i18n] Update translations from Weblate
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Store > PGP] Force openpgp Node check to false
