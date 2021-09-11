@@ -1,12 +1,12 @@
 # GooseMod Changelog
 
-## v12.1-dev [2021-09-04]
+## v12.1-dev [2021-09-11]
 
   - ### Store
     - **Ludicrous speed.** The Store should now be quite faster, especially on low-end hardware.
     - **New carousel controls in banner images.** Also made modal opening more obvious via cursor.
 
-  - ### Tweaks
+  - ### Tweaks Settings
     - **Added tweaks setting section.** Includes new minor changes you can now toggle on or off. New settings (and more will likely be added in future updates):
     - **Placeholder Image.** Use a placeholder image in the Store for modules without images.
     - **Collapsible Home Category.** Let home category be collapsible via icon.
