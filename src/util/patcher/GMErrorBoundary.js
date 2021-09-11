@@ -32,7 +32,7 @@ return class GMErrorBoundary extends React.PureComponent {
         suspectedName = 'GooseMod Internals';
       }
 
-      if (errorStack.includes('Powercord')) {
+      if (errorStack.toLowerCase().includes('powercord') || errorStack.toLowerCase().includes('betterdiscord')) {
         suspectedName = 'Other Mods';
       }
     }
