@@ -59,6 +59,15 @@
         "all": "All"
       }
     },
+
+    "search_results_hint": {
+      "none": "No results found",
+
+      "other_category": {
+        "themes": "No results found, did you mean themes?",
+        "plugins": "No results found, did you mean plugins?"
+      }
+    },
     
     "categories": {
       "top_starred": "Top Starred",

@@ -508,7 +508,7 @@ export default (goosemodScope, gmSettings, Items) => {
         ? 'block' : 'none';
     };
 
-    const cards = document.querySelectorAll(':not(.gm-store-category) > div > .gm-store-card');
+    const cards = [...document.querySelectorAll(':not(.gm-store-category) > div > .gm-store-card')];
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
@@ -543,6 +543,63 @@ export default (goosemodScope, gmSettings, Items) => {
 
         await sleep(10);
       }
+    }
+
+    if (!noInput && allHeader.textContent !== '#store.search_results_hint.none#' && cards.every((x) => x.style.display === 'none')) {
+      allHeader.style.height = '';
+      allHeader.style.opacity = '';
+      allHeader.style.margin = '';
+
+      allHeader.dataset.original = allHeader.textContent;
+      allHeader.children[0].textContent = '#store.search_results_hint.none#';
+
+      if (searchQuery !== '' && importedVal === '#store.options.tabs.store#' && authorVal === '#store.options.author.all#') { // Just a search, no other options
+        if (cards[0] && cards[0].classList.contains('theme')) { // Currently in themes
+          const plugins = goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme') && (fuzzyReg.test(x.name) || fuzzyReg.test(x.description)));
+
+          if (plugins.length !== 0) {
+            allHeader.children[0].textContent = '#store.search_results_hint.other_category.plugins#';
+
+            allHeader.style.cursor = 'pointer';
+            allHeader.onclick = async () => {
+              const toSearch = searchQuery;
+
+              document.getElementById('gm-home-plugins').click();
+
+              await sleep(100);
+
+              const searchEl = document.querySelector('.input-3Xdcic');
+
+              searchEl.value = toSearch;
+              searchEl.__reactProps$.onChange({ currentTarget: { value: toSearch } });
+            };
+          }
+        } else { // Currently in plugins
+          const themes = goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme') && (fuzzyReg.test(x.name) || fuzzyReg.test(x.description)));
+
+          if (themes.length !== 0) {
+            allHeader.children[0].textContent = '#store.search_results_hint.other_category.themes#';
+
+            allHeader.style.cursor = 'pointer';
+            allHeader.onclick = async () => {
+              const toSearch = searchQuery;
+
+              document.getElementById('gm-home-themes').click();
+
+              await sleep(100);
+
+              const searchEl = document.querySelector('.input-3Xdcic');
+
+              searchEl.value = toSearch;
+              searchEl.__reactProps$.onChange({ currentTarget: { value: toSearch } });
+            };
+          }
+        }
+      }
+    } else if (allHeader.textContent !== '#store.categories.all.themes#' || allHeader.textContent !== '#store.categories.all.plugins#') {
+      allHeader.children[0].textContent = allHeader.dataset.original;
+      allHeader.style.cursor = '';
+      allHeader.onclick = () => {};
     }
 
     processingMSUpdate = false;
