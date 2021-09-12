@@ -1,5 +1,6 @@
-### Based on commit 07e0469, made 11/09 19:55 UTC
+### Based on commit d6f1e5b, made 12/09 17:47 UTC
 ## Commits this release
+  - [Store] Add no results text, suggesting other category too
   - [Changelog] Tweak current changes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Patcher > Hardening] Tweak other mod suggesting
