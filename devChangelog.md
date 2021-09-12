@@ -1,5 +1,6 @@
-### Based on commit d6f1e5b, made 12/09 17:47 UTC
+### Based on commit 674879b, made 12/09 18:36 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
   - [Store] Add no results text, suggesting other category too
   - [Changelog] Tweak current changes
   - Merge branch 'master' of github.com:GooseMod/GooseMod
