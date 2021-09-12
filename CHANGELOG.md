@@ -1,10 +1,11 @@
 # GooseMod Changelog
 
-## v12.1-dev [2021-09-11]
+## v12.1-dev [2021-09-12]
 
   - ### Store
     - **Ludicrous speed.** The Store should now be quite faster, especially on low-end hardware.
-    - **New carousel controls in banner images.** Also made modal opening more obvious via cursor.
+    - **Carousel controls in banner images.** Also made modal opening more obvious via cursor.
+    - **Search text hints.** Now shows no results text for no results, and hints to go to an other category if there are results in that and not the current category.
 
   - ### Tweaks Settings
     - **Added tweaks setting section.** Includes new minor changes you can now toggle on or off. New settings (and more will likely be added in future updates):
