@@ -1,5 +1,6 @@
-### Based on commit 674879b, made 12/09 18:36 UTC
+### Based on commit 7609b95, made 14/09 20:45 UTC
 ## Commits this release
+  - [Chore] rc-1 release
   - [Changelog] Add current dev changes
   - [Store] Add no results text, suggesting other category too
   - [Changelog] Tweak current changes
