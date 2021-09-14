@@ -1,6 +1,6 @@
 # GooseMod Changelog
 
-## v12.1-dev [2021-09-12]
+## v12.1-dev [2021-09-14]
 
   - ### Store
     - **Ludicrous speed.** The Store should now be quite faster, especially on low-end hardware.
