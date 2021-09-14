@@ -1,5 +1,6 @@
-### Based on commit 7609b95, made 14/09 20:45 UTC
+### Based on commit c918f67, made 14/09 21:23 UTC
 ## Commits this release
+  - [ProfileStore] Fix scrolling and improve highlight
   - [Chore] rc-1 release
   - [Changelog] Add current dev changes
   - [Store] Add no results text, suggesting other category too
