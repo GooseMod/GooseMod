@@ -1,23 +1,47 @@
 import fixLocalStorage from '../../util/discord/fixLocalStorage';
 
+import * as hybrid_localStorage from './hyrbid/localStorage';
+import * as hybrid_userDataCache from './hyrbid/userDataCache';
+
+
 let storageCache = {};
 
 export const type = 'Extension';
 
-export const init = () => {
+export const init = async () => {
   if (!window.localStorage) fixLocalStorage();
 
-  document.addEventListener('gmes_get_return', ({ detail }) => {
+  const returnPromise = new Promise((res) => document.addEventListener('gmes_get_return', async ({ detail }) => {
     storageCache = detail;
-  }, { once: true });
+
+    if (Object.keys(storageCache).length < 5) { // Empty (less than expected pairs) extension storage, try restore
+      await restore();
+    }
+
+    res();
+  }, { once: true }));
+
 
   document.dispatchEvent(new CustomEvent('gmes_get'));
 
-  backup();
+  await returnPromise;
+
+  await backup();
 };
 
-export const backup = () => {
-  for (const k of keys()) localStorage.setItem(k, get(k));
+
+export const restore = async () => {
+  console.log('GooseMod', 'Restoring storage...');
+
+  await hybrid_localStorage.restore({ set });
+  await hybrid_userDataCache.restore({ set });
+};
+
+export const backup = async () => {
+  console.log('GooseMod', 'Backing up storage...');
+
+  await hybrid_localStorage.backup({ keys, get });
+  await hybrid_userDataCache.backup({ keys, get });
 };
 
 export const set = (key, value) => {

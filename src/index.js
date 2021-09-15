@@ -95,6 +95,8 @@ const importsToAssign = {
 const init = async function () {
   Object.assign(this, importsToAssign);
 
+  await this.storage.init();
+
   this.cssCache.load();
 
   while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || window.webpackJsonp === undefined) {
@@ -106,7 +108,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: `12.1-dev (rc-1)`,
+    version: `12.1-dev (rc-2)`,
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: this.storage.get('goosemodLastVersion')
