@@ -58,6 +58,9 @@
                 "imported": "Installés",
                 "store": "Boutique"
             }
+        },
+        "search_results_hint": {
+            "none": "Aucun résultat"
         }
     },
     "badges": {
