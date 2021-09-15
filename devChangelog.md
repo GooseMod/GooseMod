@@ -1,5 +1,6 @@
-### Based on commit 7de2e5e, made 15/09 20:14 UTC
+### Based on commit 2ba0ab1, made 15/09 20:15 UTC
 ## Commits this release
+  - [Changelog] Tweak phrasing
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Storage > Ext] Hybrid 2 (rewrite)
   - [CI i18n] Update translations from Weblate
