@@ -1,5 +1,6 @@
-### Based on commit 2ba0ab1, made 15/09 20:15 UTC
+### Based on commit fd13573, made 15/09 20:46 UTC
 ## Commits this release
+  - [Storage > Hybrid] UDC: default to empty object
   - [Changelog] Tweak phrasing
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Storage > Ext] Hybrid 2 (rewrite)
