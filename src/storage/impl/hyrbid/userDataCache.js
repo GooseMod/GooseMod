@@ -1,7 +1,7 @@
 export const backup = async ({ keys, get }) => {
   if (!window.DiscordNative?.userDataCache) return;
 
-  const cache = await DiscordNative.userDataCache.getCached();
+  const cache = await DiscordNative.userDataCache.getCached() || {};
 
   for (const k of keys()) cache[k] = get(k);
 
