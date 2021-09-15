@@ -1,5 +1,7 @@
-### Based on commit de67992, made 15/09 08:37 UTC
+### Based on commit 7de2e5e, made 15/09 20:14 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Storage > Ext] Hybrid 2 (rewrite)
   - [CI i18n] Update translations from Weblate
   - [ProfileStore] Fix scrolling and improve highlight
   - [Chore] rc-1 release
