@@ -1,5 +1,6 @@
-### Based on commit c918f67, made 14/09 21:23 UTC
+### Based on commit de67992, made 15/09 08:37 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [ProfileStore] Fix scrolling and improve highlight
   - [Chore] rc-1 release
   - [Changelog] Add current dev changes
