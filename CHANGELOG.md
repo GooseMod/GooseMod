@@ -9,7 +9,7 @@
     - **Improved profile store.** Better and more reliable scrolling down to card and now highlight clears after a short time.
 
   - ### Hybrid Storage
-    - **Heavy reduction in GooseMod wipes.** Sometimes when Discord updates (desktop) GooseMod settings and modules would get cleared due to a Discord client bug. This should now hopefully be eliminated or at least heavily reduced thanks to a new hybrid backup storage system.
+    - **Heavy reduction in GooseMod wipes.** Sometimes when Discord updates (desktop) GooseMod settings and modules would get cleared due to a Discord client bug. This should now hopefully be eliminated or at least heavily reduced thanks to a new hybrid storage backup system.
 
   - ### Tweaks Settings
     - **Added tweaks setting section.** Includes new minor changes you can now toggle on or off. New settings (and more will likely be added in future updates):
