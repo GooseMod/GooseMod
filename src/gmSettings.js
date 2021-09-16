@@ -11,6 +11,7 @@ const defaultSettings = {
 
   snippets: false,
   autoupdate: true,
+  newModuleNotifications: false,
 
   placeholderimage: false,
   collapsiblehome: true,
@@ -23,7 +24,7 @@ export const get = () => {
   // Cache as this function is called frequently
   if (cache) return cache;
   
-  cache = JSON.parse(goosemod.storage.get('goosemodGMSettings')) || defaultSettings;
+  cache = JSON.parse(goosemod.storage.get('goosemodGMSettings')) || {};
 
   cache = {
     ...defaultSettings,

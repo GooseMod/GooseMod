@@ -130,6 +130,14 @@ export default {
       return repo;
     }))).sort((a, b) => goosemodScope.moduleStoreAPI.repos.indexOf(a.url) - goosemodScope.moduleStoreAPI.repos.indexOf(b.url));
 
+    if (goosemodScope.settings.gmSettings.get().newModuleNotifications) for (const newModule of newModules) {
+      const currentModule = goosemodScope.moduleStoreAPI.modules.find((x) => newModule.name === x.name);
+
+      if (!currentModule) { // Is new module (not existing before)
+        goosemodScope.showToast(`${newModule.name}`, { timeout: 5000, subtext: `New ${newModule.tags.includes('theme') ? 'Theme' : 'Plugin'}`}); // todo: i18n
+      }
+    }
+
     goosemodScope.moduleStoreAPI.modules = newModules;
 
     goosemod.storage.set('goosemodRepos', JSON.stringify(goosemodScope.moduleStoreAPI.repos.map((x) => { delete x.resp; return x; }))); // Don't store raw responses

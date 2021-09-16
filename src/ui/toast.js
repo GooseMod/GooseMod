@@ -48,6 +48,7 @@ const toastCSS = `.gm-toasts {
 .gm-toast > :last-child {
   color: var(--header-secondary);
   font-size: 18px;
+  white-space: pre-line;
 }
 
 @keyframes gm-toast-down {
