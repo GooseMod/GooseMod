@@ -1,5 +1,6 @@
-### Based on commit fd13573, made 15/09 20:46 UTC
+### Based on commit 9e8e5cd, made 16/09 21:27 UTC
 ## Commits this release
+  - [Settings > Main] Add New Module Notifications
   - [Storage > Hybrid] UDC: default to empty object
   - [Changelog] Tweak phrasing
   - Merge branch 'master' of github.com:GooseMod/GooseMod
