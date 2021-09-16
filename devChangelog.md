@@ -1,5 +1,6 @@
-### Based on commit 9e8e5cd, made 16/09 21:27 UTC
+### Based on commit 7fcb586, made 16/09 21:31 UTC
 ## Commits this release
+  - [Chore] Add i18n todo, bump to rc-3
   - [Settings > Main] Add New Module Notifications
   - [Storage > Hybrid] UDC: default to empty object
   - [Changelog] Tweak phrasing
