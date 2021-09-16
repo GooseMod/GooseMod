@@ -139,8 +139,8 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'toggle',
 
-      text: 'New Module Notifications',
-      subtext: 'Shows a toast each time a new module is added to the Store',
+      text: 'New Module Notifications', // todo: i18n
+      subtext: 'Shows a toast each time a new module is added to the Store', // todo: i18n
 
       onToggle: (c) => changeSetting('newModuleNotifications', c),
       isToggled: () => gmSettings.get().newModuleNotifications
