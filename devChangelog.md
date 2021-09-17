@@ -1,5 +1,6 @@
-### Based on commit d1923d5, made 17/09 19:32 UTC
+### Based on commit f15966a, made 17/09 21:10 UTC
 ## Commits this release
+  - [Chore] Bump to rc-4
   - [Storage > Parity] Rewrite, rename
   - [Chore] Add i18n todo, bump to rc-3
   - [Settings > Main] Add New Module Notifications
