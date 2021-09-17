@@ -1,5 +1,6 @@
-### Based on commit f15966a, made 17/09 21:10 UTC
+### Based on commit 20e0791, made 17/09 21:16 UTC
 ## Commits this release
+  - [Changelog] Add current dev changes
   - [Chore] Bump to rc-4
   - [Storage > Parity] Rewrite, rename
   - [Chore] Add i18n todo, bump to rc-3
