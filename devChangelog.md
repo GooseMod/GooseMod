@@ -1,5 +1,6 @@
-### Based on commit 7fcb586, made 16/09 21:31 UTC
+### Based on commit d1923d5, made 17/09 19:32 UTC
 ## Commits this release
+  - [Storage > Parity] Rewrite, rename
   - [Chore] Add i18n todo, bump to rc-3
   - [Settings > Main] Add New Module Notifications
   - [Storage > Hybrid] UDC: default to empty object
