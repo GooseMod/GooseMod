@@ -17,6 +17,7 @@
     - **Collapsible Home Category.** Let home category be collapsible via icon.
 
   - ### Settings
+    - **Added new setting to give notifications when new modules are added to the Store.**
     - **Headers are now not collapsible by default.** Now has to be turned on for individual headers. The experimental section is also now collapsed by default.
     - **Rewrote settings context (right click) menu to use ids.** Should no longer open wrong tabs if named the same.
 
