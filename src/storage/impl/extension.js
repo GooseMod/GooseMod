@@ -1,8 +1,5 @@
 import fixLocalStorage from '../../util/discord/fixLocalStorage';
-
-import * as hybrid_localStorage from './hyrbid/localStorage';
-import * as hybrid_userDataCache from './hyrbid/userDataCache';
-
+import paritySystems from './parity';
 
 let storageCache = {};
 
@@ -33,15 +30,13 @@ export const init = async () => {
 export const restore = async () => {
   console.log('GooseMod', 'Restoring storage...');
 
-  await hybrid_localStorage.restore({ set });
-  await hybrid_userDataCache.restore({ set });
+  for (const system of paritySystems) await system.restore({ set });
 };
 
 export const backup = async () => {
   console.log('GooseMod', 'Backing up storage...');
 
-  await hybrid_localStorage.backup({ keys, get });
-  await hybrid_userDataCache.backup({ keys, get });
+  for (const system of paritySystems) await system.backup({ keys, get });
 };
 
 export const set = (key, value) => {
