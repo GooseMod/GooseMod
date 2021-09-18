@@ -13,6 +13,7 @@ export const restore = async ({ set }) => {
   if (!window.DiscordNative?.userDataCache) return;
 
   const cache = await DiscordNative.userDataCache.getCached();
+  if (!cache) return; // No userDataCache
 
   Object.keys(cache).filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => set(x, cache[x]));
 };
