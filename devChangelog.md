@@ -1,3 +1,4 @@
-### Based on commit 9c7c16e, made 18/09 15:56 UTC
+### Based on commit 258a54f, made 18/09 20:32 UTC
 ## Commits this release
+  - [Storage > Parity] Fix no userDataCache bug
   - [Release] v12.0
