@@ -47,6 +47,13 @@
                 "imported": "Instalados",
                 "store": "Loja"
             }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "Sem Resultados, você pesquisou por plugins?",
+                "themes": "Sem Resultados, você pesquisou por temas?"
+            },
+            "none": "Sem Resultados"
         }
     },
     "terms": {
