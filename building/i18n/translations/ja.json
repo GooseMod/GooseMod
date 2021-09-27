@@ -225,6 +225,9 @@
             "unknown": "PGP 暗号化なし",
             "untrusted": "PGP 認証されません",
             "verified": "PGP 認証されます"
+        },
+        "search_results_hint": {
+            "none": "ヒットなし"
         }
     },
     "terms": {
