@@ -47,6 +47,13 @@
                 "imported": "Zainstalowane",
                 "store": "Sklep"
             }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "Nie znaleziono żadnych wyników, czy miałeś na myśli pluginy?",
+                "themes": "Nie znaleziono żadnych wyników, czy miałeś na myśli themy (wyglądy)?"
+            },
+            "none": "Nie znaleziono wyników"
         }
     },
     "terms": {
@@ -54,7 +61,7 @@
             "developers": "Programiści",
             "repos": "Repozytoria",
             "modules": "Moduły",
-            "snippets": "Urywki",
+            "snippets": "Fragmenty",
             "plugins": "Pluginy",
             "themes": "Motywy",
             "store": "Sklep"
@@ -78,7 +85,8 @@
                 "appearance": "Wygląd",
                 "experimental": "Eksperymentalne",
                 "backup": "Kopie zapasowe",
-                "utilities": "Przydatne narzędzia"
+                "utilities": "Przydatne narzędzia",
+                "tweaks": "Usprawnienia"
             },
             "purge_caches": {
                 "note": "Czyści większość pamięci podręcznej którą używa GooseMod",
@@ -96,11 +104,11 @@
             },
             "snippets": {
                 "note": "Aktywuje zakładkę \"Urywki\" w sklepie",
-                "title": "Urywki"
+                "title": "Fragmenty (na przykład kodu)"
             },
             "data_attributes": {
                 "note": "Dodaje atrybuty do niektórych elementów dla motywów do użycia",
-                "title": "Atrybuty danych (Data Attributes)"
+                "title": "Atrybuty danych"
             },
             "development_channel": {
                 "note": "Użyj eksperymentalnej wersji GooseMod",
@@ -147,7 +155,16 @@
                 "title": "Lista zmian GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Eksperymentalne ustawienia są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia"
+                "experimental_warning": "Eksperymentalne ustawienia są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia",
+                "tweaks_description": "Drobne zmiany, jak na przykład interfejsu, by GooseMod był taki, jaki chcesz."
+            },
+            "placeholder_image": {
+                "title": "Zastępczy obraz.",
+                "note": "Używaj zastępczego obrazu w Sklepie dla modułów bez obrazków"
+            },
+            "collapsible_home_category": {
+                "title": "Zmniejszana Kategoria Główna",
+                "note": "Pozwalaj głównej kategorii na bycie zmniejszanej za pomocą ikonki"
             }
         }
     },
