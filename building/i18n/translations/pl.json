@@ -103,12 +103,12 @@
                 "title": "Wymuś ustawienia motywów"
             },
             "snippets": {
-                "note": "Aktywuje zakładkę \"Urywki\" w sklepie",
-                "title": "Fragmenty (na przykład kodu)"
+                "note": "Aktywuje zakładkę \"Fragmenty\" w sklepie",
+                "title": "Fragmenty"
             },
             "data_attributes": {
                 "note": "Dodaje atrybuty do niektórych elementów dla motywów do użycia",
-                "title": "Data Attributes"
+                "title": "Atrybuty Danych"
             },
             "development_channel": {
                 "note": "Użyj eksperymentalnej wersji GooseMod",
@@ -156,10 +156,10 @@
             },
             "subtexts": {
                 "experimental_warning": "Eksperymentalne ustawienia są niekompletne lub niestabilne, mogą zmniejszyć wrażenia z doświadczenia",
-                "tweaks_description": "Drobne zmiany, jak na przykład interfejsu, by GooseMod był taki, jaki chcesz."
+                "tweaks_description": "Drobne zmiany, jak na przykład interfejsu, by GooseMod był taki, jaki chcesz"
             },
             "placeholder_image": {
-                "title": "Zastępczy obraz.",
+                "title": "Zastępczy obraz",
                 "note": "Używaj zastępczego obrazu w Sklepie dla modułów bez obrazków"
             },
             "collapsible_home_category": {
