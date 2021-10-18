@@ -14,45 +14,53 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
 
   const BadgeClasses = goosemodScope.webpackModules.findByProps('guildIconContainer');
 
-  const GuildHeader = goosemodScope.webpackModules.findByDisplayName('GuildHeader');
-  
-  return PatcherBase.patch(GuildHeader.prototype, 'renderHeader', function (_args, res) {
-    if (!forIds().includes(this.props.guild?.id)) return res;
+  const GuildHeader = goosemod.webpackModules.findByProps('AnimatedBanner');
 
-    res.props.children.unshift(
-      React.createElement(Tooltip, {
-        position: "top",
-        text: name
-      }, ({
-        onMouseLeave,
-        onMouseEnter
-      }) =>
-        React.createElement(Clickable, {
-          onClick: () => {
-            clickHandler();
-          },
-          onMouseEnter,
-          onMouseLeave
-        },
-          React.createElement('div', {
-            style: {
-              backgroundImage: `url("${imgUrl}")`,
-              borderRadius: round ? '50%' : '',
+  return PatcherBase.patch(GuildHeader.default, 'type', function (_args, res) {
+    if (!forIds().includes(_args[0]?.guild?.id)) return res;
 
-              width: '16px',
-              height: '16px',
+    const Header = res.props.children.props.children[0];
 
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'contain',
-              backgroundPosition: '50%',
-              objectFit: 'cover'
+    if (!Header.__injected) {
+      PatcherBase.patch(Header, 'type', function (_args, res) {
+        res.props.children.unshift(
+          React.createElement(Tooltip, {
+            position: "top",
+            text: name
+          }, ({
+            onMouseLeave,
+            onMouseEnter
+          }) =>
+            React.createElement(Clickable, {
+              onClick: () => {
+                clickHandler();
+              },
+              onMouseEnter,
+              onMouseLeave
             },
-            className: `${BadgeClasses.guildIconContainer}`
-          })
-        )
-      )
-    );
+              React.createElement('div', {
+                style: {
+                  backgroundImage: `url("${imgUrl}")`,
+                  borderRadius: round ? '50%' : '',
+    
+                  width: '16px',
+                  height: '16px',
+    
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'contain',
+                  backgroundPosition: '50%',
+                  objectFit: 'cover'
+                },
+                className: `${BadgeClasses.guildIconContainer}`
+              })
+            )
+          )
+        );
+    
+        return res;
+      });
 
-    return res;
+      Header.__injected = true;
+    }
   });
 };
