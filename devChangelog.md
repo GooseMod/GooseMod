@@ -1,5 +1,6 @@
-### Based on commit 863dc87, made 18/10 20:16 UTC
+### Based on commit 1019a47, made 18/10 20:18 UTC
 ## Commits this release
+  - [Chore] Don't bump version
   - [Various] Fix Snippets
   - [Patcher > GuildBadges] Rewrite for new update changes
   - [Home] Stop snippets running even if disabled, fix erroring
