@@ -270,7 +270,7 @@ export default async (goosemodScope) => {
     // Make store setting with cached modules whilst waiting for hotupdate from repos
     await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
-    for (const type of ['themes', 'plugins', 'snippets']) {
+    for (const type of ['themes', 'plugins']) {
       contents[type] = goosemodScope.settings._createItem(settings[type][1], settings[type][2], false); // Generate React contents
     }
 
@@ -324,7 +324,7 @@ export default async (goosemodScope) => {
             message: x.id
           },
   
-          images: x.attachments[0] ? [ x.attachments[0].proxy_url ] : (x.embeds[0] ? [ x.embeds[0].thumbnail.proxy_url ] : []),
+          images: [ x.attachments?.[0]?.proxy_url || x.embeds?.[0]?.thumbnail?.proxy_url ].filter((x) => x),
   
           name: '', // No name makes subtext main content (not gray)
           author: [
@@ -389,5 +389,7 @@ export default async (goosemodScope) => {
     await snippetsLoad('755005803303403570', 'Powercord CSS Snippets');
     await snippetsLoad('836694789898109009', 'BetterDiscord CSS Snippets');
     await snippetsLoad('449569809613717518', 'Black Box CSS Snippets');
+
+    contents['snippets'] = goosemodScope.settings._createItem(settings['snippets'][1], settings['snippets'][2], false);
   })();
 };

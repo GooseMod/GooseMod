@@ -522,7 +522,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
-    let importedVal = document.querySelector('.selected-3s45Ha').textContent;
+    let importedVal = document.querySelector('.selected-3s45Ha')?.textContent || '#store.options.tabs.store#';
     if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = '#store.options.tabs.store#';
 
     cards.forEach(processCard);
@@ -743,12 +743,20 @@ export default (goosemodScope, gmSettings, Items) => {
 
         const fuzzyReg = new RegExp(`.*${query}.*`, 'i');
 
-        for (const c of cards) {
-          const description = c.getElementsByClassName('markdown-11q6EU')[0].textContent;
+        const filter = (cards) => {
+          for (const c of cards) {
+            const description = c.getElementsByClassName('markdown-11q6EU')[0].textContent;
 
-          const matches = (fuzzyReg.test(description));
+            const matches = fuzzyReg.test(description);
 
-          c.style.display = matches ? '' : 'none';
+            c.style.display = matches ? '' : 'none';
+          }
+        };
+
+        if (cards.length === 0) {
+          setTimeout(() => filter(document.getElementsByClassName('gm-store-card')), 10);
+        } else {
+          filter(cards);
         }
       },
 
