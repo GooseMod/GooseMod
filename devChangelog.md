@@ -1,5 +1,23 @@
-### Based on commit 5b09992, made 18/09 20:33 UTC
+### Based on commit bd1acfe, made 18/10 20:19 UTC
 ## Commits this release
+  - [Release] v12.1 hotfix (v12.1.1)
+  - [Chore] Don't bump version
+  - [Various] Fix Snippets
+  - [Patcher > GuildBadges] Rewrite for new update changes
+  - [Home] Stop snippets running even if disabled, fix erroring
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Chore] Bump version: 12.1.1-dev
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
   - [Release] v12.1 hotfix
   - [Storage > Parity] Fix no userDataCache bug
   - [Release] v12.0
