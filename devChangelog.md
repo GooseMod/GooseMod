@@ -1,5 +1,6 @@
-### Based on commit 1019a47, made 18/10 20:18 UTC
+### Based on commit bd1acfe, made 18/10 20:19 UTC
 ## Commits this release
+  - [Release] v12.1 hotfix (v12.1.1)
   - [Chore] Don't bump version
   - [Various] Fix Snippets
   - [Patcher > GuildBadges] Rewrite for new update changes
