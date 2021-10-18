@@ -71,10 +71,20 @@
                 "title": "Historial de cambios de GooseMod"
             },
             "subtexts": {
-                "experimental_warning": "Los ajustes experimentales probablemente estan incompletos y son inusables, lo que puede resultar en una experiencia reducida"
+                "experimental_warning": "Los ajustes experimentales probablemente estan incompletos y son inusables, lo que puede resultar en una experiencia reducida",
+                "tweaks_description": "Cambios menores como pequeños cambios en la interfaz de usuario para hacer que GooseMod sea como quieras"
             },
             "snippets": {
-                "note": "Habilitar la pestaña Snippets en la Tienda"
+                "note": "Habilitar la pestaña Snippets en la Tienda",
+                "title": "Fragmentos"
+            },
+            "placeholder_image": {
+                "title": "Marcador de imagen",
+                "note": "Utilizar una imagen de marcador de posición en el almacén para módulos sin imágenes"
+            },
+            "collapsible_home_category": {
+                "title": "Categoría de Inicio Plegable",
+                "note": "Dejar que la categoría de inicio sea plegable a través del icono"
             }
         }
     },
@@ -94,15 +104,15 @@
         },
         "plugins": {
             "text": {
-                "subtext": "Los complementos aumentan tu experiencia con mejoras en la app misma",
+                "subtext": "Los complementos aumentan tu experiencia con mejoras en la misma aplicación",
                 "main": "Amplifica tu Discord a otro nivel"
             },
-            "confirm": "Ver Complementos"
+            "confirm": "Explorar Complementos"
         },
         "store": {
             "text": {
                 "subtext": "GooseMod usa su propia Tienda, donde facilmente puedes mirar e instalar cosas",
-                "main": "Hojea entre los Plugins y Temas en la Tienda"
+                "main": "Explorar Temas y Complementos en la Tienda"
             },
             "confirm": "Ver Tienda en Inicio"
         },
@@ -159,6 +169,9 @@
                 },
                 "store": {
                     "subtext": "Conoce más sobre la tienda de GooseMod y que hay en ella"
+                },
+                "settings": {
+                    "subtext": "Descubre la configuración de GooseMod y complementos"
                 }
             },
             "cancel": "No me interesa",
@@ -182,7 +195,7 @@
     },
     "modals": {
         "external_repo_security": {
-            "bad_pgp": "Este repositorio no es conocido o confiable (sin verificación PGP), por favor tenga cuidado extra. Asegurese de que confía completamente en el/los dueño(s) de este repositorio. \n\nPara arreglar este problema contactese con el mantenedor de este repositorio para que añada soporte de PGP.\n\nPor favor confirme el añadir este repositorio clickeando OK.",
+            "bad_pgp": "Este repositorio no es conocido o confiable (sin verificación PGP), por favor tenga cuidado extra. Asegúrese de que confía completamente en el/los dueño(s) de este repositorio.\n\nPara arreglar este problema contáctese con el mantenedor de este repositorio para que añada soporte de PGP.\n\nPor favor confirme el añadir este repositorio clickeando OK.",
             "main": "Los repositorios externos suponen riesgos de seguridad ya que no son controlados por los desarrolladores de GooseMod. No somos responsables de ningún daño que sea causado por repositorios externos añadidos por el usuario.\n\nSi no confías en el propietario de este repositorio, no lo uses ya que podría comprometer tu instalación de Discord.\n\nPor favor confirma el añadir este repositorio clickeando OK."
         }
     },
@@ -194,8 +207,8 @@
         },
         "categories": {
             "all": {
-                "plugins": "Todos los complementos",
-                "themes": "Todos los temas"
+                "plugins": "Todos los Complementos",
+                "themes": "Todos los Temas"
             },
             "upcoming": "Próximos",
             "recently_updated": "Actualizados Recientemente",
@@ -222,6 +235,13 @@
                 "imported": "Instalado",
                 "store": "Tienda"
             }
+        },
+        "search_results_hint": {
+            "none": "No se encontraron resultados",
+            "other_category": {
+                "themes": "No se han encontrado resultados, ¿quiso decir temas?",
+                "plugins": "No se han encontrado resultados, ¿quiso decir complementos?"
+            }
         }
     },
     "terms": {
@@ -232,13 +252,13 @@
             "plugins": "Complementos",
             "themes": "Temas",
             "store": "Tienda",
-            "snippets": "Snippets"
+            "snippets": "Fragmentos"
         },
         "community": "Comunidad",
-        "changelog": "Historial de cambios",
+        "changelog": "Historial de Cambios",
         "settings": "Ajustes",
         "refresh": "Recargar",
-        "remove": "Remover",
+        "remove": "Eliminar",
         "add": "Añadir",
         "install": "Instalar",
         "goosemod": {

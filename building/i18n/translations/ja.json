@@ -171,6 +171,13 @@
                 "backup": "バックアップ",
                 "utilities": "ユーティリティ",
                 "appearance": "外観"
+            },
+            "placeholder_image": {
+                "title": "代替画像",
+                "note": "ストアの画像の無いモジュールは代替画像が使用されます"
+            },
+            "collapsible_home_category": {
+                "title": "折りたためるホームカテゴリー"
             }
         }
     },
@@ -225,6 +232,13 @@
             "unknown": "PGP 暗号化なし",
             "untrusted": "PGP 認証されません",
             "verified": "PGP 認証されます"
+        },
+        "search_results_hint": {
+            "none": "ヒットなし",
+            "other_category": {
+                "themes": "見つかりませんでした。テーマのことですか？",
+                "plugins": "何も見つかりませんでした。プラグインのことですか？"
+            }
         }
     },
     "terms": {

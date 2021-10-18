@@ -1,1 +1,63 @@
-{}
+{
+    "settings": {
+        "items": {
+            "headers": {
+                "appearance": "Aparência"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "subtext": "Formato Inválido"
+            }
+        }
+    },
+    "store": {
+        "search_results_hint": {
+            "none": "Nenhum resultado encontrado"
+        },
+        "options": {
+            "author": {
+                "all": "Tudo",
+                "label": "Autor"
+            },
+            "sort": {
+                "last_updated": "Ultima atualização",
+                "az": "A-Z",
+                "stars": "Estrelas",
+                "label": "Ordenar por"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Procurar Plugins",
+                    "themes": "Procurar Temas"
+                }
+            },
+            "tabs": {
+                "imported": "Instalado",
+                "store": "Loja"
+            }
+        }
+    },
+    "terms": {
+        "store": {
+            "developers": "Desenvolvedores",
+            "modules": "Módulos",
+            "plugins": "Plugins",
+            "themes": "Temas",
+            "store": "Loja"
+        },
+        "community": "Comunidade",
+        "install": "Instalar",
+        "goosemod": {
+            "modules": "Módulos GooseMod",
+            "settings": "Definições GooseMod",
+            "store": "Loja GooseMod"
+        },
+        "settings": "Definições",
+        "refresh": "Atualizar",
+        "remove": "Remover",
+        "add": "Adicionar"
+    }
+}

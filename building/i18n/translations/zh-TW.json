@@ -158,13 +158,23 @@
                 "title": "GooseMod 更新日誌"
             },
             "subtexts": {
-                "experimental_warning": "測試中的功能基本都是未開發完畢的半成品，並極大可能會降低GooseMod的體驗"
+                "experimental_warning": "測試中的功能基本都是未開發完畢的半成品，並極大可能會降低GooseMod的體驗",
+                "tweaks_description": "一些細微的調整能讓你更加深度客制化GooseMod"
             },
             "headers": {
                 "experimental": "測試功能",
                 "backup": "備份",
                 "utilities": "實用工具",
-                "appearance": "外觀"
+                "appearance": "外觀",
+                "tweaks": "小調整"
+            },
+            "collapsible_home_category": {
+                "note": "讓GooseMod在首頁的條目可以摺叠",
+                "title": "可摺叠的條目"
+            },
+            "placeholder_image": {
+                "note": "能讓商店裏沒有圖片的模組顯示一張占位的圖片",
+                "title": "占位圖"
             }
         }
     },
@@ -225,6 +235,13 @@
                 "imported": "已安裝",
                 "store": "商店"
             }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "沒有結果，你想找的是個插件嗎？",
+                "themes": "沒有結果，你想找的是個主題嗎？"
+            },
+            "none": "沒有結果"
         }
     },
     "terms": {

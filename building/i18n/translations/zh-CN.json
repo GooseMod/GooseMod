@@ -152,13 +152,23 @@
                 "title": "GooseMod 更新日志"
             },
             "subtexts": {
-                "experimental_warning": "测试功能一般都是不稳定的半成品，并极大可能会降低GooseMod的体验"
+                "experimental_warning": "测试功能一般都是不稳定的半成品，并极大可能会降低GooseMod的体验",
+                "tweaks_description": "一些细微的设置能让你更深度自定义GooseMod"
             },
             "headers": {
                 "experimental": "测试功能",
                 "backup": "备份",
                 "utilities": "实用工具",
-                "appearance": "外观"
+                "appearance": "外观",
+                "tweaks": "细微调整"
+            },
+            "collapsible_home_category": {
+                "note": "让GooseMod在Discord首页的条目可以折叠",
+                "title": "可折叠条目"
+            },
+            "placeholder_image": {
+                "note": "让商店里没有图片的模组显示一张占位图",
+                "title": "占位图片"
             }
         }
     },
@@ -213,6 +223,13 @@
             "unknown": "无 PGP 验证",
             "untrusted": "未通过 PGP 验证",
             "verified": "已通过 PGP 验证"
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "没有找到任何结果，或许你想找的是个插件？",
+                "themes": "没有找到任何结果，或许你想找的是个主题？"
+            },
+            "none": "没有找到任何结果"
         }
     },
     "badges": {

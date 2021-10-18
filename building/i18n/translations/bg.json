@@ -1,1 +1,37 @@
-{}
+{
+    "terms": {
+        "store": {
+            "modules": "Модули",
+            "snippets": "Откъси",
+            "developers": "Разработчици",
+            "store": "магазин"
+        },
+        "refresh": "Опресняване",
+        "remove": "Премахване",
+        "settings": "Настройки",
+        "community": "Общност",
+        "add": "добавете",
+        "install": "Инсталирай"
+    },
+    "store": {
+        "search_results_hint": {
+            "none": "Няма намерени резултати"
+        },
+        "categories": {
+            "upcoming": "Предстоящо",
+            "recently_updated": "Наскоро актуализиран"
+        },
+        "options": {
+            "author": {
+                "label": "Автор",
+                "all": "всичко"
+            },
+            "sort": {
+                "stars": "Звезди"
+            },
+            "tabs": {
+                "imported": "Инсталиран"
+            }
+        }
+    }
+}
