@@ -1,5 +1,6 @@
-### Based on commit 4a8c524, made 18/10 20:02 UTC
+### Based on commit 863dc87, made 18/10 20:16 UTC
 ## Commits this release
+  - [Various] Fix Snippets
   - [Patcher > GuildBadges] Rewrite for new update changes
   - [Home] Stop snippets running even if disabled, fix erroring
   - Merge branch 'master' of github.com:GooseMod/GooseMod
