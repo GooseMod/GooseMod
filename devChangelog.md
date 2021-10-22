@@ -1,5 +1,6 @@
-### Based on commit c8d9b61, made 22/10 07:42 UTC
+### Based on commit f920c11, made 22/10 07:44 UTC
 ## Commits this release
+  - [Bootstrap] Fix for new Webpack fully
   - [Bootstrap] Fix for new Webpack
   - [Init] Fix waiting for new Webpack window var
   - [Webpack] New Canary changes fix
