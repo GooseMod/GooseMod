@@ -1,5 +1,6 @@
-### Based on commit 93b9e58, made 22/10 18:33 UTC
+### Based on commit d93ce6b, made 22/10 18:42 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Modals > Confirm] Fix cancel text default
   - [Canary] Fix Confirm modal forgetting to get find
   - [Canary] Work on confirm modal fixing
