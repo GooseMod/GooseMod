@@ -2,10 +2,10 @@
 
 ## v12.2 [2021-10-22]
 
-  - ### Canary Fixes
-    - **Fixed various things for new Canary update.** Discord rolled out a new Canary update on the 22nd of October which changed many internal things. All mods broke including GooseMod was broken but now most things should be working fine. You may have some minor issues with GooseMod or issues with some plugins, if so feel free to report in our Discord, we'll continue to roll out some small hotfixes over the next week.
+  - ### New Canary Fixes
+    - **Fixed various things caused by a new Canary update.** Discord rolled out a new Canary update (22nd October) which changed many internal things. All mods, including GooseMod, were broken but now most things should be working fine. You may have some minor issues with GooseMod or issues with some plugins, if so feel free to report in our Discord, we'll continue to roll out some small hotfixes over the next week.
 
-  - ### General Hotfixes
+  - ### General Hotfixes [progress]
     - **Fixed GM reset option.**
     - **Fixed Guild badges.**
     - **Fixed Snippets (experimental option).**
