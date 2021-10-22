@@ -1,5 +1,6 @@
-### Based on commit f920c11, made 22/10 07:44 UTC
+### Based on commit 4e9edcc, made 22/10 07:54 UTC
 ## Commits this release
+  - [Webpack] Use random ID to be more reliable
   - [Bootstrap] Fix for new Webpack fully
   - [Bootstrap] Fix for new Webpack
   - [Init] Fix waiting for new Webpack window var
