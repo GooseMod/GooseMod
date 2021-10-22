@@ -1,10 +1,14 @@
 let wpRequire;
 
-wpRequire = window.webpackJsonp.push([[], { get_require: (mod, _exports, wpRequire) => mod.exports = wpRequire }, [["get_require"]]]); // Get Webpack's require via injecting into webpackJsonp
+if (window.webpackJsonp) { // Older
+  wpRequire = window.webpackJsonp.push([[], { get_require: (mod, _exports, wpRequire) => mod.exports = wpRequire }, [["get_require"]]]); // Get Webpack's require via injecting into webpackJsonp
 
-// Remove module injected
-delete wpRequire.m.get_require;
-delete wpRequire.c.get_require;
+  // Remove module injected
+  delete wpRequire.m.get_require;
+  delete wpRequire.c.get_require;
+} else if (window.webpackChunkdiscord_app) { // New (Canary @ 22nd Oct)
+  window.webpackChunkdiscord_app.push([['gm_webpackInject'], {}, (req) => { wpRequire = req; }]);
+}
 
 
 export const all = () => Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x); // Get all modules
