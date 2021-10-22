@@ -1,5 +1,6 @@
-### Based on commit 94aa68c, made 22/10 12:12 UTC
+### Based on commit cc12685, made 22/10 12:17 UTC
 ## Commits this release
+  - [Canary] Error boundary compat testing
   - [Canary] Start testing fixes for Canary changes
   - [CI i18n] Update translations from Weblate
   - [Webpack] Use random ID to be more reliable
