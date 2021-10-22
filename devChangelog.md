@@ -1,5 +1,6 @@
-### Based on commit a372b28, made 22/10 13:14 UTC
+### Based on commit e10d368, made 22/10 18:25 UTC
 ## Commits this release
+  - [Canary] Fix Confirm modal forgetting to get find
   - [Canary] Work on confirm modal fixing
   - [Canary] Getting incorrect modal handler module
   - [Canary] Fix getting incorrect Markdown component There is now 2 components with identical displayName's, first is random new modal, second is actual Markdown.
