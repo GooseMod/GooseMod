@@ -7,7 +7,7 @@ export const setThisScope = (scope) => {
 export const show = (buttonText, title, description, cancelText = undefined, confirmButtonColor = undefined) => {
   return new Promise((res) => {
     const { React } = goosemodScope.webpackModules.common;
-    const { findByDisplayName, findByProps } = goosemodScope.webpackModules;
+    const { find, findByDisplayName, findByProps } = goosemodScope.webpackModules;
     
     const Text = findByDisplayName("Text");
     const Markdown = find((x) => x.displayName === 'Markdown' && x.rules);
