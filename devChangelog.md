@@ -1,5 +1,9 @@
-### Based on commit d93ce6b, made 22/10 18:42 UTC
+### Based on commit 481199d, made 22/10 19:07 UTC
 ## Commits this release
+  - [Storage > Parity] Fix not using async
+  - [Storage > Parity] Rewrite with clear function to fix resetting
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Patcher > GuildBadges] Fix using wrong class name for new Canary
   - [CI i18n] Update translations from Weblate
   - [Modals > Confirm] Fix cancel text default
   - [Canary] Fix Confirm modal forgetting to get find
