@@ -13,7 +13,7 @@ export const show = (buttonText, title, description, cancelText = undefined, con
     const Markdown = find((x) => x.displayName === 'Markdown' && x.rules);
     const ButtonColors = findByProps('button', 'colorRed');
     
-    (0, findByProps("openModal").openModal)((e) => {
+    (0, findByProps('openModal', 'updateModal').openModal)((e) => {
       if (e.transitionState === 3) res(false); // If clicked off
 
       return React.createElement(findByDisplayName("ConfirmModal"),

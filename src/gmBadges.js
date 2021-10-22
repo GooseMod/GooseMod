@@ -92,7 +92,7 @@ const showSponsorModal = () => {
     return res;
   });
 
-  const { openModal } = goosemodScope.webpackModules.findByProps('openModal');
+  const { openModal } = goosemodScope.webpackModules.findByProps('openModal', 'updateModal');
 
   openModal((e) => React.createElement(parent.default, { ...e }));
 };

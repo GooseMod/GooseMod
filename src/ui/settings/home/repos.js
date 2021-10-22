@@ -67,7 +67,7 @@ export default async () => {
   const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  const { openModal } = goosemod.webpackModules.findByProps("openModal");
+  const { openModal } = goosemod.webpackModules.findByProps('openModal', 'updateModal');
 
   const Flex = goosemod.webpackModules.findByDisplayName('Flex');
   const TextInput = goosemod.webpackModules.findByDisplayName('TextInput');

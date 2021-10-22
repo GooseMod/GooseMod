@@ -10,7 +10,7 @@ const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');
 const FormClasses = goosemod.webpackModules.findByProps('title', 'dividerDefault');
 
-const ModalHandler = goosemod.webpackModules.findByProps('openModal');
+const ModalHandler = goosemod.webpackModules.findByProps('openModal', 'updateModal');
 const SmallMediaCarousel = goosemod.webpackModules.findByDisplayName('SmallMediaCarousel');
 
 const Discord = goosemod.webpackModules.findByDisplayName('Discord');
