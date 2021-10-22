@@ -55,7 +55,7 @@ export const remove = (key) => {
   backup();
 };
 
-export const clear = () => {
+export const clear = async () => {
   keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((y) => remove(x)); // Extension
 
   for (const system of paritySystems) await system.clear();

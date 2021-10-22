@@ -218,7 +218,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       onclick: async () => {
         if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
-          goosemodScope.remove();
+          await goosemodScope.remove();
           window.location.reload();
         }
       }

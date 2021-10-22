@@ -199,13 +199,13 @@ const init = async function () {
     this.moduleSettingsStore.saveModuleSettings();
   }, 3000);
   
-  this.remove = () => {
+  this.remove = async () => {
     this.settingsUninjects.forEach((x) => x());
 
     clearInterval(this.saveInterval);
     clearInterval(this.hotupdateInterval);
     
-    this.storage.clear();
+    await this.storage.clear();
     
     this.removed = true;
     
