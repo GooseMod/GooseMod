@@ -1,5 +1,6 @@
-### Based on commit 1a6b1b8, made 22/10 19:25 UTC
+### Based on commit 3094ff1, made 22/10 19:31 UTC
 ## Commits this release
+  - [Release] v12.2
   - [Storage > Ext] Fix using wrong var for bundling error
   - [Storage > Parity] Fix not using async
   - [Storage > Parity] Rewrite with clear function to fix resetting
