@@ -7,7 +7,7 @@ if (window.webpackJsonp) { // Older
   delete wpRequire.m.get_require;
   delete wpRequire.c.get_require;
 } else if (window.webpackChunkdiscord_app) { // New (Canary @ 22nd Oct)
-  window.webpackChunkdiscord_app.push([['gm_webpackInject'], {}, (req) => { wpRequire = req; }]);
+  window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { wpRequire = req; }]);
 }
 
 
