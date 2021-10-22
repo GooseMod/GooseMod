@@ -1,5 +1,6 @@
-### Based on commit e10d368, made 22/10 18:25 UTC
+### Based on commit 93b9e58, made 22/10 18:33 UTC
 ## Commits this release
+  - [Modals > Confirm] Fix cancel text default
   - [Canary] Fix Confirm modal forgetting to get find
   - [Canary] Work on confirm modal fixing
   - [Canary] Getting incorrect modal handler module
