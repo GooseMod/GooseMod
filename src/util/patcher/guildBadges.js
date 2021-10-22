@@ -12,14 +12,14 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const Clickable = goosemodScope.webpackModules.findByDisplayName('Clickable');
 
-  const BadgeClasses = goosemodScope.webpackModules.findByProps('guildIconContainer');
+  const BadgeClasses = goosemodScope.webpackModules.findByProps('guildIconContainer', 'clickable');
 
   const GuildHeader = goosemod.webpackModules.findByProps('AnimatedBanner');
 
   return PatcherBase.patch(GuildHeader.default, 'type', function (_args, res) {
     if (!forIds().includes(_args[0]?.guild?.id)) return res;
 
-    const Header = res.props.children.props.children[0];
+    const Header = res.props.children[0].props.children[0];
 
     if (!Header.__injected) {
       PatcherBase.patch(Header, 'type', function (_args, res) {
