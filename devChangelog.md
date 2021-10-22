@@ -1,5 +1,6 @@
-### Based on commit fd0ea0d, made 22/10 08:50 UTC
+### Based on commit 94aa68c, made 22/10 12:12 UTC
 ## Commits this release
+  - [Canary] Start testing fixes for Canary changes
   - [CI i18n] Update translations from Weblate
   - [Webpack] Use random ID to be more reliable
   - [Bootstrap] Fix for new Webpack fully
