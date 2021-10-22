@@ -3,7 +3,7 @@ const { React } = goosemod.webpackModules.common;
 
 const SwitchItem = goosemod.webpackModules.findByDisplayName('SwitchItem');
 
-const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+const Markdown = goosemod.webpackModules.find((x) => x.displayName === 'Markdown' && x.rules);
 
 const Tooltip = goosemod.webpackModules.findByDisplayName('Tooltip');
 const Science = goosemod.webpackModules.findByDisplayName('Science');

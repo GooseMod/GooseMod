@@ -4,7 +4,7 @@ const { React } = goosemod.webpackModules.common;
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
 
-const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+const Markdown = goosemod.webpackModules.find((x) => x.displayName === 'Markdown' && x.rules);
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 
 const FormTextClasses = goosemod.webpackModules.findByProps('formText', 'placeholder');

@@ -2,7 +2,7 @@ export default () => {
 const { React } = goosemod.webpackModules.common;
 
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
-const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+const Markdown = goosemod.webpackModules.find((x) => x.displayName === 'Markdown' && x.rules);
 
 const Margins = goosemod.webpackModules.findByProps('marginTop20', 'marginBottom20');
 

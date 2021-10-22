@@ -10,7 +10,7 @@ export const show = (buttonText, title, description, cancelText = undefined, con
     const { findByDisplayName, findByProps } = goosemodScope.webpackModules;
     
     const Text = findByDisplayName("Text");
-    const Markdown = findByDisplayName('Markdown');
+    const Markdown = find((x) => x.displayName === 'Markdown' && x.rules);
     const ButtonColors = findByProps('button', 'colorRed');
     
     (0, findByProps("openModal").openModal)((e) => {

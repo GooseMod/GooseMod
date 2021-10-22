@@ -5,17 +5,9 @@ const { React } = goosemod.webpackModules.common;
 
 const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
 
-class Header extends React.PureComponent {
-  render() {
-    return React.createElement(FormTitle, { tag: 'h1' }, this.props.children);
-  }
-}
-
-Header.Sizes = {};
-
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
-const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+const Markdown = goosemod.webpackModules.find((x) => x.displayName === 'Markdown' && x.rules);
 
 const DropdownArrow = goosemod.webpackModules.findByDisplayName('DropdownArrow');
 
@@ -83,8 +75,8 @@ return class GMErrorBoundary extends React.PureComponent {
       React.createElement('div', {},
         React.createElement('div', {}),
   
-        React.createElement(Header, {
-          size: Header.Sizes.SIZE_24,
+        React.createElement(FormTitle, {
+          tag: 'h1'
         },  'GooseMod has handled an error',
           React.createElement(Markdown, {}, `## Suspected ${this.state.suspectedCause.type}: ${this.state.suspectedCause.name}`)
         )

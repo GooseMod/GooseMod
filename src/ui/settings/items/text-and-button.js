@@ -7,7 +7,7 @@ const Divider = _Divider();
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
-const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
+const Markdown = goosemod.webpackModules.find((x) => x.displayName === 'Markdown' && x.rules);
 
 const FormItem = goosemod.webpackModules.findByDisplayName('FormItem');
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
