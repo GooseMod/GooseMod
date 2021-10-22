@@ -1,5 +1,6 @@
-### Based on commit 481199d, made 22/10 19:07 UTC
+### Based on commit 1a6b1b8, made 22/10 19:25 UTC
 ## Commits this release
+  - [Storage > Ext] Fix using wrong var for bundling error
   - [Storage > Parity] Fix not using async
   - [Storage > Parity] Rewrite with clear function to fix resetting
   - Merge branch 'master' of github.com:GooseMod/GooseMod
