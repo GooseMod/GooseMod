@@ -1,5 +1,6 @@
-### Based on commit c66cd8c, made 22/10 07:37 UTC
+### Based on commit c8d9b61, made 22/10 07:42 UTC
 ## Commits this release
+  - [Bootstrap] Fix for new Webpack
   - [Init] Fix waiting for new Webpack window var
   - [Webpack] New Canary changes fix
   - [Release] v12.1 hotfix (v12.1.1)
