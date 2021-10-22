@@ -1,5 +1,6 @@
-### Based on commit bd1acfe, made 18/10 20:19 UTC
+### Based on commit baee23a, made 22/10 07:31 UTC
 ## Commits this release
+  - [Webpack] New Canary changes fix
   - [Release] v12.1 hotfix (v12.1.1)
   - [Chore] Don't bump version
   - [Various] Fix Snippets
