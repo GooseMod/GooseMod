@@ -1,7 +1,11 @@
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const Header = goosemod.webpackModules.findByDisplayName('Header');
+// const Header = goosemod.webpackModules.findByDisplayName('Header');
+
+const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
+const Header = (props, children) => React.createElement(FormTitle, { tag: 'h1' }, children);
+
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
 const Markdown = goosemod.webpackModules.findByDisplayName('Markdown');
