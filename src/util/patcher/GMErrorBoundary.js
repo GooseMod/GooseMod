@@ -5,6 +5,7 @@ const { React } = goosemod.webpackModules.common;
 
 const FormTitle = goosemod.webpackModules.findByDisplayName('FormTitle');
 const Header = (props, children) => React.createElement(FormTitle, { tag: 'h1' }, children);
+Header.Sizes = {};
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
