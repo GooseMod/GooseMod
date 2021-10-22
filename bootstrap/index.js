@@ -1,7 +1,7 @@
 import sleep from '../src/util/sleep';
 
 const init = async () => {
-  while (!window.webpackJsonp?.push) {
+  while (!window.webpackJsonp?.push && !window.webpackChunkdiscord_app?.push) {
     await sleep(10);
   }
   
