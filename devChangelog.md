@@ -1,5 +1,26 @@
-### Based on commit bd1acfe, made 18/10 20:19 UTC
+### Based on commit 3094ff1, made 22/10 19:31 UTC
 ## Commits this release
+  - [Release] v12.2
+  - [Storage > Ext] Fix using wrong var for bundling error
+  - [Storage > Parity] Fix not using async
+  - [Storage > Parity] Rewrite with clear function to fix resetting
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Patcher > GuildBadges] Fix using wrong class name for new Canary
+  - [CI i18n] Update translations from Weblate
+  - [Modals > Confirm] Fix cancel text default
+  - [Canary] Fix Confirm modal forgetting to get find
+  - [Canary] Work on confirm modal fixing
+  - [Canary] Getting incorrect modal handler module
+  - [Canary] Fix getting incorrect Markdown component There is now 2 components with identical displayName's, first is random new modal, second is actual Markdown.
+  - [Canary] More error boundary testing and fixes
+  - [Canary] Error boundary compat testing
+  - [Canary] Start testing fixes for Canary changes
+  - [CI i18n] Update translations from Weblate
+  - [Webpack] Use random ID to be more reliable
+  - [Bootstrap] Fix for new Webpack fully
+  - [Bootstrap] Fix for new Webpack
+  - [Init] Fix waiting for new Webpack window var
+  - [Webpack] New Canary changes fix
   - [Release] v12.1 hotfix (v12.1.1)
   - [Chore] Don't bump version
   - [Various] Fix Snippets
