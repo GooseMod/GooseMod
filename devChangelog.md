@@ -1,5 +1,6 @@
-### Based on commit cc12685, made 22/10 12:17 UTC
+### Based on commit 46fcdee, made 22/10 12:26 UTC
 ## Commits this release
+  - [Canary] More error boundary testing and fixes
   - [Canary] Error boundary compat testing
   - [Canary] Start testing fixes for Canary changes
   - [CI i18n] Update translations from Weblate
