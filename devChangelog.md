@@ -1,5 +1,6 @@
-### Based on commit c41cb06, made 22/10 12:56 UTC
+### Based on commit 6723cf4, made 22/10 13:07 UTC
 ## Commits this release
+  - [Canary] Getting incorrect modal handler module
   - [Canary] Fix getting incorrect Markdown component There is now 2 components with identical displayName's, first is random new modal, second is actual Markdown.
   - [Canary] More error boundary testing and fixes
   - [Canary] Error boundary compat testing
