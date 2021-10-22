@@ -56,7 +56,7 @@ export const remove = (key) => {
 };
 
 export const clear = async () => {
-  keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((y) => remove(x)); // Extension
+  keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((y) => remove(y)); // Extension
 
   for (const system of paritySystems) await system.clear();
 };
