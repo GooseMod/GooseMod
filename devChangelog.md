@@ -1,5 +1,6 @@
-### Based on commit 222e073, made 22/10 19:42 UTC
+### Based on commit de3e184, made 22/10 19:44 UTC
 ## Commits this release
+  - [Release] v12.2 tweak
   - [Changelog] Tweaks
   - [Release] v12.2
   - [Storage > Ext] Fix using wrong var for bundling error
