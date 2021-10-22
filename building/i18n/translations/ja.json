@@ -164,7 +164,8 @@
                 "title": "GooseMod 変更履歴"
             },
             "subtexts": {
-                "experimental_warning": "開発中の実験的な機能は不完全で不安定である可能性があります"
+                "experimental_warning": "開発中の実験的な機能は不完全で不安定である可能性があります",
+                "tweaks_description": "GooseModを自分好みにするための小さなUI変更などのマイナーチェンジ"
             },
             "headers": {
                 "experimental": "試験的な機能",
@@ -177,7 +178,8 @@
                 "note": "ストアの画像の無いモジュールは代替画像が使用されます"
             },
             "collapsible_home_category": {
-                "title": "折りたためるホームカテゴリー"
+                "title": "折りたためるホームカテゴリー",
+                "note": "ホームカテゴリをアイコンで折り畳めるようにする"
             }
         }
     },
