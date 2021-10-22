@@ -1,5 +1,18 @@
 # GooseMod Changelog
 
+## v12.2-dev [2021-10-22]
+
+  - ### Canary Fixes
+    - **Fixed various things for new Canary update.** Discord rolled out a new Canary update on the 22nd of October which changed many internal things. All mods broke including GooseMod was broken but now most things should be working fine. You may have some minor issues with GooseMod or issues with some plugins, if so feel free to report in our Discord.
+
+  - ### General Hotfixes
+    - **Fixed GM reset option.**
+    - **Fixed Guild badges.**
+    - **Fixed Snippets (experimental option).**
+    - **Fixed modules sometimes failing to load.**
+    - **Updated translations.**
+
+
 ## v12.1 [2021-09-18]
 
   - ### Store

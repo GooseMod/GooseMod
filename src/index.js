@@ -108,7 +108,7 @@ const init = async function () {
   }
 
   this.versioning = {
-    version: `12.1`,
+    version: `12.2-dev`,
     hash: '<hash>', // Hash of built final js file is inserted here via build script
 
     lastUsedVersion: this.storage.get('goosemodLastVersion')
@@ -205,7 +205,7 @@ const init = async function () {
     clearInterval(this.saveInterval);
     clearInterval(this.hotupdateInterval);
     
-    this.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((x) => this.storage.remove(x));
+    this.storage.clear();
     
     this.removed = true;
     

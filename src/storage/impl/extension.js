@@ -55,4 +55,10 @@ export const remove = (key) => {
   backup();
 };
 
+export const clear = () => {
+  keys().filter((x) => x.toLowerCase().startsWith('goosemod')).forEach((y) => remove(x)); // Extension
+
+  for (const system of paritySystems) await system.clear();
+};
+
 export const keys = () => Object.keys(storageCache);
