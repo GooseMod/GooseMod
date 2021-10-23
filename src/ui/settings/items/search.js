@@ -1,7 +1,7 @@
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const SearchBar = goosemod.webpackModules.findByDisplayName('SearchBar');
+const SearchBar = goosemod.webpackModules.find((x) => x.displayName === 'SearchBar' && x.prototype.focus);
 
 return class Search extends React.PureComponent {
   render() {
