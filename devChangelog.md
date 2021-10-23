@@ -1,5 +1,6 @@
-### Based on commit bf92b40, made 23/10 10:26 UTC
+### Based on commit d4187b1, made 23/10 21:24 UTC
 ## Commits this release
+  - [Webpack] Add findByDisplayNameAll
   - [Settings > Items] header: fix bottom margin for new Canary
   - [Release] v12.2 tweak
   - [Changelog] Tweaks
