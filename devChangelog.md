@@ -1,5 +1,6 @@
-### Based on commit de3e184, made 22/10 19:44 UTC
+### Based on commit bf92b40, made 23/10 10:26 UTC
 ## Commits this release
+  - [Settings > Items] header: fix bottom margin for new Canary
   - [Release] v12.2 tweak
   - [Changelog] Tweaks
   - [Release] v12.2
