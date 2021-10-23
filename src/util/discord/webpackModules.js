@@ -37,6 +37,7 @@ export const findByPropsAll = (...props) => findAll((m) => props.every((x) => m[
 export const findByPrototypes = (...protos) => find((m) => m.prototype && protos.every((x) => m.prototype[x] !== undefined)); // Like find by props but prototype
 
 export const findByDisplayName = (name) => find((m) => m.displayName === name); // Find by displayName
+export const findByDisplayNameAll = (name) => findAll((m) => m.displayName === name); // Find *all* by displayName
 
 
 export const common = { // Common modules
