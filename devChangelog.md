@@ -1,5 +1,6 @@
-### Based on commit ad0e316, made 23/10 21:27 UTC
+### Based on commit cf81e31, made 24/10 19:55 UTC
 ## Commits this release
+  - [Webpack] Fix channels for new Canary
   - [Settings > Items] search: fix for new Canary
   - [Webpack] Add findByDisplayNameAll
   - [Settings > Items] header: fix bottom margin for new Canary
