@@ -1,5 +1,6 @@
-### Based on commit cf81e31, made 24/10 19:55 UTC
+### Based on commit 220021a, made 24/10 20:08 UTC
 ## Commits this release
+  - [Snippets] Fix for new Canary
   - [Webpack] Fix channels for new Canary
   - [Settings > Items] search: fix for new Canary
   - [Webpack] Add findByDisplayNameAll
