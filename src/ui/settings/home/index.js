@@ -289,9 +289,9 @@ export default async (goosemodScope) => {
     }
 
     const snippetsLoad = async (channelId, label) => {
-      const { fetchMessages } = goosemodScope.webpackModules.findByProps('fetchMessages');
+      const { fetchMessages } = goosemodScope.webpackModules.findByProps('fetchMessages', 'sendMessage');
       const { getRawMessages } = goosemodScope.webpackModules.findByProps('getMessages');
-      const { getChannel, hasChannel } = goosemodScope.webpackModules.findByProps('getChannel');
+      const { getChannel, hasChannel } = goosemodScope.webpackModules.findByProps('getChannel', 'getDMFromUserId');
   
       if (!hasChannel(channelId)) return;
 
