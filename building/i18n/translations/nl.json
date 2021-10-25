@@ -64,6 +64,13 @@
             "unknown": "Geen PGP",
             "untrusted": "PGP Onvertrouwd",
             "verified": "PGP Geverifieerd"
+        },
+        "search_results_hint": {
+            "none": "Geen resultaat gevonden",
+            "other_category": {
+                "plugins": "Geen resultaat gevonden, bedoelde je plugins?",
+                "themes": "Geen resultaat gevonden, bedoelde je themas?"
+            }
         }
     },
     "modals": {
@@ -149,7 +156,7 @@
                 "backup": "Backup",
                 "utilities": "Nutsvoorzieningen",
                 "appearance": "Uiterlijk",
-                "tweaks": "Tweaks"
+                "tweaks": "Aanpassingen"
             },
             "collapsible_home_category": {
                 "note": "Maak de Home categorie opvouwbaar via icoon",
