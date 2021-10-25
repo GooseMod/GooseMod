@@ -14,13 +14,15 @@
                 "title": "GooseMod Muutosloki"
             },
             "subtexts": {
-                "experimental_warning": "Kokeelliset asetukset ovat todennäköisestä keskeneräisiä ja epävakaita, joka vai haitata käyttökokemusta"
+                "experimental_warning": "Kokeelliset asetukset ovat todennäköisestä keskeneräisiä ja epävakaita, joka vai haitata käyttökokemusta",
+                "tweaks_description": "Pienet muutokset, kuten pienet käyttöliittymämuuttokset, jotta GooseMod olisi haluamasi kaltainen"
             },
             "headers": {
                 "experimental": "Kokeellinen",
                 "backup": "Varmuuskopiointi",
                 "utilities": "Apuvälineet",
-                "appearance": "Ulkonäkö"
+                "appearance": "Ulkonäkö",
+                "tweaks": "Säädöt"
             },
             "force_theme_settings": {
                 "note": "Pakota automaattisesti luodut asetukset kaikille teemoille",
@@ -75,6 +77,14 @@
             "main_separators": {
                 "note": "näytä erottimet asetuksien välissä GooseModin asetuksissa",
                 "title": "Erottimet asetuksissa"
+            },
+            "collapsible_home_category": {
+                "note": "Salli kotikategorian piilottaminen kuvakkeen kautta",
+                "title": "Piilotettava kotikategoria"
+            },
+            "placeholder_image": {
+                "title": "Väliaikainen kuva",
+                "note": "Käytä väliaikaista kuvaa kaupassa moduuleille, joissa ei ole kuvia"
             }
         }
     },
@@ -128,6 +138,13 @@
             "tabs": {
                 "imported": "Asennetut",
                 "store": "Kauppa"
+            }
+        },
+        "search_results_hint": {
+            "none": "Ei tuloksia",
+            "other_category": {
+                "themes": "Ei tuloksia, tarkoitiko teemoja?",
+                "plugins": "Ei tuloksia, tarkoititko laajennuksia?"
             }
         }
     },
