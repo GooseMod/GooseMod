@@ -1,5 +1,6 @@
-### Based on commit be72a07, made 25/10 09:43 UTC
+### Based on commit 11256b0, made 26/10 19:45 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [Snippets] Fix for new Canary
