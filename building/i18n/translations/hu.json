@@ -58,6 +58,13 @@
             "upcoming": "Hamarosan érkező",
             "recently_updated": "Nemrég Frissítve",
             "top_starred": "Legjobban értékelt"
+        },
+        "search_results_hint": {
+            "none": "Nincs találat",
+            "other_category": {
+                "themes": "Nincs találat, témákra gondoltál?",
+                "plugins": "Nincs találat, pluginokra gondoltál?"
+            }
         }
     },
     "badges": {
