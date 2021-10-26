@@ -1,5 +1,7 @@
-### Based on commit 11256b0, made 26/10 19:45 UTC
+### Based on commit 112bb70, made 26/10 20:09 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Various] Fix Header for new WP changes
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
