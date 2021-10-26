@@ -1,5 +1,16 @@
-### Based on commit de3e184, made 22/10 19:44 UTC
+### Based on commit 7fc8e36, made 26/10 23:04 UTC
 ## Commits this release
+  - [Release] v12.2 tweak
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Various] Fix Header for new WP changes
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [CI i18n] Update translations from Weblate
+  - [Snippets] Fix for new Canary
+  - [Webpack] Fix channels for new Canary
+  - [Settings > Items] search: fix for new Canary
+  - [Webpack] Add findByDisplayNameAll
+  - [Settings > Items] header: fix bottom margin for new Canary
   - [Release] v12.2 tweak
   - [Changelog] Tweaks
   - [Release] v12.2
