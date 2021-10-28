@@ -24,8 +24,8 @@ const Discord = goosemod.webpackModules.findByDisplayName('Discord');
 
 // Badge icons
 const Clock = goosemod.webpackModules.findByDisplayName('Clock');
+const Info = goosemod.webpackModules.findByDisplayName('Info');
 
-const currentDate = new Date();
 
 const prettyAgo = (timestamp) => {
   const intervals = [
@@ -43,6 +43,7 @@ const prettyAgo = (timestamp) => {
 
   return rtf.format(count * -1, interval.label);
 };
+
 
 return class Card extends React.PureComponent {
   constructor(props) {
@@ -188,7 +189,7 @@ return class Card extends React.PureComponent {
         this.props.notice ? React.createElement(SimpleTooltip, {
           text: notice,
           position: 'left'
-        }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement(goosemod.webpackModules.findByDisplayName('Info'), {
+        }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement(Info, {
           width: 24,
           height: 24,
 
