@@ -1,5 +1,6 @@
-### Based on commit 83f1b9b, made 28/10 16:56 UTC
+### Based on commit ef480c4, made 28/10 19:39 UTC
 ## Commits this release
+  - [Chore] Bump version: v12.3-dev
   - [Settings > Items] card: Tweak width for left text
   - [Settings > Items] card: New details UI
   - [Patcher > SimpleTooltip] Initial Add
