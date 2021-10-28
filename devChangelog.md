@@ -1,5 +1,6 @@
-### Based on commit ef480c4, made 28/10 19:39 UTC
+### Based on commit 6af1376, made 28/10 20:45 UTC
 ## Commits this release
+  - [Settings > Items] card: Tweak some new alignments
   - [Chore] Bump version: v12.3-dev
   - [Settings > Items] card: Tweak width for left text
   - [Settings > Items] card: New details UI
