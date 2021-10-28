@@ -77,6 +77,19 @@ return class Card extends React.PureComponent {
       delete this.state.forceDisplay;
     }
 
+    let { notice } = this.props;
+
+    switch (notice) {
+      case 1:
+        notice = 'Other users may notice your usage';
+        break;
+      
+      case 2:
+        notice = 'Other users may question or judge your usage, use appropriately';
+        break;
+    }
+
+
     return !this.state.loaded ? React.createElement('div', {
       className: 'gm-store-card-loading-placeholder'
     }) : React.createElement('div', {
@@ -135,32 +148,19 @@ return class Card extends React.PureComponent {
         className: 'gm-settings-note-markdown'
       }, this.props.subtext)),
 
-      /* React.createElement('div', { // Badges
-
-      },
-      true ? React.createElement(SimpleTooltip, { // this.props.lastUpdatedDays < 5 ? React.createElement(SimpleTooltip, {
-          text: `${this.props.subtext2} | ${this.props.lastUpdatedPretty}` // `Updated ${Math.floor(this.props.lastUpdatedDays)} days ago`
-        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement(Clock, {
-          width: 24,
-          height: 24,
-
-          className,
-          onMouseEnter,
-          onMouseLeave
-        })) : null,
-      ), */ 
-
       React.createElement('div', {
         
       },
         this.props.github ? React.createElement(SimpleTooltip, {
           text: this.props.github.stars,
           position: 'left'
-        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement('svg', {
+        }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement('svg', {
           width: '24',
           height: '24',
           viewBox: '0 0 24 24',
           fill: 'currentColor',
+
+          'aria-label': text,
 
           onMouseEnter,
           onMouseLeave,
@@ -174,14 +174,30 @@ return class Card extends React.PureComponent {
         React.createElement(SimpleTooltip, {
           text: `${this.props.subtext2} | ${prettyAgo(this.props.lastUpdated * 1000)}`,
           position: 'left'
-        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement(Clock, {
+        }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement(Clock, {
           width: 24,
           height: 24,
+
+          'aria-label': text,
 
           className,
           onMouseEnter,
           onMouseLeave
-        }))
+        })),
+
+        this.props.notice ? React.createElement(SimpleTooltip, {
+          text: notice,
+          position: 'left'
+        }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement(goosemod.webpackModules.findByDisplayName('Info'), {
+          width: 24,
+          height: 24,
+
+          'aria-label': text,
+
+          className,
+          onMouseEnter,
+          onMouseLeave
+        })) : null
       ),
 
       React.createElement('div', {

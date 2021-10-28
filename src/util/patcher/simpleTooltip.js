@@ -51,6 +51,8 @@ return class SimpleTooltip extends React.PureComponent {
         document.querySelector('.gm-tooltip').remove();
       },
 
+      text: this.props.text,
+
       className: `gm-tooltipref-${this.state.refId = Math.random().toString().split('.')[1]}`
     })
   }

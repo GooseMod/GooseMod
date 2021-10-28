@@ -506,7 +506,7 @@ export default (goosemodScope, gmSettings, Items) => {
         }
 
         case '#store.options.sort.stars#': {
-          c.style.order = 10000 - parseInt(c.children[4].children[0].children[0].textContent);
+          c.style.order = 10000 - parseInt(c.children[4].children[0].ariaLabel);
 
           break;
         }
@@ -606,7 +606,7 @@ export default (goosemodScope, gmSettings, Items) => {
           }
         }
       }
-    } else if (allHeader.textContent !== '#store.categories.all.themes#' || allHeader.textContent !== '#store.categories.all.plugins#') {
+    } else if (allHeader.textContent !== '#store.categories.all.themes#' && allHeader.textContent !== '#store.categories.all.plugins#') {
       allHeader.children[0].textContent = allHeader.dataset.original;
       allHeader.style.cursor = '';
       allHeader.onclick = () => {};
