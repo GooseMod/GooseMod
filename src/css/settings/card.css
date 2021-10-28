@@ -67,7 +67,7 @@
 }
 
 .gm-store-card > :nth-child(3) {
-  width: 85%;
+  width: calc(100% - 24px - 6px);
   margin-top: 10px;
 
   overflow: hidden;
@@ -77,7 +77,7 @@
 }
 
 .gm-store-card > :nth-child(4) {
-  width: 85%;
+  width: calc(100% - 24px - 6px);
   margin-top: 5px;
 
   overflow: hidden;
