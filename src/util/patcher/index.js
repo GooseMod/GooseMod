@@ -1,4 +1,5 @@
 export { patch, inject, uninject } from './base';
+export { default as simpleTooltip } from './simpleTooltip';
 
 import * as _contextMenu from './contextMenu';
 import * as _miniPopover from './miniPopover';
