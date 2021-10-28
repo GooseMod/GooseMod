@@ -1,5 +1,12 @@
 export default () => {
 const { React } = goosemod.webpackModules.common;
+const SimpleTooltip = goosemod.patcher.simpleTooltip();
+
+const rtf = new Intl.RelativeTimeFormat("en", {
+  localeMatcher: "best fit", // other values: "lookup"
+  numeric: "auto", // other values: "auto"
+  style: "long", // other values: "short" or "narrow"
+});
 
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 const Switch = goosemod.webpackModules.findByDisplayName('Switch');
@@ -15,6 +22,27 @@ const SmallMediaCarousel = goosemod.webpackModules.findByDisplayName('SmallMedia
 
 const Discord = goosemod.webpackModules.findByDisplayName('Discord');
 
+// Badge icons
+const Clock = goosemod.webpackModules.findByDisplayName('Clock');
+
+const currentDate = new Date();
+
+const prettyAgo = (timestamp) => {
+  const intervals = [
+    { label: 'year', seconds: 31536000 },
+    { label: 'month', seconds: 2592000 },
+    { label: 'day', seconds: 86400 },
+    { label: 'hour', seconds: 3600 },
+    { label: 'minute', seconds: 60 },
+    { label: 'second', seconds: 1 }
+  ];
+
+  const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  const interval = intervals.find(i => i.seconds < seconds);
+  const count = Math.floor(seconds / interval.seconds);
+
+  return rtf.format(count * -1, interval.label);
+};
 
 return class Card extends React.PureComponent {
   constructor(props) {
@@ -107,31 +135,53 @@ return class Card extends React.PureComponent {
         className: 'gm-settings-note-markdown'
       }, this.props.subtext)),
 
+      /* React.createElement('div', { // Badges
+
+      },
+      true ? React.createElement(SimpleTooltip, { // this.props.lastUpdatedDays < 5 ? React.createElement(SimpleTooltip, {
+          text: `${this.props.subtext2} | ${this.props.lastUpdatedPretty}` // `Updated ${Math.floor(this.props.lastUpdatedDays)} days ago`
+        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement(Clock, {
+          width: 24,
+          height: 24,
+
+          className,
+          onMouseEnter,
+          onMouseLeave
+        })) : null,
+      ), */ 
+
       React.createElement('div', {
         
       },
-        this.props.github ? React.createElement(FormText, {
-          className: FormTextClasses.description
+        this.props.github ? React.createElement(SimpleTooltip, {
+          text: this.props.github.stars,
+          position: 'left'
+        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement('svg', {
+          width: '24',
+          height: '24',
+          viewBox: '0 0 24 24',
+          fill: 'currentColor',
+
+          onMouseEnter,
+          onMouseLeave,
+          className
         },
-          React.createElement('span', {
+          React.createElement('path', {
+            d: 'M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'
+          })
+        )) : null,
 
-          }, this.props.github.stars),
+        React.createElement(SimpleTooltip, {
+          text: `${this.props.subtext2} | ${prettyAgo(this.props.lastUpdated * 1000)}`,
+          position: 'left'
+        }, ({ onMouseEnter, onMouseLeave, className }) => React.createElement(Clock, {
+          width: 24,
+          height: 24,
 
-          React.createElement('svg', {
-            width: '16',
-            height: '16',
-            viewBox: '0 0 24 24',
-            fill: 'currentColor'
-          },
-            React.createElement('path', {
-              d: 'M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'
-            })
-          )
-        ) : React.createElement('div'),
-
-        React.createElement(FormText, {
-          className: FormTextClasses.description
-        }, this.props.subtext2)
+          className,
+          onMouseEnter,
+          onMouseLeave
+        }))
       ),
 
       React.createElement('div', {

@@ -35,7 +35,7 @@
   object-fit: cover;
 }
 
-.gm-store-card > :nth-child(1):hover ~ :nth-child(2) {
+.gm-store-card > :nth-child(1):hover ~ :nth-child(2), .gm-store-card > :nth-child(2):hover {
   top: 132px;
 }
 
@@ -45,6 +45,12 @@
   transition: top .2s;
 
   top: 152px;
+
+  width: fit-content;
+  cursor: default;
+}
+
+.gm-store-card > :nth-child(2) {
   right: 10px;
 
   opacity: 0.95;
@@ -52,11 +58,8 @@
   border-radius: 16px;
 
   background-color: rgba(0, 0, 0, 0.5);
-  width: fit-content;
 
   padding-right: 10px;
-
-  cursor: default;
 }
 
 .gm-store-card > :nth-child(2).no-pfp {
@@ -92,38 +95,18 @@
   order: 2;
   margin-left: auto;
   position: absolute;
+  gap: 10px;
   top: 208px;
   right: 12px;
-  width: calc(15% - 12px);
+  width: 24px;
 }
 
-.gm-store-card > :nth-child(5) > :nth-child(1) {
-  width: max-content;
+.gm-store-card > :nth-child(5) > * {
+  color: var(--interactive-normal);
 }
 
-.gm-store-card > :nth-child(5) > :nth-child(1) > :nth-child(1) {
-  position: relative;
-  top: 7px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.gm-store-card > :nth-child(5) > :nth-child(1) > :nth-child(2) {
-  position: relative;
-  top: 8px;
-  margin-left: 5px;
-}
-
-.gm-store-card > :nth-child(5) > :nth-child(2) {
-  margin-top: 20px;
-
-  text-align: center;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  width: 100%;
-  line-break: anywhere;
+.gm-store-card > :nth-child(5) > *:hover {
+  color: var(--interactive-hover);
 }
 
 .gm-store-card > :nth-child(6) {
