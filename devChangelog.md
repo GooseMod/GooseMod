@@ -1,5 +1,6 @@
-### Based on commit 7a0d0fd, made 28/10 23:13 UTC
+### Based on commit f4eba4b, made 28/10 23:19 UTC
 ## Commits this release
+  - [Settings > Items] card: Tweak source
   - [Various] Notice badge support, add aria-label to SimpleTooltips
   - [Settings > Items] card: Tweak some new alignments
   - [Chore] Bump version: v12.3-dev
