@@ -1,5 +1,6 @@
-### Based on commit 95ff8a7, made 28/10 14:40 UTC
+### Based on commit 83f1b9b, made 28/10 16:56 UTC
 ## Commits this release
+  - [Settings > Items] card: Tweak width for left text
   - [Settings > Items] card: New details UI
   - [Patcher > SimpleTooltip] Initial Add
   - [Release] v12.2 tweak
