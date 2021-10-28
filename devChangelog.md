@@ -1,5 +1,7 @@
-### Based on commit 7fc8e36, made 26/10 23:04 UTC
+### Based on commit 95ff8a7, made 28/10 14:40 UTC
 ## Commits this release
+  - [Settings > Items] card: New details UI
+  - [Patcher > SimpleTooltip] Initial Add
   - [Release] v12.2 tweak
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Various] Fix Header for new WP changes
