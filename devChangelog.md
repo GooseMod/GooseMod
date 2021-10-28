@@ -1,5 +1,6 @@
-### Based on commit 6af1376, made 28/10 20:45 UTC
+### Based on commit 7a0d0fd, made 28/10 23:13 UTC
 ## Commits this release
+  - [Various] Notice badge support, add aria-label to SimpleTooltips
   - [Settings > Items] card: Tweak some new alignments
   - [Chore] Bump version: v12.3-dev
   - [Settings > Items] card: Tweak width for left text
