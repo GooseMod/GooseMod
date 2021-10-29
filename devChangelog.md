@@ -1,5 +1,6 @@
-### Based on commit f4eba4b, made 28/10 23:19 UTC
+### Based on commit 5a172c9, made 29/10 14:46 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Settings > Items] card: Tweak source
   - [Various] Notice badge support, add aria-label to SimpleTooltips
   - [Settings > Items] card: Tweak some new alignments
