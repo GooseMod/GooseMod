@@ -1,1 +1,270 @@
-{}
+{
+    "store": {
+        "categories": {
+            "top_starred": "Najivše zvijezda",
+            "all": {
+                "plugins": "Svi dodaci",
+                "themes": "Sve teme"
+            },
+            "recently_updated": "Nedavno aktualizirano",
+            "upcoming": "Predstojeće"
+        },
+        "options": {
+            "search": {
+                "placeholder": {
+                    "themes": "Traži teme",
+                    "plugins": "Traži dodatke"
+                }
+            },
+            "sort": {
+                "az": "A-Z",
+                "label": "Redoslijed",
+                "stars": "Zvijezde",
+                "last_updated": "Zadnje aktualizirano"
+            },
+            "tabs": {
+                "store": "Trgovina",
+                "imported": "Instalirano"
+            },
+            "author": {
+                "label": "Autor",
+                "all": "Sve"
+            }
+        },
+        "pgp": {
+            "verified": "Provjeren PGP",
+            "untrusted": "Nepovjerljiv PGP",
+            "unknown": "Bez PGP-a"
+        },
+        "search_results_hint": {
+            "none": "Nema rezultata",
+            "other_category": {
+                "themes": "Nisu pronađeni rezultati, možda misliš na teme?",
+                "plugins": "Nisu pronađeni rezultati, možda misliš na dodatke?"
+            }
+        }
+    },
+    "settings": {
+        "items": {
+            "headers": {
+                "backup": "Sigurnosna kopija",
+                "appearance": "Izgled",
+                "utilities": "Pomoćni programi",
+                "experimental": "Eksperimentalno",
+                "tweaks": "Podešavanja"
+            },
+            "subtexts": {
+                "experimental_warning": "Eksperimentalne postavke vjerojatno su nepotpune i nestabilne, čime smanjuju doživljaj",
+                "tweaks_description": "Manje promjene u korisničkom sučelju kako bi GooseMod bio onakav kakvim ga ti želiš imati"
+            },
+            "goosemod_change_log": {
+                "title": "Dnevnik promjena GooseModa",
+                "note": "Prikaži GooseMod postavku „Dnevnik promjena”"
+            },
+            "main_separators": {
+                "title": "Glavni znakovi razdvajanja",
+                "note": "Prikaži razdjelnike između glavnih GooseMod postavki"
+            },
+            "store_in_home": {
+                "title": "Trgovina na početnom ekranu",
+                "note": "Stavi opcije GooseMod trgovine na početni ekran umjesto u postavke"
+            },
+            "auto_update": {
+                "title": "Automatsko aktualiziranje",
+                "note": "Automatski aktualiziraj repozitorije i module svakih sat vremena"
+            },
+            "goosemod_badges": {
+                "title": "GooseMod značke",
+                "note": "Pokazuje GooseMod značke"
+            },
+            "purge_caches": {
+                "title": "Isprazni predmemorije",
+                "button": "Isprazni",
+                "note": "Potpuno uklanja većinu predmemorija koje GooseMod koristi"
+            },
+            "start_tour": {
+                "title": "Započni obilazak",
+                "note": "Ponovo prođi kroz GooseModov početni obilazak",
+                "button": "Obilazak"
+            },
+            "copy_debug_info": {
+                "title": "Kopiraj podatke otklanjanja grešaka",
+                "note": "Kopira informacije o postavi i GooseModu za izvještavanje i otklanjanje grešaka",
+                "button": "Kopiraj"
+            },
+            "reset_goosemod": {
+                "title": "Resetiraj GooseMod",
+                "note": "Potpuno resetira GooseMod: uklanja sve postavke i module; kao prva instalacija",
+                "button": "Resetiraj"
+            },
+            "restore_backup": {
+                "note": "Obnovi svoje GooseMod module i postavke putem sigurnosne kopije, **obnovi samo sigurnosne kopije kojima vjeruješ**",
+                "button": "Obnovi",
+                "title": "Obnovi sigurnosnu kopiju"
+            },
+            "development_channel": {
+                "title": "Kanal razvoja",
+                "note": "Koristi eksperimentalne razvojne verzije GooseModa"
+            },
+            "data_attributes": {
+                "title": "Atributi podataka",
+                "note": "Dodaj atribute podataka nekim elementima za korištenje nekih tema"
+            },
+            "snippets": {
+                "title": "Isječci",
+                "note": "Aktiviraj karticu „Isječci” u trgovini"
+            },
+            "force_theme_settings": {
+                "title": "Prisili postavke teme",
+                "note": "Nametni automatski generirane postavke za sve teme"
+            },
+            "placeholder_image": {
+                "title": "Opća slika",
+                "note": "Koristi opću sliku u trgovini za module bez slika"
+            },
+            "collapsible_home_category": {
+                "title": "Sklopiva kategorija početnog ekrana",
+                "note": "Omogući sklapanje kategorije početnog ekrana putem ikone"
+            },
+            "create_backup": {
+                "title": "Stvori sigurnosnu kopiju",
+                "note": "Stvara datoteku za sigurnosnu kopiju tvojih GooseMod modula i postavki",
+                "button": "Sigurnosna kopija"
+            }
+        }
+    },
+    "terms": {
+        "goosemod": {
+            "store": "GooseMod trgovina",
+            "settings": "GooseMod postavke",
+            "modules": "GooseMod moduli"
+        },
+        "install": "Instaliraj",
+        "add": "Dodaj",
+        "remove": "Ukloni",
+        "refresh": "Osvježi",
+        "settings": "Postavke",
+        "store": {
+            "plugins": "Dodaci",
+            "store": "Trgovina",
+            "themes": "Teme",
+            "snippets": "Isječci",
+            "modules": "Moduli",
+            "repos": "Repozitoriji",
+            "developers": "Programeri"
+        },
+        "changelog": "Dnevnik promjena",
+        "community": "Zajednica"
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Vanjski repozitoriji predstavljaju sigurnosne rizike jer ih ne kontroliraju programeri GooseModa. Ne snosimo odgovornost za bilo kakve opasnosti zbog vanjskih repozitorija koje su dodali korisnici.\n\nAko ne vjeruješ vlasniku ovog repozitorija, nemoj ga koristiti jer bi to moglo ugroziti tvoju instalaciju Discorda.\n\nPotvrdi dodavanje ovog repozitorija pritiskom na OK.",
+            "bad_pgp": "Ovaj repoyitorij nije poznat ili pouzdan (bez PGP provjere), prema tome, oprez. Provjeri vjeruješ li u potpunosti vlasnicima) ovog repoyitorija.\n\nZa rješavanje ovog problema, zamoli održavatelja repoyitorija da doda podršku za PGP.\n\nPotvrdi dodavanje ovog repozitorija pritiskom na OK."
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "text": "Neispravan repozitorij",
+                "subtext": "Neispravan format"
+            },
+            "cancelled": {
+                "text": "Prekinuto dodavanje repozitorija",
+                "reasons": {
+                    "refused": "Odbijen sigurnosni upit",
+                    "pgp": "Greška u nepovjerljivom PGP-u"
+                }
+            }
+        }
+    },
+    "ootb": {
+        "start": {
+            "confirm": "Saznaj više",
+            "cancel": "Ne zanima",
+            "items": {
+                "store": {
+                    "subtext": "Saznaj više o GooseMod trgovini i što se u njoj nalazi"
+                },
+                "settings": {
+                    "subtext": "Saznaj više o postavkama za GooseMod i dodatke"
+                },
+                "community": {
+                    "subtext": "Pridruži se našem Discordu, postavljaj pitanja, šalji povratne informacije, saznaj novosti i još mnogo toga"
+                }
+            },
+            "text": {
+                "main": "Saznaj o GooseModu",
+                "subtext": "Prođi kroz kratki obilazak osnovnih funkcija GooseModa"
+            }
+        },
+        "community": {
+            "confirm": "Pridruži se GooseMod Discordu",
+            "items": {
+                "ask_questions": {
+                    "title": "Postavljaj pitanja",
+                    "subtext": "Postavi bilo kakva pitanja i zatraži podršku"
+                },
+                "news": {
+                    "title": "Vijesti",
+                    "subtext": "Primaj najnovije vijesti i najave o GooseModu i srodnim projektima"
+                },
+                "get_involved": {
+                    "title": "Uključi se u rad",
+                    "subtext": "Pomozi s prijedlozima, pomogni drugima i još mnogo toga"
+                }
+            },
+            "text": {
+                "main": "Pridruži se GooseMod zajednici",
+                "subtext": "Pridruži se našem Discordu za dodatne informacije i više"
+            }
+        },
+        "settings": {
+            "confirm": "Prikaz GooseMod postavki",
+            "items": {
+                "experimental_features": {
+                    "title": "Eksperimentalne funkcije",
+                    "subtext": "Isprobaj nove eksperimentalne funkcije"
+                },
+                "utilities": {
+                    "title": "Pomoćni programi",
+                    "subtext": "Spremaj sigurnosne kopije, obnovi GooseMod i još mnogo toga"
+                },
+                "tweaks": {
+                    "title": "Podešavanja",
+                    "subtext": "Prilagodi GooseMod vlastitim potrebama"
+                }
+            },
+            "text": {
+                "main": "Koristi GooseMod postavke za prilagođavanje njegovih funkcija",
+                "subtext": "Postoje razne opcije koje možeš promijeniti"
+            }
+        },
+        "store": {
+            "confirm": "Pogledaj trgovinu na početnom ekranu",
+            "text": {
+                "main": "Pregledaj teme i dodatke u trgovini",
+                "subtext": "GooseMod koristi svoju vlastitu trgovinu za jednostavno pregledavanje i instaliranje"
+            }
+        },
+        "plugins": {
+            "confirm": "Pregledaj dodatke",
+            "text": {
+                "main": "Proširi funkcionalnost Discorda",
+                "subtext": "Dodaci povećavaju doživljaj poboljšanjima u samom programu"
+            }
+        },
+        "themes": {
+            "confirm": "Pregledaj teme",
+            "text": {
+                "main": "Uljepšaj svoj Discord s temama",
+                "subtext": "Odaberi jednu od preko 100 tema za podešavanje i poboljšanje korisničkog sučelja"
+            }
+        }
+    },
+    "badges": {
+        "sponsor": "GooseMod sponzor",
+        "translator": "GooseMod prevodilac",
+        "developer": "GooseMod programer",
+        "guild": "GooseMod službeni Discord"
+    }
+}
