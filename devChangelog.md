@@ -1,5 +1,6 @@
-### Based on commit d1a5797, made 30/10 18:55 UTC
+### Based on commit c5973f8, made 30/10 19:01 UTC
 ## Commits this release
+  - [Webpack] findByModuleId: return exports instead of entire module
   - [Webpack] Add findByModuleId
   - [Settings] Rewrite GMSettings to use proxy, add new experimental option
   - [Patcher > Username] Add potential WIP inner method for future
