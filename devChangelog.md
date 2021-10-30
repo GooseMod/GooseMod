@@ -1,5 +1,6 @@
-### Based on commit 45a2d03, made 30/10 10:13 UTC
+### Based on commit 2610a22, made 30/10 10:27 UTC
 ## Commits this release
+  - [Rollup] Ignore eval warnings, cleanup comments
   - [Patcher > InternalMessage] Fix WP module grabbing for getting current channel ID
   - [Build > DevChangelog] Fix for new commit styling
   - Merge branch 'master' of github.com:GooseMod/GooseMod
