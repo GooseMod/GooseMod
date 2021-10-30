@@ -1,6 +1,6 @@
 import sleep from '../../util/sleep';
 
-import * as GMSettings from '../../gmSettings';
+import GMSettings from '../../gmSettings';
 export const gmSettings = GMSettings;
 
 import addToHome from './home/index';
@@ -149,8 +149,8 @@ export const makeGooseModSettings = () => {
   addBaseItems(goosemodScope, gmSettings, Items);
 
   addToSettingsSidebar(goosemodScope, gmSettings);
-  addToContextMenu(goosemodScope, gmSettings.get().home);
-  if (gmSettings.get().home) addToHome(goosemodScope);
+  addToContextMenu(goosemodScope, gmSettings.home);
+  if (gmSettings.home) addToHome(goosemodScope);
 
   loadColorPicker();
 };

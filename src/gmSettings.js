@@ -1,5 +1,3 @@
-let cache;
-
 const defaultSettings = {
   changelog: true,
   separators: true,
@@ -20,26 +18,32 @@ const defaultSettings = {
   debugToasts: false
 };
 
-export const get = () => {
-  // Cache as this function is called frequently
-  if (cache) return cache;
-  
-  cache = JSON.parse(goosemod.storage.get('goosemodGMSettings')) || {};
+const loadStore = () => {
+  const loaded = JSON.parse(goosemod.storage.get('goosemodGMSettings')) || {};
 
-  cache = {
+  return {
     ...defaultSettings,
-    ...cache
+    ...loaded,
+
+    get: () => target // gmSettings.get compat (because of all theme settings using old)
   };
-
-  return cache;
 };
 
-export const set = (key, value) => {
-  const settings = get();
+const target = { uninit: true };
+export default new Proxy({ uninit: true }, {
+  get(target, prop) {
+    if (target.uninit) target = loadStore();
 
-  settings[key] = value;
+    return target[prop] ?? false;
+  },
+  
+  set(target, prop, value) {
+    if (target.uninit) target = loadStore();
 
-  goosemod.storage.set('goosemodGMSettings', JSON.stringify(settings));
+    target[prop] = value;
 
-  cache = settings; // Set cache to new value
-};
+    goosemod.storage.set('goosemodGMSettings', JSON.stringify(target));
+
+    return true;
+  }
+});

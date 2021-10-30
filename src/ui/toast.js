@@ -90,7 +90,7 @@ document.head.appendChild(styleSheet);
 
 export default (text, options = {}) => {
   if (options?.type?.startsWith('debug')) {
-    if (!goosemod.settings.gmSettings.get().debugToasts) return;
+    if (!goosemod.settings.gmSettings.debugToasts) return;
 
     options.type = options.type.replace('debug', '');
   } 

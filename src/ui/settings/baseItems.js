@@ -19,13 +19,13 @@ export default (goosemodScope, gmSettings, Items) => {
             }, false]
           ];
 
-          if (gmSettings.get().separators) items.unshift(['separator']);
+          if (gmSettings.separators) items.unshift(['separator']);
 
           goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Themes')) + 1, 0,
             ...items
           );
         } else {
-          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), gmSettings.get().separators ? 2 : 1);
+          goosemodScope.settings.items.splice(goosemodScope.settings.items.indexOf(goosemodScope.settings.items.find(x => x[1] === 'Change Log')), gmSettings.separators ? 2 : 1);
         }
 
         await goosemodScope.settings.reopenSettings();
@@ -46,8 +46,8 @@ export default (goosemodScope, gmSettings, Items) => {
 
       case 'separators': {
         if (value) {
-          if (!gmSettings.get().home) goosemod.settings.items.splice(2, 0, ['separator']);
-          if (gmSettings.get().changelog) goosemod.settings.items.splice(4, 0, ['separator']);
+          if (!gmSettings.home) goosemod.settings.items.splice(2, 0, ['separator']);
+          if (gmSettings.changelog) goosemod.settings.items.splice(4, 0, ['separator']);
         } else {
           let main = true;
 
@@ -71,7 +71,7 @@ export default (goosemodScope, gmSettings, Items) => {
       }
     }
 
-    gmSettings.set(key, value);
+    gmSettings[key] = value;
   };
 
   const refreshPrompt = async () => {
@@ -95,7 +95,7 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: '#settings.items.goosemod_change_log.note#',
 
       onToggle: (c) => changeSetting('changelog', c),
-      isToggled: () => gmSettings.get().changelog
+      isToggled: () => gmSettings.changelog
     },
 
     {
@@ -105,7 +105,7 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: '#settings.items.main_separators.note#',
 
       onToggle: (c) => changeSetting('separators', c),
-      isToggled: () => gmSettings.get().separators
+      isToggled: () => gmSettings.separators
     },
 
     {
@@ -118,7 +118,7 @@ export default (goosemodScope, gmSettings, Items) => {
         changeSetting('home', c);
         refreshPrompt();
       },
-      isToggled: () => gmSettings.get().home
+      isToggled: () => gmSettings.home
     },
 
     {
@@ -133,7 +133,7 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: '#settings.items.auto_update.note#',
 
       onToggle: (c) => changeSetting('autoupdate', c),
-      isToggled: () => gmSettings.get().autoupdate
+      isToggled: () => gmSettings.autoupdate
     },
 
     {
@@ -143,7 +143,7 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: 'Shows a toast each time a new module is added to the Store', // todo: i18n
 
       onToggle: (c) => changeSetting('newModuleNotifications', c),
-      isToggled: () => gmSettings.get().newModuleNotifications
+      isToggled: () => gmSettings.newModuleNotifications
     },
 
     {
@@ -158,7 +158,7 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: '#settings.items.goosemod_badges.note#',
 
       onToggle: (c) => changeSetting('gmBadges', c),
-      isToggled: () => gmSettings.get().gmBadges
+      isToggled: () => gmSettings.gmBadges
     },
 
     {
@@ -319,7 +319,7 @@ export default (goosemodScope, gmSettings, Items) => {
       onToggle: (c) => {
         changeSetting('placeholderimage', c);
       },
-      isToggled: () => gmSettings.get().placeholderimage
+      isToggled: () => gmSettings.placeholderimage
     },
 
     {
@@ -331,7 +331,7 @@ export default (goosemodScope, gmSettings, Items) => {
       onToggle: (c) => {
         changeSetting('collapsiblehome', c);
       },
-      isToggled: () => gmSettings.get().collapsiblehome
+      isToggled: () => gmSettings.collapsiblehome
     },
 
     {
@@ -372,7 +372,7 @@ export default (goosemodScope, gmSettings, Items) => {
         changeSetting('attrs', c);
         refreshPrompt();
       },
-      isToggled: () => gmSettings.get().attrs
+      isToggled: () => gmSettings.attrs
     },
 
     {
@@ -386,7 +386,7 @@ export default (goosemodScope, gmSettings, Items) => {
         changeSetting('snippets', c);
         refreshPrompt();
       },
-      isToggled: () => gmSettings.get().snippets
+      isToggled: () => gmSettings.snippets
     },
 
     {
@@ -400,7 +400,18 @@ export default (goosemodScope, gmSettings, Items) => {
         changeSetting('allThemeSettings', c);
         refreshPrompt();
       },
-      isToggled: () => gmSettings.get().allThemeSettings
+      isToggled: () => gmSettings.allThemeSettings
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Patcher > Username | Next',
+      subtext: 'Potenetial next version of Username API: Inner patching of MessageHeader for going into Username-likely component',
+
+      onToggle: (c) => gmSettings.username_next = c,
+      isToggled: () => gmSettings.username_next
     },
 
     /* {
@@ -457,13 +468,13 @@ export default (goosemodScope, gmSettings, Items) => {
       subtext: 'Shows some debug toasts on some events',
 
       onToggle: (c) => changeSetting('debugToasts', c),
-      isToggled: () => gmSettings.get().debugToasts
+      isToggled: () => gmSettings.debugToasts
     }, */
 
     { type: 'gm-footer' }
   ]);
 
-  if (gmSettings.get().separators && !gmSettings.get().home) goosemodScope.settings.createSeparator();
+  if (gmSettings.separators && !gmSettings.home) goosemodScope.settings.createSeparator();
 
   let sortedVal = '#store.options.sort.stars#';
   let authorVal = '#store.options.author.all#';
@@ -764,8 +775,8 @@ export default (goosemodScope, gmSettings, Items) => {
     }
   ]);
 
-  if (gmSettings.get().changelog) {
-    if (gmSettings.get().separators) goosemodScope.settings.createSeparator();
+  if (gmSettings.changelog) {
+    if (gmSettings.separators) goosemodScope.settings.createSeparator();
 
     goosemodScope.settings.createItem('#terms.changelog#', [""], async () => {
       GoosemodChangelog.show();

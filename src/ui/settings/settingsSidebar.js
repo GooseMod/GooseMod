@@ -13,7 +13,7 @@ export default (goosemodScope, gmSettings) => {
     sections.splice(
       sections.indexOf(logout), 0,
       
-      ...goosemodScope.settings.items.filter((x) => (gmSettings.get().home ? x[1] !== '#terms.store.plugins#' && x[1] !== '#terms.store.themes#' && x[1] !== '#terms.store.snippets#': true) && (!gmSettings.get().snippets ? x[1] !== '#terms.store.snippets#' : true)).map((i) => {
+      ...goosemodScope.settings.items.filter((x) => (gmSettings.home ? x[1] !== '#terms.store.plugins#' && x[1] !== '#terms.store.themes#' && x[1] !== '#terms.store.snippets#': true) && (!gmSettings.snippets ? x[1] !== '#terms.store.snippets#' : true)).map((i) => {
         switch (i[0]) {
           case 'item':
           let id = i[1];

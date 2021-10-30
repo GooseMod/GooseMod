@@ -130,7 +130,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_gold.jpg',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.sponsor : [],
+      () => goosemodScope.settings.gmSettings.gmBadges ? badgeUsers.sponsor : [],
 
       () => {
         showSponsorModal();
@@ -143,7 +143,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_globe.png',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.translator : [],
+      () => goosemodScope.settings.gmSettings.gmBadges ? badgeUsers.translator : [],
 
       () => {
         
@@ -156,7 +156,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/goose_glitch.jpg',
 
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? badgeUsers.dev : [],
+      () => goosemodScope.settings.gmSettings.gmBadges ? badgeUsers.dev : [],
 
       () => {
         
@@ -170,7 +170,7 @@ export const addBadges = () => {
       'https://goosemod.com/img/logo.jpg',
     
       // Force check via query because Discord not properly rerendering
-      () => goosemodScope.settings.gmSettings.get().gmBadges ? ['756146058320674998'] : [],
+      () => goosemodScope.settings.gmSettings.gmBadges ? ['756146058320674998'] : [],
     
       () => {
 

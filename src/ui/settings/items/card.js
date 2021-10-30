@@ -104,7 +104,7 @@ return class Card extends React.PureComponent {
 
       React.createElement(SmallMediaCarousel, {
         autoplayInterval: 0,
-        items: (this.props.images?.[0] ? this.props.images : [ (goosemod.settings.gmSettings.get().placeholderimage ? '/assets/2366391afb15ed6c2a019a0c0caa0797.svg' : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=') ]).map((x) => ({ type: 1, src: x })),
+        items: (this.props.images?.[0] ? this.props.images : [ (goosemod.settings.gmSettings.placeholderimage ? '/assets/2366391afb15ed6c2a019a0c0caa0797.svg' : 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=') ]).map((x) => ({ type: 1, src: x })),
         paused: true,
 
         onCurrentItemClick: () => {

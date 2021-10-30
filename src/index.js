@@ -109,7 +109,9 @@ const init = async function () {
 
   this.versioning = {
     version: `12.3-dev`,
-    hash: '<hash>', // Hash of built final js file is inserted here via build script
+    hash: '<hash>', // Hash of git commit
+
+    branch: goosemod.storage.get('goosemodUntetheredBranch'),
 
     lastUsedVersion: this.storage.get('goosemodLastVersion')
   };
@@ -192,8 +194,8 @@ const init = async function () {
 
   this.cssCache.removeStyle();
 
-  if (this.settings.gmSettings.get().gmBadges) this.gmBadges.addBadges();
-  if (this.settings.gmSettings.get().attrs) this.attrs.patch();
+  if (this.settings.gmSettings.gmBadges) this.gmBadges.addBadges();
+  if (this.settings.gmSettings.attrs) this.attrs.patch();
   
   this.saveInterval = setInterval(() => {
     this.moduleSettingsStore.saveModuleSettings();
@@ -222,7 +224,7 @@ const init = async function () {
 
    // Hotupdate every hour
   this.hotupdateInterval = setInterval(() => {
-    if (!this.settings.gmSettings.get().autoupdate) return; // Check main GM setting
+    if (!this.settings.gmSettings.autoupdate) return; // Check main GM setting
 
     this.moduleStoreAPI.hotupdate();
   }, 1000 * 60 * 60);

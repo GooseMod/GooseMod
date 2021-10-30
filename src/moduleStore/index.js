@@ -130,7 +130,7 @@ export default {
       return repo;
     }))).sort((a, b) => goosemodScope.moduleStoreAPI.repos.indexOf(a.url) - goosemodScope.moduleStoreAPI.repos.indexOf(b.url));
 
-    if (goosemodScope.settings.gmSettings.get().newModuleNotifications) for (const newModule of newModules) {
+    if (goosemodScope.settings.gmSettings.newModuleNotifications) for (const newModule of newModules) {
       const currentModule = goosemodScope.moduleStoreAPI.modules.find((x) => newModule.name === x.name);
 
       if (!currentModule) { // Is new module (not existing before)
