@@ -12,7 +12,7 @@ export const setThisScope = (scope) => {
 export const send = (content, author = 'GooseMod') => {
   // Get Webpack Modules
   const { createBotMessage } = goosemodScope.webpackModules.findByProps('createBotMessage');
-  const { getChannelId } = goosemodScope.webpackModules.findByProps('getChannelId');
+  const { getChannelId } = goosemodScope.webpackModules.common.channels;
   const { receiveMessage } = goosemodScope.webpackModules.findByProps('receiveMessage', 'sendBotMessage');
 
   const msg = createBotMessage(getChannelId(), '');
