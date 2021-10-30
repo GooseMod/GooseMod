@@ -1,5 +1,7 @@
-### Based on commit 5a172c9, made 29/10 14:46 UTC
+### Based on commit 4612193, made 30/10 08:45 UTC
 ## Commits this release
+  - Merge branch 'master' of github.com:GooseMod/GooseMod
+  - [Home] Fix auto scroll bars using wrong WP module
   - [CI i18n] Update translations from Weblate
   - [Settings > Items] card: Tweak source
   - [Various] Notice badge support, add aria-label to SimpleTooltips
