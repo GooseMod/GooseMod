@@ -39,6 +39,8 @@ export const findByPrototypes = (...protos) => find((m) => m.prototype && protos
 export const findByDisplayName = (name) => find((m) => m.displayName === name); // Find by displayName
 export const findByDisplayNameAll = (name) => findAll((m) => m.displayName === name); // Find *all* by displayName
 
+export const findByModuleId = (id) => wpRequire.c[id];
+
 
 export const common = { // Common modules
   React: findByProps('createElement'),
