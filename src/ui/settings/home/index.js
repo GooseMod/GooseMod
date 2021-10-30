@@ -10,7 +10,7 @@ export default async (goosemodScope) => {
   const ChannelLinkButtonClasses = goosemodScope.webpackModules.findByProps('channel', 'linkButtonIcon');
   const HeaderClasses = goosemodScope.webpackModules.findByProps('headerText', 'privateChannelsHeaderContainer');
   const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
-  const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto');
+  const ScrollerClasses = goosemodScope.webpackModules.findByProps('scrollerBase', 'auto', 'thin');
 
   const homeIcons = {
     themes: React.createElement(goosemodScope.webpackModules.findByDisplayName('Eye'), {
