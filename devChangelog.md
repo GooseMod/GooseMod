@@ -1,5 +1,6 @@
-### Based on commit 3db7f5b, made 30/10 10:03 UTC
+### Based on commit 45a2d03, made 30/10 10:13 UTC
 ## Commits this release
+  - [Patcher > InternalMessage] Fix WP module grabbing for getting current channel ID
   - [Build > DevChangelog] Fix for new commit styling
   - Merge branch 'master' of github.com:GooseMod/GooseMod
   - [Home] Fix auto scroll bars using wrong WP module
