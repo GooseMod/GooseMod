@@ -1,5 +1,6 @@
-### Based on commit 50d7450, made 30/10 17:20 UTC
+### Based on commit d1a5797, made 30/10 18:55 UTC
 ## Commits this release
+  - [Webpack] Add findByModuleId
   - [Settings] Rewrite GMSettings to use proxy, add new experimental option
   - [Patcher > Username] Add potential WIP inner method for future
   - [Rollup] Ignore eval warnings, cleanup comments
