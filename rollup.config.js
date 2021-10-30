@@ -18,6 +18,11 @@ const goosemodBootstrap = () => ({
   renderChunk: async (code) => code.replaceAll('<buildtime>', Date.now())
 });
 
+const ignoreEvalWarnings = (warning, warn) => {
+  if (warning.code === 'EVAL') return; // Suppress eval warnings
+  warn(warning);
+};
+
 const prod = !process.env.ROLLUP_WATCH;
 
 
@@ -31,7 +36,7 @@ export default [
       name: 'goosemod',
       sourcemap: !prod,
       
-      freeze: false /* do not freeze exports */
+      freeze: false // Do not freeze exports
     },
     
     plugins: [
@@ -66,9 +71,10 @@ export default [
       
       goosemod()
     ],
-    
-    // fix rollup jank
-    inlineDynamicImports: true
+
+    onwarn: ignoreEvalWarnings,
+
+    inlineDynamicImports: true // Fix rollup jank
   },
   
   {
@@ -80,7 +86,7 @@ export default [
       name: 'goosemod_bootstrap',
       sourcemap: !prod,
       
-      freeze: false /* do not freeze exports */
+      freeze: false // Do not freeze exports
     },
     
     plugins: [
@@ -89,8 +95,9 @@ export default [
 
       goosemodBootstrap()
     ],
-    
-    // fix rollup jank
-    inlineDynamicImports: true
+
+    onwarn: ignoreEvalWarnings,
+
+    inlineDynamicImports: true // Fix rollup jank
   }
 ];
