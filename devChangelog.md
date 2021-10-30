@@ -1,5 +1,6 @@
-### Based on commit 2610a22, made 30/10 10:27 UTC
+### Based on commit 49c5b24, made 30/10 11:05 UTC
 ## Commits this release
+  - [Patcher > Username] Add potential WIP inner method for future
   - [Rollup] Ignore eval warnings, cleanup comments
   - [Patcher > InternalMessage] Fix WP module grabbing for getting current channel ID
   - [Build > DevChangelog] Fix for new commit styling
