@@ -1,5 +1,6 @@
-### Based on commit 49c5b24, made 30/10 11:05 UTC
+### Based on commit 50d7450, made 30/10 17:20 UTC
 ## Commits this release
+  - [Settings] Rewrite GMSettings to use proxy, add new experimental option
   - [Patcher > Username] Add potential WIP inner method for future
   - [Rollup] Ignore eval warnings, cleanup comments
   - [Patcher > InternalMessage] Fix WP module grabbing for getting current channel ID
