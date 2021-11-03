@@ -12,7 +12,7 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
   const Tooltip = goosemodScope.webpackModules.findByDisplayName('Tooltip');
   const Clickable = goosemodScope.webpackModules.findByDisplayName('Clickable');
 
-  const BadgeClasses = goosemodScope.webpackModules.findByProps('guildIconContainer', 'clickable');
+  const BadgeClasses = goosemodScope.webpackModules.findByProps('guildIconContainer', 'iconTierNone');
 
   const GuildHeader = goosemod.webpackModules.findByProps('AnimatedBanner');
 
