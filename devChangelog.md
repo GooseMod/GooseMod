@@ -1,5 +1,6 @@
-### Based on commit 7a31964, made 03/11 07:56 UTC
+### Based on commit e23fe04, made 03/11 07:57 UTC
 ## Commits this release
+  - [Settings > Items] header: disabled -> hide prop name
   - [Settings > GM] Better experimental disabling
   - [Settings > GM] Disable experimental settings if in release branch
   - [Settings > Items] header: Add disabled prop
