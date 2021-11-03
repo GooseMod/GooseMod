@@ -1,5 +1,6 @@
-### Based on commit cbd4c2d, made 03/11 07:42 UTC
+### Based on commit 9117ea0, made 03/11 07:50 UTC
 ## Commits this release
+  - [Settings > GM] Fix spelling and add known bugged to new experimental option
   - [Webpack] findByModuleId: Return module not just exports
   - [Patcher > GuildBadges] Fix WP module getting (class removed)
   - [Webpack] findByModuleId: return exports instead of entire module
