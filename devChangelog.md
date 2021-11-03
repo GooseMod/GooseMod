@@ -1,5 +1,6 @@
-### Based on commit e23fe04, made 03/11 07:57 UTC
+### Based on commit 58ab9ea, made 03/11 08:00 UTC
 ## Commits this release
+  - [Settings > GM] Don't hide experimental (as no way to enable dev)
   - [Settings > Items] header: disabled -> hide prop name
   - [Settings > GM] Better experimental disabling
   - [Settings > GM] Disable experimental settings if in release branch
