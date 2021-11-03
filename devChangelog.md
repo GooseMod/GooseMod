@@ -1,32 +1,3 @@
-### Based on commit 60ea981, made 03/11 08:49 UTC
+### Based on commit 2150fc9, made 03/11 09:17 UTC
 ## Commits this release
-  - [Settings > Items] store-category: Fix using wrong scrollbar
-  - [Settings > Items] store-header: Fix completely
-  - [Settings > Items] store-header: Don't use deleted class
-  - [Settings > Home] Fix getting classes
-  - [OOTB] Fix WP module modal getting
-  - [Settings > GM] Don't hide experimental (as no way to enable dev)
-  - [Settings > Items] header: disabled -> hide prop name
-  - [Settings > GM] Better experimental disabling
-  - [Settings > GM] Disable experimental settings if in release branch
-  - [Settings > Items] header: Add disabled prop
-  - [Settings > GM] Fix spelling and add known bugged to new experimental option
-  - [Webpack] findByModuleId: Return module not just exports
-  - [Patcher > GuildBadges] Fix WP module getting (class removed)
-  - [Webpack] findByModuleId: return exports instead of entire module
-  - [Webpack] Add findByModuleId
-  - [Settings] Rewrite GMSettings to use proxy, add new experimental option
-  - [Patcher > Username] Add potential WIP inner method for future
-  - [Rollup] Ignore eval warnings, cleanup comments
-  - [Patcher > InternalMessage] Fix WP module grabbing for getting current channel ID
-  - [Build > DevChangelog] Fix for new commit styling
-  - Merge branch 'master' of github.com:GooseMod/GooseMod
-  - [Home] Fix auto scroll bars using wrong WP module
-  - [CI i18n] Update translations from Weblate
-  - [Settings > Items] card: Tweak source
-  - [Various] Notice badge support, add aria-label to SimpleTooltips
-  - [Settings > Items] card: Tweak some new alignments
-  - [Chore] Bump version: v12.3-dev
-  - [Settings > Items] card: Tweak width for left text
-  - [Settings > Items] card: New details UI
-  - [Patcher > SimpleTooltip] Initial Add
+  - [Settings] Fix Store filtering actually
