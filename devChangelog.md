@@ -1,5 +1,6 @@
-### Based on commit eeb68cd, made 03/11 07:54 UTC
+### Based on commit 7a31964, made 03/11 07:56 UTC
 ## Commits this release
+  - [Settings > GM] Better experimental disabling
   - [Settings > GM] Disable experimental settings if in release branch
   - [Settings > Items] header: Add disabled prop
   - [Settings > GM] Fix spelling and add known bugged to new experimental option
