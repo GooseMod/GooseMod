@@ -546,9 +546,9 @@ export default (goosemodScope, gmSettings, Items) => {
     // Keep all header but make height 0 so it breaks flex row
     const allHeader = document.querySelector(':not(.gm-store-category) > .gm-store-header');
 
-    allHeader?.style?.height = !noInput ? '0px' : '';
-    allHeader?.style?.opacity = !noInput ? '0' : '';
-    allHeader?.style?.margin = !noInput ? '0' : '';
+    allHeader.style.height = !noInput ? '0px' : '';
+    allHeader.style.opacity = !noInput ? '0' : '';
+    allHeader.style.margin = !noInput ? '0' : '';
 
     if (document.querySelector('.gm-store-card-loading-placeholder')) { // Still loading cards
       let placeholders = [...document.querySelectorAll('.gm-store-card-loading-placeholder')];
