@@ -1,3 +1,2 @@
-### Based on commit 2150fc9, made 03/11 09:17 UTC
+### Based on commit 6ff2da4, made 03/11 09:18 UTC
 ## Commits this release
-  - [Settings] Fix Store filtering actually
