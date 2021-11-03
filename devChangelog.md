@@ -1,5 +1,6 @@
-### Based on commit 9117ea0, made 03/11 07:50 UTC
+### Based on commit a0b5876, made 03/11 07:53 UTC
 ## Commits this release
+  - [Settings > Items] header: Add disabled prop
   - [Settings > GM] Fix spelling and add known bugged to new experimental option
   - [Webpack] findByModuleId: Return module not just exports
   - [Patcher > GuildBadges] Fix WP module getting (class removed)
