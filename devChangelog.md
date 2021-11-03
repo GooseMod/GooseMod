@@ -1,5 +1,6 @@
-### Based on commit c5973f8, made 30/10 19:01 UTC
+### Based on commit 3fbc11f, made 03/11 07:41 UTC
 ## Commits this release
+  - [Patcher > GuildBadges] Fix WP module getting (class removed)
   - [Webpack] findByModuleId: return exports instead of entire module
   - [Webpack] Add findByModuleId
   - [Settings] Rewrite GMSettings to use proxy, add new experimental option
