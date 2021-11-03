@@ -20,7 +20,7 @@ export const show = (buttonText, title, description, cancelText = undefined, con
         {
           header: title,
           confirmText: buttonText,
-          cancelText: cancelText || goosemod.webpackModules.findByPropsAll('Messages')[1].Messages.Cancel,
+          cancelText: cancelText || goosemod.webpackModules.findByPropsAll('Messages')[1].Messages.CANCEL,
           confirmButtonColor: ButtonColors[`color${confirmButtonColor ? (confirmButtonColor[0].toUpperCase() + confirmButtonColor.substring(1).toLowerCase()) : 'Red'}`],
           onClose: () => { // General close (?)
             res(false);
