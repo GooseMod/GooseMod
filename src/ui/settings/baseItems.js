@@ -339,6 +339,7 @@ export default (goosemodScope, gmSettings, Items) => {
       text: '#settings.items.headers.experimental#',
       
       collapsed: true,
+      disabled: goosemod.versioning.branch === '',
       collapseOffset: 1
     },
 
