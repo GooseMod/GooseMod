@@ -339,7 +339,7 @@ export default (goosemodScope, gmSettings, Items) => {
       text: '#settings.items.headers.experimental#',
       
       collapsed: true,
-      disabled: goosemod.versioning.branch === '' || goosemod.versioning.branch === 'release', // Disable (hide) experimental settings for release branch
+      hide: goosemod.versioning.branch === '' || goosemod.versioning.branch === 'release', // Hide experimental settings for release branch
       collapseOffset: 1
     },
 
