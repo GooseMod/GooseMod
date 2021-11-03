@@ -24,7 +24,7 @@ export const themes = async () => {
   const possibleThemes = goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
   const themeIndex = Math.floor(Math.random() * (possibleThemes.length - 5));
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: '#terms.store.themes#',
@@ -79,7 +79,7 @@ export const plugins = async () => {
   const possiblePlugins = goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
   const pluginIndex = Math.floor(Math.random() * (possiblePlugins.length - 5));
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: '#terms.store.plugins#',
@@ -134,7 +134,7 @@ export const store = async () => {
   const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
   const moduleIndex = Math.floor(Math.random() * (possibleModules.length - 5));
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: '#terms.store.store#',
@@ -184,7 +184,7 @@ export const settings = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: '#terms.settings#',
@@ -254,7 +254,7 @@ export const community = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: '#terms.community#',
@@ -311,7 +311,7 @@ export const start = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  goosemod.webpackModules.findByProps('show').show({
+  goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
     className: 'gm-ootb-modal',
 
     title: 'GooseMod',
