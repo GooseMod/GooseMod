@@ -1,5 +1,6 @@
-### Based on commit 3fbc11f, made 03/11 07:41 UTC
+### Based on commit cbd4c2d, made 03/11 07:42 UTC
 ## Commits this release
+  - [Webpack] findByModuleId: Return module not just exports
   - [Patcher > GuildBadges] Fix WP module getting (class removed)
   - [Webpack] findByModuleId: return exports instead of entire module
   - [Webpack] Add findByModuleId
