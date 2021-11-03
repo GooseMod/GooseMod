@@ -1,5 +1,6 @@
-### Based on commit a0b5876, made 03/11 07:53 UTC
+### Based on commit eeb68cd, made 03/11 07:54 UTC
 ## Commits this release
+  - [Settings > GM] Disable experimental settings if in release branch
   - [Settings > Items] header: Add disabled prop
   - [Settings > GM] Fix spelling and add known bugged to new experimental option
   - [Webpack] findByModuleId: Return module not just exports
