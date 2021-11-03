@@ -10,9 +10,7 @@ return class StoreHeader extends React.PureComponent {
       className: 'gm-store-header'
     }, React.createElement(Text, {
         color: Text.Colors.HEADER_PRIMARY,
-        size: Text.Sizes.SIZE_20,
-
-        className: HeaderClasses.pageHeader
+        size: Text.Sizes.SIZE_20
       }, this.props.text)
     );
   }
