@@ -7,7 +7,8 @@ const { React } = goosemod.webpackModules.common;
 const StoreHeader = _StoreHeader();
 const Card = _Card();
 
-const ScrollerClasses = goosemod.webpackModules.findByProps('auto', 'scrollerBase');
+const ScrollerClasses = goosemod.webpackModules.findByProps('scrollerBase', 'auto', 'thin');
+
 
 return class StoreCategory extends React.PureComponent {
   render() {
