@@ -408,7 +408,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       experimental: true,
       text: 'Patcher > Username | Next',
-      subtext: 'Potenetial next version of Username API: Inner patching of MessageHeader for going into Username-likely component',
+      subtext: 'Potential next version of Username API: Inner patching of MessageHeader for going into Username-likely component (known bugged)',
 
       onToggle: (c) => gmSettings.username_next = c,
       isToggled: () => gmSettings.username_next
