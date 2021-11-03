@@ -1,5 +1,7 @@
-### Based on commit 58ab9ea, made 03/11 08:00 UTC
+### Based on commit 84400db, made 03/11 08:33 UTC
 ## Commits this release
+  - [Settings > Home] Fix getting classes
+  - [OOTB] Fix WP module modal getting
   - [Settings > GM] Don't hide experimental (as no way to enable dev)
   - [Settings > Items] header: disabled -> hide prop name
   - [Settings > GM] Better experimental disabling
