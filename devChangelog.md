@@ -1,5 +1,6 @@
-### Based on commit d9c66cd, made 03/11 08:35 UTC
+### Based on commit abacb85, made 03/11 08:48 UTC
 ## Commits this release
+  - [Settings > Items] store-header: Fix completely
   - [Settings > Items] store-header: Don't use deleted class
   - [Settings > Home] Fix getting classes
   - [OOTB] Fix WP module modal getting
