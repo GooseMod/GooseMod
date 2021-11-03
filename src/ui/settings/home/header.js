@@ -3,7 +3,6 @@ import openReposModal from './repos';
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const HomeMiscClasses = goosemod.webpackModules.findByProps('headerBarContainer', 'pageContent');
 const SpinClasses = goosemod.webpackModules.findByProps('updateAvailable');
 const IconClasses = goosemod.webpackModules.findByProps('icon', 'iconBadge', 'title');
 
@@ -40,7 +39,7 @@ return class Header extends React.PureComponent {
 
   render() {
     return React.createElement(HeaderBarContainer, {
-      className: HomeMiscClasses.headerBarContainer,
+      // className: HomeMiscClasses.headerBarContainer,
 
       isAuthenticated: true,
       transparent: false
