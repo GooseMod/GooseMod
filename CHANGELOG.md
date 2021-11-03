@@ -1,5 +1,20 @@
 # GooseMod Changelog
 
+## v12.3 [2021-11-03]
+
+  - ### New Store Badges
+    - **Store UI now uses a badge system to show version, time since last update, and GitHub stars.**
+
+  - ### General Hotfixes [progress]
+    - **Fixed InternalMessage / some commands.**
+    - **Fixed Store using incorrect scrollbars.**
+    - **Fixed Store not working / rendering.**
+
+  - ### Additions to APIs
+    - **Webpack: Added findByModuleId function.**
+    - **Settings, Header: Added hide prop.**
+
+
 ## v12.2 [2021-10-22]
 
   - ### New Canary Fixes
