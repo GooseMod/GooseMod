@@ -1,5 +1,6 @@
-### Based on commit abacb85, made 03/11 08:48 UTC
+### Based on commit 60ea981, made 03/11 08:49 UTC
 ## Commits this release
+  - [Settings > Items] store-category: Fix using wrong scrollbar
   - [Settings > Items] store-header: Fix completely
   - [Settings > Items] store-header: Don't use deleted class
   - [Settings > Home] Fix getting classes
