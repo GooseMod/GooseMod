@@ -47,6 +47,9 @@ return class Header extends React.PureComponent {
     props.collapsible = props.collapsed !== undefined;
     props.collapsed = props.collapsed || false;
 
+    if (props.disabled) props.collapseOffset = 0;
+
+
     super(props);
 
     this.props.handleCollapse = () => {
@@ -65,7 +68,7 @@ return class Header extends React.PureComponent {
   render() {
     setTimeout(this.props.handleCollapse, 100);
 
-    return React.createElement(FormTitle, {
+    return this.props.disabled ? null : React.createElement(FormTitle, {
       tag: 'h5',
 
       className: (this.props.i !== 0 ? Margins.marginTop20 + ' ' : '') + Margins.marginBottom8,
