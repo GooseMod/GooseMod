@@ -3,12 +3,11 @@ const { React } = goosemod.webpackModules.common;
 
 const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-const HeaderClasses = goosemod.webpackModules.findByProps('pageHeader');
 
 return class StoreHeader extends React.PureComponent {
   render() {
     return React.createElement('div', {
-      className: [HeaderClasses.headerContainer, 'gm-store-header'].join(' ')
+      className: 'gm-store-header'
     }, React.createElement(Text, {
         color: Text.Colors.HEADER_PRIMARY,
         size: Text.Sizes.SIZE_20,
