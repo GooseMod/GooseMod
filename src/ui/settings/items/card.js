@@ -172,8 +172,8 @@ return class Card extends React.PureComponent {
           })
         )) : null,
 
-        React.createElement(SimpleTooltip, {
-          text: `${this.props.subtext2} | ${prettyAgo(this.props.lastUpdated * 1000)}`,
+        (this.props.lastUpdated || this.props.subtext2) ? React.createElement(SimpleTooltip, {
+          text: (this.props.subtext2 || '') + (this.props.subtext2 && this.props.lastUpdated ? ' | ' : '') + (this.props.lastUpdated ? prettyAgo(this.props.lastUpdated * 1000) : ''),
           position: 'left'
         }, ({ onMouseEnter, onMouseLeave, className, text }) => React.createElement(Clock, {
           width: 24,
@@ -184,7 +184,7 @@ return class Card extends React.PureComponent {
           className,
           onMouseEnter,
           onMouseLeave
-        })),
+        })) : null,
 
         this.props.notice ? React.createElement(SimpleTooltip, {
           text: notice,
