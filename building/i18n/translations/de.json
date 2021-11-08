@@ -8,7 +8,7 @@
             "snippets": "Snippets",
             "plugins": "Plugins",
             "themes": "Themes",
-            "store": "Store"
+            "store": "Shop"
         },
         "changelog": "Änderungsprotokoll",
         "settings": "Einstellungen",
@@ -58,6 +58,13 @@
             "untrusted": "PGP ungültig",
             "unknown": "Kein PGP",
             "verified": "PGP verifiziert"
+        },
+        "search_results_hint": {
+            "none": "Keine Ergebnisse gefunden",
+            "other_category": {
+                "themes": "Keine Ergebnisse gefunden, meintest du vielleicht Themes?",
+                "plugins": "Keine Ergebnisse gefunden, meintest du vielleicht Plugins?"
+            }
         }
     },
     "modals": {
@@ -86,7 +93,8 @@
                 "utilities": "Utilities",
                 "experimental": "Experimentell",
                 "backup": "Sichern",
-                "appearance": "Aussehen"
+                "appearance": "Aussehen",
+                "tweaks": "Tweaks"
             },
             "force_theme_settings": {
                 "note": "Erzwinge auto-generierte Einstellungen für alle Themes",
@@ -147,7 +155,16 @@
                 "title": "GooseMod Änderungsprotokoll"
             },
             "subtexts": {
-                "experimental_warning": "Experimentelle Einstellungen sind wahrscheinlich unvollständig und instabil, was zu einer geringeren Erfahrung führen kann"
+                "experimental_warning": "Experimentelle Einstellungen sind wahrscheinlich unvollständig und instabil, was zu einer geringeren Erfahrung führen kann",
+                "tweaks_description": "Geringfügige Änderungen wie kleine UI-Änderungen, um GooseMod so zu gestalten, wie du es möchtest"
+            },
+            "collapsible_home_category": {
+                "note": "Lasse die Home-Kategorie einklappen via Icon",
+                "title": "Zusammenklappbare Home-Kategorie"
+            },
+            "placeholder_image": {
+                "title": "Platzhalter-Bild",
+                "note": "Verwendung eines Platzhalterbildes im Store für Module ohne Bilder"
             }
         }
     },
@@ -192,8 +209,8 @@
                     "title": "Tweaks"
                 },
                 "utilities": {
-                    "subtext": "Erstelle Sicherungen, setze GooseMod zurück und mehr",
-                    "title": "Utilities"
+                    "subtext": "Erstelle Sicherungen, setze Goose-Mod zurück und mehr",
+                    "title": "Werkzeuge"
                 },
                 "experimental_features": {
                     "subtext": "Probiere neue experimentelle Funktionen aus",
