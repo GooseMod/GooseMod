@@ -163,7 +163,7 @@ export default async (goosemodScope) => {
   const snippetsEnabled = goosemodScope.settings.gmSettings.snippets;
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
-    if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
+    if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
@@ -181,8 +181,8 @@ export default async (goosemodScope) => {
       });
     }, 10);
 
-    res.props.children.push(
-    () => React.createElement(ListSectionItem, {
+    res.props.children.props.children.push(
+    React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
     },
       React.createElement('span', {
@@ -213,7 +213,7 @@ export default async (goosemodScope) => {
       ) : null
     ),
 
-    () => React.createElement(LinkButton, {
+    React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.themes#' ? 'block' : 'none'
       },
@@ -228,7 +228,7 @@ export default async (goosemodScope) => {
       selected: false
     }),
 
-    () => React.createElement(LinkButton, {
+    React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.plugins#' ? 'block' : 'none'
       },
@@ -243,7 +243,7 @@ export default async (goosemodScope) => {
       selected: false
     }),
 
-    snippetsEnabled ? () => React.createElement(LinkButton, {
+    snippetsEnabled ? React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.snippets#' ? 'block' : 'none'
       },
