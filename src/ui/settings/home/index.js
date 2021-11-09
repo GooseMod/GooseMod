@@ -168,10 +168,17 @@ export default async (goosemodScope) => {
     if (newChanges) {
       if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
     } else {
-      if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
+      if (res.props.children.find((x) => x?.goosemod)) return;
     }
 
-    const itemWrapper = (el) => newChanges ? el : () => el;
+    const itemWrapper = (el) => {
+      if (newChanges) return el;
+
+      const func = () => el;
+      func.goosemod = true;
+
+      return func;
+    };
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
