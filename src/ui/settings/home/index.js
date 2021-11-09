@@ -163,7 +163,15 @@ export default async (goosemodScope) => {
   const snippetsEnabled = goosemodScope.settings.gmSettings.snippets;
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
-    if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
+    const newChanges = res.props.children.length === undefined;
+
+    if (newChanges) {
+      if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
+    } else {
+      if (res.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
+    }
+
+    const itemWrapper = (el) => newChanges ? el : () => el;
 
     setTimeout(() => {
       document.querySelector(`.scroller-1JbKMe`).addEventListener('click', (e) => {
@@ -182,7 +190,7 @@ export default async (goosemodScope) => {
     }, 10);
 
     res.props.children.props.children.push(
-    React.createElement(ListSectionItem, {
+    itemWrapper(React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
     },
       React.createElement('span', {
@@ -211,9 +219,9 @@ export default async (goosemodScope) => {
       },
         homeIcons.expandable
       ) : null
-    ),
+    )),
 
-    React.createElement(LinkButton, {
+    itemWrapper(React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.themes#' ? 'block' : 'none'
       },
@@ -226,9 +234,9 @@ export default async (goosemodScope) => {
       text: '#terms.store.themes#',
 
       selected: false
-    }),
+    })),
 
-    React.createElement(LinkButton, {
+    itemWrapper(React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.plugins#' ? 'block' : 'none'
       },
@@ -241,9 +249,9 @@ export default async (goosemodScope) => {
       text: '#terms.store.plugins#',
 
       selected: false
-    }),
+    })),
 
-    snippetsEnabled ? React.createElement(LinkButton, {
+    snippetsEnabled ? itemWrapper(React.createElement(LinkButton, {
       style: {
         display: expanded || document.querySelector('.title-29uC1r')?.textContent === '#terms.store.snippets#' ? 'block' : 'none'
       },
@@ -256,7 +264,7 @@ export default async (goosemodScope) => {
       text: '#terms.store.snippets#',
 
       selected: false
-    }) : null
+    })) : null
     );
   }));
 
