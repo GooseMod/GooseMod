@@ -1,2 +1,3 @@
-### Based on commit 7a98ec9, made 09/11 21:23 UTC
+### Based on commit 5e62d04, made 09/11 22:13 UTC
 ## Commits this release
+  - [Home] Fix Canary change backport not completely already injected check correctly
