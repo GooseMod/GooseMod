@@ -164,6 +164,7 @@ export default async (goosemodScope) => {
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
     const newChanges = res.props.children.length === undefined;
+    console.log('honk!', newChanges);
 
     if (newChanges) {
       if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
