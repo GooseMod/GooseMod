@@ -163,7 +163,7 @@ export default async (goosemodScope) => {
   const snippetsEnabled = goosemodScope.settings.gmSettings.snippets;
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
-    if (res.props.children.props.children.some((x) => x.goosemod === true)) return;
+    if (res.props.children.props.children.some((x) => x?.goosemod === true)) return;
 
     const itemWrapper = (el) => {
       el.goosemod = true;
