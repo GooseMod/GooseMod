@@ -163,21 +163,11 @@ export default async (goosemodScope) => {
   const snippetsEnabled = goosemodScope.settings.gmSettings.snippets;
 
   goosemodScope.settingsUninjects.push(goosemodScope.patcher.patch(ConnectedPrivateChannelsList, 'default', (_args, res) => {
-    const newChanges = res.props.children.length === undefined;
-
-    if (newChanges) {
-      if (res.props.children.props.children.slice(3).find((x) => x?.toString()?.includes('GooseMod'))) return;
-    } else {
-      if (res.props.children.find((x) => x?.goosemod)) return;
-    }
+    if (res.props.children.props.children.some((x) => x.goosemod === true)) return;
 
     const itemWrapper = (el) => {
-      if (newChanges) return el;
-
-      const func = () => el;
-      func.goosemod = true;
-
-      return func;
+      el.goosemod = true;
+      return el;
     };
 
     setTimeout(() => {
@@ -196,7 +186,7 @@ export default async (goosemodScope) => {
       });
     }, 10);
 
-    (newChanges ? res.props.children.props.children : res.props.children).push(
+    res.props.children.props.children.push(
     itemWrapper(React.createElement(ListSectionItem, {
       className: HeaderClasses.privateChannelsHeaderContainer
     },
