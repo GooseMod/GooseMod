@@ -21,7 +21,7 @@ export const themes = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  const possibleThemes = goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
+  const possibleThemes = goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
   const themeIndex = Math.floor(Math.random() * (possibleThemes.length - 5));
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
@@ -76,7 +76,7 @@ export const plugins = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  const possiblePlugins = goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
+  const possiblePlugins = goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
   const pluginIndex = Math.floor(Math.random() * (possiblePlugins.length - 5));
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
@@ -131,7 +131,7 @@ export const store = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github.stars - a.github.stars);
+  const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github??.stars);
   const moduleIndex = Math.floor(Math.random() * (possibleModules.length - 5));
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({

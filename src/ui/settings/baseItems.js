@@ -721,7 +721,7 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'store-category',
       text: '#store.categories.top_starred#',
-      sort: (a, b) => b.github.stars - a.github.stars
+      sort: (a, b) => b.github?.stars - a.github?.stars
     },
 
     {
