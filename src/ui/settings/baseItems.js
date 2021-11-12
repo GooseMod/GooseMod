@@ -730,11 +730,11 @@ export default (goosemodScope, gmSettings, Items) => {
       sort: (a, b) => b.lastUpdated - a.lastUpdated
     },
 
-    {
+    /* {
       type: 'store-category',
       text: '#store.categories.upcoming#',
       sort: (a, b) => upcomingVal(b) - upcomingVal(a)
-    },
+    }, */
 
     {
       type: 'store-header',
