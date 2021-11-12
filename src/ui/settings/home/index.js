@@ -195,7 +195,7 @@ export default async (goosemodScope) => {
       }, 'GooseMod'),
 
       goosemodScope.settings.gmSettings.collapsiblehome ? React.createElement('div', {
-        className: `${HeaderClasses.privateChannelRecipientsInviteButtonIcon} ${IconClasses.iconWrapper} ${IconClasses.clickable}`,
+        className: `${HeaderClasses.privateChannelRecipientsInviteButtonIcon} ${IconClasses.iconWrapper} ${IconClasses.clickable} gm-category-collapser`,
 
         style: {
           transform: `rotate(${expanded ? '0' : '-90'}deg)`,
@@ -209,9 +209,14 @@ export default async (goosemodScope) => {
           expanded = !expanded;
           goosemod.storage.set('goosemodHomeExpanded', expanded);
 
-          // Force update sidebar (jank DOM way)
-          document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusin'));
-          document.querySelector(`.scroller-1JbKMe`).dispatchEvent(new Event('focusout'));
+          // DOM jank-ish manual updating as can't forceRender with React
+          const collapser = document.querySelector('.gm-category-collapser');
+          collapser.style.transform = `rotate(${expanded ? '0' : '-90'}deg)`;
+          collapser.style.left = expanded ? '0px' : '-2px';
+          collapser.style.top = expanded ? '-6px' : '-2px';
+
+          const homeItems = document.querySelectorAll('[id^="gm-home-"]');
+          homeItems.forEach((x) => x.style.display = expanded ? '' : 'none');
         }
       },
         homeIcons.expandable
