@@ -131,7 +131,7 @@ export const store = async () => {
   const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
-  const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github??.stars);
+  const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
   const moduleIndex = Math.floor(Math.random() * (possibleModules.length - 5));
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
