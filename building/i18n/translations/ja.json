@@ -171,7 +171,8 @@
                 "experimental": "試験的な機能",
                 "backup": "バックアップ",
                 "utilities": "ユーティリティ",
-                "appearance": "外観"
+                "appearance": "外観",
+                "tweaks": "細かな設定"
             },
             "placeholder_image": {
                 "title": "代替画像",
