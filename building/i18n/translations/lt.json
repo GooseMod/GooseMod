@@ -1,1 +1,89 @@
-{}
+{
+    "modals": {
+        "external_repo_security": {
+            "main": "External storage is a security risk because it is not under the control of GooseMod developers. We are not responsible for the risks caused by external repositories added by users.\n\nIf you do not trust the owner of this repository, do not use it, as it may harm your Discord installation.\n\nConfirm that you have added this repo by clicking OK."
+        }
+    },
+    "terms": {
+        "goosemod": {
+            "settings": "GooseMod nustatymai",
+            "modules": "GooseMod moduliai"
+        },
+        "add": "Pridėti",
+        "remove": "Pašalinti",
+        "settings": "Nustatymai",
+        "community": "Bendruomenė",
+        "install": "Įdiekite",
+        "store": {
+            "plugins": "Įskiepis",
+            "modules": "Moduliai",
+            "repos": "Saugykla",
+            "developers": "Kūrėjai"
+        }
+    },
+    "settings": {
+        "items": {
+            "auto_update": {
+                "title": "Automatinis atnaujinimas",
+                "note": "Automatinis saugyklų ir modulių atnaujinimas kas valandą"
+            },
+            "goosemod_badges": {
+                "title": "GooseMod ženkliukai"
+            },
+            "headers": {
+                "appearance": "Išvaizda",
+                "utilities": "Komunalinės paslaugos",
+                "backup": "Atsarginė kopija",
+                "experimental": "Eksperimentinis"
+            },
+            "subtexts": {
+                "experimental_warning": "Tikėtina, kad eksperimentinė aplinka bus neišbaigta ir nestabili, todėl patirtis bus prastesnė."
+            },
+            "goosemod_change_log": {
+                "title": "GooseMod Pakeitimų žurnalas",
+                "note": "Rodyti GooseMod \"Pakeitimų žurnalas\" nustatymą"
+            },
+            "start_tour": {
+                "button": "Ekskursija"
+            },
+            "purge_caches": {
+                "note": "Išvalo (visiškai pašalina) daugumą talpyklų \"GooseMod\" naudoja"
+            }
+        }
+    },
+    "store": {
+        "categories": {
+            "all": {
+                "plugins": "Visi įskiepiai"
+            },
+            "recently_updated": "Neseniai atnaujinta",
+            "upcoming": "Artėjantis"
+        },
+        "options": {
+            "search": {
+                "placeholder": {
+                    "plugins": "Paieškos įskiepis"
+                }
+            },
+            "sort": {
+                "label": "Rūšiuoti pagal",
+                "stars": "Žvaigždės",
+                "az": "A-Z",
+                "last_updated": "Paskutinį kartą atnaujinta"
+            },
+            "author": {
+                "label": "Autorius",
+                "all": "Visi"
+            }
+        },
+        "search_results_hint": {
+            "none": "Rezultatų nerasta",
+            "other_category": {
+                "plugins": "Rezultatų nerasta, ar turėjote omenyje įskiepius?"
+            }
+        },
+        "pgp": {
+            "unknown": "Nėra PGP"
+        }
+    }
+}

@@ -35,6 +35,13 @@
             "upcoming": "In crescita",
             "recently_updated": "Aggiornati di recente",
             "top_starred": "Più Stellato"
+        },
+        "search_results_hint": {
+            "other_category": {
+                "themes": "Nessun risultato trovato, intendevi temi?",
+                "plugins": "Nessun risultato trovato, intendevi i plugin?"
+            },
+            "none": "Nessun risultato trovato"
         }
     },
     "terms": {
