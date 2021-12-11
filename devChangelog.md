@@ -1,5 +1,6 @@
-### Based on commit 69a0c9f, made 06/12 04:53 UTC
+### Based on commit 1420fe6, made 11/12 03:53 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [Home] Category collapsing: DOM jank-ish manual updating as can't forceRender with React
