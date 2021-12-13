@@ -113,7 +113,25 @@
     },
     "ootb": {
         "settings": {
-            "confirm": "GooseMod Ayarlarını Görüntüle"
+            "confirm": "GooseMod Ayarlarını Görüntüle",
+            "items": {
+                "utilities": {
+                    "subtext": "Yedekleme yapın, GooseMod'u sıfırlayın ve daha fazlasını yapın",
+                    "title": "Araçlar"
+                },
+                "tweaks": {
+                    "title": "İnce Ayarlar",
+                    "subtext": "GooseMod'u istediğiniz gibi ayarlayın"
+                },
+                "experimental_features": {
+                    "title": "Deneysel Özellikler",
+                    "subtext": "Yeni deneysel özellikleri deneyin"
+                }
+            },
+            "text": {
+                "main": "Özelliklerini özelleştirmek için GooseMod'un Ayarlarını kullanın",
+                "subtext": "Değiştirmeniz için çeşitli seçenekler var"
+            }
         },
         "community": {
             "text": {
@@ -153,6 +171,27 @@
             "text": {
                 "main": "GooseMod hakkında bilgi edinin",
                 "subtext": "GooseMod'un temel işlevlerini kısa bir turdan geçirin"
+            }
+        },
+        "themes": {
+            "confirm": "Temalara Gözatın",
+            "text": {
+                "main": "Discord'unuzu Temalarla Güzelleştirin",
+                "subtext": "Kullanıcı arayüzünüzü geliştirmek için 100'den fazla tema arasından seçim yapın"
+            }
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Eklentiler, uygulamanın kendisindeki iyileştirmelerle deneyiminizi artırır",
+                "main": "Kaputun altında Discord'unuzu güçlendirin"
+            },
+            "confirm": "Eklentilere Göz Atın"
+        },
+        "store": {
+            "confirm": "Başlangıçtaki Mağazayı Görüntüle",
+            "text": {
+                "main": "Mağazadaki Temalara ve Eklentilere Gözatın",
+                "subtext": "GooseMod, etrafa kolayca bakabileceğiniz ve kurabileceğiniz kendi Mağazasını kullanır"
             }
         }
     },
@@ -203,8 +242,8 @@
     },
     "modals": {
         "external_repo_security": {
-            "main": "Kullanıcıyı olası güvenlik risklerine karşı uyaran bir repo eklerken görünen onay modal içeriği.",
-            "bad_pgp": "Kötü (hiçbiri veya güvenilmeyen) PGP doğrulaması olan bir repo eklerken görünen onay modal içeriği."
+            "main": "Bir repo eklerken görünen, kullanıcıyı olası güvenlik risklerine karşı uyaran onay modelinin içeriği.",
+            "bad_pgp": "Hatalı (yok veya güvenilmeyen) PGP doğrulaması olan bir depo eklerken görünen onay modunun içeriği."
         }
     },
     "toasts": {
@@ -221,5 +260,11 @@
                 }
             }
         }
+    },
+    "badges": {
+        "sponsor": "GooseMod Sponsoru",
+        "translator": "GooseMod Çevirmen",
+        "developer": "GooseMod Geliştirici",
+        "guild": "GooseMod Resmi Discord'u"
     }
 }
