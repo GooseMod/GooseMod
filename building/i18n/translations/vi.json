@@ -1,1 +1,143 @@
-{}
+{
+    "terms": {
+        "goosemod": {
+            "store": "Cửa hàng GooseMod",
+            "settings": "Cài đặt GooseMod",
+            "modules": "Mô-đun GooseMod"
+        },
+        "add": "Thêm",
+        "remove": "Loại bỏ",
+        "refresh": "Làm mới",
+        "settings": "Cài đặt",
+        "changelog": "Nhật kí thay đổi",
+        "community": "Cộng đồng",
+        "store": {
+            "store": "Cửa hàng",
+            "themes": "Chủ đề",
+            "plugins": "Plugins",
+            "modules": "Mô-đun",
+            "repos": "Mã nguồn",
+            "developers": "Người phát triển"
+        },
+        "install": "Tải"
+    },
+    "store": {
+        "categories": {
+            "all": {
+                "themes": "Tất cả chủ đề",
+                "plugins": "Tất cả Plugins"
+            },
+            "top_starred": "Được gắn sao nhiều nhất",
+            "recently_updated": "Mới cập nhật gần đây",
+            "upcoming": "Sắp tới"
+        },
+        "options": {
+            "tabs": {
+                "store": "Cửa hàng",
+                "imported": "Đã cài đặt"
+            },
+            "search": {
+                "placeholder": {
+                    "themes": "Tìm chủ đề",
+                    "plugins": "Tìm Plugins"
+                }
+            },
+            "sort": {
+                "label": "Sắp xếp theo",
+                "stars": "Đánh dấu sao",
+                "az": "A-Z",
+                "last_updated": "Cập nhật lần cuối"
+            },
+            "author": {
+                "label": "Tác giả",
+                "all": "Tất cả"
+            }
+        },
+        "pgp": {
+            "unknown": "Không có PGP",
+            "untrusted": "PGP không đáng tin cậy",
+            "verified": "Đã xác minh PGP"
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "Không tìm thấy kết quả, ý bạn là muốn tìm plugins?",
+                "themes": "Không tìm thấy kết quả, ý bạn là muốn tìm chủ đề?"
+            },
+            "none": "Không tìm thấy kết quả"
+        }
+    },
+    "settings": {
+        "items": {
+            "restore_backup": {
+                "button": "Khôi phục",
+                "title": "Khôi phục lại bản sao lưu",
+                "note": "Khôi phục cài đặt và mô-đun GooseMod của bạn thông qua tệp sao lưu, **chỉ khôi phục các bản sao lưu mà bạn tin tưởng**"
+            },
+            "headers": {
+                "utilities": "Tiện ích",
+                "backup": "Sao lưu",
+                "experimental": "Thử nghiệm"
+            },
+            "subtexts": {
+                "tweaks_description": "Những thay đổi nhỏ như thay đổi giao diện người dùng nhỏ để biến GooseMod theo cách bạn thích",
+                "experimental_warning": "Cài đặt bản thử nghiệm có thể không đầy đủ và không ổn định, có thể làm giảm trải nghiệm"
+            },
+            "goosemod_change_log": {
+                "title": "Nhật kí thay đổi của GooseMod",
+                "note": "Hiển thị cài đặt \"Nhật ký thay đổi\" của GooseMod"
+            },
+            "auto_update": {
+                "title": "Tự động cập nhật",
+                "note": "Tự động cập nhật mã nguồn và mô-đun mỗi giờ"
+            },
+            "goosemod_badges": {
+                "title": "Huy hiệu GooseMod",
+                "note": "Hiện huy hiệu của GooseMod"
+            },
+            "purge_caches": {
+                "note": "Xóa (loại bỏ hoàn toàn) hầu hết các bộ nhớ đệm mà GooseMod sử dụng",
+                "button": "Xóa",
+                "title": "Xóa bộ nhớ đệm"
+            },
+            "copy_debug_info": {
+                "title": "Sao chép thông tin gỡ lỗi",
+                "note": "Sao chép thông tin về thiết lập và GooseMod để báo cáo và gỡ lỗi",
+                "button": "Sao chép"
+            },
+            "reset_goosemod": {
+                "title": "Đặt lại GooseMod",
+                "button": "Cài lại",
+                "note": "Đặt lại hoàn toàn GooseMod: loại bỏ tất cả các tùy chọn và mô-đun đã cài; giống như cài đặt lần đầu tiên"
+            },
+            "create_backup": {
+                "title": "Tạo bản sao lưu",
+                "note": "Tạo một tệp để sao lưu các mô-đun và cài đặt GooseMod của bạn",
+                "button": "Sao lưu"
+            },
+            "development_channel": {
+                "title": "Kênh thử nghiệm",
+                "note": "Sử dụng các bản dựng GooseMod thử nghiệm"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "text": "Mã nguồn không hợp lệ",
+                "subtext": "Định dạng không hợp lệ"
+            },
+            "cancelled": {
+                "text": "Đã hủy thêm mã nguồn",
+                "reasons": {
+                    "pgp": "PGP không đáng tin cậy thất bại"
+                }
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Các kho lưu trữ bên ngoài gây ra rủi ro bảo mật vì chúng không được kiểm soát bởi các nhà phát triển GooseMod. Chúng tôi không chịu trách nhiệm về bất kỳ nguy hiểm nào do các mã nguồn bên ngoài do người dùng thêm vào.\n\nNếu bạn không tin tưởng chủ sở hữu của mã nguồn này, đừng sử dụng nó vì nó có thể ảnh hưởng đến cài đặt Discord của bạn.\n\nVui lòng xác nhận việc thêm mã nguồn này bằng cách nhấn OK.",
+            "bad_pgp": "Mã nguồn này không được biết đến hoặc đáng tin cậy (không có xác minh PGP), hãy hết sức cẩn thận. Đảm bảo rằng bạn hoàn toàn tin tưởng (các) chủ sở hữu của mã nguồn này.\n\nĐể giải quyết vấn đề này, hãy yêu cầu người bảo trì kho lưu trữ thêm hỗ trợ PGP.\n\nVui lòng xác nhận lại việc thêm mã nguồn này bằng cách nhấn OK."
+        }
+    }
+}
