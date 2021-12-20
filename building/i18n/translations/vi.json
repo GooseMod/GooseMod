@@ -117,6 +117,10 @@
             "development_channel": {
                 "title": "Kênh thử nghiệm",
                 "note": "Sử dụng các bản dựng GooseMod thử nghiệm"
+            },
+            "force_theme_settings": {
+                "title": "Bật cài đặt chủ đề",
+                "note": "Buộc cài đặt được tạo tự động cho tất cả các chủ đề"
             }
         }
     },
