@@ -16,7 +16,7 @@ return class ModulesPreview extends React.PureComponent {
   render() {
     setTimeout(() => {
       try {
-        const splashes = document.querySelectorAll('.discoverPreview-3q1szX .splashImage-352DQ1');
+        const splashes = document.querySelectorAll('.discoverPreview-1TgRL4 .splashImage-352DQ1');
 
         splashes[splashes.length - 3].src = baseImages(this.props.modules[1])[0];
         splashes[splashes.length - 2].src = baseImages(this.props.modules[0])[0];
@@ -27,7 +27,7 @@ return class ModulesPreview extends React.PureComponent {
     }, 100);
 
     return React.createElement('div', {
-      className: 'discoverPreview-3q1szX gm-modules-preview'
+      className: 'discoverPreview-1TgRL4 gm-modules-preview'
     },
       React.createElement(DiscoverStaticGuildCard, {
         className: 'placeholderCard-3Zu1qO',
