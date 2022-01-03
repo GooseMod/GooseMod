@@ -1,1 +1,99 @@
-{}
+{
+    "terms": {
+        "store": {
+            "themes": "Teme",
+            "store": "Magazin",
+            "modules": "Module",
+            "plugins": "Plugin-uri"
+        },
+        "goosemod": {
+            "modules": "Module GooseMod",
+            "store": "Magazinul GooseMod",
+            "settings": "Setări GooseMod"
+        },
+        "add": "Adăugați",
+        "remove": "Eliminați",
+        "refresh": "Reîmprospătați",
+        "settings": "Setări",
+        "community": "Comunitate",
+        "changelog": "Jurnal de modificări",
+        "install": "Instalați"
+    },
+    "store": {
+        "options": {
+            "tabs": {
+                "store": "Magazin",
+                "imported": "Instalat"
+            },
+            "search": {
+                "placeholder": {
+                    "plugins": "Căutați plugin-uri",
+                    "themes": "Căutați teme"
+                }
+            },
+            "sort": {
+                "stars": "Stele",
+                "az": "A-Z",
+                "label": "Filtrează după",
+                "last_updated": "Ultima actualizare"
+            },
+            "author": {
+                "label": "Autor",
+                "all": "Toate"
+            }
+        },
+        "categories": {
+            "recently_updated": "Actualizate recent",
+            "upcoming": "Urmează",
+            "all": {
+                "plugins": "Toate plugin-urile",
+                "themes": "Toate temele"
+            }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "Nu s-au găsit rezultate, te-ai referit la plugin-uri?",
+                "themes": "Nu s-au găsit rezultate, te-ai referit la teme?"
+            },
+            "none": "Nu s-au găsit rezultate"
+        },
+        "pgp": {
+            "verified": "Verificat PGP",
+            "unknown": "Fără PGP"
+        }
+    },
+    "settings": {
+        "items": {
+            "start_tour": {
+                "title": "Începeți turul",
+                "button": "Tur"
+            },
+            "headers": {
+                "backup": "Backup",
+                "appearance": "Aspect",
+                "utilities": "Utilităţi",
+                "experimental": "Experimentale"
+            },
+            "auto_update": {
+                "title": "Actualizare automată"
+            },
+            "goosemod_change_log": {
+                "title": "Jurnal de modificări GooseMod"
+            },
+            "goosemod_badges": {
+                "title": "Insignele GooseMod",
+                "note": "Afișează insignele GooseMod"
+            },
+            "purge_caches": {
+                "title": "Ștergeți cache-urile"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "subtext": "Format nevalid"
+            }
+        }
+    }
+}

@@ -40,7 +40,8 @@
             },
             "purge_caches": {
                 "button": "Promazat Dočasné soubory",
-                "title": "Promazat dočasné soubory GooseModu"
+                "title": "Promazat dočasné soubory GooseModu",
+                "note": "Promaže většinu mezipaměti kterou GooseMod používá"
             },
             "data_attributes": {
                 "note": "Přidat Atributy dat na použití pro některé elementy a některé témata/vzhledy",
@@ -125,6 +126,13 @@
             "tabs": {
                 "imported": "Nainstalované",
                 "store": "Obchod"
+            }
+        },
+        "search_results_hint": {
+            "none": "Nebyly nalezeny žádné výsledky",
+            "other_category": {
+                "themes": "Nebyly nalezeny žádné výsledky, nechtěli jste náhodou hledat ve vzhledech/tématech?",
+                "plugins": "Nebyly nalezeny žádné výsledky, nemysleli jste náhodou pluginy?"
             }
         }
     },

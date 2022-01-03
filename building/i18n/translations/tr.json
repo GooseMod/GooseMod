@@ -1,1 +1,270 @@
-{}
+{
+    "terms": {
+        "goosemod": {
+            "modules": "GooseMod Modülleri",
+            "settings": "GooseMod Ayarları",
+            "store": "GooseMod Mağazası"
+        },
+        "settings": "Ayarlar",
+        "store": {
+            "repos": "Repolar",
+            "store": "Mağaza",
+            "themes": "Temalar",
+            "plugins": "Eklentiler",
+            "snippets": "Snippet'lar",
+            "modules": "Modüller",
+            "developers": "Geliştiriciler"
+        },
+        "install": "Yükle",
+        "add": "Ekle",
+        "remove": "Kaldır",
+        "refresh": "Yenile",
+        "changelog": "Değişim Kaydı",
+        "community": "Topluluk"
+    },
+    "settings": {
+        "items": {
+            "headers": {
+                "utilities": "Yardımcı program",
+                "appearance": "Görünüm",
+                "backup": "Yedek",
+                "experimental": "Deneysel",
+                "tweaks": "Düzenlemeler"
+            },
+            "start_tour": {
+                "note": "GooseMod'un başlangıç turunu tekrar gözden geçirin",
+                "title": "Turu Başlat",
+                "button": "Tur"
+            },
+            "purge_caches": {
+                "button": "Temizleme",
+                "note": "GooseMod'un kullandığı çoğu önbelleği temizler (tamamen kaldırır)",
+                "title": "Önbellekleri Temizleme"
+            },
+            "auto_update": {
+                "title": "Otomatik Güncelleştirme",
+                "note": "Depoları ve modülleri her saat otomatik olarak güncelleyin"
+            },
+            "goosemod_badges": {
+                "note": "GooseMod rozetlerini gösterir",
+                "title": "GooseMod Rozetleri"
+            },
+            "copy_debug_info": {
+                "note": "Kurulum ve GooseMod hakkındaki bilgileri raporlama ve hata ayıklama için kopyalar",
+                "title": "Hata Ayıklama Bilgilerini Kopyala",
+                "button": "Kopyala"
+            },
+            "data_attributes": {
+                "note": "Bazı temaların kullanması için bazı öğelere veri öznitelikleri ekleme",
+                "title": "Veri Öznitelikleri"
+            },
+            "restore_backup": {
+                "note": "GooseMod modüllerinizi ve ayarlarınızı bir yedekleme dosyası aracılığıyla geri yükleyin, **yalnızca güvendiğiniz yedeklemeleri geri yükleyin**",
+                "title": "Yedeklemeyi Geri Yükle",
+                "button": "Geri Yükle"
+            },
+            "development_channel": {
+                "title": "Geliştirme Kanalı",
+                "note": "Deneysel geliştirme GooseMod yapılarını kullanın"
+            },
+            "collapsible_home_category": {
+                "note": "Başlangıç kategorisinin bir simge kullanarak katlamasına izin verme",
+                "title": "Daraltılabilir Giriş Kategorisi"
+            },
+            "reset_goosemod": {
+                "title": "GooseMod'u Sıfırla",
+                "button": "Sıfırla",
+                "note": "GooseMod'u tamamen sıfırlar: tüm tercihleri ve modülleri kaldırır; ilk kez yükleme gibi"
+            },
+            "store_in_home": {
+                "title": "Mağazayı ana menüye yerleştirme",
+                "note": "GooseMod mağaza seçeneklerini ayarlar yerine başlangıç ekranına koyun"
+            },
+            "create_backup": {
+                "title": "Yedek Oluştur",
+                "note": "GooseMod modüllerinizin ve ayarlarınızın yedeği için bir dosya oluşturur",
+                "button": "Yedek"
+            },
+            "subtexts": {
+                "experimental_warning": "Deneysel ayarlar büyük olasılıkla eksik ve kararsızdır, bu da deneyimin azalmasına neden olabilir",
+                "tweaks_description": "GooseMod'u istediğiniz gibi yapmak için küçük kullanıcı arabirimi değişiklikleri gibi küçük değişiklikler"
+            },
+            "goosemod_change_log": {
+                "title": "GooseMod Değişim Günlüğü",
+                "note": "GooseMod \"Değişim Kaydı\" ayarını göster"
+            },
+            "main_separators": {
+                "title": "Ana Ayırıcılar",
+                "note": "Ana GooseMod ayarları arasında ayırıcıları göster"
+            },
+            "snippets": {
+                "title": "Snippet'lar",
+                "note": "Mağaza'da Snippet'lar sekmesini etkinleştir"
+            },
+            "force_theme_settings": {
+                "title": "Tema Ayarlarını Zorla",
+                "note": "Tüm temalar için otomatik oluşturulan ayarları zorla"
+            },
+            "placeholder_image": {
+                "title": "Yer Tutucu Görüntüsü",
+                "note": "Resim içermeyen modüller için Mağaza'da yer tutucu görüntü kullanma"
+            }
+        }
+    },
+    "ootb": {
+        "settings": {
+            "confirm": "GooseMod Ayarlarını Görüntüle",
+            "items": {
+                "utilities": {
+                    "subtext": "Yedekleme yapın, GooseMod'u sıfırlayın ve daha fazlasını yapın",
+                    "title": "Araçlar"
+                },
+                "tweaks": {
+                    "title": "İnce Ayarlar",
+                    "subtext": "GooseMod'u istediğiniz gibi ayarlayın"
+                },
+                "experimental_features": {
+                    "title": "Deneysel Özellikler",
+                    "subtext": "Yeni deneysel özellikleri deneyin"
+                }
+            },
+            "text": {
+                "main": "Özelliklerini özelleştirmek için GooseMod'un Ayarlarını kullanın",
+                "subtext": "Değiştirmeniz için çeşitli seçenekler var"
+            }
+        },
+        "community": {
+            "text": {
+                "main": "GooseMod'un Topluluğuna Katılın",
+                "subtext": "Daha fazla bilgi ve daha fazlası için Discord'umuza katılın"
+            },
+            "confirm": "GooseMod'un Discord Sunucusuna Katılın",
+            "items": {
+                "ask_questions": {
+                    "subtext": "Herhangi bir soru sorun ve destek alın",
+                    "title": "Soru Sor"
+                },
+                "news": {
+                    "title": "Haberler",
+                    "subtext": "GooseMod ve ilgili projeler hakkında en son haberleri ve duyuruları alın"
+                },
+                "get_involved": {
+                    "title": "Dahil Olun",
+                    "subtext": "Öneriler, destek ve daha fazlası hakkında yardım"
+                }
+            }
+        },
+        "start": {
+            "items": {
+                "settings": {
+                    "subtext": "GooseMod ve eklentilerin ayarları hakkında daha fazla şey öğrenin"
+                },
+                "store": {
+                    "subtext": "GooseMod's Store ve içinde ne olduğu hakkında bilgi edinin"
+                },
+                "community": {
+                    "subtext": "Soru sormak, geri bildirimde etmek, haberleri takip etmek ve daha fazlası için Discord'umuza katılın"
+                }
+            },
+            "confirm": "Daha fazla bilgi edinin",
+            "cancel": "İlgilenmiyorum",
+            "text": {
+                "main": "GooseMod hakkında bilgi edinin",
+                "subtext": "GooseMod'un temel işlevlerini kısa bir turdan geçirin"
+            }
+        },
+        "themes": {
+            "confirm": "Temalara Gözatın",
+            "text": {
+                "main": "Discord'unuzu Temalarla Güzelleştirin",
+                "subtext": "Kullanıcı arayüzünüzü geliştirmek için 100'den fazla tema arasından seçim yapın"
+            }
+        },
+        "plugins": {
+            "text": {
+                "subtext": "Eklentiler, uygulamanın kendisindeki iyileştirmelerle deneyiminizi artırır",
+                "main": "Kaputun altında Discord'unuzu güçlendirin"
+            },
+            "confirm": "Eklentilere Göz Atın"
+        },
+        "store": {
+            "confirm": "Başlangıçtaki Mağazayı Görüntüle",
+            "text": {
+                "main": "Mağazadaki Temalara ve Eklentilere Gözatın",
+                "subtext": "GooseMod, etrafa kolayca bakabileceğiniz ve kurabileceğiniz kendi Mağazasını kullanır"
+            }
+        }
+    },
+    "store": {
+        "options": {
+            "search": {
+                "placeholder": {
+                    "themes": "Tema Ara",
+                    "plugins": "Eklenti Ara"
+                }
+            },
+            "tabs": {
+                "imported": "Yüklendi",
+                "store": "Mağaza"
+            },
+            "sort": {
+                "label": "Sıralama ölçütü",
+                "stars": "Yıldızlar",
+                "az": "A-Z",
+                "last_updated": "Son Güncellenen"
+            },
+            "author": {
+                "label": "Oluşturucu",
+                "all": "Hepsi"
+            }
+        },
+        "search_results_hint": {
+            "none": "Sonuç bulunamadı",
+            "other_category": {
+                "themes": "Sonuç bulunamadı, temaları mı kastettiniz?",
+                "plugins": "Sonuç bulunamadı, eklentileri mi kastettiniz?"
+            }
+        },
+        "categories": {
+            "top_starred": "En Fazla Yıldızlanan",
+            "recently_updated": "En Son Güncellenen",
+            "upcoming": "Gelecek",
+            "all": {
+                "themes": "Tüm Temalar",
+                "plugins": "Tüm Eklentiler"
+            }
+        },
+        "pgp": {
+            "verified": "PGP Doğrulandı",
+            "untrusted": "PGP Güvenilmeyen",
+            "unknown": "PGP Yok"
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Bir repo eklerken görünen, kullanıcıyı olası güvenlik risklerine karşı uyaran onay modelinin içeriği.",
+            "bad_pgp": "Hatalı (yok veya güvenilmeyen) PGP doğrulaması olan bir depo eklerken görünen onay modunun içeriği."
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "text": "Geçersiz Repo",
+                "subtext": "Geçersiz Biçim"
+            },
+            "cancelled": {
+                "text": "Repo Ekleme İptal Edildi",
+                "reasons": {
+                    "refused": "Reddedilen Güvenlik İstemi",
+                    "pgp": "PGP Güvenilmeyen Hata"
+                }
+            }
+        }
+    },
+    "badges": {
+        "sponsor": "GooseMod Sponsoru",
+        "translator": "GooseMod Çevirmen",
+        "developer": "GooseMod Geliştirici",
+        "guild": "GooseMod Resmi Discord'u"
+    }
+}

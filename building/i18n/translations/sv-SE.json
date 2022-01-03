@@ -91,7 +91,8 @@
                 }
             },
             "invalid_repo": {
-                "subtext": "Ogiltigt format"
+                "subtext": "Ogiltigt format",
+                "text": "Ogiltigt filförråd"
             }
         }
     },
@@ -111,7 +112,8 @@
         },
         "options": {
             "author": {
-                "all": "Alla"
+                "all": "Alla",
+                "label": "Författare"
             },
             "sort": {
                 "last_updated": "Senast uppdaterad",
@@ -129,6 +131,13 @@
                 "imported": "Installerad",
                 "store": "Butik"
             }
+        },
+        "search_results_hint": {
+            "none": "Inga resultat hittades",
+            "other_category": {
+                "themes": "Inga resultat hittades, menade du teman?",
+                "plugins": "Inga resultat hittades, menade du insticksprogram?"
+            }
         }
     },
     "terms": {
@@ -137,7 +146,8 @@
             "modules": "Moduler",
             "plugins": "Insticksprogram",
             "themes": "Teman",
-            "store": "Butik"
+            "store": "Butik",
+            "snippets": "Snuttar"
         },
         "community": "Gemenskap",
         "changelog": "Ändringslogg",
