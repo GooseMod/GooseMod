@@ -45,8 +45,8 @@ export const findByModuleId = (id) => wpRequire.c[id];
 export const common = { // Common modules
   React: findByProps('createElement'),
   ReactDOM: findByProps('render', 'hydrate'),
-  
-  Flux: findByProps('Store', 'CachedStore', 'PersistedStore'),
+
+  Flux: findByProps('Store', 'connectStores'),
   FluxDispatcher: findByProps('_waitQueue', '_orderedActionHandlers'),
 
   i18n: findByProps('Messages', '_requestedLocale'),
