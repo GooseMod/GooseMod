@@ -111,6 +111,10 @@ const init = async function () {
     }
   }
 
+  while (!this.webpackModules.findByDisplayName('SettingsView')?.prototype) {
+    await sleep(10);
+  }
+
   this.versioning = {
     version: `12.3`,
     hash: '<hash>', // Hash of git commit

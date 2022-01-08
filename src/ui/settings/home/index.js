@@ -79,6 +79,8 @@ export default async (goosemodScope) => {
     return (parentEl.classList.contains(className) && parentEl) || findClassInParentTree(parentEl, className, depth + 1);
   };
 
+  const findClasses = (...classes) => classes.map((x) => document.getElementsByClassName(x)[0]).find((x) => x);
+
   let expanded = goosemodScope.settings.gmSettings.collapsiblehome ? (goosemod.storage.get('goosemodHomeExpanded') || true) : true;
 
   let settings = {
@@ -94,9 +96,9 @@ export default async (goosemodScope) => {
   };
 
   const handleItemClick = (title, type) => {
-    const parentEl = [...document.querySelector(`.content-1SgpWY`).children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
+    const parentEl = [...findClasses('content-98HsJk', 'content-1SgpWY').children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
-    for (const x of document.querySelector(`.scroller-WSmht3`).children[0].children) {
+    for (const x of findClasses('scroller-1JbKMe', 'scroller-WSmht3').children[0].children) {
       if (!x.className?.replace) continue;
       x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable);
     }
@@ -171,7 +173,7 @@ export default async (goosemodScope) => {
     };
 
     setTimeout(() => {
-      document.querySelector(`.scroller-WSmht3`).addEventListener('click', (e) => {
+      findClasses('scroller-1JbKMe', 'scroller-WSmht3').addEventListener('click', (e) => {
         const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.channel);
         if (buttonEl && !buttonEl.id.startsWith('gm-home-')) {
           document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable)); 
@@ -225,7 +227,7 @@ export default async (goosemodScope) => {
 
     itemWrapper(React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-17SveM')?.textContent === '#terms.store.themes#' ? 'block' : 'none'
+        display: expanded || findClasses('title-29uC1r', 'title-17SveM')?.textContent === '#terms.store.themes#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.themes,
@@ -240,7 +242,7 @@ export default async (goosemodScope) => {
 
     itemWrapper(React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-17SveM')?.textContent === '#terms.store.plugins#' ? 'block' : 'none'
+        display: expanded || findClasses('title-29uC1r', 'title-17SveM')?.textContent === '#terms.store.plugins#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.plugins,
@@ -255,7 +257,7 @@ export default async (goosemodScope) => {
 
     snippetsEnabled ? itemWrapper(React.createElement(LinkButton, {
       style: {
-        display: expanded || document.querySelector('.title-17SveM')?.textContent === '#terms.store.snippets#' ? 'block' : 'none'
+        display: expanded || findClasses('title-29uC1r', 'title-17SveM')?.textContent === '#terms.store.snippets#' ? 'block' : 'none'
       },
 
       icon: () => homeIcons.snippets,
@@ -271,7 +273,7 @@ export default async (goosemodScope) => {
   }));
 
   // If home currently open, force update sidebar via routing
-  if (document.querySelector(`.privateChannels-oVe7HL`)) {
+  if (findClasses('privateChannels-1nO12o', 'privateChannels-oVe7HL')) {
     RoutingUtils.transitionTo('/invalid');
     RoutingUtils.back();
   }
