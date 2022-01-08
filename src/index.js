@@ -99,12 +99,16 @@ const init = async function () {
 
   this.cssCache.load();
 
-  while (document.querySelectorAll('.flex-1xMQg5.flex-1O1GKY.horizontal-1ae9ci.horizontal-2EEEnY.flex-1O1GKY.directionRow-3v3tfG.justifyStart-2NDFzi.alignStretch-DpGPf3.noWrap-3jynv6 > [type="button"]:last-child').length === 0 || (window.webpackJsonp === undefined && window.webpackChunkdiscord_app === undefined)) {
+  while ((window.webpackJsonp === undefined && window.webpackChunkdiscord_app === undefined)) {
     await sleep(10);
   }
 
   for (let x of scopeSetterFncs) {
-    await x(this);
+    try {
+      await x(this);
+    } catch (e) {
+      console.warn('[GooseMod] Failed to scopeset', e, x);
+    }
   }
 
   this.versioning = {
