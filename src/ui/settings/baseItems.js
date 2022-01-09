@@ -404,17 +404,6 @@ export default (goosemodScope, gmSettings, Items) => {
       isToggled: () => gmSettings.allThemeSettings
     },
 
-    {
-      type: 'toggle',
-
-      experimental: true,
-      text: 'Patcher > Username | Next',
-      subtext: 'Potential next version of Username API: Inner patching of MessageHeader for going into Username-likely component (known bugged)',
-
-      onToggle: (c) => gmSettings.username_next = c,
-      isToggled: () => gmSettings.username_next
-    },
-
     /* {
       type: 'header',
       text: 'Debug',
@@ -487,18 +476,18 @@ export default (goosemodScope, gmSettings, Items) => {
     processingMSUpdate = true;
 
     const processCard = (c) => {
-      const titles = c.getElementsByClassName('title-31JmR4');
+      const titles = c.querySelectorAll('.title-31JmR4, .title-2dsDLn');
 
       const title = titles[1];
 
       const authors = [...titles[0].getElementsByClassName('gm-store-author-name')].map((x) => x.textContent.split('#')[0]);
       const name = title.childNodes[0].wholeText;
 
-      const description = c.getElementsByClassName('description-3_Ncsb')[0].innerText;
+      const description = c.querySelector('.description-3_Ncsb, .description-30xx7u').innerText;
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = !c.getElementsByClassName('container-3auIfb')[0].classList.contains('hide-toggle') ? '#store.options.tabs.imported#' : '#store.options.tabs.store#';
+      const importedSelector = !c.querySelector('container-3auIfb, .container-2nx-BQ').classList.contains('hide-toggle') ? '#store.options.tabs.imported#' : '#store.options.tabs.store#';
 
       // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
@@ -534,7 +523,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
     const fuzzyReg = new RegExp(`.*${searchQuery}.*`, 'i');
 
-    let importedVal = document.querySelector('.selected-3s45Ha')?.textContent || '#store.options.tabs.store#';
+    let importedVal = document.querySelector('.selected-3s45Ha, .selected-g-kMVV')?.textContent || '#store.options.tabs.store#';
     if (importedVal !== '#store.options.tabs.store#' && importedVal !== '#store.options.tabs.imported#') importedVal = '#store.options.tabs.store#';
 
     cards.forEach(processCard);
@@ -590,7 +579,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
               await sleep(100);
 
-              const searchEl = document.querySelector('.input-3Xdcic');
+              const searchEl = document.querySelector('.input-3Xdcic, .input-2m5SfJ');
 
               searchEl.value = toSearch;
               searchEl.__reactProps$.onChange({ currentTarget: { value: toSearch } });
@@ -610,7 +599,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
               await sleep(100);
 
-              const searchEl = document.querySelector('.input-3Xdcic');
+              const searchEl = document.querySelector('.input-3Xdcic, .input-2m5SfJ');
 
               searchEl.value = toSearch;
               searchEl.__reactProps$.onChange({ currentTarget: { value: toSearch } });
