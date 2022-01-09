@@ -1,3 +1,2 @@
-### Based on commit c37cba4, made 09/01 21:15 UTC
+### Based on commit 8d5ec29, made 09/01 21:20 UTC
 ## Commits this release
-  - [Store] Fix updating elements for new Canary
