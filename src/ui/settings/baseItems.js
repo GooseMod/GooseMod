@@ -487,7 +487,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
       const matches = (fuzzyReg.test(name) || fuzzyReg.test(description));
 
-      const importedSelector = !c.querySelector('container-3auIfb, .container-2nx-BQ').classList.contains('hide-toggle') ? '#store.options.tabs.imported#' : '#store.options.tabs.store#';
+      const importedSelector = !c.querySelector('.container-3auIfb, .container-2nx-BQ').classList.contains('hide-toggle') ? '#store.options.tabs.imported#' : '#store.options.tabs.store#';
 
       // const tags = [...c.classList].map((t) => t.replace(/\|/g, ' ').toLowerCase());
 
