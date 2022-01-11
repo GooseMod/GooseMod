@@ -1,3 +1,2 @@
-### Based on commit 628700c, made 11/01 19:46 UTC
+### Based on commit 14fbf22, made 11/01 20:08 UTC
 ## Commits this release
-  - [Store] Fix UI live updating classes
