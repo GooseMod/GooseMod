@@ -124,7 +124,9 @@ export default {
         };
       } catch (e) {
         goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: '#terms.goosemod.store#' }); // Show error toast to user so they know
-        console.error(e);
+        console.error(e); 
+
+        newModules = newModules.concat(goosemodScope.moduleStoreAPI.modules.filter((x) => x.repo === repo.url)).sort((a, b) => a.name.localeCompare(b.name)); // Use cached / pre-existing modules
       }
 
       return repo;
@@ -184,17 +186,17 @@ export default {
 
       // If themes / plugins open
       if (document.querySelector(`#gm-settings-inject`)) {
-        const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
+        const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
 
         if (cardEls.length === 0) return;
 
         for (const cardEl of cardEls) {
-          const buttonEl = cardEl.querySelector(`.colorBrand-3pXr91`);
+          const buttonEl = cardEl.querySelector(`.colorBrand-I6CyqQ`);
 
-          buttonEl.className = buttonEl.className.replace('lookFilled-1Gx00P colorBrand-3pXr91', 'lookOutlined-3sRXeN colorRed-1TFJan');
+          buttonEl.className = buttonEl.className.replace('lookFilled-yCfaCM colorBrand-I6CyqQ', 'lookOutlined-3yKVGo colorRed-rQXKgM');
           buttonEl.textContent = '#terms.remove#';
 
-          const toggleEl = cardEl.querySelector(`.container-3auIfb`);
+          const toggleEl = cardEl.querySelector(`.container-2nx-BQ`);
           toggleEl.classList.remove('hide-toggle');
         }
       }
@@ -215,17 +217,17 @@ export default {
 
     // If themes / plugins open
     if (document.querySelector(`#gm-settings-inject`)) {
-      const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
+      const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
       if (cardEls.length === 0) return;
 
       for (const cardEl of cardEls) {
-        const buttonEl = cardEl.querySelector(`.colorRed-1TFJan`);
+        const buttonEl = cardEl.querySelector(`.colorRed-rQXKgM`);
 
-        buttonEl.className = buttonEl.className.replace('lookOutlined-3sRXeN colorRed-1TFJan', 'lookFilled-1Gx00P colorBrand-3pXr91');
+        buttonEl.className = buttonEl.className.replace('lookOutlined-3yKVGo colorRed-rQXKgM', 'lookFilled-yCfaCM colorBrand-I6CyqQ');
         buttonEl.textContent = '#terms.install#';
 
-        const toggleEl = cardEl.querySelector(`.container-3auIfb`);
+        const toggleEl = cardEl.querySelector(`.container-2nx-BQ`);
         toggleEl.classList.add('hide-toggle');
       }
     }
@@ -364,14 +366,14 @@ To continue importing this module the dependencies need to be imported.`,
 
           // If themes / plugins open
           if (document.querySelector(`#gm-settings-inject`)) {
-            const cardEls = [...document.querySelectorAll(`.title-31JmR4 + .colorStandard-2KCXvj`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
+            const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
             if (cardEls.length === 0) return;
 
             for (const cardEl of cardEls) {
               goosemodScope.settings.ignoreVisualToggle = true;
 
-              const toggleInputEl = cardEl.querySelector('.input-rwLH4i');
+              const toggleInputEl = cardEl.querySelector('.input-2XRLou');
               toggleInputEl.click();
             }
           }
