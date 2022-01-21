@@ -113,6 +113,9 @@ const badgeUsers = {
     '293094733159333889', // b1sergiu
     '202740603790819328', // Snow Fox / Lisa
     '541210648982585354', // Heli / heli_is_for_noob
+    '516750892372852754', // aspy uwu
+    '192760945766957066', //creatable
+    
   ],
 
   dev: [ // People actively developing GooseMod itself
@@ -120,6 +123,13 @@ const badgeUsers = {
   ],
 
   translator: [ // People who have translated GooseMod to other languages
+    '290293141666267136', //DatRat
+    '346338830011596800', //Hekky
+    '425140480334888980', //kakaka
+    '650178631129235456', //TinyWiFi
+    '186496078273708033', //Hades
+    '202740603790819328', //Snow Fox
+    
   ]
 };
 
