@@ -70,6 +70,11 @@
                 "imported": "ติดตั้งแล้ว",
                 "store": "ร้านค้า"
             }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "Kitsada98676@gmail.com"
+            }
         }
     },
     "toasts": {
