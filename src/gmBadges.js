@@ -113,6 +113,7 @@ const badgeUsers = {
     '293094733159333889', // b1sergiu
     '202740603790819328', // Snow Fox / Lisa
     '541210648982585354', // Heli / heli_is_for_noob
+    '516750892372852754', // Aspy uwu
   ],
 
   dev: [ // People actively developing GooseMod itself
