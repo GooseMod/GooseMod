@@ -62,8 +62,8 @@
         "search_results_hint": {
             "none": "Aucun résultat",
             "other_category": {
-                "themes": "Aucun résultat trouvé, voulez-vous dire « thèmes » ?",
-                "plugins": "Aucun résultat trouvé, voulez-vous dire « greffons » ?"
+                "themes": "Aucun résultat trouvé, cherchiez-vous un thème ?",
+                "plugins": "Aucun résultat trouvé, cherchiez-vous un plug-in ?"
             }
         }
     },
