@@ -17,7 +17,8 @@
             "plugins": "Plugins",
             "modules": "Mô-đun",
             "repos": "Mã nguồn",
-            "developers": "Người phát triển"
+            "developers": "Người phát triển",
+            "snippets": "Mã chỉnh sửa"
         },
         "install": "Tải"
     },
@@ -76,7 +77,9 @@
             "headers": {
                 "utilities": "Tiện ích",
                 "backup": "Sao lưu",
-                "experimental": "Thử nghiệm"
+                "experimental": "Thử nghiệm",
+                "appearance": "Hiển thị",
+                "tweaks": "Tùy chỉnh"
             },
             "subtexts": {
                 "tweaks_description": "Những thay đổi nhỏ như thay đổi giao diện người dùng nhỏ để biến GooseMod theo cách bạn thích",
@@ -133,7 +136,8 @@
             "cancelled": {
                 "text": "Đã hủy thêm mã nguồn",
                 "reasons": {
-                    "pgp": "PGP không đáng tin cậy thất bại"
+                    "pgp": "PGP không đáng tin cậy thất bại",
+                    "refused": "Lời nhắc bảo mật đã bị từ chối"
                 }
             }
         }
