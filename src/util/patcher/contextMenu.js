@@ -96,11 +96,12 @@ export const patch = (type, itemProps) => {
       return args;
     }
 
-    const alreadyHasItem = findInReactTree(children, child => child && child.props && child.props.id === (itemProps.id || labelToId(itemProps.label)));
+    console.log('DEBUG 1', itemProps);
+    const alreadyHasItem = findInReactTree(children, child => child?.props?.id === (itemProps.id || labelToId(itemProps.label)));
     if (alreadyHasItem) return args;
 
     const clonedProps = Object.assign({}, itemProps);
-    console.log('DEBUG', clonedProps);
+    console.log('DEBUG 2', clonedProps);
 
     const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(navId)), { Menu, React });
   
