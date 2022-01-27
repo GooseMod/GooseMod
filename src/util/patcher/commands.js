@@ -12,7 +12,7 @@ export const setThisScope = (scope) => {
 
     const gmCommands = res.commands.filter((x, i) => x.applicationId === applicationId && res.commands.indexOf(x) === i);
     const gmSection = Commands.BUILT_IN_SECTIONS[applicationId];
-    if (!gmSection) return; // Don't add section if doesn't exist
+    if (!gmSection) return; // Don't add section if doesn't exist (causes context menu crashing)
 
     res.discoveryCommands.push(...gmCommands);
     res.discoverySections.push({
