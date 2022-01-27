@@ -100,6 +100,7 @@ export const patch = (type, itemProps) => {
     if (alreadyHasItem) return args;
 
     const clonedProps = Object.assign({}, itemProps);
+    console.log('DEBUG', clonedProps);
 
     const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(navId)), { Menu, React });
   
