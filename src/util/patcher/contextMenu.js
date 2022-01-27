@@ -69,6 +69,8 @@ const generateElement = (itemProps, _subItems, wantedNavId, type, extraInfo, { M
     return itemProps.originalAction(arguments, extraInfo);
   };
 
+  console.log(subItems);
+
   const component = isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem;
   const item = subItems !== undefined ? React.createElement(component, itemProps, ...subItems.map((x) => generateElement(x, x.sub, wantedNavId, type, extraInfo, { Menu, React }))) : React.createElement(component, itemProps);
 
