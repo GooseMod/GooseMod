@@ -69,8 +69,6 @@ const generateElement = (itemProps, _subItems, wantedNavId, type, extraInfo, { M
     return itemProps.originalAction(arguments, extraInfo);
   };
 
-  console.log('DEBUG', subItems);
-
   const component = isCheckbox ? Menu.MenuCheckboxItem : Menu.MenuItem;
   const item = subItems !== undefined ? React.createElement(component, itemProps, ...subItems.map((x) => generateElement(x, x.sub, wantedNavId, type, extraInfo, { Menu, React }))) : React.createElement(component, itemProps);
 
@@ -78,8 +76,6 @@ const generateElement = (itemProps, _subItems, wantedNavId, type, extraInfo, { M
 };
 
 export const patch = (type, itemProps) => {
-  console.log('DEBUG', type, itemProps);
-
   const { React } = goosemodScope.webpackModules.common;
   const Menu = goosemodScope.webpackModules.findByProps('MenuItem');
 
@@ -96,12 +92,10 @@ export const patch = (type, itemProps) => {
       return args;
     }
 
-    console.log('DEBUG 1', itemProps);
     const alreadyHasItem = findInReactTree(children, child => child?.props?.id === (itemProps.id || labelToId(itemProps.label)));
     if (alreadyHasItem) return args;
 
     const clonedProps = Object.assign({}, itemProps);
-    console.log('DEBUG 2', clonedProps);
 
     const item = generateElement(clonedProps, clonedProps.sub, wantedNavId, type, Object.assign({}, getExtraInfo(navId)), { Menu, React });
   
