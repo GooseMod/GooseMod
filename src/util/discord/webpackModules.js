@@ -52,5 +52,5 @@ export const common = { // Common modules
   i18n: findByProps('Messages', '_requestedLocale'),
 
   channels: findByProps('getChannelId', 'getVoiceChannelId'),
-  constants: findByProps('API_HOST', 'CaptchaTypes')
+  constants: findByProps('API_HOST')
 };
