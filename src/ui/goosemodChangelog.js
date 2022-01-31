@@ -24,9 +24,9 @@ export const show = async () => {
   await sleep(300);
 
   const customTweaks = () => {
-    document.querySelector('.modal-1TF_VN .size20-17Iy80').textContent = `GooseMod ${version}`; // Set changelog modal title
+    document.querySelector('.modal-3Hrb0S .size20-9iTTnl').textContent = `GooseMod ${version}`; // Set changelog modal title
 
-    document.querySelector('.modal-1TF_VN .footer-2gL1pp').remove(); // Remove footer of modal with social media
+    document.querySelector('.modal-3Hrb0S .footer-31IekZ').remove(); // Remove footer of modal with social media
   };
 
   customTweaks();
