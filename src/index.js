@@ -102,6 +102,7 @@ const init = async function () {
   while ((window.webpackJsonp === undefined && window.webpackChunkdiscord_app === undefined)) {
     await sleep(10);
   }
+  while (!this.webpackModules.findByDisplayName('SettingsView')?.prototype) await sleep(10);
 
   for (let x of scopeSetterFncs) {
     try {
@@ -109,10 +110,6 @@ const init = async function () {
     } catch (e) {
       console.warn('[GooseMod] Failed to scopeset', e, x);
     }
-  }
-
-  while (!this.webpackModules.findByDisplayName('SettingsView')?.prototype) {
-    await sleep(10);
   }
 
   this.versioning = {
