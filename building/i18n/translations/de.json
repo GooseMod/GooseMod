@@ -8,7 +8,7 @@
             "snippets": "Snippets",
             "plugins": "Plugins",
             "themes": "Themes",
-            "store": "Shop"
+            "store": "Laden"
         },
         "changelog": "Änderungsprotokoll",
         "settings": "Einstellungen",
@@ -16,10 +16,10 @@
         "goosemod": {
             "modules": "GooseMod Module",
             "settings": "GooseMod Einstellungen",
-            "store": "GooseMod Store"
+            "store": "GooseMod Laden"
         },
         "remove": "Entfernen",
-        "community": "Community",
+        "community": "Gemeinschaft",
         "install": "Installieren"
     },
     "store": {
@@ -62,8 +62,8 @@
         "search_results_hint": {
             "none": "Keine Ergebnisse gefunden",
             "other_category": {
-                "themes": "Keine Ergebnisse gefunden, meintest du vielleicht Themes?",
-                "plugins": "Keine Ergebnisse gefunden, meintest du vielleicht Plugins?"
+                "themes": "Kein Ergebnis gefunden,  meinst  du Themen?",
+                "plugins": "Kein Ergebnis gefunden,  meinst  du Plugins?"
             }
         }
     },
@@ -256,7 +256,7 @@
                     "subtext": "Erfahre mehr über GooseMod's Store und dessen Inhalt"
                 }
             },
-            "cancel": "Kein Interesse",
+            "cancel": "Nicht Interessiert",
             "confirm": "Mehr Erfahren"
         },
         "themes": {
