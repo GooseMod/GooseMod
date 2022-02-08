@@ -37,7 +37,7 @@
             "search": {
                 "placeholder": {
                     "plugins": "Durchsuche Plugins",
-                    "themes": "Durchsuche Themes"
+                    "themes": "Themes durchsuchen"
                 }
             },
             "tabs": {
@@ -234,30 +234,30 @@
                     "title": "Neuigkeiten"
                 },
                 "ask_questions": {
-                    "subtext": "Stelle jegliche Fragen und erhalte Support",
-                    "title": "Fragen Stellen"
+                    "subtext": "Stelle eine Frage und bekomme Hilfe",
+                    "title": "Stelle Fragen"
                 }
             },
-            "confirm": "Trete den GooseMod Discord bei"
+            "confirm": "Trete dem GooseMod Discord bei"
         },
         "start": {
             "text": {
-                "subtext": "Mache eine kurze Tour über GooseMod's Kernfunktionen",
-                "main": "Lerne etwas über GooseMod"
+                "subtext": "Mache eine kleine Tour durch GooseMods Kernfunktionen",
+                "main": "Erfahre mehr über GooseMod"
             },
             "items": {
                 "community": {
-                    "subtext": "Trete unseren Discord bei um Fragen zu stellen, Feedback zu geben, auf den neusten Stand mit Neuigkeiten zu sein und mehr"
+                    "subtext": "Trete unserem Discord bei um Fragen zu stellen, Feedback zu geben, auf den neusten Stand mit Neuigkeiten zu sein und mehr"
                 },
                 "settings": {
-                    "subtext": "Finde etwas über den Einstellungen für GooseMod und Plugins heraus"
+                    "subtext": "Mehr über die Einstellungen für GooseMod und Plugins erfahren"
                 },
                 "store": {
-                    "subtext": "Lerne etwas über GooseMod's Store und was er enthält"
+                    "subtext": "Erfahre mehr über GooseMod's Store und dessen Inhalt"
                 }
             },
-            "cancel": "Nicht interessiert",
-            "confirm": "Erfahre mehr"
+            "cancel": "Kein Interesse",
+            "confirm": "Mehr Erfahren"
         },
         "themes": {
             "text": {
