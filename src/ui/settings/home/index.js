@@ -174,7 +174,7 @@ export default async (goosemodScope) => {
 
     setTimeout(() => {
       findClasses('scroller-1JbKMe', 'scroller-WSmht3').addEventListener('click', (e) => {
-        const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.channel);
+        const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.link);
         console.log(buttonEl);
         if (buttonEl && !buttonEl.id.startsWith('gm-home-')) {
           document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable)); 
