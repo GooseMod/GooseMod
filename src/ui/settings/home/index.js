@@ -101,12 +101,12 @@ export default async (goosemodScope) => {
 
     for (const x of findClasses('scroller-1JbKMe', 'scroller-WSmht3').children[0].children) {
       if (!x.className?.replace) continue;
-      x.className.children[0].classList.remove(LinkButtonSubClasses.selected);
+      x.children[0].classList.remove(LinkButtonSubClasses.selected);
     }
 
     setTimeout(() => {
       const buttonEl = document.getElementById(`gm-home-${type}`).parentElement;
-      x.className.children[0].classList.add(LinkButtonSubClasses.selected);
+      buttonEl.classList.add(LinkButtonSubClasses.selected);
     }, 0);
 
     const contentCards = type !== 'snippets' && Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
