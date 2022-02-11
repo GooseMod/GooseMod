@@ -6,8 +6,7 @@ export default async (goosemodScope) => {
   const ListSectionItem = goosemodScope.webpackModules.findByDisplayName('ListSectionItem');
   const { LinkButton } = goosemodScope.webpackModules.findByProps('LinkButton');
 
-  const LinkButtonClasses = goosemodScope.webpackModules.findByProps('selected', 'wrappedName');
-  const LinkButtonSubClasses = goosemod.webpackModules.findByProps('interactive', 'selected');
+  const LinkButtonSubClasses = goosemodScope.webpackModules.findByProps('interactive', 'selected');
   const ChannelLinkButtonClasses = goosemodScope.webpackModules.findByProps('channel', 'linkButtonIcon');
   const HeaderClasses = goosemodScope.webpackModules.findByProps('headerText', 'privateChannelsHeaderContainer');
   const IconClasses = goosemodScope.webpackModules.findByProps('icon', 'iconBadge', 'title');
@@ -100,12 +99,12 @@ export default async (goosemodScope) => {
     const parentEl = [...findClasses('content-98HsJk', 'content-1SgpWY').children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
     for (const x of findClasses('scroller-1JbKMe', 'scroller-WSmht3').children[0].children) {
-      x.children[0]?.classList?.remove?.(LinkButtonSubClasses.selected);
+      x.children[0]?.classList?.remove?.(LinkButtonSubClasses.selected, ChannelLinkButtonClasses.interactiveSelected);
     }
 
     setTimeout(() => {
       const buttonEl = document.getElementById(`gm-home-${type}`).parentElement;
-      buttonEl.classList.add(LinkButtonSubClasses.selected);
+      buttonEl.classList.add(LinkButtonSubClasses.selected, ChannelLinkButtonClasses.interactiveSelected);
     }, 0);
 
     const contentCards = type !== 'snippets' && Array.isArray(contents[type].props.children) ? contents[type].props.children.filter((x) => x.props.type === 'card').length : 0;
@@ -176,7 +175,7 @@ export default async (goosemodScope) => {
       findClasses('scroller-1JbKMe', 'scroller-WSmht3').addEventListener('click', (e) => {
         const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.link);
         if (buttonEl && !buttonEl.id.startsWith('gm-home-')) {
-          document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.parentElement.classList.remove(LinkButtonSubClasses.selected));
+          document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.parentElement.classList.remove(LinkButtonSubClasses.selected, ChannelLinkButtonClasses.interactiveSelected));
 
           setTimeout(() => {
             if (document.getElementById(`gm-settings-inject`) !== null) {
