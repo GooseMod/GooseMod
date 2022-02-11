@@ -1,5 +1,6 @@
-### Based on commit 848e4e0, made 11/02 15:25 UTC
+### Based on commit 6363738, made 11/02 15:31 UTC
 ## Commits this release
+  - [Home] Fix erroring from removing new selected
   - [Home] Fix errors from last commit
   - [Home] Fix selected class
   - [Home] Fix selection class setting
