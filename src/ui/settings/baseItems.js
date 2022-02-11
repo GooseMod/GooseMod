@@ -535,9 +535,11 @@ export default (goosemodScope, gmSettings, Items) => {
     // Keep all header but make height 0 so it breaks flex row
     const allHeader = document.querySelector(':not(.gm-store-category) > .gm-store-header');
 
-    allHeader.style.height = !noInput ? '0px' : '';
-    allHeader.style.opacity = !noInput ? '0' : '';
-    allHeader.style.margin = !noInput ? '0' : '';
+    if (allHeader) {
+      allHeader.style.height = !noInput ? '0px' : '';
+      allHeader.style.opacity = !noInput ? '0' : '';
+      allHeader.style.margin = !noInput ? '0' : '';
+    }
 
     if (document.querySelector('.gm-store-card-loading-placeholder')) { // Still loading cards
       let placeholders = [...document.querySelectorAll('.gm-store-card-loading-placeholder')];
@@ -556,7 +558,7 @@ export default (goosemodScope, gmSettings, Items) => {
       }
     }
 
-    if (!noInput && allHeader.textContent !== '#store.search_results_hint.none#' && cards.every((x) => x.style.display === 'none')) {
+    if (allHeader && !noInput && allHeader.textContent !== '#store.search_results_hint.none#' && cards.every((x) => x.style.display === 'none')) {
       allHeader.style.height = '';
       allHeader.style.opacity = '';
       allHeader.style.margin = '';
@@ -607,7 +609,7 @@ export default (goosemodScope, gmSettings, Items) => {
           }
         }
       }
-    } else if (allHeader.textContent !== '#store.categories.all.themes#' && allHeader.textContent !== '#store.categories.all.plugins#') {
+    } else if (allHeader && allHeader.textContent !== '#store.categories.all.themes#' && allHeader.textContent !== '#store.categories.all.plugins#') {
       allHeader.children[0].textContent = allHeader.dataset.original;
       allHeader.style.cursor = '';
       allHeader.onclick = () => {};
