@@ -104,7 +104,7 @@ export default async (goosemodScope) => {
     }
 
     setTimeout(() => {
-      const buttonEl = document.getElementById(`gm-home-${type}`);
+      const buttonEl = document.getElementById(`gm-home-${type}`).parentElement;
       buttonEl.className = buttonEl.className.replace(LinkButtonClasses.clickable, LinkButtonClasses.selected);
     }, 0);
 
@@ -175,9 +175,8 @@ export default async (goosemodScope) => {
     setTimeout(() => {
       findClasses('scroller-1JbKMe', 'scroller-WSmht3').addEventListener('click', (e) => {
         const buttonEl = findClassInParentTree(e.target, ChannelLinkButtonClasses.link);
-        console.log(buttonEl);
         if (buttonEl && !buttonEl.id.startsWith('gm-home-')) {
-          document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.className = x.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable)); 
+          document.querySelectorAll('[id^="gm-home-"]').forEach((x) => x.parentElement.className = x.parentElement.className.replace(LinkButtonClasses.selected, LinkButtonClasses.clickable)); 
 
           setTimeout(() => {
             if (document.getElementById(`gm-settings-inject`) !== null) {
