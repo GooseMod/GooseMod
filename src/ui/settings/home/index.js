@@ -100,8 +100,7 @@ export default async (goosemodScope) => {
     const parentEl = [...findClasses('content-98HsJk', 'content-1SgpWY').children].find((x, i) => i !== 0 && !x.classList.contains('erd_scroll_detection_container'));
 
     for (const x of findClasses('scroller-1JbKMe', 'scroller-WSmht3').children[0].children) {
-      if (!x.className?.replace) continue;
-      x.children[0].classList.remove(LinkButtonSubClasses.selected);
+      x.children[0]?.classList?.remove?.(LinkButtonSubClasses.selected);
     }
 
     setTimeout(() => {
