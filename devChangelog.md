@@ -1,5 +1,6 @@
-### Based on commit 41ad921, made 11/02 15:09 UTC
+### Based on commit 76c4840, made 11/02 15:21 UTC
 ## Commits this release
+  - [Home] Fix selected class
   - [Home] Fix selection class setting
   - [Home] Fix component change where ID is
   - [Store] Debugging
