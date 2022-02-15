@@ -100,9 +100,9 @@ const init = async function () {
   this.cssCache.load();
 
   while ((window.webpackJsonp === undefined && window.webpackChunkdiscord_app === undefined)) {
-    await sleep(10);
+    await sleep(50);
   }
-  while (!this.webpackModules.findByDisplayName('SettingsView')?.prototype) await sleep(10);
+  while (!this.webpackModules.findByDisplayName('Clickable')) await sleep(50);
 
   for (let x of scopeSetterFncs) {
     try {

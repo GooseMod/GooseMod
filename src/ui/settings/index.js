@@ -152,7 +152,11 @@ export const makeGooseModSettings = () => {
   addToContextMenu(goosemodScope, gmSettings.home);
   if (gmSettings.home) addToHome(goosemodScope);
 
-  loadColorPicker();
+  try {
+    loadColorPicker();
+  } catch (e) {
+    goosemodScope.logger.debug('Failed to load color picker');
+  }
 };
 
 const loadColorPicker = () => { // Force load ColorPicker as it's dynamically loaded

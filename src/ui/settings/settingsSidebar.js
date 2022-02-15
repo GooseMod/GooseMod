@@ -1,7 +1,9 @@
 import sleep from '../../util/sleep';
 
 export default async (goosemodScope, gmSettings) => {
-  const SettingsView = goosemodScope.webpackModules.findByDisplayName('SettingsView');
+  let SettingsView;
+  while (!(SettingsView = goosemodScope.webpackModules.findByDisplayName('SettingsView'))) await sleep(50);
+
 
   const Text = goosemodScope.webpackModules.findByDisplayName('Text');
   const VersionClasses = goosemodScope.webpackModules.findByProps('versionHash', 'line');
