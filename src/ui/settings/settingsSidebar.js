@@ -140,5 +140,7 @@ export default async (goosemodScope, gmSettings) => {
       );
       
       return sections;
-    }));
+  }));
+
+  if (goosemodScope.settings.isSettingsOpen()) goosemodScope.settings.reopenSettings();
 };
