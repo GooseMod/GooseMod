@@ -79,8 +79,8 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
 });
 
 export const patch = (parent, functionName, handler, before = false) => {
-  if (!parent[functionName]) {
-    goosemod.logger.debug('patcher', 'Failed to patch as key doesn\'t exist', parent, functionName);
+  if (typeof parent[functionName] !== 'function') {
+    goosemod.logger.debug('patcher', 'Failed to patch as key isn\'t func', parent, functionName);
     return () => {}; // Stub func to not break
   }
 
