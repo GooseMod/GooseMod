@@ -102,7 +102,7 @@ const init = async function () {
   while ((window.webpackJsonp === undefined && window.webpackChunkdiscord_app === undefined)) {
     await sleep(50);
   }
-  while (!this.webpackModules.findByDisplayName('Clickable')) await sleep(50);
+  while (!this.webpackModules.findByProps('LinkButton')) await sleep(50);
 
   for (let x of scopeSetterFncs) {
     try {

@@ -155,7 +155,7 @@ export const makeGooseModSettings = () => {
   try {
     loadColorPicker();
   } catch (e) {
-    goosemodScope.logger.debug('Failed to load color picker');
+    goosemodScope.logger.debug('settings.load', 'Failed to load color picker');
   }
 };
 

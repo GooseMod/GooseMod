@@ -1,7 +1,7 @@
 export default () => {
 const { React } = goosemod.webpackModules.common;
 
-const SelectTempWrapper = goosemod.webpackModules.findByDisplayName('SelectTempWrapper');
+const { SingleSelect } = goosemod.webpackModules.findByProps('SingleSelect');
 
 const FormText = goosemod.webpackModules.findByDisplayName('FormText');
 
@@ -28,7 +28,7 @@ return class DropdownIndividual extends React.PureComponent {
         className: FormTextClasses.description
       }, this.props.label),
     
-      React.createElement(SelectTempWrapper, {
+      React.createElement(SingleSelect, {
         searchable: false,
 
         onChange: (x) => {
