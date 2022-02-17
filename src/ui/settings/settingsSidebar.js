@@ -6,7 +6,6 @@ export default async (goosemodScope, gmSettings) => {
 
 
   const Text = goosemodScope.webpackModules.findByDisplayName('Text');
-  const VersionClasses = goosemodScope.webpackModules.findByProps('versionHash', 'line');
 
   const { React } = goosemodScope.webpackModules.common;
   
@@ -113,22 +112,22 @@ export default async (goosemodScope, gmSettings) => {
       {
         section: 'CUSTOM',
         element: () => React.createElement('div', {
-          className: VersionClasses.info
+          className: 'info-3pQQBb'
         },
           React.createElement(Text, {
-            className: VersionClasses.line,
+            className: 'line-18uChy',
             size: Text.Sizes.SIZE_12,
             color: Text.Colors.MUTED,
             tag: 'span'
           },
             'GooseMod', ' ', goosemodScope.versioning.version, ' ',
             React.createElement('span', {
-              className: VersionClasses.versionHash
+              className: 'versionHash-mssSIL'
             }, '(', goosemodScope.versioning.hash.substring(0, 7), ')')
           ),
 
           React.createElement(Text, {
-            className: VersionClasses.line,
+            className: 'line-18uChy',
             size: Text.Sizes.SIZE_12,
             color: Text.Colors.MUTED,
             tag: 'span'
