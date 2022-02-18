@@ -6,37 +6,28 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 };
 
-export const patch = (generateElement) => {
-  const MessageHeader = goosemodScope.webpackModules.find((x) => x.default && !x.default.displayName && x.default.toString().indexOf('headerText') > -1);
-  
-  // Advanced-ish patching inside of Username but glitched and overcomplicated
-  if (goosemod.settings.gmSettings.username_next) {
-    return PatcherBase.patch(MessageHeader, 'default', (_args, res) => {
-      const header = goosemod.reactUtils.findInReactTree(res, el => Array.isArray(el?.props?.children) && el.props.children.find(c => c?.props?.message));
-      const [ Username ] = header.props.children;
-      
-      PatcherBase.patch(Username, 'type', (_args, res) => {
-        const [ , Inner ] = res.props.children;
-        
-        PatcherBase.patch(Inner.props, 'children', (_args, res) => {
-          res.props.children = [
-            res.props.children,
-            generateElement(Username.props)
-          ];
-          
-          return res;
-        });
-      });
-      
-      return res;
+export const patch = (generateElement, { before = false } = {}) => {
+  const UsernameReal = goosemod.webpackModules.find((x) => x.default && typeof x.default === 'function' && x.default.toString().includes('e.hideTag'));
+  const { React } = goosemod.webpackModules.common;
+
+  return PatcherBase.patch(UsernameReal, 'default', ([ props ], res) => {
+    const el = generateElement(props);
+    if (!el || el.props.children === '') return;
+
+    const spacer = React.createElement('span', { // Spacer
+      style: {
+        width: '5px',
+        display: 'inline-block'
+      }
     });
-  }
-  
-  return PatcherBase.patch(MessageHeader, 'default', (_args, res) => {
-    const header = goosemod.reactUtils.findInReactTree(res, el => Array.isArray(el?.props?.children) && el.props.children.find(c => c?.props?.message));
-    
-    header.props.children.push(generateElement(header.props.children[0].props));
-    
+
+    delete el.props.style.marginLeft;
+    delete el.props.style.marginRight;
+
+
+    if (!before) res.props.children.push(spacer, el);
+      else res.props.children.unshift(el, spacer);
+
     return res;
   });
 };
