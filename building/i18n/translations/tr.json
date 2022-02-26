@@ -7,7 +7,7 @@
         },
         "settings": "Ayarlar",
         "store": {
-            "repos": "Repolar",
+            "repos": "Depolar",
             "store": "Mağaza",
             "themes": "Temalar",
             "plugins": "Eklentiler",
@@ -242,18 +242,18 @@
     },
     "modals": {
         "external_repo_security": {
-            "main": "Bir repo eklerken görünen, kullanıcıyı olası güvenlik risklerine karşı uyaran onay modelinin içeriği.",
-            "bad_pgp": "Hatalı (yok veya güvenilmeyen) PGP doğrulaması olan bir depo eklerken görünen onay modunun içeriği."
+            "main": "Harici depolar, GooseMod geliştiricileri tarafından denetlenmediğinden güvenlik riskleri oluşturur. Kullanıcılar tarafından eklenen harici depolar nedeniyle karşılaşılacak herhangi bir tehlikeden sorumlu değiliz.\n\nBu deponun sahibine güvenmiyorsanız, Discord kurulumunuzu tehlikeye atabileceğinden onu kullanmayın.\n\nLütfen Tamam düğmesine basarak bu depoyu eklemeyi onaylayın.",
+            "bad_pgp": "Bu depo bilinmiyor veya güvenilir değil (PGP doğrulaması yok), lütfen çok dikkatli olun. Bu deponun sahiplerine tamamen güvendiğinizden emin olun.\n\nBu sorunu çözmek için depo sahibinden PGP desteği eklemesini isteyin.\n\nLütfen Tamam düğmesine basarak bu depoyu eklemeyi yeniden onaylayın."
         }
     },
     "toasts": {
         "add_repo": {
             "invalid_repo": {
-                "text": "Geçersiz Repo",
+                "text": "Geçersiz Depo",
                 "subtext": "Geçersiz Biçim"
             },
             "cancelled": {
-                "text": "Repo Ekleme İptal Edildi",
+                "text": "Depo Ekleme İptal Edildi",
                 "reasons": {
                     "refused": "Reddedilen Güvenlik İstemi",
                     "pgp": "PGP Güvenilmeyen Hata"
