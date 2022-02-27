@@ -16,7 +16,7 @@
         "goosemod": {
             "modules": "GooseMod Module",
             "settings": "GooseMod Einstellungen",
-            "store": "GooseMod Laden"
+            "store": "GooseMod Store"
         },
         "remove": "Entfernen",
         "community": "Gemeinschaft",
@@ -62,8 +62,8 @@
         "search_results_hint": {
             "none": "Keine Ergebnisse gefunden",
             "other_category": {
-                "themes": "Kein Ergebnis gefunden,  meinst  du Themen?",
-                "plugins": "Kein Ergebnis gefunden,  meinst  du Plugins?"
+                "themes": "Kein Ergebnis gefunden, meinst du Themes?",
+                "plugins": "Kein Ergebnis gefunden, meinst du Plugins?"
             }
         }
     },
@@ -86,7 +86,7 @@
                 "title": "GooseMod Badges"
             },
             "main_separators": {
-                "title": "Main Separators",
+                "title": "Haupttrennzeichen",
                 "note": "Zeige Seperatoren zwischen Haupt-GooseMod Einstellungen"
             },
             "headers": {
@@ -235,19 +235,19 @@
                 },
                 "ask_questions": {
                     "subtext": "Stelle eine Frage und bekomme Hilfe",
-                    "title": "Stelle Fragen"
+                    "title": "Fragen stellen"
                 }
             },
             "confirm": "Trete dem GooseMod Discord bei"
         },
         "start": {
             "text": {
-                "subtext": "Mache eine kleine Tour durch GooseMods Kernfunktionen",
+                "subtext": "Mache eine kleine Tour durch GooseMod's Kernfunktionen",
                 "main": "Erfahre mehr über GooseMod"
             },
             "items": {
                 "community": {
-                    "subtext": "Trete unserem Discord bei um Fragen zu stellen, Feedback zu geben, auf den neusten Stand mit Neuigkeiten zu sein und mehr"
+                    "subtext": "Joine unserem Discord um Fragen zu stellen, Feedback abzugeben, auf dem neusten Stand zu sein und mehr"
                 },
                 "settings": {
                     "subtext": "Mehr über die Einstellungen für GooseMod und Plugins erfahren"
