@@ -60,9 +60,8 @@ export default async (goosemodScope, gmSettings) => {
                 
                 return React.createElement('div');
               }
-              
-              const settingsLayerEl = document.querySelector('div[aria-label="USER_SETTINGS"]');
-              const settingsSidebarEl = settingsLayerEl.querySelector('nav > div');
+
+              const settingsSidebarEl = document.querySelector('.standardSidebarView-E9Pc3j nav > div');
               
               if (i[1] === '#terms.store.plugins#' || i[1] === '#terms.store.themes#' || i[1] === '#terms.store.snippets#') { // Settings expansion for Store panel
                 setTimeout(() => {

@@ -46,11 +46,11 @@ export const removeModuleUI = (field, where) => {
 };
 
 export const isSettingsOpen = () => {
-  return document.querySelector('div[aria-label="USER_SETTINGS"] .closeButton-PCZcma') !== null;
+  return document.querySelector('.standardSidebarView-E9Pc3j .closeButton-PCZcma') !== null;
 };
 
 export const closeSettings = () => {
-  let closeEl = document.querySelector('div[aria-label="USER_SETTINGS"] .closeButton-PCZcma');
+  let closeEl = document.querySelector('.standardSidebarView-E9Pc3j .closeButton-PCZcma');
   
   if (closeEl === null) return false;
   
@@ -63,7 +63,7 @@ export const openSettings = () => {
 
 export const openSettingItem = (name) => {
   try {
-    const children = [...(document.querySelector('div[aria-label="USER_SETTINGS"]').querySelector('nav > div')).children];
+    const children = [...document.querySelector('.standardSidebarView-E9Pc3j nav > div').children];
 
     children[1].click(); // To refresh / regenerate
 
