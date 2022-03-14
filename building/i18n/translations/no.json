@@ -126,6 +126,9 @@
                 "imported": "Importert",
                 "store": "Butikk"
             }
+        },
+        "search_results_hint": {
+            "none": "Resultatløst"
         }
     },
     "terms": {
