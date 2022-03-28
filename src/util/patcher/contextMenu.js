@@ -61,7 +61,7 @@ const generateElement = (itemProps, _subItems, wantedNavId, type, extraInfo, { M
       itemProps.checked = !itemProps.checked;
       item.props.checked = itemProps.checked; // Update the actual current item's props too
 
-      getOwnerInstance(document.getElementById(`${wantedNavId}-${itemProps.id}`)).props.onMouseEnter(); // And make it re-render
+      getOwnerInstance(document.querySelector(`[id^="${wantedNavId}-"][id*="${itemProps.id}"]`)).props.onMouseEnter(); // And make it re-render
 
       return itemProps.originalAction(arguments, extraInfo, itemProps.checked);
     }
