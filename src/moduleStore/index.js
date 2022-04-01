@@ -51,7 +51,7 @@ export default {
         const pgpUntrusted = goosemodScope.moduleStoreAPI.verifyPgp(repo).trustState === 'untrusted';
 
         if (pgpUntrusted) { // Repo PGP failed to verify and once had PGP success, refuse to update modules for this repo
-          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update it's modules`, { timeout: 10000, type: 'error', subtext: '#terms.goosemod.store#' });
+          goosemodScope.showToast(`Failed to verify repo ${repo.meta.name}, refusing to update its modules`, { timeout: 10000, type: 'error', subtext: '#terms.goosemod.store#' });
           repoPgpChecks[m.repo] = false;
           continue;
         }

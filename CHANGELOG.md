@@ -168,7 +168,7 @@
     - **Added experimental Snippets option.** More info soon:tm:.
 
   - ### Patcher API
-    - **Added GuildBadges API for adding badges to guild headers.** It's usage is near identical to UserBadges, but adding to the header of guilds instead of badges for users.
+    - **Added GuildBadges API for adding badges to guild headers.** Its usage is near identical to UserBadges, but adding to the header of guilds instead of badges for users.
 
   - ### GooseMod Badges
     - **Added badge to GooseNest server to show it's official.**
@@ -235,7 +235,7 @@
 ## v9.1.0 [2021-06-26]
 
   - ### Settings Improvements
-    - **Home now has improved loading.** Should be faster and no longer showing it's loading for the rest of time.
+    - **Home now has improved loading.** Should be faster and no longer showing its loading for the rest of time.
     - **Settings which need a refresh now have a neat prompt.** Instead of the disclaimer text, it now has a prompt for you after you change them.
     - **Icons now have tooltips.** To clear up any confusion, hovering over any setting icons (experimental or debug) now shows a tooltip saying what they mean.
     - **New debug settings.** For plugin developers and us, we now have new debug settings to help test and try out things.
@@ -463,7 +463,7 @@
     - Fixed Module Store not working with 17 long user ids
     - Fixed failing to inject when using a language without GooseMod translation
     - Fixed first time wizard not working and causing errors
-    - Fixed "Reset GooseMod" not working, also tweaked it's confirmation dialog description to clarify further and simplify
+    - Fixed "Reset GooseMod" not working, also tweaked its confirmation dialog description to clarify further and simplify
 
   - ### Tweaks
     - Removed excess logging in the notices Patcher API

@@ -43,7 +43,7 @@ const showSponsorModal = () => {
         
         },
 
-        React.createElement('div', {}, `You can sponsor (donate regularly or one-time) GooseMod to help support it's development.`),
+        React.createElement('div', {}, `You can sponsor (donate regularly or one-time) GooseMod to help support its development.`),
 
         React.createElement(PremiumFeaturesList, {
           columns: 2,
