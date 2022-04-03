@@ -49,11 +49,12 @@ export const add = (name, description, execute, options = []) => {
   mod.BUILT_IN_COMMANDS.push({
     applicationId: applicationId,
 
-    type: 0,
+    type: 1,
     target: 1,
 
     description,
     name,
+    displayName: name,
     execute,
     options,
 
