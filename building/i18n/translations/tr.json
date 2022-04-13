@@ -25,7 +25,7 @@
     "settings": {
         "items": {
             "headers": {
-                "utilities": "Yardımcı program",
+                "utilities": "Araçlar",
                 "appearance": "Görünüm",
                 "backup": "Yedek",
                 "experimental": "Deneysel",
@@ -87,7 +87,7 @@
             },
             "subtexts": {
                 "experimental_warning": "Deneysel ayarlar büyük olasılıkla eksik ve kararsızdır, bu da deneyimin azalmasına neden olabilir",
-                "tweaks_description": "GooseMod'u istediğiniz gibi yapmak için küçük kullanıcı arabirimi değişiklikleri gibi küçük değişiklikler"
+                "tweaks_description": "GooseMod'u istediğiniz gibi yapmak için kullanıcı arabirimi değişiklikleri gibi küçük değişiklikler"
             },
             "goosemod_change_log": {
                 "title": "GooseMod Değişim Günlüğü",
@@ -236,7 +236,7 @@
         },
         "pgp": {
             "verified": "PGP Doğrulandı",
-            "untrusted": "PGP Güvenilmeyen",
+            "untrusted": "Güvenilmeyen PGP",
             "unknown": "PGP Yok"
         }
     },
