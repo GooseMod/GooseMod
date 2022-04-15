@@ -1,2 +1,3 @@
-### Based on commit b8d0c14, made 13/04 18:04 UTC
+### Based on commit 5272a75, made 15/04 16:31 UTC
 ## Commits this release
+  - fix commands (#68)
