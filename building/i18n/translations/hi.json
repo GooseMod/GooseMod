@@ -1,1 +1,42 @@
-{}
+{
+    "terms": {
+        "goosemod": {
+            "modules": "गूसमॉड मॉड्यूल्स",
+            "store": "गूसमॉड स्टोर",
+            "settings": "गूसमॉड सेटिंग्स"
+        },
+        "settings": "सेटिंग्स",
+        "changelog": "चेंजलॉग/नया क्या है",
+        "community": "समाज",
+        "store": {
+            "store": "स्टोर",
+            "themes": "थीमस",
+            "modules": "मॉड्यूल्स",
+            "developers": "डेवलपर्स",
+            "plugins": "प्लगइन्स"
+        },
+        "install": "इंस्टॉल",
+        "add": "जोड़ना",
+        "refresh": "दोबारा लोड करें",
+        "remove": "हटाना"
+    },
+    "store": {
+        "options": {
+            "tabs": {
+                "imported": "इंस्टॉल्ड",
+                "store": "स्टोर"
+            },
+            "search": {
+                "placeholder": {
+                    "themes": "थीम ढूंढें",
+                    "plugins": "प्लगइन्स ढूंढें"
+                }
+            }
+        },
+        "search_results_hint": {
+            "other_category": {
+                "plugins": "कोई परिणाम नहीं मिला, क्या आपका मतलब प्लगइन्स से था?"
+            }
+        }
+    }
+}
