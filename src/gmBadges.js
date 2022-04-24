@@ -114,8 +114,12 @@ const badgeUsers = {
     '202740603790819328', // Snow Fox / Lisa
     '541210648982585354', // Heli / heli_is_for_noob
     '516750892372852754', // aspy uwu
-    '192760945766957066', //creatable
-    
+    '192760945766957066', // creatable
+    '206837744658415616', // HughWoatmeight
+    '889366461703913573', // joesteen
+    '294468537899024384', // Ryannn
+    '910923319413469295', // Soul
+    '688437973330428047', // TalkingBenStan
   ],
 
   dev: [ // People actively developing GooseMod itself
