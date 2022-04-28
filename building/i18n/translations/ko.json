@@ -1,1 +1,15 @@
-{}
+{
+    "terms": {
+        "goosemod": {
+            "store": "GooseMod 스토어",
+            "settings": "GooseMod 설정",
+            "modules": "GooseMod 모듈"
+        },
+        "add": "추가",
+        "remove": "제거",
+        "install": "설치",
+        "refresh": "새로고침",
+        "settings": "설정",
+        "changelog": "변경 로그"
+    }
+}
