@@ -10,6 +10,261 @@
         "install": "설치",
         "refresh": "새로고침",
         "settings": "설정",
-        "changelog": "변경 로그"
+        "changelog": "변경 로그",
+        "store": {
+            "themes": "테마",
+            "developers": "개발자",
+            "store": "스토어",
+            "plugins": "플러그인",
+            "snippets": "스니펫",
+            "modules": "모듈",
+            "repos": "저장소"
+        },
+        "community": "커뮤니티"
+    },
+    "store": {
+        "search_results_hint": {
+            "none": "검색 결과를 찾을 수 없음",
+            "other_category": {
+                "plugins": "검색된 결과가 없습니다. 플러그인을 찾으시는 건가요?",
+                "themes": "검색된 결과가 없습니다. 테마를 찾으시는 건가요??"
+            }
+        },
+        "options": {
+            "search": {
+                "placeholder": {
+                    "themes": "테마 검색",
+                    "plugins": "플러그인 검색"
+                }
+            },
+            "sort": {
+                "label": "정렬 기준",
+                "stars": "별점",
+                "az": "A-Z순",
+                "last_updated": "마지막 업데이트"
+            },
+            "author": {
+                "label": "작성자",
+                "all": "모두"
+            },
+            "tabs": {
+                "imported": "설치됨",
+                "store": "스토어"
+            }
+        },
+        "categories": {
+            "top_starred": "최고 별점",
+            "recently_updated": "최근 업데이트됨",
+            "upcoming": "출시 예정",
+            "all": {
+                "themes": "모든 테마",
+                "plugins": "모든 플러그인"
+            }
+        },
+        "pgp": {
+            "verified": "PGP 검증됨",
+            "untrusted": "PGP 신뢰할 수 없음",
+            "unknown": "PGP 없음"
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "외부 저장소는 GooseMod 개발자가 제어하지 않기 때문에 보안 위험이 있습니다. 사용자가 추가한 외부 저장소로 인한 위험에 대해서는 책임지지 않습니다.\n\n이 저장소의 소유자를 신뢰할 수 없는 경우 사용자의 Discord 설치를 방해할 수 있으므로 사용하지 마십시오.\n\n확인을 눌러 이 저장소 추가를 확인하십시오.",
+            "bad_pgp": "이 저장소는 알 수 없거나 신뢰할 수 없습니다(PGP 검증 없음). 각별히 주의하십시오. 이 저장소의 소유자를 완전히 신뢰하는지 확인하십시오.\n\n이 문제를 해결하려면 저장소 유지관리자에게 PGP 지원을 추가하도록 요청하십시오.\n\n확인을 눌러 이 저장소 추가를 다시 확인하십시오."
+        }
+    },
+    "settings": {
+        "items": {
+            "headers": {
+                "tweaks": "트윅",
+                "experimental": "실험적",
+                "appearance": "모양새",
+                "utilities": "유틸리티",
+                "backup": "백업"
+            },
+            "subtexts": {
+                "tweaks_description": "작은 UI 변경과 같은 사소한 변경으로 GooseMod를 원하는 대로 만들 수 있습니다",
+                "experimental_warning": "실험적 설정은 불완전하고 불안정하여, 경험의 감소로 이어질 수 있습니다"
+            },
+            "start_tour": {
+                "title": "둘러보기 시작",
+                "button": "둘러보기",
+                "note": "GooseMod의 둘러보기 시작하기 다시 살펴보기"
+            },
+            "main_separators": {
+                "title": "메인 구분자",
+                "note": "메인 GooseMod 설정 사이에 구분자 표시"
+            },
+            "auto_update": {
+                "note": "매시간 자동으로 저장소 및 모듈 업데이트",
+                "title": "자동 업데이트"
+            },
+            "copy_debug_info": {
+                "title": "디버그 정보 복사",
+                "note": "보고 및 디버깅을 위해 설정 및 GooseMod에 대한 정보를 복사합니다",
+                "button": "복사하기"
+            },
+            "purge_caches": {
+                "button": "지우기",
+                "title": "캐시 지우기",
+                "note": "GooseMod가 사용하는 대부분의 캐시 지우기 (완전히 제거)"
+            },
+            "reset_goosemod": {
+                "button": "재설정",
+                "title": "GooseMod 재설정",
+                "note": "GooseMod완전히 재설정: 모든 기본 설정과 모듈을 제거합니다. 처음 설치하는 것처럼"
+            },
+            "create_backup": {
+                "title": "백업 만들기",
+                "note": "GooseMod 모듈 및 설정을 백업하기위한 파일 만들기",
+                "button": "백업"
+            },
+            "restore_backup": {
+                "title": "백업 복원하기",
+                "button": "복원하기",
+                "note": "백업 파일을 통해 사용자의 GooseMod 모듈 및 설정을 복원하고, **신뢰할 수 있는 백업만 복원**합니다"
+            },
+            "placeholder_image": {
+                "note": "이미지가 없는 모듈의 경우 스토어에서 자리표시자 이미지 사용",
+                "title": "자리표시자 이미지"
+            },
+            "goosemod_badges": {
+                "title": "GooseMod 배지",
+                "note": "GooseMod의 배지 표시"
+            },
+            "goosemod_change_log": {
+                "title": "GooseMod 변경 로그",
+                "note": "GooseMod \"변경 로그\" 설정 표시"
+            },
+            "store_in_home": {
+                "title": "홈 화면의 스토어",
+                "note": "설정 대신 홈에 GooseMod 스토어 옵션 넣기"
+            },
+            "development_channel": {
+                "title": "개발 채널",
+                "note": "실험적 개발 GooseMod 빌드 사용"
+            },
+            "data_attributes": {
+                "title": "데이터 속성",
+                "note": "사용할 일부 테마에 대해 일부 요소에 데이터 속성 추가하기"
+            },
+            "snippets": {
+                "title": "스니펫",
+                "note": "스토어에서 스니펫 탭 활성화"
+            },
+            "force_theme_settings": {
+                "title": "강제 테마 설정",
+                "note": "모든 테마에 대해 강제 자동 생성 설정"
+            },
+            "collapsible_home_category": {
+                "title": "접을 수 있는 홈 범주",
+                "note": "아이콘을 통해 홈 범주를 접을 수 있도록 합니다"
+            }
+        }
+    },
+    "ootb": {
+        "start": {
+            "confirm": "더 알아보기",
+            "cancel": "관심 없음",
+            "items": {
+                "store": {
+                    "subtext": "GooseMod의 스토어 및 그 내용에 대해 알아보기"
+                },
+                "settings": {
+                    "subtext": "GooseMod 및 플러그인 설정 알아보기"
+                },
+                "community": {
+                    "subtext": "Discord에 가입하여 질문하고, 피드백을 제공하고, 최신 소식을 받아보세요"
+                }
+            },
+            "text": {
+                "main": "GooseMod에 대해 알아보기",
+                "subtext": "GooseMod의 핵심 기능에 대해 짧게 둘러보기"
+            }
+        },
+        "community": {
+            "items": {
+                "news": {
+                    "title": "소식",
+                    "subtext": "GooseMod 및 관련 프로젝트에 대한 최신 소식 및 공지 사항 받기"
+                },
+                "ask_questions": {
+                    "title": "질문하기",
+                    "subtext": "질문하고 지원 받기"
+                },
+                "get_involved": {
+                    "title": "참여하기",
+                    "subtext": "제안에 대한 도움, 다른 사람 지원, 기타 드등"
+                }
+            },
+            "confirm": "GooseMod Discord 가입하기",
+            "text": {
+                "main": "GooseMod의 커뮤니티 가입하기",
+                "subtext": "더 많은 정보를 원하시면 Discord에 가입하세요"
+            }
+        },
+        "settings": {
+            "text": {
+                "subtext": "변경할 수 있는 다양한 옵션이 있습니다",
+                "main": "기능을 사용자 정의하기 위한 GooseMod의 설정 사용"
+            },
+            "confirm": "GooseMod 설정 보기",
+            "items": {
+                "experimental_features": {
+                    "title": "실험적 기능",
+                    "subtext": "새로운 실험적 기능 체험하기"
+                },
+                "utilities": {
+                    "title": "유틸리티",
+                    "subtext": "백업 만들기, GooseMod 재설정 등"
+                },
+                "tweaks": {
+                    "title": "트윅",
+                    "subtext": "GooseMod를 원하는 방식으로 트윅"
+                }
+            }
+        },
+        "themes": {
+            "text": {
+                "subtext": "100개 이상의 테마 중에서 선택하여 사용자 인터페이스를 조정하고 향상시키십시오",
+                "main": "테마로 사용자의 Discord를 멋있게 꾸미기"
+            },
+            "confirm": "테마 찾아보기"
+        },
+        "store": {
+            "confirm": "홈 화면에서 스토어 보기",
+            "text": {
+                "main": "스토어에서 테마 및 플러그인 찾아보기",
+                "subtext": "GooseMod는 여러분이 쉽게 둘러보고 설치할 수 있는 자체 스토어를 사용합니다"
+            }
+        },
+        "plugins": {
+            "confirm": "플러그인 찾아보기",
+            "text": {
+                "main": "Discord 앱의 기능을 확장할 수 있습니다",
+                "subtext": "플러그인은 앱 자체의 개선으로 사용자의 경험을 향상시킵니다"
+            }
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "text": "잘못된 저장소",
+                "subtext": "잘못된 형식"
+            },
+            "cancelled": {
+                "text": "저장소 추가 중 취소됨",
+                "reasons": {
+                    "refused": "보안 프롬프트 거부됨",
+                    "pgp": "PGP 신뢰할 수 없는 실패"
+                }
+            }
+        }
+    },
+    "badges": {
+        "sponsor": "GooseMod 후원자",
+        "translator": "GooseMod 번역자",
+        "developer": "GooseMod 개발자",
+        "guild": "GooseMod 공식 Discord"
     }
 }
