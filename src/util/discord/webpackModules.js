@@ -36,7 +36,15 @@ export const findByPropsAll = (...props) => findAll((m) => props.every((x) => m[
 
 export const findByPrototypes = (...protos) => find((m) => m.prototype && protos.every((x) => m.prototype[x] !== undefined)); // Like find by props but prototype
 
-export const findByDisplayName = (name) => find((m) => m.displayName === name); // Find by displayName
+export const findByDisplayName = (name) => {
+  const ret = find((m) => m.displayName === name); // Find by displayName
+
+  // Jank fixes for old names / etc, temporarily
+  if (!ret && name === 'Text') return find((m) => m.displayName === 'LegacyText'); // Text -> LegacyText
+
+  return ret;
+};
+
 export const findByDisplayNameAll = (name) => findAll((m) => m.displayName === name); // Find *all* by displayName
 
 export const findByModuleId = (id) => wpRequire.c[id];
