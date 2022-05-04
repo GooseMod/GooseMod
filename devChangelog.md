@@ -1,6 +1,2 @@
-### Based on commit 747e57d, made 04/05 18:58 UTC
+### Based on commit d46541b, made 04/05 19:05 UTC
 ## Commits this release
-  - [Webpack] Add jank fix for renamed module
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
