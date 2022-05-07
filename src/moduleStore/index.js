@@ -186,12 +186,12 @@ export default {
 
       // If themes / plugins open
       if (document.querySelector(`#gm-settings-inject`)) {
-        const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
+        const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
 
         if (cardEls.length === 0) return;
 
         for (const cardEl of cardEls) {
-          const buttonEl = cardEl.querySelector(`.lookFilled-yCfaCM`);
+          const buttonEl = cardEl.querySelector(`.colorBrand-I6CyqQ`);
 
           buttonEl.className = buttonEl.className.replace('lookFilled-yCfaCM colorBrand-I6CyqQ', 'lookOutlined-3yKVGo colorRed-rQXKgM');
           buttonEl.textContent = '#terms.remove#';
@@ -217,7 +217,7 @@ export default {
 
     // If themes / plugins open
     if (document.querySelector(`#gm-settings-inject`)) {
-      const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
+      const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
       if (cardEls.length === 0) return;
 
@@ -366,7 +366,7 @@ To continue importing this module the dependencies need to be imported.`,
 
           // If themes / plugins open
           if (document.querySelector(`#gm-settings-inject`)) {
-            const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-21JIj7`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
+            const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
 
             if (cardEls.length === 0) return;
 
