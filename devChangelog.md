@@ -1,3 +1,2 @@
-### Based on commit c0cafc1, made 15/05 15:47 UTC
+### Based on commit 7c85041, made 15/05 15:48 UTC
 ## Commits this release
-  - [Webpack] Add jank fix for Header too
