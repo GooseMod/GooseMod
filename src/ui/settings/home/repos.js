@@ -64,7 +64,7 @@ export default async () => {
   const ModalStuff = goosemod.webpackModules.findByProps('ModalRoot');
   const ChangelogModalClasses = goosemod.webpackModules.findByProps('socialLink', 'date');
 
-  const Header = goosemod.webpackModules.findByDisplayName('HeaderLegacy');
+  const Header = goosemod.webpackModules.findByDisplayName('LegacyHeader');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   const { openModal } = goosemod.webpackModules.findByProps('openModal', 'updateModal');
