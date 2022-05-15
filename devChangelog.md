@@ -1,4 +1,2 @@
-### Based on commit 6db3ca0, made 15/05 16:05 UTC
+### Based on commit 52d674a, made 15/05 16:07 UTC
 ## Commits this release
-  - [UI > Repos] Fix last fix fully
-  - [Chore] Trigger rebuild
