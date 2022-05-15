@@ -41,6 +41,7 @@ export const findByDisplayName = (name) => {
 
   // Jank fixes for old names / etc, temporarily
   if (!ret && name === 'Text') return find((m) => m.displayName === 'LegacyText'); // Text -> LegacyText
+  if (name === 'Header') return find((m) => m.displayName === 'LegacyHeader'); // Header -> LegacyHeader
 
   return ret;
 };
