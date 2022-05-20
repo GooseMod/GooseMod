@@ -108,7 +108,7 @@ const init = async function () {
     try {
       await x(this);
     } catch (e) {
-      console.warn('[GooseMod] Failed to scopeset', e, x);
+      console.error('[GooseMod] Failed to scopeset', e, x);
     }
   }
 

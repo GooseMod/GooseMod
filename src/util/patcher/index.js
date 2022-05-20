@@ -24,14 +24,11 @@ export const username = _username;
 export const guildBadges = _guildBadges;
 
 export const setThisScope = (scope) => {
-  _contextMenu.setThisScope(scope);
-  _miniPopover.setThisScope(scope);
-  _channelTextAreaButtons.setThisScope(scope);
-  _commands.setThisScope(scope);
-  _internalMessage.setThisScope(scope);
-  _notices.setThisScope(scope);
-  _headerBarButtons.setThisScope(scope);
-  _userBadges.setThisScope(scope);
-  _username.setThisScope(scope);
-  _guildBadges.setThisScope(scope);
+  for (const fn of [ _contextMenu.setThisScope, _miniPopover.setThisScope, _channelTextAreaButtons.setThisScope, _commands.setThisScope, _internalMessage.setThisScope, _notices.setThisScope, _headerBarButtons.setThisScope, _userBadges.setThisScope, _username.setThisScope, _guildBadges.setThisScope ]) {
+    try {
+      fn(scope);
+    } catch (e) {
+      console.error('[GooseMod] Failed to scope patcher module', e, fn);
+    }
+  }
 };
