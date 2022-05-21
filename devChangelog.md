@@ -1,2 +1,3 @@
-### Based on commit 3cdd3c1, made 21/05 09:47 UTC
+### Based on commit 55046d3, made 21/05 10:18 UTC
 ## Commits this release
+  - [OOTB] Fix various minor UI issues due to Discord updates
