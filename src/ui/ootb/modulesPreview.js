@@ -16,7 +16,7 @@ return class ModulesPreview extends React.PureComponent {
   render() {
     setTimeout(() => {
       try {
-        const splashes = document.querySelectorAll('.discoverPreview-1TgRL4 .splashImage-352DQ1');
+        const splashes = document.querySelectorAll('.gm-modules-preview [class*="splashImage"]');
 
         splashes[splashes.length - 3].src = baseImages(this.props.modules[1])[0];
         splashes[splashes.length - 2].src = baseImages(this.props.modules[0])[0];
@@ -26,11 +26,13 @@ return class ModulesPreview extends React.PureComponent {
       }
     }, 100);
 
+    const cardClass = `placeholderCard-2jZYky`;
+
     return React.createElement('div', {
-      className: 'discoverPreview-1TgRL4 gm-modules-preview'
+      className: 'gm-modules-preview'
     },
       React.createElement(DiscoverStaticGuildCard, {
-        className: 'placeholderCard-3Zu1qO',
+        className: cardClass,
 
         disabled: true,
         small: true,
@@ -49,7 +51,7 @@ return class ModulesPreview extends React.PureComponent {
       }),
 
       React.createElement(DiscoverStaticGuildCard, {
-        className: 'placeholderCard-3Zu1qO',
+        className: cardClass,
 
         guild: {
           banner: null,
@@ -64,7 +66,7 @@ return class ModulesPreview extends React.PureComponent {
       }),
 
       React.createElement(DiscoverStaticGuildCard, {
-        className: 'placeholderCard-3Zu1qO',
+        className: cardClass,
 
         disabled: true,
         small: true,

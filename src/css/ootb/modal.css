@@ -4,4 +4,9 @@
 
 .gm-modules-preview {
   margin-bottom: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: start;
 }
