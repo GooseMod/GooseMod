@@ -18,7 +18,7 @@ export const themes = async () => {
 
   // const RoutingUtils = goosemod.webpackModules.findByProps('transitionTo');
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   const possibleThemes = goosemod.moduleStoreAPI.modules.filter((x) => x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
@@ -73,7 +73,7 @@ export const plugins = async () => {
 
   // const RoutingUtils = goosemod.webpackModules.findByProps('transitionTo');
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   const possiblePlugins = goosemod.moduleStoreAPI.modules.filter((x) => !x.tags.includes('theme') && x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
@@ -128,7 +128,7 @@ export const store = async () => {
 
   const RoutingUtils = goosemod.webpackModules.findByProps('transitionTo');
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   const possibleModules = goosemod.moduleStoreAPI.modules.filter((x) => x.images && x.images[0]).sort((a, b) => b.github?.stars - a.github?.stars);
@@ -181,7 +181,7 @@ export const settings = async () => {
 
   const { React } = goosemod.webpackModules.common;
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
@@ -251,7 +251,7 @@ export const community = async () => {
 
   const { React } = goosemod.webpackModules.common;
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
@@ -308,7 +308,7 @@ export const start = async () => {
 
   const { React } = goosemod.webpackModules.common;
 
-  const Header = goosemod.webpackModules.find((x) => x.displayName === 'Header' && x.Sizes);
+  const Header = goosemod.webpackModules.findByDisplayName('Header');
   const Text = goosemod.webpackModules.findByDisplayName('Text');
 
   goosemod.webpackModules.find((x) => x.show && x.show.toString().includes('confirmText')).show({
