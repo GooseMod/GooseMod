@@ -1,5 +1,2 @@
-### Based on commit 2556790, made 21/05 09:45 UTC
+### Based on commit 3cdd3c1, made 21/05 09:47 UTC
 ## Commits this release
-  - [OOTB] Fix getting Header from Webpack
-  - [Patcher > Index] Try wrap each patcher module for more reliability
-  - [Patcher > Notices] Fix patching base component
