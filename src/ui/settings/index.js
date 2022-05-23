@@ -10,7 +10,7 @@ import addToSettingsSidebar from './settingsSidebar';
 import addBaseItems from './baseItems';
 
 import getItems from './items';
-let Items = {};
+export let Items = {};
 
 let goosemodScope = {};
 
@@ -135,9 +135,9 @@ export const _createItem = (name, content, container = true) => {
       className: name === '#terms.store.plugins#' || name === '#terms.store.themes#' ? 'gm-store-settings' : ''
     },
 
-    React.createElement(FormTitle, { tag: 'h1' }, name),
+    content[1].prototype?.render ? null : React.createElement(FormTitle, { tag: 'h1' }, name),
 
-    makeContent()
+    content[1].prototype?.render ? React.createElement(content[1]) : makeContent()
   ) : React.createElement('div', { },
     makeContent()
   );

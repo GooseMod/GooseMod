@@ -3,6 +3,7 @@ export default async () => ({
   header: (await import('./header')).default(),
   toggle: (await import('./toggle')).default(),
   text: (await import('./text')).default(),
+  'text-and-child': (await import('./text-and-child')).default(),
   'text-and-button': (await import('./text-and-button')).default(),
   'text-and-color': (await import('./text-and-color')).default(),
   button: (await import('./button')).default(),
