@@ -3,3 +3,11 @@
 .layer-v9HyYc {
   z-index: 999;
 }
+
+.container-ZMc96U.themed-Hp1KC_ {
+  --background-primary: unset;
+}
+
+.container-2cd8Mz {
+  background: var(--background-primary) !important;
+}
