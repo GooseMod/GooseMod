@@ -1,3 +1,5 @@
-### Based on commit 48bf4a5, made 23/05 20:34 UTC
+### Based on commit 37371b5, made 24/05 19:20 UTC
 ## Commits this release
+  - [Index] Fix syntax error from last commit
+  - [Index] Add Topaz storage flag
   - [Settings] Add React settings support
