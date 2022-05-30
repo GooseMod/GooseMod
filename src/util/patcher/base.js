@@ -112,6 +112,8 @@ export const patch = (parent, functionName, handler, before = false) => {
       }
     }
 
+    if (parent[functionName].displayName?.endsWith('Item')) toHarden = false;
+
     modIndex[id][keyName] = {
       before: [],
       after: [],
