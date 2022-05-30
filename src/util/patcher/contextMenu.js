@@ -84,6 +84,7 @@ export const patch = (type, itemProps) => {
   itemProps.originalAction = itemProps.action;
 
   return PatcherBase.patch(Menu, 'default', (args) => {
+    if (args.length < 1) return;
     const [ { navId, children } ] = args;
 
     if (navId !== wantedNavId &&
