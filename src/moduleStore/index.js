@@ -201,7 +201,7 @@ export default {
         }
       }
     } catch (e) {
-      goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: '#terms.goosemod.store#' });
+      // goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: '#terms.goosemod.store#' });
       console.error(e);
     }
   },
