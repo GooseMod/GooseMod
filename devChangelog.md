@@ -1,5 +1,6 @@
-### Based on commit 0000cdf, made 30/05 21:16 UTC
+### Based on commit ab99d77, made 31/05 10:32 UTC
 ## Commits this release
+  - [Store] Disable failed to import error toast
   - [Patcher] Don't harden MenuItems
   - [Patcher > ContextMenu] Don't error with empty patch args
   - [Index] Make Topaz injection less strict
