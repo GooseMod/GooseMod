@@ -191,7 +191,7 @@ export default {
         if (cardEls.length === 0) return;
 
         for (const cardEl of cardEls) {
-          const buttonEl = cardEl.querySelector(`.colorBrand-I6CyqQ`);
+          const buttonEl = cardEl.querySelector(`.lookFilled-yCfaCM`);
 
           buttonEl.className = buttonEl.className.replace('lookFilled-yCfaCM colorBrand-I6CyqQ', 'lookOutlined-3yKVGo colorRed-rQXKgM');
           buttonEl.textContent = '#terms.remove#';
@@ -222,7 +222,7 @@ export default {
       if (cardEls.length === 0) return;
 
       for (const cardEl of cardEls) {
-        const buttonEl = cardEl.querySelector(`.colorRed-rQXKgM`);
+        const buttonEl = cardEl.querySelector(`.lookOutlined-3yKVGo`);
 
         buttonEl.className = buttonEl.className.replace('lookOutlined-3yKVGo colorRed-rQXKgM', 'lookFilled-yCfaCM colorBrand-I6CyqQ');
         buttonEl.textContent = '#terms.install#';
