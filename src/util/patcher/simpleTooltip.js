@@ -22,7 +22,7 @@ return class SimpleTooltip extends React.PureComponent {
 
         const ref = document.querySelector(`.gm-tooltipref-${this.state.refId}`).getBoundingClientRect();
 
-        el.outerHTML = `<div class="layer-2aCOJ3 disabledPointerEvents-2AmYRc gm-tooltip" style="position: absolute; top: -1000px; left: -1000px;"><div class="${TooltipClasses[`tooltip${this.props.position[0].toUpperCase() + this.props.position.substring(1)}`]} tooltip-14MtrL tooltipPrimary-3qLMbS tooltipDisablePointerEvents-1huO19" style="opacity: 1; transform: none;"><div class="tooltipPointer-3L49xb"></div><div class="tooltipContent-Nejnvh">${this.props.text}</div></div></div>`;
+        el.outerHTML = `<div class="layer-2aCOJ3 disabledPointerEvents-2AmYRc gm-tooltip" style="position: absolute; top: -1000px; left: -1000px;"><div class="${TooltipClasses[`tooltip${this.props.position[0].toUpperCase() + this.props.position.substring(1)}`]} tooltip-14MtrL tooltipPrimary-3qLMbS tooltipDisablePointerEvents-1huO19" style="opacity: 1; transform: none;"><div class="tooltipPointer-3L49xb"></div><div class="tooltipContent-Nejnvh tooltip-1j5_GT text-sm-normal-3Zj3Iv">${this.props.text}</div></div></div>`;
 
         el = document.querySelector('.gm-tooltip');
 
