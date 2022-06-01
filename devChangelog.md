@@ -1,5 +1,6 @@
-### Based on commit ab99d77, made 31/05 10:32 UTC
+### Based on commit cb83ddc, made 01/06 10:55 UTC
 ## Commits this release
+  - [Patcher > SimpleTooltip] Fix classes
   - [Store] Disable failed to import error toast
   - [Patcher] Don't harden MenuItems
   - [Patcher > ContextMenu] Don't error with empty patch args
