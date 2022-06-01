@@ -18,13 +18,11 @@ return class SimpleTooltip extends React.PureComponent {
         if (document.querySelector('.gm-tooltip')) document.querySelector('.gm-tooltip').remove();
 
         let el = document.createElement('div');
-        document.querySelector('.layerContainer-yqaFcK').appendChild(el);
+        document.querySelectorAll('.layerContainer-2v_Sit')[1].appendChild(el);
 
         const ref = document.querySelector(`.gm-tooltipref-${this.state.refId}`).getBoundingClientRect();
 
-        const tooltipText = this.props.text;
-
-        el.outerHTML = `<div class="layer-v9HyYc disabledPointerEvents-1ptgTB gm-tooltip" style="position: absolute; top: -1000px; left: -1000px;"><div class="tooltip-2QfLtc ${TooltipClasses[`tooltip${this.props.position[0].toUpperCase() + this.props.position.substring(1)}`]} tooltipPrimary-1d1ph4 tooltipDisablePointerEvents-3eaBGN" style="opacity: 1; transform: none;"><div class="tooltipPointer-3ZfirK"></div><div class="tooltipContent-bqVLWK">${tooltipText}</div></div></div>`;
+        el.outerHTML = `<div class="layer-2aCOJ3 disabledPointerEvents-2AmYRc gm-tooltip" style="position: absolute; top: -1000px; left: -1000px;"><div class="${TooltipClasses[`tooltip${this.props.position[0].toUpperCase() + this.props.position.substring(1)}`]} tooltip-14MtrL tooltipPrimary-3qLMbS tooltipDisablePointerEvents-1huO19" style="opacity: 1; transform: none;"><div class="tooltipPointer-3L49xb"></div><div class="tooltipContent-Nejnvh">${this.props.text}</div></div></div>`;
 
         el = document.querySelector('.gm-tooltip');
 
@@ -48,7 +46,7 @@ return class SimpleTooltip extends React.PureComponent {
       },
 
       onMouseLeave: () => {
-        document.querySelector('.gm-tooltip').remove();
+        if (document.querySelector('.gm-tooltip')) document.querySelector('.gm-tooltip').remove();
       },
 
       text: this.props.text,
