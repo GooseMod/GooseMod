@@ -1,5 +1,6 @@
-### Based on commit cb83ddc, made 01/06 10:55 UTC
+### Based on commit 8f21f62, made 01/06 10:59 UTC
 ## Commits this release
+  - [Patcher > SimpleTooltip] More fixup
   - [Patcher > SimpleTooltip] Fix classes
   - [Store] Disable failed to import error toast
   - [Patcher] Don't harden MenuItems
