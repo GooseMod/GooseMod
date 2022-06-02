@@ -15,7 +15,7 @@ export const all = () => Object.keys(wpRequire.c).map((x) => wpRequire.c[x].expo
 
 export const find = (filter, tryDefault = true) => { // Generic find utility
   for (const m of all()) {
-    if (tryDefault && m.default && filter(m.default)) return m.default;
+    if (!filter.toString().includes('.default') && tryDefault && m.default && filter(m.default)) return m.default;
     if (filter(m)) return m;
   }
 };
@@ -24,7 +24,7 @@ export const findAll = (filter, tryDefault = true) => { // Find but return all m
   const out = [];
 
   for (const m of all()) {
-    if (tryDefault && m.default && filter(m.default)) out.push(m.default);
+    if (!filter.toString().includes('.default') && tryDefault && m.default && filter(m.default)) out.push(m.default);
     if (filter(m)) out.push(m);
   }
 
