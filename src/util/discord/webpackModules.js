@@ -13,14 +13,25 @@ if (window.webpackJsonp) { // Older
 
 export const all = () => Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x); // Get all modules
 
-export const find = (filter, tryDefault = true) => { // Generic find utility
+const wrapFilter = (filter) => (mod) => {
+  try {
+    return filter(mod);
+  } catch {
+    return false;
+  }
+};
+
+export const find = (_filter, tryDefault = true) => { // Generic find utility
+  const filter = wrapFilter(_filter);
+
   for (const m of all()) {
     if (tryDefault && m.default && filter(m.default)) return m.default;
     if (filter(m)) return m;
   }
 };
 
-export const findAll = (filter, tryDefault = true) => { // Find but return all matches, not just first
+export const findAll = (_filter, tryDefault = true) => { // Find but return all matches, not just first
+  const filter = wrapFilter(_filter);
   const out = [];
 
   for (const m of all()) {
