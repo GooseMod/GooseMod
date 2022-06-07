@@ -253,7 +253,7 @@ const init = async function () {
   }
 
   if (this.storage.get('goosemodTopaz')) setTimeout(async () => {
-    eval(await (await fetch('https://goosemod.github.io/topaz/out.js', { cache: 'no-store' })).text());
+    (1, eval)(await (await fetch('https://goosemod.github.io/topaz/out.js', { cache: 'no-store' })).text());
   }, 1000);
 
   ProfileStoreInit();
