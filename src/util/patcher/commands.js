@@ -5,56 +5,58 @@ export const setThisScope = (scope) => {
   goosemodScope = scope;
 
   Commands = goosemodScope.webpackModules.findByProps('BUILT_IN_COMMANDS', 'BUILT_IN_SECTIONS');
-  const Hook = goosemodScope.webpackModules.findByProps('useApplicationCommandsDiscoveryState');
 
-  goosemodScope.patcher.patch(Hook, 'useApplicationCommandsDiscoveryState', (_, res) => {
-    if (res.applicationCommandSections.find((x) => x.id === applicationId)) return; // Don't add if already added
+  const { React } = goosemodScope.webpackModules.common;
 
-    const gmCommands = res.commands.filter((x, i) => x.applicationId === applicationId && res.commands.indexOf(x) === i);
-    const gmSection = Commands.BUILT_IN_SECTIONS[applicationId];
-    if (!gmSection) return; // Don't add section if doesn't exist (causes context menu crashing)
+  const iconManager = goosemod.webpackModules.findByProps('getIconComponent');
+  const ApplicationCommandItem = goosemod.webpackModules.find(x => x.default?.displayName === 'ApplicationCommandItem');
+  const searchManager = goosemod.webpackModules.findByProps('useSearchManager');
+  
+  const section = { id: applicationId, type: 0, name: 'GooseMod' };
 
-    res.discoveryCommands.push(...gmCommands);
-    res.discoverySections.push({
-      data: gmCommands,
-      section: gmSection,
-      key: applicationId
-    });
+  goosemod.patcher.patch(iconManager, 'getIconComponent', ([ section ]) => { // Custom icon for sidebar/general
+    if (section.id === applicationId) return (e) => React.createElement('div', { className: 'wrapper-1wwiGV selectable-fgiA2c', style: { width: e.width, height: e.height, padding: e.padding ?? 0 } }, React.createElement('img', { src: 'https://goosemod.com/img/logo.jpg', style: { width: e.width, height: e.height, borderRadius: '50%' }, className: 'icon-1kx1ir' }));
+  });
+  
+  goosemod.patcher.patch(ApplicationCommandItem, 'default', ([ { command }], ret) => { // Custom icon in commands/results
+    if (command.applicationId === applicationId) ret.props.children[0] = React.createElement('div', { className: 'wrapper-3t15Cn image-1a_IXB', style: { width: 32, height: 32 } }, React.createElement('img', { src: 'https://goosemod.com/img/logo.jpg', style: { width: 32, height: 32, borderRadius: '50%' }, className: 'icon-1kx1ir' }));
+  
+    return ret;
+  });
+  
+  goosemod.patcher.patch(searchManager, 'useSearchManager', (args, ret) => {
+    const gmCommands = Object.values(Commands.BUILT_IN_COMMANDS).filter(x => x.applicationId === applicationId);
+    if (gmCommands.length === 0) return ret; // No GM commands, don't add
 
-    res.applicationCommandSections.push(gmSection);
-    
-    return res;
+    if (!ret.activeSections.find(x => x.id === section.id)) ret.activeSections.push(section);
+    if (!ret.sectionDescriptors.find(x => x.id === section.id)) ret.sectionDescriptors.splice(2, 0, section); // Add to sections sidebar
+  
+    if ((ret.filteredSectionId == null || ret.filteredSectionId === applicationId) && !ret.commandsByActiveSection.find(x => x.section.id === section.id)) ret.commandsByActiveSection.push({ section, data: gmCommands }); // Add our section to commands
+
+    if (ret.commandsByActiveSection.find(x => x.section.id === '-1')) { // Remove broken (shows stuck loading) commands from normal built-in
+      const builtin = ret.commandsByActiveSection.find(x => x.section.id === '-1');
+      builtin.data = builtin.data.filter(x => x.applicationId !== applicationId);
+    }
+  
+    return ret;
   });
 };
 
-const applicationId = '827187782140428288';
-
-const addSection = (obj) => Commands.BUILT_IN_SECTIONS[obj.id] = obj;
-const removeSection = (id) => delete Commands.BUILT_IN_COMMANDS[id];
-const hasSection = (id) => !!Commands.BUILT_IN_SECTIONS[id];
+const applicationId = "-3";
 
 export const add = (name, description, execute, options = []) => {
   const mod = Commands;
 
-  if (!hasSection(applicationId)) { // If no GooseMod section, create it
-    addSection({
-      id: applicationId,
-      icon: '7f274cc3c1216505238ce047ce6e35e9', // Avatar file name for application
-
-      name: 'GooseMod',
-      type: 1
-    });
-  }
-
   mod.BUILT_IN_COMMANDS.push({
-    applicationId: applicationId,
+    applicationId,
 
     type: 1,
-    target: 1,
+    inputType: 0,
 
     description,
     name,
     displayName: name,
+    displayDescription: description,
     execute,
     options,
 
@@ -66,10 +68,4 @@ export const remove = (name) => {
   const mod = Commands;
 
   mod.BUILT_IN_COMMANDS = mod.BUILT_IN_COMMANDS.filter(x => x.name !== name); // Filter out commands with given name
-
-  const gmCommands = mod.BUILT_IN_COMMANDS.filter(x => x.applicationId === applicationId); // Find GooseMod commands via applicationId
-
-  if (gmCommands.length === 0) { // If there is currently no GooseMod commands, remove the section
-    removeSection(applicationId);
-  }
 };
