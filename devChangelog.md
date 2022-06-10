@@ -1,2 +1,3 @@
-### Based on commit a75e07c, made 07/06 22:06 UTC
+### Based on commit be4fb4c, made 10/06 07:07 UTC
 ## Commits this release
+  - [Patcher > Commands] Rewrite to work with new Discord updates
