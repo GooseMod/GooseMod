@@ -29,9 +29,11 @@ export const setThisScope = (scope) => {
     if (gmCommands.length === 0) return ret; // No GM commands, don't add
 
     if (!ret.activeSections.find(x => x.id === section.id)) ret.activeSections.push(section);
-    if (!ret.sectionDescriptors.find(x => x.id === section.id)) ret.sectionDescriptors.splice(2, 0, section); // Add to sections sidebar
+    if (!ret.sectionDescriptors.find(x => x.id === section.id)) ret.sectionDescriptors.push(section); // Add to sections sidebar
   
-    if ((ret.filteredSectionId == null || ret.filteredSectionId === applicationId) && !ret.commandsByActiveSection.find(x => x.section.id === section.id)) ret.commandsByActiveSection.push({ section, data: gmCommands }); // Add our section to commands
+    let currentSection = ret.commandsByActiveSection.find(x => x.section.id === section.id);
+    if (currentSection) currentSection.data = gmCommands;
+      else if ((ret.filteredSectionId == null || ret.filteredSectionId === applicationId)) ret.commandsByActiveSection.push({ section, data: gmCommands }); // Add our section to commands
 
     if (ret.commandsByActiveSection.find(x => x.section.id === '-1')) { // Remove broken (shows stuck loading) commands from normal built-in
       const builtin = ret.commandsByActiveSection.find(x => x.section.id === '-1');
