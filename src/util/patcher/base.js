@@ -26,15 +26,32 @@ const beforePatches = (context, args, id, functionName, keyName) => {
 
       if (toSetNewArgs === false) return false;
 
-      if (Array.isArray(toSetNewArgs)) {
-        newArgs = toSetNewArgs;
-      }
+      if (Array.isArray(toSetNewArgs)) newArgs = toSetNewArgs;
     } catch (e) {
       console.error(`Before patch (${id} - ${functionName}) failed, skipping`, e);
     }
   }
 
   return newArgs;
+};
+
+const insteadPatches = (context, newArgs, originalFunc, id, functionName, keyName) => {
+  const patches = modIndex[id][keyName].instead;
+  if (patches.length === 0) return originalFunc.apply(originalFunc, newArgs);
+
+  let newReturnValue = undefined;
+
+  for (const patch of patches) {
+    try {
+      let toSetReturnValue = patch.call(context, newArgs, originalFunc);
+
+      if (toSetReturnValue !== undefined) newReturnValue = toSetReturnValue;
+    } catch (e) {
+      console.error(`Instead patch (${id} - ${functionName}) failed, skipping`, e);
+    }
+  }
+  
+  return newReturnValue;
 };
 
 const afterPatches = (context, newArgs, returnValue, id, functionName, keyName) => {
@@ -46,9 +63,7 @@ const afterPatches = (context, newArgs, returnValue, id, functionName, keyName) 
     try {
       let toSetReturnValue = patch.call(context, newArgs, newReturnValue);
 
-      if (toSetReturnValue) {
-        newReturnValue = toSetReturnValue;
-      }
+      if (toSetReturnValue !== undefined) newReturnValue = toSetReturnValue;
     } catch (e) {
       console.error(`After patch (${id} - ${functionName}) failed, skipping`, e);
     }
@@ -63,7 +78,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
   let toReturn;
 
   if (Array.isArray(newArgs)) {
-    const returnValue = originalFunction.call(this, ...newArgs);
+    const returnValue = insteadPatches(this, args, originalFunction, id, functionName, keyName);
 
     toReturn = afterPatches(this, newArgs, returnValue, id, functionName, keyName);
   }
@@ -78,7 +93,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
   return toReturn;
 });
 
-export const patch = (parent, functionName, handler, before = false) => {
+export const patch = (parent, functionName, handler, before = false, instead = false) => {
   if (typeof parent[functionName] !== 'function') {
     goosemod.logger.debug('patcher', 'Failed to patch as key isn\'t func', parent, functionName);
     return () => {}; // Stub func to not break
@@ -117,15 +132,17 @@ export const patch = (parent, functionName, handler, before = false) => {
     modIndex[id][keyName] = {
       before: [],
       after: [],
+      instead: [],
 
       harden: toHarden
     };
   }
 
-  const newLength = modIndex[id][keyName][before ? 'before' : 'after'].push(handler);
+  const patchType = instead ? 'instead' : (before ? 'before' : 'after');
+  const newLength = modIndex[id][keyName][patchType].push(handler);
 
   return () => { // Unpatch function
-    modIndex[id][keyName][before ? 'before' : 'after'].splice(newLength - 1, 1);
+    modIndex[id][keyName][patchType].splice(newLength - 1, 1);
   };
 };
 
