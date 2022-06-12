@@ -37,7 +37,7 @@ const beforePatches = (context, args, id, functionName, keyName) => {
 
 const insteadPatches = (context, newArgs, originalFunc, id, functionName, keyName) => {
   const patches = modIndex[id][keyName].instead;
-  if (patches.length === 0) return originalFunc.apply(originalFunc, newArgs);
+  if (patches.length === 0) return originalFunc.apply(context, newArgs);
 
   let newReturnValue = undefined;
 
