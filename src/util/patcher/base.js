@@ -83,7 +83,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
     toReturn = afterPatches(this, newArgs, returnValue, id, functionName, keyName);
   }
 
-  if (modIndex[id]?.[keyName]?.harden) {
+  if (modIndex[id].[keyName].harden) {
     if (!GMErrorBoundary) GMErrorBoundary = _GMErrorBoundary();
     const { React } = goosemod.webpackModules.common;
 
@@ -151,7 +151,7 @@ export const patch = (parent, functionName, handler, before = false, instead = f
       parent[functionName] = modIndex[id][keyName].original;
 
       delete parent._goosemodPatcherId;
-      delete modIndex[id];
+      // delete modIndex[id];
     }
   };
 };
