@@ -83,7 +83,7 @@ const generateNewFunction = (originalFunction, id, functionName, keyName) => (fu
     toReturn = afterPatches(this, newArgs, returnValue, id, functionName, keyName);
   }
 
-  if (modIndex[id].[keyName].harden) {
+  if (modIndex[id][keyName].harden) {
     if (!GMErrorBoundary) GMErrorBoundary = _GMErrorBoundary();
     const { React } = goosemod.webpackModules.common;
 
