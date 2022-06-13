@@ -43,7 +43,7 @@ const insteadPatches = (context, newArgs, originalFunc, id, functionName, keyNam
 
   for (const patch of patches) {
     try {
-      let toSetReturnValue = patch.call(context, newArgs, originalFunc);
+      let toSetReturnValue = patch.call(context, newArgs, originalFunc.bind(context));
 
       if (toSetReturnValue !== undefined) newReturnValue = toSetReturnValue;
     } catch (e) {
@@ -134,7 +134,8 @@ export const patch = (parent, functionName, handler, before = false, instead = f
       after: [],
       instead: [],
 
-      harden: toHarden
+      harden: toHarden,
+      original: originalFunctionClone
     };
   }
 
@@ -143,6 +144,15 @@ export const patch = (parent, functionName, handler, before = false, instead = f
 
   return () => { // Unpatch function
     modIndex[id][keyName][patchType].splice(newLength - 1, 1);
+
+    // If no patches, revert back to original
+    const noPatches = ['before', 'after', 'instead'].every(x => modIndex[id][keyName][x].length === 0);
+    if (noPatches) {
+      parent[functionName] = modIndex[id][keyName].original;
+
+      delete parent._goosemodPatcherId;
+      delete modIndex[id];
+    }
   };
 };
 
