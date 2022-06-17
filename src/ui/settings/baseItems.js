@@ -174,7 +174,7 @@ export default (goosemodScope, gmSettings, Items) => {
       buttonText: '#settings.items.purge_caches.button#',
 
       onclick: async () => {
-        // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in 
+        // Like remove's dynamic local storage removal, but only remove GooseMod keys with "Cache" in
         goosemod.storage.keys().filter((x) => x.toLowerCase().startsWith('goosemod') && x.includes('Cache')).forEach((x) => goosemod.storage.remove(x));
 
         refreshPrompt();
@@ -211,7 +211,7 @@ export default (goosemodScope, gmSettings, Items) => {
 
     {
       type: 'text-and-danger-button',
-      
+
       text: '#settings.items.reset_goosemod.title#',
       subtext: '#settings.items.reset_goosemod.note#',
       buttonText: '#settings.items.reset_goosemod.button#',
@@ -275,7 +275,7 @@ export default (goosemodScope, gmSettings, Items) => {
         el.click();
 
         await new Promise((res) => { el.onchange = () => { res(); }; });
-        
+
         const file = el.files[0];
         if (!file) return;
 
@@ -300,7 +300,7 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'header',
       text: '#settings.items.headers.tweaks#',
-      
+
       collapsed: true,
       collapseOffset: 1
     },
@@ -337,7 +337,7 @@ export default (goosemodScope, gmSettings, Items) => {
     {
       type: 'header',
       text: '#settings.items.headers.experimental#',
-      
+
       collapsed: true,
       // hide: goosemod.versioning.branch === '' || goosemod.versioning.branch === 'release', // Hide experimental settings for release branch
       collapseOffset: 1
@@ -402,6 +402,22 @@ export default (goosemodScope, gmSettings, Items) => {
         refreshPrompt();
       },
       isToggled: () => gmSettings.allThemeSettings
+    },
+
+    {
+      type: 'toggle',
+
+      experimental: true,
+      text: 'Topaz',
+      subtext: 'Load Topaz with GooseMod. Topaz is in alpha and very experimental.',
+
+      onToggle: (c) => {
+        if (c) goosemod.storage.set('goosemodTopaz', true);
+          else goosemod.storage.remove('goosemodTopaz');
+
+        refreshPrompt();
+      },
+      isToggled: () => goosemod.storage.get('goosemodTopaz')
     },
 
     /* {
@@ -698,7 +714,7 @@ export default (goosemodScope, gmSettings, Items) => {
         }, new Map()).entries()].sort((a, b) => b[1] - a[1]).map((x) => `${x[0]} (${x[1]})`);
 
         authors.unshift('#store.options.author.all#');
-        
+
         return authors;
       },
 
