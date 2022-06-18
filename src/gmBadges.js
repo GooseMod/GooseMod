@@ -40,7 +40,7 @@ const showSponsorModal = () => {
 
     res.props.children[1].props.children.unshift(
       React.createElement('div', {
-        
+
         },
 
         React.createElement('div', {}, `You can sponsor (donate regularly or one-time) GooseMod to help support it's development.`),
@@ -118,8 +118,9 @@ const badgeUsers = {
     '206837744658415616', // HughWoatmeight
     '889366461703913573', // joesteen
     '294468537899024384', // Ryannn
-    '910923319413469295', // Soul
+    '987317921774723092', // DPFilla
     '688437973330428047', // TalkingBenStan
+    '341522422836625408', // Jax
   ],
 
   dev: [ // People actively developing GooseMod itself
@@ -133,7 +134,7 @@ const badgeUsers = {
     '650178631129235456', //TinyWiFi
     '186496078273708033', //Hades
     '202740603790819328', //Snow Fox
-    
+
   ]
 };
 
@@ -160,7 +161,7 @@ export const addBadges = () => {
       () => goosemodScope.settings.gmSettings.gmBadges ? badgeUsers.translator : [],
 
       () => {
-        
+
       },
 
       { round: true }
@@ -173,7 +174,7 @@ export const addBadges = () => {
       () => goosemodScope.settings.gmSettings.gmBadges ? badgeUsers.dev : [],
 
       () => {
-        
+
       },
 
       { round: true }
@@ -182,14 +183,14 @@ export const addBadges = () => {
     // Guild badges
     goosemod.patcher.guildBadges.patch('#badges.guild#',
       'https://goosemod.com/img/logo.jpg',
-    
+
       // Force check via query because Discord not properly rerendering
       () => goosemodScope.settings.gmSettings.gmBadges ? ['756146058320674998'] : [],
-    
+
       () => {
 
       },
-    
+
       { round: true }
     )
   );
