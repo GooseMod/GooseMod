@@ -113,9 +113,9 @@ export const patch = (parent, functionName, handler, before = false, instead = f
   if (!modIndex[id][keyName]) {
     const original = parent[functionName];
 
-    parent[functionName] = Object.assign(generateNewFunction(original, id, functionName, keyName), originalFunctionClone);
+    parent[functionName] = Object.assign(generateNewFunction(original, id, functionName, keyName), original);
 
-    parent[functionName].toString = () => originalFunctionClone.toString(); // You cannot just set directly a.toString = b.toString like we used to because strange internal JS prototype things, so make a new function just to run original function
+    parent[functionName].toString = () => original.toString(); // You cannot just set directly a.toString = b.toString like we used to because strange internal JS prototype things, so make a new function just to run original function
 
     let toHarden = false;
     if (isReactComponent(original)) toHarden = true;
