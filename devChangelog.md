@@ -1,2 +1,3 @@
-### Based on commit 3dd9f19, made 25/06 10:52 UTC
+### Based on commit 73a552d, made 28/06 20:32 UTC
 ## Commits this release
+  - [Badges] Start to fix sponsor modal
