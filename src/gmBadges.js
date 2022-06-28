@@ -6,6 +6,10 @@ export const setThisScope = (scope) => {
 };
 
 const showSponsorModal = () => {
+  // todo: actual modal
+  window.open('https://github.com/sponsors/CanadaHonk');
+  return;
+
   const { React } = goosemodScope.webpackModules.common;
 
   const PremiumFeaturesList = goosemodScope.webpackModules.findByDisplayName('PremiumFeaturesList');
