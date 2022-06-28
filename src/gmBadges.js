@@ -17,9 +17,9 @@ const showSponsorModal = () => {
   const { Button } = goosemodScope.webpackModules.findByPropsAll('Button')[1];
   const ButtonClasses = goosemodScope.webpackModules.findByProps('button', 'colorRed');
 
-  const { PremiumGuildSubscriptionPurchaseModal } = goosemod.webpackModules.findByProps('GuildBoostPurchaseModal');
+  const { GuildBoostPurchaseModal } = goosemod.webpackModules.findByProps('GuildBoostPurchaseModal');
 
-  const parent = { default: PremiumGuildSubscriptionPurchaseModal };
+  const parent = { default: GuildBoostPurchaseModal };
 
   const makeIcon = (className, child = '') => (() => React.createElement('div', {
     style: {
