@@ -17,7 +17,7 @@ const showSponsorModal = () => {
   const { Button } = goosemodScope.webpackModules.findByPropsAll('Button')[1];
   const ButtonClasses = goosemodScope.webpackModules.findByProps('button', 'colorRed');
 
-  const { PremiumGuildSubscriptionPurchaseModal } = goosemodScope.webpackModules.findByProps('PremiumGuildSubscriptionPurchaseModal');
+  const { PremiumGuildSubscriptionPurchaseModal } = goosemod.webpackModules.findByProps('GuildBoostPurchaseModal');
 
   const parent = { default: PremiumGuildSubscriptionPurchaseModal };
 
