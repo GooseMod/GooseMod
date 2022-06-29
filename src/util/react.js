@@ -17,8 +17,8 @@ export const getOwnerInstance = (node) => { // Go through React node's parent un
   }
 };
 
-export const findInTree = (parent, filter, opts = {}) => { // Find in tree utility function - parameters supported like BD's + PC's APIs to maintain compatibility
-  const { walkable = null, ignore = [] } = opts;
+export const findInTree = (parent, filter, opts) => { // Find in tree utility function - parameters supported like BD's + PC's APIs to maintain compatibility
+  const { walkable = null, ignore = [] } = opts ?? {};
 
   if (!parent || typeof parent !== 'object') { // Parent is invalid to search through
     return null;
