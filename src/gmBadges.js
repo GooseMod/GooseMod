@@ -122,9 +122,10 @@ const badgeUsers = {
     '206837744658415616', // HughWoatmeight
     '889366461703913573', // joesteen
     '294468537899024384', // Ryannn
-    '987317921774723092', // DPFilla
     '688437973330428047', // TalkingBenStan
     '341522422836625408', // Jax
+    '597072695875600385', // Loremly
+    '987317921774723092', // Soul
   ],
 
   dev: [ // People actively developing GooseMod itself
