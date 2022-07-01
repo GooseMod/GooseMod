@@ -1,2 +1,3 @@
-### Based on commit f286f5c, made 29/06 08:34 UTC
+### Based on commit cfe0642, made 01/07 22:04 UTC
 ## Commits this release
+  - [Badges] Add new
