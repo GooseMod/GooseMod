@@ -1,3 +1,4 @@
-### Based on commit cfe0642, made 01/07 22:04 UTC
+### Based on commit f84b4d8, made 07/07 17:17 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Badges] Add new
