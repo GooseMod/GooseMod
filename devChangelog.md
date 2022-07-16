@@ -1,5 +1,6 @@
-### Based on commit 95d8932, made 08/07 22:42 UTC
+### Based on commit 1a3c013, made 16/07 17:46 UTC
 ## Commits this release
+  - [Patcher > UserBadges] Fix
   - [Webpack] Only use new window object
   - [CI i18n] Update translations from Weblate
   - [Badges] Add new
