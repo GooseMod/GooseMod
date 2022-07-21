@@ -260,7 +260,7 @@
         "refresh": "Обновить",
         "add": "Добавить",
         "goosemod": {
-            "modules": "Модули GooseMod",
+            "modules": "Настройки плагинов",
             "settings": "Настройки GooseMod",
             "store": "Магазин GooseMod"
         },
