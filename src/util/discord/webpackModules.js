@@ -13,6 +13,8 @@ window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { wpRequire
 
 export const all = () => Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x); // Get all modules
 
+export const requireCache = () => wpRequire.c;
+
 const wrapFilter = (filter) => (mod) => {
   try {
     return filter(mod);
