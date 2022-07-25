@@ -4,7 +4,7 @@ const { React } = goosemod.webpackModules.common;
 const Button = goosemod.webpackModules.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 
 
-return class Button extends React.PureComponent {
+return class GMButton extends React.PureComponent {
   render() {
     return React.createElement(Button, {
       color: Button.Colors.BRAND,
