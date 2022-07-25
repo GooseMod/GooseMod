@@ -348,7 +348,7 @@ export default (goosemodScope, gmSettings, Items) => {
       text: '#settings.items.subtexts.experimental_warning#'
     },
 
-    {
+    /* {
       type: 'toggle',
 
       experimental: true,
@@ -360,7 +360,7 @@ export default (goosemodScope, gmSettings, Items) => {
         refreshPrompt();
       },
       isToggled: () => goosemod.storage.get('goosemodUntetheredBranch') === 'dev'
-    },
+    }, */
 
     {
       type: 'toggle',
