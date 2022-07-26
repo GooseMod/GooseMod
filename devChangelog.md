@@ -1,5 +1,6 @@
-### Based on commit 41fd444, made 25/07 22:37 UTC
+### Based on commit 5ed0148, made 26/07 13:20 UTC
 ## Commits this release
+  - [Badges] Add new sponsors
   - [Settings] Disable development branch setting
   - [Settings > Button] Fix self reference
   - [Webpack] Remove requireCache
