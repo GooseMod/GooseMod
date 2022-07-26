@@ -126,6 +126,8 @@ const badgeUsers = {
     '341522422836625408', // Jax
     '597072695875600385', // Loremly
     '987317921774723092', // Soul
+    '162970149857656832', // Rasync
+    '584363189890711562', // Aven
   ],
 
   dev: [ // People actively developing GooseMod itself
