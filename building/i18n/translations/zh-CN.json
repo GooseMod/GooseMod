@@ -108,7 +108,7 @@
             },
             "restore_backup": {
                 "button": "回档",
-                "note": "从一个备份里恢复GooseMod的模组和设置",
+                "note": "从一个备份里恢复GooseMod的模组和设置（**不要恢复您不信任的备份**）",
                 "title": "恢复备份"
             },
             "reset_goosemod": {

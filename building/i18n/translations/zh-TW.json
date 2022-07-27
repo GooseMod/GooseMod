@@ -104,17 +104,17 @@
                 "title": "額外數據標簽"
             },
             "development_channel": {
-                "note": "使用GooseMod的測試版本",
+                "note": "使用 GooseMod 的測試版本",
                 "title": "開發版"
             },
             "restore_backup": {
                 "button": "回檔",
-                "note": "從一個備份裏恢復GooseMod的模組和設定",
+                "note": "從一個備份裏恢復 GooseMod 的模組和設定（**不要恢復您不信任的備份**）",
                 "title": "恢復備份"
             },
             "create_backup": {
                 "button": "備份",
-                "note": "將備份目前GooseMod的模組和設置",
+                "note": "將備份目前 GooseMod 的模組和設定",
                 "title": "創建備份"
             },
             "reset_goosemod": {
@@ -124,17 +124,17 @@
             },
             "copy_debug_info": {
                 "button": "複製",
-                "note": "將複製GooseMod的調試訊息方便提交",
+                "note": "將複製 GooseMod 的調試訊息方便提交",
                 "title": "複製調製訊息"
             },
             "start_tour": {
                 "button": "開始",
-                "note": "重新開啓GooseMod的初始向導",
+                "note": "重新開啓 GooseMod 的初始向導",
                 "title": "開始向導"
             },
             "purge_caches": {
                 "button": "重置",
-                "note": "重灌大部分GooseMod的緩存",
+                "note": "重灌大部分 GooseMod 的緩存",
                 "title": "重灌緩存"
             },
             "goosemod_badges": {
@@ -146,20 +146,20 @@
                 "title": "自動更新"
             },
             "store_in_home": {
-                "note": "將GooseMod商店一欄放在主菜單而非使用者設定裏",
+                "note": "將 GooseMod 商店一欄放在主菜單而非使用者設定裏",
                 "title": "將商店放在主菜單"
             },
             "main_separators": {
-                "note": "在GooseMod設定中用橫杠區分開核心設定與其他設定",
+                "note": "在 GooseMod 設定中用橫杠區分開核心設定與其他設定",
                 "title": "單獨顯示重要設定"
             },
             "goosemod_change_log": {
-                "note": "在GooseMod設置中顯示 \"更新日誌\"",
+                "note": "在 GooseMod 設定中顯示「更新日誌」",
                 "title": "GooseMod 更新日誌"
             },
             "subtexts": {
-                "experimental_warning": "測試中的功能基本都是未開發完畢的半成品，並極大可能會降低GooseMod的體驗",
-                "tweaks_description": "一些細微的調整能讓你更加深度客制化GooseMod"
+                "experimental_warning": "測試中的功能基本都是未開發完畢的半成品，並極大可能會降低 GooseMod 的體驗",
+                "tweaks_description": "一些細微的調整能讓你更加深度客制化 GooseMod"
             },
             "headers": {
                 "experimental": "測試功能",
@@ -169,7 +169,7 @@
                 "tweaks": "小調整"
             },
             "collapsible_home_category": {
-                "note": "讓GooseMod在首頁的條目可以摺叠",
+                "note": "讓 GooseMod 在首頁的條目可以摺叠",
                 "title": "可摺叠的條目"
             },
             "placeholder_image": {
@@ -195,8 +195,8 @@
     },
     "modals": {
         "external_repo_security": {
-            "bad_pgp": "因爲此第三方源沒有 PGP 驗證，請在加入此源之前確認源開發者的可信度。\n\n如想徹底解決這個問題，請要求源開發者增加 PGP 支援。\n\n如您已知悉潛在的風險並執意要添加，請在下面點OK。",
-            "main": "GooseMod的開發者將因爲沒有對此第三方源的控制權而無法保證模組的安全與質量。\n\n因可能會對您Discord客戶端造成不必要的安全風險，如果您不信任此源的擁有者，請不要添加此源。\n\n如您已知悉添加第三方源帶來的風險並執意要添加，請在下面點OK。"
+            "bad_pgp": "因爲此第三方源沒有 PGP 驗證，請在加入此源之前確認源開發者的可信度。\n\n如想徹底解決這個問題，請要求源開發者增加 PGP 支援。\n\n如您已知悉潛在的風險並執意要添加，請在下面點 OK。",
+            "main": "GooseMod 的開發者將因爲沒有對此第三方源的控制權而無法保證模組的安全與質量。\n\n因可能會對您 Discord 客戶端造成不必要的安全風險，如果您不信任此源的擁有者，請不要添加此源。\n\n如您已知悉添加第三方源帶來的風險並執意要添加，請在下面點 OK。"
         }
     },
     "store": {
