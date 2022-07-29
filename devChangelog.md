@@ -1,5 +1,6 @@
-### Based on commit 09e05f9, made 27/07 22:16 UTC
+### Based on commit af30933, made 29/07 23:22 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [Badges] Add new sponsors
