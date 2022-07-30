@@ -1,5 +1,6 @@
-### Based on commit ca4fca1, made 30/07 12:06 UTC
+### Based on commit b955143, made 30/07 12:20 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - Fix the Start Tour button. (#72)
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
