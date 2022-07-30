@@ -148,6 +148,11 @@
         "note": "Automatically update repos and modules every hour"
       },
 
+      "new_module_notifications": {
+        "title": "New Module Notifications",
+        "note": "Shows a toast each time a new module is added to the Store"
+      },
+
       "goosemod_badges": {
         "title": "GooseMod Badges",
         "note": "Shows GooseMod's badges"
