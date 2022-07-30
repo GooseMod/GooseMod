@@ -7,7 +7,7 @@
                     "title": "实验功能"
                 },
                 "tweaks": {
-                    "subtext": "随心所欲的自定义GooseMod",
+                    "subtext": "随心所欲的自定义 GooseMod",
                     "title": "模组支持"
                 },
                 "utilities": {
@@ -86,7 +86,7 @@
     "settings": {
         "items": {
             "create_backup": {
-                "note": "将备份目前GooseMod的模组和设置",
+                "note": "将备份目前 GooseMod 的模组和设置",
                 "button": "备份",
                 "title": "创建备份"
             },
@@ -103,12 +103,12 @@
                 "title": "额外数据标签"
             },
             "development_channel": {
-                "note": "使用正在测试中的GooseMod版本",
+                "note": "使用正在测试中的 GooseMod 版本",
                 "title": "开发者版本"
             },
             "restore_backup": {
                 "button": "回档",
-                "note": "从一个备份里恢复GooseMod的模组和设置（**不要恢复您不信任的备份**）",
+                "note": "从一个备份里恢复 GooseMod 的模组和设置（**不要恢复您不信任的备份**）",
                 "title": "恢复备份"
             },
             "reset_goosemod": {
@@ -118,17 +118,17 @@
             },
             "copy_debug_info": {
                 "button": "复制",
-                "note": "将复制GooseMod的调试信息方便提交",
+                "note": "将复制 GooseMod 的调试信息方便提交",
                 "title": "复制调试信息"
             },
             "start_tour": {
                 "button": "开始",
-                "note": "重新过一遍GooseMod的初始向导",
+                "note": "重新过一遍 GooseMod 的初始向导",
                 "title": "开始向导"
             },
             "purge_caches": {
                 "button": "重置",
-                "note": "删除大部分GooseMod正在使用的缓存",
+                "note": "删除大部分 GooseMod 正在使用的缓存",
                 "title": "重置缓存"
             },
             "goosemod_badges": {
@@ -140,20 +140,20 @@
                 "title": "自动更新"
             },
             "store_in_home": {
-                "note": "将GooseMod商店一栏放在主菜单而非用户设定里",
+                "note": "将 GooseMod 商店一栏放在主菜单而非用户设定里",
                 "title": "将商店放在主菜单"
             },
             "main_separators": {
-                "note": "在GooseMod设置里用横杠区分开核心设置和其他设置",
+                "note": "在 GooseMod 设置里用横杠区分开核心设置和其他设置",
                 "title": "单独显示重要设置"
             },
             "goosemod_change_log": {
-                "note": "在GooseMod设置里显示 \"更新日志\"",
+                "note": "在 GooseMod 设置里显示 “更新日志”",
                 "title": "GooseMod 更新日志"
             },
             "subtexts": {
-                "experimental_warning": "测试功能一般都是不稳定的半成品，并极大可能会降低GooseMod的体验",
-                "tweaks_description": "一些细微的设置能让你更深度自定义GooseMod"
+                "experimental_warning": "测试功能一般都是不稳定的半成品，并极大可能会降低 GooseMod 的体验",
+                "tweaks_description": "一些细微的设置能让你更深度自定义 GooseMod"
             },
             "headers": {
                 "experimental": "测试功能",
@@ -163,12 +163,16 @@
                 "tweaks": "细微调整"
             },
             "collapsible_home_category": {
-                "note": "让GooseMod在Discord首页的条目可以折叠",
+                "note": "让 GooseMod 在 Discord 首页的条目可以折叠",
                 "title": "可折叠条目"
             },
             "placeholder_image": {
                 "note": "让商店里没有图片的模组显示一张占位图",
                 "title": "占位图片"
+            },
+            "new_module_notifications": {
+                "title": "新模组通知",
+                "note": "商店有新模组时，显示通知"
             }
         }
     },
@@ -240,8 +244,8 @@
     },
     "modals": {
         "external_repo_security": {
-            "bad_pgp": "此第三方源没有通过 PGP 验证，请在加入此源之前确认源开发者的可信度。\n\n如想解决这个问题，请要求源开发者增加 PGP 支持。\n\n按下面的OK来确认您信任此源开发者并且要订阅这个源。",
-            "main": "GooseMod的开发者将无法保证第三方源的模组质量。\n\n如果您对此源的开发者并不熟悉，请不要加这个源。\n\n按下面的OK来确认您已知悉增加第三方源的风险。"
+            "bad_pgp": "此第三方源没有通过 PGP 验证，请在加入此源之前确认源开发者的可信度。\n\n如想解决这个问题，请要求源开发者增加 PGP 支持。\n\n按下面的 OK 来确认您信任此源开发者并且要订阅这个源。",
+            "main": "GooseMod 的开发者将无法保证第三方源的模组质量。\n\n如果您对此源的开发者并不熟悉，请不要加这个源。\n\n按下面的 OK 来确认您已知悉增加第三方源的风险。"
         }
     },
     "terms": {
@@ -265,6 +269,7 @@
             "settings": "GooseMod 设置",
             "store": "GooseMod 商店"
         },
-        "install": "安装"
+        "install": "安装",
+        "openLink": "开启链接"
     }
 }

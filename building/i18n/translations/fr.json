@@ -20,7 +20,8 @@
         "remove": "Retirer",
         "add": "Ajouter",
         "community": "Communauté",
-        "install": "Installer"
+        "install": "Installer",
+        "openLink": "Ouvrir le lien"
     },
     "store": {
         "pgp": {
@@ -76,7 +77,7 @@
     "modals": {
         "external_repo_security": {
             "bad_pgp": "Ce dépôt n'est pas connu ou n'est pas fiable (pas de vérification PGP), faites particulièrement attention. Assurez-vous de faire complètement confiance au(x) propriétaire(s) de ce dépôt.\n\nPour résoudre ce problème, demandez au gérant du dépôt d'ajouter le support PGP.\n\nVeuillez reconfirmer l'ajout du dépôt en cliquant sur OK.",
-            "main": "Les dépôts externes sont source de risques de sécurité car ils ne sont pas contrôlés par les développeurs de GooseMod. Nous ne sommes pas responsable d'aucun dangers encourus à cause de dépôts externes ajoutés par les utilisateurs.\n\nSi vous ne faites pas confiance au propriétaire de ce dépôt, ne l'utilisez pas, il risque de compromettre votre installation Discord.\n\nConfirmez l'ajout de ce dépôt en cliquant sur OK."
+            "main": "Les dépôts externes sont source de risques de sécurité car ils ne sont pas contrôlés par les développeurs de GooseMod. Nous ne sommes responsable d'aucun danger encouru à cause de dépôts externes ajoutés par l'utilisateur.\n\nSi vous ne faites pas confiance au propriétaire de ce dépôt, ne l'utilisez pas, il risque de compromettre votre installation Discord.\n\nConfirmez l'ajout de ce dépôt en cliquant sur OK."
         }
     },
     "settings": {
@@ -165,6 +166,10 @@
             "placeholder_image": {
                 "note": "Utiliser une image de substitution dans la boutique de modules pour ceux sans images",
                 "title": "Image de substitution"
+            },
+            "new_module_notifications": {
+                "title": "Notification de nouveau module",
+                "note": "Affiche une notification à chaque fois qu'un module est ajouté à la boutique"
             }
         }
     },

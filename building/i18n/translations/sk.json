@@ -21,7 +21,7 @@
         },
         "community": "Komunita",
         "install": "Inštalovať",
-        "openLink": "Otvoriť Link"
+        "openLink": "Otvoriť Odkaz"
     },
     "store": {
         "options": {
@@ -154,6 +154,10 @@
             "collapsible_home_category": {
                 "title": "Skladacia kategória Domov",
                 "note": "Umožnite zbalenie kategórie domov pomocou ikony"
+            },
+            "new_module_notifications": {
+                "note": "Zobrazí toast notifikáciu vždy keď je pridaný nový modul do Obchodu",
+                "title": "Notifikácie pre nové Moduly"
             }
         }
     },

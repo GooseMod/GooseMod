@@ -20,7 +20,8 @@
         "remove": "Kaldır",
         "refresh": "Yenile",
         "changelog": "Değişim Kaydı",
-        "community": "Topluluk"
+        "community": "Topluluk",
+        "openLink": "Linki aç"
     },
     "settings": {
         "items": {
@@ -108,6 +109,10 @@
             "placeholder_image": {
                 "title": "Yer Tutucu Görüntüsü",
                 "note": "Resim içermeyen modüller için Mağaza'da yer tutucu görüntü kullanma"
+            },
+            "new_module_notifications": {
+                "note": "Mağazaya her yeni modül eklendiğinde bir bildirim gösterir",
+                "title": "Yeni Modül Bildirimleri"
             }
         }
     },
