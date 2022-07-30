@@ -1,5 +1,6 @@
-### Based on commit af2dfde, made 30/07 15:19 UTC
+### Based on commit fd5542e, made 30/07 20:45 UTC
 ## Commits this release
+  - Update i18n (#75)
   - [CI i18n] Update translations from Weblate
   - Open Link button in the Repos Modal (#74)
   - [CI i18n] Update translations from Weblate
