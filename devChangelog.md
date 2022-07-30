@@ -1,5 +1,6 @@
-### Based on commit 537ec59, made 30/07 13:50 UTC
+### Based on commit af2dfde, made 30/07 15:19 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - Open Link button in the Repos Modal (#74)
   - [CI i18n] Update translations from Weblate
   - Fix the Start Tour button. (#72)
