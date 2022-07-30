@@ -29,7 +29,7 @@ export default {
     if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Getting modules from repos...`);
 
     await goosemodScope.moduleStoreAPI.updateModules();
-  
+
     await goosemodScope.moduleStoreAPI.updateStoreSetting();
 
     if (shouldHandleLoadingText) goosemodScope.updateLoadingScreen(`Updating modules...`);
@@ -124,7 +124,7 @@ export default {
         };
       } catch (e) {
         goosemodScope.showToast(`Failed to get repo: ${repo.url}`, { timeout: 5000, type: 'error', subtext: '#terms.goosemod.store#' }); // Show error toast to user so they know
-        console.error(e); 
+        console.error(e);
 
         newModules = newModules.concat(goosemodScope.moduleStoreAPI.modules.filter((x) => x.repo === repo.url)).sort((a, b) => a.name.localeCompare(b.name)); // Use cached / pre-existing modules
       }
@@ -176,29 +176,11 @@ export default {
 
       try {
         const item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(moduleInfo))[2].find((x) => x.subtext === moduleInfo.description);
-
         item.buttonType = 'danger';
         item.buttonText = '#terms.remove#';
         item.showToggle = true;
       } catch (e) {
         // goosemodScope.logger.debug('import', 'Failed to change setting during MS importModule (likely during initial imports so okay)');
-      }
-
-      // If themes / plugins open
-      if (document.querySelector(`#gm-settings-inject`)) {
-        const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === moduleInfo.description).map((x) => x.parentElement);
-
-        if (cardEls.length === 0) return;
-
-        for (const cardEl of cardEls) {
-          const buttonEl = cardEl.querySelector(`.lookFilled-yCfaCM`);
-
-          buttonEl.className = buttonEl.className.replace('lookFilled-yCfaCM colorBrand-I6CyqQ', 'lookOutlined-3yKVGo colorRed-rQXKgM');
-          buttonEl.textContent = '#terms.remove#';
-
-          const toggleEl = cardEl.querySelector(`.container-2nx-BQ`);
-          toggleEl.classList.remove('hide-toggle');
-        }
       }
     } catch (e) {
       // goosemodScope.showToast(`Failed to import module ${moduleName}`, { timeout: 2000, type: 'error', subtext: '#terms.goosemod.store#' });
@@ -208,34 +190,16 @@ export default {
 
   moduleRemoved: (m) => {
     let item = goosemodScope.settings.items.find((x) => x[1] === goosemodScope.moduleStoreAPI.getSettingItemName(m))[2].find((x) => x.subtext === m.description);
-    
     if (item === undefined) return;
 
     item.buttonType = 'brand';
     item.buttonText = '#terms.install#';
     item.showToggle = false;
-
-    // If themes / plugins open
-    if (document.querySelector(`#gm-settings-inject`)) {
-      const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
-
-      if (cardEls.length === 0) return;
-
-      for (const cardEl of cardEls) {
-        const buttonEl = cardEl.querySelector(`.lookOutlined-3yKVGo`);
-
-        buttonEl.className = buttonEl.className.replace('lookOutlined-3yKVGo colorRed-rQXKgM', 'lookFilled-yCfaCM colorBrand-I6CyqQ');
-        buttonEl.textContent = '#terms.install#';
-
-        const toggleEl = cardEl.querySelector(`.container-2nx-BQ`);
-        toggleEl.classList.add('hide-toggle');
-      }
-    }
   },
 
   parseAuthors: async (a) => {
     const authors = typeof a === 'string' ? a.split(', ') : a;
-    
+
     return (await Promise.all(authors.map(async (x) => {
       if (typeof x === 'object') { // User object
         return {
@@ -279,7 +243,7 @@ export default {
 
       item[2].push({
         type: 'card',
-        
+
         tags: m.tags,
         github: m.github,
         notice: m.notice,
@@ -342,7 +306,7 @@ To continue importing this module the dependencies need to be imported.`,
           goosemodScope.settings[`regen${type}`] = true;
 
           if (checked) {
-            goosemodScope.modules[m.name] = Object.assign({}, goosemodScope.disabledModules[m.name]);
+            goosemodScope.modules[m.name] = goosemodScope.disabledModules[m.name];
             delete goosemodScope.disabledModules[m.name];
 
             await goosemodScope.modules[m.name].goosemodHandlers.onImport();
@@ -355,27 +319,13 @@ To continue importing this module the dependencies need to be imported.`,
 
             goosemodScope.moduleSettingsStore.enableModule(m.name);
           } else {
-            goosemodScope.disabledModules[m.name] = Object.assign({}, goosemodScope.modules[m.name]);
+            goosemodScope.disabledModules[m.name] = goosemodScope.modules[m.name];
 
             await goosemodScope.modules[m.name].goosemodHandlers.onRemove();
 
             delete goosemodScope.modules[m.name];
 
             goosemodScope.moduleSettingsStore.disableModule(m.name);
-          }
-
-          // If themes / plugins open
-          if (document.querySelector(`#gm-settings-inject`)) {
-            const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === m.description).map((x) => x.parentElement);
-
-            if (cardEls.length === 0) return;
-
-            for (const cardEl of cardEls) {
-              goosemodScope.settings.ignoreVisualToggle = true;
-
-              const toggleInputEl = cardEl.querySelector('.input-2XRLou');
-              toggleInputEl.click();
-            }
           }
         }
       });

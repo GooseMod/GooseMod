@@ -84,12 +84,24 @@ return class Card extends React.PureComponent {
       case 1:
         notice = 'Other users may notice your usage';
         break;
-      
+
       case 2:
         notice = 'Other users may question or judge your usage, use appropriately';
         break;
     }
 
+    const updateSelf = () => {
+      const cardEls = [...document.querySelectorAll(`.title-2dsDLn + .colorStandard-1Xxp1s`)].filter((x) => x.textContent === this.props.subtext).map((x) => x.parentElement);
+
+      for (const x of cardEls) {
+        const ret = x.__reactFiber$.return;
+
+        ret.pendingProps = this.props;
+        ret.memoizedState.renderLoaded = true;
+
+        ret.stateNode.forceUpdate();
+      }
+    };
 
     return !this.state.loaded ? React.createElement('div', {
       className: 'gm-store-card-loading-placeholder'
@@ -150,7 +162,7 @@ return class Card extends React.PureComponent {
       }, this.props.subtext)),
 
       React.createElement('div', {
-        
+
       },
         this.props.github ? React.createElement(SimpleTooltip, {
           text: this.props.github.stars,
@@ -206,17 +218,23 @@ return class Card extends React.PureComponent {
       },
         React.createElement(Button, {
           color: this.props.buttonType === 'danger' ? Button.Colors.RED : Button.Colors.BRAND,
-          look: this.props.buttonType === 'danger' ? Button.Looks.OUTLINED : Button.Looks.FILLED,
+          look: Button.Looks.FILLED, // look: this.props.buttonType === 'danger' ? Button.Looks.OUTLINED : Button.Looks.FILLED,
 
           size: Button.Sizes.SMALL,
 
           onClick: () => {
             this.props.onclick();
+
+            this.props.buttonType = this.props.buttonType === 'danger' ? '' : 'danger';
+            this.props.buttonText = this.props.buttonText === '#terms.remove#' ? '#terms.install#' : '#terms.remove#';
+            this.props.showToggle = !this.props.showToggle;
+
+            updateSelf();
           }
         }, this.props.buttonText),
 
         this.props.github ? React.createElement(Button, {
-          color: Button.Colors.GREY,
+          color: Button.Colors.PRIMARY,
           size: Button.Sizes.SMALL,
 
           onClick: () => {
@@ -264,9 +282,10 @@ return class Card extends React.PureComponent {
 
             this.state.renderLoaded = true; // Set state to fix rerendering display props
             this.state.forceDisplay = true;
-            this.forceUpdate();
 
             this.props.onToggle(this.props.checked);
+
+            updateSelf();
           }
         })
       )
