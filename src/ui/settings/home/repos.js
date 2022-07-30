@@ -21,6 +21,21 @@ export default async () => {
       return React.createElement('div', {},
         React.createElement(Button, {
           style: {
+            width: '100px',
+
+            position: 'absolute',
+            right: '108px',
+            marginTop: '33px'
+          },
+
+          color: ButtonClasses["colorPrimary"],
+          size: ButtonClasses["sizeSmall"],
+
+          onClick: this.props.buttonOpenLink
+        }, "#terms.openLink#"),
+
+        React.createElement(Button, {
+          style: {
             width: '92px',
             
             position: 'absolute',
@@ -161,6 +176,10 @@ export default async () => {
           repo.enabled = e;
 
           updateAfterChange();
+        },
+
+        buttonOpenLink: () => {
+          window.open(repo.url);
         },
 
         buttonOnClick: async () => {
