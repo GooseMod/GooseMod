@@ -20,7 +20,7 @@
             "headers": {
                 "experimental": "Experimentální",
                 "backup": "Záloha",
-                "utilities": "Utitlity",
+                "utilities": "Utility",
                 "appearance": "Vzhled"
             },
             "create_backup": {
