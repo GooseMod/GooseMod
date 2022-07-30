@@ -20,7 +20,8 @@
             "repos": "Repozitáre"
         },
         "community": "Komunita",
-        "install": "Inštalovať"
+        "install": "Inštalovať",
+        "openLink": "Otvoriť Link"
     },
     "store": {
         "options": {
