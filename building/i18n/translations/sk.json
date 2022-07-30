@@ -6,7 +6,7 @@
             "modules": "Moduly GooseModu"
         },
         "add": "Pridať",
-        "remove": "Odstraniť",
+        "remove": "Odstrániť",
         "refresh": "Obnoviť",
         "settings": "Nastavenia",
         "changelog": "Zoznam zmien",
@@ -16,7 +16,8 @@
             "themes": "Témy",
             "plugins": "Pluginy",
             "snippets": "Snippety",
-            "modules": "Moduly"
+            "modules": "Moduly",
+            "repos": "Repozitáre"
         },
         "community": "Komunita",
         "install": "Inštalovať"
@@ -29,12 +30,12 @@
             },
             "search": {
                 "placeholder": {
-                    "themes": "Hľadať témy",
-                    "plugins": "Hľadať pluginy"
+                    "themes": "Hľadať Témy",
+                    "plugins": "Hľadať Pluginy"
                 }
             },
             "sort": {
-                "label": "Zoraďiť",
+                "label": "Zoradiť",
                 "stars": "Hviezdy",
                 "az": "A-Z",
                 "last_updated": "Posledne aktualizované"
@@ -45,7 +46,7 @@
             }
         },
         "pgp": {
-            "verified": "PGP Overene",
+            "verified": "PGP Overené",
             "untrusted": "PGP Nedôveryhodné",
             "unknown": "Žiadne PGP"
         },
@@ -54,8 +55,8 @@
             "recently_updated": "Nedávno aktualizované",
             "upcoming": "Nasledujúce",
             "all": {
-                "themes": "Všetky témy",
-                "plugins": "Všetky pluginy"
+                "themes": "Všetky Témy",
+                "plugins": "Všetky Pluginy"
             }
         },
         "search_results_hint": {
@@ -70,7 +71,7 @@
         "items": {
             "data_attributes": {
                 "title": "Atribúty dát",
-                "note": "Pridať atribúty dát na použitie pre niektoré elementy pre niektoré témy"
+                "note": "Pridať atribúty dát k niektorým elementom pre použitie niektorými témami"
             },
             "main_separators": {
                 "note": "Zobraziť oddeľovače medzi hlavnými nastaveniami GooseModu",
@@ -80,21 +81,25 @@
                 "backup": "Záloha",
                 "appearance": "Vzhľad",
                 "utilities": "Utility",
-                "experimental": "Experimentálne"
+                "experimental": "Experimentálne",
+                "tweaks": "Vyladenia"
             },
             "copy_debug_info": {
-                "button": "Kopírovať"
+                "button": "Kopírovať",
+                "note": "Kopíruje informácie o nastavení a GooseModu pre hlásenie a ladenie",
+                "title": "Kopírovať ladiace informácie"
             },
             "goosemod_badges": {
-                "title": "GooseMod odznaky",
+                "title": "GooseMod Odznaky",
                 "note": "Zobrazí GooseMod odznaky"
             },
             "auto_update": {
-                "title": "Automatické aktualizácie"
+                "title": "Automatické aktualizácie",
+                "note": "Automaticky aktualizovať repozitáre a moduly každú hodinu"
             },
             "reset_goosemod": {
                 "button": "Resetovať",
-                "note": "Kompletne zresetuje GooseMod\" odstraní všetky nastavenia a moduly; ako keby ste GooseMod nainštalovali po prvý krát",
+                "note": "Kompletne zresetuje GooseMod: odstraní všetky nastavenia a moduly; ako keby ste GooseMod nainštalovali po prvý krát",
                 "title": "Resetovať GooseMod"
             },
             "create_backup": {
@@ -109,19 +114,19 @@
             },
             "snippets": {
                 "title": "Snippety",
-                "note": "Zapnúť tab snippety v obchode"
+                "note": "Zapnúť tab Snippety v Obchode"
             },
             "placeholder_image": {
                 "title": "Zástupný Obrázok",
-                "note": "Použiť zástupný obrázok v obchode pre moduly bez obrázkov"
+                "note": "Použiť zástupný obrázok v Obchode pre moduly bez obrázkov"
             },
             "subtexts": {
-                "tweaks_description": "Menšie zmeny ako napríklad, malé úpravy UI aby GooseMod bol tak ako ho máte radi",
+                "tweaks_description": "Menšie zmeny ako napríklad, malé úpravy UI aby GooseMod bol taký, ako ho máte radi",
                 "experimental_warning": "Experimentálne nastavenia pravdepodobne nie sú hotové a môžu byť nestabilné, kvôli tomu môžu spôsobiť zhoršené skúsenosti pri použivaní GooseModu"
             },
             "goosemod_change_log": {
-                "title": "GooseMod zoznam zmien",
-                "note": "Zobraziť GooseMod nastavenie \"Zoznam zmien\""
+                "title": "GooseMod Zoznam Zmien",
+                "note": "Zobraziť GooseMod \"Zoznam Zmien\""
             },
             "store_in_home": {
                 "title": "Obchod v karte domov",
@@ -139,11 +144,15 @@
             },
             "development_channel": {
                 "title": "Vývojový kanál",
-                "note": "Použivať experimentálne vývojové verzie GooseModu"
+                "note": "Používať experimentálne vývojové verzie GooseModu"
             },
             "force_theme_settings": {
-                "title": "Nasilu použiť nastavenia Témy",
-                "note": "Nasilu použiť automaticky-generované nastavenia pre všetky témy"
+                "title": "Nasilu použiť Nastavenia Témy",
+                "note": "Nasilu použiť automaticky generované nastavenia pre všetky témy"
+            },
+            "collapsible_home_category": {
+                "title": "Skladacia kategória Domov",
+                "note": "Umožnite zbalenie kategórie domov pomocou ikony"
             }
         }
     },
@@ -151,11 +160,12 @@
         "store": {
             "confirm": "Zobraziť Obchod v karte Domov",
             "text": {
-                "main": "Prezerajte si Témy a Pluginy v Obchode"
+                "main": "Prezerajte si Témy a Pluginy v Obchode",
+                "subtext": "GooseMod používa svoj vlastný Obchod, kde si môžete ľahko prezerať a inštalovať modifikácie"
             }
         },
         "community": {
-            "confirm": "Pridať sa k Discord serveru GooseModu",
+            "confirm": "Pripojte sa k Discord Serveru GooseMod",
             "items": {
                 "ask_questions": {
                     "title": "Pýtať sa otázky",
@@ -171,8 +181,8 @@
                 }
             },
             "text": {
-                "main": "Pripojiť sa k Komunite GooseModu",
-                "subtext": "Pripojte sa k našému Discordu pre viac informácií a viac"
+                "main": "Pripojiť sa ku Komunite GooseModu",
+                "subtext": "Pripojte sa k našému Discordu pre viac informácií, a viac"
             }
         },
         "start": {
@@ -201,11 +211,12 @@
                     "title": "Experimentálne Funkcie"
                 },
                 "utilities": {
-                    "title": "Utlity",
-                    "subtext": "Urobiť zálohy, resetovať GooseMod, a viac"
+                    "title": "Utility",
+                    "subtext": "Vytvoriť zálohy, resetovať GooseMod, a viac"
                 },
                 "tweaks": {
-                    "title": "Tweaks"
+                    "title": "Vyladenia",
+                    "subtext": "Vylaďte si GooseMod tak, ako Vy chcete"
                 }
             },
             "confirm": "Zobraziť nastavenia GooseModu",
@@ -217,25 +228,30 @@
         "plugins": {
             "confirm": "Prezerať Pluginy",
             "text": {
-                "subtext": "Pluginy zlepšujú Vaše skúsenosti s vylepšeniami v samotnej aplikácii"
+                "subtext": "Pluginy zlepšujú Vaše skúsenosti s vylepšeniami v samotnej aplikácii",
+                "main": "Vylepšite si svoj Discord pod kapotou"
             }
         },
         "themes": {
             "confirm": "Prezerať Témy",
             "text": {
-                "main": "Zkrášlite svoj Discord s Témami"
+                "main": "Skrášlite svoj Discord s Témami",
+                "subtext": "Vyberte si z viac ako 100 tém na vyladenie a vylepšenie používateľského rozhrania"
             }
         }
     },
     "toasts": {
         "add_repo": {
             "invalid_repo": {
-                "subtext": "Neplatný format"
+                "subtext": "Neplatný formát",
+                "text": "Neplatný repozitár"
             },
             "cancelled": {
                 "reasons": {
-                    "refused": "Odmietnuté bezpečnostná výzva"
-                }
+                    "refused": "Odmietnutá bezpečnostná výzva",
+                    "pgp": "Nedôveryhodné PGP"
+                },
+                "text": "Pridanie repozitáre bolo zrušené"
             }
         }
     },
@@ -244,5 +260,11 @@
         "translator": "Prekladateľ GooseModu",
         "developer": "Vývojár GooseModu",
         "guild": "Oficiálny Discord GooseModu"
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Vonkajšie repozitáre môžu predstavovať bezpečnostné riziká pretože nie sú kontrolované vývojármi GooseModu. Nenesieme zodpovednosť za žiadne nebezpečenstva z dôvodu vonkajších repozitárov pridanými užívateľmi.\n\nAk neveríte majiteľovi tejto repozitáre tak ho nepoužívajte pretože by mohlo dojsť k prelomeniu zabezpečenia Vašej inštalácie Discordu.\n\nProsím potvrďte pridanie tejto repozitáre kliknutím na tlačítko OK.",
+            "bad_pgp": "Tento repozitár nie je známy ani overený (žiadne overenie PGP), prosím buďte extra opatrní. Uistite sa že veríte majiteľom tejto repozitáre.\n\nPre vyriešenie tohto problému kontaktujte vlastníka repozitáre aby pridal podporu PGP.\n\nProsím znovu potvrďte pridanie tohto repozitára kliknutím na tlačítko OK."
+        }
     }
 }
