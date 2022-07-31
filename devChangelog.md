@@ -1,8 +1,10 @@
-### Based on commit 98048bd, made 31/07 03:20 UTC
+### Based on commit c9c9db7, made 31/07 11:59 UTC
 ## Commits this release
+  - Merge branch 'master' of https://github.com/GooseMod/GooseMod
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
+  - card: rewrite modifying to not use dom
   - Update i18n (#75)
   - [CI i18n] Update translations from Weblate
   - Open Link button in the Repos Modal (#74)
