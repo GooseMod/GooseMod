@@ -115,7 +115,7 @@
             },
             "restore_backup": {
                 "button": "今すぐバックアップから復元",
-                "note": "バックアップからすべてGooseModのデータを復元する **自分のバックアップのみを復元してください**",
+                "note": "バックアップからすべてのGooseModのデータを復元します\n**必ず自分のバックアップからのみ復元してください**",
                 "title": "バックアップから復元する"
             },
             "create_backup": {
@@ -125,18 +125,18 @@
             },
             "reset_goosemod": {
                 "button": "復元",
-                "note": "GooseModを初期化する：すべての設定と拡張機能がリセットされる",
+                "note": "GooseModを初期化：すべての設定と拡張機能がリセットされます",
                 "title": "GooseModをリセット"
             },
             "copy_debug_info": {
                 "button": "コピー",
-                "note": "デバッグ情報をコピーするので、エラーを報告することができます",
+                "note": "エラー報告のためにGooseModの情報をコピー",
                 "title": "デバッグ情報をコピー"
             },
             "start_tour": {
                 "button": "再起動する",
-                "note": "GooseModのツアーを再起動する",
-                "title": "ツアーを再起動"
+                "note": "GooseModのツアーをはじめからやり直します",
+                "title": "ツアーをリスタート"
             },
             "purge_caches": {
                 "button": "クリア",
@@ -181,6 +181,10 @@
             "collapsible_home_category": {
                 "title": "折りたためるホームカテゴリー",
                 "note": "ホームカテゴリをアイコンで折り畳めるようにする"
+            },
+            "new_module_notifications": {
+                "title": "新しいモジュールの通知",
+                "note": "ストアに新しいモジュールが追加されるたびに通知します"
             }
         }
     },
@@ -265,6 +269,7 @@
             "settings": "GooseMod 設定",
             "store": "GooseMod ストア"
         },
-        "install": "インストール"
+        "install": "インストール",
+        "openLink": "リンクを開く"
     }
 }

@@ -175,6 +175,10 @@
             "placeholder_image": {
                 "note": "能讓商店裏沒有圖片的模組顯示一張占位的圖片",
                 "title": "占位圖"
+            },
+            "new_module_notifications": {
+                "title": "新模組通知",
+                "note": "商店有新模組時，顯示通知"
             }
         }
     },
@@ -265,6 +269,7 @@
             "settings": "GooseMod 設定",
             "store": "GooseMod 商店"
         },
-        "install": "安裝"
+        "install": "安裝",
+        "openLink": "開啟連結"
     }
 }
