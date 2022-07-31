@@ -237,8 +237,8 @@
         },
         "pgp": {
             "unknown": "PGP 暗号化なし",
-            "untrusted": "PGP 認証されません",
-            "verified": "PGP 認証されます"
+            "untrusted": "PGP 認証されていません",
+            "verified": "PGP 認証あり"
         },
         "search_results_hint": {
             "none": "ヒットなし",
