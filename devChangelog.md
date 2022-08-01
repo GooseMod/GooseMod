@@ -1,22 +1,2 @@
-### Based on commit 7fc7ca6, made 31/07 22:19 UTC
+### Based on commit afd62cc, made 01/08 09:13 UTC
 ## Commits this release
-  - [CI i18n] Update translations from Weblate
-  - Merge branch 'master' of https://github.com/GooseMod/GooseMod
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - card: rewrite modifying to not use dom
-  - Update i18n (#75)
-  - [CI i18n] Update translations from Weblate
-  - Open Link button in the Repos Modal (#74)
-  - [CI i18n] Update translations from Weblate
-  - Fix the Start Tour button. (#72)
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [Badges] Add new sponsors
-  - [Settings] Disable development branch setting
-  - [Settings > Button] Fix self reference
-  - [Webpack] Remove requireCache
-  - [Webpack] Export requireCache
-  - [CI i18n] Update translations from Weblate
