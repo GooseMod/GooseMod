@@ -1,3 +1,3 @@
-### Based on commit ab7dbbb, made 01/08 18:11 UTC
+### Based on commit ff775d1, made 01/08 18:15 UTC
 ## Commits this release
-  - bootstrap: fallback on date query param
+  - bootstrap: add warning message on fallback
