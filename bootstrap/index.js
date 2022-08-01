@@ -24,7 +24,8 @@ const init = async () => {
   // eval(await (await fetch(`http://localhost:1234/goosemod.${locale}.js`)).text());
   try {
     eval(await (await fetch(`https://raw.githubusercontent.com/GooseMod/GooseMod/dist-dev/goosemod.${locale}.js?_<buildtime>`)).text());
-  } catch {
+  } catch (e) {
+    console.warn('[GooseMod Bootstrap]', 'Failed to fetch with buildtime', e);
     eval(await (await fetch(`https://raw.githubusercontent.com/GooseMod/GooseMod/dist-dev/goosemod.${locale}.js?_${Date.now()}`)).text());
   }
 };
