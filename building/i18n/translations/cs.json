@@ -3,7 +3,8 @@
         "items": {
             "copy_debug_info": {
                 "title": "Kopírovat ladící informace",
-                "button": "Kopírovat"
+                "button": "Kopírovat",
+                "note": "Zkopíruje informace o startu a GooseModu pro nahlášení a opravování chyb"
             },
             "main_separators": {
                 "note": "Zobrazit oddělovače mezi hlavními nastaveními goosemodu",
@@ -21,7 +22,8 @@
                 "experimental": "Experimentální",
                 "backup": "Záloha",
                 "utilities": "Utility",
-                "appearance": "Vzhled"
+                "appearance": "Vzhled",
+                "tweaks": "Vychytávky"
             },
             "create_backup": {
                 "title": "Vytvořit zálohu",
@@ -67,6 +69,26 @@
             "goosemod_badges": {
                 "title": "GooseMod odznaky",
                 "note": "Zobrazí GooseMod odznaky"
+            },
+            "snippets": {
+                "title": "Úryvky",
+                "note": "Povolit úryvky v obchodu"
+            },
+            "force_theme_settings": {
+                "title": "Vynutit nastavení témat",
+                "note": "Vynutit automaticky vygenerované nastavení pro všechny témata"
+            },
+            "new_module_notifications": {
+                "title": "Oznámení nových modulů",
+                "note": "Ukáže oznámení pokaždé, co je nový modul přidaný do obchodu"
+            },
+            "placeholder_image": {
+                "title": "Zástupný obrázek",
+                "note": "Použít zástupný obrázek v obchodě pro moduly bez obrázků"
+            },
+            "collapsible_home_category": {
+                "note": "Dovolit domovské kategorii být sklápěcí přes ikonu",
+                "title": "Sklápěcí Domovská Kategorie"
             }
         }
     },
@@ -157,55 +179,97 @@
             "modules": "Goosemod moduly",
             "settings": "Nastavení goosemodu",
             "store": "Obchod goosemod"
-        }
+        },
+        "openLink": "Otevřít Odkaz"
     },
     "ootb": {
         "settings": {
             "items": {
                 "utilities": {
-                    "title": "Utility"
+                    "title": "Utility",
+                    "subtext": "Vytvoř zálohy, restartuj GooseMod a více"
                 },
                 "experimental_features": {
                     "subtext": "Vyzkoušejte nové experimentální funkce",
                     "title": "Experimentální Funkce"
+                },
+                "tweaks": {
+                    "title": "Vychytávky",
+                    "subtext": "Vychytej GooseMod tak, jak ho chceš"
                 }
             },
-            "confirm": "Zobrazit nastavení GooseModu"
+            "confirm": "Zobrazit nastavení GooseModu",
+            "text": {
+                "main": "Použij nastavení GooseModu pro přizpůsobení funkcí",
+                "subtext": "Je tu hodně nastavení, které můžeš změnit"
+            }
         },
         "community": {
             "text": {
-                "main": "Připojit se na Komunitu GooseModu"
+                "main": "Připojit se na Komunitu GooseModu",
+                "subtext": "Připoj se na náš Discord pro víc informací a mnoho dalšího"
             },
             "confirm": "Připojit se GooseMod discord server",
             "items": {
                 "news": {
-                    "title": "Novinky"
+                    "title": "Novinky",
+                    "subtext": "Dostaň nejnovější novinky o GooseModu a souvislými projekty"
+                },
+                "get_involved": {
+                    "subtext": "Pomáhej s návrhy, podporou a více",
+                    "title": "Zapoj se"
+                },
+                "ask_questions": {
+                    "subtext": "Zeptej se na jakékoliv otázky a dostaň podporu",
+                    "title": "Zeptej se na otázky"
                 }
             }
         },
         "themes": {
-            "confirm": "Procházet témata/vzhledy"
+            "confirm": "Procházet témata",
+            "text": {
+                "main": "Zkrášli svůj Discord s tématy",
+                "subtext": "Vyber si z víc jak 100 témat pro zlepšení tvého rozhraní"
+            }
         },
         "store": {
-            "confirm": "Zobrazit Obchod v kartě domů"
+            "confirm": "Zobrazit Obchod v kartě domů",
+            "text": {
+                "subtext": "GooseMod používá vlastní obchod, ve kterém se můžeš jednoduše rozhlédnout a instalovat",
+                "main": "Procházet téma a pluginy v obchodě"
+            }
         },
         "start": {
             "items": {
                 "store": {
                     "subtext": "Zjistit více o Obchodu GooseMod a co v něm je"
+                },
+                "settings": {
+                    "subtext": "Zjistit o nastavení pro GooseMod a pluginy"
+                },
+                "community": {
+                    "subtext": "Připoj se na náš Discord pro dotazy, zpětnou vazbu, být aktualizovaný novinkama a víc"
                 }
             },
             "cancel": "Nezajímá mě",
             "text": {
-                "main": "Zjistit více o GooseModu"
+                "main": "Zjistit více o GooseModu",
+                "subtext": "Jít přes krátkou ukázku přes hlavní funkce GooseModu"
             },
             "confirm": "Zjistit více"
+        },
+        "plugins": {
+            "confirm": "Procházet pluginy",
+            "text": {
+                "main": "Zesil svůj Discord pod kapucí",
+                "subtext": "Pluginy zlepšují tvoji zkušenost se zlepšením v aplikaci"
+            }
         }
     },
     "badges": {
         "sponsor": "Sponsor GooseModu",
         "translator": "Překladatel GooseModu",
         "developer": "Vývojář GooseModu",
-        "guild": "Officiální discord server GooseModu"
+        "guild": "Officiální Discord server GooseModu"
     }
 }
