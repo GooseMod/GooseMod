@@ -165,7 +165,7 @@
             "modules": "Moduly",
             "snippets": "Snippety",
             "plugins": "Pluginy",
-            "themes": "Vzhledy/Témata",
+            "themes": "Témata",
             "store": "Obchod"
         },
         "community": "Komunita",
@@ -176,9 +176,9 @@
         "add": "Přidat",
         "install": "Instalovat",
         "goosemod": {
-            "modules": "Goosemod moduly",
+            "modules": "GooseMod moduly",
             "settings": "Nastavení goosemodu",
-            "store": "Obchod goosemod"
+            "store": "Obchod GooseMod"
         },
         "openLink": "Otevřít Odkaz"
     },
@@ -261,7 +261,7 @@
         "plugins": {
             "confirm": "Procházet pluginy",
             "text": {
-                "main": "Zesil svůj Discord pod kapucí",
+                "main": "Vylepši svůj Discord v tajnosti",
                 "subtext": "Pluginy zlepšují tvoji zkušenost se zlepšením v aplikaci"
             }
         }
