@@ -20,7 +20,8 @@
         },
         "remove": "Entfernen",
         "community": "Gemeinschaft",
-        "install": "Installieren"
+        "install": "Installieren",
+        "openLink": "Link öffnen"
     },
     "store": {
         "options": {
@@ -165,6 +166,10 @@
             "placeholder_image": {
                 "title": "Platzhalter-Bild",
                 "note": "Verwendung eines Platzhalterbildes im Store für Module ohne Bilder"
+            },
+            "new_module_notifications": {
+                "title": "Benachrichtigung über neue Module",
+                "note": "Zeigt eine Toast-Benachrichtigung an, wenn ein neues Modul zum Store hinzugefügt wurde"
             }
         }
     },
