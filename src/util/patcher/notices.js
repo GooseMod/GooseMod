@@ -43,8 +43,7 @@ export const setThisScope = async (scope) => {
   }
 
   PatcherBase.patch(baseOwnerInstance.props.children[0], 'type', (_args, ret) => {
-    ret.props.children[1].props.children[1].props.children.props.children.unshift(React.createElement(NoticeContainer));
-
+    goosemod.reactUtils.findInReactTree(ret, x => x.className === BaseClasses.base).children.unshift(React.createElement(NoticeContainer));
     return ret;
   });
 
