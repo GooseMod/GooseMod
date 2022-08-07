@@ -75,7 +75,7 @@ export default (goosemodScope, gmSettings, Items) => {
   };
 
   const refreshPrompt = async () => {
-    if (await goosemodScope.confirmDialog('Refresh', 'Refresh Required', 'This setting **requires a refresh to take effect**. You **may experience some strange behaviour** in this session before refreshing.')) {
+    if (await goosemodScope.confirmDialog('#dialogs.refresh.button#', '#dialogs.refresh.title#', '#dialogs.refresh.note#')) {
       location.reload();
     }
   };
@@ -217,7 +217,7 @@ export default (goosemodScope, gmSettings, Items) => {
       buttonText: '#settings.items.reset_goosemod.button#',
 
       onclick: async () => {
-        if (await goosemodScope.confirmDialog('Reset', 'Reset GooseMod', 'Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.')) {
+        if (await goosemodScope.confirmDialog('#dialogs.reset_goosemod.button#', '#dialogs.reset_goosemod.title#', '#dialogs.reset_goosemod.note#')) {
           await goosemodScope.remove();
           window.location.reload();
         }
