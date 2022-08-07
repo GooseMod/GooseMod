@@ -271,5 +271,17 @@
             "main": "Vonkajšie repozitáre môžu predstavovať bezpečnostné riziká pretože nie sú kontrolované vývojármi GooseModu. Nenesieme zodpovednosť za žiadne nebezpečenstva z dôvodu vonkajších repozitárov pridanými užívateľmi.\n\nAk neveríte majiteľovi tejto repozitáre tak ho nepoužívajte pretože by mohlo dojsť k prelomeniu zabezpečenia Vašej inštalácie Discordu.\n\nProsím potvrďte pridanie tejto repozitáre kliknutím na tlačítko OK.",
             "bad_pgp": "Tento repozitár nie je známy ani overený (žiadne overenie PGP), prosím buďte extra opatrní. Uistite sa že veríte majiteľom tejto repozitáre.\n\nPre vyriešenie tohto problému kontaktujte vlastníka repozitáre aby pridal podporu PGP.\n\nProsím znovu potvrďte pridanie tohto repozitára kliknutím na tlačítko OK."
         }
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "Potrebné obnovenie",
+            "button": "Obnoviť",
+            "note": "Toto nastavenie **potrebuje obnovenie aby malo účinok**. Môžete **vidieť zvláštne správanie** pred obnovením."
+        },
+        "reset_goosemod": {
+            "button": "Resetovať",
+            "note": "Potvrdením kompletne zresetujete GooseMod, vymažete všetky nastavenia a moduly; ako keby ste nainštalovali GooseMod po prvý krát. Toto sa nedá vrátiť.",
+            "title": "Resetovať GooseMod"
+        }
     }
 }

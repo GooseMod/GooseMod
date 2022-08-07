@@ -271,5 +271,17 @@
         "translator": "Překladatel GooseModu",
         "developer": "Vývojář GooseModu",
         "guild": "Officiální Discord server GooseModu"
+    },
+    "dialogs": {
+        "refresh": {
+            "note": "Toto nastavení **potřebuje obnovení aby působilo**. Můžeš **mít různé problémy** před obnovením.",
+            "title": "Potřebné obnovení",
+            "button": "Obnovit"
+        },
+        "reset_goosemod": {
+            "note": "Potvrdění kompletně resetuje GooseMod, odstraní všechny nastavení a moduly; jako kdybyste si nainstalovali GooseMod poprvé. Tohle se nedá vrátit.",
+            "button": "Restartovat",
+            "title": "Restartovat GooseMod"
+        }
     }
 }
