@@ -271,5 +271,17 @@
                 }
             }
         }
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "Rafraîchissement requis",
+            "note": "Ce paramètre **requiert un rafraîchissement pour prendre effet**. Vous **risquez de rencontrez des comportements imprévus** lors de cette session avant de rafraîchir.",
+            "button": "Rafraîchir"
+        },
+        "reset_goosemod": {
+            "title": "Remettre GooseMod à zéro",
+            "note": "Confirmer remettra GooseMod à zéro, retirant toutes les informations de configurations et modules, comme si vous veniez d'installer GooseMod pour la première fois. Cette action est irréversible.",
+            "button": "Remettre à zéro"
+        }
     }
 }
