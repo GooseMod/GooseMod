@@ -226,6 +226,20 @@
     }
   },
 
+  "dialogs": {
+    "refresh": {
+      "title": "Refresh Required",
+      "note": "This setting **requires a refresh to take effect**. You **may experience some strange behaviour** in this session before refreshing.",
+      "button": "Refresh"
+    },
+
+    "reset_goosemod": {
+      "title": "Reset GooseMod",
+      "note": "Confirming will completely reset GooseMod, removing all preferences and modules; as if you had installed GooseMod for the first time. This is irreversible.",
+      "button": "Reset"
+    }
+  },
+
   "ootb": {
     "start": {
       "confirm": "Learn More",
