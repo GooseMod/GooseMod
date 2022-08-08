@@ -271,5 +271,17 @@
         "translator": "GooseMod Çevirmen",
         "developer": "GooseMod Geliştirici",
         "guild": "GooseMod Resmi Discord'u"
+    },
+    "dialogs": {
+        "refresh": {
+            "note": "Bu ayarın **etkin olması için yeniden başlatma yapılması gerekir**. Yeniden başlatmadan önce bu oturumda **bazı garip davranışlar** yaşayabilirsiniz.",
+            "button": "Yeniden Başlat",
+            "title": "Tekrar Başlatma Gerekli"
+        },
+        "reset_goosemod": {
+            "title": "GooseMod'u Sıfırla",
+            "button": "Sıfırla",
+            "note": "Onaylamak, GooseMod'u tamamen sıfırlayacak, tüm tercihleri ve modülleri kaldıracaktır; sanki GooseMod'u ilk kez kurmuşsunuz gibi. Bu geri döndürülemez."
+        }
     }
 }
