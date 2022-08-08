@@ -12,7 +12,7 @@
         },
         "changelog": "Änderungsprotokoll",
         "settings": "Einstellungen",
-        "refresh": "Aktualisieren",
+        "refresh": "Neu laden",
         "goosemod": {
             "modules": "GooseMod Module",
             "settings": "GooseMod Einstellungen",
@@ -270,6 +270,18 @@
                 "main": "Verschönere dein Discord mit Themes"
             },
             "confirm": "Durchsuche Themes"
+        }
+    },
+    "dialogs": {
+        "refresh": {
+            "button": "Neu laden",
+            "title": "Neu laden erforderlich",
+            "note": "Diese Einstellung **erfordert neu laden um wirksam zu werden**. Du **könntest seltsames Verhalten** in dieser Sitzung feststellen bevor du neu geladen hast."
+        },
+        "reset_goosemod": {
+            "note": "Nach der Bestätigung wird GooseMod vollständig zurückgesetzt und alle Einstellungen und Module werden entfernt; so als ob du GooseMod zum ersten Mal installiert hättest. Dies kann nicht rückgängig gemacht werden.",
+            "title": "GooseMod zurücksetzen",
+            "button": "Zurücksetzen"
         }
     }
 }
