@@ -1,5 +1,6 @@
-### Based on commit 9ef1465, made 08/08 10:18 UTC
+### Based on commit f8df946, made 10/08 22:16 UTC
 ## Commits this release
+  - [Webpack > Common] Fix FluxDispatcher
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
