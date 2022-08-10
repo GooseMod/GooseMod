@@ -67,7 +67,7 @@ export const common = { // Common modules
   ReactDOM: findByProps('render', 'hydrate'),
 
   Flux: findByProps('Store', 'connectStores'),
-  FluxDispatcher: findByProps('_waitQueue', '_orderedActionHandlers'),
+  FluxDispatcher: findByProps('register', 'wait'),
 
   i18n: findByProps('Messages', '_requestedLocale'),
 
