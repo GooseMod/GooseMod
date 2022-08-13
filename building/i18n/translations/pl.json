@@ -77,7 +77,8 @@
             "store": "Sklep GooseMod"
         },
         "community": "Społeczność",
-        "install": "Zainstaluj"
+        "install": "Zainstaluj",
+        "openLink": "Otwórz Link"
     },
     "settings": {
         "items": {
@@ -165,6 +166,10 @@
             "collapsible_home_category": {
                 "title": "Zmniejszana Kategoria Główna",
                 "note": "Pozwalaj głównej kategorii na bycie zmniejszanej za pomocą ikonki"
+            },
+            "new_module_notifications": {
+                "title": "Powiadomienia o Nowych Pluginach",
+                "note": "Pokazuje powiadomienie za każdym razem, gdy nowy plugin zostanie dodany do sklepu"
             }
         }
     },
@@ -265,6 +270,16 @@
                 }
             },
             "confirm": "Dołącz do Discorda GooseMod"
+        }
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "Wymagane Odświeżenie"
+        },
+        "reset_goosemod": {
+            "button": "Wyzeruj",
+            "title": "Wyzeruj GooseMod'a",
+            "note": "Potwierdzenie spowoduje całkowite wyzerowanie danych GooseMod'a. Zostaną usunięte wszystkie pluginy oraz ustawienia. Tak jakbyś zainstalował po raz pierwszy raz GooseMod'a. Jest to nieodwracalne."
         }
     }
 }
