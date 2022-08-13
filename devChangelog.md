@@ -1,2 +1,3 @@
-### Based on commit 6568044, made 10/08 22:17 UTC
+### Based on commit e44c129, made 13/08 21:15 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
