@@ -51,7 +51,7 @@
         "search_results_hint": {
             "other_category": {
                 "plugins": "Nie znaleziono żadnych wyników, czy miałeś na myśli pluginy?",
-                "themes": "Nie znaleziono żadnych wyników, czy miałeś na myśli themy (wyglądy)?"
+                "themes": "Nie znaleziono żadnych wyników, czy miałeś na myśli motywy?"
             },
             "none": "Nie znaleziono wyników"
         }
@@ -274,7 +274,9 @@
     },
     "dialogs": {
         "refresh": {
-            "title": "Wymagane Odświeżenie"
+            "title": "Wymagany Restart",
+            "note": "To ustawienie **wymaga ponownego uruchomienia discorda, aby zaczęło działać**. Przed ponownym uruchomieniem **możesz doświadczyć dziwnego zachowania klienta**",
+            "button": "Zrestartuj"
         },
         "reset_goosemod": {
             "button": "Wyzeruj",

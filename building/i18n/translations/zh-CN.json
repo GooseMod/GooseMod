@@ -271,5 +271,16 @@
         },
         "install": "安装",
         "openLink": "开启链接"
+    },
+    "dialogs": {
+        "refresh": {
+            "button": "刷新",
+            "note": "此设置**必须刷新后才会有效**。刷新前可能会遇到一些**奇怪的行为**。",
+            "title": "必须刷新"
+        },
+        "reset_goosemod": {
+            "title": "重置 Goosemod",
+            "button": "重置"
+        }
     }
 }
