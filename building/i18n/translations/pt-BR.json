@@ -77,7 +77,8 @@
             "store": "Loja do GooseMod"
         },
         "community": "Comunidade",
-        "install": "Instalar"
+        "install": "Instalar",
+        "openLink": "Abrir Link"
     },
     "settings": {
         "items": {
@@ -165,6 +166,10 @@
             "placeholder_image": {
                 "title": "Imagem de Modelo",
                 "note": "Use uma imagem de modelo para os modulos sem imagens na Loja"
+            },
+            "new_module_notifications": {
+                "title": "Novas Modificações de Módulo",
+                "note": "Mostra uma Notificação toda vez que um módulo novo é adicionado a Loja"
             }
         }
     },
@@ -265,6 +270,18 @@
                 "main": "Procure por Temas e Plugins na Loja"
             },
             "confirm": "Ver a Loja na Pagina Inicial"
+        }
+    },
+    "dialogs": {
+        "reset_goosemod": {
+            "title": "Resetar GooseMod",
+            "note": "Confirmando vai completamente remover GooseMod, removendo todas as configurações e módulos; como se você tivesse instalado GooseMod pela primeira vez. Isso é irreversível.",
+            "button": "Resetar"
+        },
+        "refresh": {
+            "title": "Requer uma Reinicialização",
+            "note": "Essa configuração**requer uma reinicialização para fazer efeito**. Você **pode experienciar alguns comportamentos anormais** nessa sessão antes de reiniciar.",
+            "button": "Reiniciar"
         }
     }
 }
