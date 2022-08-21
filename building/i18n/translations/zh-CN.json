@@ -281,7 +281,7 @@
         "reset_goosemod": {
             "title": "重置 Goosemod",
             "button": "重置",
-            "note": "确认将完全重置 GooseMod，删除所有首选项和模块;就好像您第一次安装了GooseMod 一样。这是不可逆转的。"
+            "note": "确认将完全重置 GooseMod，删除所有首选项和模组；就像您第一次安装了GooseMod 一样。这是不可逆转的。"
         }
     }
 }
