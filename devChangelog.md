@@ -1,5 +1,6 @@
-### Based on commit 26e4ef4, made 22/08 19:00 UTC
+### Based on commit f6f9064, made 26/08 15:25 UTC
 ## Commits this release
+  - [CI i18n] Update translations from Weblate
   - [Badges] Update users
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
