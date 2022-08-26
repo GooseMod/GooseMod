@@ -20,7 +20,8 @@
             "developers": "Nhà phát triển",
             "snippets": "Mã thử nghiệm"
         },
-        "install": "Cài đặt"
+        "install": "Cài đặt",
+        "openLink": "Mở liên kết"
     },
     "store": {
         "categories": {
@@ -153,6 +154,10 @@
             "collapsible_home_category": {
                 "title": "Danh mục chính có thể thu gọn",
                 "note": "Cho phép thu gọn danh mục chính thông qua biểu tượng"
+            },
+            "new_module_notifications": {
+                "title": "Thông báo Mô-đun mới",
+                "note": "Hiện một thông báo mỗi khi có một mô-đun mới được thêm vào Cửa hàng"
             }
         }
     },
@@ -263,8 +268,20 @@
     },
     "badges": {
         "developer": "Nhà phát triển GooseMod",
-        "guild": "Discord GooseMod chính thức",
+        "guild": "Server Discord chính thức của GooseMod",
         "sponsor": "Nhà tài trợ GooseMod",
         "translator": "Người phiên dịch GooseMod"
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "Yêu cầu làm mới",
+            "note": "Cài đặt này **yêu cầu làm mới để có hiệu lực**. Bạn **có thể gặp một số lỗi** trong phiên này trước khi làm mới.",
+            "button": "Làm mới"
+        },
+        "reset_goosemod": {
+            "button": "Cài đặt lại",
+            "title": "Cài đặt lại GooseMod",
+            "note": "Việc xác nhận sẽ đặt lại hoàn toàn GooseMod, xóa tất cả các tùy chọn và mô-đun; như thể bạn đang cài đặt GooseMod lần đầu tiên. Điều này là không thể thay đổi."
+        }
     }
 }
