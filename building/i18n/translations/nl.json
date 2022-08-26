@@ -20,7 +20,8 @@
         "remove": "Verwijderen",
         "add": "Toevoegen",
         "community": "Community",
-        "install": "Installeer"
+        "install": "Installeer",
+        "openLink": "Open Link"
     },
     "badges": {
         "guild": "GooseMod Officiële Discord",
@@ -69,7 +70,7 @@
             "none": "Geen resultaat gevonden",
             "other_category": {
                 "plugins": "Geen resultaat gevonden, bedoelde je plugins?",
-                "themes": "Geen resultaat gevonden, bedoelde je themas?"
+                "themes": "Geen resultaat gevonden, bedoelde je thema's?"
             }
         }
     },
@@ -165,6 +166,10 @@
             "placeholder_image": {
                 "note": "Gebruik een plaatsvervangende afbeelding in de Winkel voor modules zonder foto's",
                 "title": "Plaatsvervangende afbeelding"
+            },
+            "new_module_notifications": {
+                "title": "Nieuwe Module Berichtgeving",
+                "note": "Laat een popup zien als er een nieuwe module is toegevoegd aan de winkel"
             }
         }
     },
@@ -265,6 +270,18 @@
                 }
             },
             "confirm": "Bekijk GooseMod's Instellingen"
+        }
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "Opnieuw Laden Vereist",
+            "note": "Deze instelling **vereist het opnieuw laden van Discord.** Je **kan wat vreemd gedrag ervaren** in deze sessie voor de herlaad.",
+            "button": "Herlaad"
+        },
+        "reset_goosemod": {
+            "title": "Reset GooseMod",
+            "note": "Bevestigen zal GooseMod volledig resetten en alle voorkeuren en modules verwijderen; alsof je GooseMod voor de eerste keer hebt geïnstalleerd. Dit is onomkeerbaar.",
+            "button": "Reset"
         }
     }
 }
