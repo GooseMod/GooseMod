@@ -62,7 +62,8 @@
         },
         "pgp": {
             "verified": "Verificat PGP",
-            "unknown": "Fără PGP"
+            "unknown": "Fără PGP",
+            "untrusted": "PGP de neîncredere"
         }
     },
     "settings": {
@@ -107,6 +108,12 @@
                 "button": "Resetează",
                 "title": "Resetează GooseMod",
                 "note": "Resetează GooseMod complet: șterge toate preferințe și modulele; ca instalarea inițială"
+            },
+            "force_theme_settings": {
+                "title": "Forțează Setările Temei"
+            },
+            "placeholder_image": {
+                "note": "Folosește o imagine înlocuitoare în Magazin pentru modulele fără imagini"
             }
         }
     },
@@ -121,5 +128,34 @@
         "external_repo_security": {
             "main": "Repositurile externe pot fi un risc de securitate deoarece nu sunt controlate de către dezvoltării GooseMod. Noi nu suntem responsabili de pericolele cauzate de către repositurile externe adăugate de utilizatori.\n\nDacă nu ai încredere în deținătorul acestui repo nu îl folosi deoarece îți poate compromite Discord-ul.\n\nConfirmă adăugarea acestui repo apăsând OK."
         }
+    },
+    "ootb": {
+        "community": {
+            "items": {
+                "news": {
+                    "title": "Știri"
+                }
+            }
+        },
+        "settings": {
+            "items": {
+                "tweaks": {
+                    "title": "Ajustări",
+                    "subtext": "Ajustează GooseMod cum vrei tu"
+                },
+                "utilities": {
+                    "title": "Utilităţi"
+                }
+            }
+        },
+        "start": {
+            "confirm": "Află mai multe"
+        }
+    },
+    "badges": {
+        "developer": "Dezvoltator GooseMod",
+        "guild": "Discord-ul Official GooseMod",
+        "sponsor": "Sponsor GooseMod",
+        "translator": "Translator GooseMod"
     }
 }
