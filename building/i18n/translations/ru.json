@@ -275,6 +275,9 @@
     "dialogs": {
         "refresh": {
             "title": "Требуется обновление"
+        },
+        "reset_goosemod": {
+            "button": "Сбросить"
         }
     }
 }
