@@ -65,7 +65,8 @@
         "remove": "Rimuovi",
         "add": "Aggiungi",
         "install": "Installare",
-        "community": "Comunità"
+        "community": "Comunità",
+        "openLink": "Apri Link"
     },
     "badges": {
         "guild": "Discord Ufficiale GooseMod",
@@ -249,6 +250,10 @@
             "collapsible_home_category": {
                 "title": "Categoria Home Riducibile",
                 "note": "Rendi la categoria nella home riducibile"
+            },
+            "new_module_notifications": {
+                "title": "Notifiche per nuovi moduli",
+                "note": "Mostra un avviso ogni volta che un nuovo modulo viene aggiunto allo Store"
             }
         }
     },
@@ -265,6 +270,18 @@
                 "subtext": "Formato non valido",
                 "text": "Repo non valida"
             }
+        }
+    },
+    "dialogs": {
+        "reset_goosemod": {
+            "button": "Resetta",
+            "note": "Confermando resetterai completamente GooseMod, rimuovendo tutte le preferenze e moduli; come se avessi installato GooseMod per la prima volta. Questa azione è irreversibile.",
+            "title": "Resetta GooseMod"
+        },
+        "refresh": {
+            "note": "Per applicare questa impostazione **è necessario un riavvio**. **Potresti notare comportamenti strani** durante questa sessione prima del riavvio.",
+            "button": "Ricarica",
+            "title": "Riavvio richiesto"
         }
     }
 }
