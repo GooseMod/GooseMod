@@ -85,6 +85,9 @@
             "collapsible_home_category": {
                 "title": "Categoría de Inicio Plegable",
                 "note": "Dejar que la categoría de inicio sea plegable a través del icono"
+            },
+            "new_module_notifications": {
+                "title": "Nuevo modulo de notificaciones"
             }
         }
     },
@@ -265,6 +268,15 @@
             "modules": "Módulos de GooseMod",
             "settings": "Ajustes de GooseMod",
             "store": "Tienda de GooseMod"
+        },
+        "openLink": "Abrir enlace"
+    },
+    "dialogs": {
+        "reset_goosemod": {
+            "title": "Reestablecer GooseMod"
+        },
+        "refresh": {
+            "button": "Reiniciar"
         }
     }
 }
