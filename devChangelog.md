@@ -1,5 +1,6 @@
-### Based on commit 10f3d2d, made 06/09 22:21 UTC
+### Based on commit 856ed90, made 07/09 17:29 UTC
 ## Commits this release
+  - Translator role for me (#83)
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
   - [CI i18n] Update translations from Weblate
