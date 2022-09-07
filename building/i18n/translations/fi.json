@@ -85,6 +85,9 @@
             "placeholder_image": {
                 "title": "Väliaikainen kuva",
                 "note": "Käytä väliaikaista kuvaa kaupassa moduuleille, joissa ei ole kuvia"
+            },
+            "new_module_notifications": {
+                "title": "Uudet moduuli ilmoitukset"
             }
         }
     },
@@ -175,7 +178,8 @@
             "settings": "GooseMod Asetukset",
             "store": "GooseMod Kauppa"
         },
-        "install": "Asenna"
+        "install": "Asenna",
+        "openLink": "Avaa linkki"
     },
     "ootb": {
         "community": {

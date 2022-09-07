@@ -7,7 +7,8 @@
     "terms": {
         "goosemod": {
             "settings": "GooseMod nustatymai",
-            "modules": "GooseMod moduliai"
+            "modules": "GooseMod moduliai",
+            "store": "GooseMod parduotuvė"
         },
         "add": "Pridėti",
         "remove": "Pašalinti",
@@ -15,11 +16,16 @@
         "community": "Bendruomenė",
         "install": "Įdiekite",
         "store": {
-            "plugins": "Įskiepis",
+            "plugins": "Papildiniai",
             "modules": "Moduliai",
             "repos": "Saugykla",
-            "developers": "Kūrėjai"
-        }
+            "developers": "Kūrėjai",
+            "themes": "Temos",
+            "store": "Parduotuvė"
+        },
+        "refresh": "Atnaujinti",
+        "openLink": "Atidaryti nuorodą",
+        "changelog": "Pakeitimų žurnalas"
     },
     "settings": {
         "items": {

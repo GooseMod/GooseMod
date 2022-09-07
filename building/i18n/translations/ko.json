@@ -10,7 +10,7 @@
         "install": "설치",
         "refresh": "새로고침",
         "settings": "설정",
-        "changelog": "변경 로그",
+        "changelog": "변경 사항",
         "store": {
             "themes": "테마",
             "developers": "개발자",
@@ -20,14 +20,15 @@
             "modules": "모듈",
             "repos": "저장소"
         },
-        "community": "커뮤니티"
+        "community": "커뮤니티",
+        "openLink": "링크 열기"
     },
     "store": {
         "search_results_hint": {
-            "none": "검색 결과를 찾을 수 없음",
+            "none": "검색된 결과가 없습니다.",
             "other_category": {
                 "plugins": "검색된 결과가 없습니다. 플러그인을 찾으시는 건가요?",
-                "themes": "검색된 결과가 없습니다. 테마를 찾으시는 건가요??"
+                "themes": "검색된 결과가 없습니다. 테마를 찾으시는 건가요?"
             }
         },
         "options": {
@@ -76,9 +77,9 @@
     "settings": {
         "items": {
             "headers": {
-                "tweaks": "트윅",
+                "tweaks": "변경",
                 "experimental": "실험적",
-                "appearance": "모양새",
+                "appearance": "외관",
                 "utilities": "유틸리티",
                 "backup": "백업"
             },
@@ -107,7 +108,7 @@
             "purge_caches": {
                 "button": "지우기",
                 "title": "캐시 지우기",
-                "note": "GooseMod가 사용하는 대부분의 캐시 지우기 (완전히 제거)"
+                "note": "GooseMod가 사용하는 캐시 지우기 (완전히 제거)"
             },
             "reset_goosemod": {
                 "button": "재설정",
@@ -159,6 +160,10 @@
             "collapsible_home_category": {
                 "title": "접을 수 있는 홈 범주",
                 "note": "아이콘을 통해 홈 범주를 접을 수 있도록 합니다"
+            },
+            "new_module_notifications": {
+                "title": "새 모듈 알림",
+                "note": "스토어에 새 모듈이 추가될 때마다 알림을 표시합니다."
             }
         }
     },
@@ -256,7 +261,7 @@
                 "text": "저장소 추가 중 취소됨",
                 "reasons": {
                     "refused": "보안 프롬프트 거부됨",
-                    "pgp": "PGP 신뢰할 수 없는 실패"
+                    "pgp": "PGP 신뢰할 수 없으며 실패"
                 }
             }
         }
@@ -266,5 +271,17 @@
         "translator": "GooseMod 번역자",
         "developer": "GooseMod 개발자",
         "guild": "GooseMod 공식 Discord"
+    },
+    "dialogs": {
+        "refresh": {
+            "title": "새로 고침 필요",
+            "note": "이 설정을 적용하려면 새로 고침이 필요합니다**. 새로 고침하기 전에이 세션에서 이상한 행동 **이 발생할 수 있습니다.",
+            "button": "새로고침"
+        },
+        "reset_goosemod": {
+            "title": "구스 모드 재설정",
+            "button": "재설정",
+            "note": "확인하면 GooseMod가 완전히 재설정되어 모든 환경 설정과 모듈이 제거됩니다. 마치 구스 모드 (GooseMod)를 처음 설치 한 것처럼. 이것은 돌이킬 수 없습니다."
+        }
     }
 }

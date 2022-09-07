@@ -87,7 +87,8 @@
                 "note": "Dejar que la categoría de inicio sea plegable a través del icono"
             },
             "new_module_notifications": {
-                "title": "Nuevo modulo de notificaciones"
+                "title": "Nuevo modulo de notificaciones",
+                "note": "Muestra una notificación cada vez que se agrega un nuevo módulo a la Tienda"
             }
         }
     },
@@ -213,9 +214,9 @@
                 "plugins": "Todos los Complementos",
                 "themes": "Todos los Temas"
             },
-            "upcoming": "Próximos",
+            "upcoming": "Próximamente",
             "recently_updated": "Actualizados Recientemente",
-            "top_starred": "Top Estrellas"
+            "top_starred": "Más destacados"
         },
         "options": {
             "author": {
@@ -230,7 +231,7 @@
             },
             "search": {
                 "placeholder": {
-                    "plugins": "Buscar Complementos",
+                    "plugins": "Buscar Plugins",
                     "themes": "Buscar Temas"
                 }
             },
@@ -243,7 +244,7 @@
             "none": "No se encontraron resultados",
             "other_category": {
                 "themes": "No se han encontrado resultados, ¿quiso decir temas?",
-                "plugins": "No se han encontrado resultados, ¿quiso decir complementos?"
+                "plugins": "No se han encontrado resultados, ¿quiso decir plugins?"
             }
         }
     },
@@ -252,7 +253,7 @@
             "developers": "Desarrolladores",
             "repos": "Repositorios",
             "modules": "Módulos",
-            "plugins": "Complementos",
+            "plugins": "Plugins",
             "themes": "Temas",
             "store": "Tienda",
             "snippets": "Fragmentos"
@@ -273,10 +274,14 @@
     },
     "dialogs": {
         "reset_goosemod": {
-            "title": "Reestablecer GooseMod"
+            "title": "Reestablecer GooseMod",
+            "button": "Resetear",
+            "note": "La confirmación restablecerá completamente GooseMod, eliminando todas las preferencias y módulos; como si hubieras instalado GooseMod por primera vez. Esto es irreversible."
         },
         "refresh": {
-            "button": "Reiniciar"
+            "button": "Reiniciar",
+            "title": "Actualización requerida",
+            "note": "Esta configuración **requiere cerrar y volver a abrir discord para surtir efecto**. Usted **puede experimentar algún comportamiento extraño ** en esta sesión antes de refrescarse."
         }
     }
 }

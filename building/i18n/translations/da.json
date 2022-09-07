@@ -2,25 +2,162 @@
     "store": {
         "options": {
             "sort": {
-                "label": "Sorter efter"
+                "label": "Sorter efter",
+                "stars": "Stjerner",
+                "az": "A-Å",
+                "last_updated": "Sidst Opdateret"
             },
             "search": {
                 "placeholder": {
-                    "plugins": "Søg efter Plugins"
+                    "plugins": "Søg i Plugins",
+                    "themes": "Søg i Temaer"
                 }
+            },
+            "tabs": {
+                "store": "Butik",
+                "imported": "Installeret"
+            },
+            "author": {
+                "label": "Forfatter",
+                "all": "Alle"
             }
         },
         "pgp": {
-            "verified": "PGP verificeret"
+            "verified": "PGP verificeret",
+            "untrusted": "PGP upålidelige",
+            "unknown": "Ingen PGP"
         },
         "categories": {
             "all": {
                 "plugins": "Alle Plugins",
-                "themes": "Alle Themes"
+                "themes": "Alle Temaer"
+            },
+            "top_starred": "Fleste stjerner",
+            "upcoming": "Kommer snart",
+            "recently_updated": "Opdateret fornyligt"
+        },
+        "search_results_hint": {
+            "none": "Ingen resultater",
+            "other_category": {
+                "themes": "Ingen resultater, mente du temaer?",
+                "plugins": "Ingen resultater, mente du plugins?"
             }
         }
     },
     "badges": {
         "guild": "GooseMod Officiel Discord"
+    },
+    "terms": {
+        "goosemod": {
+            "store": "GooseMod Butik",
+            "settings": "GooseMod Indstillinger",
+            "modules": "GooseMod Moduler"
+        },
+        "refresh": "Opdater",
+        "install": "Installer",
+        "community": "Fælleskab",
+        "store": {
+            "store": "Butik",
+            "themes": "Temaer",
+            "plugins": "Plugins",
+            "snippets": "Snippets",
+            "modules": "Moduler",
+            "repos": "Repositorier",
+            "developers": "Udviklere"
+        },
+        "add": "Tilføj",
+        "remove": "Fjern",
+        "settings": "Indstillinger",
+        "changelog": "Ændringer"
+    },
+    "settings": {
+        "items": {
+            "main_separators": {
+                "title": "Hoved Seperatere",
+                "note": "Hvis separatoren mellem hoved GooseMod indstillinger"
+            },
+            "purge_caches": {
+                "button": "Fjern",
+                "title": "Fjern Cache",
+                "note": "Fjern alt cache fra GooseMod bruger"
+            },
+            "headers": {
+                "appearance": "Udseéne",
+                "utilities": "Hjælpeværktøjer",
+                "tweaks": "Tweaks",
+                "experimental": "Eksperimentelle Indstillinger",
+                "backup": "Backup"
+            },
+            "start_tour": {
+                "button": "Tur",
+                "title": "Start tur",
+                "note": "Start GooseMod's startup tur igen"
+            },
+            "store_in_home": {
+                "note": "Put GooseMod Butiksindstilinger i hjem i stedet for indstillinger",
+                "title": "Butik i Hjem"
+            },
+            "auto_update": {
+                "title": "Automatiskopdatering",
+                "note": "Automatisk opdatere kodespoter verd time"
+            },
+            "goosemod_badges": {
+                "title": "GooseMod Badges",
+                "note": "Hvis GooseMods Badges"
+            },
+            "reset_goosemod": {
+                "button": "Nulstild",
+                "title": "Nulstild GooseMod",
+                "note": "Nulstiller Alle GooseMod Indstillinger og Moduler, som en ny installation."
+            },
+            "copy_debug_info": {
+                "note": "Kopiere Information om setup og GooseMod for rapportering og debugging",
+                "button": "Kopier",
+                "title": "Kopier Debug Information"
+            },
+            "create_backup": {
+                "title": "Opret Backup",
+                "button": "Backup",
+                "note": "Opretter en fil til backup af dine GooseMod Moduler og indstillinger."
+            },
+            "restore_backup": {
+                "title": "Gennopret fra Backup",
+                "note": "Genopretter dine GooseMod Moduler og instillinger med en Backup fil. **Genopret kun fra filer af folk, du stoler på**",
+                "button": "Genopret"
+            },
+            "development_channel": {
+                "title": "Udviklings Channel",
+                "note": "Brug Eksperimentalle udvikler GooseMod versioner"
+            },
+            "subtexts": {
+                "experimental_warning": "Eksperimentale indstillinger er ikke altid kompatible eller stabile, som kan resultere i fejl.",
+                "tweaks_description": "Mindre ændringer, f.eks. små UI ændringer for at GooseMod lige som du vil have det"
+            },
+            "goosemod_change_log": {
+                "title": "GooseMod Ændringer",
+                "note": "Hvis GooseMod Ændringer"
+            }
+        }
+    },
+    "modals": {
+        "external_repo_security": {
+            "main": "Eksterne kodedepoter kan være en sikkerhedsrisiko, da de ikke er kontrollerede af GooseMods's udviklere. Vi er ikke ansvarlige for noget skade på grund af en eksterne kodedepoter tilføjede af andre brugere.\n\nHvis du ikke stoler på ejeren af dette plugin eller tema, så anbefaler vi at det ikke bruges, da det kan kompromiserne din Discord bruger.\n\nfor at bekræfte installationen af dette, tryk på OK",
+            "bad_pgp": "Dette kodedepot er ikke kændt, eller understøttet (Ingen PGP Verifikation) Vær extra forsigtig. Vær sikker på, at du stoler på ejerne af dette.\n\nFor at rette dette, hvis det er en fejl, spørg venligst ejerne af kodedepotet om at tilføje PGP understøttelse.\n\nfor at bekræfte installationen af dette, tryk på OK"
+        }
+    },
+    "toasts": {
+        "add_repo": {
+            "invalid_repo": {
+                "text": "Ugyldigt Kodedepot",
+                "subtext": "Ugyldigt kodeformat"
+            },
+            "cancelled": {
+                "text": "Annullerede Installation af Kodedepot",
+                "reasons": {
+                    "pgp": "PGP Upålidelig Fejl",
+                    "refused": "Nægtede Sikkerheds Prompte"
+                }
+            }
+        }
     }
 }
