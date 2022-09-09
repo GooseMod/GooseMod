@@ -130,6 +130,9 @@
                 "title": "Stvori sigurnosnu kopiju",
                 "note": "Stvara datoteku za sigurnosnu kopiju tvojih GooseMod modula i postavki",
                 "button": "Sigurnosna kopija"
+            },
+            "new_module_notifications": {
+                "title": "Obavijesti za novi modul"
             }
         }
     },
@@ -154,7 +157,8 @@
             "developers": "Programeri"
         },
         "changelog": "Dnevnik promjena",
-        "community": "Zajednica"
+        "community": "Zajednica",
+        "openLink": "Otvori poveznicu"
     },
     "modals": {
         "external_repo_security": {
