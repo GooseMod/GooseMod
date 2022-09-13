@@ -29,7 +29,8 @@
                 "experimental": "Eksperimentelt",
                 "backup": "Sikkerhetskopi",
                 "utilities": "Verktøy",
-                "appearance": "Utseende"
+                "appearance": "Utseende",
+                "tweaks": "Justeringer"
             },
             "data_attributes": {
                 "title": "Data-attributter",
@@ -72,6 +73,22 @@
             "goosemod_change_log": {
                 "note": "Vis «Endringslogg»-innstilling",
                 "title": "GooseMod-endringslogg"
+            },
+            "subtexts": {
+                "experimental_warning": "Eksperimentelle innstillinger vil antagelig fremstå ufullstendige og ustabile, som kan resultere i feil",
+                "tweaks_description": "Små endringer som f.eks. grensesnittsfikser for å gjøre GooseMod til ditt eget"
+            },
+            "new_module_notifications": {
+                "title": "Ny modulmerknader",
+                "note": "Viser en oppsprettsmerknad hver gang en ny modul legges til i butikken."
+            },
+            "placeholder_image": {
+                "title": "Plassholderbilde",
+                "note": "Bruk et plassholderbilde i butikken hvis moduler mangler bilder"
+            },
+            "collapsible_home_category": {
+                "title": "Sammenfoldbar hjemmekategori",
+                "note": "Tillat sammenfolding av hjemmekategorien via dens ikon"
             }
         }
     },
@@ -128,7 +145,11 @@
             }
         },
         "search_results_hint": {
-            "none": "Resultatløst"
+            "none": "Resultatløst",
+            "other_category": {
+                "themes": "Resultatløst. Mente du drakter?",
+                "plugins": "Resultatløst. Mente du programtillegg?"
+            }
         }
     },
     "terms": {
@@ -152,7 +173,8 @@
             "settings": "GooseMod-innstillinger",
             "store": "GooseMod-butikken"
         },
-        "install": "Installer"
+        "install": "Installer",
+        "openLink": "Åpne lenke"
     },
     "ootb": {
         "start": {
@@ -243,5 +265,23 @@
         "developer": "GooseMod-utvikler",
         "translator": "GooseMod-oversetter",
         "sponsor": "GooseMod-sponsor"
+    },
+    "modals": {
+        "external_repo_security": {
+            "bad_pgp": "Denne pakkebrønnen er ikke tiltrodd (ingen PGP-bekreftelse). Vær ekstra forsiktig. Forsikre deg om at du stoler på eieren(e).\n\nFor å løse dette problemet kan du be vedlikeholderen av pakkebrønnen om å legge til PGP-støtte.\n\nBekreft at du vil legge til denne pakkebrønnen ved å trykke «OK».",
+            "main": "Eksterne pakkebrønner medfører økt risiko, siden de ikke kontrolleres av GooseMod-utviklerne. Vi er ikke ansvarlige for noen farer som følge av at disse blir lagt til.\n\nHvis du ikke har tillit til eieren av denne pakkebrønn bør du ikke bruke det, siden det kan ta over Discord-installasjonen.\n\nBekreft at du vil legge til denne pakkebrønnen ved å trykke «OK»."
+        }
+    },
+    "dialogs": {
+        "reset_goosemod": {
+            "title": "Tilbakestill GooseMod",
+            "button": "Tilbakestill",
+            "note": "Bekreftelse vil tilbakestille GooseMod fullstendig. Dette fjerner alle innstillinger og moduler, som om du installerte GooseMod for første gang. Dette kan ikke angres."
+        },
+        "refresh": {
+            "button": "Gjenoppfrisk",
+            "title": "Gjenoppfrisking kreves",
+            "note": "Du må **gjenoppfriske for at dette programtillegget skal kunne brukes** Det **kan** hende ting blir rare i denne økten før du gjenoppfrisker."
+        }
     }
 }
