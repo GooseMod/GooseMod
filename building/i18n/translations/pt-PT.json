@@ -85,6 +85,9 @@
             "goosemod_badges": {
                 "title": "Insígnias GooseMod",
                 "note": "Mostrar insígnias GooseMod"
+            },
+            "new_module_notifications": {
+                "title": "Notificações de Novo Módulo"
             }
         }
     },
@@ -169,7 +172,8 @@
         "refresh": "Atualizar",
         "remove": "Remover",
         "add": "Adicionar",
-        "changelog": "Registro de Alterações"
+        "changelog": "Registro de Alterações",
+        "openLink": "Hiperligação Aberta"
     },
     "ootb": {
         "community": {
