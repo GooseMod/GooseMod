@@ -1,28 +1,2 @@
-### Based on commit 5ac243c, made 19/09 15:41 UTC
+### Based on commit 69bea8c, made 19/09 15:42 UTC
 ## Commits this release
-  - [Patcher > Commands] Ensure new displayName
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - Translator role for me (#83)
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [Badges] Update users
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
-  - [CI i18n] Update translations from Weblate
