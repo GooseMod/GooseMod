@@ -14,51 +14,54 @@ export const patch = (name, imgUrl, forIds, clickHandler = (() => {}), { round =
 
   const BadgeClasses = goosemodScope.webpackModules.findByProps('profileBadge24', 'profileBadge22');
 
-  const UserProfileBadgeList = goosemodScope.webpackModules.findByPropsAll('BadgeSizes')[1];
-  
-  return PatcherBase.patch(UserProfileBadgeList, 'default', ([ { user, size } ], res) => {
-    if (!forIds().includes(user.id)) return res;
+  const unpatches = [];
+  for (const UserProfileBadgeList of goosemodScope.webpackModules.findByPropsAll('BadgeSizes')) { // there's two near-identical modules: 0 = badge list in new popouts, 1 = profile/other
+    unpatches.push(PatcherBase.patch(UserProfileBadgeList, 'default', ([ { user, size } ], res) => {
+      if (!forIds().includes(user.id)) return res;
 
-    let sizeClass = BadgeClasses.profileBadge24;
+      let sizeClass = BadgeClasses.profileBadge24;
 
-    switch (size) {
-      case 1: { // User modal
-        sizeClass = BadgeClasses.profileBadge22;
-        break;
+      switch (size) {
+        case 1: { // User modal
+          sizeClass = BadgeClasses.profileBadge22;
+          break;
+        }
+
+        case 2: { // User popout
+          sizeClass = BadgeClasses.profileBadge18;
+          break;
+        }
       }
 
-      case 2: { // User popout
-        sizeClass = BadgeClasses.profileBadge18;
-        break;
-      }
-    }
-
-    res.props.children.unshift(
-      React.createElement(Tooltip, {
-        position: "top",
-        text: name
-      }, ({
-        onMouseLeave,
-        onMouseEnter
-      }) =>
-        React.createElement(Clickable, {
-          onClick: () => {
-            clickHandler();
-          },
-          onMouseEnter,
-          onMouseLeave
-        },
-          React.createElement('div', {
-            style: {
-              backgroundImage: `url("${imgUrl}")`,
-              borderRadius: round ? '50%' : ''
+      res.props.children.unshift(
+        React.createElement(Tooltip, {
+          position: "top",
+          text: name
+        }, ({
+          onMouseLeave,
+          onMouseEnter
+        }) =>
+          React.createElement(Clickable, {
+            onClick: () => {
+              clickHandler();
             },
-            className: `${BadgeClasses.profileBadge} ${sizeClass}`
-          })
+            onMouseEnter,
+            onMouseLeave
+          },
+            React.createElement('div', {
+              style: {
+                backgroundImage: `url("${imgUrl}")`,
+                borderRadius: round ? '50%' : ''
+              },
+              className: `${BadgeClasses.profileBadge} ${sizeClass}`
+            })
+          )
         )
-      )
-    );
+      );
 
-    return res;
-  });
+      return res;
+    }));
+  }
+
+  return () => unpatches.forEach(x => x());
 };
