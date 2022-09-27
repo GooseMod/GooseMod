@@ -17,6 +17,9 @@ const init = async () => {
     window.webpackChunkdiscord_app.push([['gm_webpackInject'], {}, (req) => { wpRequire = req; }]);
   }
 
+  eval(await (await fetch(`https://raw.githubusercontent.com/GooseMod/defiant/main/index.js?_` + Date.now())).text());
+
+
   const locale = Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).find((x) => x?.default?.getLocaleInfo).default.getLocale();
 
   console.log('[GooseMod Bootstrap]', 'Found locale', locale);
