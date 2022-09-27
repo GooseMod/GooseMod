@@ -160,6 +160,7 @@
             "modules": "GooseMod moduler",
             "store": "GooseMod butik",
             "settings": "GooseMod inställningar"
-        }
+        },
+        "openLink": "Öppna länk"
     }
 }
